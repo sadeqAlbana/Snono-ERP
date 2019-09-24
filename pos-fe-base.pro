@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    pos-fe
+    pos-fe \
+    network-manager \

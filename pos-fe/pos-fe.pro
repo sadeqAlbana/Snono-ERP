@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,15 +26,31 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    loginwidget.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    loginwidget.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    loginwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../network-manager/release/ -lnetwork-manager
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../network-manager/debug/ -lnetwork-manager
+else:unix: LIBS += -L$$OUT_PWD/../network-manager/ -lnetwork-manager
+
+INCLUDEPATH += $$PWD/../network-manager/src
+DEPENDPATH += $$PWD/../network-manager/src
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/release/libnetwork-manager.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/debug/libnetwork-manager.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/release/network-manager.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/debug/network-manager.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a

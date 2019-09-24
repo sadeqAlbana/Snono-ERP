@@ -1,0 +1,3 @@
+[submodule "network-manager"]
+	path = network-manager
+	url = http://git.snono.systems:7482/sadeq/network-manager.git
