@@ -54,3 +54,6 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../netw
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/release/network-manager.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/debug/network-manager.lib
 else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a
+
+RESOURCES += \
+    qrc.qrc
