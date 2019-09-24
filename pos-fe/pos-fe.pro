@@ -27,15 +27,53 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    loginwidget.cpp
+    datamodels/transaction.cpp \
+    delegates/doublespinboxdelegate.cpp \
+    delegates/spinboxdelegate.cpp \
+    dialogs/adduserdialog.cpp \
+    dialogs/logindialog.cpp \
+    dialogs/makepaymentdialog.cpp \
+    gui/tabs/cashiertab.cpp \
+    gui/tabs/debugtab.cpp \
+    gui/tabs/itemstab.cpp \
+    gui/tabs/userstab.cpp \
+    gui/views/headerwidget.cpp \
+    gui/views/searchheaderview.cpp \
+    models/jsonModel/jsonmodel.cpp \
+    models/jsonModel/jsonmodelfield.cpp \
+    models/jsonModel/jsonmodelrecord.cpp \
+    models/jsonModel/networkedjsonmodel.cpp \
+    models/cashiermodel.cpp \
 
 HEADERS += \
         mainwindow.h \
-    loginwidget.h
+    datamodels/transaction.h \
+    delegates/doublespinboxdelegate.h \
+    delegates/spinboxdelegate.h \
+    dialogs/adduserdialog.h \
+    dialogs/logindialog.h \
+    dialogs/makepaymentdialog.h \
+    gui/tabs/cashiertab.h \
+    gui/tabs/debugtab.h \
+    gui/tabs/itemstab.h \
+    gui/tabs/userstab.h \
+    gui/views/headerwidget.h \
+    gui/views/searchheaderview.h \
+    models/jsonModel/jsonmodel.h \
+    models/jsonModel/jsonmodelfield.h \
+    models/jsonModel/jsonmodelrecord.h \
+    models/jsonModel/networkedjsonmodel.h \
+    models/cashiermodel.h \
 
 FORMS += \
         mainwindow.ui \
-    loginwidget.ui
+    dialogs/adduserdialog.ui \
+    dialogs/logindialog.ui \
+    dialogs/makepaymentdialog.ui \
+    gui/tabs/cashiertab.ui \
+    gui/tabs/debugtab.ui \
+    gui/tabs/itemstab.ui \
+    gui/tabs/userstab.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
