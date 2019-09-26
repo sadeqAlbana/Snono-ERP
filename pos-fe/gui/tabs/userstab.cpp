@@ -3,7 +3,7 @@
 #include <models/jsonModel/jsonmodel.h>
 #include <models/jsonModel/networkedjsonmodel.h>
 #include <QToolButton>
-#include <dialogs/adduserdialog.h>
+#include <gui/dialogs/adduserdialog.h>
 UsersTab::UsersTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::UsersTab)

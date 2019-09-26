@@ -1,12 +1,12 @@
-#include "mainwindow.h"
-#include <QApplication>
 
+#include <posapplication.h>
+#include <QSettings>
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QCoreApplication::setOrganizationName("sadeqTech");
+    QCoreApplication::setApplicationName("pos-fe");
+    PosApplication a(argc, argv);
 
 
-    MainWindow w;
-    w.show();
     return a.exec();
 }

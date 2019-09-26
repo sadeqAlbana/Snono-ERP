@@ -1,7 +1,7 @@
 #include "cashiertab.h"
 #include "ui_cashiertab.h"
 #include <models/cashiermodel.h>
-#include "dialogs/makepaymentdialog.h"
+#include "gui/dialogs/makepaymentdialog.h"
 #include <QMessageBox>
 #include <datamodels/transaction.h>
 #include "gui/views/searchheaderview.h"

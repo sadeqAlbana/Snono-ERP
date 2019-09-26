@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "dialogs/logindialog.h"
+#include "gui/dialogs/logindialog.h"
 #include <QPushButton>
-#include "dialogs/adduserdialog.h"
+#include "gui/dialogs/adduserdialog.h"
 #include <QButtonGroup>
 #include <models/jsonModel/jsonmodel.h>
 #include <models/jsonModel/networkedjsonmodel.h>
@@ -11,16 +11,15 @@
 #include "gui/tabs/cashiertab.h"
 #include "gui/tabs/userstab.h"
 #include "gui/tabs/debugtab.h"
-
+#include <authmanager.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->hide();
+    connect(AuthManager::instance(),&AuthManager::loggedIn,this,&MainWindow::onLoggedIn);
     loginDialog=new LoginDialog(this);
-    //connect(loginDialog,&LoginDialog::loggedIn,this,&MainWindow::onLoggedIn);
-        setupLauncher();
 }
 
 MainWindow::~MainWindow()
@@ -32,7 +31,10 @@ MainWindow::~MainWindow()
 void MainWindow::onLoggedIn()
 {
     setupLauncher();
-    //connect(ui->actionExit,&QAction::triggered,this,&MainWindow::close);
+    loginDialog->hide();
+    loginDialog->deleteLater();
+    this->show();
+    connect(ui->actionExit,&QAction::triggered,this,&MainWindow::close);
 }
 
 
@@ -67,7 +69,5 @@ void MainWindow::setupLauncher()
                                 ui->tabWidget->setCurrentWidget(keys.value(action));
                             }
                         });
-
-
 }
 

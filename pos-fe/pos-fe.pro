@@ -28,11 +28,11 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     datamodels/transaction.cpp \
-    delegates/doublespinboxdelegate.cpp \
-    delegates/spinboxdelegate.cpp \
-    dialogs/adduserdialog.cpp \
-    dialogs/logindialog.cpp \
-    dialogs/makepaymentdialog.cpp \
+    gui/delegates/doublespinboxdelegate.cpp \
+    gui/delegates/spinboxdelegate.cpp \
+    gui/dialogs/adduserdialog.cpp \
+    gui/dialogs/logindialog.cpp \
+    gui/dialogs/makepaymentdialog.cpp \
     gui/tabs/cashiertab.cpp \
     gui/tabs/debugtab.cpp \
     gui/tabs/itemstab.cpp \
@@ -44,15 +44,20 @@ SOURCES += \
     models/jsonModel/jsonmodelrecord.cpp \
     models/jsonModel/networkedjsonmodel.cpp \
     models/cashiermodel.cpp \
+    authmanager.cpp \
+    posnetworkmanager.cpp \
+    gui/dialogs/networkerrordialog.cpp \
+    posapplication.cpp \
+    networkerrorhandler.cpp
 
 HEADERS += \
         mainwindow.h \
     datamodels/transaction.h \
-    delegates/doublespinboxdelegate.h \
-    delegates/spinboxdelegate.h \
-    dialogs/adduserdialog.h \
-    dialogs/logindialog.h \
-    dialogs/makepaymentdialog.h \
+    gui/delegates/doublespinboxdelegate.h \
+    gui/delegates/spinboxdelegate.h \
+    gui/dialogs/adduserdialog.h \
+    gui/dialogs/logindialog.h \
+    gui/dialogs/makepaymentdialog.h \
     gui/tabs/cashiertab.h \
     gui/tabs/debugtab.h \
     gui/tabs/itemstab.h \
@@ -64,12 +69,17 @@ HEADERS += \
     models/jsonModel/jsonmodelrecord.h \
     models/jsonModel/networkedjsonmodel.h \
     models/cashiermodel.h \
+    authmanager.h \
+    posnetworkmanager.h \
+    gui/dialogs/networkerrordialog.h \
+    posapplication.h \
+    networkerrorhandler.h
 
 FORMS += \
         mainwindow.ui \
-    dialogs/adduserdialog.ui \
-    dialogs/logindialog.ui \
-    dialogs/makepaymentdialog.ui \
+    gui/dialogs/adduserdialog.ui \
+    gui/dialogs/logindialog.ui \
+    gui/dialogs/makepaymentdialog.ui \
     gui/tabs/cashiertab.ui \
     gui/tabs/debugtab.ui \
     gui/tabs/itemstab.ui \
