@@ -17,6 +17,10 @@ LoginDialog::LoginDialog(QWidget *parent) :
 
     connect(ui->settingsButton,&QPushButton::clicked,this,&LoginDialog::onSettingsButtonClicked);
     connect(ui->loginButoon,&QPushButton::clicked,this,&LoginDialog::onLoginButoonClicked);
+
+    connect(AuthManager::instance(),&AuthManager::loggedIn,this,&LoginDialog::onLoggedIn);
+    connect(AuthManager::instance(),&AuthManager::invalidCredentails,this,&LoginDialog::onInvalidCredentails);
+
     this->show();
 }
 
@@ -30,10 +34,18 @@ void LoginDialog::onLoginButoonClicked()
     AuthManager::instance()->authenticate(ui->userLineEdit->text(),ui->passwordLineEdit->text());
 }
 
-
-
 void LoginDialog::onSettingsButtonClicked()
 {
 
+}
+
+void LoginDialog::onInvalidCredentails()
+{
+    ui->credentialsLabel->setText(tr("Invalid Credentails"));
+}
+
+void LoginDialog::onLoggedIn()
+{
+    ui->credentialsLabel->clear();
 }
 

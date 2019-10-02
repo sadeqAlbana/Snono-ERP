@@ -10,8 +10,8 @@ AuthManager::AuthManager(QObject *parent) : QObject(parent)
 
 void AuthManager::authenticate(QString username, QString password)
 {
-    manager.post("/auth", {{"username",username},
-                           {"password",password}})->subcribe(this,&AuthManager::onAuthReply);
+    manager.post("/auth/login", {{"username",username},
+                                 {"password",password}})->subcribe(this,&AuthManager::onAuthReply);
 }
 
 void AuthManager::onAuthReply(NetworkResponse *res)
@@ -23,6 +23,7 @@ void AuthManager::onAuthReply(NetworkResponse *res)
     else {
         if(res->json("error").isNull()){
             settings.setValue("jwt",res->json("jwt").toString());
+            manager.setJWT(res->json("token").toString().toUtf8());
             emit loggedIn();
         }
         else {

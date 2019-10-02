@@ -3,7 +3,7 @@
 
 #include "jsonmodel.h"
 //#include <network/messagehandler.h>
-#include <networkmanager.h>
+#include "posnetworkmanager.h"
 class NetworkedJsonModel : public JsonModel
 {
     Q_OBJECT
@@ -19,7 +19,7 @@ public:
 
 private:
     QString url;
-    NetworkManager manager;
+    PosNetworkManager manager;
 };
 
 #endif // NETWORKEDJSONMODEL_H

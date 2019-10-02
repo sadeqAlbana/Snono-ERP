@@ -35,7 +35,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../qrc.qrc">:/icons/logo2.png</pixmap>
+         <pixmap resource="../../qrc.qrc">:/icons/logo2.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>false</bool>
@@ -149,7 +149,7 @@
              <string>settings</string>
             </property>
             <property name="icon">
-             <iconset resource="../qrc.qrc">
+             <iconset resource="../../qrc.qrc">
               <normaloff>:/icons/color/icons8-settings-480.png</normaloff>:/icons/color/icons8-settings-480.png</iconset>
             </property>
             <property name="iconSize">
@@ -188,7 +188,7 @@
              <string>Login</string>
             </property>
             <property name="icon">
-             <iconset resource="../qrc.qrc">
+             <iconset resource="../../qrc.qrc">
               <normaloff>:/icons/color/icons8-signin-96.png</normaloff>:/icons/color/icons8-signin-96.png</iconset>
             </property>
             <property name="iconSize">
@@ -214,7 +214,7 @@
              <string>Cancel</string>
             </property>
             <property name="icon">
-             <iconset resource="../qrc.qrc">
+             <iconset resource="../../qrc.qrc">
               <normaloff>:/icons/color/icons8-cancel-96.png</normaloff>:/icons/color/icons8-cancel-96.png</iconset>
             </property>
             <property name="iconSize">
@@ -245,7 +245,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../qrc.qrc"/>
+  <include location="../../qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

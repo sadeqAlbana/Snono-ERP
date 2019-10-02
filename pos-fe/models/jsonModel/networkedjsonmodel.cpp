@@ -5,7 +5,6 @@ NetworkedJsonModel::NetworkedJsonModel(QString Url, QObject *parent) : JsonModel
     url=Url;
     qDebug()<<"url : " <<url;
     requestData();
-
 }
 
 
@@ -22,7 +21,16 @@ void NetworkedJsonModel::refresh()
 
 void NetworkedJsonModel::requestData()
 {
-    manager.get(url)->subcribe(this,&NetworkedJsonModel::onTableRecieved);
+
+    QJsonDocument doc=QJsonDocument::fromJson(QString(R"({
+                                              "page": 1,
+                                              "size": %1,
+                                              "sortBy": "id",
+                                              "sortOrder": "desc"
+                                            }
+ )").arg(10).toUtf8());
+    //manager.post(url,doc)->subcribe(this,&NetworkedJsonModel::onTableRecieved);
+    manager.post(url,doc.object())->subcribe(this,&NetworkedJsonModel::onTableRecieved);
 }
 
 

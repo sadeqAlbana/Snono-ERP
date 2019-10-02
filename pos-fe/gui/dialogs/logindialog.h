@@ -12,17 +12,14 @@ class LoginDialog : public QDialog
 public:
     explicit LoginDialog(QWidget *parent = nullptr);
     ~LoginDialog();
+    //button callbacks
     void onConnectButtonClicked();
     void onLoginButoonClicked();
     void onSettingsButtonClicked();
-    void onConnected();
+
+    void onInvalidCredentails();
+    void onLoggedIn();
     QString md5(QString clearPassword);
-
-public slots:
-
-signals:
-    void loggedIn();
-
 
 private:
     Ui::LoginDialog *ui;
