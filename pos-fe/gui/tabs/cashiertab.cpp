@@ -17,7 +17,7 @@ CashierTab::CashierTab(QWidget *parent) :
     //connect(ui->cancelButton,&QToolButton::clicked,this,&CashierTab::cancelTransaction);
     //connect(model,&CashierModel::totalChanged,ui->lcdNumber,static_cast<void(QLCDNumber::*)(double)>(&QLCDNumber::display));
 
-    ui->tableView->setHorizontalHeader(new SearchHeaderView(model,ui->tableView));
+    //ui->tableView->setHorizontalHeader(new SearchHeaderView(model,ui->tableView));
 
 }
 
