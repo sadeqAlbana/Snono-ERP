@@ -2,7 +2,7 @@
 #define CASHIERTAB_H
 
 #include <QWidget>
-
+#include <QSettings>
 
 
 class CashierModel;
@@ -17,12 +17,17 @@ class CashierTab : public QWidget
 public:
     explicit CashierTab(QWidget *parent = nullptr);
     ~CashierTab();
+    void setupView();
+    void connectSignals();
+    void onAboutToQuit();
+
 
 
 
 private:
     Ui::CashierTab *ui;
     CashierModel *model;
+    QSettings settings;
 };
 
 #endif // CASHIERTAB_H

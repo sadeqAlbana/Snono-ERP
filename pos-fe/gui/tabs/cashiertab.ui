@@ -78,6 +78,11 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
          </widget>
         </item>
        </layout>
@@ -137,7 +142,7 @@
            </size>
           </property>
           <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextUnderIcon</enum>
+           <enum>Qt::ToolButtonIconOnly</enum>
           </property>
          </widget>
         </item>
@@ -163,7 +168,7 @@
            </size>
           </property>
           <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextUnderIcon</enum>
+           <enum>Qt::ToolButtonIconOnly</enum>
           </property>
          </widget>
         </item>
