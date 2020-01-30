@@ -1,5 +1,7 @@
 #include "cashiermodel.h"
 #include <QMessageBox>
+#include <QJsonArray>
+#include <QJsonObject>
 CashierModel::CashierModel(QObject *parent)
     : QAbstractTableModel(parent)
 {

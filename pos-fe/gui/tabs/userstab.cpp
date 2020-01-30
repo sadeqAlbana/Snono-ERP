@@ -18,6 +18,7 @@ UsersTab::UsersTab(QWidget *parent) :
 UsersTab::~UsersTab()
 {
     delete ui;
+    delete model;
 }
 
 

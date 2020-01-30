@@ -16,10 +16,11 @@ public:
     void onConnectButtonClicked();
     void onLoginButoonClicked();
     void onSettingsButtonClicked();
-
     void onInvalidCredentails();
     void onLoggedIn();
     QString md5(QString clearPassword);
+    static void showDialog(QWidget *parent);
+
 
 private:
     Ui::LoginDialog *ui;

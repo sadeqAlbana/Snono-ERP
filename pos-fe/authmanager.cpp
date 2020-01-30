@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QApplication>
+#include <QJsonObject>
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
@@ -10,7 +11,7 @@ AuthManager::AuthManager(QObject *parent) : QObject(parent)
 
 void AuthManager::authenticate(QString username, QString password)
 {
-    manager.post("/auth/login", {{"username",username},
+    manager.post("/auth/login",QJsonObject{{"username",username},
                                  {"password",password}})->subcribe(this,&AuthManager::onAuthReply);
 }
 
@@ -19,6 +20,8 @@ void AuthManager::onAuthReply(NetworkResponse *res)
     if(res->error())
     {
         //handle Error
+        qDebug()<<"error";
+        qDebug()<<res->error();
     }
     else {
         if(res->json("error").isNull()){

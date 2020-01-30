@@ -1,6 +1,5 @@
 #include "itemstab.h"
 #include "ui_itemstab.h"
-
 ItemsTab::ItemsTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ItemsTab)

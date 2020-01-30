@@ -48,7 +48,9 @@ SOURCES += \
     posnetworkmanager.cpp \
     gui/dialogs/networkerrordialog.cpp \
     posapplication.cpp \
-    networkerrorhandler.cpp
+    networkerrorhandler.cpp \
+    gui/dialogs/loginsettingsdialog.cpp \
+    possettings.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -73,7 +75,9 @@ HEADERS += \
     posnetworkmanager.h \
     gui/dialogs/networkerrordialog.h \
     posapplication.h \
-    networkerrorhandler.h
+    networkerrorhandler.h \
+    gui/dialogs/loginsettingsdialog.h \
+    possettings.h
 
 FORMS += \
         mainwindow.ui \
@@ -83,7 +87,8 @@ FORMS += \
     gui/tabs/cashiertab.ui \
     gui/tabs/debugtab.ui \
     gui/tabs/itemstab.ui \
-    gui/tabs/userstab.ui
+    gui/tabs/userstab.ui \
+    gui/dialogs/loginsettingsdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

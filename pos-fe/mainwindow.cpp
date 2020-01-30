@@ -18,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->hide();
-    connect(AuthManager::instance(),&AuthManager::loggedIn,this,&MainWindow::onLoggedIn);
     loginDialog=new LoginDialog(this);
+    connect(AuthManager::instance(),&AuthManager::loggedIn,this,&MainWindow::onLoggedIn);
 }
 
 MainWindow::~MainWindow()
@@ -30,9 +30,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::onLoggedIn()
 {
-    setupLauncher();
     loginDialog->hide();
-    loginDialog->deleteLater();
+    setupLauncher();
     this->show();
     connect(ui->actionExit,&QAction::triggered,this,&MainWindow::close);
 }
@@ -47,13 +46,12 @@ void MainWindow::setupLauncher()
     launcherActionGroup->addAction(ui->actionItems);
     launcherActionGroup->addAction(ui->actionDebug);
 
-
-    ItemsTab *itemsTab=new ItemsTab();
     CashierTab *cashierTab=new CashierTab();
+    ItemsTab *itemsTab=new ItemsTab();
     UsersTab *usersTab=new UsersTab();
     DebugTab *debugTab=new DebugTab();
+        keys.insert(ui->actionCashier,cashierTab);
     keys.insert(ui->actionItems,itemsTab);
-    keys.insert(ui->actionCashier,cashierTab);
     keys.insert(ui->actionUsers,usersTab);
     keys.insert(ui->actionDebug,debugTab);
     ui->tabWidget->addTab(cashierTab,ui->actionCashier->icon(),ui->actionCashier->text());

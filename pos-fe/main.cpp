@@ -1,6 +1,7 @@
 
 #include <posapplication.h>
 #include <QSettings>
+#include <mainwindow.h>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");

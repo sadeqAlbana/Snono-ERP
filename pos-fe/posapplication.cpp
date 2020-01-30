@@ -1,20 +1,24 @@
 #include "posapplication.h"
 #include "mainwindow.h"
-
-MainWindow *PosApplication::_mainWindow;
+#include <QDebug>
 
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv)
 {
     initSettings();
-    _mainWindow=new MainWindow();
+    //_mainWindow.show();
 }
 
-QWidget *PosApplication::mainWidget()
+PosApplication::~PosApplication()
 {
-    return _mainWindow;
+
 }
+
+//QWidget *PosApplication::mainWidget()
+//{
+//    //return &_mainWindow;
+//}
 
 void PosApplication::initSettings()
 {
-
+    qDebug()<<"init settings";
 }

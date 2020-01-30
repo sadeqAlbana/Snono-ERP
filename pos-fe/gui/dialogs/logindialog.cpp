@@ -6,12 +6,12 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <authmanager.h>
+#include "loginsettingsdialog.h"
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
-    ui->AddresslineEdit->addAction(QIcon(":/icons/color/icons8-website-96.png"),QLineEdit::LeadingPosition);
     ui->userLineEdit->addAction(QIcon(":/icons/color/icons8-person-96.png"),QLineEdit::LeadingPosition);
     ui->passwordLineEdit->addAction(QIcon(":/icons/color/icons8-password-96.png"),QLineEdit::LeadingPosition);
 
@@ -36,7 +36,7 @@ void LoginDialog::onLoginButoonClicked()
 
 void LoginDialog::onSettingsButtonClicked()
 {
-
+    LoginSettingsDialog::showDialog(this);
 }
 
 void LoginDialog::onInvalidCredentails()

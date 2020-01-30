@@ -2,18 +2,20 @@
 #define POSAPPLICATION_H
 
 #include <QApplication>
+#include "mainwindow.h"
 #include <QSettings>
 class MainWindow;
 class PosApplication : public QApplication
 {
 public:
     PosApplication(int &argc, char **argv);
-    static QWidget *mainWidget();
+    ~PosApplication();
+    //static QWidget *mainWidget();
 
 private:
     QSettings settings;
     void initSettings();
-    static MainWindow *_mainWindow;
+    MainWindow _mainWindow;
 
 };
 

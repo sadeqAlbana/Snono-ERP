@@ -1,4 +1,5 @@
 #include "networkedjsonmodel.h"
+#include <QJsonDocument>
 #include <QDebug>
 NetworkedJsonModel::NetworkedJsonModel(QString Url, QObject *parent) : JsonModel(parent)
 {
