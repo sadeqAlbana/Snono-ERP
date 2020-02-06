@@ -5,6 +5,32 @@
 #include <models/jsonModel/jsonmodelrecord.h>
 #include <QJsonArray>
 #include <QJsonObject>
+
+struct Column{
+    Column(const QString &key, const QString &displayName,const QString &parentKey=QString()):
+    key(key),displayName(displayName),parentKey(parentKey){}
+    QString key;
+    QString displayName;
+    QString parentKey;
+};
+
+class ColumnList : public QList<Column>{
+public:
+    ColumnList(){}
+    bool contains(const QString &key){
+        for(const Column &column : *this){
+            if(column.key==key){
+                return true;
+            }
+        }
+        return false;
+    }
+    ColumnList & operator <<(const Column &column){
+        append(column);
+        return *this;
+    }
+};
+
 class JsonModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -40,12 +66,13 @@ public:
     JsonModelRecord record() const;
     JsonModelRecord record(int index) const{return m_records.at(index);}
 
-    void insertData(QJsonArray data);
+    void setupData(const QJsonArray &data);
 
-    void setupData(QJsonArray &data);
+    virtual ColumnList columns() const;
 
 
 protected:
+    QVector<QMap<QString,QVariant>> m;
     QVector<JsonModelRecord> m_records;
     JsonModelRecord m_record;
 };

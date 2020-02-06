@@ -1,18 +1,33 @@
 #include "networkedjsonmodel.h"
 #include <QJsonDocument>
 #include <QDebug>
-NetworkedJsonModel::NetworkedJsonModel(QString Url, QObject *parent) : JsonModel(parent)
+NetworkedJsonModel::NetworkedJsonModel(QString Url, QObject *parent) : JsonModel(parent), url(Url)
 {
-    url=Url;
-    qDebug()<<"url : " <<url;
-    requestData();
 }
-
-
 
 void NetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-    insertData(reply->json("data").toArray());
+    QJsonArray array= reply->jsonObject().value("data").toArray();
+    if(columns().isEmpty()){
+        setupData(array);
+        return;
+    }
+
+    QJsonArray data;
+    for(int i=0 ; i<array.size(); i++) {
+        QJsonObject object = array.at(i).toObject();
+        QJsonObject product;
+        for(const QString &key : object.keys()){
+            if(columns().contains(key)){
+                product[key]=object[key];
+            }
+        }
+
+        data << product;
+    }
+
+
+    setupData(data);
 }
 
 void NetworkedJsonModel::refresh()
@@ -22,16 +37,10 @@ void NetworkedJsonModel::refresh()
 
 void NetworkedJsonModel::requestData()
 {
-
-    QJsonDocument doc=QJsonDocument::fromJson(QString(R"({
-                                              "page": 1,
-                                              "size": %1,
-                                              "sortBy": "id",
-                                              "sortOrder": "desc"
-                                            }
- )").arg(10).toUtf8());
-    //manager.post(url,doc)->subcribe(this,&NetworkedJsonModel::onTableRecieved);
-    manager.post(url,doc.object())->subcribe(this,&NetworkedJsonModel::onTableRecieved);
+    manager.post(url,QJsonObject{{"page"     , 1},
+                                 {"size"     , 10},
+                                 {"sortBy"   , "id"},
+                                 {"sortOrder", "desc"}})->subcribe(this,&NetworkedJsonModel::onTableRecieved);
 }
 
 
@@ -45,28 +54,41 @@ Qt::ItemFlags NetworkedJsonModel::flags(const QModelIndex &index) const
 
 bool NetworkedJsonModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+//    bool success=JsonModel::setData(index,value,role);
 
-    bool success=JsonModel::setData(index,value,role);
+//    if (success)
+//    {
 
-    if (success)
-    {
+//        QVariant id = record(index.row()).value("id");
+//        QString column=headerData(index.column(),Qt::Horizontal).toString();
 
-        QVariant id = record(index.row()).value("id");
-        QString column=headerData(index.column(),Qt::Horizontal).toString();
+//        manager.put("/user",
+//                    QJsonObject
+//                    {
+//                        {"id",id.toString()},
+//                        {"column",column},
+//                        {"value",value.toString()}
+//                    }
 
-        manager.put("/user",
-                    QJsonObject
-                    {
-                        {"id",id.toString()},
-                        {"column",column},
-                        {"value",value.toString()}
-                    }
+//                    )->subcribe([&](Response *res)
+//        {
 
-                    )->subcribe([&](Response *res)
-        {
-
-            qDebug()<<res->status();
-        });
-    }
-    return success;
+//            qDebug()<<res->status();
+//        });
+//    }
+//    return success;
+    return true;
 }
+
+QJsonValue NetworkedJsonModel::requestParams() const
+{
+    return _requestParams;
+}
+
+void NetworkedJsonModel::setRequestParams(const QJsonValue &requestParams)
+{
+    _requestParams = requestParams;
+}
+
+
+

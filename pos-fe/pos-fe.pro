@@ -50,7 +50,9 @@ SOURCES += \
     posapplication.cpp \
     networkerrorhandler.cpp \
     gui/dialogs/loginsettingsdialog.cpp \
-    possettings.cpp
+    possettings.cpp \
+    gui/tabs/productstab.cpp \
+    models/jsonModel/productsmodel.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -77,7 +79,9 @@ HEADERS += \
     posapplication.h \
     networkerrorhandler.h \
     gui/dialogs/loginsettingsdialog.h \
-    possettings.h
+    possettings.h \
+    gui/tabs/productstab.h \
+    models/jsonModel/productsmodel.h
 
 FORMS += \
         mainwindow.ui \
@@ -88,7 +92,8 @@ FORMS += \
     gui/tabs/debugtab.ui \
     gui/tabs/itemstab.ui \
     gui/tabs/userstab.ui \
-    gui/dialogs/loginsettingsdialog.ui
+    gui/dialogs/loginsettingsdialog.ui \
+    gui/tabs/productstab.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

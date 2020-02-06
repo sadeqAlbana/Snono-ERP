@@ -16,9 +16,6 @@ QVariant CashierModel::headerData(int section, Qt::Orientation orientation, int 
     return QVariant();
 }
 
-
-
-
 int CashierModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid())

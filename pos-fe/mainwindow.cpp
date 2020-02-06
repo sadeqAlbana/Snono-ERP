@@ -11,6 +11,7 @@
 #include "gui/tabs/cashiertab.h"
 #include "gui/tabs/userstab.h"
 #include "gui/tabs/debugtab.h"
+#include "gui/tabs/productstab.h"
 #include <authmanager.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,16 +45,19 @@ void MainWindow::setupLauncher()
     launcherActionGroup->addAction(ui->actionCashier);
     launcherActionGroup->addAction(ui->actionUsers);
     launcherActionGroup->addAction(ui->actionItems);
+    launcherActionGroup->addAction(ui->actionProducts);
     launcherActionGroup->addAction(ui->actionDebug);
 
     CashierTab *cashierTab=new CashierTab();
     ItemsTab *itemsTab=new ItemsTab();
     UsersTab *usersTab=new UsersTab();
     DebugTab *debugTab=new DebugTab();
+    ProductsTab *productsTab= new ProductsTab();
         keys.insert(ui->actionCashier,cashierTab);
     keys.insert(ui->actionItems,itemsTab);
     keys.insert(ui->actionUsers,usersTab);
     keys.insert(ui->actionDebug,debugTab);
+    keys.insert(ui->actionProducts,productsTab);
     ui->tabWidget->addTab(cashierTab,ui->actionCashier->icon(),ui->actionCashier->text());
     connect(ui->tabWidget,&QTabWidget::tabCloseRequested,ui->tabWidget,&QTabWidget::removeTab);
     connect(launcherActionGroup,

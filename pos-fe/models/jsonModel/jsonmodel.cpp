@@ -40,11 +40,15 @@ QVariant JsonModel::headerData(int section, Qt::Orientation orientation, int rol
 
 int JsonModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
+
     return m_records.count();
 }
 
 int JsonModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
+
     return record().count();
 }
 
@@ -116,12 +120,7 @@ JsonModelRecord JsonModel::record() const
     return m_record;
 }
 
-void JsonModel::insertData(QJsonArray data)
-{
-    setupData(data);
-}
-
-void JsonModel::setupData(QJsonArray &data)
+void JsonModel::setupData(const QJsonArray &data)
 {
     beginResetModel();
     m_record.clear(); // will cause memory leak if you don't clear the fields too !
@@ -141,3 +140,8 @@ void JsonModel::setupData(QJsonArray &data)
     endResetModel();
 }
 
+
+ColumnList JsonModel::columns() const
+{
+    return ColumnList();
+}
