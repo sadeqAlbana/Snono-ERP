@@ -21,7 +21,7 @@ LoginSettingsDialog::LoginSettingsDialog(QWidget *parent) :
 void LoginSettingsDialog::onSaveButtonClticked()
 {
     QUrl url;
-    settings.setServerUrl(ui->serverPortLE->text(),ui->serverPortLE->text().toInt(),ui->sslCB->isChecked());
+    settings.setServerUrl(ui->serverAddressLE->text(),ui->serverPortLE->text().toInt(),ui->sslCB->isChecked());
     close();
 }
 

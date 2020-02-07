@@ -1,5 +1,6 @@
 #include "possettings.h"
 #include <QUrl>
+#include <QDebug>
 PosSettings::PosSettings()
 {
 
@@ -17,5 +18,11 @@ void PosSettings::setServerUrl(const QUrl &url)
 
 void PosSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)
 {
+    QUrl url;
+    qDebug()<<"host: " << host;
+    url.setHost(host);
+    url.setPort(port);
+    url.setScheme(useSSL ? "https" : "http");
 
+    setServerUrl(url);
 }

@@ -31,6 +31,7 @@ void ProductsModel::requestData()
 ColumnList ProductsModel::columns() const
 {
     return ColumnList() <<
+                           Column{"id","ID"} <<
                            Column{"name","Name"} <<
                            Column{"barcode","Barcode"} <<
                            Column{"default_cost","Cost"} <<

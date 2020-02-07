@@ -19,8 +19,9 @@ JsonModel::~JsonModel()
 
 QVariant JsonModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    return orientation==Qt::Horizontal && role==Qt::DisplayRole ?
-                m_record.fieldName(section) :
+    return orientation==Qt::Horizontal && role==Qt::DisplayRole && section < columns().size() ?
+                //m_record.fieldName(section) :
+                columns().at(section).displayName :
                 QVariant();
 }
 
@@ -49,7 +50,7 @@ int JsonModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
 
-    return record().count();
+    return columns().count();
 }
 
 QVariant JsonModel::data(const QModelIndex &index, int role) const
@@ -61,7 +62,7 @@ QVariant JsonModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     if(role==Qt::DisplayRole || role==Qt::EditRole )
-        return m_records.at(index.row()).value(index.column());
+        return m_records.at(index.row()).value(columns().at(index.column()).key);
 
 
     return QVariant();

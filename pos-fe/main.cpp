@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
     QCoreApplication::setApplicationName("pos-fe");
+    QSettings settings;
     PosApplication a(argc, argv);
 
 
