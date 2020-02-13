@@ -7,27 +7,7 @@ NetworkedJsonModel::NetworkedJsonModel(QString Url, QObject *parent) : JsonModel
 
 void NetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-    QJsonArray array= reply->jsonObject().value("data").toArray();
-    if(columns().isEmpty()){
-        setupData(array);
-        return;
-    }
-
-    QJsonArray data;
-    for(int i=0 ; i<array.size(); i++) {
-        QJsonObject object = array.at(i).toObject();
-        QJsonObject product;
-        for(const QString &key : object.keys()){
-            if(columns().contains(key)){
-                product[key]=object[key];
-            }
-        }
-
-        data << product;
-    }
-
-
-    setupData(data);
+    setupData(reply->jsonObject().value("data").toArray());
 }
 
 void NetworkedJsonModel::refresh()
