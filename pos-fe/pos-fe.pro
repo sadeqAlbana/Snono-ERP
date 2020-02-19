@@ -52,7 +52,8 @@ SOURCES += \
     gui/dialogs/loginsettingsdialog.cpp \
     possettings.cpp \
     gui/tabs/productstab.cpp \
-    models/jsonModel/productsmodel.cpp
+    models/jsonModel/productsmodel.cpp \
+    gui/dialogs/producteditdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -81,7 +82,8 @@ HEADERS += \
     gui/dialogs/loginsettingsdialog.h \
     possettings.h \
     gui/tabs/productstab.h \
-    models/jsonModel/productsmodel.h
+    models/jsonModel/productsmodel.h \
+    gui/dialogs/producteditdialog.h
 
 FORMS += \
         mainwindow.ui \
@@ -93,7 +95,8 @@ FORMS += \
     gui/tabs/itemstab.ui \
     gui/tabs/userstab.ui \
     gui/dialogs/loginsettingsdialog.ui \
-    gui/tabs/productstab.ui
+    gui/tabs/productstab.ui \
+    gui/dialogs/producteditdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

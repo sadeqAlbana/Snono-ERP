@@ -29,7 +29,7 @@ Qt::ItemFlags NetworkedJsonModel::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    return JsonModel::flags(index) | Qt::ItemIsEditable;
+    return JsonModel::flags(index);
 }
 
 bool NetworkedJsonModel::setData(const QModelIndex &index, const QVariant &value, int role)

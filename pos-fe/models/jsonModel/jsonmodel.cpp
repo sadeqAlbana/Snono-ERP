@@ -71,21 +71,17 @@ QVariant JsonModel::data(const QModelIndex &index, int role) const
                 value=m_records.at(index.row()).value(column.key);
             }
             else{
-
                 value=m_records.at(index.row()).value(column.parentKey);
-
                 if(value.type()==QMetaType::QVariantMap){
-                    value=value.toJsonObject().value(column.key);
-
+                    value=value.toMap().value(column.key);
                 }
-                else if(value.type()==QMetaType::QVariantList){
-                    value=value.toList().value(0).toMap().value(column.key);
-                }
-
             }
             return value;
         }
 
+    }
+    if(role==Qt::TextAlignmentRole){
+        return Qt::AlignCenter;
     }
 
 

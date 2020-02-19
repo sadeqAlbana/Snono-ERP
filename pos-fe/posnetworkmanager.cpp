@@ -19,7 +19,8 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
 
 void PosNetworkManager::setJWT(const QByteArray jwt)
 {
-    _jwt=jwt;
+    _jwt="Bearer "+ jwt;
+    setRawHeader("authorization",_jwt);
 }
 
 QByteArray PosNetworkManager::jwt() const
