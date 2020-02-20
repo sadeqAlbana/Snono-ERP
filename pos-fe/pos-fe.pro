@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    gui/textinputfield.cpp \
         main.cpp \
         mainwindow.cpp \
     datamodels/transaction.cpp \
@@ -56,6 +57,7 @@ SOURCES += \
     gui/dialogs/producteditdialog.cpp
 
 HEADERS += \
+    gui/textinputfield.h \
         mainwindow.h \
     datamodels/transaction.h \
     gui/delegates/doublespinboxdelegate.h \

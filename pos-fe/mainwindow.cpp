@@ -13,6 +13,7 @@
 #include "gui/tabs/debugtab.h"
 #include "gui/tabs/productstab.h"
 #include <authmanager.h>
+#include "gui/dialogs/producteditdialog.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -21,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->hide();
     loginDialog=new LoginDialog(this);
     connect(AuthManager::instance(),&AuthManager::loggedIn,this,&MainWindow::onLoggedIn);
+    ProductEditDialog::init(this);
+
 }
 
 MainWindow::~MainWindow()

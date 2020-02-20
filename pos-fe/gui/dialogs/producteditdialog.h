@@ -14,6 +14,7 @@ class ProductEditDialog : public QDialog
 public:
     explicit ProductEditDialog(QWidget *parent = nullptr);
     ~ProductEditDialog();
+    static void init(QWidget *parent);
 
 private:
     Ui::ProductEditDialog *ui;

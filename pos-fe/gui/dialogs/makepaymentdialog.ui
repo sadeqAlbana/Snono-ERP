@@ -107,7 +107,7 @@
           <string>Cancel</string>
          </property>
          <property name="icon">
-          <iconset resource="../qrc.qrc">
+          <iconset resource="../../qrc.qrc">
            <normaloff>:/icons/color/icons8-cancel-480.png</normaloff>:/icons/color/icons8-cancel-480.png</iconset>
          </property>
          <property name="iconSize">
@@ -133,7 +133,7 @@
           <string>Pay</string>
          </property>
          <property name="icon">
-          <iconset resource="../qrc.qrc">
+          <iconset resource="../../qrc.qrc">
            <normaloff>:/icons/color/icons8-checkout-96.png</normaloff>:/icons/color/icons8-checkout-96.png</iconset>
          </property>
          <property name="iconSize">
@@ -154,7 +154,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../qrc.qrc"/>
+  <include location="../../qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

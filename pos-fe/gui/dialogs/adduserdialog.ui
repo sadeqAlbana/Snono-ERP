@@ -130,7 +130,7 @@
           <string>cancel</string>
          </property>
          <property name="icon">
-          <iconset resource="../qrc.qrc">
+          <iconset resource="../../qrc.qrc">
            <normaloff>:/icons/color/icons8-cancel-96.png</normaloff>:/icons/color/icons8-cancel-96.png</iconset>
          </property>
          <property name="iconSize">
@@ -150,7 +150,7 @@
           <string>add</string>
          </property>
          <property name="icon">
-          <iconset resource="../qrc.qrc">
+          <iconset resource="../../qrc.qrc">
            <normaloff>:/icons/color/icons8-plus-96.png</normaloff>:/icons/color/icons8-plus-96.png</iconset>
          </property>
          <property name="iconSize">
@@ -171,7 +171,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../qrc.qrc"/>
+  <include location="../../qrc.qrc"/>
  </resources>
  <connections/>
 </ui>

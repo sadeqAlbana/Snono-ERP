@@ -12,3 +12,10 @@ ProductEditDialog::~ProductEditDialog()
 {
     delete ui;
 }
+
+void ProductEditDialog::init(QWidget *parent)
+{
+    ProductEditDialog *dlg=new ProductEditDialog(parent);
+
+    dlg->exec();
+}
