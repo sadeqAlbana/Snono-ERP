@@ -89,6 +89,11 @@ QVariant JsonModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+QJsonObject JsonModel::data(const int &row) const
+{
+    return m_records.value(row);
+}
+
 bool JsonModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (data(index, role) != value) {

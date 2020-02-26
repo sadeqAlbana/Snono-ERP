@@ -8,6 +8,7 @@ JsonModelRecord::JsonModelRecord()
 
 JsonModelRecord::JsonModelRecord(QJsonObject record)
 {
+    m_record=record;
     for(QString key : record.keys())
        fields << JsonModelField(key,record.value(key).toVariant()); //change to something more appropriate
 }
@@ -85,6 +86,11 @@ JsonModelRecord &JsonModelRecord::operator =(const JsonModelRecord &other)
 {
     fields=other.fields;
     return *this;
+}
+
+JsonModelRecord::operator QJsonObject()
+{
+    return m_record;
 }
 
 

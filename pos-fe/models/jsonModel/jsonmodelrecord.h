@@ -27,8 +27,10 @@ public:
     bool operator ==(const JsonModelRecord &other) const;
 
     JsonModelRecord &operator =(const JsonModelRecord &other);
+    operator QJsonObject();
 private:
     QVector <JsonModelField> fields;
+    QJsonObject m_record;
 };
 
 #endif // JSONMODELRECORD_H

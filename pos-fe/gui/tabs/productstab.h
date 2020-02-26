@@ -14,6 +14,7 @@ class ProductsTab : public QWidget
 public:
     explicit ProductsTab(QWidget *parent = nullptr);
     ~ProductsTab();
+    void onTableviewDoubleClicked(const QModelIndex &index);
 
 private:
     Ui::ProductsTab *ui;
