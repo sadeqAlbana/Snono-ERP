@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("pos-fe");
     QSettings settings;
     PosApplication a(argc, argv);
-
+    a.setStyle("Breeze");
 
     return a.exec();
 }

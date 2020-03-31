@@ -13,15 +13,15 @@ class NetworkedJsonModel : public JsonModel
 public:
     NetworkedJsonModel(QString Url,QObject *parent=nullptr);
 
-    void onTableRecieved(NetworkResponse *reply);
+    virtual void onTableRecieved(NetworkResponse *reply);
     void refresh();
     virtual void requestData();
     Qt::ItemFlags flags(const QModelIndex& index) const override;
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
-    QJsonValue requestParams() const;
-    void setRequestParams(const QJsonValue &requestParams);
+//    QJsonValue requestParams() const;
+//    void setRequestParams(const QJsonValue &requestParams);
 
 
 

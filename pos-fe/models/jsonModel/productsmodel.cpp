@@ -18,7 +18,7 @@ ColumnList ProductsModel::columns() const
                            Column{"id","ID"} <<
                            Column{"name","Name"} <<
                            Column{"barcode","Barcode"} <<
-                           Column{"default_cost","Default Cost"} <<
+                           Column{"cost","Cost"} <<
                            Column{"qty","Stock","products_stocks"} <<
                            Column{"list_price","List Price"};
 }

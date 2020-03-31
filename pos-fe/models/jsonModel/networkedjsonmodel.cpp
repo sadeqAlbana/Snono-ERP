@@ -60,15 +60,7 @@ bool NetworkedJsonModel::setData(const QModelIndex &index, const QVariant &value
     return true;
 }
 
-QJsonValue NetworkedJsonModel::requestParams() const
-{
-    return _requestParams;
-}
 
-void NetworkedJsonModel::setRequestParams(const QJsonValue &requestParams)
-{
-    _requestParams = requestParams;
-}
 
 
 

@@ -73,7 +73,7 @@ public:
 
 
 protected:
-    QVector<QMap<QString,QVariant>> m;
+    QVector<QMap<QString,QJsonValue>> m;
     QVector<JsonModelRecord> m_records;
     JsonModelRecord m_record;
 };

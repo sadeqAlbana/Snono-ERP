@@ -7,9 +7,7 @@ JsonModel::JsonModel(QObject *parent) : QAbstractTableModel(parent)
 
 JsonModel::JsonModel(QJsonArray data, QObject *parent) : QAbstractTableModel(parent)
 {
-
     setupData(data);
-
 }
 
 JsonModel::~JsonModel()
@@ -41,14 +39,16 @@ QVariant JsonModel::headerData(int section, Qt::Orientation orientation, int rol
 
 int JsonModel::rowCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent)
+    if(parent.isValid())
+        return 0;
 
     return m_records.count();
 }
 
 int JsonModel::columnCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent)
+    if(parent.isValid())
+        return 0;
 
     int size= columns().size();
     return  size ? size : m_record.count();

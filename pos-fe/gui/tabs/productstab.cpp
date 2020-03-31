@@ -23,5 +23,4 @@ void ProductsTab::onTableviewDoubleClicked(const QModelIndex &index)
     //QVariant product=
 
     ProductEditDialog::init(this,model.data(index.row()));
-
 }

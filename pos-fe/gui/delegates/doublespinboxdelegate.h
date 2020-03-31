@@ -18,7 +18,16 @@ public:
     void updateEditorGeometry(QWidget *editor,
         const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 
+    QString displayText(const QVariant &value,
+                                            const QLocale &locale) const override;
 
+
+
+    int decimalPrecision() const;
+    void setDecimalPrecision(int decimalPrecision);
+
+private:
+    int _decimalPrecision;
 };
 
 

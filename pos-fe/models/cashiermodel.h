@@ -2,50 +2,38 @@
 #define CASHIERMODEL_H
 
 #include <QAbstractTableModel>
-#include <networkmanager.h>
-class CashierModel : public QAbstractTableModel
+#include "jsonModel/networkedjsonmodel.h"
+class CashierModel : public NetworkedJsonModel //make is json model
 {
     Q_OBJECT
 
 public:
     explicit CashierModel(QObject *parent = nullptr);
-
-    // Header:
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
-
-    // Basic functionality:
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-    // Editable:
+    virtual void requestData() override;
+    ColumnList columns() const override;
+    virtual void onTableRecieved(NetworkResponse *reply) override;
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
+    void onDataChange(NetworkResponse *res);
+    double total();
+    double taxAmount();
+    QString totalCurrencyString();
+    QString taxAmountCurrencyString();
 
-    Qt::ItemFlags flags(const QModelIndex& index) const override;
+    QJsonObject cartData() const;
+    void setCartData(const QJsonObject &cartData);
 
-    // Add data:
-    bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    bool insertColumns(int column, int count, const QModelIndex &parent = QModelIndex()) override;
+    QString reference() const;
+    void setReference(const QString &reference);
 
-    // Remove data:
-    bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    bool removeColumns(int column, int count, const QModelIndex &parent = QModelIndex()) override;
+    QModelIndex changedIndex() const;
+    void setChangedIndex(const QModelIndex &changedIndex);
 
-    void addItem(int barcode);
-
-    void reset();
-    QJsonArray items();
-    qreal total();
 private:
-    QList<QString> m_headerData;
-    QVector<QVariantList> m_data;
-    void onItemDataRecieved(NetworkResponse *res);
-    NetworkManager manager;
-
-signals:
-    void totalChanged(qreal total);
+    void onProductDataRecevied(NetworkResponse *res);
+    QJsonObject _cartData;
+    QString _reference;
+    QModelIndex _changedIndex;
 };
 
 #endif // CASHIERMODEL_H

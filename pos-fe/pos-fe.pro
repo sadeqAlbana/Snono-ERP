@@ -24,6 +24,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+include(posnumpadwidget/posnumpadwidget.pri)
+
+
 SOURCES += \
     gui/textinputfield.cpp \
         main.cpp \

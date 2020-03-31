@@ -2,179 +2,112 @@
 #include <QMessageBox>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QJsonObject>
+#include <QLocale>
 CashierModel::CashierModel(QObject *parent)
-    : QAbstractTableModel(parent)
+    : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
-    m_headerData << tr("No") << tr("barcode") << tr("Name") << tr("Price") << tr("qty") << tr("Total");
+    setReference("{d51e5c34-6f7e-4f96-a128-abb4d9711c3a}");
 }
 
-QVariant CashierModel::headerData(int section, Qt::Orientation orientation, int role) const
+void CashierModel::requestData()
 {
-    if(orientation==Qt::Horizontal && role==Qt::DisplayRole)
-        return m_headerData[section];
-
-    return QVariant();
+    manager.post(url,QJsonObject{
+                     {"reference",reference()}})->subcribe(this,&CashierModel::onTableRecieved);
 }
 
-int CashierModel::rowCount(const QModelIndex &parent) const
+ColumnList CashierModel::columns() const
 {
-    if (parent.isValid())
-        return 0;
+    return ColumnList() <<
+                           Column{"name","Name"} <<
+                           Column{"unit_price","Price"} <<
+                           Column{"qty","Qty"} <<
+                           Column{"subtotal","Subtotal"} <<
+                           Column{"total","Total"};
 
-    return m_data.count();
 }
 
-int CashierModel::columnCount(const QModelIndex &parent) const
+void CashierModel::onTableRecieved(NetworkResponse *reply)
 {
-    if (parent.isValid())
-        return 0;
-
-    return m_headerData.count();
-}
-
-QVariant CashierModel::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid())
-        return QVariant();
-    if(index.row()<rowCount() && index.column() < columnCount())
-    {
-        if(role==Qt::DisplayRole || role==Qt::EditRole)
-            return m_data[index.row()][index.column()];
-    }
-
-    return QVariant();
+    _cartData=reply->json().toObject()["cart"].toObject();
+    setupData(_cartData["products"].toArray());
 }
 
 bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (data(index, role) != value) {
-        if(role==Qt::DisplayRole || role==Qt::EditRole)
-        {
-            m_data[index.row()][index.column()]=value;
-            emit dataChanged(index, index, QVector<int>() << role);
-            return true;
-        }
+    if(!index.isValid())
+        return false;
+
+    if(index.row() >= rowCount() || index.column() >= columnCount() || role!=Qt::EditRole)
+        return false;
+
+    QJsonObject product=data(index.row());
+
+    Column column=columns().at(index.column());
+    switch (static_cast<QMetaType::Type>(value.type())) {
+    case QMetaType::Double     :product[column.key]=value.toDouble();    break;
+    case QMetaType::QString    :product[column.key]=value.toString();    break;
+    case QMetaType::Int        :product[column.key]=value.toInt();       break;
+    case QMetaType::QJsonValue : product[column.key]=value.toJsonValue();break;
+    default: break;
     }
-    return false;
-}
 
-Qt::ItemFlags CashierModel::flags(const QModelIndex &index) const
-{
-    if (!index.isValid())
-        return Qt::NoItemFlags;
+    product["index"]=index.row();
+    product["reference"]=_cartData["reference"];
+    manager.post("/pos/cart/updateProduct",product)->subcribe(this,&CashierModel::onDataChange);
 
-    return index.column() == 4 ? Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable :
-                                                      Qt::ItemIsEnabled | Qt::ItemIsSelectable ;
-}
-
-bool CashierModel::insertRows(int row, int count, const QModelIndex &parent)
-{
-
-    beginInsertRows(parent, row, row + count - 1);
-    for(int i=row ; i<count+row ; i++)
-        m_data.insert(i,QVariantList() << QVariant() << QVariant() << QVariant() << QVariant() << QVariant() << QVariant());
-    endInsertRows();
     return true;
 }
 
-bool CashierModel::insertColumns(int column, int count, const QModelIndex &parent)
+void CashierModel::onDataChange(NetworkResponse *res)
 {
-    beginInsertColumns(parent, column, column + count - 1);
-    // FIXME: Implement me!
-    endInsertColumns();
-    return false;
-}
-
-bool CashierModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    beginRemoveRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
-    endRemoveRows();
-    return false;
-}
-
-bool CashierModel::removeColumns(int column, int count, const QModelIndex &parent)
-{
-    beginRemoveColumns(parent, column, column + count - 1);
-    // FIXME: Implement me!
-    endRemoveColumns();
-    return false;
-}
-
-void CashierModel::addItem(int barcode)
-{
-    QModelIndexList list=match(index(0,1),Qt::DisplayRole,barcode,1,Qt::MatchWildcard);
-    if(!list.isEmpty())
-    {
-        QModelIndex last=list.first();
-        qlonglong price=last.sibling(last.row(),3).data().toString().toLongLong();
-        QModelIndex qty= last.sibling(last.row(),4);
-        QModelIndex _total= last.sibling(last.row(),5);
-        setData(qty,qty.data().toInt()+1);
-        setData(_total,_total.data().toString().toLongLong()+price);
-        emit totalChanged(total());
+    if(res->json("status").toBool()==true)
+        refresh();
+    else{
+        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
     }
-    else
-    {
-        manager.get(QString("/item/?barcode=%1").arg(barcode))->subcribe(this,&CashierModel::onItemDataRecieved);
-    }
-
 }
 
-void CashierModel::reset()
+double CashierModel::total()
 {
-    beginResetModel();
-    m_data.clear();
-    endResetModel();
-    emit totalChanged(total());
+    return cartData()["order_total"].toDouble();
 }
 
-QJsonArray CashierModel::items()
+double CashierModel::taxAmount()
 {
-    if(rowCount())
-    {
-        QJsonArray items;
-        for(int row=0; row<rowCount(); row++)
-        {
-            QJsonObject item;
-            item.insert("barcode",index(row,1).data().toString().toInt());
-            item.insert("qty",index(row,4).data().toFloat());
-            items << item;
-        }
-        return items;
-    }
-    return QJsonArray();
+    return cartData()["tax_amount"].toDouble();
 }
 
-qreal CashierModel::total()
+QString CashierModel::totalCurrencyString()
 {
-    if(rowCount())
-    {
-        qreal _total=0;
-        for(int i=0; i<rowCount(); i++)
-        {
-            _total+=index(i,5).data().toReal();
-        }
-        return _total;
-    }
-    return 0;
+    QLocale locale(QLocale::Arabic,QLocale::ArabicScript,QLocale::Iraq);
+
+    return QLocale(QLocale::English,QLocale::ArabicScript,QLocale::Iraq).toCurrencyString(total(),locale.currencySymbol(QLocale::CurrencySymbol),0);
 }
 
-void CashierModel::onItemDataRecieved(NetworkResponse *res)
+QString CashierModel::taxAmountCurrencyString()
 {
-    if(res->json("valid").toBool())
-    {
-        qDebug().noquote()<<res->json();
-        insertRow(rowCount());
-        int row=rowCount()-1;
-        setData(index(row,0),rowCount());
-        setData(index(row,1),res->json("barcode").toInt());
-        setData(index(row,2),res->json("name").toString());
-        setData(index(row,3),res->json("sell_price").toDouble());
-        setData(index(row,4),1);
-        setData(index(row,5),res->json("sell_price").toDouble());
-        emit totalChanged(total());
-    }
-    else
-        QMessageBox::warning(static_cast<QWidget *>(parent()),tr("No such Item"),tr("Invalid Barcode !"),QMessageBox::Ok);
+    QLocale locale(QLocale::Arabic,QLocale::ArabicScript,QLocale::Iraq);
+
+    return QLocale(QLocale::English,QLocale::ArabicScript,QLocale::Iraq).toCurrencyString(taxAmount(),locale.currencySymbol(QLocale::CurrencySymbol),0);
+}
+
+QJsonObject CashierModel::cartData() const
+{
+    return _cartData;
+}
+
+void CashierModel::setCartData(const QJsonObject &cartData)
+{
+    _cartData = cartData;
+}
+
+QString CashierModel::reference() const
+{
+    return _reference;
+}
+
+void CashierModel::setReference(const QString &reference)
+{
+    _reference = reference;
 }
