@@ -1,17 +1,21 @@
 #include "makepaymentdialog.h"
 #include "ui_makepaymentdialog.h"
 
-MakePaymentDialog::MakePaymentDialog(Transaction &transaction, QWidget *parent) :
+MakePaymentDialog::MakePaymentDialog(const double total, double &paid, double &change, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MakePaymentDialog)
+    ui(new Ui::MakePaymentDialog),_total(total),_paid(paid),_change(change)
 {
     ui->setupUi(this);
     setModal(true);
-    ui->totalSpinBox->setValue(transaction.total());
-    ui->paidSpinBox->setValue(transaction.paid());
-    ui->changeSpinBox->setValue(transaction.change());
+    ui->totalLE->setText(QString::number(total));
+    ui->paidSpinBox->setValue(total);
+    ui->paidSpinBox->setMinimum(total);
+    ui->changeLE->setText(QStringLiteral("0"));
     connect(ui->cancelButton,&QToolButton::clicked,this,&MakePaymentDialog::close);
     connect(ui->payButton,&QToolButton::clicked,[&](){_ok=true;close();});
+    connect(ui->paidSpinBox,
+            static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
+            this,&MakePaymentDialog::onPaidSpinBoxValueChange);
 
 }
 
@@ -20,17 +24,18 @@ MakePaymentDialog::~MakePaymentDialog()
     delete ui;
 }
 
-bool MakePaymentDialog::init(Transaction &transaction, QWidget *parent)
+bool MakePaymentDialog::init(const double total,double &paid,double &change, QWidget *parent)
 {
-    MakePaymentDialog *dlg=new MakePaymentDialog(transaction, parent);
+    MakePaymentDialog *dlg=new MakePaymentDialog(total,paid,change, parent);
     dlg->exec();
     bool ok=dlg->isOk();
-    if(ok)
-    {
-        transaction.setTotal(dlg->ui->totalSpinBox->value());
-        transaction.setPaid(dlg->ui->paidSpinBox->value());
-        transaction.setChange(dlg->ui->changeSpinBox->value());
-    }
     delete dlg;
     return ok;
+}
+
+void MakePaymentDialog::onPaidSpinBoxValueChange(double value)
+{
+    _paid=value;
+    _change=value-_total;
+    ui->changeLE->setText(QString::number(_change));
 }

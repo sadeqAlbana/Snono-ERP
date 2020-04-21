@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QSettings>
-double appendDigit(const double number, const int digit, bool appendAsDecimal=false, int precesionLimit=1000);
 #include <QModelIndex>
 class CashierModel;
 namespace Ui {
@@ -27,6 +26,8 @@ public:
     void onBackSpacePressed();
     bool waitingForDecimal=false;
     void onModelReset();
+    QModelIndex selectedRow();
+    void onPayButtonClicked();
 
 private:
     Ui::CashierTab *ui;

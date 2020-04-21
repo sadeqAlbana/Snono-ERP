@@ -7,7 +7,7 @@
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
-    setReference("{d51e5c34-6f7e-4f96-a128-abb4d9711c3a}");
+    setReference("{c404d845-0dcd-4282-b579-2aa249d4632d}");
 }
 
 void CashierModel::requestData()
@@ -110,4 +110,52 @@ QString CashierModel::reference() const
 void CashierModel::setReference(const QString &reference)
 {
     _reference = reference;
+}
+
+void CashierModel::addProduct(const QString &barcode)
+{
+    manager.post("/pos/cart/addProduct",QJsonObject{{"reference",reference()},
+                                                    {"id",barcode},
+                                                    {"find_by_barcode",true}})->subcribe(this,&CashierModel::onAddProductReply);
+}
+
+void CashierModel::onAddProductReply(NetworkResponse *res)
+{
+    if(res->json("status").toBool()==true){
+        refresh();
+    }else{
+        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+    }
+}
+
+void CashierModel::removeProduct(const int &index)
+{
+    manager.post("/pos/cart/removeProduct",QJsonObject{{"reference",reference()},
+                                                    {"index",index}})->subcribe(this,&CashierModel::onRemoveProductReply);
+}
+
+void CashierModel::onRemoveProductReply(NetworkResponse *res)
+{
+    if(res->json("status").toBool()==true){
+        refresh();
+    }else{
+        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+    }
+}
+
+void CashierModel::processCart(const double paid, const double change)
+{
+    QJsonObject data{{"paid",paid},
+                     {"returned",change},
+                     {"cart",cartData()}};
+    manager.post("/pos/purchase",data)->subcribe(this,&CashierModel::onProcessCartRespnse);
+}
+
+void CashierModel::onProcessCartRespnse(NetworkResponse *res)
+{
+    qDebug()<<res;
+    if(!res->json("status").toBool()){
+        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+    }else
+        QMessageBox::information((QWidget*)this->parent(),"Success","please receive the receipt");
 }

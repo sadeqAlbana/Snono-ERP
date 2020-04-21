@@ -72,13 +72,13 @@ void PosNumpad::onButtonPressed()
     PosNumpadButton *button=qobject_cast<PosNumpadButton *>(sender());
     PosNumpadButtonType type=static_cast<PosNumpadButtonType>(button->type());
     switch (type) {
-    case DigitButton:      emit digitPressed(button->text().toInt()); break;
-    case DecimalButton :   emit decimalPressed(); break;
+    case DigitButton     : emit digitPressed(button->text().toInt()); break;
+    case DecimalButton   : emit decimalPressed(); break;
     case BackspaceButton : emit backPressed(); break;
-    case ClearButton :     emit clearPressed(); break;
-    case QuantityButton:
-    case PriceButton :
-    case DiscountButton : setActiveButton(type); break;
+    case ClearButton     : emit clearPressed(); break;
+    case QuantityButton  :
+    case PriceButton     :
+    case DiscountButton  : setActiveButton(type); break;
     }
 }
 

@@ -50,13 +50,14 @@ void CashierTab::connectSignals()
     connect(ui->posNumpad,&PosNumpad::clearPressed,this,&CashierTab::onClearPressed);
     connect(ui->tableView,&QTableView::clicked,this,[this](){waitingForDecimal=false;ui->posNumpad->setDecimalChecked(false);});
     connect(model,&CashierModel::modelReset,this,&CashierTab::onModelReset);
+    connect(ui->barcodeLE,&QLineEdit::returnPressed,this,[this](){this->model->addProduct(ui->barcodeLE->text());ui->barcodeLE->clear();});
+    connect(ui->payButton,&QToolButton::clicked,this,&CashierTab::onPayButtonClicked);
 }
 
 
 void CashierTab::onAboutToQuit()
 {
     settings.setValue("headerStates/cashier",ui->tableView->horizontalHeader()->saveState());
-
 }
 
 void CashierTab::onDigitPressed(int digit)
@@ -65,17 +66,17 @@ void CashierTab::onDigitPressed(int digit)
     waitingForDecimal=false;
     ui->posNumpad->setDecimalChecked(false);
 
-   QModelIndex index=ui->tableView->selectionModel()->selectedRows(2).first();
-   lastIndex=index;
-   double currentQty=index.data().toDouble();
+    QModelIndex index=selectedRow();
 
-   if(std::fmod(currentQty,1)!=0){
-       QString nStr=QString::number(currentQty,'f',5).split('.').value(1);
-       nStr.chop(2);
-       if(nStr.count('0')==3) //will cause porblems
-       return;
-   }
-   model->setData(index,appendDigit(currentQty,digit,waiting));
+    switch (ui->posNumpad->activeButton()) {
+    case  PosNumpad::QuantityButton: index=index.sibling(index.row(),2); break;
+    case  PosNumpad::PriceButton: index=index.sibling(index.row(),1);    break;
+    //case  PosNumpad::DiscountButton: index=index.sibling(index.row(),2);
+    }
+
+   double value=index.data().toDouble();
+
+   model->setData(index,NumberEditor::appendDigit(value,digit,waiting));
 }
 
 void CashierTab::onActiveButtonChanged()
@@ -85,9 +86,10 @@ void CashierTab::onActiveButtonChanged()
 
 void CashierTab::onClearPressed()
 {
-    QModelIndex index=ui->tableView->selectionModel()->selectedRows(2).value(0);
+    QModelIndex index=selectedRow();
+
     if(index.isValid())
-        model->removeRow(index.row());
+        model->removeProduct(index.row());
 }
 
 void CashierTab::onDecimalPressed()
@@ -103,29 +105,24 @@ void CashierTab::onDecimalPressed()
 
 void CashierTab::onBackSpacePressed()
 {
-    QModelIndex index=ui->tableView->selectionModel()->selectedRows(2).first();
-    double currentQty=index.data().toDouble();
-    if(currentQty==0){
-        onClearPressed();
-    }
-    else if(std::fmod(currentQty,1)==0){
-       model->setData(index,(int)currentQty/10);
-    }else{
-        QString nStr=QString::number(currentQty,'f',5).split('.').value(1);
-        nStr.chop(2);
-        int chopCount=0;
-        for(int i=nStr.count()-1 ; i>0;i--){
-            if(nStr[i]=='0')
-                chopCount++;
-            else{
-                break;
-            }
-        }
-        QString n=QString::number(currentQty,'f',5);
-        n.chop(3+chopCount);
-        model->setData(index,n.toDouble());
+    QModelIndex index=selectedRow();
+
+    PosNumpad::PosNumpadButtonType activeButton=ui->posNumpad->activeButton();
+    switch (activeButton) {
+    case  PosNumpad::QuantityButton: index=index.sibling(index.row(),2); break;
+    case  PosNumpad::PriceButton: index=index.sibling(index.row(),1);    break;
+    //case  PosNumpad::DiscountButton: index=index.sibling(index.row(),2);
+    default: return;
     }
 
+    double value=index.data().toDouble();
+
+    if(value==0 && activeButton==PosNumpad::QuantityButton){
+        onClearPressed();
+    }
+    else{
+        model->setData(index,NumberEditor::removeDigit(value));
+    }
 }
 
 void CashierTab::onModelReset()
@@ -135,35 +132,24 @@ void CashierTab::onModelReset()
     ui->taxLE->setText(model->taxAmountCurrencyString());
 }
 
-
-double appendDigit(const double number, const int digit, bool appendAsDecimal, int precesionLimit)
+QModelIndex CashierTab::selectedRow()
 {
-    float mod=std::fmod(number,1);
-    if(mod==0){
-        if(appendAsDecimal==false){
-            return (number*10)+digit;
-        }
-        else {
-            return number+(float)digit/10;
-        }
-    }else{
-        int modInt=(float)mod*precesionLimit;
-        if(modInt%10!=0){ //may cause a bug
-            return number; //enough decimal places
-        }
-        else{
-            int tmp=modInt;
-            int power=1;
-            while (tmp%10==0) {
-                power=power*10;
-                tmp=tmp/10;
-            }
-           modInt=(modInt*10)+(digit*power);
+    QModelIndex index=ui->tableView->selectionModel()->selectedRows().value(0);
+    if(index.isValid())
+        lastIndex=index;
 
-            double newDec=(double)modInt/(precesionLimit*10);
-            double dmod=std::fmod(number,1);
+    return index;
+}
 
-            return (number-dmod)+newDec;
-        }
-    }
+
+void CashierTab::onPayButtonClicked()
+{
+    double paid=0;
+    double change=0;
+    bool ok=MakePaymentDialog::init(model->total(),paid,change,this);
+    if(!ok)
+        return;
+
+    model->processCart(paid,change);
+
 }

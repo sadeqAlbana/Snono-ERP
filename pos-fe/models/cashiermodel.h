@@ -29,6 +29,13 @@ public:
     QModelIndex changedIndex() const;
     void setChangedIndex(const QModelIndex &changedIndex);
 
+    void addProduct(const QString &barcode);
+    void onAddProductReply(NetworkResponse *res);
+    void removeProduct(const int &index);
+    void onRemoveProductReply(NetworkResponse *res);
+    void processCart(const double paid,const double change);
+    void onProcessCartRespnse(NetworkResponse *res);
+
 private:
     void onProductDataRecevied(NetworkResponse *res);
     QJsonObject _cartData;
