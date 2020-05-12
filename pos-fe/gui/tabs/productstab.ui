@@ -29,13 +29,19 @@
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="gridStyle">
-      <enum>Qt::NoPen</enum>
+      <enum>Qt::SolidLine</enum>
      </property>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>40</number>
+     </attribute>
+     <attribute name="verticalHeaderMinimumSectionSize">
+      <number>40</number>
      </attribute>
      <attribute name="verticalHeaderStretchLastSection">
       <bool>false</bool>
