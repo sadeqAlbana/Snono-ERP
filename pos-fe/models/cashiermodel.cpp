@@ -4,6 +4,9 @@
 #include <QJsonObject>
 #include <QJsonObject>
 #include <QLocale>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QFile>
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
@@ -145,6 +148,9 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
 
 void CashierModel::processCart(const double paid, const double change)
 {
+    qDebug()<<"paid: " << paid;
+    qDebug()<<"paid: " << change;
+
     QJsonObject data{{"paid",paid},
                      {"returned",change},
                      {"cart",cartData()}};
@@ -156,6 +162,23 @@ void CashierModel::onProcessCartRespnse(NetworkResponse *res)
     qDebug()<<res;
     if(!res->json("status").toBool()){
         QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
-    }else
+    }else{
         QMessageBox::information((QWidget*)this->parent(),"Success","please receive the receipt");
+
+        QTextDocument doc;
+        doc.setHtml(res->json("receipt").toString());
+        QFile file("/tmp/recc.html");
+        file.open(QIODevice::WriteOnly);
+        file.write(res->json("receipt").toString().toUtf8());
+        file.close();
+
+        QPrinter printer(QPrinter::PrinterResolution);
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        printer.setPaperSize(QPrinter::A4);
+        printer.setOutputFileName("/tmp/receipt.pdf");
+
+        doc.print(&printer);
+    }
+
+
 }
