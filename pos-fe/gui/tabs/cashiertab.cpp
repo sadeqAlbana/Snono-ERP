@@ -9,6 +9,10 @@
 #include <QLocale>
 #include <QtMath>
 #include "utils/numbereditor.h"
+#include <QTextDocument>
+#include <QPrinter>
+#include <QFile>
+#include "gui/dialogs/receiptdialog.h"
 CashierTab::CashierTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CashierTab)
@@ -150,6 +154,35 @@ void CashierTab::onPayButtonClicked()
     if(!ok)
         return;
 
-    model->processCart(paid,change);
+    QJsonObject data{{"paid",paid},
+                     {"returned",change},
+                     {"cart",model->cartData()}};
+    manager.post("/pos/purchase",data)->subcribe(this,&CashierTab::onPurchaseResponse);
 
 }
+
+void CashierTab::onPurchaseResponse(NetworkResponse *res)
+{
+    qDebug()<<res;
+    if(!res->json("status").toBool()){
+        QMessageBox::warning(this,"Error",res->json("message").toString());
+    }else{
+        //QMessageBox::information(this,"Success","please receive the receipt");
+
+        ReceiptDialog::init(this,res->json("receipt").toString());
+//        QTextDocument doc;
+//        doc.setHtml(res->json("receipt").toString());
+//        QFile file("/tmp/recc.html");
+//        file.open(QIODevice::WriteOnly);
+//        file.write(res->json("receipt").toString().toUtf8());
+//        file.close();
+
+//        QPrinter printer(QPrinter::PrinterResolution);
+//        printer.setOutputFormat(QPrinter::PdfFormat);
+//        printer.setPaperSize(QPrinter::A4);
+//        printer.setOutputFileName("/tmp/receipt.pdf");
+//        doc.print(&printer);
+
+    }
+}
+

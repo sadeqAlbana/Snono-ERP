@@ -28,6 +28,7 @@ include(posnumpadwidget/posnumpadwidget.pri)
 
 
 SOURCES += \
+    gui/dialogs/receiptdialog.cpp \
     gui/textinputfield.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -60,6 +61,7 @@ SOURCES += \
     gui/dialogs/producteditdialog.cpp
 
 HEADERS += \
+    gui/dialogs/receiptdialog.h \
     gui/textinputfield.h \
         mainwindow.h \
     datamodels/transaction.h \
@@ -91,6 +93,7 @@ HEADERS += \
     gui/dialogs/producteditdialog.h
 
 FORMS += \
+    gui/dialogs/receiptdialog.ui \
         mainwindow.ui \
     gui/dialogs/adduserdialog.ui \
     gui/dialogs/logindialog.ui \

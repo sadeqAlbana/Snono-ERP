@@ -148,9 +148,6 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
 
 void CashierModel::processCart(const double paid, const double change)
 {
-    qDebug()<<"paid: " << paid;
-    qDebug()<<"paid: " << change;
-
     QJsonObject data{{"paid",paid},
                      {"returned",change},
                      {"cart",cartData()}};
@@ -159,7 +156,7 @@ void CashierModel::processCart(const double paid, const double change)
 
 void CashierModel::onProcessCartRespnse(NetworkResponse *res)
 {
-    qDebug()<<res;
+    //qDebug()<<res;
     if(!res->json("status").toBool()){
         QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
     }else{
@@ -176,9 +173,6 @@ void CashierModel::onProcessCartRespnse(NetworkResponse *res)
         printer.setOutputFormat(QPrinter::PdfFormat);
         printer.setPaperSize(QPrinter::A4);
         printer.setOutputFileName("/tmp/receipt.pdf");
-
         doc.print(&printer);
     }
-
-
 }
