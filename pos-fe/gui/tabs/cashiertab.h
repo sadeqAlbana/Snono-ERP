@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QSettings>
 #include <QModelIndex>
-#include "posnetworkmanager.h"
 class CashierModel;
 namespace Ui {
 class CashierTab;
@@ -29,14 +28,13 @@ public:
     void onModelReset();
     QModelIndex selectedRow();
     void onPayButtonClicked();
-    void onPurchaseResponse(NetworkResponse *res);
+    void onPurchaseResponse(QJsonObject res);
 
 private:
     Ui::CashierTab *ui;
     CashierModel *model;
     QSettings settings;
     QModelIndex lastIndex;
-    PosNetworkManager manager;
 };
 
 #endif // CASHIERTAB_H

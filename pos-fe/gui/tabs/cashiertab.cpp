@@ -56,6 +56,7 @@ void CashierTab::connectSignals()
     connect(model,&CashierModel::modelReset,this,&CashierTab::onModelReset);
     connect(ui->barcodeLE,&QLineEdit::returnPressed,this,[this](){this->model->addProduct(ui->barcodeLE->text());ui->barcodeLE->clear();});
     connect(ui->payButton,&QToolButton::clicked,this,&CashierTab::onPayButtonClicked);
+    connect(model,&CashierModel::purchaseResponseReceived,this,&CashierTab::onPurchaseResponse);
 }
 
 
@@ -157,32 +158,16 @@ void CashierTab::onPayButtonClicked()
     QJsonObject data{{"paid",paid},
                      {"returned",change},
                      {"cart",model->cartData()}};
-    manager.post("/pos/purchase",data)->subcribe(this,&CashierTab::onPurchaseResponse);
+    model->processCart(paid,change);
 
 }
 
-void CashierTab::onPurchaseResponse(NetworkResponse *res)
+void CashierTab::onPurchaseResponse(QJsonObject res)
 {
-    qDebug()<<res;
-    if(!res->json("status").toBool()){
-        QMessageBox::warning(this,"Error",res->json("message").toString());
+    if(!res["status"].toBool()){
+        QMessageBox::warning(this,"Error",res["message"].toString());
     }else{
-        //QMessageBox::information(this,"Success","please receive the receipt");
-
-        ReceiptDialog::init(this,res->json("receipt").toString());
-//        QTextDocument doc;
-//        doc.setHtml(res->json("receipt").toString());
-//        QFile file("/tmp/recc.html");
-//        file.open(QIODevice::WriteOnly);
-//        file.write(res->json("receipt").toString().toUtf8());
-//        file.close();
-
-//        QPrinter printer(QPrinter::PrinterResolution);
-//        printer.setOutputFormat(QPrinter::PdfFormat);
-//        printer.setPaperSize(QPrinter::A4);
-//        printer.setOutputFileName("/tmp/receipt.pdf");
-//        doc.print(&printer);
-
+        ReceiptDialog::init(this,res["receipt"].toString());
     }
 }
 

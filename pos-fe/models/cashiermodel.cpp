@@ -11,6 +11,7 @@ CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
     setReference("{c404d845-0dcd-4282-b579-2aa249d4632d}");
+
 }
 
 void CashierModel::requestData()
@@ -32,8 +33,8 @@ ColumnList CashierModel::columns() const
 
 void CashierModel::onTableRecieved(NetworkResponse *reply)
 {
-    _cartData=reply->json().toObject()["cart"].toObject();
-    setupData(_cartData["products"].toArray());
+    setCartData(reply->json().toObject()["cart"].toObject());
+
 }
 
 bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -103,6 +104,7 @@ QJsonObject CashierModel::cartData() const
 void CashierModel::setCartData(const QJsonObject &cartData)
 {
     _cartData = cartData;
+   setupData(cartData["products"].toArray());
 }
 
 QString CashierModel::reference() const
@@ -156,23 +158,17 @@ void CashierModel::processCart(const double paid, const double change)
 
 void CashierModel::onProcessCartRespnse(NetworkResponse *res)
 {
-    //qDebug()<<res;
-    if(!res->json("status").toBool()){
-        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
-    }else{
-        QMessageBox::information((QWidget*)this->parent(),"Success","please receive the receipt");
+    emit purchaseResponseReceived(res->json().toObject());
+    requestCart();
+}
 
-        QTextDocument doc;
-        doc.setHtml(res->json("receipt").toString());
-        QFile file("/tmp/recc.html");
-        file.open(QIODevice::WriteOnly);
-        file.write(res->json("receipt").toString().toUtf8());
-        file.close();
+void CashierModel::requestCart()
+{
+    manager.get("/pos/cart/request")->subcribe(this,&CashierModel::onRequestCartResponse);
+}
 
-        QPrinter printer(QPrinter::PrinterResolution);
-        printer.setOutputFormat(QPrinter::PdfFormat);
-        printer.setPaperSize(QPrinter::A4);
-        printer.setOutputFileName("/tmp/receipt.pdf");
-        doc.print(&printer);
-    }
+void CashierModel::onRequestCartResponse(NetworkResponse *res)
+{
+    setReference(res->json("reference").toString());
+    setCartData(res->json().toObject());
 }

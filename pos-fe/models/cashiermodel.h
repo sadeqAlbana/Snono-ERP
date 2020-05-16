@@ -35,12 +35,18 @@ public:
     void onRemoveProductReply(NetworkResponse *res);
     void processCart(const double paid,const double change);
     void onProcessCartRespnse(NetworkResponse *res);
+    void requestCart();
+    void onRequestCartResponse(NetworkResponse *res);
+
+signals:
+    void purchaseResponseReceived(QJsonObject res);
 
 private:
     void onProductDataRecevied(NetworkResponse *res);
     QJsonObject _cartData;
     QString _reference;
     QModelIndex _changedIndex;
+    QSettings settings;
 };
 
 #endif // CASHIERMODEL_H

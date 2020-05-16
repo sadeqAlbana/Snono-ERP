@@ -44,6 +44,7 @@ SOURCES += \
     gui/tabs/userstab.cpp \
     gui/views/headerwidget.cpp \
     gui/views/searchheaderview.cpp \
+    messageservice.cpp \
     models/jsonModel/jsonmodel.cpp \
     models/jsonModel/jsonmodelfield.cpp \
     models/jsonModel/jsonmodelrecord.cpp \
@@ -53,7 +54,6 @@ SOURCES += \
     posnetworkmanager.cpp \
     gui/dialogs/networkerrordialog.cpp \
     posapplication.cpp \
-    networkerrorhandler.cpp \
     gui/dialogs/loginsettingsdialog.cpp \
     possettings.cpp \
     gui/tabs/productstab.cpp \
@@ -76,6 +76,7 @@ HEADERS += \
     gui/tabs/userstab.h \
     gui/views/headerwidget.h \
     gui/views/searchheaderview.h \
+    messageservice.h \
     models/jsonModel/jsonmodel.h \
     models/jsonModel/jsonmodelfield.h \
     models/jsonModel/jsonmodelrecord.h \
@@ -85,7 +86,6 @@ HEADERS += \
     posnetworkmanager.h \
     gui/dialogs/networkerrordialog.h \
     posapplication.h \
-    networkerrorhandler.h \
     gui/dialogs/loginsettingsdialog.h \
     possettings.h \
     gui/tabs/productstab.h \
