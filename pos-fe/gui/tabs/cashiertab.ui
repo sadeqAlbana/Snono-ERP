@@ -233,13 +233,13 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>210</y>
+     <x>850</x>
+     <y>20</y>
      <width>341</width>
      <height>401</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="numpadLayout">
     <item>
      <widget class="PosNumpad" name="posNumpad">
       <property name="toolTip">

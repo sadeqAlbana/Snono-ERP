@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <authmanager.h>
 #include "loginsettingsdialog.h"
+#include "messageservice.h"
 LoginDialog::LoginDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog)
@@ -21,6 +22,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
     connect(AuthManager::instance(),&AuthManager::loggedIn,this,&LoginDialog::onLoggedIn);
     connect(AuthManager::instance(),&AuthManager::invalidCredentails,this,&LoginDialog::onInvalidCredentails);
 
+    MessageService::setMainWidget(this);
     this->show();
 }
 

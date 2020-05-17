@@ -8,6 +8,7 @@ ProductsTab::ProductsTab(QWidget *parent) :
     ui->setupUi(this);
     ui->tableView->setModel(&model);
     connect(ui->tableView,&QTableView::doubleClicked,this,&ProductsTab::onTableviewDoubleClicked);
+    ui->tableView->horizontalHeader()->setFixedHeight(55);
 }
 
 ProductsTab::~ProductsTab()

@@ -11,6 +11,7 @@ public:
      static QMessageBox::StandardButton question(const QString &title, const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No), QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
      static QMessageBox::StandardButton warning(const QString &title, const QString &text, QMessageBox::StandardButtons buttons = QMessageBox::Ok, QMessageBox::StandardButton defaultButton = QMessageBox::NoButton);
      friend class MainWindow;
+     friend class LoginDialog;
 private:
     static void setMainWidget(QWidget *widget);
     static QWidget *_mainWidget;

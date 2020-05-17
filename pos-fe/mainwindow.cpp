@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->hide();
     loginDialog=new LoginDialog(this);
     connect(AuthManager::instance(),&AuthManager::loggedIn,this,&MainWindow::onLoggedIn);
-    MessageService::setMainWidget(this);
 }
 
 MainWindow::~MainWindow()
@@ -34,6 +33,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::onLoggedIn()
 {
+    MessageService::setMainWidget(this);
     loginDialog->hide();
     setupLauncher();
     this->show();
