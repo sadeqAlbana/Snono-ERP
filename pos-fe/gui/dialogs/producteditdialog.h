@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QJsonObject>
-#include <posnetworkmanager.h>
+//#include <posnetworkmanager.h>
+#include <QMap>
 namespace Ui {
 class ProductEditDialog;
 }
@@ -21,17 +22,16 @@ public:
 
     explicit ProductEditDialog(QWidget *parent, const QJsonObject &product);
     ~ProductEditDialog();
-    static void init(QWidget *parent, const QJsonObject &product);
+    static QJsonObject init(QWidget *parent, const QJsonObject &product);
     void initFileds();
     void onSaveButtonClicked();
-    void onSaveResponse(NetworkResponse *res);
+    void editTaxes();
 
 
 private:
     Ui::ProductEditDialog *ui;
     QJsonObject original;
     QJsonObject data;
-    PosNetworkManager manager;
     QMap<int,QString> types;
 };
 

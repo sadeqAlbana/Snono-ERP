@@ -7,10 +7,6 @@ ProductsModel::ProductsModel(QObject *parent) : NetworkedJsonModel ("/products",
 }
 
 
-void ProductsModel::requestData()
-{
-    manager.get(url)->subcribe((NetworkedJsonModel *)this,&NetworkedJsonModel::onTableRecieved);
-}
 
 ColumnList ProductsModel::columns() const
 {
@@ -21,4 +17,18 @@ ColumnList ProductsModel::columns() const
                            Column{"cost","Cost"} <<
                            Column{"qty","Stock","products_stocks"} <<
                            Column{"list_price","List Price"};
+}
+
+void ProductsModel::updateProduct(const QJsonObject &product)
+{
+    manager.post("/products/update",product)->subcribe(this,&ProductsModel::onUpdateProductReply);
+}
+
+void ProductsModel::onUpdateProductReply(NetworkResponse *res)
+{
+    QJsonObject response=res->json().toObject();
+    if(response["status"].toBool())
+        this->requestData();
+
+    emit productUpdateReply(response);
 }

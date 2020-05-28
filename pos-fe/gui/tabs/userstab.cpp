@@ -11,7 +11,6 @@ UsersTab::UsersTab(QWidget *parent) :
     ui->setupUi(this);
     model=new NetworkedJsonModel("/users",this);
     ui->tableView->setModel(model);
-    model->requestData();
 
 }
 

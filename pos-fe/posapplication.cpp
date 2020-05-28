@@ -5,18 +5,12 @@
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv)
 {
     initSettings();
-    //_mainWindow.show();
 }
 
 PosApplication::~PosApplication()
 {
 
 }
-
-//QWidget *PosApplication::mainWidget()
-//{
-//    //return &_mainWindow;
-//}
 
 void PosApplication::initSettings()
 {

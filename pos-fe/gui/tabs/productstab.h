@@ -15,6 +15,7 @@ public:
     explicit ProductsTab(QWidget *parent = nullptr);
     ~ProductsTab();
     void onTableviewDoubleClicked(const QModelIndex &index);
+    void onProductUpdateReply(QJsonObject reply);
 
 private:
     Ui::ProductsTab *ui;

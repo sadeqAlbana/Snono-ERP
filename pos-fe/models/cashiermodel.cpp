@@ -28,7 +28,6 @@ ColumnList CashierModel::columns() const
                            Column{"qty","Qty"} <<
                            Column{"subtotal","Subtotal"} <<
                            Column{"total","Total"};
-
 }
 
 void CashierModel::onTableRecieved(NetworkResponse *reply)

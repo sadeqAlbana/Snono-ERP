@@ -16,7 +16,7 @@ public:
     virtual void onTableRecieved(NetworkResponse *reply);
     void refresh();
     virtual void requestData();
-    Qt::ItemFlags flags(const QModelIndex& index) const override;
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const override;
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
@@ -29,6 +29,9 @@ protected:
     QString url;
     PosNetworkManager manager;
     QJsonValue _requestParams;
+
+signals:
+    void dataRecevied();
 };
 
 #endif // NETWORKEDJSONMODEL_H

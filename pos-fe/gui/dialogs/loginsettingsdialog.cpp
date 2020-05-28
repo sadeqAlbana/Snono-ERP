@@ -7,7 +7,6 @@ LoginSettingsDialog::LoginSettingsDialog(QWidget *parent) :
     ui(new Ui::LoginSettingsDialog)
 {
     ui->setupUi(this);
-    //ui->serverPortLE->setValidator(new QRegExpValidator(QRegExp("[1-65535]"), this) );
     connect(ui->cancelButton,&QToolButton::clicked,this,&LoginSettingsDialog::close);
     connect(ui->saveButton,&QToolButton::clicked,this,&LoginSettingsDialog::onSaveButtonClticked);
 

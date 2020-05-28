@@ -17,13 +17,6 @@ void AuthManager::authenticate(QString username, QString password)
 
 void AuthManager::onAuthReply(NetworkResponse *res)
 {
-//    if(res->error())
-//    {
-//        //handle Error
-//        qDebug()<<"error";
-//        qDebug()<<res->error();
-//    }
-
         if(res->json("error").isNull()){
             settings.setValue("jwt",res->json("jwt").toString());
             manager.setJWT(res->json("token").toString().toUtf8());

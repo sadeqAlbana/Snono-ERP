@@ -23,20 +23,6 @@ QVariant JsonModel::headerData(int section, Qt::Orientation orientation, int rol
                 QVariant();
 }
 
-/*bool JsonModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
-{
-    if (value != headerData(section, orientation, role)) {
-        // FIXME: Implement me!
-        emit headerDataChanged(orientation, section, section);
-        //return true;
-        return false;
-    }
-    return false;
-
-
-}*/
-
-
 int JsonModel::rowCount(const QModelIndex &parent) const
 {
     if(parent.isValid())

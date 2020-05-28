@@ -6,8 +6,6 @@ JsonModelField::JsonModelField(QString name, QVariant value)
     p_value=value;
 }
 
-
-
 QString JsonModelField::name() const
 {
     return p_name;

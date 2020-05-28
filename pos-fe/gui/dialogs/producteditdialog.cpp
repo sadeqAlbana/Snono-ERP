@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <networkresponse.h>
 #include <QJsonArray>
+#include "checkablelistdialog.h"
 ProductEditDialog::ProductEditDialog(QWidget *parent, const QJsonObject &product) :
     QDialog(parent),
     ui(new Ui::ProductEditDialog)
@@ -10,6 +11,7 @@ ProductEditDialog::ProductEditDialog(QWidget *parent, const QJsonObject &product
     ui->setupUi(this);
 
     connect(ui->saveButton,&QToolButton::clicked,this,&ProductEditDialog::onSaveButtonClicked);
+    connect(ui->taxesEditButton,&QToolButton::clicked,this,&ProductEditDialog::editTaxes);
     ui->typeCB->addItem("Storable Product"  , 1);
     ui->typeCB->addItem("Consumable Product", 2);
     ui->typeCB->addItem("Service Product"   , 3);
@@ -28,10 +30,15 @@ ProductEditDialog::~ProductEditDialog()
     delete ui;
 }
 
-void ProductEditDialog::init(QWidget *parent, const QJsonObject &product)
+QJsonObject ProductEditDialog::init(QWidget *parent, const QJsonObject &product)
 {
     ProductEditDialog *dlg=new ProductEditDialog(parent,product);
+
     dlg->exec();
+    if(dlg->result()==QDialog::Accepted)
+        return dlg->data;
+
+    return QJsonObject();
 }
 
 void ProductEditDialog::initFileds()
@@ -46,25 +53,26 @@ void ProductEditDialog::initFileds()
 
 void ProductEditDialog::onSaveButtonClicked()
 {
-//    if(data==original)
-//        return; // do something else
-
-    QJsonObject payload;
-    payload["id"]=data["id"].toInt();
-    payload["cost"]=ui->costSB->value();
-    payload["list_price"]=ui->sellPriceSB->value();
-    payload["name"]=ui->nameLE->text();
-    payload["barcode"]=ui->barcodeLE->text();
-    payload["type"]=ui->typeCB->currentData().toInt();
-    payload["description"]=QString();
-    payload["taxes"]=QJsonArray();
-
-   manager.post("/products/update",payload)->subcribe(this,&ProductEditDialog::onSaveResponse);
+    data["id"]=data["id"].toInt();
+    data["cost"]=ui->costSB->value();
+    data["list_price"]=ui->sellPriceSB->value();
+    data["name"]=ui->nameLE->text();
+    data["barcode"]=ui->barcodeLE->text();
+    data["type"]=ui->typeCB->currentData().toInt();
+    data["description"]=QString();
+    done(QDialog::Accepted);
 }
 
-void ProductEditDialog::onSaveResponse(NetworkResponse *res)
+
+
+void ProductEditDialog::editTaxes()
 {
-    QJsonObject response=res->json().toObject();
-    qDebug()<<res->json();
+
+    QSet<int> ids;
+    for(QJsonValue value : data["taxes"].toArray())
+        ids<< value.toObject().value("id").toInt();
+
+    QJsonArray taxes= CheckableListDialog::init("Edit Taxes","name","id",ids, "/taxes",this);
+        data["taxes"]=taxes;
 
 }

@@ -28,11 +28,11 @@ include(posnumpadwidget/posnumpadwidget.pri)
 
 
 SOURCES += \
+    gui/dialogs/checkablelistdialog.cpp \
     gui/dialogs/receiptdialog.cpp \
     gui/textinputfield.cpp \
         main.cpp \
         mainwindow.cpp \
-    datamodels/transaction.cpp \
     gui/delegates/doublespinboxdelegate.cpp \
     gui/delegates/spinboxdelegate.cpp \
     gui/dialogs/adduserdialog.cpp \
@@ -45,6 +45,7 @@ SOURCES += \
     gui/views/headerwidget.cpp \
     gui/views/searchheaderview.cpp \
     messageservice.cpp \
+    models/jsonModel/checkablelistmodel.cpp \
     models/jsonModel/jsonmodel.cpp \
     models/jsonModel/jsonmodelfield.cpp \
     models/jsonModel/jsonmodelrecord.cpp \
@@ -61,10 +62,10 @@ SOURCES += \
     gui/dialogs/producteditdialog.cpp
 
 HEADERS += \
+    gui/dialogs/checkablelistdialog.h \
     gui/dialogs/receiptdialog.h \
     gui/textinputfield.h \
         mainwindow.h \
-    datamodels/transaction.h \
     gui/delegates/doublespinboxdelegate.h \
     gui/delegates/spinboxdelegate.h \
     gui/dialogs/adduserdialog.h \
@@ -77,6 +78,7 @@ HEADERS += \
     gui/views/headerwidget.h \
     gui/views/searchheaderview.h \
     messageservice.h \
+    models/jsonModel/checkablelistmodel.h \
     models/jsonModel/jsonmodel.h \
     models/jsonModel/jsonmodelfield.h \
     models/jsonModel/jsonmodelrecord.h \
@@ -93,6 +95,7 @@ HEADERS += \
     gui/dialogs/producteditdialog.h
 
 FORMS += \
+    gui/dialogs/checkablelistdialog.ui \
     gui/dialogs/receiptdialog.ui \
         mainwindow.ui \
     gui/dialogs/adduserdialog.ui \
