@@ -114,24 +114,24 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Sale Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
           <string>Stock</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QDoubleSpinBox" name="sellPriceSB">
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="qtySB">
          <property name="maximum">
           <double>179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Taxes:</string>
          </property>
         </widget>
        </item>
@@ -142,24 +142,10 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Sale Price:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QDoubleSpinBox" name="qtySB">
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="sellPriceSB">
          <property name="maximum">
           <double>179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QToolButton" name="taxesEditButton">
-         <property name="text">
-          <string>configure</string>
          </property>
         </widget>
        </item>

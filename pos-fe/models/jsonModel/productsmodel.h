@@ -13,8 +13,12 @@ public:
     void updateProduct(const QJsonObject &product);
     void onUpdateProductReply(NetworkResponse *res);
 
+    void updateProductQuantity(const int &index,const double &newQuantity);
+    void onUpdateProductQuantityReply(NetworkResponse *res);
+
 signals:
     void productUpdateReply(QJsonObject reply);
+    void productQuantityUpdated(QJsonObject reply);
 };
 
 #endif // PORDUCTSMODEL_H

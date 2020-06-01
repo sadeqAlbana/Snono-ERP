@@ -16,6 +16,13 @@ public:
     ~ProductsTab();
     void onTableviewDoubleClicked(const QModelIndex &index);
     void onProductUpdateReply(QJsonObject reply);
+    void onContextMenuRequested(const QPoint &pos);
+
+    void addProduct();
+    void editSelectedProduct();
+    void editSelectedProductTaxes();
+    void updateSelectedQuantity();
+    void onProductQuantityUpdate(QJsonObject reply);
 
 private:
     Ui::ProductsTab *ui;

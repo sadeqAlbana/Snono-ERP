@@ -25,7 +25,6 @@ public:
     static QJsonObject init(QWidget *parent, const QJsonObject &product);
     void initFileds();
     void onSaveButtonClicked();
-    void editTaxes();
 
 
 private:

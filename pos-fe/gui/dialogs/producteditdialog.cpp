@@ -11,7 +11,6 @@ ProductEditDialog::ProductEditDialog(QWidget *parent, const QJsonObject &product
     ui->setupUi(this);
 
     connect(ui->saveButton,&QToolButton::clicked,this,&ProductEditDialog::onSaveButtonClicked);
-    connect(ui->taxesEditButton,&QToolButton::clicked,this,&ProductEditDialog::editTaxes);
     ui->typeCB->addItem("Storable Product"  , 1);
     ui->typeCB->addItem("Consumable Product", 2);
     ui->typeCB->addItem("Service Product"   , 3);
@@ -64,15 +63,3 @@ void ProductEditDialog::onSaveButtonClicked()
 }
 
 
-
-void ProductEditDialog::editTaxes()
-{
-
-    QSet<int> ids;
-    for(QJsonValue value : data["taxes"].toArray())
-        ids<< value.toObject().value("id").toInt();
-
-    QJsonArray taxes= CheckableListDialog::init("Edit Taxes","name","id",ids, "/taxes",this);
-        data["taxes"]=taxes;
-
-}

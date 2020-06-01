@@ -32,3 +32,17 @@ void ProductsModel::onUpdateProductReply(NetworkResponse *res)
 
     emit productUpdateReply(response);
 }
+
+void ProductsModel::updateProductQuantity(const int &index, const double &newQuantity)
+{
+    QJsonObject product=data(index);
+    QJsonObject params;
+    params["product_id"]=product["id"];
+    params["new_quantity"]=newQuantity;
+    manager.post("/products/updateQuantity",params)->subcribe(this,&ProductsModel::onUpdateProductQuantityReply);
+}
+
+void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
+{
+    emit productQuantityUpdated(res->json().toObject());
+}
