@@ -2,7 +2,6 @@
 #define MAKEPAYMENTDIALOG_H
 
 #include <QDialog>
-#include <datamodels/transaction.h>
 namespace Ui {
 class MakePaymentDialog;
 }

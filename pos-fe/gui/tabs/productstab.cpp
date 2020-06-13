@@ -59,9 +59,6 @@ void ProductsTab::onContextMenuRequested(const QPoint &pos)
     }
 
     menu.exec(ui->tableView->viewport()->mapToGlobal(pos));
-
-
-
 }
 
 void ProductsTab::addProduct()

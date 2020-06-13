@@ -52,13 +52,14 @@ SOURCES += \
     models/jsonModel/networkedjsonmodel.cpp \
     models/cashiermodel.cpp \
     authmanager.cpp \
+    models/usersmodel.cpp \
     posnetworkmanager.cpp \
     gui/dialogs/networkerrordialog.cpp \
     posapplication.cpp \
     gui/dialogs/loginsettingsdialog.cpp \
     possettings.cpp \
     gui/tabs/productstab.cpp \
-    models/jsonModel/productsmodel.cpp \
+    models/productsmodel.cpp \
     gui/dialogs/producteditdialog.cpp
 
 HEADERS += \
@@ -85,13 +86,14 @@ HEADERS += \
     models/jsonModel/networkedjsonmodel.h \
     models/cashiermodel.h \
     authmanager.h \
+    models/usersmodel.h \
     posnetworkmanager.h \
     gui/dialogs/networkerrordialog.h \
     posapplication.h \
     gui/dialogs/loginsettingsdialog.h \
     possettings.h \
     gui/tabs/productstab.h \
-    models/jsonModel/productsmodel.h \
+    models/productsmodel.h \
     gui/dialogs/producteditdialog.h
 
 FORMS += \

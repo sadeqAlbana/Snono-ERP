@@ -2,7 +2,6 @@
 #define TEXTINPUTFIELD_H
 
 #include <QWidget>
-#include <QtDesigner/QDesignerCustomWidgetInterface>
 class QHBoxLayout;
 class QLabel;
 class QLineEdit;

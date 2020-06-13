@@ -2,7 +2,7 @@
 #define PRODUCTSTAB_H
 
 #include <QWidget>
-#include "models/jsonModel/productsmodel.h"
+#include "models/productsmodel.h"
 namespace Ui {
 class ProductsTab;
 }

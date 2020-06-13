@@ -1,7 +1,7 @@
 #include "userstab.h"
 #include "ui_userstab.h"
 #include <models/jsonModel/jsonmodel.h>
-#include <models/jsonModel/networkedjsonmodel.h>
+#include "models/usersmodel.h"
 #include <QToolButton>
 #include <gui/dialogs/adduserdialog.h>
 UsersTab::UsersTab(QWidget *parent) :
@@ -9,7 +9,7 @@ UsersTab::UsersTab(QWidget *parent) :
     ui(new Ui::UsersTab)
 {
     ui->setupUi(this);
-    model=new NetworkedJsonModel("/users",this);
+    model=new UsersModel(this);
     ui->tableView->setModel(model);
 
 }

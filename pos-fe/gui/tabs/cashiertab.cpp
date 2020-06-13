@@ -3,7 +3,6 @@
 #include <models/cashiermodel.h>
 #include "gui/dialogs/makepaymentdialog.h"
 #include <QMessageBox>
-#include <datamodels/transaction.h>
 #include "gui/views/searchheaderview.h"
 #include "gui/delegates/doublespinboxdelegate.h"
 #include <QLocale>
