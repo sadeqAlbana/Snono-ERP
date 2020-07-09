@@ -120,7 +120,7 @@
    </attribute>
    <addaction name="actionCashier"/>
    <addaction name="actionUsers"/>
-   <addaction name="actionItems"/>
+   <addaction name="actionOrders"/>
    <addaction name="actionProducts"/>
    <addaction name="actionSuppliers"/>
    <addaction name="actionDatabase"/>
@@ -208,13 +208,13 @@
     <string>Suppliers</string>
    </property>
   </action>
-  <action name="actionItems">
+  <action name="actionOrders">
    <property name="icon">
     <iconset resource="qrc.qrc">
-     <normaloff>:/icons/color/icons8-product-96.png</normaloff>:/icons/color/icons8-product-96.png</iconset>
+     <normaloff>:/icons/color/icons8-paid-96.png</normaloff>:/icons/color/icons8-paid-96.png</iconset>
    </property>
    <property name="text">
-    <string>Items</string>
+    <string>Orders</string>
    </property>
   </action>
   <action name="actionDebug">

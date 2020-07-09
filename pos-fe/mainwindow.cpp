@@ -15,6 +15,7 @@
 #include <authmanager.h>
 #include "gui/dialogs/producteditdialog.h"
 #include "messageservice.h"
+#include "gui/tabs/orderstab.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -47,17 +48,17 @@ void MainWindow::setupLauncher()
     launcherActionGroup=new QActionGroup(this);
     launcherActionGroup->addAction(ui->actionCashier);
     launcherActionGroup->addAction(ui->actionUsers);
-    launcherActionGroup->addAction(ui->actionItems);
+    launcherActionGroup->addAction(ui->actionOrders);
     launcherActionGroup->addAction(ui->actionProducts);
     launcherActionGroup->addAction(ui->actionDebug);
 
     CashierTab *cashierTab=new CashierTab();
-    ItemsTab *itemsTab=new ItemsTab();
+    OrdersTab *ordersTab=new OrdersTab();
     UsersTab *usersTab=new UsersTab();
     DebugTab *debugTab=new DebugTab();
     ProductsTab *productsTab= new ProductsTab();
         keys.insert(ui->actionCashier,cashierTab);
-    keys.insert(ui->actionItems,itemsTab);
+    keys.insert(ui->actionOrders,ordersTab);
     keys.insert(ui->actionUsers,usersTab);
     keys.insert(ui->actionDebug,debugTab);
     keys.insert(ui->actionProducts,productsTab);

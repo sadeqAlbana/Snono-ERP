@@ -2,7 +2,6 @@
 #define ITEMSTAB_H
 
 #include <QWidget>
-//#include "network/messagehandler.h"
 #include "models/jsonModel/networkedjsonmodel.h"
 namespace Ui {
 class ItemsTab;

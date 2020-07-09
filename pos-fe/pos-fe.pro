@@ -29,7 +29,9 @@ include(posnumpadwidget/posnumpadwidget.pri)
 
 SOURCES += \
     gui/dialogs/checkablelistdialog.cpp \
+    gui/dialogs/orderdialog.cpp \
     gui/dialogs/receiptdialog.cpp \
+    gui/tabs/orderstab.cpp \
     gui/textinputfield.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -52,6 +54,8 @@ SOURCES += \
     models/jsonModel/networkedjsonmodel.cpp \
     models/cashiermodel.cpp \
     authmanager.cpp \
+    models/orderitemsmodel.cpp \
+    models/ordersmodel.cpp \
     models/usersmodel.cpp \
     posnetworkmanager.cpp \
     gui/dialogs/networkerrordialog.cpp \
@@ -64,7 +68,9 @@ SOURCES += \
 
 HEADERS += \
     gui/dialogs/checkablelistdialog.h \
+    gui/dialogs/orderdialog.h \
     gui/dialogs/receiptdialog.h \
+    gui/tabs/orderstab.h \
     gui/textinputfield.h \
         mainwindow.h \
     gui/delegates/doublespinboxdelegate.h \
@@ -86,6 +92,8 @@ HEADERS += \
     models/jsonModel/networkedjsonmodel.h \
     models/cashiermodel.h \
     authmanager.h \
+    models/orderitemsmodel.h \
+    models/ordersmodel.h \
     models/usersmodel.h \
     posnetworkmanager.h \
     gui/dialogs/networkerrordialog.h \
@@ -98,7 +106,9 @@ HEADERS += \
 
 FORMS += \
     gui/dialogs/checkablelistdialog.ui \
+    gui/dialogs/orderdialog.ui \
     gui/dialogs/receiptdialog.ui \
+    gui/tabs/orderstab.ui \
         mainwindow.ui \
     gui/dialogs/adduserdialog.ui \
     gui/dialogs/logindialog.ui \

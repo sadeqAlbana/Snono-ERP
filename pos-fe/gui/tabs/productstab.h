@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "models/productsmodel.h"
+
 namespace Ui {
 class ProductsTab;
 }
