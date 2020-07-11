@@ -23,13 +23,6 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="referenceLabel">
-        <property name="text">
-         <string>Reference:</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="reference">
         <property name="readOnly">
@@ -37,29 +30,8 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="totalLabel">
-        <property name="text">
-         <string>Total:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLineEdit" name="total">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="taxAmountLabel">
-        <property name="text">
-         <string>Tax Amount:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="taxAmount">
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="date">
         <property name="readOnly">
          <bool>true</bool>
         </property>
@@ -72,8 +44,8 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="date">
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="customer">
         <property name="readOnly">
          <bool>true</bool>
         </property>
@@ -86,22 +58,15 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="customer">
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="paidAmount">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="returnAmountLabel">
-        <property name="text">
-         <string>Returned Amount:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLineEdit" name="returnAmount">
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="taxAmount">
         <property name="readOnly">
          <bool>true</bool>
         </property>
@@ -114,22 +79,57 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="paidAmount">
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="total">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="referenceLabel">
+        <property name="text">
+         <string>Reference:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="totalLabel">
+        <property name="text">
+         <string>Total:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="taxAmountLabel">
+        <property name="text">
+         <string>Tax Amount:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
        <widget class="QLabel" name="sessionIdLabel">
         <property name="text">
          <string>Session ID:</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="2" column="3">
        <widget class="QLineEdit" name="sessionId">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="returnAmountLabel">
+        <property name="text">
+         <string>Returned Amount:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="returnAmount">
         <property name="readOnly">
          <bool>true</bool>
         </property>
