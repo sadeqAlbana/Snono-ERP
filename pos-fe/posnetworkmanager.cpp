@@ -18,7 +18,9 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
     if(error!=QNetworkReply::NoError)
     {
         if(error==QNetworkReply::InternalServerError){
-            MessageService::critical("Internal Server Error",response->json("message").toString());
+            MessageService::critical("Internal Server Error",
+                                     QString("path: '%1'\nMessage: %2").arg(response->url().path()).
+                                     arg(response->json("message").toString()));
         }else{
             MessageService::critical("Netowork Error",response->errorString());
         }

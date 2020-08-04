@@ -33,6 +33,7 @@ SOURCES += \
     gui/dialogs/receiptdialog.cpp \
     gui/tabs/orderstab.cpp \
     gui/textinputfield.cpp \
+    gui/views/tableview.cpp \
         main.cpp \
         mainwindow.cpp \
     gui/delegates/doublespinboxdelegate.cpp \
@@ -48,6 +49,7 @@ SOURCES += \
     gui/views/searchheaderview.cpp \
     messageservice.cpp \
     models/jsonModel/checkablelistmodel.cpp \
+    models/journalentryitemsmodel.cpp \
     models/jsonModel/jsonmodel.cpp \
     models/jsonModel/jsonmodelfield.cpp \
     models/jsonModel/jsonmodelrecord.cpp \
@@ -72,6 +74,7 @@ HEADERS += \
     gui/dialogs/receiptdialog.h \
     gui/tabs/orderstab.h \
     gui/textinputfield.h \
+    gui/views/tableview.h \
         mainwindow.h \
     gui/delegates/doublespinboxdelegate.h \
     gui/delegates/spinboxdelegate.h \
@@ -86,6 +89,7 @@ HEADERS += \
     gui/views/searchheaderview.h \
     messageservice.h \
     models/jsonModel/checkablelistmodel.h \
+    models/journalentryitemsmodel.h \
     models/jsonModel/jsonmodel.h \
     models/jsonModel/jsonmodelfield.h \
     models/jsonModel/jsonmodelrecord.h \

@@ -46,3 +46,18 @@ void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
 {
     emit productQuantityUpdated(res->json().toObject());
 }
+
+void ProductsModel::purchaseStock(const int &index, const double &qty)
+{
+    QJsonObject product=data(index);
+    QJsonObject params;
+    params["product_id"]=product["id"];
+    params["qty"]=qty;
+    manager.post("/products/purchaseProduct",params)->subcribe(this,&ProductsModel::onPurchaseStockReply);
+
+}
+
+void ProductsModel::onPurchaseStockReply(NetworkResponse *res)
+{
+    emit stockPurchased(res->json().toObject());
+}

@@ -23,7 +23,10 @@ public:
     void editSelectedProduct();
     void editSelectedProductTaxes();
     void updateSelectedQuantity();
+    void purchaseStock();
     void onProductQuantityUpdate(QJsonObject reply);
+    void onStockPurchase(QJsonObject reply);
+
 
 private:
     Ui::ProductsTab *ui;

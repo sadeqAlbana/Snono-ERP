@@ -2,7 +2,7 @@
 #define DEBUGTAB_H
 
 #include <QWidget>
-//#include "network/messagehandler.h"
+#include "models/journalentryitemsmodel.h"
 namespace Ui {
 class DebugTab;
 }
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::DebugTab *ui;
+    JournalEntryItemsModel *model;
 };
 
 #endif // DEBUGTAB_H

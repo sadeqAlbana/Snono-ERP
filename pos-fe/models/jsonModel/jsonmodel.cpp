@@ -45,7 +45,7 @@ QVariant JsonModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if(index.row() >= rowCount() || index.column() >= record().count())
+    if(index.row() >= rowCount() || index.column() >= columns().count())
         return QVariant();
 
     if(role==Qt::DisplayRole || role==Qt::EditRole )

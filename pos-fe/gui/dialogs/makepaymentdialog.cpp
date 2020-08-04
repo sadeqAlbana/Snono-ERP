@@ -9,6 +9,7 @@ MakePaymentDialog::MakePaymentDialog(const double total, double &paid, double &c
     setModal(true);
     ui->totalLE->setText(QString::number(total));
     ui->paidSpinBox->setValue(total);
+    _paid=ui->paidSpinBox->value();
     ui->paidSpinBox->setMinimum(total);
     ui->changeLE->setText(QStringLiteral("0"));
     connect(ui->cancelButton,&QToolButton::clicked,this,&MakePaymentDialog::close);

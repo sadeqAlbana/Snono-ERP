@@ -15,6 +15,7 @@ ProductsTab::ProductsTab(QWidget *parent) :
     ui->tableView->horizontalHeader()->setFixedHeight(55);
     connect(&model,&ProductsModel::productUpdateReply,this,&ProductsTab::onProductUpdateReply);
     connect(&model,&ProductsModel::productQuantityUpdated,this,&ProductsTab::onProductQuantityUpdate);
+    connect(&model,&ProductsModel::stockPurchased,this,&ProductsTab::onProductQuantityUpdate);
     connect(ui->tableView,&QTableView::customContextMenuRequested,
             this,&ProductsTab::onContextMenuRequested);
 }
@@ -56,6 +57,7 @@ void ProductsTab::onContextMenuRequested(const QPoint &pos)
         menu.addAction(tr("&Edit"),this,&ProductsTab::editSelectedProduct);
         menu.addAction(tr("&Edit Taxes"),this,&ProductsTab::editSelectedProductTaxes);
         menu.addAction(tr("&update Quantity"),this,&ProductsTab::updateSelectedQuantity);
+        menu.addAction(tr("&Purchase Stock"),this,&ProductsTab::purchaseStock);
     }
 
     menu.exec(ui->tableView->viewport()->mapToGlobal(pos));
@@ -103,10 +105,34 @@ void ProductsTab::updateSelectedQuantity()
         model.updateProductQuantity(index.row(),newStock);
 }
 
+void ProductsTab::purchaseStock()
+{
+    QModelIndex index=ui->tableView->currentIndex();
+
+    QJsonObject product=model.data(index.row());
+    bool ok=false;
+    double qty=QInputDialog::getDouble(this,tr("Purchase Stock"),tr("Enter a Quantity"),1,1,9999,2,&ok);
+
+    if(ok)
+        model.purchaseStock(index.row(),qty);
+}
+
 void ProductsTab::onProductQuantityUpdate(QJsonObject reply)
 {
     if(reply["status"].toBool()){
         MessageService::information("success","product Quantity updated successfully");
+        model.refresh();
+
+    }
+    else{
+        MessageService::warning(tr("Error updating Quantity"),reply["message"].toString());
+    }
+}
+
+void ProductsTab::onStockPurchase(QJsonObject reply)
+{
+    if(reply["status"].toBool()){
+        MessageService::information("success","Stock Purchased Successfully");
         model.refresh();
 
     }
