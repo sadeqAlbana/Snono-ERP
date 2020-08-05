@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AccountingTab</class>
+ <widget class="QWidget" name="AccountingTab">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>980</width>
+    <height>633</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QMdiArea" name="mdiArea">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>140</y>
+     <width>271</width>
+     <height>221</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>80</y>
+     <width>561</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="dockWidgetContents"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -31,6 +31,7 @@ SOURCES += \
     gui/dialogs/checkablelistdialog.cpp \
     gui/dialogs/orderdialog.cpp \
     gui/dialogs/receiptdialog.cpp \
+    gui/tabs/accountingtab.cpp \
     gui/tabs/orderstab.cpp \
     gui/textinputfield.cpp \
     gui/views/tableview.cpp \
@@ -48,6 +49,7 @@ SOURCES += \
     gui/views/headerwidget.cpp \
     gui/views/searchheaderview.cpp \
     messageservice.cpp \
+    models/customersmodel.cpp \
     models/jsonModel/checkablelistmodel.cpp \
     models/journalentryitemsmodel.cpp \
     models/jsonModel/jsonmodel.cpp \
@@ -72,6 +74,7 @@ HEADERS += \
     gui/dialogs/checkablelistdialog.h \
     gui/dialogs/orderdialog.h \
     gui/dialogs/receiptdialog.h \
+    gui/tabs/accountingtab.h \
     gui/tabs/orderstab.h \
     gui/textinputfield.h \
     gui/views/tableview.h \
@@ -88,6 +91,7 @@ HEADERS += \
     gui/views/headerwidget.h \
     gui/views/searchheaderview.h \
     messageservice.h \
+    models/customersmodel.h \
     models/jsonModel/checkablelistmodel.h \
     models/journalentryitemsmodel.h \
     models/jsonModel/jsonmodel.h \
@@ -112,6 +116,7 @@ FORMS += \
     gui/dialogs/checkablelistdialog.ui \
     gui/dialogs/orderdialog.ui \
     gui/dialogs/receiptdialog.ui \
+    gui/tabs/accountingtab.ui \
     gui/tabs/orderstab.ui \
         mainwindow.ui \
     gui/dialogs/adduserdialog.ui \

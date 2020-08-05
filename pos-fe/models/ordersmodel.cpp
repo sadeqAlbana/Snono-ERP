@@ -9,6 +9,7 @@ ColumnList OrdersModel::columns() const
 {
     return ColumnList() <<
                            Column{"id","ID"} <<
+                           Column{"name","Customer","customers"} <<
                            Column{"reference","Reference"} <<
                            Column{"total","Total"} <<
                            Column{"date","Date"} <<

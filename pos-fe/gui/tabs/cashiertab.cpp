@@ -12,14 +12,19 @@
 #include <QPrinter>
 #include <QFile>
 #include "gui/dialogs/receiptdialog.h"
+#include "models/customersmodel.h"
+#include "messageservice.h"
 CashierTab::CashierTab(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::CashierTab)
+    ui(new Ui::CashierTab),customersModel(new CustomersModel(this))
 {
     ui->setupUi(this);
 
     setupView();
     connectSignals();
+
+    ui->customerCB->setModel(customersModel);
+    ui->customerCB->setModelColumn(1);
 }
 
 CashierTab::~CashierTab()
@@ -56,6 +61,10 @@ void CashierTab::connectSignals()
     connect(ui->barcodeLE,&QLineEdit::returnPressed,this,[this](){this->model->addProduct(ui->barcodeLE->text());ui->barcodeLE->clear();});
     connect(ui->payButton,&QToolButton::clicked,this,&CashierTab::onPayButtonClicked);
     connect(model,&CashierModel::purchaseResponseReceived,this,&CashierTab::onPurchaseResponse);
+    connect(model,&CashierModel::updateCustomerReplyReceived,this,&CashierTab::onUpdateCustomerReplyReceived);
+    connect(model,&CashierModel::dataRecevied,this,&CashierTab::onModelDataReceived);
+    connect(ui->customerCB,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+            this,&CashierTab::onCustomerCbIndexChanged);
 }
 
 
@@ -167,6 +176,33 @@ void CashierTab::onPurchaseResponse(QJsonObject res)
         QMessageBox::warning(this,"Error",res["message"].toString());
     }else{
         ReceiptDialog::init(this,res["receipt"].toString());
+    }
+}
+
+void CashierTab::onUpdateCustomerReplyReceived(QJsonObject res)
+{
+    if(!res["status"].toBool()){
+        MessageService::warning("Error",res["message"].toString());
+    }
+    else{
+        qDebug()<<"customer updated";
+    }
+}
+
+void CashierTab::onCustomerCbIndexChanged(int index)
+{
+    int customerId=customersModel->data(index)["id"].toInt();
+    if(customerId!=model->customerId())
+        model->updatedCustomer(customerId);
+}
+
+void CashierTab::onModelDataReceived()
+{
+    int customerId=model->customerId();
+    for(int i=0; i<customersModel->rowCount();i++){
+        QJsonObject customer=customersModel->data(i);
+        if(customer["id"].toInt()==customerId)
+            ui->customerCB->setCurrentIndex(i);
     }
 }
 

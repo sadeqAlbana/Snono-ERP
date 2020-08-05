@@ -16,8 +16,6 @@ ColumnList JournalEntryItemsModel::columns() const
                            Column{"amount","Amount"} <<
                            Column{"type","Type"}<<
                            Column{"created_at","Date"};
-
-
 }
 
 QVariant JournalEntryItemsModel::data(const QModelIndex &index, int role) const

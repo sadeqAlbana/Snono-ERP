@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QModelIndex>
 class CashierModel;
+class CustomersModel;
 namespace Ui {
 class CashierTab;
 }
@@ -29,10 +30,14 @@ public:
     QModelIndex selectedRow();
     void onPayButtonClicked();
     void onPurchaseResponse(QJsonObject res);
+    void onUpdateCustomerReplyReceived(QJsonObject res);
+    void onCustomerCbIndexChanged(int index);
+    void onModelDataReceived();
 
 private:
     Ui::CashierTab *ui;
     CashierModel *model;
+    CustomersModel *customersModel;
     QSettings settings;
     QModelIndex lastIndex;
 };

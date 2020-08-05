@@ -16,7 +16,7 @@ OrderDialog::OrderDialog(const QJsonObject &order, QWidget *parent) :
     ui->returnAmount->setText(QString::number(order["returned_amount"].toDouble()));
     ui->total->setText(QString::number(order["total"].toDouble()));
     ui->taxAmount->setText(QString::number(order["tax_amount"].toDouble()));
-    ui->customer->setText(order["customer_id"].toString());
+    ui->customer->setText(order["customers"].toObject()["name"].toString());
 }
 
 OrderDialog::~OrderDialog()

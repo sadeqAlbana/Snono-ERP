@@ -2617,5 +2617,7 @@
         <file>icons/color/icons8-supplier-96.png</file>
         <file>icons/color/icons8-code-96.png</file>
         <file>icons/color/icons8-bug-96.png</file>
+        <file>icons/color/icons8-accounting-96.png</file>
+        <file>icons/color/icons8-fund-accounting-96.png</file>
     </qresource>
 </RCC>

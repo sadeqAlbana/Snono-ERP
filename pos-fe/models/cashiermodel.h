@@ -28,6 +28,8 @@ public:
 
     QModelIndex changedIndex() const;
     void setChangedIndex(const QModelIndex &changedIndex);
+    void updatedCustomer(const int &customerId);
+    int customerId() const;
 
     void addProduct(const QString &barcode);
     void onAddProductReply(NetworkResponse *res);
@@ -37,9 +39,12 @@ public:
     void onProcessCartRespnse(NetworkResponse *res);
     void requestCart();
     void onRequestCartResponse(NetworkResponse *res);
+    void onUpadteCustomerReply(NetworkResponse *res);
 
 signals:
     void purchaseResponseReceived(QJsonObject res);
+    void updateCustomerReplyReceived(QJsonObject  res);
+
 
 private:
     void onProductDataRecevied(NetworkResponse *res);

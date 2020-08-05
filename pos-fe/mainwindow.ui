@@ -123,6 +123,7 @@
    <addaction name="actionOrders"/>
    <addaction name="actionProducts"/>
    <addaction name="actionSuppliers"/>
+   <addaction name="actionAccounting"/>
    <addaction name="actionDatabase"/>
    <addaction name="actionCharts"/>
    <addaction name="actionSettings"/>
@@ -233,6 +234,15 @@
    </property>
    <property name="text">
     <string>Products</string>
+   </property>
+  </action>
+  <action name="actionAccounting">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-accounting-96.png</normaloff>:/icons/color/icons8-accounting-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Accounting</string>
    </property>
   </action>
  </widget>

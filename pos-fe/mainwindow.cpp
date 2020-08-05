@@ -12,6 +12,7 @@
 #include "gui/tabs/userstab.h"
 #include "gui/tabs/debugtab.h"
 #include "gui/tabs/productstab.h"
+#include "gui/tabs/accountingtab.h"
 #include <authmanager.h>
 #include "gui/dialogs/producteditdialog.h"
 #include "messageservice.h"
@@ -51,17 +52,21 @@ void MainWindow::setupLauncher()
     launcherActionGroup->addAction(ui->actionOrders);
     launcherActionGroup->addAction(ui->actionProducts);
     launcherActionGroup->addAction(ui->actionDebug);
+    launcherActionGroup->addAction(ui->actionAccounting);
 
     CashierTab *cashierTab=new CashierTab();
     OrdersTab *ordersTab=new OrdersTab();
     UsersTab *usersTab=new UsersTab();
     DebugTab *debugTab=new DebugTab();
     ProductsTab *productsTab= new ProductsTab();
-        keys.insert(ui->actionCashier,cashierTab);
+    AccountingTab *accountingTab=new AccountingTab();
+
+    keys.insert(ui->actionCashier,cashierTab);
     keys.insert(ui->actionOrders,ordersTab);
     keys.insert(ui->actionUsers,usersTab);
     keys.insert(ui->actionDebug,debugTab);
     keys.insert(ui->actionProducts,productsTab);
+    keys.insert(ui->actionAccounting,accountingTab);
     ui->tabWidget->addTab(cashierTab,ui->actionCashier->icon(),ui->actionCashier->text());
     connect(ui->tabWidget,&QTabWidget::tabCloseRequested,ui->tabWidget,&QTabWidget::removeTab);
     connect(launcherActionGroup,

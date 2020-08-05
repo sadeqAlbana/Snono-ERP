@@ -10,7 +10,7 @@
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
-    setReference("{0b191dcb-dc83-4e84-aec1-0e059917856e}");
+    setReference("{f9aa7649-73ec-40db-b4fc-d245e1e0c786}");
 
 }
 
@@ -34,6 +34,7 @@ void CashierModel::onTableRecieved(NetworkResponse *reply)
 {
     setCartData(reply->json().toObject()["cart"].toObject());
 
+    emit dataRecevied();
 }
 
 bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -116,6 +117,18 @@ void CashierModel::setReference(const QString &reference)
     _reference = reference;
 }
 
+void CashierModel::updatedCustomer(const int &customerId)
+{
+    manager.post("/pos/cart/updateCartCustomer",
+                 QJsonObject{{"reference"  ,reference()},
+                             {"customer_id",customerId}})->subcribe(this,&CashierModel::onUpadteCustomerReply);
+}
+
+int CashierModel::customerId() const
+{
+    return cartData()["customer_id"].toInt();
+}
+
 void CashierModel::addProduct(const QString &barcode)
 {
     manager.post("/pos/cart/addProduct",QJsonObject{{"reference",reference()},
@@ -143,6 +156,7 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
     if(res->json("status").toBool()==true){
         refresh();
     }else{
+
         QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
     }
 }
@@ -170,4 +184,9 @@ void CashierModel::onRequestCartResponse(NetworkResponse *res)
 {
     setReference(res->json("reference").toString());
     setCartData(res->json().toObject());
+}
+
+void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
+{
+    emit updateCustomerReplyReceived(res->json().toObject());
 }
