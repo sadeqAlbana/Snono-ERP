@@ -56,7 +56,6 @@ QString DoubleSpinBoxDelegate::displayText(const QVariant &value,const QLocale &
     }
     else
         return QStyledItemDelegate::displayText(value,locale);
-
 }
 
 int DoubleSpinBoxDelegate::decimalPrecision() const

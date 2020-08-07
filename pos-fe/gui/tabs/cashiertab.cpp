@@ -183,14 +183,13 @@ void CashierTab::onUpdateCustomerReplyReceived(QJsonObject res)
 {
     if(!res["status"].toBool()){
         MessageService::warning("Error",res["message"].toString());
-    }
-    else{
-        qDebug()<<"customer updated";
+        model->refresh();
     }
 }
 
 void CashierTab::onCustomerCbIndexChanged(int index)
 {
+    qDebug()<<"index changed";
     int customerId=customersModel->data(index)["id"].toInt();
     if(customerId!=model->customerId())
         model->updatedCustomer(customerId);

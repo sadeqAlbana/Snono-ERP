@@ -13,28 +13,23 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QMdiArea" name="mdiArea">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>140</y>
-     <width>271</width>
-     <height>221</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>80</y>
-     <width>561</width>
-     <height>391</height>
-    </rect>
-   </property>
-   <widget class="QWidget" name="dockWidgetContents"/>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QQuickWidget" name="quickWidget">
+     <property name="resizeMode">
+      <enum>QQuickWidget::SizeRootObjectToView</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

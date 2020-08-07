@@ -265,11 +265,11 @@
      <x>850</x>
      <y>430</y>
      <width>341</width>
-     <height>51</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="editable">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

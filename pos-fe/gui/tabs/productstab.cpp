@@ -5,6 +5,7 @@
 #include "gui/dialogs/checkablelistdialog.h"
 #include <QMenu>
 #include <QInputDialog>
+#include "gui/delegates/doublespinboxdelegate.h"
 ProductsTab::ProductsTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ProductsTab), model(this)
@@ -18,6 +19,10 @@ ProductsTab::ProductsTab(QWidget *parent) :
     connect(&model,&ProductsModel::stockPurchased,this,&ProductsTab::onProductQuantityUpdate);
     connect(ui->tableView,&QTableView::customContextMenuRequested,
             this,&ProductsTab::onContextMenuRequested);
+
+
+    ui->tableView->setItemDelegateForColumn(3,new DoubleSpinBoxDelegate);
+    ui->tableView->setItemDelegateForColumn(5,new DoubleSpinBoxDelegate);
 }
 
 ProductsTab::~ProductsTab()

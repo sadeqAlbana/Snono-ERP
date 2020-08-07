@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network printsupport
+QT       += core gui network printsupport quickwidgets quick quickcontrols2
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -68,7 +68,8 @@ SOURCES += \
     possettings.cpp \
     gui/tabs/productstab.cpp \
     models/productsmodel.cpp \
-    gui/dialogs/producteditdialog.cpp
+    gui/dialogs/producteditdialog.cpp \
+    utils.cpp
 
 HEADERS += \
     gui/dialogs/checkablelistdialog.h \
@@ -110,7 +111,8 @@ HEADERS += \
     possettings.h \
     gui/tabs/productstab.h \
     models/productsmodel.h \
-    gui/dialogs/producteditdialog.h
+    gui/dialogs/producteditdialog.h \
+    utils.h
 
 FORMS += \
     gui/dialogs/checkablelistdialog.ui \

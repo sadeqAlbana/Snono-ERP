@@ -1,4 +1,3 @@
-
 #include <posapplication.h>
 #include <QSettings>
 #include <mainwindow.h>

@@ -10,7 +10,7 @@
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
-    setReference("{f9aa7649-73ec-40db-b4fc-d245e1e0c786}");
+    setReference("{573888a9-758f-4138-8162-423a5556ae04}");
 
 }
 

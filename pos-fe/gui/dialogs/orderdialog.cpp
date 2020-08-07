@@ -2,6 +2,8 @@
 #include "ui_orderdialog.h"
 #include <QJsonObject>
 #include <QJsonArray>
+#include "gui/delegates/doublespinboxdelegate.h"
+#include "utils.h"
 OrderDialog::OrderDialog(const QJsonObject &order, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OrderDialog),
@@ -10,12 +12,16 @@ OrderDialog::OrderDialog(const QJsonObject &order, QWidget *parent) :
     ui->setupUi(this);
     ui->tableView->setModel(&model);
 
+   ui->tableView->setItemDelegateForColumn(2,new DoubleSpinBoxDelegate);
+   ui->tableView->setItemDelegateForColumn(3,new DoubleSpinBoxDelegate);
+   ui->tableView->setItemDelegateForColumn(4,new DoubleSpinBoxDelegate);
+
     ui->reference->setText(order["reference"].toString());
     ui->date->setText(order["date"].toString());
-    ui->paidAmount->setText(QString::number(order["paid_amount"].toDouble()));
-    ui->returnAmount->setText(QString::number(order["returned_amount"].toDouble()));
-    ui->total->setText(QString::number(order["total"].toDouble()));
-    ui->taxAmount->setText(QString::number(order["tax_amount"].toDouble()));
+    ui->paidAmount->setText(Currency::formatString(order["paid_amount"].toDouble()));
+    ui->returnAmount->setText(Currency::formatString(order["returned_amount"].toDouble()));
+    ui->total->setText(Currency::formatString(order["total"].toDouble()));
+    ui->taxAmount->setText(Currency::formatString(order["tax_amount"].toDouble()));
     ui->customer->setText(order["customers"].toObject()["name"].toString());
 }
 

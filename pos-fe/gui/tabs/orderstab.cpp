@@ -4,6 +4,7 @@
 #include "gui/dialogs/orderdialog.h"
 #include "models/orderitemsmodel.h"
 #include "gui/dialogs/orderdialog.h"
+#include "gui/delegates/doublespinboxdelegate.h"
 OrdersTab::OrdersTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::OrdersTab),
@@ -16,6 +17,9 @@ OrdersTab::OrdersTab(QWidget *parent) :
     connect(ui->tableView,&QTableView::customContextMenuRequested,
             this,&OrdersTab::onContextMenuRequested);
         connect(ui->tableView,&QTableView::doubleClicked,this,&OrdersTab::viewCurrentOrder);
+
+    ui->tableView->setItemDelegateForColumn(3,new DoubleSpinBoxDelegate);
+    ui->tableView->setItemDelegateForColumn(5,new DoubleSpinBoxDelegate);
 }
 
 OrdersTab::~OrdersTab()
