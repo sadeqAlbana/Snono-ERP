@@ -42,8 +42,6 @@ void MainWindow::onLoggedIn()
     connect(ui->actionExit,&QAction::triggered,this,&MainWindow::close);
 }
 
-
-
 void MainWindow::setupLauncher()
 {
     launcherActionGroup=new QActionGroup(this);

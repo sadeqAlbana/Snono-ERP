@@ -69,7 +69,8 @@ SOURCES += \
     gui/tabs/productstab.cpp \
     models/productsmodel.cpp \
     gui/dialogs/producteditdialog.cpp \
-    utils.cpp
+    utils.cpp \
+    models/accountsmodel.cpp
 
 HEADERS += \
     gui/dialogs/checkablelistdialog.h \
@@ -112,7 +113,8 @@ HEADERS += \
     gui/tabs/productstab.h \
     models/productsmodel.h \
     gui/dialogs/producteditdialog.h \
-    utils.h
+    utils.h \
+    models/accountsmodel.h
 
 FORMS += \
     gui/dialogs/checkablelistdialog.ui \

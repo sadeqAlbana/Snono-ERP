@@ -2,7 +2,8 @@
 #define ACCOUNTINGTAB_H
 
 #include <QWidget>
-
+#include <QJsonObject>
+class AccountsModel;
 namespace Ui {
 class AccountingTab;
 }
@@ -15,8 +16,13 @@ public:
     explicit AccountingTab(QWidget *parent = nullptr);
     ~AccountingTab();
 
+private slots:
+    void on_depositCashButon_clicked();
+    void onDepositCashResponse(QJsonObject res);
+
 private:
     Ui::AccountingTab *ui;
+    AccountsModel *model;
 };
 
 #endif // ACCOUNTINGTAB_H

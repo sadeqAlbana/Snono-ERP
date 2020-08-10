@@ -164,3 +164,8 @@ ColumnList JsonModel::columns() const
 {
     return ColumnList();
 }
+
+QModelIndex JsonModel::parent(const QModelIndex &child) const
+{
+    return QModelIndex();
+}

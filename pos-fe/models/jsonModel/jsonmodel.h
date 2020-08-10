@@ -71,6 +71,9 @@ public:
 
     virtual ColumnList columns() const;
 
+    virtual QModelIndex parent(const QModelIndex &child) const override;
+
+
 
 protected:
     QVector<QMap<QString,QJsonValue>> m;

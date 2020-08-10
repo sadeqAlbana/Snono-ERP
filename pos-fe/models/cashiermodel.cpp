@@ -7,6 +7,7 @@
 #include <QTextDocument>
 #include <QPrinter>
 #include <QFile>
+#include "messageservice.h"
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",parent)
 {
@@ -68,7 +69,7 @@ void CashierModel::onDataChange(NetworkResponse *res)
     if(res->json("status").toBool()==true)
         refresh();
     else{
-        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+        MessageService::warning("Error",res->json("message").toString());
     }
 }
 
@@ -141,7 +142,7 @@ void CashierModel::onAddProductReply(NetworkResponse *res)
     if(res->json("status").toBool()==true){
         refresh();
     }else{
-        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+        MessageService::warning("Error",res->json("message").toString());
     }
 }
 
@@ -157,7 +158,7 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
         refresh();
     }else{
 
-        QMessageBox::warning((QWidget*)this->parent(),"Error",res->json("message").toString());
+        MessageService::warning("Error",res->json("message").toString());
     }
 }
 
