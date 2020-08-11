@@ -16,10 +16,10 @@
   <widget class="TableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>391</width>
-     <height>471</height>
+     <x>10</x>
+     <y>100</y>
+     <width>551</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="contextMenuPolicy">
@@ -59,10 +59,10 @@
   <widget class="QToolButton" name="depositCashButon">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>150</y>
-     <width>171</width>
-     <height>111</height>
+     <x>120</x>
+     <y>590</y>
+     <width>101</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">

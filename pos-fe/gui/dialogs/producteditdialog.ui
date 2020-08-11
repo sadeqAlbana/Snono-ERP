@@ -19,7 +19,7 @@
      <item>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="barcodeLabel">
          <property name="text">
           <string>Barcode:</string>
          </property>
@@ -36,7 +36,7 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_5">
+        <widget class="QLabel" name="categoryLabel">
          <property name="text">
           <string>Category:</string>
          </property>
@@ -56,7 +56,7 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="nameLabel">
          <property name="text">
           <string>Name:</string>
          </property>
@@ -66,7 +66,7 @@
         <widget class="QLineEdit" name="barcodeLE"/>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="typeLabel">
          <property name="text">
           <string>Type:</string>
          </property>
@@ -76,31 +76,10 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Cost</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="salePriceLabel">
          <property name="text">
           <string>Sale Price:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Stock</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QDoubleSpinBox" name="qtySB">
-         <property name="maximum">
-          <double>179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -115,6 +94,13 @@
         <widget class="QDoubleSpinBox" name="sellPriceSB">
          <property name="maximum">
           <double>179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="costLabel">
+         <property name="text">
+          <string>Cost</string>
          </property>
         </widget>
        </item>
