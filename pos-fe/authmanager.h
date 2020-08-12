@@ -10,7 +10,7 @@ class AuthManager : public QObject
 private:
     explicit AuthManager(QObject *parent = nullptr);
 public:
-    void authenticate(QString username, QString password);
+    Q_INVOKABLE void authenticate(QString username, QString password);
     void onAuthReply(NetworkResponse *res);
 
     static AuthManager *instance();
