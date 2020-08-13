@@ -4,6 +4,9 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 Item {
     id: rootItem
+
+
+
     ToolBar{
         id: toolBar;
         y:0
@@ -64,7 +67,7 @@ Item {
     Drawer{
         id: drawer
 
-        width: 250
+        width: 256
 
         height: rootItem.height
         dim:false
@@ -87,9 +90,6 @@ Item {
                 color: "#303c54"
                 width: parent.width
                 height: toolBar.height
-
-
-
                 Image{
                     id: image
                     anchors.centerIn: parent;
@@ -103,8 +103,41 @@ Item {
 
                     }
                 }
-
             }
+
+            footer : Rectangle{
+                color: "#303c54"
+                width: parent.width
+                height: toolBar.height
+
+                Label{
+                    id: footerLabel
+                    anchors.right: parent.right
+                    anchors.rightMargin: 13
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: "‹"
+                    //font.bold: true
+                    font.pointSize: 30
+                    color: "#7f7f8a"
+                }
+
+
+
+
+                MouseArea{ //cursor  flickers when pointing at label !
+                    anchors.fill: parent;
+                    onContainsMouseChanged: {
+                        color= containsMouse ? "#2a3446" :   "#303c54";
+                        footerLabel.color= containsMouse ? "white" :   "#7f7f8a";
+                    }
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
+
+            footerPositioning: ListView.OverlayFooter
+
+
 
             delegate: ItemDelegate{
                 id: control
@@ -117,42 +150,67 @@ Item {
                 }
 
                 width: parent.width;
+                height: 48.33
                 hoverEnabled: true
                 highlighted: ListView.isCurrentItem
-                state: "normal"
-                contentItem: RowLayout{
 
+                //: "normal"
+                contentItem: RowLayout{
+                    anchors.fill: parent
                     Image{
                         id: itemImage
                         source: model.image
                         sourceSize.width: 17
                         sourceSize.height: 17
+                        //                        width: 56
+                        //                        height: 17.5
                         Layout.alignment: Qt.AlignVCenter
+                        Layout.leftMargin: 13
                         ColorOverlay{
+                            id: overlay
                             anchors.fill: itemImage
                             source:itemImage
-                            color:"white"
-
+                            color:"#afb5c0"
                         }
 
                     }
                     Label{
                         id:  itemText
                         text:model.title
-                        color : "#d4d7dd"
-                        Layout.alignment: Qt.AlignLeft
-
+                        color : "#afb5c0"
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        horizontalAlignment: Qt.AlignLeft
+                        verticalAlignment: Qt.AlignVCenter
+                        Layout.leftMargin: 10
                         font.family: "-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji"
                         font.bold: false
                         font.pixelSize: 14
+                    }
+
+                    Label{
+                        id: treeLabel
+                        Layout.alignment: Qt.AlignRight
+                        Layout.rightMargin: 13
+                        text: "‹"
+                        font.pointSize: 13
+                        color: "#7f7f8a"
+                        smooth: true
+
+                        states:
+                            State{
+                            name: "toggled"
+                            PropertyChanges {target: treeLabel; rotation: -90}
+                        }
+
+                        transitions: Transition {
+                            RotationAnimation { duration: 150; direction: RotationAnimation.Shortest }
+                        }
 
                     }
 
                 }
-
-
-
-
 
                 states: [
                     State{
@@ -160,21 +218,22 @@ Item {
                         when: control.hovered
                         PropertyChanges {target: controlBackground; color: "#321fdb"}
                         PropertyChanges {target: itemText; color: "white"}
-
-
+                        PropertyChanges {target: overlay; color: "white"}
+                        PropertyChanges {target: treeLabel; color: "white"}
+                        PropertyChanges {target: treeLabel; font.bold: true}
                     },
                     State{
                         name: "highlighted"
                         when: control.highlighted
                         PropertyChanges {target: controlBackground; color: "#46546c" }
                         PropertyChanges {target: itemText; color: "white"}
+                        PropertyChanges {target: overlay; color: "white"}
 
-                    },
-                    State{
-                        name: "normal"
-                        PropertyChanges {target: controlBackground; color: drawer.background.color }
+
                     }
                 ]
+
+
 
 
 
@@ -187,20 +246,32 @@ Item {
 
 
                 onClicked: {
+                    treeLabel.state== "toggled" ? treeLabel.state="" : treeLabel.state="toggled"
                     if (listView.currentIndex !== index) {
                         listView.currentIndex = index
                     }
 
+                    //listView.model.insert(listView.currentIndex+1,{"title": "subItem 1", "image":"qrc:/icons/coreui/free/cil-speedometer.svg"});
+                    //listView.model.insert(listView.currentIndex+1,listView.delegate);
                 }
 
             }
 
             model: ListModel{
                 ListElement {title:  "Dashboard"; image: "qrc:/icons/coreui/free/cil-speedometer.svg";}
-                ListElement {title:  "Colors"; image: "qrc:/icons/dark/appbar.calendar.range.png";  category:  "THEME"; }
-                ListElement {title:  "Typography"; image: "qrc:/icons/dark/appbar.calendar.range.png";  category:  "THEME"}
+                ListElement {title:  "Colors"; image: "qrc:/icons/coreui/free/cil-drop.svg";  category:  "THEME"; }
+                ListElement {title:  "Typography"; image: "qrc:/icons/coreui/free/cil-pen.svg";  category:  "THEME"}
 
-                ListElement {title:  "Base"; image: "qrc:/icons/dark/appbar.calendar.range.png";  category:  "COMPONENTS";}
+                ListElement {title:  "Base"; image: "qrc:/icons/coreui/free/cil-puzzle.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Buttons"; image: "qrc:/icons/coreui/free/cil-cursor.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Charts"; image: "qrc:/icons/coreui/free/cil-chart-pie.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Editors"; image: "qrc:/icons/coreui/free/cil-code.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Forms"; image: "qrc:/icons/coreui/free/cil-notes.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Google Maps"; image: "qrc:/icons/coreui/free/cil-map.svg";  category:  "COMPONENTS";}
+                ListElement {title:  "Icons"; image: "qrc:/icons/coreui/free/cil-star.svg";  category:  "COMPONENTS";
+                    children:[ListElement{}]
+
+                }
             }
 
             section.property: "category"
@@ -208,10 +279,8 @@ Item {
             section.delegate: Rectangle{
                 id: sectionHeading
                 width: parent.width
-                height: toolBar.height
+                height: 52.33
                 color: drawer.background.color;
-                //color: "red"
-
                 Label {
                     text: section
                     font.bold: true
@@ -219,15 +288,18 @@ Item {
                     anchors.left:parent.left
                     height: parent.height
                     verticalAlignment: Qt.AlignVCenter
-                    anchors.leftMargin: 10
-
+                    anchors.leftMargin: 13
                     color: "#d4d7dd"
-
                 }
             }
-
-
         }
     }
 
+    Rectangle{
+        y: toolBar.height
+        width:drawer.opened ? rootItem.width-drawer.width : rootItem.width
+        x: drawer.opened ? drawer.width  : 0
+        height: rootItem.height-toolBar.height
+        color: "#ebedef"
+    }
 }

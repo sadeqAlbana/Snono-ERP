@@ -8,34 +8,22 @@ ApplicationWindow {
     width: 640
     height: 480
     title: qsTr("POS")
-
+    visibility: Window.Maximized
 
     id: rootItem
-
-
-//    header: ToolBar {
-//        background: Rectangle{
-//            color: "white"
-//        }
-//        width: parent.width-drawer.width
-
-
-//    }
-
-
-
-
-
-
 
 
 
     Loader{
         id: rootLoader
         anchors.fill: parent;
-        sourceComponent: LoginScreen{
+//        sourceComponent: LoginScreen{
+//            anchors.fill: parent;
+//            id: loginScreen
+//        }
+
+        sourceComponent: MainScreen{
             anchors.fill: parent;
-            id: loginScreen
         }
     }
 }
