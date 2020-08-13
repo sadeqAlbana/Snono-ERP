@@ -99,6 +99,10 @@ Item {
         rootLoader.setSource("qrc:/screens/MainScreen.qml");
     }
 
+    Component.onCompleted: {
+        loginButtonPressed();
+    }
+
 
 }
 
