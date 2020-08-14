@@ -142,7 +142,7 @@ Item {
 
             delegate: ItemDelegate{
                 id: control
-
+                property bool expanded: false
                 MouseArea{
                     anchors.fill: parent;
                     onPressed:  mouse.accepted = false
@@ -154,7 +154,6 @@ Item {
                 height: 48.33
                 hoverEnabled: true
                 highlighted: ListView.isCurrentItem
-
                 //: "normal"
                 contentItem: RowLayout{
                     anchors.fill: parent
@@ -219,8 +218,26 @@ Item {
 
                 }
 
+
+
                 states: [
                     State{
+                        id:expandedHovered
+                        name: "expandedHovered";
+                        when: expanded && hovered;
+                        extend: "hovered";
+                        PropertyChanges {target: treeLabel; state: "toggled";}
+                    },
+
+
+                    State{
+                        id:stateExpanded
+                        name: "expanded";
+                        when: control.expanded;
+                        PropertyChanges {target: treeLabel; state: "toggled";}
+                    },
+                    State{
+                        id: stateHovered;
                         name: "hovered"
                         when: control.hovered
                         PropertyChanges {target: controlBackground; color: "#321fdb"}
@@ -230,14 +247,15 @@ Item {
                         PropertyChanges {target: treeLabel; font.bold: true}
                     },
                     State{
+                        id:stateHighlighted
                         name: "highlighted"
                         when: control.highlighted
                         PropertyChanges {target: controlBackground; color: "#46546c" }
                         PropertyChanges {target: itemText; color: "white"}
                         PropertyChanges {target: overlay; color: "white"}
-
-
+                        //PropertyChanges {target: treeLabel; state: "toggled";}
                     }
+
                 ]
 
 
@@ -252,25 +270,41 @@ Item {
 
 
 
+
+
+
+//                }
+
                 onClicked: {
+                    if (listView.currentIndex !== index && !model.childCount) {
+                        listView.currentIndex = index //item is now highlighted
+                        //shrink other items here
 
-                    if (listView.currentIndex !== index) {
-                        listView.currentIndex = index
+//                        for(var i=0; i<listModel.count; i++){
+//                            listModel.get(i).expanded=false;
+//                            console.log(listView.currentItem);
+//                            //console.log(item);
+//                            //if(item.parent!==this)
+//                                //item.expanded=false;
+//                        }
                     }
+                    if(model.childCount){
+                        expanded=!expanded;
+                    }
+                }
 
-                    if(model.childItems){
-                        if(treeLabel.state=="toggled"){
-                            treeLabel.state="";
-                            listModel.remove(listView.currentIndex+1,model.childCount);
-                        }else{
-                            treeLabel.state="toggled";
-                            var childItems=JSON.parse(model.childItems);
-                            for(var i=0; i <childItems.length; i++){
-                                var item=childItems[i];
-                                item.category=model.category;
-                                listModel.insert(listView.currentIndex+1+i,item);
-                            }
+                onExpandedChanged: {
+                    console.log("expanded: " + expanded)
+                    if(expanded){
+                        var childItems=JSON.parse(model.childItems);
+                        for(var i=0; i <childItems.length; i++){
+                            var item=childItems[i];
+                            item.category=model.category;
+                            item.parent=this;
+                            listModel.insert(index+1+i,item);
                         }
+                    }else{
+                        listModel.remove(index+1,model.childCount);
                     }
                 }
 
@@ -278,18 +312,7 @@ Item {
 
             model: ListModel{
                 id: listModel;
-                dynamicRoles: true
-//                ListElement {title:  "Dashboard"; image: "qrc:/icons/coreui/free/cil-speedometer.svg";}
-//                ListElement {title:  "Colors"; image: "qrc:/icons/coreui/free/cil-drop.svg";  category:  "THEME"; }
-//                ListElement {title:  "Typography"; image: "qrc:/icons/coreui/free/cil-pen.svg";  category:  "THEME"}
-
-//                ListElement {title:  "Base"; image: "qrc:/icons/coreui/free/cil-puzzle.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Buttons"; image: "qrc:/icons/coreui/free/cil-cursor.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Charts"; image: "qrc:/icons/coreui/free/cil-chart-pie.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Editors"; image: "qrc:/icons/coreui/free/cil-code.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Forms"; image: "qrc:/icons/coreui/free/cil-notes.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Google Maps"; image: "qrc:/icons/coreui/free/cil-map.svg";  category:  "COMPONENTS";}
-//                ListElement {title:  "Icons"; image: "qrc:/icons/coreui/free/cil-star.svg";  category:  "COMPONENTS";}
+                dynamicRoles: false
             }
 
             section.property: "category"
@@ -324,43 +347,41 @@ Item {
     Component.onCompleted: {
 
         var listItems=[
-                {
-                 "title":  "Dashboard",
-                 "category":"",
-                 "image": "qrc:/icons/coreui/free/cil-speedometer.svg",
-                 "path" : ""
-                 },
                     {
-                     "title":  "Colors",
-                     "category":"THEME",
-                     "image": "qrc:/icons/coreui/free/cil-drop.svg",
-                     "path" : "",
-                     //"children" : null
-                     },
+                        "title":  "Dashboard",
+                        "category":"",
+                        "image": "qrc:/icons/coreui/free/cil-speedometer.svg",
+                        "path" : ""
+                    },
                     {
-                     "title":  "Typography",
-                     "category":"THEME",
-                     "image": "qrc:/icons/coreui/free/cil-pen.svg",
-                     "path" : "",
-                     //"children" : null
-                     },
+                        "title":  "Colors",
+                        "category":"THEME",
+                        "image": "qrc:/icons/coreui/free/cil-drop.svg",
+                        "path" : ""
+                    },
+                    {
+                        "title":  "Typography",
+                        "category":"THEME",
+                        "image": "qrc:/icons/coreui/free/cil-pen.svg",
+                        "path" : ""
+                    },
 
                     {
-                     "title":  "Base",
-                     "category":"COMPONENTS",
-                     "image": "qrc:/icons/coreui/free/cil-pen.svg",
-                     "path" : "",
-                     "childItems" : [
+                        "title":  "Base",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-pen.svg",
+                        "path" : "",
+                        "childItems" : [
                             {
-                             "title":  "Breadcrumb",
-                             "path" : "",
-                             },
+                                "title":  "Breadcrumb",
+                                "path" : "",
+                            },
                             {
                                 "title":  "Cards",
                                 "path" : "",
-                             }
+                            }
                         ]
-                     },
+                    },
 
 
                     {
@@ -370,13 +391,50 @@ Item {
                         "path" : "",
                         //"children" : null
 
-                    }
+                    },
+                    {
+                        "title":  "Charts",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-chart-pie.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    },
+                    {
+                        "title":  "Editors",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-code.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    },
+                    {
+                        "title":  "Forms",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-notes.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    },
+                    {
+                        "title":  "Google Maps",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-map.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    },
+                    {
+                        "title":  "Icons",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-star.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    },
 
                 ];
 
-//qrc:/icons/coreui/free/cil-cursor.svg
-        //console.log(JSON.stringify(listItems));
-        //console.log(JSON.stringify(listItems[3].childItems))
         for(var i=0; i<listItems.length; i++){
 
             var item=listItems[i];
