@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
+import QtQml.Models 2.12
 Item {
     id: rootItem
 
@@ -83,7 +84,7 @@ Item {
         ListView{
             id: listView
             anchors.fill: parent;
-
+            interactive: true
             property real delegateHeight: 0
             header : Rectangle{
                 //color: drawer.background.color
@@ -159,9 +160,11 @@ Item {
                     anchors.fill: parent
                     Image{
                         id: itemImage
-                        source: model.image
+                        source: model.image ? model.image : source
                         sourceSize.width: 17
                         sourceSize.height: 17
+                        width: 17
+                        height: 17
                         //                        width: 56
                         //                        height: 17.5
                         Layout.alignment: Qt.AlignVCenter
@@ -191,6 +194,10 @@ Item {
 
                     Label{
                         id: treeLabel
+
+
+
+                        visible: model.childItems ? true : false
                         Layout.alignment: Qt.AlignRight
                         Layout.rightMargin: 13
                         text: "‹"
@@ -246,32 +253,59 @@ Item {
 
 
                 onClicked: {
-                    treeLabel.state== "toggled" ? treeLabel.state="" : treeLabel.state="toggled"
+
                     if (listView.currentIndex !== index) {
                         listView.currentIndex = index
                     }
 
-                    //listView.model.insert(listView.currentIndex+1,{"title": "subItem 1", "image":"qrc:/icons/coreui/free/cil-speedometer.svg"});
-                    //listView.model.insert(listView.currentIndex+1,listView.delegate);
+                    if(model.childItems){
+                    //treeLabel.state== "toggled" ? treeLabel.state="" : treeLabel.state="toggled";
+                    //console.log(treeLabel.state)
+                        if(treeLabel.state=="toggled"){
+                            treeLabel.state="";
+                            listModel.remove(listView.currentIndex+1);
+                        }else{
+                            treeLabel.state="toggled";
+                            var childItems=JSON.parse(model.childItems);
+                            console.log(model.childItems);
+
+
+//                            for(var prop in childItems) { // your property
+//                                console.log("Property: ", prop, "Value: ", childItems[prop])
+//                            }
+                            //console.log(childItems.index(0,0).data());
+                            //listModel.insert(listView.currentIndex+1,{"title":"test","category": "COMPONENTS"})
+
+
+
+
+                            for(var i=0; i <childItems.length; i++){
+                                console.log("looped");
+                                var item=childItems[i];
+                                console.log(item);
+                                item.category=model.category;
+                                listModel.insert(listView.currentIndex+1+i,item);
+                            }
+                        }
+                    }
                 }
 
             }
 
             model: ListModel{
-                ListElement {title:  "Dashboard"; image: "qrc:/icons/coreui/free/cil-speedometer.svg";}
-                ListElement {title:  "Colors"; image: "qrc:/icons/coreui/free/cil-drop.svg";  category:  "THEME"; }
-                ListElement {title:  "Typography"; image: "qrc:/icons/coreui/free/cil-pen.svg";  category:  "THEME"}
+                id: listModel;
+                dynamicRoles: true
+//                ListElement {title:  "Dashboard"; image: "qrc:/icons/coreui/free/cil-speedometer.svg";}
+//                ListElement {title:  "Colors"; image: "qrc:/icons/coreui/free/cil-drop.svg";  category:  "THEME"; }
+//                ListElement {title:  "Typography"; image: "qrc:/icons/coreui/free/cil-pen.svg";  category:  "THEME"}
 
-                ListElement {title:  "Base"; image: "qrc:/icons/coreui/free/cil-puzzle.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Buttons"; image: "qrc:/icons/coreui/free/cil-cursor.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Charts"; image: "qrc:/icons/coreui/free/cil-chart-pie.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Editors"; image: "qrc:/icons/coreui/free/cil-code.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Forms"; image: "qrc:/icons/coreui/free/cil-notes.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Google Maps"; image: "qrc:/icons/coreui/free/cil-map.svg";  category:  "COMPONENTS";}
-                ListElement {title:  "Icons"; image: "qrc:/icons/coreui/free/cil-star.svg";  category:  "COMPONENTS";
-                    children:[ListElement{}]
-
-                }
+//                ListElement {title:  "Base"; image: "qrc:/icons/coreui/free/cil-puzzle.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Buttons"; image: "qrc:/icons/coreui/free/cil-cursor.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Charts"; image: "qrc:/icons/coreui/free/cil-chart-pie.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Editors"; image: "qrc:/icons/coreui/free/cil-code.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Forms"; image: "qrc:/icons/coreui/free/cil-notes.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Google Maps"; image: "qrc:/icons/coreui/free/cil-map.svg";  category:  "COMPONENTS";}
+//                ListElement {title:  "Icons"; image: "qrc:/icons/coreui/free/cil-star.svg";  category:  "COMPONENTS";}
             }
 
             section.property: "category"
@@ -302,4 +336,63 @@ Item {
         height: rootItem.height-toolBar.height
         color: "#ebedef"
     }
+
+    Component.onCompleted: {
+
+        var listItems=[
+                {
+                 "title":  "Dashboard",
+                 "category":"",
+                 "image": "qrc:/icons/coreui/free/cil-speedometer.svg",
+                 "path" : ""
+                 },
+                    {
+                     "title":  "Colors",
+                     "category":"THEME",
+                     "image": "qrc:/icons/coreui/free/cil-drop.svg",
+                     "path" : "",
+                     //"children" : null
+                     },
+                    {
+                     "title":  "Typography",
+                     "category":"THEME",
+                     "image": "qrc:/icons/coreui/free/cil-pen.svg",
+                     "path" : "",
+                     //"children" : null
+                     },
+
+                    {
+                     "title":  "Base",
+                     "category":"COMPONENTS",
+                     "image": "qrc:/icons/coreui/free/cil-pen.svg",
+                     "path" : "",
+                     "childItems" : [
+                            {
+                             "title":  "Breadcrumb",
+                             "path" : "",
+                             },
+                            {
+                                "title":  "Cards",
+                                "path" : "",
+                             }
+                        ]
+                     },
+                ];
+
+
+        //console.log(JSON.stringify(listItems));
+        //console.log(JSON.stringify(listItems[3].childItems))
+        for(var i=0; i<listItems.length; i++){
+
+            var item=listItems[i];
+            if(item.childItems){
+                item.childCount=item.childItems.length;
+                //console.log(item.childCount);
+                item.childItems=JSON.stringify(item.childItems);
+            }
+
+            listModel.append(item);
+        }
+    }
+
 }
