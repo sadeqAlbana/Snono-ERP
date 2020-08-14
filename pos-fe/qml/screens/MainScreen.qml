@@ -259,30 +259,14 @@ Item {
                     }
 
                     if(model.childItems){
-                    //treeLabel.state== "toggled" ? treeLabel.state="" : treeLabel.state="toggled";
-                    //console.log(treeLabel.state)
                         if(treeLabel.state=="toggled"){
                             treeLabel.state="";
-                            listModel.remove(listView.currentIndex+1);
+                            listModel.remove(listView.currentIndex+1,model.childCount);
                         }else{
                             treeLabel.state="toggled";
                             var childItems=JSON.parse(model.childItems);
-                            console.log(model.childItems);
-
-
-//                            for(var prop in childItems) { // your property
-//                                console.log("Property: ", prop, "Value: ", childItems[prop])
-//                            }
-                            //console.log(childItems.index(0,0).data());
-                            //listModel.insert(listView.currentIndex+1,{"title":"test","category": "COMPONENTS"})
-
-
-
-
                             for(var i=0; i <childItems.length; i++){
-                                console.log("looped");
                                 var item=childItems[i];
-                                console.log(item);
                                 item.category=model.category;
                                 listModel.insert(listView.currentIndex+1+i,item);
                             }
@@ -377,9 +361,20 @@ Item {
                              }
                         ]
                      },
+
+
+                    {
+                        "title":  "Buttons",
+                        "category":"COMPONENTS",
+                        "image": "qrc:/icons/coreui/free/cil-cursor.svg",
+                        "path" : "",
+                        //"children" : null
+
+                    }
+
                 ];
 
-
+//qrc:/icons/coreui/free/cil-cursor.svg
         //console.log(JSON.stringify(listItems));
         //console.log(JSON.stringify(listItems[3].childItems))
         for(var i=0; i<listItems.length; i++){
