@@ -142,7 +142,9 @@ Item {
 
             delegate: ItemDelegate{
                 id: control
+                clip:true
                 property bool expanded: false
+                property bool hidden: false
                 MouseArea{
                     anchors.fill: parent;
                     onPressed:  mouse.accepted = false
@@ -221,6 +223,13 @@ Item {
 
 
                 states: [
+
+                    State{
+                        id:stateHidden
+                        name: "hidden";
+                        when: hidden
+                        PropertyChanges {target: control; height:0;}
+                    },
                     State{
                         id:expandedHovered
                         name: "expandedHovered";
@@ -259,9 +268,6 @@ Item {
                 ]
 
 
-
-
-
                 background: Rectangle{
                     id: controlBackground
                     opacity: enabled ? 1 : 0.3
@@ -295,17 +301,31 @@ Item {
 
                 onExpandedChanged: {
                     console.log("expanded: " + expanded)
-                    if(expanded){
-                        var childItems=JSON.parse(model.childItems);
-                        for(var i=0; i <childItems.length; i++){
-                            var item=childItems[i];
-                            item.category=model.category;
-                            item.parent=this;
-                            listModel.insert(index+1+i,item);
+//                    if(expanded){
+//                        var childItems=JSON.parse(model.childItems);
+//                        for(var i=0; i <childItems.length; i++){
+//                            var item=childItems[i];
+//                            item.category=model.category;
+//                            item.parent=this;
+//                            listModel.insert(index+1+i,item);
+//                        }
+//                    }
+//                    else{
+//                        listModel.remove(index+1,model.childCount);
+//                    }
+
+                    //if(expanded){
+                        for(var i=0; i<model.childCount;i++){
+                            console.log(model.childCount);
+                            listModel.get(index+i).hidden=true
+                            console.log(listModel.get(index+i).hidden);
+                            //child.hidden=!expanded
                         }
-                    }else{
-                        listModel.remove(index+1,model.childCount);
-                    }
+
+                }
+
+                onHiddenChanged: {
+                    console.log("hidden: " +hidden );
                 }
 
             }
@@ -435,16 +455,36 @@ Item {
 
                 ];
 
-        for(var i=0; i<listItems.length; i++){
+//        for(var i=0; i<listItems.length; i++){
 
+//            var item=listItems[i];
+//            if(item.childItems){
+//                item.childCount=item.childItems.length;
+//                //console.log(item.childCount);
+//                item.childItems=JSON.stringify(item.childItems);
+//            }
+
+//            listModel.append(item);
+//        }
+
+
+        for(var i=0; i<listItems.length; i++){
             var item=listItems[i];
+
             if(item.childItems){
                 item.childCount=item.childItems.length;
-                //console.log(item.childCount);
-                item.childItems=JSON.stringify(item.childItems);
+                listModel.append(item);
+                for(var j=0; j<item.childItems.length; j++){
+                    var child=item.childItems[j];
+                    child.parent=item.title
+                    //child.isHidden=true;
+                    child.category=item.category;
+                    //console.log(child)
+                    listModel.append(child);
+                }
+            }else{
+                listModel.append(item);
             }
-
-            listModel.append(item);
         }
     }
 
