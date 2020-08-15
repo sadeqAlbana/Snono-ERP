@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
-import "screens"
+import "CoreUI";
 ApplicationWindow {
     visible: true
     width: 640

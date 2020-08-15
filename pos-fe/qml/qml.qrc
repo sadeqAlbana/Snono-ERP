@@ -3,8 +3,6 @@
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>screens/LoginScreen.qml</file>
-        <file>screens/MainScreen.qml</file>
         <file>common/CredentailsTextField.qml</file>
-        <file>nav.json</file>
     </qresource>
 </RCC>
