@@ -234,11 +234,12 @@ Item {
                 states: [
 
                     State{
-                        id:stateHidden
-                        name: "hidden";
-                        when: hidden
-                        PropertyChanges {target: control; height:0;}
+
+                        name: "visibleChild";
+                        when: model.parentId && !model.hidden && !hovered && !highlighted;
+                        PropertyChanges {target: controlBackground; color: "#303c50"}
                     },
+
                     State{
                         id:expandedHovered
                         name: "expandedHovered";
@@ -246,13 +247,19 @@ Item {
                         extend: "hovered";
                         PropertyChanges {target: treeLabel; state: "toggled";}
                     },
-
+                    State{
+                        id:stateHidden
+                        name: "hidden";
+                        when: hidden
+                        PropertyChanges {target: control; height:0;}
+                    },
 
                     State{
                         id:stateExpanded
                         name: "expanded";
                         when: control.expanded;
                         PropertyChanges {target: treeLabel; state: "toggled";}
+                        PropertyChanges {target: controlBackground; color: "#303c50"}
                     },
                     State{
                         id: stateHovered;
