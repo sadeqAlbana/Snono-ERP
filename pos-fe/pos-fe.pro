@@ -155,3 +155,5 @@ else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a
 RESOURCES += \
     qrc.qrc \
     qml/qml.qrc
+
+DISTFILES +=

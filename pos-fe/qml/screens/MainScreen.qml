@@ -221,11 +221,11 @@ Item {
                 }
                 transitions:[
                     Transition {
-//                        from: "hidden"
+                        from: "hidden"
 //                        to: ""
                         reversible: true
                         SequentialAnimation {
-                            PropertyAnimation { property: "height"; duration: 150 }
+                            PropertyAnimation {property: "height"; duration: 75 }
                         }
                     }
                 ]
@@ -361,106 +361,7 @@ Item {
         color: "#ebedef"
     }
 
-    Component.onCompleted: {
-
-        var listItems=[
-                    {
-                        "title":  "Dashboard",
-                        "category":"",
-                        "image": "qrc:/icons/coreui/free/cil-speedometer.svg",
-                        "path" : ""
-                    },
-                    {
-                        "title":  "Colors",
-                        "category":"THEME",
-                        "image": "qrc:/icons/coreui/free/cil-drop.svg",
-                        "path" : ""
-                    },
-                    {
-                        "title":  "Typography",
-                        "category":"THEME",
-                        "image": "qrc:/icons/coreui/free/cil-pen.svg",
-                        "path" : ""
-                    },
-
-                    {
-                        "title":  "Base",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-pen.svg",
-                        "path" : "",
-                        "childItems" : [
-                            {
-                                "title":  "Breadcrumb",
-                                "path" : "",
-                            },
-                            {
-                                "title":  "Cards",
-                                "path" : "",
-                            }
-                        ]
-                    },
-
-
-                    {
-                        "title":  "Buttons",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-cursor.svg",
-                        "path" : "",
-                        "childItems" : [
-                            {
-                                "title":  "Buttons",
-                                "path" : "",
-                            }
-
-                        ]
-
-                    },
-                    {
-                        "title":  "Charts",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-chart-pie.svg",
-                        "path" : "",
-                        //"children" : null
-
-                    },
-                    {
-                        "title":  "Editors",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-code.svg",
-                        "path" : "",
-                        //"children" : null
-
-                    },
-                    {
-                        "title":  "Forms",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-notes.svg",
-                        "path" : "",
-                        //"children" : null
-
-                    },
-                    {
-                        "title":  "Google Maps",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-map.svg",
-                        "path" : "",
-                        //"children" : null
-
-                    },
-                    {
-                        "title":  "Icons",
-                        "category":"COMPONENTS",
-                        "image": "qrc:/icons/coreui/free/cil-star.svg",
-                        "path" : "",
-                        //"children" : null
-
-                    },
-
-                ];
-
-
-
-
+    function parseNavbar(listItems){
         for(var i=0; i<listItems.length; i++){
             var item=listItems[i];
             item.id=listModel.count;
@@ -475,7 +376,6 @@ Item {
                     child.parentId=item.id
                     child.hidden=true;
                     child.category=item.category;
-                    //console.log(child)
                     listModel.append(child);
                 }
             }else{
@@ -484,4 +384,15 @@ Item {
         }
     }
 
+    Component.onCompleted: {
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET", "qrc:/nav.json");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                var listItems = xhr.responseText;
+                parseNavbar(JSON.parse(listItems));
+            }
+        };
+        xhr.send();
+    }
 }
