@@ -221,8 +221,8 @@ Item {
                 }
                 transitions:[
                     Transition {
-                        from: "hidden"
-                        to: ""
+//                        from: "hidden"
+//                        to: ""
                         reversible: true
                         SequentialAnimation {
                             PropertyAnimation { property: "height"; duration: 150 }
