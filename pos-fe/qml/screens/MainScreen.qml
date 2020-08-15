@@ -143,8 +143,8 @@ Item {
             delegate: ItemDelegate{
                 id: control
                 clip:true
-                property bool expanded: false
-                property bool hidden: false
+                property bool expanded: model.expanded ? model.expanded : false
+                property bool hidden: model.parentId ? model.hidden : false
                 MouseArea{
                     anchors.fill: parent;
                     onPressed:  mouse.accepted = false
@@ -219,7 +219,16 @@ Item {
                     }
 
                 }
-
+                transitions:[
+                    Transition {
+                        from: "hidden"
+                        to: ""
+                        reversible: true
+                        SequentialAnimation {
+                            PropertyAnimation { property: "height"; duration: 150 }
+                        }
+                    }
+                ]
 
 
                 states: [
@@ -275,57 +284,38 @@ Item {
                 }
 
 
-
-
-
-
-//                }
-
                 onClicked: {
                     if (listView.currentIndex !== index && !model.childCount) {
-                        listView.currentIndex = index //item is now highlighted
-                        //shrink other items here
+                        listView.currentIndex = index
+                        //shrink other items;
 
-//                        for(var i=0; i<listModel.count; i++){
-//                            listModel.get(i).expanded=false;
-//                            console.log(listView.currentItem);
-//                            //console.log(item);
-//                            //if(item.parent!==this)
-//                                //item.expanded=false;
-//                        }
+
+
                     }
                     if(model.childCount){
-                        expanded=!expanded;
+                        model.expanded=!model.expanded;
                     }
+
+                    //shrink other items;
+
+                    for(var i=0; i<listModel.count;i++){
+
+                        if(i!==index && i!==model.parentId){
+                            listModel.get(i).expanded=false;
+                        }
+                    }
+
+
+
+
                 }
+
+
 
                 onExpandedChanged: {
-                    console.log("expanded: " + expanded)
-//                    if(expanded){
-//                        var childItems=JSON.parse(model.childItems);
-//                        for(var i=0; i <childItems.length; i++){
-//                            var item=childItems[i];
-//                            item.category=model.category;
-//                            item.parent=this;
-//                            listModel.insert(index+1+i,item);
-//                        }
-//                    }
-//                    else{
-//                        listModel.remove(index+1,model.childCount);
-//                    }
-
-                    //if(expanded){
-                        for(var i=0; i<model.childCount;i++){
-                            console.log(model.childCount);
-                            listModel.get(index+i).hidden=true
-                            console.log(listModel.get(index+i).hidden);
-                            //child.hidden=!expanded
-                        }
-
-                }
-
-                onHiddenChanged: {
-                    console.log("hidden: " +hidden );
+                    for(var i=0; i<model.childCount;i++){
+                        listModel.get(index+1+i).hidden=!expanded
+                    }
                 }
 
             }
@@ -409,7 +399,13 @@ Item {
                         "category":"COMPONENTS",
                         "image": "qrc:/icons/coreui/free/cil-cursor.svg",
                         "path" : "",
-                        //"children" : null
+                        "childItems" : [
+                            {
+                                "title":  "Buttons",
+                                "path" : "",
+                            }
+
+                        ]
 
                     },
                     {
@@ -455,29 +451,22 @@ Item {
 
                 ];
 
-//        for(var i=0; i<listItems.length; i++){
 
-//            var item=listItems[i];
-//            if(item.childItems){
-//                item.childCount=item.childItems.length;
-//                //console.log(item.childCount);
-//                item.childItems=JSON.stringify(item.childItems);
-//            }
-
-//            listModel.append(item);
-//        }
 
 
         for(var i=0; i<listItems.length; i++){
             var item=listItems[i];
-
+            item.id=listModel.count;
             if(item.childItems){
+
                 item.childCount=item.childItems.length;
+                item.expanded=false;
                 listModel.append(item);
                 for(var j=0; j<item.childItems.length; j++){
                     var child=item.childItems[j];
-                    child.parent=item.title
-                    //child.isHidden=true;
+                    child.id=listModel.count
+                    child.parentId=item.id
+                    child.hidden=true;
                     child.category=item.category;
                     //console.log(child)
                     listModel.append(child);
