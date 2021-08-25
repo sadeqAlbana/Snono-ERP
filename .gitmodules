@@ -1,6 +1,6 @@
 [submodule "network-manager"]
 	path = network-manager
-	url = http://git.snono.systems:7482/sadeq/network-manager.git
+	url = http://git.lan:9080/sadeq/network-manager.git
 [submodule "pos-fe/coreui-qml"]
 	path = pos-fe/coreui-qml
-	url = http://git.local:9080/sadeq/coreui-qml.git
+	url = http://git.lan:9080/sadeq/coreui-qml.git
