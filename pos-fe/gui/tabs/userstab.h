@@ -2,7 +2,7 @@
 #define USERSTAB_H
 
 #include <QWidget>
-class NetworkedJsonModel;
+class AppNetworkedJsonModel;
 namespace Ui {
 class UsersTab;
 }
@@ -19,7 +19,7 @@ public:
 
 private:
     Ui::UsersTab *ui;
-    NetworkedJsonModel *model;
+    AppNetworkedJsonModel *model;
 };
 
 #endif // USERSTAB_H

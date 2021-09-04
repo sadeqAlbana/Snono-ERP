@@ -21,7 +21,6 @@ signals:
     void invalidCredentails();
 
 private:
-    PosNetworkManager manager;
     QSettings settings;
     static AuthManager *_instance;
 };

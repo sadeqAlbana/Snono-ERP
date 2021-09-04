@@ -4,8 +4,9 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls.Material 2.3
 
 Item {
-    id: rootItem
+    id: login
     anchors.fill: parent;
+    visible: true
 
     signal loggedIn();
     Connections{
@@ -100,7 +101,7 @@ Item {
     }
 
     Component.onCompleted: {
-        loginButtonPressed();
+        //loginButtonPressed();
     }
 
 

@@ -1,14 +1,13 @@
 #ifndef PORDUCTSMODEL_H
 #define PORDUCTSMODEL_H
 
-#include "models/jsonModel/networkedjsonmodel.h"
+#include "appnetworkedjsonmodel.h"
 
-class ProductsModel : public NetworkedJsonModel
+class ProductsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
 public:
     ProductsModel(QObject *parent=nullptr);
-    virtual ColumnList columns() const override;
 
     void updateProduct(const QJsonObject &product);
     void onUpdateProductReply(NetworkResponse *res);

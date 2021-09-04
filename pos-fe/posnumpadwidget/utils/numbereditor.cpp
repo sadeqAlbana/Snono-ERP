@@ -1,6 +1,11 @@
 #include "numbereditor.h"
 #include <QStringList>
 
+NumberEditor::NumberEditor(QObject *parent) : QObject(parent)
+{
+
+}
+
 double NumberEditor::appendDigit(double number, int digit, bool appendToDecimal)
 {
     QString numberStr=QString::number(number,'f',5);

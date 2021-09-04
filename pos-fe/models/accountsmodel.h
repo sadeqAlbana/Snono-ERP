@@ -1,15 +1,14 @@
 #ifndef ACCOUNTSMODEL_H
 #define ACCOUNTSMODEL_H
 
-#include "jsonModel/networkedjsonmodel.h"
+#include "appnetworkedjsonmodel.h"
 
-class AccountsModel : public NetworkedJsonModel
+class AccountsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
 public:
     explicit AccountsModel(QObject *parent = nullptr);
 
-    virtual ColumnList columns() const override;
 
     void depositCash(const int &creditorId, const double &amount);
     void onDepostCashResponse(NetworkResponse *res);

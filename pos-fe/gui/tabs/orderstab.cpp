@@ -57,7 +57,7 @@ void OrdersTab::viewCurrentOrder()
 {
     QModelIndex index=ui->tableView->currentIndex();
 
-    QJsonObject order=model.data(index.row());
+    QJsonObject order=model.jsonObject(index.row());
     OrderDialog::init(order,this);
 }
 

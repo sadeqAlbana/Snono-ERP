@@ -2,7 +2,6 @@
 #define POSAPPLICATION_H
 
 #include <QApplication>
-#include "mainwindow.h"
 #include <QSettings>
 class MainWindow;
 class PosApplication : public QApplication
@@ -15,7 +14,7 @@ public:
 private:
     QSettings settings;
     void initSettings();
-    MainWindow _mainWindow;
+    //MainWindow _mainWindow;
 
 };
 

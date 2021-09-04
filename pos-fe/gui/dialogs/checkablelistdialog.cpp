@@ -10,7 +10,7 @@ CheckableListDialog::CheckableListDialog(const QString &displayColumn, const QSt
     connect(ui->buttonBox,&QDialogButtonBox::rejected,this,&CheckableListDialog::close);
     model=new CheckableListModel(displayColumn,dataColumn,original,url,this);
     ui->tableView->setModel(model);
-    model->requestData();
+    //model->requestData();
 }
 
 CheckableListDialog::~CheckableListDialog()

@@ -190,7 +190,7 @@ void CashierTab::onUpdateCustomerReplyReceived(QJsonObject res)
 void CashierTab::onCustomerCbIndexChanged(int index)
 {
     qDebug()<<"index changed";
-    int customerId=customersModel->data(index)["id"].toInt();
+    int customerId=customersModel->jsonObject(index)["id"].toInt();
     if(customerId!=model->customerId())
         model->updatedCustomer(customerId);
 }
@@ -199,7 +199,7 @@ void CashierTab::onModelDataReceived()
 {
     int customerId=model->customerId();
     for(int i=0; i<customersModel->rowCount();i++){
-        QJsonObject customer=customersModel->data(i);
+        QJsonObject customer=customersModel->jsonObject(i);
         if(customer["id"].toInt()==customerId)
             ui->customerCB->setCurrentIndex(i);
     }

@@ -4,8 +4,8 @@
 #include <QPushButton>
 #include "gui/dialogs/adduserdialog.h"
 #include <QButtonGroup>
-#include <models/jsonModel/jsonmodel.h>
-#include <models/jsonModel/networkedjsonmodel.h>
+#include <jsonmodel.h>
+#include <models/appnetworkedjsonmodel.h>
 #include <QActionGroup>
 #include "gui/tabs/itemstab.h"
 #include "gui/tabs/cashiertab.h"

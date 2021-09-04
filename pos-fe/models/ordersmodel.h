@@ -1,14 +1,13 @@
 #ifndef ORDERSMODEL_H
 #define ORDERSMODEL_H
 
-#include "models/jsonModel/networkedjsonmodel.h"
+#include "appnetworkedjsonmodel.h"
 
-class OrdersModel : public NetworkedJsonModel
+class OrdersModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
 public:
     explicit OrdersModel(QObject *parent = nullptr);
-    virtual ColumnList columns() const override;
 
 };
 

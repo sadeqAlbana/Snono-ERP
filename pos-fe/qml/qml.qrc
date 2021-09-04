@@ -4,5 +4,25 @@
         <file>qtquickcontrols2.conf</file>
         <file>screens/LoginScreen.qml</file>
         <file>common/CredentailsTextField.qml</file>
+        <file>pages/LoginPage.qml</file>
+        <file>common/BusySpinner.qml</file>
+        <file>AppMainScreen.qml</file>
+        <file>nav.json</file>
+        <file>pages/products/ProductsPage.qml</file>
+        <file>pages/orders/OrdersPage.qml</file>
+        <file>screens/Utils.js</file>
+        <file>pages/orders/OrderDetails.qml</file>
+        <file>pages/cashier/CashierPage.qml</file>
+        <file>pages/cashier/Numpad.qml</file>
+        <file>pages/cashier/NumpadButton.qml</file>
+        <file>pages/products/AddProductPage.qml</file>
+        <file>pages/categories/CategoriesPage.qml</file>
+        <file>pages/cashier/CurrencyDelegate.qml</file>
+        <file>pages/cashier/PayDialog.qml</file>
+        <file>pages/cashier/ReceiptDialog.qml</file>
+        <file>numpad_beep.mp3</file>
+        <file>numpad_beep.wav</file>
+        <file>cashier_regiser_beep.wav</file>
+        <file>pages/categories/AddCategoryPage.qml</file>
     </qresource>
 </RCC>

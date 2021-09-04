@@ -1,15 +1,14 @@
 #ifndef CUSTOMERSMODEL_H
 #define CUSTOMERSMODEL_H
 
-#include "jsonModel/networkedjsonmodel.h"
+#include "appnetworkedjsonmodel.h"
 
-class CustomersModel : public NetworkedJsonModel
+class CustomersModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
 public:
     explicit CustomersModel(QObject *parent = nullptr);
 
-    virtual ColumnList columns() const override;
 };
 
 #endif // CUSTOMERSMODEL_H

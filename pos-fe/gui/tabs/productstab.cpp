@@ -76,7 +76,7 @@ void ProductsTab::addProduct()
 void ProductsTab::editSelectedProduct()
 {
     QModelIndex index=ui->tableView->currentIndex();
-    QJsonObject product= ProductEditDialog::init(this,model.data(index.row()));
+    QJsonObject product= ProductEditDialog::init(this,model.jsonObject(index.row()));
     if(!product.isEmpty())
         model.updateProduct(product);
 }
@@ -85,7 +85,7 @@ void ProductsTab::editSelectedProductTaxes()
 {
     QModelIndex index=ui->tableView->currentIndex();
 
-    QJsonObject product=model.data(index.row());
+    QJsonObject product=model.jsonObject(index.row());
     QSet<int> ids;
     for(QJsonValue value : product["taxes"].toArray())
         ids<< value.toObject().value("id").toInt();
@@ -101,7 +101,7 @@ void ProductsTab::updateSelectedQuantity()
 {
     QModelIndex index=ui->tableView->currentIndex();
 
-    QJsonObject product=model.data(index.row());
+    QJsonObject product=model.jsonObject(index.row());
     double stock=product["products_stocks"].toObject()["qty"].toDouble();
 
     double newStock=QInputDialog::getDouble(this,tr("Update Quantity"),tr("Enter new Quantity"),stock);
@@ -114,7 +114,7 @@ void ProductsTab::purchaseStock()
 {
     QModelIndex index=ui->tableView->currentIndex();
 
-    QJsonObject product=model.data(index.row());
+    QJsonObject product=model.jsonObject(index.row());
     bool ok=false;
     double qty=QInputDialog::getDouble(this,tr("Purchase Stock"),tr("Enter a Quantity"),1,1,9999,2,&ok);
 

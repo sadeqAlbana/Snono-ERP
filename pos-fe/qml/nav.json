@@ -1,0 +1,56 @@
+[{
+    "title": "Dashboard",
+    "category": "",
+    "image": "qrc:/assets/icons/coreui/free/cil-speedometer.svg",
+    "path": "qrc:/pages/categories/CategoriesPage.qml",
+    "badge": {
+        "variant": "info",
+        "text": "NEW"
+    }
+},
+{
+    "title": "Cashier",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-cash.svg",
+    "path": "qrc:/pages/cashier/CashierPage.qml"
+},
+{
+    "title": "Products",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-drop.svg",
+    "path": "",
+    "childItems": [
+    {
+        "title": "List",
+        "path": "qrc:/pages/products/ProductsPage.qml"
+    },
+                {
+                    "title": "Add",
+                    "path": "qrc:/pages/products/AddProductPage.qml"
+                }
+                ]
+},
+
+{
+    "title": "Categories",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-drop.svg",
+    "path": "",
+    "childItems": [
+    {
+        "title": "List",
+        "path": "qrc:/pages/categories/CategoriesPage.qml"
+    },
+                {
+                    "title": "Add",
+                    "path": "qrc:/pages/categories/AddCategoryPage.qml"
+                }
+                ]
+},
+{
+    "title": "Orders",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-pen.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml"
+}
+]

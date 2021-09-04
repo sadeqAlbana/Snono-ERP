@@ -1,6 +1,5 @@
 #include "userstab.h"
 #include "ui_userstab.h"
-#include <models/jsonModel/jsonmodel.h>
 #include "models/usersmodel.h"
 #include <QToolButton>
 #include <gui/dialogs/adduserdialog.h>

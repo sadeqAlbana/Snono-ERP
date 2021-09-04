@@ -1,5 +1,4 @@
 #include "posapplication.h"
-#include "mainwindow.h"
 #include <QDebug>
 
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv)

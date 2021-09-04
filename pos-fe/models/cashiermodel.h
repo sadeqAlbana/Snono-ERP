@@ -2,16 +2,16 @@
 #define CASHIERMODEL_H
 
 #include <QAbstractTableModel>
-#include "jsonModel/networkedjsonmodel.h"
+#include "networkedjsonmodel.h"
+#include <QSettings>
 class CashierModel : public NetworkedJsonModel //make is json model
 {
     Q_OBJECT
-
+    Q_PROPERTY(double total READ total NOTIFY totalChanged)
 public:
     explicit CashierModel(QObject *parent = nullptr);
     virtual void requestData() override;
-    ColumnList columns() const override;
-    virtual void onTableRecieved(NetworkResponse *reply) override;
+    virtual void onTableRecieved(NetworkResponse *reply);
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
     void onDataChange(NetworkResponse *res);
@@ -30,20 +30,21 @@ public:
     void setChangedIndex(const QModelIndex &changedIndex);
     void updatedCustomer(const int &customerId);
     int customerId() const;
-
-    void addProduct(const QString &barcode);
+    Q_INVOKABLE void addProduct(const QString &barcode);
     void onAddProductReply(NetworkResponse *res);
-    void removeProduct(const int &index);
+    Q_INVOKABLE void removeProduct(const int &index);
     void onRemoveProductReply(NetworkResponse *res);
-    void processCart(const double paid,const double change);
+    Q_INVOKABLE void processCart(const double paid,const double change);
     void onProcessCartRespnse(NetworkResponse *res);
-    void requestCart();
+    Q_INVOKABLE void requestCart();
     void onRequestCartResponse(NetworkResponse *res);
     void onUpadteCustomerReply(NetworkResponse *res);
 
 signals:
     void purchaseResponseReceived(QJsonObject res);
     void updateCustomerReplyReceived(QJsonObject  res);
+    void totalChanged(double total);
+    void addProductReply(QJsonObject res);
 
 
 private:

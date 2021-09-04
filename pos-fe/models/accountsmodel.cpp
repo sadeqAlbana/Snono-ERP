@@ -1,24 +1,21 @@
 #include "accountsmodel.h"
 #include <QJsonObject>
-AccountsModel::AccountsModel(QObject *parent) : NetworkedJsonModel ("/accounts",parent)
+#include "posnetworkmanager.h"
+AccountsModel::AccountsModel(QObject *parent) :
+    AppNetworkedJsonModel ("/accounts",ColumnList() <<
+                                                       Column{"name","Name"} <<
+                                                       Column{"type","Type"} <<
+                                                       Column{"balance","Balance","journal_entries_items"},parent)
 {
-    requestData();
+    //requestData();
 }
 
-
-ColumnList AccountsModel::columns() const
-{
-    return ColumnList() <<
-                           Column{"name","Name"} <<
-                           Column{"type","Type"} <<
-                           Column{"balance","Balance","journal_entries_items"};
-}
 
 void AccountsModel::depositCash(const int &creditorId, const double &amount)
 {
     QJsonObject data{{"creditor_id",creditorId},
                      {"amount",amount}};
-    manager.post("/accounts/depositCash",data)->subcribe(this,&AccountsModel::onDepostCashResponse);
+    PosNetworkManager::instance()->post("/accounts/depositCash",data)->subcribe(this,&AccountsModel::onDepostCashResponse);
 }
 
 void AccountsModel::onDepostCashResponse(NetworkResponse *res)

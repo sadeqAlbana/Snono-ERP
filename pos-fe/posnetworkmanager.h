@@ -4,10 +4,18 @@
 #include <QSettings>
 class PosNetworkManager : public NetworkManager
 {
+    Q_OBJECT
+private:
+    PosNetworkManager(QObject *parent=nullptr);
+
 public:
-    PosNetworkManager();
-signals:
     void routeReply(QNetworkReply *reply) override;
+
+    static PosNetworkManager *instance();
+
+
+signals:
+    void networkError(const QString &title, const QString &text);
 
 private:
     static QByteArray _jwt;
@@ -15,6 +23,8 @@ private:
 
     QByteArray jwt() const;
     QSettings settings;
+    static PosNetworkManager *_instance;
+
 
 friend class AuthManager;
 };

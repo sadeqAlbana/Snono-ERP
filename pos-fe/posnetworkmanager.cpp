@@ -3,8 +3,11 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>
+#include <QApplication>
 QByteArray PosNetworkManager::_jwt;
-PosNetworkManager::PosNetworkManager()
+PosNetworkManager* PosNetworkManager::_instance;
+
+PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkManager(parent)
 {
     setBaseUrl(settings.value("http_server_url").toString());
     if(!jwt().isNull())
@@ -13,16 +16,17 @@ PosNetworkManager::PosNetworkManager()
 
 void PosNetworkManager::routeReply(QNetworkReply *reply)
 {
+    emit finishedNetworkActivity(reply->url().toString());
     NetworkResponse *response=new NetworkResponse(reply);
     QNetworkReply::NetworkError error=response->error();
     if(error!=QNetworkReply::NoError)
     {
         if(error==QNetworkReply::InternalServerError){
-            MessageService::critical("Internal Server Error",
+            emit networkError("Internal Server Error",
                                      QString("path: '%1'\nMessage: %2").arg(response->url().path()).
                                      arg(response->json("message").toString()));
         }else{
-            MessageService::critical("Netowork Error",response->errorString());
+            emit networkError("Netowork Error",response->errorString());
         }
 
     }
@@ -33,6 +37,14 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
     reply->deleteLater();
     delete response;
 
+}
+
+PosNetworkManager *PosNetworkManager::instance()
+{
+    if(!_instance)
+        _instance=new PosNetworkManager(QApplication::instance());
+
+    return _instance;
 }
 
 void PosNetworkManager::setJWT(const QByteArray jwt)

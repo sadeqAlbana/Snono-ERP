@@ -2,7 +2,7 @@
 #define ITEMSTAB_H
 
 #include <QWidget>
-#include "models/jsonModel/networkedjsonmodel.h"
+#include "models/appnetworkedjsonmodel.h"
 namespace Ui {
 class ItemsTab;
 }
@@ -17,7 +17,7 @@ public:
 
 private:
     Ui::ItemsTab *ui;
-    NetworkedJsonModel *model;
+    AppNetworkedJsonModel *model;
 };
 
 #endif // ITEMSTAB_H

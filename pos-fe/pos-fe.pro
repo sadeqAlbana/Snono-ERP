@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network printsupport quickwidgets quick quickcontrols2
-
+QT       += core gui network printsupport quickwidgets quick quickcontrols2 multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -25,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 include(posnumpadwidget/posnumpadwidget.pri)
+include(../json-model/json-model.pri)
 
 
 SOURCES += \
@@ -49,17 +49,17 @@ SOURCES += \
     gui/views/headerwidget.cpp \
     gui/views/searchheaderview.cpp \
     messageservice.cpp \
+    models/appnetworkedjsonmodel.cpp \
+    models/categoriesmodel.cpp \
     models/customersmodel.cpp \
     models/jsonModel/checkablelistmodel.cpp \
     models/journalentryitemsmodel.cpp \
-    models/jsonModel/jsonmodel.cpp \
-    models/jsonModel/jsonmodelfield.cpp \
-    models/jsonModel/jsonmodelrecord.cpp \
-    models/jsonModel/networkedjsonmodel.cpp \
     models/cashiermodel.cpp \
     authmanager.cpp \
+    models/jsonModel/treeproxymodel.cpp \
     models/orderitemsmodel.cpp \
     models/ordersmodel.cpp \
+    models/taxescheckablemodel.cpp \
     models/usersmodel.cpp \
     posnetworkmanager.cpp \
     gui/dialogs/networkerrordialog.cpp \
@@ -93,17 +93,17 @@ HEADERS += \
     gui/views/headerwidget.h \
     gui/views/searchheaderview.h \
     messageservice.h \
+    models/appnetworkedjsonmodel.h \
+    models/categoriesmodel.h \
     models/customersmodel.h \
     models/jsonModel/checkablelistmodel.h \
     models/journalentryitemsmodel.h \
-    models/jsonModel/jsonmodel.h \
-    models/jsonModel/jsonmodelfield.h \
-    models/jsonModel/jsonmodelrecord.h \
-    models/jsonModel/networkedjsonmodel.h \
     models/cashiermodel.h \
     authmanager.h \
+    models/jsonModel/treeproxymodel.h \
     models/orderitemsmodel.h \
     models/ordersmodel.h \
+    models/taxescheckablemodel.h \
     models/usersmodel.h \
     posnetworkmanager.h \
     gui/dialogs/networkerrordialog.h \

@@ -4,3 +4,6 @@
 [submodule "pos-fe/coreui-qml"]
 	path = pos-fe/coreui-qml
 	url = http://git.lan:9080/sadeq/coreui-qml.git
+[submodule "json-model"]
+	path = json-model
+	url = http://git.lan:9080/sadeq/json-model
