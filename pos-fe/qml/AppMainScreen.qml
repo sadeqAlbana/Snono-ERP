@@ -105,7 +105,7 @@ Item {
                 stackView.replace(listModel.get(listView.currentIndex).path)
             }
             Component.onCompleted: {
-                listView.currentIndex=4
+                listView.currentIndex=3
             }
 
             property real delegateHeight: 0

@@ -56,9 +56,29 @@
 {
     "title": "Taxes",
     "category": "MAIN",
-    "image": "qrc:/assets/icons/coreui/free/cil-pen.svg",
+    "image": "qrc:/assets/icons/coreui/free/cil-money.svg",
     "path": "qrc:/pages/orders/OrdersPage.qml"
 },
+{
+    "title": "Customers",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-user.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml"
+},
+
+{
+    "title": "Suppliers",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-user.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml"
+},
+{
+    "title": "Users",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-user.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml"
+},
+
 {
     "title": "Reports",
     "category": "MAIN",

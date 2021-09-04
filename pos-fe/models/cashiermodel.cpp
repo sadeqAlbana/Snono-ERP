@@ -17,8 +17,9 @@ CashierModel::CashierModel(QObject *parent)
                                                              Column{"subtotal","Subtotal",QString(),"currency"} <<
                                                              Column{"total","Total",QString(),"currency"},parent)
 {
-    setReference("{573888a9-758f-4138-8162-423a5556ae04}");
-    requestData();
+    setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
+    requestCart();
+    //requestData();
 
 }
 

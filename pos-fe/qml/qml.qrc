@@ -24,5 +24,6 @@
         <file>numpad_beep.wav</file>
         <file>cashier_regiser_beep.wav</file>
         <file>pages/categories/AddCategoryPage.qml</file>
+        <file>pages/products/PurchaseStockDialog.qml</file>
     </qresource>
 </RCC>

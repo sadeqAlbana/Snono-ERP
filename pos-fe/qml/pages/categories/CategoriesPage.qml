@@ -45,7 +45,7 @@ Card{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            actions: [Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; onTriggered: tableView.removeCategory()}]
+            actions: [Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeCategory()}]
 
             model: CategoriesModel{
                 id: model;

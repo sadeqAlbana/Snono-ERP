@@ -15,7 +15,7 @@ public:
     Q_INVOKABLE void updateProductQuantity(const int &index,const double &newQuantity);
     void onUpdateProductQuantityReply(NetworkResponse *res);
 
-    Q_INVOKABLE void purchaseStock(const int &index,const double &qty);
+    Q_INVOKABLE void purchaseStock(const int &productId, const double &qty);
     void onPurchaseStockReply(NetworkResponse *res);
 
 
@@ -29,7 +29,7 @@ public:
 signals:
     void productUpdateReply(QJsonObject reply);
     void productQuantityUpdated(QJsonObject reply);
-    void stockPurchased(QJsonObject reply);
+    void stockPurchasedReply(QJsonObject reply);
     void productAddReply(QJsonObject reply);
     void productRemoveReply(QJsonObject reply);
 

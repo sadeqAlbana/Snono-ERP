@@ -16,7 +16,7 @@ ProductsTab::ProductsTab(QWidget *parent) :
     ui->tableView->horizontalHeader()->setFixedHeight(55);
     connect(&model,&ProductsModel::productUpdateReply,this,&ProductsTab::onProductUpdateReply);
     connect(&model,&ProductsModel::productQuantityUpdated,this,&ProductsTab::onProductQuantityUpdate);
-    connect(&model,&ProductsModel::stockPurchased,this,&ProductsTab::onProductQuantityUpdate);
+    connect(&model,&ProductsModel::stockPurchasedReply,this,&ProductsTab::onProductQuantityUpdate);
     connect(ui->tableView,&QTableView::customContextMenuRequested,
             this,&ProductsTab::onContextMenuRequested);
 

@@ -8,6 +8,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import "qrc:/screens/Utils.js" as Utils
 
 Card{
 
@@ -39,13 +40,39 @@ Card{
             }
         }
 
+
+
         CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            actions: [Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; onTriggered: tableView.removeProduct()},
-            Action{ text: qsTr("Update Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; onTriggered: tableView.removeProduct()}]
+            actions: [
+                Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
+                Action{ text: qsTr("Update"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()},
+                Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
+            ]
+
+
+            function openPurchaseDialog(){
+                purchaseDialog.product=model.jsonObject(tableView.selectedRow);
+                purchaseDialog.open();
+
+            }
+
+            PurchaseStockDialog{
+                id: purchaseDialog
+
+                onAccepted: {
+                    var productId=model.data(tableView.selectedRow,"id");
+                    model.purchaseStock(productId,quantity);
+                    purchaseDialog.close();
+
+
+                }
+            }
+
+
 
             model: ProductsModel{
                 id: model
@@ -61,6 +88,16 @@ Card{
                 } //slot end
 
 
+
+                onStockPurchasedReply: {
+                    if(reply.status===200){
+                        toastrService.push(qsTr("Success"),reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push(qsTr("Error"),reply.message,"error",2000)
+                    }
+                }
             }
 
             function removeProduct(){

@@ -63,14 +63,11 @@ Card{
             }
 
             actions: [
-                Action{ text: "Details"; icon.source: "qrc:/assets/icons/coreui/free/cil-cut.svg"; onTriggered: {
+                Action{ text: "Details"; icon.source: "qrc:/assets/icons/coreui/free/cil-info.svg"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
-                        //console.log(JSON.stringify(model.jsonObject(tableView.selectedRow).pos_order_items))
                         dialog.open();
-                    } },
-                Action{ text: "Copy"; icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; },
-                Action {text: "Paste"; icon.source: "qrc:/assets/icons/coreui/free/cil-clipboard.svg";}
+                    } }
             ]
         }
 

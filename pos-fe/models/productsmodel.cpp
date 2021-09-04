@@ -44,11 +44,10 @@ void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
     emit productQuantityUpdated(res->json().toObject());
 }
 
-void ProductsModel::purchaseStock(const int &index, const double &qty)
+void ProductsModel::purchaseStock(const int &productId, const double &qty)
 {
-    QJsonObject product=jsonObject(index);
     QJsonObject params;
-    params["product_id"]=product["id"];
+    params["product_id"]=productId;
     params["qty"]=qty;
     PosNetworkManager::instance()->post("/products/purchaseProduct",params)->subcribe(this,&ProductsModel::onPurchaseStockReply);
 
@@ -56,7 +55,7 @@ void ProductsModel::purchaseStock(const int &index, const double &qty)
 
 void ProductsModel::onPurchaseStockReply(NetworkResponse *res)
 {
-    emit stockPurchased(res->json().toObject());
+    emit stockPurchasedReply(res->json().toObject());
 }
 
 void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QJsonArray &taxes)
