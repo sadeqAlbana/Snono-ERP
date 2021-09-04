@@ -21,9 +21,13 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
-    QJsonArray selectedRows();
+    virtual QHash<int, QByteArray> roleNames() const override;
+
+
+    Q_INVOKABLE QJsonArray selectedRows();
 
     Q_INVOKABLE QString selectedItems() const; //used for combobox display text
+    Q_INVOKABLE QList<int> selectedIds();
 
 signals:
     void selectedItemsChanged();

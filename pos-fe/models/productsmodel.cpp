@@ -58,3 +58,30 @@ void ProductsModel::onPurchaseStockReply(NetworkResponse *res)
 {
     emit stockPurchased(res->json().toObject());
 }
+
+void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QJsonArray &taxes)
+{
+    qDebug()<<taxes;
+    QJsonObject params{
+        {"name",name},
+        {"barcode",barcode},
+        {"list_price",listPrice},
+        {"cost",cost},
+        {"type",typeId},
+        {"description",description},
+        {"taxes",taxes},
+        {"category_id",categoryId}
+    };
+
+    PosNetworkManager::instance()->post("/products/add",params)->subcribe([this](NetworkResponse *res){
+        emit productAddReply(res->json().toObject());
+    });
+}
+
+void ProductsModel::removeProduct(const int &productId)
+{
+    PosNetworkManager::instance()->post("/products/remove",QJsonObject{{"id",productId}})
+            ->subcribe([this](NetworkResponse *res){
+        emit productRemoveReply(res->json().toObject());
+    });
+}

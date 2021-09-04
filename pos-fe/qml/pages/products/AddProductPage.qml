@@ -24,8 +24,7 @@ Card{
         rowSpacing: 20
         columnSpacing: 20
 //        columns: 2
-        rows:8
-        columns: 2
+        //rows:8
 
         flow: GridLayout.TopToBottom
         CTextFieldGroup{id: nameTF;        label.text: qsTr("Name");}
@@ -54,6 +53,19 @@ Card{
             comboBox.model: CategoriesModel{}
         } //end categoryCB
 
+
+        CheckableComboBox{
+           Layout.fillWidth: true
+//           Layout.maximumWidth: parent.width/2
+           model: TaxesCheckableModel{
+               id: taxesModel;
+           }
+           textRole: "name";
+           valueRole: "id"
+           displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+
+        }
+
         CButton{
             text: qsTr("Add")
             color: "#2eb85c"
@@ -63,40 +75,35 @@ Card{
             onClicked: parent.addProduct();
         }
 
-        CheckableListView{
-//            Layout.fillHeight: true
-//            Layout.fillWidth: true
 
 
-            Layout.minimumWidth: parent.width/2
-            Layout.maximumWidth: parent.width/2
-            Layout.fillHeight: true
-//            Layout.minimumHeight: parent.height
-//            Layout.maximumHeight: parent.height
-            Layout.rowSpan: 4
-//            Layout.preferredHeight: parent.height
-//            list.model: CategoriesModel{
 
-//            }
+        ProductsModel{
+            id: model;
 
-            list.model: TaxesCheckableModel{
-
-            }
-        }
-
-        CheckableComboBox{
-           Layout.fillWidth: true
-           Layout.maximumWidth: parent.width/2
-
+            onProductAddReply: {
+                if(reply.status===200){
+                    toastrService.push("Success",reply.message,"success",2000)
+                    model.requestData();
+                }
+                else{
+                    toastrService.push("Error",reply.message,"error",2000)
+                }
+            } //slot end
         }
 
         function addProduct(){
             var name=nameTF.input.text;
-            var type=typeCB.comboBox.currentValue();
+            var type=typeCB.comboBox.currentValue;
             var cost=costTF.input.text;
             var listPrice=listPriceTF.input.text;
             var description=descriptionTF.input.text
             var barcode=barcodeTF.input.text;
+            var categoryId=categoryCB.comboBox. currentValue;
+            var taxes=taxesModel.selectedIds();
+
+            model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
+
         }
 
 

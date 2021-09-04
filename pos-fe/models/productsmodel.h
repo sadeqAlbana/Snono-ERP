@@ -9,19 +9,30 @@ class ProductsModel : public AppNetworkedJsonModel
 public:
     ProductsModel(QObject *parent=nullptr);
 
-    void updateProduct(const QJsonObject &product);
+    Q_INVOKABLE void updateProduct(const QJsonObject &product);
     void onUpdateProductReply(NetworkResponse *res);
 
-    void updateProductQuantity(const int &index,const double &newQuantity);
+    Q_INVOKABLE void updateProductQuantity(const int &index,const double &newQuantity);
     void onUpdateProductQuantityReply(NetworkResponse *res);
 
-    void purchaseStock(const int &index,const double &qty);
+    Q_INVOKABLE void purchaseStock(const int &index,const double &qty);
     void onPurchaseStockReply(NetworkResponse *res);
+
+
+    Q_INVOKABLE void addProduct(const QString &name, const QString &barcode,
+                    const double &listPrice, const double &cost, const int &typeId, const QString &description,
+                    const int &categoryId, const QJsonArray &taxes);
+
+    Q_INVOKABLE void removeProduct(const int &productId);
+
 
 signals:
     void productUpdateReply(QJsonObject reply);
     void productQuantityUpdated(QJsonObject reply);
     void stockPurchased(QJsonObject reply);
+    void productAddReply(QJsonObject reply);
+    void productRemoveReply(QJsonObject reply);
+
 };
 
 #endif // PORDUCTSMODEL_H

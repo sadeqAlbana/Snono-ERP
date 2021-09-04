@@ -43,8 +43,29 @@ Card{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            actions: [Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; onTriggered: tableView.removeProduct()},
+            Action{ text: qsTr("Update Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-copy.svg"; onTriggered: tableView.removeProduct()}]
+
             model: ProductsModel{
-                id: productsModel
+                id: model
+
+                onProductRemoveReply: {
+                    if(reply.status===200){
+                        toastrService.push(qsTr("Success"),reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push(qsTr("Error"),reply.message,"error",2000)
+                    }
+                } //slot end
+
+
+            }
+
+            function removeProduct(){
+                var productId= model.data(tableView.selectedRow,"id");
+                model.removeProduct(productId);
             }
         }
     }

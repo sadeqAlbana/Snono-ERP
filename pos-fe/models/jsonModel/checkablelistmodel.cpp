@@ -35,7 +35,10 @@ QVariant CheckableListModel::data(const QModelIndex &index, int role) const
     if(!index.isValid()){
         return QVariant();
     }
+
+//    qDebug()<<"data: " <<index<< " " << (role==Qt::CheckStateRole);
     if(role==Qt::CheckStateRole){
+
         if(selected.contains(index.row()))
             return Qt::Checked;
         return Qt::Unchecked;
@@ -56,6 +59,8 @@ bool CheckableListModel::setData(const QModelIndex &index, const QVariant &value
         else if(state==Qt::Unchecked)
             selected.remove(index.row());
         emit dataChanged(index, index, QVector<int>() << role); //not sure about index !
+        emit selectedItemsChanged();
+
         return true;
     }
     return AppNetworkedJsonModel::setData(index,value,role);
@@ -74,11 +79,23 @@ QString CheckableListModel::selectedItems() const
 {
     QStringList items;
     for(int row : selected){
-        items << AppNetworkedJsonModel::data(row,dataColumn).toString();
+        items << AppNetworkedJsonModel::data(row,displayColumn).toString();
     }
+    return items.join(", ");
+}
 
-    return items.join(',');
+QList<int> CheckableListModel::selectedIds()
+{
+    return selected.toList();
+}
 
+QHash<int, QByteArray> CheckableListModel::roleNames() const
+{
+    QHash<int,QByteArray> roles=AppNetworkedJsonModel::roleNames();
+
+    roles.insert(Qt::CheckStateRole,"checkstate");
+
+    return roles;
 }
 
 void CheckableListModel::onDataRecevied()

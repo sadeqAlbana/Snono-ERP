@@ -52,5 +52,27 @@
     "category": "MAIN",
     "image": "qrc:/assets/icons/coreui/free/cil-pen.svg",
     "path": "qrc:/pages/orders/OrdersPage.qml"
+},
+{
+    "title": "Taxes",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-pen.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml"
+},
+{
+    "title": "Reports",
+    "category": "MAIN",
+    "image": "qrc:/assets/icons/coreui/free/cil-pen.svg",
+    "path": "qrc:/pages/orders/OrdersPage.qml",
+    "childItems": [
+    {
+        "title": "Sales",
+        "path": "qrc:/pages/categories/CategoriesPage.qml"
+    },
+    {
+        "title": "Profits",
+        "path": "qrc:/pages/categories/AddCategoryPage.qml"
+    }
+    ]
 }
 ]
