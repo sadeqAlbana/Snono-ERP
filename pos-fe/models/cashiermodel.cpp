@@ -121,7 +121,9 @@ void CashierModel::setReference(const QString &reference)
     _reference = reference;
 }
 
-void CashierModel::updatedCustomer(const int &customerId)
+
+
+void CashierModel::updateCustomer(const int &customerId)
 {
     PosNetworkManager::instance()->post("/pos/cart/updateCartCustomer",
                  QJsonObject{{"reference"  ,reference()},
@@ -192,5 +194,5 @@ void CashierModel::onRequestCartResponse(NetworkResponse *res)
 
 void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
 {
-    emit updateCustomerReplyReceived(res->json().toObject());
+    emit updateCustomerResponseReceived(res->json().toObject());
 }

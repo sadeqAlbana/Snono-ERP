@@ -9,7 +9,7 @@ CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/custo
                                                                                                    Column{"address","Address"} <<
                                                                                                    Column{"email","Email"} ,parent)
 {
-    //requestData();
+    requestData();
 }
 
 

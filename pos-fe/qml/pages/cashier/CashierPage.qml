@@ -7,6 +7,7 @@ import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
+import "qrc:/common"
 import QtQuick.Controls 1.4 as TT
 import QtGraphicalEffects 1.0
 
@@ -49,6 +50,15 @@ Page{
                     }
                 }
 
+                onUpdateCustomerResponseReceived: {
+                    if(!res.status){
+                        toastrService.push("Error",res.message,"error",2000)
+                    }else{
+                        toastrService.push("Success",reply.message,"success",2000)
+                    }
+                }
+
+
                 onAddProductReply: {
                     if(res.status){
                         scannerBeep.play()
@@ -65,7 +75,6 @@ Page{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
-
             }
 
         }
@@ -85,12 +94,9 @@ Page{
                 property var decimalBtn;
 
                 Component.onCompleted: {
-                    console.log(numpad.button(".").text);
                     decimalBtn=numpad.button(".");
                     decimalBtn.enabled=Qt.binding(function(){return !waitingForDecimal})
                     decimalBtn.clicked.connect(function(){waitingForDecimal=true})
-
-
                 }
 
 
@@ -167,6 +173,21 @@ Page{
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 color: "transparent"
+            }
+
+            CComboBox{
+                id: customerCB;
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                model: CustomersModel{}
+                textRole: "name"
+                valueRole: "id"
+                currentIndex: 0
+
+                onCurrentIndexChanged: {
+                    tableView.model.updateCustomer(currentValue);
+                }
+
             }
 
             CTextInput{

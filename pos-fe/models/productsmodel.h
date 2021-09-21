@@ -15,7 +15,7 @@ public:
     Q_INVOKABLE void updateProductQuantity(const int &index,const double &newQuantity);
     void onUpdateProductQuantityReply(NetworkResponse *res);
 
-    Q_INVOKABLE void purchaseStock(const int &productId, const double &qty);
+    Q_INVOKABLE void purchaseStock(const int &productId, const double &qty, const int &vendorId);
     void onPurchaseStockReply(NetworkResponse *res);
 
 

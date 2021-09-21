@@ -28,7 +28,7 @@ public:
 
     QModelIndex changedIndex() const;
     void setChangedIndex(const QModelIndex &changedIndex);
-    void updatedCustomer(const int &customerId);
+    Q_INVOKABLE void updateCustomer(const int &customerId);
     int customerId() const;
     Q_INVOKABLE void addProduct(const QString &barcode);
     void onAddProductReply(NetworkResponse *res);
@@ -42,7 +42,7 @@ public:
 
 signals:
     void purchaseResponseReceived(QJsonObject res);
-    void updateCustomerReplyReceived(QJsonObject  res);
+    void updateCustomerResponseReceived(QJsonObject  res);
     void totalChanged(double total);
     void addProductReply(QJsonObject res);
 

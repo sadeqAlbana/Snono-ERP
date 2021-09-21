@@ -12,6 +12,10 @@
 #include "posnumpadwidget/utils/numbereditor.h"
 #include "models/jsonModel/treeproxymodel.h"
 #include "models/taxescheckablemodel.h"
+#include "models/vendorsmodel.h"
+#include "models/vendorsbillsmodel.h"
+#include "models/accountsmodel.h"
+#include "models/customersmodel.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -33,6 +37,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
     engine.rootContext()->setContextProperty("NumberEditor",&nb);
 
+    qmlRegisterType<AccountsModel>("app.models", 1, 0, "AccountsModel");
 
     qmlRegisterType<ProductsModel>("app.models", 1, 0, "ProductsModel");
     qmlRegisterType<OrdersModel>("app.models", 1, 0, "OrdersModel");
@@ -41,6 +46,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<CategoriesModel>("app.models", 1, 0, "CategoriesModel");
     qmlRegisterType<TreeProxyModel>("app.models", 1, 0, "TreeProxyModel");
     qmlRegisterType<TaxesCheckableModel>("app.models", 1, 0, "TaxesCheckableModel");
+    qmlRegisterType<VendorsModel>("app.models", 1, 0, "VendorsModel");
+    qmlRegisterType<VendorsBillsModel>("app.models", 1, 0, "VendorsBillsModel");
+    qmlRegisterType<CustomersModel>("app.models", 1, 0, "CustomersModel");
+
 
 
 

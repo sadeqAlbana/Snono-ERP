@@ -3,17 +3,19 @@
 #include "posnetworkmanager.h"
 AccountsModel::AccountsModel(QObject *parent) :
     AppNetworkedJsonModel ("/accounts",ColumnList() <<
+                                                       Column{"code","Code"} <<
                                                        Column{"name","Name"} <<
-                                                       Column{"type","Type"} <<
-                                                       Column{"balance","Balance","journal_entries_items"},parent)
+                                                       Column{"internal_type","Internal Type",QString(),"internal_type"} <<
+                                                       Column{"type","Type",QString(),"type"} <<
+                                                       Column{"balance","Balance","journal_entries_items","currency"},parent)
 {
-    //requestData();
+    requestData();
 }
 
 
-void AccountsModel::depositCash(const int &creditorId, const double &amount)
+void AccountsModel::depositCash(const double &amount)
 {
-    QJsonObject data{{"creditor_id",creditorId},
+    QJsonObject data{
                      {"amount",amount}};
     PosNetworkManager::instance()->post("/accounts/depositCash",data)->subcribe(this,&AccountsModel::onDepostCashResponse);
 }

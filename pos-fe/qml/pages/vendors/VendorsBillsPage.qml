@@ -8,13 +8,16 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
-
+import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
+
 
 Card{
 
-    title: qsTr("Categories")
+    title: qsTr("Vendors Bills")
 
     ColumnLayout{
         id: page
@@ -36,7 +39,6 @@ Card{
                 color: "transparent"
             }
 
-
             CTextField{
                 Layout.preferredHeight: 50
                 Layout.preferredWidth: 300
@@ -47,22 +49,36 @@ Card{
             }
         }
 
-        AddCategoryDialog{
+        PayBillDialog{
             id: dialog;
+
+            onAccepted: {
+                var billId= model.data(tableView.selectedRow,"id");
+
+                model.payBill(billId);
+            }
         }
 
-        CListView{
+        CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open()},
-                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeCategory()}]
+                Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
 
-            model: CategoriesModel{
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "status"; StatusDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+
+
+            }
+
+            model: VendorsBillsModel{
                 id: model;
 
-                onCategoryRemoveReply: {
+                onPayBillReply: {
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)
                         model.requestData();
@@ -70,14 +86,12 @@ Card{
                     else{
                         toastrService.push("Error",reply.message,"error",2000)
                     }
-                } //slot end
+                }
+
 
             } //model end
 
-            function removeCategory(){
-                var categoryId= model.data(tableView.currentIndex,"id");
-                model.removeCategory(categoryId);
-            }
+
 
         }
     }

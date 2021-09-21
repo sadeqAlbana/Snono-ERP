@@ -24,7 +24,7 @@ Popup{
     height: 500
     anchors.centerIn: parent;
     property var product;
-    signal accepted(var quantity);
+    signal accepted(var quantity, var vendorId);
 
 
     //closePolicy: Popup.NoAutoClose
@@ -49,6 +49,17 @@ Popup{
             CTextFieldGroup{id: quantity; label.text: qsTr("Quantity");    input.text:"1"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
 
             CTextFieldGroup{id: total;    label.text: qsTr("Total"); input.text: product ? parseInt(quantity.input.text)*product.cost : "0";      input.readOnly: true; }
+
+            CComboBoxGroup{
+                id: vendorsCB
+                Layout.fillWidth: true
+                label.text: "Vendor"
+                comboBox.textRole: "name"
+                comboBox.valueRole: "id"
+                comboBox.model: VendorsModel{}
+                comboBox.currentIndex: 0
+
+            }
         }
 
 
@@ -77,7 +88,7 @@ Popup{
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
-                onClicked: dialog.accepted(parseInt(quantity.input.text));
+                onClicked: dialog.accepted(parseInt(quantity.input.text), vendorsCB.comboBox.currentValue);
             }
 
 

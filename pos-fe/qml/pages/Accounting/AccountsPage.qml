@@ -8,13 +8,15 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
-
+import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
 
 Card{
 
-    title: qsTr("Categories")
+    title: qsTr("Accounts")
 
     ColumnLayout{
         id: page
@@ -36,7 +38,6 @@ Card{
                 color: "transparent"
             }
 
-
             CTextField{
                 Layout.preferredHeight: 50
                 Layout.preferredWidth: 300
@@ -47,22 +48,29 @@ Card{
             }
         }
 
-        AddCategoryDialog{
-            id: dialog;
-        }
 
-        CListView{
+
+        CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open()},
-                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeCategory()}]
+                Action{ text: qsTr("Deposit Money"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
 
-            model: CategoriesModel{
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+                DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
+                DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
+
+
+            }
+
+            model: AccountsModel{
                 id: model;
 
-                onCategoryRemoveReply: {
+                onDepositCashResponseReceived: {
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)
                         model.requestData();
@@ -74,10 +82,15 @@ Card{
 
             } //model end
 
-            function removeCategory(){
-                var categoryId= model.data(tableView.currentIndex,"id");
-                model.removeCategory(categoryId);
-            }
+            DepositMoneyDialog{
+                id: dialog
+
+                onAccepted: model.depositCash(amount);
+
+            }//dialog end
+
+
+
 
         }
     }

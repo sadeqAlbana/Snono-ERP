@@ -44,11 +44,13 @@ void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
     emit productQuantityUpdated(res->json().toObject());
 }
 
-void ProductsModel::purchaseStock(const int &productId, const double &qty)
+void ProductsModel::purchaseStock(const int &productId, const double &qty, const int &vendorId)
 {
     QJsonObject params;
     params["product_id"]=productId;
     params["qty"]=qty;
+    params["vendor_id"]=vendorId;
+
     PosNetworkManager::instance()->post("/products/purchaseProduct",params)->subcribe(this,&ProductsModel::onPurchaseStockReply);
 
 }

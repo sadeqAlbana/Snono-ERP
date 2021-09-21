@@ -42,7 +42,7 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             }
 
-            TestTextField{
+            CTextField{
                 Layout.preferredHeight: 50
                 Layout.preferredWidth: 300
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight

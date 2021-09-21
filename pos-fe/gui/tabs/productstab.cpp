@@ -118,8 +118,8 @@ void ProductsTab::purchaseStock()
     bool ok=false;
     double qty=QInputDialog::getDouble(this,tr("Purchase Stock"),tr("Enter a Quantity"),1,1,9999,2,&ok);
 
-    if(ok)
-        model.purchaseStock(index.row(),qty);
+    //if(ok)
+        //model.purchaseStock(index.row(),qty);
 }
 
 void ProductsTab::onProductQuantityUpdate(QJsonObject reply)

@@ -102,10 +102,13 @@ Item {
             interactive: true
 
             onCurrentIndexChanged: {
-                stackView.replace(listModel.get(listView.currentIndex).path)
+                var item=listModel.get(listView.currentIndex);
+                if(item!==undefined)
+                    if(item.path!==null)
+                        stackView.replace(item.path)
             }
             Component.onCompleted: {
-                listView.currentIndex=3
+                listView.currentIndex=0
             }
 
             property real delegateHeight: 0

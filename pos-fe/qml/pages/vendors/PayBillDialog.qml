@@ -15,17 +15,10 @@ Popup {
     parent: Overlay.overlay
 
     property real amount;
-    property real paid;
-    property real tendered;
-    signal accepted(var paid, var tendered);
+    signal accepted();
+    onAccepted: close();
 
-    onPaidChanged: {
-        tendered=paid-amount;
-    }
 
-    //    margins: 0
-    //    padding: 0
-    //    closePolicy: Popup.NoAutoClose
     width: parent.width*0.4
     height: parent.height*0.5
     background: Rectangle{color: "transparent"}
@@ -43,7 +36,7 @@ Popup {
     }
 
     Card{
-        title: qsTr("Pay")
+        title: qsTr("Pay Bill")
         anchors.fill: parent;
         ColumnLayout{
             anchors.fill: parent;
@@ -62,36 +55,6 @@ Popup {
                     target: dialog
                     property: "amount"
                     value: amountTF.input.text
-                }
-
-            }
-
-
-            CTextFieldGroup{
-                id: paidTF
-                label.text: qsTr("Paid");
-                Layout.fillWidth: true;
-                input.text: paid
-                input.validator: DoubleValidator{bottom: paid;top:1000000000}
-                Binding{
-                    target: dialog
-                    property: "paid"
-                    value: paidTF.input.text
-                }
-
-            }
-
-            CTextFieldGroup{
-                id: tenderedTF
-                label.text: qsTr("Tendered");
-                Layout.fillWidth: true;
-                input.text: tendered
-                input.readOnly: true
-                input.validator: DoubleValidator{bottom: 0;top:1000000000}
-                Binding{
-                    target: dialog
-                    property: "tendered"
-                    value: tenderedTF.input.text
                 }
 
             }
@@ -122,7 +85,7 @@ Popup {
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
-                onClicked: dialog.accepted(paid,tendered);
+                onClicked: dialog.accepted();
             }
         } //footer end
 

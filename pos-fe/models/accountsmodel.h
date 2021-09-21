@@ -10,11 +10,11 @@ public:
     explicit AccountsModel(QObject *parent = nullptr);
 
 
-    void depositCash(const int &creditorId, const double &amount);
+    Q_INVOKABLE void depositCash(const double &amount);
     void onDepostCashResponse(NetworkResponse *res);
 
 signals:
-    void depositCashResponseReceived(QJsonObject response);
+    void depositCashResponseReceived(QJsonObject reply);
 };
 
 #endif // ACCOUNTSMODEL_H

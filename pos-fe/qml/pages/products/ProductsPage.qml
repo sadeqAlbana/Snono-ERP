@@ -8,6 +8,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 
 Card{
@@ -21,23 +22,34 @@ Card{
         RowLayout{
             spacing: 15
 
+        CMenuBar{
+            CMenu{
+                title: qsTr("Actions");
+                icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                actions: tableView.actions
+            }
+        }
+
             Rectangle{
                 Layout.fillWidth: true
                 color: "transparent"
             }
 
-            Label{
-                text: qsTr("Search")
-                font.pixelSize: 18
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            }
 
-            TestTextField{
+            CTextField{
                 Layout.preferredHeight: 50
                 Layout.preferredWidth: 300
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
+                placeholderText: qsTr("Search...")
+                rightDelegate : CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-search.svg"}
             }
+        }
+
+
+        ProductAddDialog{
+            id: productAddDialog;
+
         }
 
 
@@ -48,6 +60,7 @@ Card{
             Layout.fillWidth: true
 
             actions: [
+                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
                 Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
                 Action{ text: qsTr("Update"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()},
                 Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
@@ -60,12 +73,16 @@ Card{
 
             }
 
+            function openAddDialog(){
+                productAddDialog.open();
+            }
+
             PurchaseStockDialog{
                 id: purchaseDialog
 
                 onAccepted: {
                     var productId=model.data(tableView.selectedRow,"id");
-                    model.purchaseStock(productId,quantity);
+                    model.purchaseStock(productId,quantity,vendorId);
                     purchaseDialog.close();
 
 

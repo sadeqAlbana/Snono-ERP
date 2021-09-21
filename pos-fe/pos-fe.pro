@@ -28,26 +28,26 @@ include(../json-model/json-model.pri)
 
 
 SOURCES += \
-    gui/dialogs/checkablelistdialog.cpp \
-    gui/dialogs/orderdialog.cpp \
-    gui/dialogs/receiptdialog.cpp \
-    gui/tabs/accountingtab.cpp \
-    gui/tabs/orderstab.cpp \
-    gui/textinputfield.cpp \
-    gui/views/tableview.cpp \
+    #gui/dialogs/checkablelistdialog.cpp \
+    #gui/dialogs/orderdialog.cpp \
+    #gui/dialogs/receiptdialog.cpp \
+    #gui/tabs/accountingtab.cpp \
+    #gui/tabs/orderstab.cpp \
+    #gui/textinputfield.cpp \
+    #gui/views/tableview.cpp \
         main.cpp \
-        mainwindow.cpp \
-    gui/delegates/doublespinboxdelegate.cpp \
-    gui/delegates/spinboxdelegate.cpp \
-    gui/dialogs/adduserdialog.cpp \
-    gui/dialogs/logindialog.cpp \
-    gui/dialogs/makepaymentdialog.cpp \
-    gui/tabs/cashiertab.cpp \
-    gui/tabs/debugtab.cpp \
-    gui/tabs/itemstab.cpp \
-    gui/tabs/userstab.cpp \
-    gui/views/headerwidget.cpp \
-    gui/views/searchheaderview.cpp \
+    #   mainwindow.cpp \
+    #gui/delegates/doublespinboxdelegate.cpp \
+    #gui/delegates/spinboxdelegate.cpp \
+    #gui/dialogs/adduserdialog.cpp \
+    #gui/dialogs/logindialog.cpp \
+    #gui/dialogs/makepaymentdialog.cpp \
+    #gui/tabs/cashiertab.cpp \
+    #gui/tabs/debugtab.cpp \
+    #gui/tabs/itemstab.cpp \
+    #gui/tabs/userstab.cpp \
+    #gui/views/headerwidget.cpp \
+    #gui/views/searchheaderview.cpp \
     messageservice.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
@@ -61,37 +61,39 @@ SOURCES += \
     models/ordersmodel.cpp \
     models/taxescheckablemodel.cpp \
     models/usersmodel.cpp \
+    models/vendorsbillsmodel.cpp \
+    models/vendorsmodel.cpp \
     posnetworkmanager.cpp \
-    gui/dialogs/networkerrordialog.cpp \
+    #gui/dialogs/networkerrordialog.cpp \
     posapplication.cpp \
-    gui/dialogs/loginsettingsdialog.cpp \
+    #gui/dialogs/loginsettingsdialog.cpp \
     possettings.cpp \
-    gui/tabs/productstab.cpp \
+    #gui/tabs/productstab.cpp \
     models/productsmodel.cpp \
-    gui/dialogs/producteditdialog.cpp \
+    #gui/dialogs/producteditdialog.cpp \
     utils.cpp \
     models/accountsmodel.cpp
 
 HEADERS += \
-    gui/dialogs/checkablelistdialog.h \
-    gui/dialogs/orderdialog.h \
-    gui/dialogs/receiptdialog.h \
-    gui/tabs/accountingtab.h \
-    gui/tabs/orderstab.h \
-    gui/textinputfield.h \
-    gui/views/tableview.h \
-        mainwindow.h \
-    gui/delegates/doublespinboxdelegate.h \
-    gui/delegates/spinboxdelegate.h \
-    gui/dialogs/adduserdialog.h \
-    gui/dialogs/logindialog.h \
-    gui/dialogs/makepaymentdialog.h \
-    gui/tabs/cashiertab.h \
-    gui/tabs/debugtab.h \
-    gui/tabs/itemstab.h \
-    gui/tabs/userstab.h \
-    gui/views/headerwidget.h \
-    gui/views/searchheaderview.h \
+    #gui/dialogs/checkablelistdialog.h \
+    #gui/dialogs/orderdialog.h \
+    #gui/dialogs/receiptdialog.h \
+    #gui/tabs/accountingtab.h \
+    #gui/tabs/orderstab.h \
+    #gui/textinputfield.h \
+    #gui/views/tableview.h \
+    #   mainwindow.h \
+    #gui/delegates/doublespinboxdelegate.h \
+    #gui/delegates/spinboxdelegate.h \
+    #gui/dialogs/adduserdialog.h \
+    #gui/dialogs/logindialog.h \
+    #gui/dialogs/makepaymentdialog.h \
+    #gui/tabs/cashiertab.h \
+    #gui/tabs/debugtab.h \
+    #gui/tabs/itemstab.h \
+    #gui/tabs/userstab.h \
+    #gui/views/headerwidget.h \
+    #gui/views/searchheaderview.h \
     messageservice.h \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
@@ -105,34 +107,36 @@ HEADERS += \
     models/ordersmodel.h \
     models/taxescheckablemodel.h \
     models/usersmodel.h \
+    models/vendorsbillsmodel.h \
+    models/vendorsmodel.h \
     posnetworkmanager.h \
-    gui/dialogs/networkerrordialog.h \
+    #gui/dialogs/networkerrordialog.h \
     posapplication.h \
-    gui/dialogs/loginsettingsdialog.h \
+    #gui/dialogs/loginsettingsdialog.h \
     possettings.h \
-    gui/tabs/productstab.h \
+    #gui/tabs/productstab.h \
     models/productsmodel.h \
-    gui/dialogs/producteditdialog.h \
+    #gui/dialogs/producteditdialog.h \
     utils.h \
     models/accountsmodel.h
 
 FORMS += \
-    gui/dialogs/checkablelistdialog.ui \
-    gui/dialogs/orderdialog.ui \
-    gui/dialogs/receiptdialog.ui \
-    gui/tabs/accountingtab.ui \
-    gui/tabs/orderstab.ui \
-        mainwindow.ui \
-    gui/dialogs/adduserdialog.ui \
-    gui/dialogs/logindialog.ui \
-    gui/dialogs/makepaymentdialog.ui \
-    gui/tabs/cashiertab.ui \
-    gui/tabs/debugtab.ui \
-    gui/tabs/itemstab.ui \
-    gui/tabs/userstab.ui \
-    gui/dialogs/loginsettingsdialog.ui \
-    gui/tabs/productstab.ui \
-    gui/dialogs/producteditdialog.ui
+    #gui/dialogs/checkablelistdialog.ui \
+    #gui/dialogs/orderdialog.ui \
+    #gui/dialogs/receiptdialog.ui \
+    #gui/tabs/accountingtab.ui \
+    #gui/tabs/orderstab.ui \
+    #    mainwindow.ui \
+    #gui/dialogs/adduserdialog.ui \
+    #gui/dialogs/logindialog.ui \
+    #gui/dialogs/makepaymentdialog.ui \
+    #gui/tabs/cashiertab.ui \
+    #gui/tabs/debugtab.ui \
+    #gui/tabs/itemstab.ui \
+    #gui/tabs/userstab.ui \
+    #gui/dialogs/loginsettingsdialog.ui \
+    #gui/tabs/productstab.ui \
+    #gui/dialogs/producteditdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

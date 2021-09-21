@@ -15,15 +15,29 @@
         <file>pages/cashier/CashierPage.qml</file>
         <file>pages/cashier/Numpad.qml</file>
         <file>pages/cashier/NumpadButton.qml</file>
-        <file>pages/products/AddProductPage.qml</file>
+        <file>pages/products/ProductAddDialog.qml</file>
         <file>pages/categories/CategoriesPage.qml</file>
-        <file>pages/cashier/CurrencyDelegate.qml</file>
         <file>pages/cashier/PayDialog.qml</file>
         <file>pages/cashier/ReceiptDialog.qml</file>
         <file>numpad_beep.mp3</file>
         <file>numpad_beep.wav</file>
         <file>cashier_regiser_beep.wav</file>
-        <file>pages/categories/AddCategoryPage.qml</file>
+        <file>pages/categories/AddCategoryDialog.qml</file>
         <file>pages/products/PurchaseStockDialog.qml</file>
+        <file>pages/vendors/AddVendorDialog.qml</file>
+        <file>pages/vendors/VendorsPage.qml</file>
+        <file>pages/vendors/VendorsBillsPage.qml</file>
+        <file>pages/vendors/StatusDelegate.qml</file>
+        <file>common/CurrencyDelegate.qml</file>
+        <file>pages/vendors/PayBillDialog.qml</file>
+        <file>pages/Accounting/AccountsPage.qml</file>
+        <file>pages/customers/AddCustomerDialog.qml</file>
+        <file>pages/customers/CustomersBillsPage.qml</file>
+        <file>pages/customers/CustomersPage.qml</file>
+        <file>pages/customers/PayBillDialog.qml</file>
+        <file>pages/customers/StatusDelegate.qml</file>
+        <file>pages/Accounting/DepositMoneyDialog.qml</file>
+        <file>pages/Accounting/InternalTypeDelegate.qml</file>
+        <file>pages/Accounting/TypeDeleagate.qml</file>
     </qresource>
 </RCC>
