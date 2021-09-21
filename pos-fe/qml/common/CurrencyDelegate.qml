@@ -6,12 +6,13 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 CTableViewDelegate {
+    id: control
     contentItem: Text {
         anchors.centerIn: parent
-        text: Utils.formatNumber(model.display) + " IQD"
+        text: model.display ? Utils.formatNumber(model.display) + " IQD" : "N.A"
         horizontalAlignment: TextEdit.AlignHCenter
         verticalAlignment: TextEdit.AlignVCenter
-        color: "#4F5D73"
+        color: control.textColor
 
     }
 }
