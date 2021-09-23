@@ -10,6 +10,7 @@ public:
     QUrl serverUrl() const;
     void setServerUrl(const QUrl &url);
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
+    static QString hwID();
 };
 
 #endif // POSSETTINGS_H

@@ -25,3 +25,11 @@ void PosSettings::setServerUrl(const QString &host, const uint port, const bool 
 
     setServerUrl(url);
 }
+QString PosSettings::hwID()
+{
+#ifdef Q_OS_ANDROID
+    return QStringLiteral("galaxytabs2");
+#else
+    return QSysInfo::machineUniqueId();
+#endif
+}
