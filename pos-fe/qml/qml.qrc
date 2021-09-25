@@ -39,5 +39,7 @@
         <file>pages/Accounting/DepositMoneyDialog.qml</file>
         <file>pages/Accounting/InternalTypeDelegate.qml</file>
         <file>pages/Accounting/TypeDeleagate.qml</file>
+        <file>pages/pos/session/SessionsPage.qml</file>
+        <file>pages/pos/session/SessionCard.qml</file>
     </qresource>
 </RCC>

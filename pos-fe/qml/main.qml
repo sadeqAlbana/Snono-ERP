@@ -26,13 +26,13 @@ ApplicationWindow {
     Connections{
         target: NetworkManager
 
-//        function onNetworkActivity(url){
-//            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
-//                busySpinner.open();
-//        }
-//        function onFinishedNetworkActivity(url){
-//            busySpinner.close();
-//        }
+        function onNetworkActivity(url){
+            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
+                busySpinner.open();
+        }
+        function onFinishedNetworkActivity(url){
+            busySpinner.close();
+        }
 
         function onNetworkError(title,text){
             console.log(title + " " + text)
