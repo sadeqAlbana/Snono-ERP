@@ -16,6 +16,8 @@
 #include "models/vendorsbillsmodel.h"
 #include "models/accountsmodel.h"
 #include "models/customersmodel.h"
+#include "models/possessionsmodel.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -49,6 +51,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<VendorsModel>("app.models", 1, 0, "VendorsModel");
     qmlRegisterType<VendorsBillsModel>("app.models", 1, 0, "VendorsBillsModel");
     qmlRegisterType<CustomersModel>("app.models", 1, 0, "CustomersModel");
+    qmlRegisterType<PosSessionsModel>("app.models", 1, 0, "PosSessionsModel");
 
 
 

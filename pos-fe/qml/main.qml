@@ -13,6 +13,17 @@ ApplicationWindow {
     height: 480
     title: qsTr("POS")
     visibility: Window.Maximized
+    property real activityCount : 0
+
+    onActivityCountChanged:{
+        //console.log(activityCount)
+        if(activityCount>0){
+            busySpinner.open();
+        }else{
+            busySpinner.close();
+        }
+
+    }
 
     id: mainWindow
 
@@ -25,14 +36,18 @@ ApplicationWindow {
 
     Connections{
         target: NetworkManager
-
         function onNetworkActivity(url){
-            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
-                busySpinner.open();
+            activityCount++;
+//            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
+//                busySpinner.open();
         }
         function onFinishedNetworkActivity(url){
-            busySpinner.close();
+            if(activityCount>0)
+                activityCount--;
+
+            //busySpinner.close();
         }
+
 
         function onNetworkError(title,text){
             console.log(title + " " + text)

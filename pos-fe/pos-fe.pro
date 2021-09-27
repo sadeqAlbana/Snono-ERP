@@ -59,6 +59,7 @@ SOURCES += \
     models/jsonModel/treeproxymodel.cpp \
     models/orderitemsmodel.cpp \
     models/ordersmodel.cpp \
+    models/possessionsmodel.cpp \
     models/taxescheckablemodel.cpp \
     models/usersmodel.cpp \
     models/vendorsbillsmodel.cpp \
@@ -105,6 +106,7 @@ HEADERS += \
     models/jsonModel/treeproxymodel.h \
     models/orderitemsmodel.h \
     models/ordersmodel.h \
+    models/possessionsmodel.h \
     models/taxescheckablemodel.h \
     models/usersmodel.h \
     models/vendorsbillsmodel.h \

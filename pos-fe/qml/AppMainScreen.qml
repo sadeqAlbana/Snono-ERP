@@ -108,7 +108,7 @@ Item {
                         stackView.replace(item.path)
             }
             Component.onCompleted: {
-                listView.currentIndex=0
+                //listView.currentIndex=1
             }
 
             property real delegateHeight: 0
@@ -415,6 +415,7 @@ Item {
             id: baseLoader
             anchors.fill: parent
             anchors.margins: 30
+            clip:true
             //initialItem: "qrc:/pages/orders/OrdersPage.qml"
             //source: listModel.get(listView.currentIndex).path; //change this later
 
