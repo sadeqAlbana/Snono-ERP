@@ -107,19 +107,21 @@ Popup{
                 } //slot end
             }
 
-            function addProduct(){
-                var name=nameTF.input.text;
-                var type=typeCB.comboBox.currentValue;
-                var cost=costTF.input.text;
-                var listPrice=listPriceTF.input.text;
-                var description=descriptionTF.input.text
-                var barcode=barcodeTF.input.text;
-                var categoryId=categoryCB.comboBox.currentValue;
-                var taxes=taxesModel.selectedIds();
 
-                model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
 
-            }
+        }
+
+        function addProduct(){
+            var name=nameTF.input.text;
+            var type=typeCB.comboBox.currentValue;
+            var cost=costTF.input.text;
+            var listPrice=listPriceTF.input.text;
+            var description=descriptionTF.input.text
+            var barcode=barcodeTF.input.text;
+            var categoryId=categoryCB.comboBox.currentValue;
+            var taxes=taxesModel.selectedIds();
+
+            //model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
 
         }
 
