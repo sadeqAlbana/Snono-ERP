@@ -22,13 +22,9 @@ Page{
         color: "transparent"
     }
 
-    //        anchors.margins: 25
-
-
+    property int sessionId : -1
 
     RowLayout{
-
-        //clip: true
         anchors.fill: parent;
         anchors.margins: 20
 
@@ -87,9 +83,9 @@ Page{
 
 
                 enabled: tableView.selectedRow>=0
-//                Layout.fillHeight: true
+                //                Layout.fillHeight: true
                 Layout.fillWidth: true
-//                Layout.maximumHeight: implicitHeight
+                //                Layout.maximumHeight: implicitHeight
                 property bool waitingForDecimal: false
                 property var decimalBtn;
 
@@ -158,7 +154,7 @@ Page{
 
             CTextInput{
                 id: numpadInput
-//                Layout.fillHeight: true
+                //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 onAccepted:{
                     model.addProduct(text);
@@ -194,7 +190,7 @@ Page{
                 id: total
                 readOnly: true
                 text: Utils.formatNumber(model.total) + " IQD";
-//                Layout.fillHeight: true
+                //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 font.pixelSize: 20
                 implicitHeight: 60

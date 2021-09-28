@@ -13,6 +13,8 @@ Card{
     id: rect;
     implicitWidth: 400
     implicitHeight: 250
+    signal close();
+    signal resume();
 
     title: "POS/0001"
 
@@ -54,7 +56,9 @@ Card{
             implicitHeight: 35
             Layout.leftMargin: 25
             Layout.topMargin: 10
-            Layout.bottomMargin: 10        }
+            Layout.bottomMargin: 10
+            onClicked: resume();
+        }
 
         CButton{
             text: qsTr("Close")
@@ -63,6 +67,7 @@ Card{
             implicitHeight: 35
             Layout.topMargin: 10
             Layout.bottomMargin: 10
+            onClicked: close();
 
         }
 

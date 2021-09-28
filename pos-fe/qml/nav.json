@@ -10,7 +10,7 @@
       }
    },
    {
-      "title":"Cashier",
+      "title":"POS",
       "category":"MAIN",
       "image":"qrc:/assets/icons/coreui/free/cil-cash.svg",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
@@ -100,7 +100,7 @@
          },
          {
             "title":"Profits",
-            "path":"qrc:/pages/categories/AddCategoryPage.qml"
+            "path":""
          }
       ]
    }

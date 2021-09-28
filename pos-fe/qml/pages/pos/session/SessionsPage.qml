@@ -35,6 +35,15 @@ ScrollView{
             onNewSessionResponse: {
                 var sessionId=reply.pos_session.id;
             }
+            onCloseSessionResponse: {
+                if(reply.status==200){
+                    toastrService.push("Success",reply.message,"success",2000)
+                    sessionsModel.requestData();
+                }else{
+                    toastrService.push("Error",reply.message,"error",2000)
+
+                }
+            }
         }
 
 
@@ -57,8 +66,11 @@ ScrollView{
             id:repeater
             SessionCard{
             Layout.fillWidth: true
-            ordersCount: sessionsModel.data(model.row,"pos_orders").length
-            totalAmount: sessionsModel.total? Utils.formatNumber(sessionsModel.total) : Utils.formatNumber(0.0)
+            ordersCount: sessionsModel.data(model.row,"pos_orders") ? sessionsModel.data(model.row,"pos_orders").length : 0
+            totalAmount: model.total? Utils.formatNumber(model.total) : Utils.formatNumber(0.0)
+            onClose: {
+                sessionsModel.closeSession(model.id)
+            }
             }
         }
     }

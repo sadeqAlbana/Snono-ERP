@@ -10,7 +10,8 @@ import QtGraphicalEffects 1.0
 import app.models 1.0
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
-
+import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
 Card{
 
     title: qsTr("Products")
@@ -58,6 +59,14 @@ Card{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+
+
+            }
 
             actions: [
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},

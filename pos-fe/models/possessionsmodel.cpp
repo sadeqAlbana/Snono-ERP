@@ -18,3 +18,11 @@ void PosSessionsModel::newSession()
         emit newSessionResponse(res->json().toObject());
     });
 }
+
+void PosSessionsModel::closeSession(const int &sessionId)
+{
+    PosNetworkManager::instance()->post("/posssession/close",
+                                        QJsonObject{{"id",sessionId}})->subcribe([this](NetworkResponse *res){
+        emit closeSessionResponse(res->json().toObject());
+    });
+}
