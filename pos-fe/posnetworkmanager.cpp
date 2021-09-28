@@ -18,10 +18,11 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
 {
     emit finishedNetworkActivity(reply->url().toString());
     NetworkResponse *response=new NetworkResponse(reply);
+    qDebug()<<response->json();
     QNetworkReply::NetworkError error=response->error();
     if(error!=QNetworkReply::NoError)
     {
-        if(error==QNetworkReply::InternalServerError){
+        if(error==QNetworkReply::InternalServerError || error==QNetworkReply::ProtocolInvalidOperationError){
             emit networkError("Internal Server Error",
                                      QString("path: '%1'\nMessage: %2").arg(response->url().path()).
                                      arg(response->json("message").toString()));

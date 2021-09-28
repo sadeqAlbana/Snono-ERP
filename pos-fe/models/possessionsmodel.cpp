@@ -26,3 +26,10 @@ void PosSessionsModel::closeSession(const int &sessionId)
         emit closeSessionResponse(res->json().toObject());
     });
 }
+
+void PosSessionsModel::currentSession()
+{
+    PosNetworkManager::instance()->get("/posssession/current")->subcribe([this](NetworkResponse *res){
+        emit currentSessionResponse(res->json().toObject());
+    });
+}

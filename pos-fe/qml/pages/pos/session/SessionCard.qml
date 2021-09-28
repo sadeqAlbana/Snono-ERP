@@ -20,6 +20,7 @@ Card{
 
     property int ordersCount
     property string totalAmount
+    property var session;
 
     GridLayout{
         anchors.fill: parent;

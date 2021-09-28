@@ -17,26 +17,43 @@ import "qrc:/common"
 ScrollView{
     //anchors.margins: 20
     contentWidth: baseLoader.width
+    property string title: "Pos sessions"
 
     //ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-//    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+    //    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
     GridLayout{
         columns: 4
         anchors.fill: parent;
         //anchors.margins: 50
         width: parent.width
 
-        property string title: "Pos sessions"
 
         PosSessionsModel{
             id: sessionsModel
-            Component.onCompleted: repeater.model=sessionsModel
+            Component.onCompleted: currentSession();
 
             onNewSessionResponse: {
-                var sessionId=reply.pos_session.id;
+                initSession(reply.pos_session);
             }
+
+            onCurrentSessionResponse: {
+                console.log(JSON.stringify(reply))
+                if(reply.status===200){ //there is an open session
+                    var session=reply.pos_session;
+                    sessionCard.totalAmount=reply.pos_session.total;
+                    sessionCard.ordersCount=reply.pos_orders?  reply.pos_orders.length : 0
+                    sessionCard.session=session;
+                    sessionCard.visible=true
+
+
+                }else{ //no session opened
+                    //newSessionButton.visible=true
+                    sessionsModel.newSession();
+                }
+            }
+
             onCloseSessionResponse: {
-                if(reply.status==200){
+                if(reply.status===200){
                     toastrService.push("Success",reply.message,"success",2000)
                     sessionsModel.requestData();
                 }else{
@@ -44,10 +61,16 @@ ScrollView{
 
                 }
             }
+            function initSession(session){
+                baseLoader.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": session.id})
+
+            }
         }
 
 
+
         CButton{
+            id: newSessionButton
             radius: width> height ? width : height
             color: "#39f";
             icon.color: "white"
@@ -59,19 +82,25 @@ ScrollView{
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
             onClicked: sessionsModel.newSession();
+            visible: false
 
         }
-
-        Repeater{
-            id:repeater
-            SessionCard{
+        SessionCard{
+            id: sessionCard
+            visible: false
             Layout.fillWidth: true
-            ordersCount: sessionsModel.data(model.row,"pos_orders") ? sessionsModel.data(model.row,"pos_orders").length : 0
-            totalAmount: model.total? Utils.formatNumber(model.total) : Utils.formatNumber(0.0)
+            //ordersCount: sessionsModel.data(model.row,"pos_orders") ? sessionsModel.data(model.row,"pos_orders").length : 0
+            //totalAmount: model.total? Utils.formatNumber(model.total) : Utils.formatNumber(0.0)
             onClose: {
-                sessionsModel.closeSession(model.id)
+                sessionsModel.closeSession(session.id)
+                sessionCard.visible=false
+                newSessionButton.visible=true
             }
+
+            onResume: {
+                sessionsModel.initSession(session.id)
             }
         }
+
     }
 }
