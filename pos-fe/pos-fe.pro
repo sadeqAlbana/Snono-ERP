@@ -159,7 +159,7 @@ else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/
 else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a
 
 RESOURCES += \
-    qrc.qrc \
+    #qrc.qrc \
     qml/qml.qrc
 
 DISTFILES +=

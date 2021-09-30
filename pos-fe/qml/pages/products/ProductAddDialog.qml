@@ -119,9 +119,12 @@ Popup{
             var description=descriptionTF.input.text
             var barcode=barcodeTF.input.text;
             var categoryId=categoryCB.comboBox.currentValue;
-            var taxes=taxesModel.selectedIds();
-
-            //model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
+            var selectedRowIds=taxesModel.selectedIds();
+            var taxes=[];
+            for(var i in selectedRowIds){
+                taxes.push(taxesModel.data(i,"id"));
+            }
+            model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
 
         }
 

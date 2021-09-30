@@ -60,9 +60,13 @@ void ProductsModel::onPurchaseStockReply(NetworkResponse *res)
     emit stockPurchasedReply(res->json().toObject());
 }
 
-void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QJsonArray &taxes)
+void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QList<int> &taxes)
 {
-    qDebug()<<taxes;
+    QJsonArray taxesArray;
+    for(const int &tax : taxes){
+        taxesArray.append(tax);
+    }
+
     QJsonObject params{
         {"name",name},
         {"barcode",barcode},
@@ -70,7 +74,7 @@ void ProductsModel::addProduct(const QString &name, const QString &barcode, cons
         {"cost",cost},
         {"type",typeId},
         {"description",description},
-        {"taxes",taxes},
+        {"taxes",taxesArray},
         {"category_id",categoryId}
     };
 
