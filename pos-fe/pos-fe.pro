@@ -52,8 +52,9 @@ SOURCES += \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
     models/customersmodel.cpp \
+    models/journalentriesitemsmodel.cpp \
+    models/journalentriesmodel.cpp \
     models/jsonModel/checkablelistmodel.cpp \
-    models/journalentryitemsmodel.cpp \
     models/cashiermodel.cpp \
     authmanager.cpp \
     models/jsonModel/treeproxymodel.cpp \
@@ -99,8 +100,9 @@ HEADERS += \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
     models/customersmodel.h \
+    models/journalentriesitemsmodel.h \
+    models/journalentriesmodel.h \
     models/jsonModel/checkablelistmodel.h \
-    models/journalentryitemsmodel.h \
     models/cashiermodel.h \
     authmanager.h \
     models/jsonModel/treeproxymodel.h \

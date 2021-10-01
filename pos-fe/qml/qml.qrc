@@ -41,5 +41,6 @@
         <file>pages/Accounting/TypeDeleagate.qml</file>
         <file>pages/pos/session/SessionsPage.qml</file>
         <file>pages/pos/session/SessionCard.qml</file>
+        <file>pages/Accounting/JournalEntriesItemsPage.qml</file>
     </qresource>
 </RCC>
