@@ -27,7 +27,7 @@
          },
          {
             "title":"Journal Entries",
-            "path":"qrc:/pages/Accounting/AccountsPage.qml"
+            "path":"qrc:/pages/Accounting/JournalEntriesPage.qml"
          },
          {
             "title":"Journal Entries Items",

@@ -16,7 +16,7 @@ import "qrc:/common"
 
 Card{
 
-    title: qsTr("Journal Entries Items")
+    title: qsTr("Journal Entries")
 
     ColumnLayout{
         id: page
@@ -57,7 +57,7 @@ Card{
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
             }
 
-            model: JournalEntriesItemsModel{
+            model: JournalEntriesModel{
                 id: model;
 
 
