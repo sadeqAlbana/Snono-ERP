@@ -66,7 +66,7 @@
       "title":"Taxes",
       "category":"MAIN",
       "image":"qrc:/assets/icons/coreui/free/cil-money.svg",
-      "path":"qrc:/pages/orders/OrdersPage.qml"
+      "path":"qrc:/pages/taxes/TaxesPage.qml"
    },
    {
       "title":"Customers",

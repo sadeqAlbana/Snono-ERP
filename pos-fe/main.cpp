@@ -19,6 +19,8 @@
 #include "models/possessionsmodel.h"
 #include "models/journalentriesitemsmodel.h"
 #include "models/journalentriesmodel.h"
+#include "models/taxesmodel.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -55,6 +57,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<PosSessionsModel>("app.models", 1, 0, "PosSessionsModel");
     qmlRegisterType<JournalEntriesItemsModel>("app.models", 1, 0, "JournalEntriesItemsModel");
     qmlRegisterType<JournalEntriesModel>("app.models", 1, 0, "JournalEntriesModel");
+    qmlRegisterType<TaxesModel>("app.models", 1, 0, "TaxesModel");
 
 
 

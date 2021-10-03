@@ -43,5 +43,7 @@
         <file>pages/pos/session/SessionCard.qml</file>
         <file>pages/Accounting/JournalEntriesItemsPage.qml</file>
         <file>pages/Accounting/JournalEntriesPage.qml</file>
+        <file>pages/taxes/AddTaxPage.qml</file>
+        <file>pages/taxes/TaxesPage.qml</file>
     </qresource>
 </RCC>
