@@ -25,6 +25,8 @@ public:
 
     Q_INVOKABLE void removeProduct(const int &productId);
 
+    Q_INVOKABLE  QVariantMap jsonMap(const int &row);
+
 
 signals:
     void productUpdateReply(QJsonObject reply);

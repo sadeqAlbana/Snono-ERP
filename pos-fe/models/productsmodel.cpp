@@ -11,6 +11,7 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                                                    Column{"list_price","List Price", QString(), "currency"},parent)
 {
     requestData();
+
 }
 
 
@@ -89,4 +90,9 @@ void ProductsModel::removeProduct(const int &productId)
             ->subcribe([this](NetworkResponse *res){
         emit productRemoveReply(res->json().toObject());
     });
+}
+
+QVariantMap ProductsModel::jsonMap(const int &row)
+{
+    return this->jsonObject(row).toVariantMap();
 }

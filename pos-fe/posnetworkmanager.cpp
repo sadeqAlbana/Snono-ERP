@@ -18,7 +18,7 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
 {
     emit finishedNetworkActivity(reply->url().toString());
     NetworkResponse *response=new NetworkResponse(reply);
-    qDebug()<<response->json();
+    //qDebug()<<response->json();
     QNetworkReply::NetworkError error=response->error();
     if(error!=QNetworkReply::NoError)
     {

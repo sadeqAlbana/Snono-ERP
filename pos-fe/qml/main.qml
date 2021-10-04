@@ -38,8 +38,8 @@ ApplicationWindow {
         target: NetworkManager
         function onNetworkActivity(url){
             activityCount++;
-//            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
-//                busySpinner.open();
+            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
+                busySpinner.open();
         }
         function onFinishedNetworkActivity(url){
             if(activityCount>0)

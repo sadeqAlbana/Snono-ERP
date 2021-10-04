@@ -60,7 +60,7 @@ Card{
             delegate: DelegateChooser{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+                DelegateChoice{ roleValue: "taxType"; TaxTypeDelegate{}}
 
 
             }

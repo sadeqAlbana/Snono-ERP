@@ -53,6 +53,15 @@ Card{
 
         }
 
+        ProductEditDialog{
+            id: editDlg
+
+            onAccepted: {
+                model.updateProduct(editDlg.product)
+            }
+
+        }
+
 
 
         CTableView{
@@ -71,7 +80,7 @@ Card{
             actions: [
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
                 Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
-                Action{ text: qsTr("Update"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()},
+                Action{ text: qsTr("Edit"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openEditDialog()},
                 Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
             ]
 
@@ -79,6 +88,15 @@ Card{
             function openPurchaseDialog(){
                 purchaseDialog.product=model.jsonObject(tableView.selectedRow);
                 purchaseDialog.open();
+
+            }
+            function openEditDialog(){
+                editDlg.product=model.jsonObject(tableView.selectedRow);
+                editDlg.open();
+
+            }
+
+            function updateProduct(product){
 
             }
 
@@ -100,8 +118,20 @@ Card{
 
 
 
+
+
             model: ProductsModel{
                 id: model
+
+                onProductUpdateReply: {
+                    if(reply.status===200){
+                        toastrService.push("Success",reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push("Error",reply.message,"error",2000)
+                    }
+                } //slot end
 
                 onProductRemoveReply: {
                     if(reply.status===200){

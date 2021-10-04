@@ -4,6 +4,7 @@ import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/buttons"
+import "qrc:/screens/Utils.js" as Utils
 
 
 import QtQuick.Layouts 1.12
@@ -48,7 +49,7 @@ Popup{
             anchors.margins: 10
             CTextFieldGroup{id: quantity; label.text: qsTr("Quantity");    input.text:"1"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
 
-            CTextFieldGroup{id: total;    label.text: qsTr("Total"); input.text: product ? parseInt(quantity.input.text)*product.cost : "0";      input.readOnly: true; }
+            CTextFieldGroup{id: total;    label.text: qsTr("Total"); input.text: product ? Utils.formatNumber(parseInt(quantity.input.text)*product.cost) + " IQD" : "0 IQD";      input.readOnly: true; }
 
             CComboBoxGroup{
                 id: vendorsCB
