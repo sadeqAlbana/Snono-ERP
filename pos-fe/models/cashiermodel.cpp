@@ -188,8 +188,9 @@ void CashierModel::requestCart()
 
 void CashierModel::onRequestCartResponse(NetworkResponse *res)
 {
-    setReference(res->json("reference").toString());
-    setCartData(res->json().toObject());
+    QJsonObject cartData=res->json("cart").toObject();
+    setReference(cartData.value("reference").toString());
+    setCartData(cartData);
 }
 
 void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
