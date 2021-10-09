@@ -2,13 +2,13 @@
 #include "networkresponse.h"
 #include <QJsonArray>
 #include <posnetworkmanager.h>
-ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",ColumnList() <<
-                                                                                                   Column{"id","ID"} <<
-                                                                                                   Column{"name","Name"} <<
-                                                                                                   Column{"barcode","Barcode"} <<
-                                                                                                   Column{"cost","Cost",QString(), "currency"} <<
-                                                                                                   Column{"qty","Stock","products_stocks"} <<
-                                                                                                   Column{"list_price","List Price", QString(), "currency"},parent)
+ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
+                                                                       Column{"id","ID"} ,
+                                                                       Column{"name","Name"} ,
+                                                                       Column{"barcode","Barcode"} ,
+                                                                       Column{"cost","Cost",QString(), "currency"} ,
+                                                                       Column{"qty","Stock","products_stocks"} ,
+                                                                       Column{"list_price","List Price", QString(), "currency"}},parent)
 {
     requestData();
 

@@ -1,15 +1,15 @@
 #include "vendorsbillsmodel.h"
 #include "posnetworkmanager.h"
 #include <QJsonObject>
-VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",ColumnList() <<
-                                                                                             Column{"id","ID"} <<
-                                                                                             Column{"name"," Name"} <<
-                                                                                             Column{"reference","Reference"} <<
-                                                                                             Column{"external_reference","External Reference"} <<
-                                                                                             Column{"date","Date"} <<
-                                                                                             Column{"due_date","Due Date"} <<
-                                                                                             Column{"amount_total","Amount","journal_entries","currency"} <<
-                                                                                             Column{"status","Status",QString(),"status"}
+VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
+                                                                                             Column{"id","ID"} ,
+                                                                                             Column{"name"," Name"} ,
+                                                                                             Column{"reference","Reference"} ,
+                                                                                             Column{"external_reference","External Reference"} ,
+                                                                                             Column{"date","Date"} ,
+                                                                                             Column{"due_date","Due Date"} ,
+                                                                                             Column{"amount_total","Amount","journal_entries","currency"} ,
+                                                                                             Column{"status","Status",QString(),"status"}}
                                                                                                                ,parent)
 {
     requestData();

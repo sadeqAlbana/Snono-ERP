@@ -1,13 +1,20 @@
 #include "categoriesmodel.h"
 #include "posnetworkmanager.h"
-CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/categories",
-                                                                          ColumnList()
-                                                                          << Column("id","ID")
-                                                                          << Column("name","Name")
-                                                                          << Column("parent_id","Parent"),
+
+
+CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/categories",{
+                                                                          Column{"id","ID"},
+                                                                          Column{"name","Name"},
+                                                                          Column{"parent_id","Parent"}},
                                                                           parent)
 {
     requestData();
+
+    QList<int> test{1,2,3};
+
+    QList<QJsonObject>{QJsonObject()};
+
+    QStringList{"test","test"};
 }
 
 

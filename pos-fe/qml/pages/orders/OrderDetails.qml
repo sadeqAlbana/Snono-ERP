@@ -38,7 +38,7 @@ Popup{
         title: qsTr("Order Details")
 
          CTableView{
-
+            rowHeightProvider: 10
             anchors.fill: parent;
 
             model : OrderItemsModel{
