@@ -14,6 +14,21 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
 
 }
 
+void ProductsModel::updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
+{
+    QJsonObject params{
+        {"id",productId},
+        {"name",name},
+        {"list_price",listPrice},
+        {"cost",cost},
+        {"description",description},
+        {"category_id",categoryId},
+        {"taxes",taxes}
+    };
+    PosNetworkManager::instance()->post("/products/update",params)->subcribe(this,&ProductsModel::onUpdateProductReply);
+
+}
+
 
 
 

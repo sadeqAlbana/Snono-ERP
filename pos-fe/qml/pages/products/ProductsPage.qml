@@ -58,6 +58,8 @@ Card{
 
             onAccepted: {
                 model.updateProduct(editDlg.product)
+                editDlg.close();
+                model.requestData();
             }
 
         }

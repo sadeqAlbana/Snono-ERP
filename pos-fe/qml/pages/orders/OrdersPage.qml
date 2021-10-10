@@ -10,8 +10,10 @@ import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
 
 import app.models 1.0
-
+import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
+import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
 
 Card{
 
@@ -20,37 +22,35 @@ Card{
     ColumnLayout{
         id: page
 
-        //clip: true
         anchors.fill: parent;
-        //anchors.margins: 20
+        anchors.margins: 20
         RowLayout{
-            //Layout.fillWidth: true
-            //Layout.fillHeight: true
-            Layout.leftMargin: 20
-            Layout.rightMargin: 20
             spacing: 15
 
-            Rectangle{
-                Layout.fillWidth: true
-                //Layout.fillHeight: true
-                color: "transparent"
+
+
+            CMenuBar{
+                CMenu{
+                    title: qsTr("Actions");
+                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    actions: tableView.actions
+                }
             }
 
-            Label{
-                text: qsTr("Search")
-                font.pixelSize: 18
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            }
+                Rectangle{
+                    Layout.fillWidth: true
+                    color: "transparent"
+                }
 
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                //                onTextChanged: {
-                //                    ActivitiesModel.setFilter("reference like '"+text+"%'");
-                //                }
-            }
+
+                CTextField{
+                    Layout.preferredHeight: 50
+                    Layout.preferredWidth: 300
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    font.pixelSize: 18
+                    placeholderText: qsTr("Search...")
+                    rightDelegate : CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-search.svg"}
+                }
 
 
         }
@@ -60,6 +60,12 @@ Card{
             Layout.fillWidth: true
             model: OrdersModel{
                 id: model
+            }
+
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
             }
 
             actions: [

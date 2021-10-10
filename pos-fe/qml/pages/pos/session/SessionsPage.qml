@@ -37,7 +37,7 @@ ScrollView{
             }
 
             onCurrentSessionResponse: {
-                console.log(JSON.stringify(reply))
+                //console.log(JSON.stringify(reply))
                 if(reply.status===200){ //there is an open session
                     var session=reply.pos_session;
                     sessionCard.totalAmount=reply.pos_session.total;

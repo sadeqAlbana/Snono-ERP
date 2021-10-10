@@ -61,6 +61,9 @@ Popup{
                 id: typeCB;
                 Layout.fillWidth: true
                 label.text: "Product Type"
+                comboBox.valueRole: "value"
+                comboBox.textRole: "modelData"
+
                 comboBox.model: ListModel {
                     ListElement { modelData: qsTr("Storable Product");   value: 1;}
                     ListElement { modelData: qsTr("Consumable Product"); value: 2;}

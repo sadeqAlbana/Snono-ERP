@@ -17,7 +17,7 @@ CashierModel::CashierModel(QObject *parent)
                          Column{"subtotal","Subtotal",QString(),"currency"} ,
                          Column{"total","Total",QString(),"currency"}},parent)
 {
-    setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
+    //setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
     requestCart();
     //requestData();
 
@@ -68,7 +68,7 @@ bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int 
 
 void CashierModel::onDataChange(NetworkResponse *res)
 {
-    if(res->json("status").toBool()==true)
+    if(res->json("status").toInt()==200)
         refresh();
     else{
         MessageService::warning("Error",res->json("message").toString());
@@ -107,7 +107,7 @@ QJsonObject CashierModel::cartData() const
 void CashierModel::setCartData(const QJsonObject &cartData)
 {
     _cartData = cartData;
-    //qDebug(),cartData;
+    //qDebug()<<cartData;
     setupData(cartData["products"].toArray());
 }
 
@@ -147,7 +147,7 @@ void CashierModel::addProduct(const QString &barcode)
 void CashierModel::onAddProductReply(NetworkResponse *res)
 {
     emit addProductReply(res->json().toObject());
-    if(res->json("status").toBool()==true)
+    if(res->json("status").toInt()==200)
         refresh();
 }
 
@@ -159,7 +159,7 @@ void CashierModel::removeProduct(const int &index)
 
 void CashierModel::onRemoveProductReply(NetworkResponse *res)
 {
-    if(res->json("status").toBool()==true){
+    if(res->json("status").toInt()==200){
         refresh();
     }else{
 

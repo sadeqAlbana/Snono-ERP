@@ -5,6 +5,10 @@ import "qrc:/CoreUI/components/tables"
 
 import QtQuick.Layouts 1.12
 import app.models 1.0
+
+import "qrc:/screens/Utils.js" as Utils
+import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
 Popup{
     id: orderDetails
 
@@ -38,8 +42,13 @@ Popup{
         title: qsTr("Order Details")
 
          CTableView{
-            rowHeightProvider: 10
+            rowHeightProvider: function(row){return 40}
             anchors.fill: parent;
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+            }
 
             model : OrderItemsModel{
                 Component.onCompleted: {

@@ -63,8 +63,6 @@ Card{
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
-
-
             }
 
             model: AccountsModel{
