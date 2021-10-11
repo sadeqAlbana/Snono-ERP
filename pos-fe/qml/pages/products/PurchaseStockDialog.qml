@@ -43,7 +43,7 @@ Popup{
         width: 700
         height: 500
         anchors.centerIn: parent;
-        title: qsTr("Order Details")
+        title: qsTr("Purchase Stock")
         ColumnLayout{
             anchors.fill: parent;
             anchors.margins: 10
