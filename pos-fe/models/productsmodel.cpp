@@ -7,6 +7,8 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        Column{"name","Name"} ,
                                                                        Column{"barcode","Barcode"} ,
                                                                        Column{"cost","Cost",QString(), "currency"} ,
+                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
+
                                                                        Column{"qty","Stock","products_stocks"} ,
                                                                        Column{"list_price","List Price", QString(), "currency"}},parent)
 {
