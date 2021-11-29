@@ -60,7 +60,17 @@
       "title":"Orders",
       "category":"MAIN",
       "image":"qrc:/assets/icons/coreui/free/cil-pen.svg",
-      "path":"qrc:/pages/orders/OrdersPage.qml"
+      "path": "",
+      "childItems":[
+         {
+            "title":"List",
+            "path":"qrc:/pages/orders/OrdersPage.qml"
+         },
+         {
+            "title":"Returns",
+            "path":"qrc:/pages/categories/CategoriesPage.qml"
+         }
+      ]
    },
    {
       "title":"Taxes",

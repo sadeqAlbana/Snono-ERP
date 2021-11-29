@@ -47,5 +47,6 @@
         <file>pages/taxes/TaxesPage.qml</file>
         <file>pages/taxes/TaxTypeDelegate.qml</file>
         <file>pages/products/ProductEditDialog.qml</file>
+        <file>pages/dashboard/DashboardPage.qml</file>
     </qresource>
 </RCC>

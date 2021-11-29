@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QLocale>
 #include <QTextDocument>
-#include <QPrinter>
+//#include <QPrinter>
 #include <QFile>
 #include "messageservice.h"
 #include  "posnetworkmanager.h"

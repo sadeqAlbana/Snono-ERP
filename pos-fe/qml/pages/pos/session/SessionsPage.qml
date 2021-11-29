@@ -34,6 +34,7 @@ ScrollView{
 
             onNewSessionResponse: {
                 initSession(reply.pos_session);
+
             }
 
             onCurrentSessionResponse: {
@@ -47,8 +48,9 @@ ScrollView{
 
 
                 }else{ //no session opened
-                    //newSessionButton.visible=true
-                    sessionsModel.newSession();
+                    newSessionButton.visible=true
+                    sessionCard.visible=false;
+                    //sessionsModel.newSession();
                 }
             }
 
