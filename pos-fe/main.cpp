@@ -31,9 +31,6 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
-    //a.setStyle("Breeze");
-
-
 
 //   QGuiApplication a(argc, argv);
     QQmlApplicationEngine engine;
