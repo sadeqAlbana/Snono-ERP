@@ -20,7 +20,7 @@
 #include "models/journalentriesitemsmodel.h"
 #include "models/journalentriesmodel.h"
 #include "models/taxesmodel.h"
-
+#include "models/receiptmodel.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<JournalEntriesItemsModel>("app.models", 1, 0, "JournalEntriesItemsModel");
     qmlRegisterType<JournalEntriesModel>("app.models", 1, 0, "JournalEntriesModel");
     qmlRegisterType<TaxesModel>("app.models", 1, 0, "TaxesModel");
+    qmlRegisterType<ReceiptModel>("app.models", 1, 0, "ReceiptModel");
 
 
 

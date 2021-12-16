@@ -1,6 +1,7 @@
 #include "treeproxymodel.h"
 #include "../categoriesmodel.h"
 #include <QTimer>
+#include <QDebug>
 TreeProxyModel::TreeProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
 {

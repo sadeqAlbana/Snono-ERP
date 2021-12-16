@@ -6,7 +6,7 @@ import "qrc:/CoreUI/components"
 import "qrc:/screens"
 import "qrc:/pages"
 import "qrc:/common"
-import QtMultimedia 5.15
+import QtMultimedia 5.12
 ApplicationWindow {
     visible: true
     width: 640

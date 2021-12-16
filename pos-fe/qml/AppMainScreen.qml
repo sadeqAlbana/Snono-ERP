@@ -108,7 +108,7 @@ Item {
                         stackView.replace(item.path)
             }
             Component.onCompleted: {
-                //listView.currentIndex=1
+                //listView.currentIndex=1                
             }
 
             property real delegateHeight: 0
@@ -376,6 +376,15 @@ Item {
             model: ListModel{
                 id: listModel;
                 dynamicRoles: false
+
+                function indexOf(title){
+                    for(var i=0; i<listModel.count; i++){
+                        var item=this.get(i);
+                        if(item.title===title)
+                            return i
+                    }
+                    return -1;
+                }
             }
 
             section.property: "category"
@@ -457,7 +466,11 @@ Item {
         //listView.currentIndex=listModel.indexOf("activities");
         //listView.currentIndex=2
 
-        stackView.replace(listModel.get(listView.currentIndex).path)
+
+
+        //stackView.replace(listModel.get(listView.currentIndex).path)
+
+
 
     }
 
@@ -472,6 +485,7 @@ Item {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
+                listView.currentIndex=listModel.indexOf("Receipt");
             }
         };
         xhr.send();

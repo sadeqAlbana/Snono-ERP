@@ -2,7 +2,7 @@
 #define CHECKABLELISTMODEL_H
 
 #include "../appnetworkedjsonmodel.h"
-
+#include <QSet>
 class CheckableListModel : public AppNetworkedJsonModel
 {
     Q_OBJECT

@@ -121,5 +121,17 @@
             "path":""
          }
       ]
+   },
+   {
+      "title":"Settings",
+      "category":"MAIN",
+      "image":"qrc:/assets/icons/coreui/free/cil-pen.svg",
+      "path":"",
+      "childItems":[
+         {
+            "title":"Receipt",
+            "path":"qrc:/pages/ReceiptPage.qml"
+         }
+      ]
    }
 ]

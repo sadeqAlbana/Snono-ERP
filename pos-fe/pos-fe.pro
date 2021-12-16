@@ -61,6 +61,7 @@ SOURCES += \
     models/orderitemsmodel.cpp \
     models/ordersmodel.cpp \
     models/possessionsmodel.cpp \
+    models/receiptmodel.cpp \
     models/taxescheckablemodel.cpp \
     models/taxesmodel.cpp \
     models/usersmodel.cpp \
@@ -110,6 +111,7 @@ HEADERS += \
     models/orderitemsmodel.h \
     models/ordersmodel.h \
     models/possessionsmodel.h \
+    models/receiptmodel.h \
     models/taxescheckablemodel.h \
     models/taxesmodel.h \
     models/usersmodel.h \
