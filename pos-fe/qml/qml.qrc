@@ -49,5 +49,6 @@
         <file>pages/products/ProductEditDialog.qml</file>
         <file>pages/dashboard/DashboardPage.qml</file>
         <file>pages/ReceiptPage.qml</file>
+        <file>../icons/SheinIQ.png</file>
     </qresource>
 </RCC>

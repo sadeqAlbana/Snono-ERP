@@ -13,12 +13,13 @@ import QtGraphicalEffects 1.0
 import app.models 1.0
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
+//https://stackoverflow.com/questions/17146747/capture-qml-drawing-buffer-without-displaying
 
 Card{
     title: qsTr("Receipt")
 
 
-     Rectangle{
+    Rectangle{
         id: receipt
         property string date: "2021-12-15"
         property string customer: "Sadeq"
@@ -31,78 +32,151 @@ Card{
         anchors.fill: parent;
         anchors.margins: 10
 
+        property var model : ReceiptModel{
+            Component.onCompleted: requestData();
+        }
+
         ColumnLayout{
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.right: logo.left
+            anchors.right: img.left
             anchors.leftMargin: 20
             anchors.topMargin: 30
 
-            Text {
-                id: referenceTxt
-                text: "Reference: " + receipt.reference
-                font.pixelSize: receipt.fontSize;
-                wrapMode: Text.WordWrap
-            }
-
-            Text {
-                id: dateTxt
-                text: "Date: " + receipt.date
-                font.pixelSize: receipt.fontSize;
-                horizontalAlignment: Text.AlignLeft
-                wrapMode: Text.WordWrap
-            }
             spacing: 10
 
             Text {
                 id: customerTxt
-                text: "Customer: " + receipt.customer
+                text: "Customer: " + receipt.model.customer
                 font.pixelSize: receipt.fontSize;
                 wrapMode: Text.WordWrap
             }
 
             Text {
                 id: phoneTxt
-                text: "Phone: " + receipt.phone
+                text: "Phone: " + receipt.model.phone
                 font.pixelSize: receipt.fontSize;
                 wrapMode: Text.WordWrap
             }
             Text {
                 id: addressTxt
-                text: "Address: " + receipt.address
+                text: "Address: " + receipt.model.address
                 font.pixelSize: receipt.fontSize;
                 wrapMode: Text.WordWrap
             }
         }
 
 
+        ColumnLayout{
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.left: img.right
+            anchors.rightMargin: 20
+            anchors.topMargin: 30
+
+            Text {
+                id: dateTxt
+                text: "Date: " + receipt.model.date
+                font.pixelSize: receipt.fontSize;
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
+
+                wrapMode: Text.WordWrap
+
+            }
+
+            Text {
+                id: referenceTxt
+                text: "Reference: " + receipt.model.reference
+                font.pixelSize: receipt.fontSize;
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
+                wrapMode: Text.WordWrap
+            }
+
+
+            spacing: 10
+
+        }
+
         Image{
-            id: logo;
+            id: img;
             anchors.horizontalCenter: parent.horizontalCenter;
             anchors.top: parent.top
             anchors.topMargin: 20
-            source: "file:///home/sadeq/Downloads/SheinIQ.png"
-            width: 300
+            property bool rounded: true
+            property bool adapt: true
+            source: "qrc:/../icons/SheinIQ.png"
+            width: 200
             fillMode: Image.PreserveAspectFit
+            layer.enabled: rounded
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: img.width
+                    height: img.height
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: img.adapt ? img.width : Math.min(img.width, img.height)
+                        height: img.adapt ? img.height : width
+                        radius: Math.min(width, height)
+                    }
+                }
+            }
+
         }
 
         CTableView{
             id: items;
 
-            anchors.top: logo.bottom
+            anchors.top: img.bottom
             anchors.topMargin: 40
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.leftMargin: 30
-            anchors.rightMargin: 30
+            anchors.leftMargin: 20
+            anchors.rightMargin: 20
+            //anchors.bottom: parent.bottom
+            height: implicitHeight
+            anchors.bottomMargin: 200
 
-            model: ReceiptModel{
+            model: receipt.model;
 
+            delegate: DelegateChooser{
+                role: "delegateType"
+                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
             }
 
         }
 
-    }
+
+        ColumnLayout{
+            anchors.top: items.bottom
+            anchors.right: parent.right
+            anchors.rightMargin: 20
+            anchors.topMargin: 30
+
+            Text {
+                id: subtotalTxt
+                text: "Tax: " + Utils.formatCurrency(receipt.model.taxAmount)
+                font.pixelSize: receipt.fontSize;
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WordWrap
+            }
+
+            Text {
+                id: totalTxt
+                text: "Total: " + Utils.formatCurrency(receipt.model.total)
+                font.pixelSize: receipt.fontSize;
+                horizontalAlignment: Text.AlignLeft
+                wrapMode: Text.WordWrap
+            }
+            spacing: 10
+
+
+
+        }
+
+    } //receipt end
 
 
 }

@@ -1,12 +1,12 @@
 #include "receiptmodel.h"
 #include "posnetworkmanager.h"
-ReceiptModel::ReceiptModel(const int &orderId,QObject *parent) : AppNetworkedJsonModel ("/order",{
-                                                                     Column{"id","ID"} ,
-                                                                     Column{"name","Name"} ,
-                                                                     Column{"type","Type",QString(),"taxType"} ,
-                                                                     Column{"value","Value"} ,
-                                                                     Column{"account_id","Account ID"}
-                                                                     },parent),m_orderId(orderId)
+ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
+                                                                     Column{"name","Description","products"} ,
+                                                                     Column{"unit_price","Price",QString(),"currency"} ,
+                                                                     Column{"qty","Qty"} ,
+                                                                     Column{"subtotal","Subtotal",QString(),"currency"},
+                                                                     Column{"total","Total",QString(),"currency"}
+                                                                     },parent),m_orderId(2)
 {
 
 }
@@ -21,7 +21,58 @@ void ReceiptModel::requestData()
 void ReceiptModel::onTableRecieved(NetworkResponse *reply)
 {
     //setCartData(reply->json().toObject()["cart"].toObject());
+    m_orderData=reply->json("order").toObject();
+    setupData(reply->json("order").toObject()["pos_order_items"].toArray());
+    qDebug()<<reply->json("order").toObject();
+    emit dataReceived();
+    emit totalChanged(total());
+    emit taxAmountChanged(taxAmount());
+    emit referenceChanged(reference());
+    emit customerChanged(customer());
+    emit addressChanged(address());
+    emit phoneChanged(phone());
+    emit dateChanged(date());
 
-    emit dataRecevied();
+
     //emit totalChanged(cartData()["order_total"].toDouble());
+}
+
+double ReceiptModel::total()
+{
+    return m_orderData["total"].toDouble();
+}
+
+double ReceiptModel::taxAmount()
+{
+    return m_orderData["tax_amount"].toDouble();
+
+}
+
+QString ReceiptModel::reference()
+{
+    return m_orderData["reference"].toString();
+}
+
+QString ReceiptModel::customer()
+{
+    return m_orderData["customers"].toObject()["first_name"].toString();
+
+}
+
+QString ReceiptModel::address()
+{
+    return m_orderData["customers"].toObject()["address"].toString();
+
+}
+
+QString ReceiptModel::phone()
+{
+    return m_orderData["customers"].toObject()["phone"].toString();
+
+}
+
+QString ReceiptModel::date()
+{
+    return m_orderData["date"].toString();
+
 }
