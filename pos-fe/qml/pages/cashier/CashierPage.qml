@@ -41,7 +41,7 @@ Page{
                         toastrService.push("Error",res.message,"error",2000)
                     }else{
                         paymentDialog.close();
-                        receiptDialog.receiptData=res.receipt;
+                        receiptDialog.receiptData=res.order;
                         receiptDialog.open();
                     }
                 }

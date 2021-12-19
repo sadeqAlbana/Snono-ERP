@@ -15,7 +15,7 @@ Popup {
     parent: Overlay.overlay
 
 
-    property string receiptData;
+    property var receiptData;
 
 
 
@@ -43,10 +43,10 @@ Popup {
         anchors.fill: parent;
 
 
-        Text {
-            textFormat: Text.RichText
-            text: receiptData;
+        Image {
             anchors.fill: parent;
+            source: ReceiptGenerator.generateReceiptUrl(receiptData)
+            fillMode: Image.PreserveAspectFit
         }
 
 
@@ -74,6 +74,8 @@ Popup {
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
+
+                onClicked: ReceiptGenerator.printReceipt(receiptData);
             }
 
 

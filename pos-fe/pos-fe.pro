@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core widgets network gui quick quickcontrols2 multimedia
+QT       += core widgets network gui quick quickcontrols2 multimedia printsupport
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>icons/SheinIQ.png</file>
+        <file>icons/SheinIQ-circule.png</file>
     </qresource>
 </RCC>
