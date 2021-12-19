@@ -75,6 +75,7 @@ SOURCES += \
     #gui/tabs/productstab.cpp \
     models/productsmodel.cpp \
     #gui/dialogs/producteditdialog.cpp \
+    receiptgenerator.cpp \
     utils.cpp \
     models/accountsmodel.cpp
 
@@ -125,6 +126,7 @@ HEADERS += \
     #gui/tabs/productstab.h \
     models/productsmodel.h \
     #gui/dialogs/producteditdialog.h \
+    receiptgenerator.h \
     utils.h \
     models/accountsmodel.h
 
@@ -166,6 +168,7 @@ else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a
 
 RESOURCES += \
     #qrc.qrc \
+    images.qrc \
     qml/qml.qrc
 
 DISTFILES +=

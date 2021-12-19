@@ -21,6 +21,8 @@ Card{
 
     Rectangle{
         id: receipt
+
+        height: img.height+leftLayout.implicitHeight+bottomLayout.implicitHeight+items.implicitHeight
         property string date: "2021-12-15"
         property string customer: "Sadeq"
         property string phone : "07723815562"
@@ -37,6 +39,7 @@ Card{
         }
 
         ColumnLayout{
+            id: leftLayout
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: img.left
@@ -68,11 +71,21 @@ Card{
 
 
         ColumnLayout{
+            id: righLayout
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.left: img.right
             anchors.rightMargin: 20
             anchors.topMargin: 30
+
+            Text {
+                id: referenceTxt
+                text: "Reference: " + receipt.model.reference
+                font.pixelSize: receipt.fontSize;
+                horizontalAlignment: Text.AlignRight
+                Layout.alignment: Qt.AlignRight
+                wrapMode: Text.WordWrap
+            }
 
             Text {
                 id: dateTxt
@@ -83,15 +96,6 @@ Card{
 
                 wrapMode: Text.WordWrap
 
-            }
-
-            Text {
-                id: referenceTxt
-                text: "Reference: " + receipt.model.reference
-                font.pixelSize: receipt.fontSize;
-                horizontalAlignment: Text.AlignRight
-                Layout.alignment: Qt.AlignRight
-                wrapMode: Text.WordWrap
             }
 
 
@@ -106,7 +110,7 @@ Card{
             anchors.topMargin: 20
             property bool rounded: true
             property bool adapt: true
-            source: "qrc:/../icons/SheinIQ.png"
+            source: "qrc:/images/icons/SheinIQ.png"
             width: 200
             fillMode: Image.PreserveAspectFit
             layer.enabled: rounded
@@ -150,6 +154,7 @@ Card{
 
 
         ColumnLayout{
+            id: bottomLayout
             anchors.top: items.bottom
             anchors.right: parent.right
             anchors.rightMargin: 20
