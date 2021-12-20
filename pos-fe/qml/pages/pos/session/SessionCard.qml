@@ -8,6 +8,7 @@ import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/common"
+import "qrc:/screens/Utils.js" as Utils
 
 Card{
     id: rect;
@@ -43,7 +44,7 @@ Card{
         }
 
         CLabel{
-            text: totalAmount
+            text: Utils.formatCurrency(totalAmount)
             font.bold: true
         }
 

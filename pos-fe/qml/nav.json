@@ -3,7 +3,7 @@
       "title":"Dashboard",
       "category":"",
       "image":"qrc:/assets/icons/coreui/free/cil-speedometer.svg",
-      "path":"qrc:/pages/pos/session/SessionsPage.qml",
+      "path":"qrc:/pages/dashboard/DashboardPage.qml",
       "badge":{
          "variant":"info",
          "text":"NEW"
@@ -32,10 +32,6 @@
          {
             "title":"Journal Entries Items",
             "path":"qrc:/pages/Accounting/JournalEntriesItemsPage.qml"
-         },
-         {
-            "title":"Settings",
-            "path":"qrc:/pages/categories/CategoriesPage.qml"
          }
       ]
    },

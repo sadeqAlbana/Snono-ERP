@@ -50,5 +50,6 @@
         <file>pages/dashboard/DashboardPage.qml</file>
         <file>pages/ReceiptPage.qml</file>
         <file>Test.qml</file>
+        <file>pages/dashboard/AppDashboardWidget.qml</file>
     </qresource>
 </RCC>
