@@ -9,6 +9,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import "qrc:/screens/Utils.js" as Utils
 
 Popup{
 
@@ -36,33 +37,62 @@ Popup{
 
     Card{
         id: card
-        title: qsTr("Add Vendor")
+        title: qsTr("New Bill")
         anchors.fill: parent;
 
         ColumnLayout{
             anchors.margins: 10
             anchors.fill: parent;
-
             spacing: 10
 
-            CTextFieldGroup{id: nameTF; label.text: "Name"}
-            CTextFieldGroup{id: emailTF; label.text: "Email"}
-            CTextFieldGroup{id: addressTF; label.text: "Address"}
-            CTextFieldGroup{id: phoneTF; label.text: "Phone"}
+            Rectangle{
+                implicitHeight: 50
+                implicitWidth: 400
 
+                RowLayout{
+                    id: row
+                    spacing: 15
+                    anchors.fill: parent;
+                    ProductsModel{
+                        id:products;
+                        Component.onCompleted: requestData();
 
-            VendorsModel{
-                id: model;
+                    }
+                    CComboBox{
+                        id: cb
+                        Layout.preferredWidth: 250
+                        implicitWidth: 250
+                        Layout.fillWidth: true
+                        textRole: "name"
+                        valueRole: "id"
+                        currentIndex: 0
+                        model: products
+                    }
+
+                    CTextField{
+                        id: qty
+                        text:"1";
+                        Layout.preferredWidth: 100
+                        placeholderText: "Quanitity..."
+                        validator: DoubleValidator{bottom: 0;top:1000000000}
+                    }
+                    CTextField{
+                        id: total;
+                        Layout.preferredWidth: 150
+                        text: Utils.formatCurrency((parseInt(qty.text)*products.jsonObject(cb.currentIndex).cost));
+                        readOnly: true;
+                    }
+                }
             }
+
+
+
+            //            component OrderLine:    Rectangle{
+
+
         }
 
-        function addVendor(){
-            var name=nameTF.input.text;
-            var email=emailTF.input.text;
-            var address=addressTF.input.text;
-            var phone=phoneTF.input.text;
-            dialog.addVendor(name,email,address,phone);
-        }
+
 
         footer: RowLayout{
 
@@ -83,7 +113,7 @@ Popup{
 
             }
             CButton{
-                text: qsTr("Add")
+                text: qsTr("Purchase")
                 color: "#2eb85c"
                 textColor: "#ffffff"
                 implicitHeight: 60

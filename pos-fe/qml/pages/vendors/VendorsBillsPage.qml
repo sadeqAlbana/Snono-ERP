@@ -64,7 +64,9 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
+                Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
+                        dialog.amount=model.jsonObject(tableView.selectedRow).total;
+                        dialog.open();}}]
 
             delegate: DelegateChooser{
                 role: "delegateType"

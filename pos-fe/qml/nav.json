@@ -87,7 +87,7 @@
       "path":"",
       "childItems":[
          {
-            "title":"List",
+            "title":"Vedords List",
             "path":"qrc:/pages/vendors/VendorsPage.qml"
          },
          {

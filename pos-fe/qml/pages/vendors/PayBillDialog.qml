@@ -14,13 +14,13 @@ Popup {
     anchors.centerIn: parent;
     parent: Overlay.overlay
 
-    property real amount;
+    property string amount;
     signal accepted();
     onAccepted: close();
 
 
-    width: parent.width*0.4
-    height: parent.height*0.5
+    width: 450
+    height: parent.height*0.3
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
@@ -48,17 +48,9 @@ Popup {
                 id: amountTF
                 label.text: qsTr("Amount");
                 Layout.fillWidth: true;
-                input.text: amount
+                input.text: Utils.formatCurrency(amount)
                 input.readOnly: true
-                input.validator: DoubleValidator{bottom: 0;top:1000000000}
-                Binding{
-                    target: dialog
-                    property: "amount"
-                    value: amountTF.input.text
-                }
-
             }
-
         }
 
         footer: RowLayout{
