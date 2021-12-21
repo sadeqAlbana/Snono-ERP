@@ -17,7 +17,6 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 }
 
 
-
 QImage ReceiptGenerator::create(QJsonObject receiptData)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
@@ -39,7 +38,7 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
     QString reference=receiptData["reference"].toString();
     //qDebug()<<"Reference: " << reference;
     double taxAmount=receiptData["tax_amount"].toDouble();
-    QString customer=receiptData["customers"].toObject()["first_name"].toString();
+    QString customer=receiptData["customers"].toObject()["name"].toString();
     QString address=receiptData["customers"].toObject()["address"].toString();
     double total=receiptData["total"].toDouble();
     QString phone=receiptData["customers"].toObject()["phone"].toString();
