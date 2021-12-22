@@ -18,7 +18,7 @@ Popup{
     padding: 0
     //width: parent.width
     //height: parent.height
-    width: 700
+    width: 1000
     height: 500
     anchors.centerIn: parent;
     property var order;
@@ -36,13 +36,12 @@ Popup{
     }
 
     Card{
-        width: 700
+        width: 1000
         height: 500
-        anchors.centerIn: parent;
         title: qsTr("Order Details")
 
          CTableView{
-            rowHeightProvider: function(row){return 40}
+            rowHeightProvider: function(row){return 50}
             anchors.fill: parent;
             delegate: DelegateChooser{
                 role: "delegateType"

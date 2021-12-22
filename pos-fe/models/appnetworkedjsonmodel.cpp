@@ -14,7 +14,8 @@ void AppNetworkedJsonModel::requestData()
                        {"count",100},
                        {"sortBy","id"},
                        {"direction","desc"},
-                       {"search",_query}
+                       {"search",_query}, //depricated
+                       {"filter",m_filter}
                      };
 
     PosNetworkManager::instance()->post(url(),params)->subcribe(this,&AppNetworkedJsonModel::onTableRecieved);
@@ -31,6 +32,16 @@ void AppNetworkedJsonModel::search()
     _lastPage=-1;
     qDebug()<<"search: " << _query;
     requestData();
+}
+
+void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
+{
+    m_filter=filter;
+}
+
+QJsonObject AppNetworkedJsonModel::filter() const
+{
+    return m_filter;
 }
 
 

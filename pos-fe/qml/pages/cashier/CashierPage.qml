@@ -50,7 +50,7 @@ Page{
                     if(!res.status){
                         toastrService.push("Error",res.message,"error",2000)
                     }else{
-                        toastrService.push("Success",reply.message,"success",2000)
+                        toastrService.push("Success",res.message,"success",2000)
                     }
                 }
 
@@ -180,7 +180,9 @@ Page{
                 valueRole: "id"
                 currentIndex: 0
 
-                onCurrentIndexChanged: {
+                onCurrentValueChanged: {
+                    console.log(currentText)
+                    console.log(currentIndex);
                     tableView.model.updateCustomer(currentValue);
                 }
 

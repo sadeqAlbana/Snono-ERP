@@ -33,6 +33,7 @@ Popup{
 
 
     Card{
+        id: card
         title: qsTr("Add Category")
         anchors.fill: parent;
 
@@ -67,13 +68,15 @@ Popup{
             }
 
 
-            function addCategory(){
-                var parentId= model.data(categoriesCB.comboBox.currentIndex,"id");
-                var name=nameLE.text;
-                model.addCategory(name,parentId);
-            }
+
 
         } //layout end
+
+        function addCategory(){
+            var parentId= model.data(categoriesCB.comboBox.currentIndex,"id");
+            var name=nameLE.text;
+            model.addCategory(name,parentId);
+        }
 
         footer: RowLayout{
 
@@ -99,7 +102,7 @@ Popup{
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
-                onClicked: card.addVendor();
+                onClicked: card.addCategory();
             }
 
         } //footer end

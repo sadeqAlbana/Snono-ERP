@@ -38,12 +38,19 @@ Card{
 
 
             CTextField{
+                id: search
                 Layout.preferredHeight: 50
                 Layout.preferredWidth: 300
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
                 rightDelegate : CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-search.svg"}
+                onAccepted: {
+                    var filter=model.filter();
+                    filter['barcode']=search.text
+                    model.setFilter(filter);
+                    model.requestData();
+                }
             }
         }
 

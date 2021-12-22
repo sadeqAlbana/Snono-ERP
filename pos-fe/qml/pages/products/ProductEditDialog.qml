@@ -60,7 +60,7 @@ Popup{
 
             flow: GridLayout.TopToBottom
             CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
-            CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode"); input.readOnly: true;   input.text: product.barcode;}
+            CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
 
             CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
             CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:product.list_price; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
@@ -90,9 +90,9 @@ Popup{
         function updateProduct(){
             product.name=nameTF.input.text
             product.description=descriptionTF.input.text
-
             product.list_price=parseFloat(listPriceTF.input.text)
             product.cost=parseFloat(costTF.input.text)
+            product.barcode=barcodeTF.input.text
 
         }
 

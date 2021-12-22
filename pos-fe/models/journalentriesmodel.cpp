@@ -7,7 +7,7 @@ JournalEntriesModel::JournalEntriesModel(QObject *parent) : AppNetworkedJsonMode
                                                                                   Column{"posted","Posted"},
                                                                                   Column{"posted_date","Posted Date"},
                                                                                   Column{"date","Date"} ,
-                                                                                  Column{"amount_toal","Total",QString(),"currency"}},
+                                                                                  Column{"amount_total","Total",QString(),"currency"}},
                                                                                   parent)
 {
     requestData();

@@ -16,11 +16,12 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
 
 }
 
-void ProductsModel::updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
+void ProductsModel::updateProduct(const int &productId, const QString &name, const QString &barcode, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
 {
     QJsonObject params{
         {"id",productId},
         {"name",name},
+        {"barcode",barcode},
         {"list_price",listPrice},
         {"cost",cost},
         {"description",description},
@@ -65,8 +66,7 @@ void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
 void ProductsModel::purchaseStock(const int &productId, const double &qty, const int &vendorId)
 {
     QJsonObject params;
-    params["product_id"]=productId;
-    params["qty"]=qty;
+    params["products"]=QJsonArray{QJsonObject{{"id",productId},{"qty",qty}}};
     params["vendor_id"]=vendorId;
 
     PosNetworkManager::instance()->post("/products/purchaseProduct",params)->subcribe(this,&ProductsModel::onPurchaseStockReply);

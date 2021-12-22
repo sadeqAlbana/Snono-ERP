@@ -10,7 +10,7 @@ public:
     ProductsModel(QObject *parent=nullptr);
 
     Q_INVOKABLE void updateProduct(const QJsonObject &product);
-    Q_INVOKABLE void updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes);
+    Q_INVOKABLE void updateProduct(const int &productId, const QString &name, const QString &barcode, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes);
 
     void onUpdateProductReply(NetworkResponse *res);
 
