@@ -9,6 +9,11 @@ class OrdersModel : public AppNetworkedJsonModel
 public:
     explicit OrdersModel(QObject *parent = nullptr);
 
+    Q_INVOKABLE void updateDeliveryStatus(const int &orderId, const QString &status);
+
+signals:
+    void updateDeliveryStatusResponse(QJsonObject reply);
+
 };
 
 #endif // ORDERSMODEL_H

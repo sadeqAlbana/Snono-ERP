@@ -29,6 +29,15 @@ Card{
 
 
 
+            UpdateDeliveryStatusDialog{
+                id: deliveryStatusDialog;
+
+                onAccepted: {
+                    model.updateDeliveryStatus(model.jsonObject(tableView.selectedRow).id,status);
+
+                }
+            }
+
             CMenuBar{
                 CMenu{
                     title: qsTr("Actions");
@@ -60,12 +69,23 @@ Card{
             Layout.fillWidth: true
             model: OrdersModel{
                 id: model
+
+                onUpdateDeliveryStatusResponse: {
+                    if(reply.status===200){
+                        toastrService.push("Success",reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push("Error",reply.message,"error",2000)
+                    }
+                }
             }
 
             delegate: DelegateChooser{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+                DelegateChoice{ roleValue: "OrderStatus"; OrderStatusDelegate{}}
             }
 
             actions: [
@@ -73,6 +93,12 @@ Card{
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
+                    } },
+
+                Action{ text: "Update Status"; icon.source: "qrc:/assets/icons/coreui/free/cil-reload.svg"; onTriggered: {
+                        deliveryStatusDialog.open();
+
+
                     } }
             ]
         }

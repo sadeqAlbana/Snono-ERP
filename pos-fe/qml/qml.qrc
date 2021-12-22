@@ -52,5 +52,7 @@
         <file>Test.qml</file>
         <file>pages/dashboard/AppDashboardWidget.qml</file>
         <file>pages/vendors/PurchaseStockDialog.qml</file>
+        <file>pages/orders/OrderStatusDelegate.qml</file>
+        <file>pages/orders/UpdateDeliveryStatusDialog.qml</file>
     </qresource>
 </RCC>

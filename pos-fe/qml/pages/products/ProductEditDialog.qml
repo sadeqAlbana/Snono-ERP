@@ -16,7 +16,13 @@ Popup{
     modal: true
     anchors.centerIn: parent;
     parent: Overlay.overlay
-    property var product;
+    property var product: QtObject{
+    property string name;
+        property string barcode;
+        property string description;
+        property real list_price;
+        property real cost;
+    }
     signal accepted();
 
     width: parent.width*0.6

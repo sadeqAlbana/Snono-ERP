@@ -56,6 +56,7 @@ Card{
         ProductEditDialog{
             id: editDlg
 
+
             onAccepted: {
                 model.updateProduct(editDlg.product)
                 editDlg.close();
