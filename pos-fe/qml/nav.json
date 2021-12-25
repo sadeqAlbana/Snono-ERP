@@ -43,7 +43,7 @@
       "path":"",
       "childItems":[
          {
-            "title":"List",
+            "title":"Products List",
             "path":"qrc:/pages/products/ProductsPage.qml"
          },
          {
