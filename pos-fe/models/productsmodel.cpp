@@ -3,12 +3,12 @@
 #include <QJsonArray>
 #include <posnetworkmanager.h>
 ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
-                                                                       Column{"id","ID"} ,
+//                                                                       Column{"id","ID"} ,
+                                                                       Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
                                                                        Column{"barcode","Barcode"} ,
                                                                        Column{"cost","Cost",QString(), "currency"} ,
                                                                        Column{"current_cost","Current Cost",QString(), "currency"} ,
-
                                                                        Column{"qty","Stock","products_stocks"} ,
                                                                        Column{"list_price","List Price", QString(), "currency"}},parent)
 {
@@ -112,4 +112,23 @@ void ProductsModel::removeProduct(const int &productId)
 QVariantMap ProductsModel::jsonMap(const int &row)
 {
     return this->jsonObject(row).toVariantMap();
+}
+
+QJsonArray ProductsModel::filterData(QJsonArray data)
+{
+    QStringList wanted{"thumb","size"};
+    for(int i=0; i<data.size(); i++){
+        QJsonObject product=data.at(i).toObject();
+        QJsonArray attributes=product["products_attributes_attributes_values"].toArray();
+
+        for(int j=0; j<attributes.size(); j++){
+            QJsonObject attribute=attributes.at(j).toObject();
+            QString attributeId=attribute["attribute_id"].toString();
+            if(wanted.contains(attributeId)){
+                product[attributeId]=attribute["value"];
+            }
+        }
+        data.replace(i,product);
+    }
+    return data;
 }

@@ -29,6 +29,8 @@ public:
 
     Q_INVOKABLE  QVariantMap jsonMap(const int &row);
 
+    virtual QJsonArray filterData(QJsonArray data) override;
+
 
 signals:
     void productUpdateReply(QJsonObject reply);

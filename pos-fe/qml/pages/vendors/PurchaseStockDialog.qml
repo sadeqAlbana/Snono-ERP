@@ -12,13 +12,12 @@ import app.models 1.0
 import "qrc:/screens/Utils.js" as Utils
 
 Popup{
-
     id: dialog
     signal addVendor(string name, string email, string address, string phone);
     modal: true
     anchors.centerIn: parent;
     parent: Overlay.overlay
-    width: 600
+    width: 900
     height: 600
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
@@ -40,6 +39,8 @@ Popup{
         title: qsTr("New Bill")
         anchors.fill: parent;
 
+
+
         ColumnLayout{
             anchors.margins: 10
             anchors.fill: parent;
@@ -47,8 +48,7 @@ Popup{
 
             Rectangle{
                 implicitHeight: 50
-                implicitWidth: 400
-
+                Layout.fillWidth: true
                 RowLayout{
                     id: row
                     spacing: 15
@@ -61,7 +61,7 @@ Popup{
                     CComboBox{
                         id: cb
                         Layout.preferredWidth: 250
-                        implicitWidth: 250
+                        implicitWidth: 400
                         Layout.fillWidth: true
                         textRole: "name"
                         valueRole: "id"
@@ -106,7 +106,7 @@ Popup{
                 text: qsTr("Close")
                 color: "#e55353"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 50
                 Layout.margins: 10
                 onClicked: dialog.close();
 
@@ -116,7 +116,7 @@ Popup{
                 text: qsTr("Purchase")
                 color: "#2eb85c"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 50
                 Layout.margins: 10
                 onClicked: card.addVendor();
             }

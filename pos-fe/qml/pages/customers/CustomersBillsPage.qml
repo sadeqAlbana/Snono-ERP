@@ -45,7 +45,7 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
-                rightDelegate : CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-search.svg"}
+                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
             }
         }
 

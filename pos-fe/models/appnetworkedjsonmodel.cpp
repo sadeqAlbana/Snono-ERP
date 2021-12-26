@@ -1,5 +1,7 @@
 #include "appnetworkedjsonmodel.h"
 #include "posnetworkmanager.h"
+#include <QJsonDocument>
+#include <QFile>
 AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent) :
     NetworkedJsonModel(Url,columns,parent)
 {
@@ -47,17 +49,23 @@ QJsonObject AppNetworkedJsonModel::filter() const
 
 void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-    //qDebug()<<reply->json();
+//    QFile file("/home/sadeq/table.json");
+//    file.open(QIODevice::WriteOnly);
+//    file.write(QJsonDocument(reply->json().toObject()).toJson(QJsonDocument::Indented));
+//    file.close();
+    //qDebug()<<reply->json().toObject();
     //qDebug()<<"page received : " << _currentPage;
 
     _currentPage=reply->json("current_page").toInt();
     _lastPage=reply->json("last_page").toInt();
     //qDebug()<<"last page: " << _lastPage;
+
+    QJsonArray data=filterData(reply->json("data").toArray());
     if(_currentPage<=1){
-    setupData(reply->json("data").toArray());
+    setupData(data);
     }
     else{
-        appendData(reply->json("data").toArray());
+        appendData(data);
     }
 
     emit dataRecevied();

@@ -44,11 +44,10 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
+                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                //rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
 
 
-                rightDelegate : CTextField.Delegate{
-                    icon: "qrc:/assets/icons/coreui/free/cil-search.svg"
-                }
                 onEntered: {
                     var filter=model.filter();
                     filter['barcode']=search.text
@@ -87,6 +86,7 @@ Card{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+                DelegateChoice{ roleValue: "image"; ImageDelegate{}}
 
 
             }

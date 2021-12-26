@@ -73,7 +73,7 @@ Rectangle {
                 Layout.rightMargin: 50
                 placeholderText : qsTr("username...")
                 text: "sadeq"
-                leftDelegate: CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-user.svg"}
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-user.svg"
                 helpBlock : CTextField.HelpBlockDelegate{text: usernameTF.helpBlockText; color: "red"}
 
             }
@@ -95,7 +95,7 @@ Rectangle {
 
                 helpBlock : CTextField.HelpBlockDelegate{text: passwordTF.helpBlockText; color: "red"}
 
-                leftDelegate: CTextField.Delegate{icon:"qrc:/assets/icons/coreui/free/cil-lock-locked.svg"}
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-lock-locked.svg"
 
             }
 
