@@ -105,6 +105,8 @@ Card{
 }
 
     }
+
+    Component.onCompleted: newBillDlg.open();
 }
 
 

@@ -55,5 +55,6 @@
         <file>pages/orders/OrderStatusDelegate.qml</file>
         <file>pages/orders/UpdateDeliveryStatusDialog.qml</file>
         <file>pages/products/ImageDelegate.qml</file>
+        <file>pages/vendors/VendorBillListView.qml</file>
     </qresource>
 </RCC>

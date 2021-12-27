@@ -3,7 +3,7 @@
 #include <QJsonArray>
 #include <posnetworkmanager.h>
 ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
-//                                                                       Column{"id","ID"} ,
+                                                                       Column{"id","ID"} ,
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
                                                                        Column{"barcode","Barcode"} ,

@@ -65,6 +65,7 @@ SOURCES += \
     models/taxescheckablemodel.cpp \
     models/taxesmodel.cpp \
     models/usersmodel.cpp \
+    models/vendorcartmodel.cpp \
     models/vendorsbillsmodel.cpp \
     models/vendorsmodel.cpp \
     posnetworkmanager.cpp \
@@ -116,6 +117,7 @@ HEADERS += \
     models/taxescheckablemodel.h \
     models/taxesmodel.h \
     models/usersmodel.h \
+    models/vendorcartmodel.h \
     models/vendorsbillsmodel.h \
     models/vendorsmodel.h \
     posnetworkmanager.h \

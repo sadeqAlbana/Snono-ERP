@@ -40,57 +40,23 @@ Popup{
         anchors.fill: parent;
 
 
-
-        ColumnLayout{
-            anchors.margins: 10
+        VendorBillListView{
             anchors.fill: parent;
-            spacing: 10
-
-            Rectangle{
-                implicitHeight: 50
-                Layout.fillWidth: true
-                RowLayout{
-                    id: row
-                    spacing: 15
-                    anchors.fill: parent;
-                    ProductsModel{
-                        id:products;
-                        Component.onCompleted: requestData();
-
-                    }
-                    CComboBox{
-                        id: cb
-                        Layout.preferredWidth: 250
-                        implicitWidth: 400
-                        Layout.fillWidth: true
-                        textRole: "name"
-                        valueRole: "id"
-                        currentIndex: 0
-                        model: products
-                    }
-
-                    CTextField{
-                        id: qty
-                        text:"1";
-                        Layout.preferredWidth: 100
-                        placeholderText: "Quanitity..."
-                        validator: DoubleValidator{bottom: 0;top:1000000000}
-                    }
-                    CTextField{
-                        id: total;
-                        Layout.preferredWidth: 150
-                        text: Utils.formatCurrency((parseInt(qty.text)*products.jsonObject(cb.currentIndex).cost));
-                        readOnly: true;
-                    }
-                }
-            }
-
-
-
-            //            component OrderLine:    Rectangle{
-
-
         }
+
+//        ColumnLayout{
+//            anchors.margins: 10
+//            anchors.fill: parent;
+//            spacing: 10
+
+
+
+
+
+            //            component OrderLine:    Rectangle{z
+
+
+//        }
 
 
 

@@ -55,6 +55,7 @@ Card{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+            title: "categories"
             actions: [
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open()},
                 Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeCategory()}]
