@@ -39,10 +39,37 @@ Popup{
         title: qsTr("New Bill")
         anchors.fill: parent;
 
-
-        VendorBillListView{
+        ColumnLayout{
             anchors.fill: parent;
+            anchors.margins: 10
+
+        RowLayout{
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            CComboBox{
+                Layout.fillWidth: true
+                textRole: "name"
+                valueRole: "id"
+                currentIndex: 0
+                model: VendorsModel{
+
+                }
+            }
+
+            spacing: 30
+
         }
+            spacing: 10
+
+            VendorBillListView{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+            }
+        }
+
+
 
 //        ColumnLayout{
 //            anchors.margins: 10

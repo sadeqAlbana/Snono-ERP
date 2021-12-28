@@ -8,7 +8,12 @@ class AppNetworkedJsonModel : public NetworkedJsonModel
     Q_OBJECT
 public:
     explicit AppNetworkedJsonModel(QString url,const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
+    Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
+
     Q_INVOKABLE QJsonObject filter() const;
+
+signals:
+    void filterChanged(QJsonObject filter);
 
 protected:
     void onTableRecieved(NetworkResponse *reply);

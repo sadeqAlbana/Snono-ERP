@@ -73,8 +73,6 @@ Card{
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "status"; StatusDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
-
-
             }
 
             model: VendorsBillsModel{

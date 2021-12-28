@@ -49,7 +49,7 @@ Card{
 
 
                 onEntered: {
-                    var filter=model.filter();
+                    var filter=model.filter;
                     filter['barcode']=search.text
                     model.setFilter(filter);
                     model.requestData();
@@ -130,12 +130,9 @@ Card{
                 }
             }
 
-
-
-
-
             model: ProductsModel{
                 id: model
+                Component.onCompleted: requestData();
 
                 onProductUpdateReply: {
                     if(reply.status===200){

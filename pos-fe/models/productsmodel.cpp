@@ -6,14 +6,13 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        Column{"id","ID"} ,
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
-                                                                       Column{"barcode","Barcode"} ,
+                                                                       Column{"internal_sku","SKU"} ,
                                                                        Column{"cost","Cost",QString(), "currency"} ,
                                                                        Column{"current_cost","Current Cost",QString(), "currency"} ,
                                                                        Column{"qty","Stock","products_stocks"} ,
                                                                        Column{"list_price","List Price", QString(), "currency"}},parent)
 {
-    requestData();
-
+    //requestData();
 }
 
 void ProductsModel::updateProduct(const int &productId, const QString &name, const QString &barcode, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
@@ -116,7 +115,7 @@ QVariantMap ProductsModel::jsonMap(const int &row)
 
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
-    QStringList wanted{"thumb","size"};
+    QStringList wanted{"thumb","size","internal_sku"};
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
         QJsonArray attributes=product["products_attributes_attributes_values"].toArray();
