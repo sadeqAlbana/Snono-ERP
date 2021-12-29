@@ -16,13 +16,14 @@ import QtQml 2.15
 ListView {
     id :listView
     clip: true
+    property alias vendorCartModel: cartModel
     model: VendorCartModel{
         id: cartModel
 
         function addItem(){
             var product=productsModel.jsonObject(0);
             var record={
-                "product_id" : product.id,
+                "id" : product.id,
                 "name" :product.name,
                 "qty" : 1,
                 "cost" : product.cost,
@@ -37,7 +38,7 @@ ListView {
         }
         function replaceData(index, product){
             //console.log(index)
-            cartModel.setData(index,"product_id",product.id);
+            cartModel.setData(index,"id",product.id);
             cartModel.setData(index,"name",product.name);
             //cartModel.setData(index,"qty",1);
             cartModel.setData(index,"cost",product.cost)

@@ -125,8 +125,6 @@ Card{
                     var productId=model.data(tableView.selectedRow,"id");
                     model.purchaseStock(productId,quantity,vendorId);
                     purchaseDialog.close();
-
-
                 }
             }
 

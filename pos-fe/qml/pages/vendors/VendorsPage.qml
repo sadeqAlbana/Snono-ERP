@@ -46,9 +46,7 @@ Card{
             }
         }
 
-        PurchaseStockDialog{
-            id: newBillDlg
-        }
+
 
 
         CTableView{
@@ -57,8 +55,7 @@ Card{
             Layout.fillWidth: true
             actions: [
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();},
-                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeVendor()},
-                Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();}
+                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeVendor()}
 
             ]
 
@@ -106,7 +103,7 @@ Card{
 
     }
 
-    Component.onCompleted: newBillDlg.open();
+    //Component.onCompleted: newBillDlg.open();
 }
 
 

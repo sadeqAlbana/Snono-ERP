@@ -26,3 +26,17 @@ void VendorsBillsModel::payBill(const int &vendorBillId)
         emit payBillReply(res->json().toObject());
     });
 }
+
+void VendorsBillsModel::createBill(const int &vendorId, const QJsonArray &products)
+{
+    qDebug()<<vendorId;
+    qDebug()<<products;
+    QJsonObject params;
+    params["products"]=products;
+    params["vendor_id"]=vendorId;
+
+    PosNetworkManager::instance()->post("/products/purchaseProduct",params)->subcribe(
+                [this](NetworkResponse *res){
+        emit createBillReply(res->json().toObject());
+    });
+}

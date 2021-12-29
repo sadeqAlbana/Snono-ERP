@@ -13,8 +13,6 @@ import QtGraphicalEffects 1.0
 import app.models 1.0
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
-
-
 Card{
 
     title: qsTr("Vendors Bills")
@@ -59,6 +57,15 @@ Card{
             }
         }
 
+        PurchaseStockDialog{
+            id: newBillDlg
+            onAccepted: {
+                model.createBill(vendorId,products);
+            }
+
+
+        }
+
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -66,7 +73,9 @@ Card{
             actions: [
                 Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
-                        dialog.open();}}]
+                        dialog.open();}},
+                Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();}
+            ]
 
             delegate: DelegateChooser{
                 role: "delegateType"
@@ -77,6 +86,16 @@ Card{
 
             model: VendorsBillsModel{
                 id: model;
+
+                onCreateBillReply: {
+                    if(reply.status===200){
+                        toastrService.push("Success",reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push("Error",reply.message,"error",2000)
+                    }
+                }
 
                 onPayBillReply: {
                     if(reply.status===200){

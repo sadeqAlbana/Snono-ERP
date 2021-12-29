@@ -13,9 +13,9 @@ import "qrc:/screens/Utils.js" as Utils
 
 Popup{
     id: dialog
-    signal addVendor(string name, string email, string address, string phone);
     modal: true
     anchors.centerIn: parent;
+    signal accepted(var vendorId, var products);
     parent: Overlay.overlay
     width: 900
     height: 900
@@ -48,12 +48,12 @@ Popup{
             Layout.fillHeight: true
 
             CComboBox{
+                id: vendorsCB
                 Layout.fillWidth: true
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
                 model: VendorsModel{
-
                 }
             }
 
@@ -63,28 +63,12 @@ Popup{
             spacing: 10
 
             VendorBillListView{
+                id: cartListView
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
             }
         }
-
-
-
-//        ColumnLayout{
-//            anchors.margins: 10
-//            anchors.fill: parent;
-//            spacing: 10
-
-
-
-
-
-            //            component OrderLine:    Rectangle{z
-
-
-//        }
-
 
 
         footer: RowLayout{
@@ -111,10 +95,16 @@ Popup{
                 textColor: "#ffffff"
                 implicitHeight: 50
                 Layout.margins: 10
-                onClicked: card.addVendor();
+                onClicked: card.purchaseStock();
             }
 
         } //footer end
+
+        function purchaseStock(){
+            var vendor=vendorsCB.currentValue;
+            var products=cartListView.vendorCartModel.toJsonArray();
+            accepted(vendor,products);
+        }
 
     } //card End
 
