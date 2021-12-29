@@ -49,7 +49,7 @@ ListView {
         }
 
     }
-    spacing: 10
+    spacing: 5
     //clip: true
 
 
@@ -93,10 +93,13 @@ ListView {
 
         spacing: 15
 
+
         CComboBox{
             id: cb
             Layout.preferredWidth: 500
             implicitWidth: 500
+            Layout.topMargin: 10
+            Layout.leftMargin: 10
             Layout.fillWidth: true
             textRole: "internal_sku"
             valueRole: "id"
@@ -147,6 +150,8 @@ ListView {
         }
 
         CTextField{
+            Layout.topMargin: 10
+
             id: qty
             text: model.qty
             Layout.preferredWidth: 100
@@ -164,6 +169,8 @@ ListView {
 
         }
         CTextField{
+            Layout.topMargin: 10
+
             id: total;
             Layout.preferredWidth: 150
             text: Utils.formatCurrency(model.total)
@@ -171,6 +178,8 @@ ListView {
         }
 
         CButton{
+            Layout.topMargin: 10
+
             color: "#e55353"
             textColor: "#ffffff"
             Layout.preferredHeight: 40
@@ -178,7 +187,10 @@ ListView {
             radius: height
             text: "X";
 
-            onClicked: cartModel.removeRecord(index);
+            onClicked: {
+                cartModel.removeRecord(index);
+                cartModel.refreshCartTotal();
+            }
         }
 
     } //listview delegate end

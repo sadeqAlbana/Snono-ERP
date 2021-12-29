@@ -18,7 +18,7 @@ Popup{
     anchors.centerIn: parent;
     parent: Overlay.overlay
     width: 900
-    height: 600
+    height: 900
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
