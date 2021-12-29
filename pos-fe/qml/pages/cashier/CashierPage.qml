@@ -47,16 +47,17 @@ Page{
                 }
 
                 onUpdateCustomerResponseReceived: {
-                    if(!res.status){
-                        toastrService.push("Error",res.message,"error",2000)
-                    }else{
+                    if(res.status===200){
                         toastrService.push("Success",res.message,"success",2000)
+                    }else{
+                        toastrService.push("Error",res.message,"error",2000)
+
                     }
                 }
 
 
                 onAddProductReply: {
-                    if(res.status){
+                    if(res.status===200){
                         scannerBeep.play()
                     }else{
                         toastrService.push("Warning",res.message,"warning",2000)
@@ -171,19 +172,29 @@ Page{
                 color: "transparent"
             }
 
+            CTextField{
+                id: customerPhone
+                Layout.fillWidth: true;
+                implicitHeight: 60
+            }
+
             CComboBox{
                 id: customerCB;
                 Layout.fillWidth: true;
                 implicitHeight: 60
-                model: CustomersModel{}
+                model: CustomersModel{
+                id: customersModel
+                }
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
+                editable: true
 
                 onCurrentValueChanged: {
                     console.log(currentText)
                     console.log(currentIndex);
                     tableView.model.updateCustomer(currentValue);
+                    customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
                 }
 
             }

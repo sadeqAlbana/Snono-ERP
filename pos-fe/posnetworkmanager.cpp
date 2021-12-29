@@ -1,5 +1,4 @@
 #include "posnetworkmanager.h"
-#include "messageservice.h"
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>

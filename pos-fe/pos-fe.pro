@@ -48,7 +48,6 @@ SOURCES += \
     #gui/tabs/userstab.cpp \
     #gui/views/headerwidget.cpp \
     #gui/views/searchheaderview.cpp \
-    messageservice.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
     models/customersmodel.cpp \
@@ -100,7 +99,6 @@ HEADERS += \
     #gui/tabs/userstab.h \
     #gui/views/headerwidget.h \
     #gui/views/searchheaderview.h \
-    messageservice.h \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
     models/customersmodel.h \
