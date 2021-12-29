@@ -11,47 +11,54 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import QtQml 2.15
 
 ListView {
     id :listView
+    clip: true
     model: VendorCartModel{
         id: cartModel
 
         function addItem(){
             var product=productsModel.jsonObject(0);
             var record={
-              "product_id" : product.id,
+                "product_id" : product.id,
                 "name" :product.name,
                 "qty" : 1,
                 "cost" : product.cost,
                 "sku" : product.internal_sku,
-                "thumb" : product.thumb
+                "thumb" : product.thumb,
+                "total" : product.cost
+
 
             };
             cartModel.appendRecord(record);
+            cartModel.refreshCartTotal();
         }
         function replaceData(index, product){
             //console.log(index)
             cartModel.setData(index,"product_id",product.id);
             cartModel.setData(index,"name",product.name);
-            //cartModel.setData(currentIndex,"qty",1);
+            //cartModel.setData(index,"qty",1);
             cartModel.setData(index,"cost",product.cost)
             cartModel.setData(index,"sku","",product.internal_sku);
             cartModel.setData(index,"thumb",product.thumb);
-//            console.log(cartModel.data(index,"cost"));
+            //cartModel.setData(index,"total",product.cost);
+            //            console.log(cartModel.data(index,"cost"));
 
         }
 
     }
     spacing: 10
-    clip: true
+    //clip: true
 
 
 
     header: Rectangle{
-        color: "transparent";
-
-        width: ListView.width
+        color: "white";
+        anchors.horizontalCenter: parent.horizontalCenter
+        z:2
+        width: listView.width-10
         height: 80
         CButton{
             text: "Add Item"
@@ -72,16 +79,17 @@ ListView {
         }
 
         onDataRecevied: {
-                cartModel.addItem();
+            cartModel.addItem();
         }
         Component.onCompleted: requestData();
     }
 
+
     delegate: RowLayout{
         id: delegate
-
         implicitHeight: 50
-//        implicitWidth: 200
+        //        implicitWidth: 200
+        width: listView.width-10
 
         spacing: 15
 
@@ -89,7 +97,6 @@ ListView {
             id: cb
             Layout.preferredWidth: 500
             implicitWidth: 500
-
             Layout.fillWidth: true
             textRole: "internal_sku"
             valueRole: "id"
@@ -97,10 +104,9 @@ ListView {
             model: productsModel
 
             onCurrentIndexChanged:{
-                console.log("current index changed" + currentIndex)
+                //console.log("current index changed" + currentIndex)
                 var product=productsModel.jsonObject(currentIndex)
                 cartModel.replaceData(index,product);
-                updateTotal();
             }
 
             contentItem: RowLayout{
@@ -115,13 +121,13 @@ ListView {
 
                 Text{
                     Layout.fillWidth: true
-                                clip: true
-                                text: cb.currentText
-                                horizontalAlignment: Text.AlignLeft
-                                verticalAlignment: Text.AlignVCenter
-                                leftPadding: 10
-                                rightPadding: 10
-                            }
+                    clip: true
+                    text: cb.currentText
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: 10
+                    rightPadding: 10
+                }
 
 
             }
@@ -146,14 +152,21 @@ ListView {
             Layout.preferredWidth: 100
             placeholderText: "Quanitity..."
             validator: DoubleValidator{bottom: 0;top:1000000000}
-            onTextChanged: {
-                updateTotal()
+
+
+            Binding{
+                target: model
+                property: "qty"
+                value: parseInt(qty.text)
             }
+            //onTextChanged: model.qty=parseInt(qty.text);
+
+
         }
         CTextField{
             id: total;
             Layout.preferredWidth: 150
-            text: "0"
+            text: Utils.formatCurrency(model.total)
             readOnly: true;
         }
 
@@ -168,11 +181,6 @@ ListView {
             onClicked: cartModel.removeRecord(index);
         }
 
-        function updateTotal(){
-            //console.log("cost: " + model.cost)
-
-            total.text=Utils.formatCurrency(model.qty*model.cost);
-        }
     } //listview delegate end
 
     remove: Transition {
@@ -185,6 +193,23 @@ ListView {
     removeDisplaced: Transition {
         NumberAnimation { properties: "y"; duration: 500 }
     }
+
+    footer: Rectangle{
+        color: "white";
+        z:2
+        width: listView.width-10
+        height: 80
+        anchors.horizontalCenter: parent.horizontalCenter
+        CTextField{
+            width: 300
+            text: Utils.formatCurrency(cartModel.cartTotal)
+            readOnly: true
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+    }
+    headerPositioning: ListView.OverlayHeader
+    footerPositioning: ListView.OverlayFooter
 
 
 }
