@@ -99,7 +99,12 @@ Card{
                         deliveryStatusDialog.open();
 
 
-                    } }
+                    } },
+                Action{ text: "Return"; icon.source: "qrc:/assets/icons/coreui/free/cil-action-undo.svg"; onTriggered: {
+                        var dialog=Utils.createObject("qrc:/pages/orders/OrderReturnDialog.qml",
+                                                      tableView,{order: model.jsonObject(tableView.selectedRow)});
+                        dialog.open();
+                    }}
             ]
         }
 

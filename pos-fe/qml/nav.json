@@ -59,7 +59,7 @@
       "path": "",
       "childItems":[
          {
-            "title":"List",
+            "title":"Orders List",
             "path":"qrc:/pages/orders/OrdersPage.qml"
          },
          {
