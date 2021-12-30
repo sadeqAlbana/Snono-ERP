@@ -26,6 +26,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include "models/vendorcartmodel.h"
+#include "models/returnordermodel.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -64,6 +65,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<TaxesModel>("app.models", 1, 0, "TaxesModel");
     qmlRegisterType<ReceiptModel>("app.models", 1, 0, "ReceiptModel");
     qmlRegisterType<VendorCartModel>("app.models", 1, 0, "VendorCartModel");
+    qmlRegisterType<ReturnOrderModel>("app.models", 1, 0, "ReturnOrderModel");
 
 
 

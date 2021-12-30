@@ -57,5 +57,6 @@
         <file>pages/products/ImageDelegate.qml</file>
         <file>pages/vendors/VendorBillListView.qml</file>
         <file>pages/orders/OrderReturnDialog.qml</file>
+        <file>pages/orders/OrderReturnListView.qml</file>
     </qresource>
 </RCC>
