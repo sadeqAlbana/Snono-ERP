@@ -25,3 +25,14 @@ void OrdersModel::updateDeliveryStatus(const int &orderId, const QString &status
     });
 }
 
+void OrdersModel::returnOrder(const int &orderId, const QJsonArray items)
+{
+    QJsonObject params;
+    params["order_id"]=orderId;
+    params["items"]=items;
+    PosNetworkManager::instance()->post("/orders/return",params)->subcribe([this](NetworkResponse *res){
+
+        emit returnOrderResponse(res->json().toObject());
+    });
+}
+

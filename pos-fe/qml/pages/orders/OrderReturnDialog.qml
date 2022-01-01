@@ -15,7 +15,8 @@ Popup{
     id: dialog
     modal: true
     anchors.centerIn: parent;
-    signal accepted(var vendorId, var products);
+    property var order;
+    signal accepted(var orderId, var items);
     parent: Overlay.overlay
     width: 900
     height: 900
@@ -36,36 +37,20 @@ Popup{
 
     Card{
         id: card
-        title: qsTr("New Bill")
+        title: qsTr("Return Order")
         anchors.fill: parent;
 
         ColumnLayout{
             anchors.fill: parent;
             anchors.margins: 10
 
-        RowLayout{
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            CComboBox{
-                id: vendorsCB
-                Layout.fillWidth: true
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                model: VendorsModel{
-                }
-            }
-
-            spacing: 30
-
-        }
             spacing: 10
 
             OrderReturnListView{
-                id: cartListView
+                id: returnListView
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                order: dialog.order
 
             }
         }
@@ -95,16 +80,16 @@ Popup{
                 textColor: "#ffffff"
                 implicitHeight: 50
                 Layout.margins: 10
-                onClicked: card.purchaseStock();
+                onClicked: dialog.accepted(order.id,returnListView.returnedItems());
             }
 
         } //footer end
 
-        function purchaseStock(){
-            var vendor=vendorsCB.currentValue;
-            var products=cartListView.vendorCartModel.toJsonArray();
-            accepted(vendor,products);
-        }
+//        function purchaseStock(){
+//            var vendor=vendorsCB.currentValue;
+//            var products=cartListView.vendorCartModel.toJsonArray();
+//            accepted(vendor,products);
+//        }
 
     } //card End
 

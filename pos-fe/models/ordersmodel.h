@@ -10,9 +10,12 @@ public:
     explicit OrdersModel(QObject *parent = nullptr);
 
     Q_INVOKABLE void updateDeliveryStatus(const int &orderId, const QString &status);
+    Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
+
 
 signals:
     void updateDeliveryStatusResponse(QJsonObject reply);
+    void returnOrderResponse(QJsonObject reply);
 
 };
 
