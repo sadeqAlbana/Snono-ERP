@@ -87,6 +87,7 @@ int ReceiptGenerator::centerStart(int canvasWidth, int rectWidth)
 
 void ReceiptGenerator::drawLine(QPainter &painter, const int &yAxis, const QString &no, const QString &description, const QString &price, const QString &qty, const QString &subtotal, const QString &total)
 {
+    Q_UNUSED(no)
     //painter.drawText(QRect(20 ,yAxis, 60, 40),Qt::AlignCenter,no);
     QTextOption option;
     option.setAlignment(Qt::AlignHCenter | Qt::AlignTop);

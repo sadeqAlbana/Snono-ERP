@@ -19,7 +19,6 @@
         <file>pages/categories/CategoriesPage.qml</file>
         <file>pages/cashier/PayDialog.qml</file>
         <file>pages/cashier/ReceiptDialog.qml</file>
-        <file>numpad_beep.mp3</file>
         <file>numpad_beep.wav</file>
         <file>cashier_regiser_beep.wav</file>
         <file>pages/categories/AddCategoryDialog.qml</file>
@@ -58,5 +57,6 @@
         <file>pages/vendors/VendorBillListView.qml</file>
         <file>pages/orders/OrderReturnDialog.qml</file>
         <file>pages/orders/OrderReturnListView.qml</file>
+        <file>pages/orders/OrdersReturnsPage.qml</file>
     </qresource>
 </RCC>

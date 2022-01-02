@@ -20,11 +20,7 @@ Card{
 
 
 
-    Rectangle{
 
-        color: "red"
-        opacity: 1
-        anchors.fill: parent;
 
         Image{
             anchors.horizontalCenter: parent.horizontalCenter
@@ -40,6 +36,6 @@ Card{
 
 
         }
-    }
+
 
 }

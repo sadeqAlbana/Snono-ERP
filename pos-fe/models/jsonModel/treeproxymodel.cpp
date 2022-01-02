@@ -83,6 +83,7 @@ int TreeProxyModel::rowCount(const QModelIndex &parent) const
 
 int TreeProxyModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return sourceModel()->columnCount();
 }
 

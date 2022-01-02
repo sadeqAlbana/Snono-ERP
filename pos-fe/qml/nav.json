@@ -64,7 +64,7 @@
          },
          {
             "title":"Returns",
-            "path":"qrc:/pages/categories/CategoriesPage.qml"
+            "path":"qrc:/pages/orders/OrdersReturnsPage.qml"
          }
       ]
    },

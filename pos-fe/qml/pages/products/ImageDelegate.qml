@@ -12,7 +12,7 @@ CTableViewDelegate {
         anchors.centerIn: parent;
         height: 60
         fillMode: Image.PreserveAspectFit
-        source: model.display? "https://"+model.display : ""
+        source: model.display? model.display : ""
         antialiasing: true
     }
 }

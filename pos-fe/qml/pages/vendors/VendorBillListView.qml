@@ -115,7 +115,7 @@ ListView {
 
             contentItem: RowLayout{
                 Image{
-                    source: "https://"+model.thumb
+                    source: model.thumb
                     sourceSize.height: parent.height*0.8
 
                     fillMode: Image.PreserveAspectFit
