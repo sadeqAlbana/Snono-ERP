@@ -24,17 +24,45 @@ Rectangle {
         }
     }
 
+
+    Image{
+        id: logo
+        source: "qrc:/images/icons/snono_2021_full.svg"
+        width: 620
+
+        sourceSize.width: 620
+        fillMode: Image.PreserveAspectFit
+        anchors.bottom: card.top
+        anchors.bottomMargin: 40
+        anchors.horizontalCenter: parent.horizontalCenter
+        antialiasing: true
+        layer.enabled: true
+        layer.effect: ColorOverlay{
+            color: "#076596"
+        }
+    }
+
+
     Card{
         id: card
         anchors.centerIn: parent;
 
-        height: 400
-        width: 600
 
-        anchors.verticalCenterOffset: -1*parent.height/8
+        height: 440
+        width: 620
+
+        //anchors.verticalCenterOffset: -1*parent.height/8
+        anchors.verticalCenterOffset: logo.height/2
 
          ColumnLayout{
-             anchors.fill: parent
+             //anchors.fill: parent
+             anchors.centerIn: parent;
+             width: parent.width-anchors.leftMargin-anchors.rightMargin
+             anchors.leftMargin: 50
+             anchors.rightMargin: 50
+             anchors.left: parent.left
+             anchors.right: parent.right
+
             id: layout
             spacing: 0
             Label{
@@ -43,34 +71,30 @@ Rectangle {
                 font.pixelSize: 50
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignLeft
-                Layout.leftMargin: 50
-                Layout.rightMargin: 50
                 Layout.preferredHeight: paintedHeight
+                Layout.bottomMargin: 10
             }
 
-//            Label{
-//                text: qsTr("Enter Your Password")
-//                color: "#768192"
-//                font.pixelSize: 16
-//                Layout.fillWidth: true
-//                horizontalAlignment: Text.AlignLeft
-//                Layout.leftMargin: 50
-//                Layout.rightMargin: 50
-//                Layout.preferredHeight: paintedHeight
-//            }
+            Label{
+                text: qsTr("Sign in to your account")
+                color: "#768192"
+                font.pixelSize: 17
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
+                Layout.preferredHeight: paintedHeight
+                Layout.bottomMargin: 25
+            }
 
             CTextField{
                 id: usernameTF
                 Layout.fillWidth: true
-                implicitHeight: 80
-                Layout.preferredHeight: 80
-                font.pixelSize: 22
+                Layout.preferredHeight: 71
+                font.pixelSize: 21
 //                echoMode: TextInput.Password
                 property string helpBlockText : " "
                 //onTextChanged: card.enableButtons(true);
                 //leftRectVisible: true
-                Layout.leftMargin: 50
-                Layout.rightMargin: 50
+
                 placeholderText : qsTr("username...")
                 text: "sadeq"
                 leftIcon: "qrc:/assets/icons/coreui/free/cil-user.svg"
@@ -83,13 +107,11 @@ Rectangle {
             CTextField{
                 id: passwordTF
                 Layout.fillWidth: true
-                implicitHeight: 80
-                Layout.preferredHeight: 80
-                font.pixelSize: 22
+                Layout.preferredHeight: 71
+                font.pixelSize: 21
                 echoMode: TextInput.Password
                 property string helpBlockText : " "
-                Layout.leftMargin: 50
-                Layout.rightMargin: 50
+
                 placeholderText : qsTr("password...")
                 text: "admin"
 
@@ -97,14 +119,14 @@ Rectangle {
 
                 leftIcon: "qrc:/assets/icons/coreui/free/cil-lock-locked.svg"
 
+
             }
 
 
             RowLayout{
                 id: ftr
                 layoutDirection: Qt.LeftToRight
-                Layout.leftMargin: 50
-                Layout.rightMargin: 50
+                Layout.topMargin: 10
                 spacing: 0
                 CButton{
                     id: loginButton
@@ -112,38 +134,39 @@ Rectangle {
                     color: "#321fdb"
                     textColor: "#ffffff"
                     Layout.fillHeight: false
-                    implicitHeight: 50
+                    //implicitHeight: 50
                     font.pixelSize: 17
+                    Layout.preferredHeight: 50
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.rightMargin: 15
                     onClicked: layout.login();
                 }
 
 
-                CButton{
-                    id: cancelButton
-                    text: qsTr("Cancel")
-                    color: "#e55353"
-                    textColor: "#ffffff"
-                    Layout.fillHeight: false
-                    implicitHeight: 50
-                    font.pixelSize: 17
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                    onClicked: canceled();
+//                CButton{
+//                    id: cancelButton
+//                    text: qsTr("Cancel")
+//                    color: "#e55353"
+//                    textColor: "#ffffff"
+//                    Layout.fillHeight: false
+//                    implicitHeight: 50
+//                    font.pixelSize: 17
+//                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+//                    onClicked: canceled();
 
-                }
+//                }
 
-                Rectangle{ //spacer
-                    color: "transparent"
-                    Layout.fillWidth: true
-                }
+//                Rectangle{ //spacer
+//                    color: "transparent"
+//                    Layout.fillWidth: true
+//                }
 
             }
 
             function login(){
                 AuthManager.authenticate(usernameTF.text,passwordTF.text)
             }
-            Component.onCompleted: login();
+            //Component.onCompleted: login();
         }
     }
 }

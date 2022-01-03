@@ -2,5 +2,7 @@
     <qresource prefix="/images">
         <file>icons/SheinIQ.png</file>
         <file>icons/SheinIQ-circule.png</file>
+	<file>icons/snono_2021.png</file>
+	<file>icons/snono_2021_full.svg</file>
     </qresource>
 </RCC>
