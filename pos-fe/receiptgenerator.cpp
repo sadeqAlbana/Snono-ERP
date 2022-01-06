@@ -50,7 +50,7 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
     painter.drawText(QRect(20,280, 600,40),Qt::AlignLeft,"Address: " + address);
     painter.drawText(QRect(20,320, 600,40),Qt::AlignLeft,"Phone: "+phone);
 
-    drawLine(painter,400,"No","Description","Price","Qty","Subtotal","Total");
+    drawLine(painter,400,"No","Description","Price","Qty","Discount","Subtotal","Total");
 
 
     for(int i=0; i<items.size(); i++){
@@ -58,9 +58,11 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
         QString description=item["products"].toObject()["name"].toString();
         QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
         QString qty=QString::number(item["qty"].toDouble());
+        QString discount=Currency::formatString(item["discount"].toDouble());
+
         QString subtotal=Currency::formatString(item["subtotal"].toDouble());
         QString total=Currency::formatString(item["total"].toDouble());
-        drawLine(painter,(400+((i+1)*40)),QString::number(i+1),description,unitPrice,qty,subtotal,total);
+        drawLine(painter,(400+((i+1)*40)),QString::number(i+1),description,unitPrice,qty,discount,subtotal,total);
 
     }
 
@@ -85,16 +87,17 @@ int ReceiptGenerator::centerStart(int canvasWidth, int rectWidth)
     return (canvasWidth/2-(rectWidth/2));
 }
 
-void ReceiptGenerator::drawLine(QPainter &painter, const int &yAxis, const QString &no, const QString &description, const QString &price, const QString &qty, const QString &subtotal, const QString &total)
+void ReceiptGenerator::drawLine(QPainter &painter, const int &yAxis, const QString &no, const QString &description, const QString &price, const QString &qty, QString discount, const QString &subtotal, const QString &total)
 {
     Q_UNUSED(no)
     //painter.drawText(QRect(20 ,yAxis, 60, 40),Qt::AlignCenter,no);
     QTextOption option;
     option.setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     option.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
-    painter.drawText(QRect(20 ,yAxis, 360,40),description,option);
-    painter.drawText(QRect(380,yAxis, 100,40),price,option);
-    painter.drawText(QRect(480,yAxis, 100,40),qty,option);
+    painter.drawText(QRect(20 ,yAxis, 260,40),description,option);
+    painter.drawText(QRect(280,yAxis, 100,40),price,option);
+    painter.drawText(QRect(380,yAxis, 100,40),qty,option);
+    painter.drawText(QRect(480,yAxis, 100,40),discount,option);
     painter.drawText(QRect(580,yAxis, 100,40),subtotal,option);
     painter.drawText(QRect(680,yAxis, 100,40),total,option);
 }

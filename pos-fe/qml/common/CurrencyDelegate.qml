@@ -9,7 +9,7 @@ CTableViewDelegate {
     id: control
     contentItem: Text {
         anchors.centerIn: parent
-        text: model.display ? Utils.formatNumber(model.display) + " IQD" : "N.A"
+        text: model.display!==undefined ? Utils.formatCurrency(model.display) : ""
         horizontalAlignment: TextEdit.AlignHCenter
         verticalAlignment: TextEdit.AlignVCenter
         color: control.textColor

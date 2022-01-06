@@ -113,6 +113,8 @@ Page{
                     switch(numpad.activeButton.text){
                     case "Qty": key="qty"; break;
                     case "Price": key="unit_price"; break;
+                    case "Disc": key="discount"; break;
+
                     default: break;
                     }
                     modelValue=model.data(tableView.selectedRow,model.indexOf(key));
@@ -136,6 +138,8 @@ Page{
                     switch(activeButton.text){
                     case "Qty": key="qty"; break;
                     case "Price": key="unit_price"; break;
+                    case "Disc": key="discount"; break;
+
                     default: break;
                     }
                     var modelValue=model.data(tableView.selectedRow,model.indexOf(key));

@@ -14,6 +14,7 @@ CashierModel::CashierModel(QObject *parent)
                          Column{"name","Name"} ,
                          Column{"unit_price","Price",QString(),"currency"} ,
                          Column{"qty","Qty"} ,
+                         Column{"discount","Discount",QString(),"currency"} ,
                          Column{"subtotal","Subtotal",QString(),"currency"} ,
                          Column{"total","Total",QString(),"currency"}},parent)
 {

@@ -12,7 +12,7 @@ void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
     //qDebug()<<"current page: " <<_currentPage;
-    QJsonObject params{{"page",++_currentPage},
+    QJsonObject params{{"page",++m_currentPage},
                        {"count",100},
                        {"sortBy","id"},
                        {"direction","desc"},
@@ -30,7 +30,7 @@ void AppNetworkedJsonModel::setSearchQuery(const QString _query)
 
 void AppNetworkedJsonModel::search()
 {
-    _currentPage=0;
+    m_currentPage=0;
     _lastPage=-1;
     qDebug()<<"search: " << _query;
     requestData();
@@ -56,12 +56,12 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     //qDebug()<<reply->json().toObject();
     //qDebug()<<"page received : " << _currentPage;
 
-    _currentPage=reply->json("current_page").toInt();
+    m_currentPage=reply->json("current_page").toInt();
     _lastPage=reply->json("last_page").toInt();
     //qDebug()<<"last page: " << _lastPage;
 
     QJsonArray data=filterData(reply->json("data").toArray());
-    if(_currentPage<=1){
+    if(m_currentPage<=1){
     setupData(data);
     }
     else{

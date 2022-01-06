@@ -13,5 +13,5 @@ PosApplication::~PosApplication()
 
 void PosApplication::initSettings()
 {
-    qDebug()<<"init settings";
+   // qDebug()<<"init settings";
 }

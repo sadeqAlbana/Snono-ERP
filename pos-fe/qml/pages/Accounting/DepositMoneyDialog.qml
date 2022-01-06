@@ -47,7 +47,9 @@ Popup {
                 label.text: qsTr("Amount");
                 Layout.fillWidth: true;
                 input.text: amount
-                input.validator: DoubleValidator{bottom: 0;top:1000000000}
+                input.validator: DoubleValidator{bottom: 0;top:1000000000; notation: DoubleValidator.StandardNotation}
+                //input.displayText: Utils.formatCurrency(input.text)
+                //input.inputMask: "9"
                 Binding{
                     target: dialog
                     property: "amount"
@@ -70,7 +72,7 @@ Popup {
                 text: qsTr("Cancel")
                 color: "#e55353"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 45
                 Layout.margins: 10
                 onClicked: dialog.close();
 
@@ -80,7 +82,7 @@ Popup {
                 text: qsTr("Deposit")
                 color: "#2eb85c"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 45
                 Layout.margins: 10
                 onClicked: dialog.accepted(amount);
             }

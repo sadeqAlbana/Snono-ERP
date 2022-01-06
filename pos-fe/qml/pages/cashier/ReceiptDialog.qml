@@ -45,7 +45,7 @@ Popup {
 
         Image {
             anchors.fill: parent;
-            source: ReceiptGenerator.generateReceiptUrl(receiptData)
+            source: receiptData? ReceiptGenerator.generateReceiptUrl(receiptData) : ""
             fillMode: Image.PreserveAspectFit
         }
 

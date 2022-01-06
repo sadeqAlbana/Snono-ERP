@@ -166,7 +166,7 @@ Rectangle {
             function login(){
                 AuthManager.authenticate(usernameTF.text,passwordTF.text)
             }
-            //Component.onCompleted: login();
+            Component.onCompleted: login();
         }
     }
 }
