@@ -109,4 +109,6 @@ RESOURCES += \
     images.qrc \
     qml/qml.qrc
 
-DISTFILES +=
+
+#target.path = ~/pos-fe
+#INSTALLS += target

@@ -20,7 +20,7 @@ ApplicationWindow {
         if(activityCount>0){
             busySpinner.open();
         }else{
-            busySpinner.close();
+            busySpinner.close();qq
         }
 
     }
