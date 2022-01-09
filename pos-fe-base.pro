@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
-
+CONFIG += have_gui
 SUBDIRS += \
     pos-fe \
     network-manager \
