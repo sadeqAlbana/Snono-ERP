@@ -39,7 +39,9 @@ SOURCES += \
     authmanager.cpp \
     models/jsonModel/treeproxymodel.cpp \
     models/orderitemsmodel.cpp \
+    models/orderreturnitemsmodel.cpp \
     models/ordersmodel.cpp \
+    models/ordersreturnsmodel.cpp \
     models/possessionsmodel.cpp \
     models/receiptmodel.cpp \
     models/returnordermodel.cpp \
@@ -68,7 +70,9 @@ HEADERS += \
     authmanager.h \
     models/jsonModel/treeproxymodel.h \
     models/orderitemsmodel.h \
+    models/orderreturnitemsmodel.h \
     models/ordersmodel.h \
+    models/ordersreturnsmodel.h \
     models/possessionsmodel.h \
     models/receiptmodel.h \
     models/returnordermodel.h \
