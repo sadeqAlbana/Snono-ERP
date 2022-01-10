@@ -51,6 +51,8 @@ Card{
                 onEntered: {
                     var filter=model.filter;
                     filter['barcode']=search.text
+                    //filter['name']=search.text
+
                     model.setFilter(filter);
                     model.requestData();
                 }

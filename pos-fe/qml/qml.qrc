@@ -58,5 +58,6 @@
         <file>pages/orders/OrderReturnDialog.qml</file>
         <file>pages/orders/OrderReturnListView.qml</file>
         <file>pages/orders/OrdersReturnsPage.qml</file>
+        <file>common/SuffixDelegate.qml</file>
     </qresource>
 </RCC>

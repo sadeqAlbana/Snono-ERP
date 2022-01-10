@@ -32,6 +32,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("sadeqTech");
     QCoreApplication::setApplicationName("pos-fe");
     QSettings settings;
+    //settings.setValue("http_server_url","http://naaom.net:8000");
+    settings.setValue("http_server_url","http://127.0.0.1:8000");
+
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif

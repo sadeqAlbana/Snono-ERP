@@ -58,7 +58,7 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
         QString description=item["products"].toObject()["name"].toString();
         QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
         QString qty=QString::number(item["qty"].toDouble());
-        QString discount=Currency::formatString(item["discount"].toDouble());
+        QString discount=QString::number(item["discount"].toDouble())+"%";
 
         QString subtotal=Currency::formatString(item["subtotal"].toDouble());
         QString total=Currency::formatString(item["total"].toDouble());

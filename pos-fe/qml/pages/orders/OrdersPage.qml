@@ -96,6 +96,8 @@ Card{
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
                 DelegateChoice{ roleValue: "OrderStatus"; OrderStatusDelegate{}}
+                DelegateChoice{ roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
+
             }
 
             actions: [

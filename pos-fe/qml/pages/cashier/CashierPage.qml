@@ -72,6 +72,7 @@ Page{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+                DelegateChoice{roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
             }
 
         }
