@@ -12,11 +12,20 @@ import app.models 1.0
 import "qrc:/screens/Utils.js" as Utils
 
 Popup{
+    Connections{
+    target: KApp;
+    onAboutToQuit:{
+        dialog.destroy();
+    }
+}
+
     id: dialog
     modal: true
     anchors.centerIn: parent;
     property var order;
     signal accepted(var orderId, var items);
+    onAccepted: close();
+    onClosed: destroy();
     parent: Overlay.overlay
     width: 900
     height: 900

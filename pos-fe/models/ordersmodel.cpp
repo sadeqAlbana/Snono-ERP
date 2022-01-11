@@ -36,3 +36,13 @@ void OrdersModel::returnOrder(const int &orderId, const QJsonArray items)
     });
 }
 
+void OrdersModel::returnableItems(const int &orderId)
+{
+    QJsonObject params;
+    params["order_id"]=orderId;
+    PosNetworkManager::instance()->post("/order/returnableItems",params)->subcribe([this](NetworkResponse *res){
+
+        emit returnableItemsResponse(res->json().toObject());
+    });
+}
+

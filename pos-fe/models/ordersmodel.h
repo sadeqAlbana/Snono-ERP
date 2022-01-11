@@ -11,11 +11,15 @@ public:
 
     Q_INVOKABLE void updateDeliveryStatus(const int &orderId, const QString &status);
     Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
+    Q_INVOKABLE void returnableItems(const int &orderId);
+
 
 
 signals:
     void updateDeliveryStatusResponse(QJsonObject reply);
     void returnOrderResponse(QJsonObject reply);
+    void returnableItemsResponse(QJsonObject reply);
+
 
 };
 

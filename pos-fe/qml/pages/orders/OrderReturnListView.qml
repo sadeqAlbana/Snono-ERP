@@ -21,8 +21,7 @@ ListView {
         id: returnModel
         checkable: true
         Component.onCompleted: {
-            //console.log(JSON.stringify(order.pos_order_items))
-            var items=order.pos_order_items
+            var items=order.returnable_items
             setupData(items)
             refreshReturnTotal();
         }
@@ -121,16 +120,16 @@ ListView {
     footer: Rectangle{
         color: "white";
         z:2
-        width: listView.width-10
+        width: listView.width
         height: 80
-        anchors.horizontalCenter: parent.horizontalCenter
+        //anchors.horizontalCenter: listView.horizontalCenter
         CTextField{
             width: 300
             //text: Utils.formatCurrency(cartModel.cartTotal)
 
             text: Utils.formatCurrency(returnModel.returnTotal);
             readOnly: true
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: listView.verticalCenter
         }
 
     }

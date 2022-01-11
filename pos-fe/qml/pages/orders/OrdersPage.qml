@@ -89,6 +89,14 @@ Card{
                         toastrService.push("Error",reply.message,"error",2000)
                     }
                 }
+
+                onReturnableItemsResponse: {
+                    console.log(JSON.stringify(reply))
+                    var dialog=Utils.createObject("qrc:/pages/orders/OrderReturnDialog.qml",
+                                                  tableView,{order: reply.order});
+                    dialog.accepted.connect(function(orderId, items){model.returnOrder(orderId,items)});
+                    dialog.open();
+                }
             }
 
             delegate: DelegateChooser{
@@ -113,10 +121,8 @@ Card{
 
                     } },
                 Action{ text: "Return"; icon.source: "qrc:/assets/icons/coreui/free/cil-action-undo.svg"; onTriggered: {
-                        var dialog=Utils.createObject("qrc:/pages/orders/OrderReturnDialog.qml",
-                                                      tableView,{order: model.jsonObject(tableView.selectedRow)});
-                        dialog.accepted.connect(function(orderId, items){model.returnOrder(orderId,items)});
-                        dialog.open();
+                        var order =model.jsonObject(tableView.selectedRow);
+                        model.returnableItems(order.id);
                     }}
             ]
         }
