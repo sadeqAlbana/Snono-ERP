@@ -21,13 +21,16 @@ Page{
     background: Rectangle{
         color: "transparent"
     }
+    property bool pay: false
 
     property int sessionId : -1
 
-    RowLayout{
+    GridLayout{
         anchors.fill: parent;
         anchors.margins: 20
-
+        rows: 2
+        columns: 2
+        flow: GridLayout.LeftToRight
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -36,19 +39,34 @@ Page{
             model: CashierModel{
                 id: model
 
+
+                onDataRecevied: {
+                    if(pay){
+                        //console.log("pay !!!")
+                        model.processCart(model.total,0,notesLE.text);
+                        pay=false
+                    }
+                }
+
                 onPurchaseResponseReceived: {
                     if(!res.status){
                         toastrService.push("Error",res.message,"error",2000)
                     }else{
                         paymentDialog.close();
+                        toastrService.push("Success",res.message,"success",2000)
                         receiptDialog.receiptData=res.order;
                         receiptDialog.open();
+                        if(customerCB.currentIndex<0){
+                            customersModel.refresh();
+                        }
+                        notesLE.text=""
                     }
                 }
 
                 onUpdateCustomerResponseReceived: {
                     if(res.status===200){
                         toastrService.push("Success",res.message,"success",2000)
+
                     }else{
                         toastrService.push("Error",res.message,"error",2000)
 
@@ -76,10 +94,13 @@ Page{
             }
 
         }
+
+
+
         ColumnLayout{
             Layout.fillHeight: true
             Layout.fillWidth: true
-
+            //            Layout.rowSpan: 2
             Numpad{
                 id: numpad
 
@@ -156,7 +177,11 @@ Page{
                     model.removeProduct(tableView.selectedRow);
                 }
             }
-
+            Rectangle{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "transparent"
+            }
 
             CTextInput{
                 id: numpadInput
@@ -170,39 +195,125 @@ Page{
                 implicitHeight: 60
 
             }
+        }
 
-            Rectangle{
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                id: customerPhone
-                Layout.fillWidth: true;
-                implicitHeight: 60
-            }
-
+        GridLayout{
+            columns: 2
+            Layout.fillHeight: true
             CComboBox{
+                property bool isValid: currentText===editText
                 id: customerCB;
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 model: CustomersModel{
-                id: customersModel
+                    id: customersModel
+                    onDataRecevied: {
+                        customerCB.currentIndex=0
+                    }
+
+                    onAddCustomerReply: {
+                        if(reply.status===200){
+                            model.updateCustomer(reply.customer.id)
+                            //customerCB.currentIndex=model.rowCount()-1;
+                        }
+                    }
                 }
+
+
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-user.svg"
 
-                onCurrentValueChanged: {
-                    console.log(currentText)
-                    console.log(currentIndex);
-                    tableView.model.updateCustomer(currentValue);
-                    customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
+                //                onCurrentValueChanged: {
+                //                    //console.log(currentText)
+                //                    //console.log(currentIndex);
+
+                //                }
+                onEditTextChanged: {
+                    //                    console.log("edit text: " + customerCB.editText );
+                    //                    console.log("current text: "+ customerCB.currentText)
+                    //                    console.log("current value: " + customerCB.currentValue)
+                    //                    console.log("current index: " + customerCB.currentIndex)
+
+                }
+//                onCurrentTextChanged: {
+//                    console.log("current text:   " + currentText)
+//                }
+
+                onCurrentIndexChanged: {
+                    //console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
+                    if(currentIndex>=0){
+                        var currentCustomer=customersModel.jsonObject(customerCB.currentIndex);
+                        phoneLE.text=customersModel.jsonObject(customerCB.currentIndex).phone
+                        addressLE.text=customersModel.jsonObject(customerCB.currentIndex).address
+                        //console.log("current value: " + currentValue)
+                        tableView.model.updateCustomer(currentCustomer.id);
+                        //                        customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
+                    }else{
+                        phoneLE.text=""
+                        addressLE.text=""
+                    }
+
+                }
+                //                onAcceptableInputChanged: {
+                //                    console.log("acceptable: " + acceptableInput)
+                //                }
+
+
+                onActiveFocusChanged: {
+                    var edit=editText
+                    if(!activeFocus && editText!=currentText){
+                        currentIndex=-1;
+                    }
+                    editText=edit;
                 }
 
+
             }
+            CTextField{
+                Layout.alignment: Qt.AlignTop
+                enabled: !customerCB.isValid
+                id: phoneLE
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                placeholderText: "Phone..."
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-phone.svg"
+
+            }
+            CTextField{
+                Layout.alignment: Qt.AlignTop
+                id: addressLE
+                enabled: !customerCB.isValid
+
+                //id: customerPhone
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                placeholderText: "Address..."
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-location-pin.svg"
+
+            }
+            CTextField{
+                Layout.alignment: Qt.AlignTop
+                id: notesLE
+                //id: customerPhone
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                placeholderText: "Note..."
+                leftIcon: "qrc:/assets/icons/coreui/free/cil-notes.svg"
+
+            }
+            Rectangle{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "transparent"
+                Layout.columnSpan: 2
+            }
+        }
+
+
+        ColumnLayout{
 
             CTextInput{
                 id: total
@@ -222,6 +333,15 @@ Page{
                 Layout.fillWidth: true
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();
+                enabled: model.total>0
+            }
+            Rectangle{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "transparent"
+            }
+            ReceiptDialog{
+                id: receiptDialog
             }
 
             function confirmPayment(){
@@ -232,20 +352,23 @@ Page{
 
             PayDialog{
                 id: paymentDialog
-
                 onAccepted: {
-                    model.processCart(paid,tendered);
+                    if(customerCB.currentIndex<0){
+                        //update customer then process cart
+                        pay=true
+                        customersModel.addCustomer(customerCB.editText,"","","",phoneLE.text,addressLE.text)
+                    }else{
+                        model.processCart(paid,tendered,notesLE.text);
+                    }
+
                 }
             }
+        }
 
-            ReceiptDialog{
-                id: receiptDialog
-            }
-
-        } // ColumnLayout end
+    } // GridLayout end
 
 
-    }
 }
+
 
 

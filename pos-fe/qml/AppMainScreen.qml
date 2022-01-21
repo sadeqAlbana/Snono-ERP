@@ -120,9 +120,10 @@ Item {
                 Image{
                     id: image
                     anchors.centerIn: parent;
-                    source:"qrc:/assets/icons/coreui/brand/cib-coreui.svg"
-                    sourceSize.width: 82
-                    sourceSize.height: 82
+                    source:"qrc:/images/icons/SS_Logo_Color.svg"
+                    //sourceSize.width: 82
+                    sourceSize.height: 72
+                    fillMode: Image.PreserveAspectFit
                     layer.enabled: true
                     layer.effect: ColorOverlay{
                         //anchors.fill: image
@@ -485,7 +486,7 @@ Item {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
-                listView.currentIndex=listModel.indexOf("Orders List");
+                listView.currentIndex=listModel.indexOf("POS");
             }
         };
         xhr.send();

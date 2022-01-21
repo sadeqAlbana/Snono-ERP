@@ -22,6 +22,7 @@ void CustomersModel::addCustomer(const QString name, const QString firstName, co
                                                                                   {"address",address}})->subcribe(
                 [this](NetworkResponse *res){
         emit addCustomerReply(res->json().toObject());
+        refresh();
     });
 }
 

@@ -44,8 +44,11 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
     QString phone=receiptData["customers"].toObject()["phone"].toString();
     QString date=receiptData["date"].toString();
     QDateTime dt=QDateTime::fromString(date,Qt::ISODate);
+    QString note=receiptData["note"].toString();
     painter.drawText(QRect(image.width()-620,240,  600,40),Qt::AlignRight,reference);
     painter.drawText(QRect(image.width()-420,280,  400,40),Qt::AlignRight,dt.date().toString(Qt::ISODate));
+    painter.drawText(QRect(image.width()-620,320,  600,40),Qt::AlignRight,note);
+
     painter.drawText(QRect(20,240, 600,40),Qt::AlignLeft,"Customer: " +customer);
     painter.drawText(QRect(20,280, 600,40),Qt::AlignLeft,"Address: " + address);
     painter.drawText(QRect(20,320, 600,40),Qt::AlignLeft,"Phone: "+phone);

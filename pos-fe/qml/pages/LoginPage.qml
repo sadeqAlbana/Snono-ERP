@@ -27,7 +27,7 @@ Rectangle {
 
     Image{
         id: logo
-        source: "qrc:/images/icons/snono_2021_full.svg"
+        source: "qrc:/images/icons/SS_Logo_Color.png"
         width: 620
 
         sourceSize.width: 620
@@ -36,10 +36,10 @@ Rectangle {
         anchors.bottomMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
         antialiasing: true
-        layer.enabled: true
-        layer.effect: ColorOverlay{
-            color: "#076596"
-        }
+//        layer.enabled: true
+//        layer.effect: ColorOverlay{
+//            color: "#076596"
+//        }
     }
 
 

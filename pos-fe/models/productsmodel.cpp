@@ -6,7 +6,7 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        Column{"id","ID"} ,
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
-                                                                       Column{"internal_sku","SKU"} ,
+                                                                       Column{"sku","SKU"} ,
                                                                        Column{"cost","Cost",QString(), "currency"} ,
                                                                        Column{"current_cost","Current Cost",QString(), "currency"} ,
                                                                        Column{"qty","Stock","products_stocks"} ,
@@ -115,10 +115,10 @@ QVariantMap ProductsModel::jsonMap(const int &row)
 
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
-    QStringList wanted{"thumb","size","internal_sku"};
+    QStringList wanted{"thumb","size","sku"};
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
-        QJsonArray attributes=product["products_attributes_attributes_values"].toArray();
+        QJsonArray attributes=product["attributes"].toArray();
 
         for(int j=0; j<attributes.size(); j++){
             QJsonObject attribute=attributes.at(j).toObject();

@@ -2,7 +2,11 @@
     <qresource prefix="/images">
         <file>icons/SheinIQ.png</file>
         <file>icons/SheinIQ-circule.png</file>
-	<file>icons/snono_2021.png</file>
-	<file>icons/snono_2021_full.svg</file>
+        <file>icons/snono_2021.png</file>
+        <file>icons/snono_2021_full.svg</file>
+        <file>icons/SS_Brandmark_Blue.png</file>
+        <file>icons/SS_Brandmark_Blue.svg</file>
+        <file>icons/SS_Logo_Color.png</file>
+        <file>icons/SS_Logo_Color.svg</file>
     </qresource>
 </RCC>

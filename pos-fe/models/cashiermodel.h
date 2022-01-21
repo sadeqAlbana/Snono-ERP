@@ -34,7 +34,7 @@ public:
     void onAddProductReply(NetworkResponse *res);
     Q_INVOKABLE void removeProduct(const int &index);
     void onRemoveProductReply(NetworkResponse *res);
-    Q_INVOKABLE void processCart(const double paid,const double change);
+    Q_INVOKABLE void processCart(const double paid,const double change, const QString &note=QString());
     void onProcessCartRespnse(NetworkResponse *res);
     Q_INVOKABLE void requestCart();
     void onRequestCartResponse(NetworkResponse *res);

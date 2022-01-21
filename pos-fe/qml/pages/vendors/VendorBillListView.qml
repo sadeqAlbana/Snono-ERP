@@ -27,7 +27,7 @@ ListView {
                 "name" :product.name,
                 "qty" : 1,
                 "cost" : product.cost,
-                "sku" : product.internal_sku,
+                "sku" : product.sku,
                 "thumb" : product.thumb,
                 "total" : product.cost
 
@@ -42,7 +42,7 @@ ListView {
             cartModel.setData(index,"name",product.name);
             //cartModel.setData(index,"qty",1);
             cartModel.setData(index,"cost",product.cost)
-            cartModel.setData(index,"sku","",product.internal_sku);
+            cartModel.setData(index,"sku","",product.sku);
             cartModel.setData(index,"thumb",product.thumb);
             //cartModel.setData(index,"total",product.cost);
             //            console.log(cartModel.data(index,"cost"));
@@ -102,7 +102,7 @@ ListView {
             Layout.topMargin: 10
             Layout.leftMargin: 10
             Layout.fillWidth: true
-            textRole: "internal_sku"
+            textRole: "sku"
             valueRole: "id"
             currentIndex: 0
             model: productsModel
@@ -137,7 +137,7 @@ ListView {
             }
 
             delegate: ItemDelegate{
-                text: model.internal_sku
+                text: model.sku
                 implicitWidth: cb.width
                 icon.source: "https://"+model.thumb
                 icon.color: "transparent"
