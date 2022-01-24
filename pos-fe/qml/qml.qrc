@@ -59,5 +59,7 @@
         <file>pages/orders/OrderReturnListView.qml</file>
         <file>pages/orders/OrdersReturnsPage.qml</file>
         <file>common/SuffixDelegate.qml</file>
+        <file>pages/vendors/AddCustomBillDialog.qml</file>
+        <file>pages/vendors/CustomVendorBillListView.qml</file>
     </qresource>
 </RCC>
