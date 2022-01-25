@@ -62,10 +62,14 @@ Popup{
         }
             spacing: 10
 
-            VendorBillListView{
+            CustomVendorBillListView{
                 id: cartListView
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                model: CustomVendorCartModel{
+                    id: cartModel
+
+                }
 
             }
         }
@@ -90,7 +94,7 @@ Popup{
 
             }
             CButton{
-                text: qsTr("Purchase")
+                text: qsTr("Create")
                 color: "#2eb85c"
                 textColor: "#ffffff"
                 implicitHeight: 50
@@ -102,8 +106,9 @@ Popup{
 
         function purchaseStock(){
             var vendor=vendorsCB.currentValue;
-            var products=cartListView.vendorCartModel.toJsonArray();
-            accepted(vendor,products);
+            var items=cartModel.toJsonArray();
+            var name=cartListView.billName
+            Api.processCustomBill(name,vendor,items);
         }
 
     } //card End

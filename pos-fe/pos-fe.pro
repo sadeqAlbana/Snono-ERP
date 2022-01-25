@@ -28,10 +28,12 @@ include(../json-model/json-model.pri)
 
 
 SOURCES += \
+    api.cpp \
         main.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
     models/customersmodel.cpp \
+    models/customvendorcartmodel.cpp \
     models/journalentriesitemsmodel.cpp \
     models/journalentriesmodel.cpp \
     models/jsonModel/checkablelistmodel.cpp \
@@ -60,9 +62,11 @@ SOURCES += \
     models/accountsmodel.cpp
 
 HEADERS += \
+    api.h \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
     models/customersmodel.h \
+    models/customvendorcartmodel.h \
     models/journalentriesitemsmodel.h \
     models/journalentriesmodel.h \
     models/jsonModel/checkablelistmodel.h \

@@ -62,8 +62,10 @@ Card{
             onAccepted: {
                 model.createBill(vendorId,products);
             }
+        }
 
-
+        AddCustomBillDialog{
+            id: customBillDlg;
         }
 
         CTableView{
@@ -74,7 +76,9 @@ Card{
                 Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
                         dialog.open();}},
-                Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();}
+                Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();},
+                Action{ text: qsTr("New Custom Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: customBillDlg.open();}
+
             ]
 
             delegate: DelegateChooser{
@@ -82,6 +86,20 @@ Card{
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "status"; StatusDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+            }
+
+            Connections{
+                target: Api
+
+                onProcessCustomBillResponse:{
+                    if(reply.status===200){
+                        toastrService.push("Success",reply.message,"success",2000)
+                        model.requestData();
+                    }
+                    else{
+                        toastrService.push("Error",reply.message,"error",2000)
+                    }
+                }
             }
 
             model: VendorsBillsModel{

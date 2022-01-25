@@ -29,8 +29,6 @@ void VendorsBillsModel::payBill(const int &vendorBillId)
 
 void VendorsBillsModel::createBill(const int &vendorId, const QJsonArray &products)
 {
-    qDebug()<<vendorId;
-    qDebug()<<products;
     QJsonObject params;
     params["products"]=products;
     params["vendor_id"]=vendorId;

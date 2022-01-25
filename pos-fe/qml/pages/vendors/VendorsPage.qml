@@ -16,6 +16,8 @@ Card{
 
     title: qsTr("Vendors")
 
+
+
     ColumnLayout{
         id: page
         anchors.fill: parent;

@@ -27,6 +27,8 @@
 #include <QJsonObject>
 #include "models/vendorcartmodel.h"
 #include "models/returnordermodel.h"
+#include "models/customvendorcartmodel.h"
+#include "api.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -45,11 +47,14 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     NumberEditor nb;
     ReceiptGenerator gen;
+    Api api;
     engine.rootContext()->setContextProperty("KApp",&a);
     engine.rootContext()->setContextProperty("AuthManager",AuthManager::instance());
     engine.rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
     engine.rootContext()->setContextProperty("NumberEditor",&nb);
     engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
+    engine.rootContext()->setContextProperty("Api",&api);
+
 
     qmlRegisterType<AccountsModel>("app.models", 1, 0, "AccountsModel");
 
@@ -70,6 +75,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<ReceiptModel>("app.models", 1, 0, "ReceiptModel");
     qmlRegisterType<VendorCartModel>("app.models", 1, 0, "VendorCartModel");
     qmlRegisterType<ReturnOrderModel>("app.models", 1, 0, "ReturnOrderModel");
+    qmlRegisterType<CustomVendorCartModel>("app.models", 1, 0, "CustomVendorCartModel");
+
 
 
 
