@@ -22,7 +22,7 @@ void AuthManager::authenticate(QString username, QString password)
 void AuthManager::onAuthReply(NetworkResponse *res)
 {
         if(res->json("error").isNull()){
-            settings.setValue("jwt",res->json("jwt").toString());
+            settings.setValue("jwt",res->json("token").toString());
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
             emit loggedIn();
         }
