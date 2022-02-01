@@ -19,10 +19,11 @@ Card{
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
+        anchors.margins: 15
+        anchors.topMargin: 10
+        spacing: 10
         RowLayout{
             spacing: 15
-
         CMenuBar{
             CMenu{
                 title: qsTr("Actions");

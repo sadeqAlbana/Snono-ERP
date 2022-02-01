@@ -53,7 +53,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 //    file.open(QIODevice::WriteOnly);
 //    file.write(QJsonDocument(reply->json().toObject()).toJson(QJsonDocument::Indented));
 //    file.close();
-    qDebug()<<reply->json().toObject();
+    //qDebug()<<reply->json().toObject();
     //qDebug()<<"page received : " << _currentPage;
 
     m_currentPage=reply->json("current_page").toInt();

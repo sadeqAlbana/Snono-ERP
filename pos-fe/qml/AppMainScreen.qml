@@ -486,7 +486,7 @@ Item {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
-                listView.currentIndex=listModel.indexOf("Bills");
+                listView.currentIndex=listModel.indexOf("Products List");
             }
         };
         xhr.send();

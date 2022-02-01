@@ -17,7 +17,7 @@ Popup{
     anchors.centerIn: parent;
     parent: Overlay.overlay
     property var product: QtObject{
-    property string name;
+        property string name;
         property string barcode;
         property string description;
         property real list_price;
@@ -25,7 +25,7 @@ Popup{
     }
     signal accepted();
 
-    width: parent.width*0.6
+    width: parent.width*0.8
     height: parent.height*0.8
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
@@ -47,43 +47,50 @@ Popup{
         title: qsTr("Edit Product")
         anchors.fill: parent;
 
-        GridLayout{
+        RowLayout{
             anchors.margins: 10
             anchors.fill: parent;
-
-            //        anchors.rightMargin: parent.width*0.7
-            //        spacing: 20
-            rowSpacing: 20
-            columnSpacing: 20
-            //        columns: 2
-            //rows:8
-
-            flow: GridLayout.TopToBottom
-            CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
-            CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
-
-            CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
-            CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:product.list_price; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
-            CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:product.cost; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
-
-
-            CheckableComboBox{
+            GridLayout{
+                Layout.fillHeight: true
                 Layout.fillWidth: true
-                //           Layout.maximumWidth: parent.width/2
-                model: TaxesCheckableModel{
-                    id: taxesModel;
+
+                //        anchors.rightMargin: parent.width*0.7
+                //        spacing: 20
+                rowSpacing: 20
+                columnSpacing: 20
+                //        columns: 2
+                //rows:8
+
+                flow: GridLayout.TopToBottom
+                CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
+                CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
+
+                CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
+                CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:product.list_price; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+                CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:product.cost; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+
+
+                CheckableComboBox{
+                    Layout.fillWidth: true
+                    //           Layout.maximumWidth: parent.width/2
+                    model: TaxesCheckableModel{
+                        id: taxesModel;
+                    }
+                    textRole: "name";
+                    valueRole: "id"
+                    displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+
                 }
-                textRole: "name";
-                valueRole: "id"
-                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
-
+            } //grid end
+            ColumnLayout{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.minimumWidth: parent.width/2
+                Text {
+                    id: name
+                    text: qsTr("Variants")
+                }
             }
-
-
-
-
-
-
 
         }
 
@@ -108,7 +115,7 @@ Popup{
                 text: qsTr("Close")
                 color: "#e55353"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 50
                 Layout.margins: 10
                 onClicked: dialog.close();
 
@@ -118,9 +125,10 @@ Popup{
                 text: qsTr("Apply")
                 color: "#2eb85c"
                 textColor: "#ffffff"
-                implicitHeight: 60
+                implicitHeight: 50
                 Layout.margins: 10
                 onClicked: {card.updateProduct(); accepted(); dialog.close();}
+
             }
 
         } //footer end
@@ -128,9 +136,9 @@ Popup{
     } //card End
 
 
-//    onClosed: {
-//        destroy(1000)
-//    }
+    //    onClosed: {
+    //        destroy(1000)
+    //    }
 }
 
 
