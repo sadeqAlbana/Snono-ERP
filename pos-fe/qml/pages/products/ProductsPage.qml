@@ -134,7 +134,8 @@ Card{
             model: ProductsModel{
                 id: model
                 Component.onCompleted: requestData();
-                filter: {"parent_id":0}
+                //filter: {"parent_id":0}
+                filter: {"only_variants":true}
                 onProductUpdateReply: {
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)

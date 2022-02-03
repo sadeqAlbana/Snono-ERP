@@ -25,8 +25,8 @@ Popup{
     }
     signal accepted();
 
-    width: parent.width*0.8
-    height: parent.height*0.8
+    width: parent.width*0.5
+    height: parent.height*0.7
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
@@ -82,15 +82,15 @@ Popup{
 
                 }
             } //grid end
-            ColumnLayout{
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                Layout.minimumWidth: parent.width/2
-                Text {
-                    id: name
-                    text: qsTr("Variants")
-                }
-            }
+//            ColumnLayout{
+//                Layout.fillHeight: true
+//                Layout.fillWidth: true
+//                Layout.minimumWidth: parent.width/2
+//                Text {
+//                    id: name
+//                    text: qsTr("Variants")
+//                }
+//            }
 
         }
 
