@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core widgets network gui quick quickcontrols2 multimedia printsupport
+QT       += core widgets network gui quick quickcontrols2 multimedia printsupport serialport
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -57,6 +57,7 @@ SOURCES += \
     posapplication.cpp \
     possettings.cpp \
     models/productsmodel.cpp \
+    printer/epsonprinter.cpp \
     receiptgenerator.cpp \
     utils.cpp \
     models/accountsmodel.cpp
@@ -90,6 +91,7 @@ HEADERS += \
     posapplication.h \
     possettings.h \
     models/productsmodel.h \
+    printer/epsonprinter.h \
     receiptgenerator.h \
     utils.h \
     models/accountsmodel.h

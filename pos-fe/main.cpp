@@ -29,6 +29,7 @@
 #include "models/returnordermodel.h"
 #include "models/customvendorcartmodel.h"
 #include "api.h"
+#include <printer/epsonprinter.h>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -78,6 +79,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<CustomVendorCartModel>("app.models", 1, 0, "CustomVendorCartModel");
 
 
+    EpsonPrinter printer;
 
 
 //    QTimer timer;
