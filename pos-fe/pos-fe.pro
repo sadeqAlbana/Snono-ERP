@@ -57,8 +57,10 @@ SOURCES += \
     posapplication.cpp \
     possettings.cpp \
     models/productsmodel.cpp \
+    printer/cepsonesccontrol.cpp \
     printer/epsonprinter.cpp \
     receiptgenerator.cpp \
+    testpalette.cpp \
     utils.cpp \
     models/accountsmodel.cpp
 
@@ -91,8 +93,10 @@ HEADERS += \
     posapplication.h \
     possettings.h \
     models/productsmodel.h \
+    printer/cepsonesccontrol.h \
     printer/epsonprinter.h \
     receiptgenerator.h \
+    testpalette.h \
     utils.h \
     models/accountsmodel.h
 

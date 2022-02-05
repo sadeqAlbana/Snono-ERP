@@ -5,13 +5,14 @@
 #include <QUrl>
 #include <QJsonObject>
 class QPainter;
+class QPrinter;
 class ReceiptGenerator : public QObject
 {
     Q_OBJECT
 public:
     explicit ReceiptGenerator(QObject *parent = nullptr);
 
-    static QImage create(QJsonObject receiptData);
+    static QImage create(QJsonObject receiptData, QPrinter *printer);
 
     static int centerStart(int canvasWidth, int rectWidth);
 

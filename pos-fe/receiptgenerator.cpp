@@ -11,26 +11,30 @@
 #include <QRectF>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QPrinterInfo>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
 }
 
 
-QImage ReceiptGenerator::create(QJsonObject receiptData)
+QImage ReceiptGenerator::create(QJsonObject receiptData,QPrinter *printer)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
-    int height=400+((items.count()+1)*40)+200;
-
-    QImage image(800,height,QImage::Format_RGB32);
-    image.fill(Qt::white);
-    QPainter painter(&image);
+    int height=400+((items.count()+1)*55)+200;
+    int width=575;
+    //QImage image(800,height,QImage::Format_RGB32);
+    //image.fill(Qt::white);
+    //QPainter painter(&image);
+    //QPainter painter;
+    QPainter painter(printer);
+    painter.setPen(Qt::black);
     QFont font=painter.font();
-    font.setPixelSize(15);
+    font.setPixelSize(17);
     painter.setFont(font);
     QImage logo(":/images/icons/SheinIQ-circule.png");
     logo=logo.scaledToHeight(200);
-    QPoint logoStart(centerStart(image.width(),logo.width()),20);
+    QPoint logoStart(centerStart(width,logo.width()),20);
     painter.drawImage(logoStart,logo);
 
 
@@ -45,15 +49,15 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
     QString date=receiptData["date"].toString();
     QDateTime dt=QDateTime::fromString(date,Qt::ISODate);
     QString note=receiptData["note"].toString();
-    painter.drawText(QRect(image.width()-620,240,  600,40),Qt::AlignRight,reference);
-    painter.drawText(QRect(image.width()-420,280,  400,40),Qt::AlignRight,dt.date().toString(Qt::ISODate));
-    painter.drawText(QRect(image.width()-620,320,  600,40),Qt::AlignRight,note);
+    painter.drawText(QRect(width-620,240,  600,40),Qt::AlignRight,reference);
+    painter.drawText(QRect(width-420,280,  400,40),Qt::AlignRight,dt.date().toString(Qt::ISODate));
+    painter.drawText(QRect(width-620,320,  600,40),Qt::AlignRight,note);
 
     painter.drawText(QRect(20,240, 600,40),Qt::AlignLeft,"Customer: " +customer);
     painter.drawText(QRect(20,280, 600,40),Qt::AlignLeft,"Address: " + address);
     painter.drawText(QRect(20,320, 600,40),Qt::AlignLeft,"Phone: "+phone);
 
-    drawLine(painter,400,"No","Description","Price","Qty","Discount","Subtotal","Total");
+    drawLine(painter,400,"No","Description","Price","Qty","Disc.","Subtotal","Total");
 
 
     for(int i=0; i<items.size(); i++){
@@ -65,7 +69,7 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
 
         QString subtotal=Currency::formatString(item["subtotal"].toDouble());
         QString total=Currency::formatString(item["total"].toDouble());
-        drawLine(painter,(400+((i+1)*40)),QString::number(i+1),description,unitPrice,qty,discount,subtotal,total);
+        drawLine(painter,(400+((i+1)*55)),QString::number(i+1),description,unitPrice,qty,discount,subtotal,total);
 
     }
 
@@ -73,11 +77,11 @@ QImage ReceiptGenerator::create(QJsonObject receiptData)
 
     font.setPixelSize(25);
     painter.setFont(font);
-    painter.drawText(QRect(20,image.height()-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
-    painter.drawText(QRect(20,image.height()-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
+    painter.drawText(QRect(20,height-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
+    painter.drawText(QRect(20,height-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
 
 
-    return image;
+    return QImage();
 
 
     //image.save("/tmp/test.png");
@@ -97,12 +101,12 @@ void ReceiptGenerator::drawLine(QPainter &painter, const int &yAxis, const QStri
     QTextOption option;
     option.setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     option.setWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
-    painter.drawText(QRect(20 ,yAxis, 260,40),description,option);
-    painter.drawText(QRect(280,yAxis, 100,40),price,option);
-    painter.drawText(QRect(380,yAxis, 100,40),qty,option);
-    painter.drawText(QRect(480,yAxis, 100,40),discount,option);
-    painter.drawText(QRect(580,yAxis, 100,40),subtotal,option);
-    painter.drawText(QRect(680,yAxis, 100,40),total,option);
+    painter.drawText(QRect(0 ,yAxis, 175,40),description,option);
+    painter.drawText(QRect(175,yAxis, 100,40),price,option);
+    painter.drawText(QRect(275,yAxis, 50,40),qty,option);
+    painter.drawText(QRect(325,yAxis, 50,40),discount,option);
+    painter.drawText(QRect(375,yAxis, 100,40),subtotal,option);
+    painter.drawText(QRect(475,yAxis, 100,40),total,option);
 }
 
 QUrl ReceiptGenerator::imageToUrl(const QImage& image)
@@ -117,7 +121,8 @@ QUrl ReceiptGenerator::imageToUrl(const QImage& image)
 
 QUrl ReceiptGenerator::generateReceiptUrl(QJsonObject receiptData)
 {
-    return imageToUrl(create(receiptData));
+    return QUrl();
+    //return imageToUrl(create(receiptData));
 }
 
 QUrl ReceiptGenerator::sampleData()
@@ -129,13 +134,22 @@ QUrl ReceiptGenerator::sampleData()
 
 void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 {
-    QPrinter printer;
+    QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+    printer.setPrinterName("POS-80(copy of 2)");
+    QPrinterInfo info(printer);
+    qDebug()<<printer.width();
+    //printer.setOutputFormat(QPrinter::PdfFormat);
+    //printer.setFullPage(true);
+        //printer.setOutputFileName( "hello.pdf" );
+    //qDebug()<<printer
+    //QPainter painter(&printer);
 
-    QPrintDialog *dlg = new QPrintDialog(&printer,0);
+    create(receiptData,&printer);
+    //painter.drawImage(QPoint(0,0),create(receiptData));
+    //painter.end();
+//    QPrintDialog *dlg = new QPrintDialog(&printer,0);
 
-    if(dlg->exec() == QDialog::Accepted) {
-            QPainter painter(&printer);
-            painter.drawImage(QPoint(0,0),create(receiptData));
-            painter.end();
-    }
+//    if(dlg->exec() == QDialog::Accepted) {
+
+//    }
 }

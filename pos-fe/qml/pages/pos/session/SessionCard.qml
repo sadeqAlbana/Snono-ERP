@@ -16,6 +16,7 @@ Card{
     implicitHeight: 250
     signal close();
     signal resume();
+    clip: true
 
     title: "POS/0001"
 
@@ -55,7 +56,9 @@ Card{
             text: qsTr("Resume")
             color: "#2eb85c"
             textColor: "#ffffff"
+            //Layout.minimumWidth: implicitWidth
             implicitHeight: 35
+            implicitWidth: 70
             Layout.leftMargin: 25
             Layout.topMargin: 10
             Layout.bottomMargin: 10
@@ -67,6 +70,8 @@ Card{
             color: "#e55353"
             textColor: "#ffffff"
             implicitHeight: 35
+            implicitWidth: 70
+
             Layout.topMargin: 10
             Layout.bottomMargin: 10
             onClicked: close();

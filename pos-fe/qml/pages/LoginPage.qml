@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.5
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -7,7 +7,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
-
+import "qrc:/CoreUI/palettes"
 Rectangle {
     id : loginPage
     anchors.fill: parent;
@@ -134,12 +134,23 @@ Rectangle {
                     color: "#321fdb"
                     textColor: "#ffffff"
                     Layout.fillHeight: false
-                    //implicitHeight: 50
+                    implicitHeight: 50
                     font.pixelSize: 17
-                    Layout.preferredHeight: 50
+                    //Layout.preferredHeight: 100
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.rightMargin: 15
                     onClicked: layout.login();
+                    //icon.source:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    //display: AbstractButton.TextUnderIcon
+                    //icon.color: "white"
+                    //icon.width: 25
+                    //icon.height: 25
+
+                    //palette: CPalette{}
+                    //palette: ButtonPrimary.primary
+                    //palette: Pal
+
+
                 }
 
 
