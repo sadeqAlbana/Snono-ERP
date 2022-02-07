@@ -61,5 +61,6 @@
         <file>common/SuffixDelegate.qml</file>
         <file>pages/vendors/AddCustomBillDialog.qml</file>
         <file>pages/vendors/CustomVendorBillListView.qml</file>
+        <file>common/AppDialog.qml</file>
     </qresource>
 </RCC>

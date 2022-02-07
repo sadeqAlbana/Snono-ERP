@@ -9,10 +9,10 @@ import "qrc:/common"
 import QtMultimedia 5.12
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 1366
+    height: 768
     title: qsTr("POS")
-    visibility: Window.Maximized
+    //visibility: Window.Maximized
     property real activityCount : 0
 
     onActivityCountChanged:{
