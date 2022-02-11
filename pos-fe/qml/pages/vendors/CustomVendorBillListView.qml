@@ -15,7 +15,7 @@ import QtQml 2.15
 
 ListView {
     id :listView
-    clip: true
+    clip: false
     property string billName
     spacing: 5
     //clip: true
@@ -38,18 +38,17 @@ ListView {
         //cartModel.refreshCartTotal();
     }
 
-    header: Rectangle{
-        color: "white";
-        anchors.horizontalCenter: parent.horizontalCenter
+    header: RowLayout{
         z:2
-        width: listView.width-10
         height: 80
+        spacing: 20
         CTextField{
             id: name
             text: billName;
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            width: 250
+            implicitWidth: 250
+            placeholderText: "Bill Name..."
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+
             Binding{
                 target: listView
                 property: "billName"
@@ -62,9 +61,7 @@ ListView {
             text: "Add Item"
             color: "#3399ff"
             textColor: "#FFFFFF"
-
-            anchors.left: name.right
-            anchors.verticalCenter: parent.verticalCenter
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             onClicked: listView.addItem()
         }
     }

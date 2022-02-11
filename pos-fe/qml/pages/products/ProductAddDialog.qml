@@ -9,16 +9,19 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
 import app.models 1.0
+import "qrc:/common"
 
-Popup{
+AppDialog{
 
     id: dialog
     modal: true
     anchors.centerIn: parent;
     parent: Overlay.overlay
 
-    width: parent.width*0.6
-    height: parent.height*0.8
+    width:  Math.max(card.implicitWidth,parent.width*0.6)
+    height: Math.max(card.implicitHeight,parent.height*0.7)
+
+
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
@@ -38,81 +41,78 @@ Popup{
         id: card
         title: qsTr("Add Product")
         anchors.fill: parent;
+        clip: true
 
-        GridLayout{
-            anchors.margins: 10
-            anchors.fill: parent;
+        padding: 20
+            GridLayout{
+                anchors.fill: parent;
 
-            //        anchors.rightMargin: parent.width*0.7
-            //        spacing: 20
-            rowSpacing: 20
-            columnSpacing: 20
-            //        columns: 2
-            //rows:8
+                rowSpacing: 20
+                columnSpacing: 20
 
-            flow: GridLayout.TopToBottom
-            CTextFieldGroup{id: nameTF;        label.text: qsTr("Name");}
-            CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");}
-            CTextFieldGroup{id: barcodeTF;     label.text: qsTr("Barcode");       input.text:"";}
-            CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:"0"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
-            CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:"0"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+                flow: GridLayout.TopToBottom
+                CTextFieldGroup{id: nameTF;        label.text: qsTr("Name");}
+                CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");}
+                CTextFieldGroup{id: barcodeTF;     label.text: qsTr("Barcode");       input.text:"";}
+                CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:"0"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+                CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:"0"; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
 
-            CComboBoxGroup{
-                id: typeCB;
-                Layout.fillWidth: true
-                label.text: "Product Type"
-                comboBox.valueRole: "value"
-                comboBox.textRole: "modelData"
+                CComboBoxGroup{
+                    id: typeCB;
+                    Layout.fillWidth: true
+                    label.text: "Product Type"
+                    comboBox.valueRole: "value"
+                    comboBox.textRole: "modelData"
 
-                comboBox.model: ListModel {
-                    ListElement { modelData: qsTr("Storable Product");   value: 1;}
-                    ListElement { modelData: qsTr("Consumable Product"); value: 2;}
-                    ListElement { modelData: qsTr("Service Product");    value: 3;}
+                    comboBox.model: ListModel {
+                        ListElement { modelData: qsTr("Storable Product");   value: 1;}
+                        ListElement { modelData: qsTr("Consumable Product"); value: 2;}
+                        ListElement { modelData: qsTr("Service Product");    value: 3;}
+                    }
+                } //end typeCB
+
+                CComboBoxGroup{
+                    id: categoryCB
+                    Layout.fillWidth: true
+                    label.text: "Category"
+                    comboBox.textRole: "category"
+                    comboBox.valueRole: "id"
+                    comboBox.currentIndex: 0;
+                    comboBox.model: CategoriesModel{}
+                } //end categoryCB
+
+
+                CheckableComboBox{
+                    Layout.fillWidth: true
+                    //           Layout.maximumWidth: parent.width/2
+                    model: TaxesCheckableModel{
+                        id: taxesModel;
+                    }
+                    textRole: "name";
+                    valueRole: "id"
+                    displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+
                 }
-            } //end typeCB
-
-            CComboBoxGroup{
-                id: categoryCB
-                Layout.fillWidth: true
-                label.text: "Category"
-                comboBox.textRole: "category"
-                comboBox.valueRole: "id"
-                comboBox.currentIndex: 0;
-                comboBox.model: CategoriesModel{}
-            } //end categoryCB
 
 
-            CheckableComboBox{
-                Layout.fillWidth: true
-                //           Layout.maximumWidth: parent.width/2
-                model: TaxesCheckableModel{
-                    id: taxesModel;
+
+                ProductsModel{
+                    id: model;
+
+                    onProductAddReply: {
+                        if(reply.status===200){
+                            toastrService.push("Success",reply.message,"success",2000)
+                            model.requestData();
+                        }
+                        else{
+                            toastrService.push("Error",reply.message,"error",2000)
+                        }
+                    } //slot end
                 }
-                textRole: "name";
-                valueRole: "id"
-                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
 
             }
 
 
-
-            ProductsModel{
-                id: model;
-
-                onProductAddReply: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                } //slot end
-            }
-
-
-
-        }
 
         function addProduct(){
             var name=nameTF.input.text;
@@ -127,7 +127,7 @@ Popup{
             for(var i in selectedRowIds){
                 taxes.push(taxesModel.data(i,"id"));
             }
-            model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes);
+            model.addProduct(name, barcode,listPrice, cost, type,description,categoryId,taxes,0);
 
         }
 

@@ -129,7 +129,7 @@ ListView {
 
             text: Utils.formatCurrency(returnModel.returnTotal);
             readOnly: true
-            anchors.verticalCenter: listView.verticalCenter
+            //anchors.verticalCenter: listView.verticalCenter
         }
 
     }

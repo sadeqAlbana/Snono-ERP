@@ -38,10 +38,10 @@ Popup{
         id: card
         title: qsTr("New Bill")
         anchors.fill: parent;
-
+        padding: 10
         ColumnLayout{
             anchors.fill: parent;
-            anchors.margins: 10
+
 
         RowLayout{
             Layout.fillWidth: true

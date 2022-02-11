@@ -8,11 +8,12 @@ import "qrc:/pages"
 import "qrc:/common"
 import QtMultimedia 5.12
 ApplicationWindow {
+    id: mainWindow
     visible: true
-    width: 1366
-    height: 768
     title: qsTr("POS")
-    //visibility: Window.Maximized
+    width: 640
+    height: 480
+    visibility: Window.Maximized
     property real activityCount : 0
 
     onActivityCountChanged:{
@@ -22,10 +23,8 @@ ApplicationWindow {
         }else{
             busySpinner.close();
         }
-
     }
 
-    id: mainWindow
 
     Connections{
         target: AuthManager
@@ -38,7 +37,7 @@ ApplicationWindow {
         target: NetworkManager
         function onNetworkActivity(url){
             activityCount++;
-            if(url!="/pos/cart/updateProduct" && url!="/pos/cart/getCart")
+            if(url!=="/pos/cart/updateProduct" && url!=="/pos/cart/getCart")
                 busySpinner.open();
         }
         function onFinishedNetworkActivity(url){

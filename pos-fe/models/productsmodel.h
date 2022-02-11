@@ -23,7 +23,7 @@ public:
 
     Q_INVOKABLE void addProduct(const QString &name, const QString &barcode,
                     const double &listPrice, const double &cost, const int &typeId, const QString &description,
-                    const int &categoryId, const QList<int> &taxes);
+                    const int &categoryId, const QList<int> &taxes,const int &parentId=0);
 
     Q_INVOKABLE void removeProduct(const int &productId);
 

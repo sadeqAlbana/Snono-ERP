@@ -24,59 +24,49 @@ AppDialog{
     }
     signal accepted();
 
-    width: Math.max(card.implicitWidth,parent.width*0.6)
+    width:  Math.max(card.implicitWidth,parent.width*0.6)
     height: Math.max(card.implicitHeight,parent.height*0.7)
 
     Card{
         id: card
         title: qsTr("Edit Product")
-        anchors.fill: parent
-
-            ColumnLayout{
-                anchors.fill: parent
-                anchors.margins: 20
-
-                //spacing: 20
+       anchors.fill: parent
+       padding: 20
 
 
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
-                Rectangle{implicitHeight: 60; implicitWidth: 200; color: "red"}
+        ColumnLayout{
+            id: layout
+            anchors.fill: parent
+            CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
+            CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
 
+            CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
+            CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:product.list_price; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+            CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:product.cost; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
+            CheckableComboBox{
+                model: TaxesCheckableModel{
+                    id: taxesModel;
+                }
+                Layout.fillWidth: true
+                textRole: "name";
+                valueRole: "id"
+                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
 
-
-//                CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
-//                CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
-
-//                CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
-//                CTextFieldGroup{id: listPriceTF;   label.text: qsTr("List Price");    input.text:product.list_price; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
-//                CTextFieldGroup{id: costTF;        label.text: qsTr("Cost");          input.text:product.cost; input.validator: DoubleValidator{bottom: 0;top:1000000000}}
-//                CheckableComboBox{
-//                    Layout.fillWidth: true
-//                    model: TaxesCheckableModel{
-//                        id: taxesModel;
-//                    }
-//                    textRole: "name";
-//                    valueRole: "id"
-//                    displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
-
-//                }
+            }
 
         } //grid end
 
-//        function updateProduct(){
-//            product.name=nameTF.input.text
-//            product.description=descriptionTF.input.text
-//            product.list_price=parseFloat(listPriceTF.input.text)
-//            product.cost=parseFloat(costTF.input.text)
-//            product.barcode=barcodeTF.input.text
 
-//        }
+
+
+        function updateProduct(){
+            product.name=nameTF.input.text
+            product.description=descriptionTF.input.text
+            product.list_price=parseFloat(listPriceTF.input.text)
+            product.cost=parseFloat(costTF.input.text)
+            product.barcode=barcodeTF.input.text
+
+        }
 
         footer: RowLayout{
             Rectangle{

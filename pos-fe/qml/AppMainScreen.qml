@@ -424,7 +424,7 @@ Item {
         StackView{
             id: baseLoader
             anchors.fill: parent
-            anchors.margins: 30
+            anchors.margins: 25
             clip:true
             //initialItem: "qrc:/pages/orders/OrdersPage.qml"
             //source: listModel.get(listView.currentIndex).path; //change this later

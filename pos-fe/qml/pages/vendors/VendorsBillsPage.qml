@@ -73,7 +73,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
+                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
                         dialog.open();}},
                 Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();},
@@ -91,7 +91,7 @@ Card{
             Connections{
                 target: Api
 
-                onProcessCustomBillResponse:{
+                function onProcessCustomBillResponse(status){
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)
                         model.requestData();

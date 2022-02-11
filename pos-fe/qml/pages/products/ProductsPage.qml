@@ -15,12 +15,11 @@ import "qrc:/common"
 Card{
 
     title: qsTr("Products")
-
+    padding: 15
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 15
-        anchors.topMargin: 10
+
         spacing: 10
         RowLayout{
             spacing: 15
@@ -58,7 +57,7 @@ Card{
                     model.requestData();
                 }
             }
-        }
+        }//end row layout
 
 
         ProductAddDialog{
@@ -94,7 +93,7 @@ Card{
 
             actions: [
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
-                Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
+                //Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
                 Action{ text: qsTr("Edit"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openEditDialog()},
                 Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
             ]

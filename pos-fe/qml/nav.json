@@ -3,11 +3,7 @@
       "title":"Dashboard",
       "category":"",
       "image":"qrc:/assets/icons/coreui/free/cil-speedometer.svg",
-      "path":"qrc:/pages/dashboard/DashboardPage.qml",
-      "badge":{
-         "variant":"info",
-         "text":"NEW"
-      }
+      "path":"qrc:/pages/dashboard/DashboardPage.qml"
    },
    {
       "title":"POS",
@@ -81,7 +77,7 @@
       "path":"qrc:/pages/customers/CustomersPage.qml"
    },
    {
-      "title":"Vedors",
+      "title":"Vendors",
       "category":"MAIN",
       "image":"qrc:/assets/icons/coreui/free/cil-drop.svg",
       "path":"",

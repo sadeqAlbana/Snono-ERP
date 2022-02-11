@@ -78,7 +78,7 @@ void ProductsModel::onPurchaseStockReply(NetworkResponse *res)
     emit stockPurchasedReply(res->json().toObject());
 }
 
-void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QList<int> &taxes)
+void ProductsModel::addProduct(const QString &name, const QString &barcode, const double &listPrice, const double &cost, const int &typeId, const QString &description, const int &categoryId, const QList<int> &taxes, const int &parentId)
 {
     QJsonArray taxesArray;
     for(const int &tax : taxes){
@@ -93,7 +93,9 @@ void ProductsModel::addProduct(const QString &name, const QString &barcode, cons
         {"type",typeId},
         {"description",description},
         {"taxes",taxesArray},
-        {"category_id",categoryId}
+        {"category_id",categoryId},
+        {"parent_id",parentId}
+
     };
 
     PosNetworkManager::instance()->post("/products/add",params)->subcribe([this](NetworkResponse *res){

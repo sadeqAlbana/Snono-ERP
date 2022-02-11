@@ -117,6 +117,7 @@ ListView {
                 Image{
                     source: model.thumb
                     sourceSize.height: parent.height*0.8
+                cache: true
 
                     fillMode: Image.PreserveAspectFit
                     Layout.minimumWidth: 40
@@ -139,7 +140,7 @@ ListView {
             delegate: ItemDelegate{
                 text: model.sku
                 implicitWidth: cb.width
-                icon.source: "https://"+model.thumb
+                icon.source: model.thumb
                 icon.color: "transparent"
                 highlighted: cb.highlightedIndex === index
                 font.bold: cb.currentIndex === index
