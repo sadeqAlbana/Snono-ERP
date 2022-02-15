@@ -17,11 +17,10 @@ import "qrc:/common"
 Card{
 
     title: qsTr("Journal Entries Items")
-
+    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
         RowLayout{
             spacing: 15
 

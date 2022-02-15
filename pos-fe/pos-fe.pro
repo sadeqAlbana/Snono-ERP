@@ -4,12 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core widgets network gui quick quickcontrols2 multimedia printsupport serialport
+QT       += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
 TEMPLATE = app
-
+win32: RC_ICONS = icons/SS_Brandmark_Blue.ico
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -45,6 +45,7 @@ SOURCES += \
     models/ordersmodel.cpp \
     models/ordersreturnsmodel.cpp \
     models/possessionsmodel.cpp \
+    models/productsattributesattributesmodel.cpp \
     models/receiptmodel.cpp \
     models/returnordermodel.cpp \
     models/taxescheckablemodel.cpp \
@@ -81,6 +82,7 @@ HEADERS += \
     models/ordersmodel.h \
     models/ordersreturnsmodel.h \
     models/possessionsmodel.h \
+    models/productsattributesattributesmodel.h \
     models/receiptmodel.h \
     models/returnordermodel.h \
     models/taxescheckablemodel.h \

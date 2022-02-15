@@ -88,7 +88,7 @@ QString CheckableListModel::selectedItems() const
 
 QList<int> CheckableListModel::selectedIds()
 {
-    return selected.toList();
+    return selected.values();
 }
 
 QHash<int, QByteArray> CheckableListModel::roleNames() const

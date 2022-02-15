@@ -15,13 +15,11 @@ import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
 
 Card{
-
     title: qsTr("Accounts")
-
+    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
         RowLayout{
             spacing: 15
 

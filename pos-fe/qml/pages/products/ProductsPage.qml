@@ -68,14 +68,25 @@ Card{
         ProductEditDialog{
             id: editDlg
             onAccepted: {
-                model.updateProduct(editDlg.product)
+                Api.updateProduct(editDlg.product)
                 editDlg.close();
-                model.requestData();
             }
 
         }
 
+        Connections{
+            target: Api
 
+            function onUpdateProductReply(reply) {
+                if(reply.status===200){
+                    toastrService.push("Success",reply.message,"success",2000)
+                    model.requestData();
+                }
+                else{
+                    toastrService.push("Error",reply.message,"error",2000)
+                }
+            } //slot end
+        }
 
         CTableView{
             id: tableView
@@ -105,14 +116,13 @@ Card{
 
             }
             function openEditDialog(){
+                console.log(JSON.stringify(model.jsonObject(tableView.selectedRow)))
                 editDlg.product=model.jsonObject(tableView.selectedRow);
                 editDlg.open();
 
             }
 
-            function updateProduct(product){
 
-            }
 
             function openAddDialog(){
                 productAddDialog.open();
@@ -133,15 +143,7 @@ Card{
                 Component.onCompleted: requestData();
                 //filter: {"parent_id":0}
                 filter: {"only_variants":true}
-                onProductUpdateReply: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                } //slot end
+
 
                 onProductRemoveReply: {
                     if(reply.status===200){

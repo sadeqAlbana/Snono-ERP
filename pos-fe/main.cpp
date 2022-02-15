@@ -28,11 +28,12 @@
 #include "models/vendorcartmodel.h"
 #include "models/returnordermodel.h"
 #include "models/customvendorcartmodel.h"
+#include "models/productsattributesattributesmodel.h"
+
 #include "api.h"
 #include <printer/epsonprinter.h>
 #include "printer/cepsonesccontrol.h"
 #include <QPrinterInfo>
-#include "testpalette.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -58,8 +59,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("NumberEditor",&nb);
     engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
     engine.rootContext()->setContextProperty("Api",&api);
-    TestPalette pal;
-    engine.rootContext()->setContextProperty("Pal",pal);
+//    TestPalette pal;
+//    engine.rootContext()->setContextProperty("Pal",pal);
 
 
     qmlRegisterType<AccountsModel>("app.models", 1, 0, "AccountsModel");
@@ -82,6 +83,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<VendorCartModel>("app.models", 1, 0, "VendorCartModel");
     qmlRegisterType<ReturnOrderModel>("app.models", 1, 0, "ReturnOrderModel");
     qmlRegisterType<CustomVendorCartModel>("app.models", 1, 0, "CustomVendorCartModel");
+    qmlRegisterType<ProductsAttributesAttributesModel>("app.models", 1, 0, "ProductsAttributesAttributesModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

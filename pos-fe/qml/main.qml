@@ -14,6 +14,8 @@ ApplicationWindow {
     width: 640
     height: 480
     visibility: Window.Maximized
+    minimumWidth: rootLoader.implicitWidth
+    minimumHeight: rootLoader.implicitHeight
     property real activityCount : 0
 
     onActivityCountChanged:{

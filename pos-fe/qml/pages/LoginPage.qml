@@ -130,6 +130,7 @@ Rectangle {
                 spacing: 0
                 CButton{
                     id: loginButton
+                    implicitWidth: 80
                     text: qsTr("Login")
                     color: "#321fdb"
                     textColor: "#ffffff"

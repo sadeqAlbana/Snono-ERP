@@ -21,6 +21,7 @@ AppDialog{
         property string description;
         property real list_price;
         property real cost;
+        property variant taxes:[]
     }
     signal accepted();
 
@@ -37,7 +38,7 @@ AppDialog{
         ColumnLayout{
             id: layout
             anchors.fill: parent
-            CTextFieldGroup{id: nameTF;        label.text: qsTr("Name"); input.text: product.name;}
+            CTextFieldGroup{id: nameTF; label.text: qsTr("Name"); input.text: product.name; }
             CTextFieldGroup{id: barcodeTF; label.text: qsTr("Barcode");   input.text: product.barcode;}
 
             CTextFieldGroup{id: descriptionTF; label.text: qsTr("Description");   input.text: product.description;}
@@ -54,6 +55,28 @@ AppDialog{
 
             }
 
+            CComboBox{
+                model: ProductsAttributesAttributesModel{
+                }
+                Layout.fillWidth: true
+                textRole: "name";
+                valueRole: "id"
+//                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+
+            }
+
+//            ListView{
+//             Layout.fillWidth: true
+//             delegate: RowLayout{
+//                 id: delegate
+//                 implicitHeight: 50
+//                 //        implicitWidth: 200
+//                 width: listView.width-10
+//                 spacing: 15
+
+//             }
+//            }
+
         } //grid end
 
 
@@ -65,6 +88,9 @@ AppDialog{
             product.list_price=parseFloat(listPriceTF.input.text)
             product.cost=parseFloat(costTF.input.text)
             product.barcode=barcodeTF.input.text
+            if(taxesModel.selectedIds().length)
+                product.taxes=taxesModel.selectedIds();
+
 
         }
 
@@ -76,6 +102,8 @@ AppDialog{
             }
 
             CButton{
+                implicitWidth: 75
+
                 text: qsTr("Close")
                 color: "#e55353"
                 textColor: "#ffffff"
@@ -86,6 +114,8 @@ AppDialog{
 
             }
             CButton{
+                implicitWidth: 75
+
                 text: qsTr("Apply")
                 color: "#2eb85c"
                 textColor: "#ffffff"

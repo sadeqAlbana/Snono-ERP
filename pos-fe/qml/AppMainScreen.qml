@@ -8,6 +8,7 @@ import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/SharedComponents"
 Item {
     id: rootItem
+    implicitWidth: baseLoader.implicitWidth
     property alias stackView: baseLoader
     ToolBar{
         id: toolBar;
@@ -41,7 +42,7 @@ Item {
             }
 
             Label {
-                text: "Dashboard"
+                text: baseLoader.currentItem? baseLoader.currentItem.title : ""
                 //elide: Label.ElideRight
                 horizontalAlignment: Qt.AlignHCenter
                 verticalAlignment: Qt.AlignVCenter
@@ -424,7 +425,9 @@ Item {
         StackView{
             id: baseLoader
             anchors.fill: parent
-            anchors.margins: 25
+            anchors.margins: 20
+            //padding: 20
+
             clip:true
             //initialItem: "qrc:/pages/orders/OrdersPage.qml"
             //source: listModel.get(listView.currentIndex).path; //change this later
@@ -486,7 +489,7 @@ Item {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
-                listView.currentIndex=listModel.indexOf("Products List");
+                listView.currentIndex=listModel.indexOf("Dashboard");
             }
         };
         xhr.send();
