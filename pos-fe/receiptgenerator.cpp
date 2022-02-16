@@ -18,16 +18,13 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 }
 
 
-QImage ReceiptGenerator::create(QJsonObject receiptData,QPrinter *printer)
+void ReceiptGenerator::create(QJsonObject receiptData,QPaintDevice *device)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
-    int height=400+((items.count()+1)*55)+200;
+    int height=receiptHeight(receiptData);
     int width=575;
-    //QImage image(800,height,QImage::Format_RGB32);
-    //image.fill(Qt::white);
-    //QPainter painter(&image);
-    //QPainter painter;
-    QPainter painter(printer);
+
+    QPainter painter(device);
     painter.setPen(Qt::black);
     QFont font=painter.font();
     font.setPixelSize(17);
@@ -80,11 +77,13 @@ QImage ReceiptGenerator::create(QJsonObject receiptData,QPrinter *printer)
     painter.drawText(QRect(20,height-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
     painter.drawText(QRect(20,height-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
 
+    painter.end();//?
+}
 
-    return QImage();
-
-
-    //image.save("/tmp/test.png");
+int ReceiptGenerator::receiptHeight(const QJsonObject &receiptData)
+{
+    QJsonArray items=receiptData["pos_order_items"].toArray();
+    return 400+((items.count()+1)*55)+200;
 }
 
 
@@ -121,8 +120,15 @@ QUrl ReceiptGenerator::imageToUrl(const QImage& image)
 
 QUrl ReceiptGenerator::generateReceiptUrl(QJsonObject receiptData)
 {
-    return QUrl();
-    //return imageToUrl(create(receiptData));
+    return imageToUrl(generateImage(receiptData));
+}
+
+QImage ReceiptGenerator::generateImage(QJsonObject receiptData)
+{
+    QImage image(575,receiptHeight(receiptData),QImage::Format_RGB32);
+    image.fill(Qt::white);
+    create(receiptData,&image);
+    return image;
 }
 
 QUrl ReceiptGenerator::sampleData()
@@ -135,21 +141,5 @@ QUrl ReceiptGenerator::sampleData()
 void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 {
     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-    printer.setPrinterName("POS-80(copy of 2)");
-    QPrinterInfo info(printer);
-    qDebug()<<printer.width();
-    //printer.setOutputFormat(QPrinter::PdfFormat);
-    //printer.setFullPage(true);
-        //printer.setOutputFileName( "hello.pdf" );
-    //qDebug()<<printer
-    //QPainter painter(&printer);
-
     create(receiptData,&printer);
-    //painter.drawImage(QPoint(0,0),create(receiptData));
-    //painter.end();
-//    QPrintDialog *dlg = new QPrintDialog(&printer,0);
-
-//    if(dlg->exec() == QDialog::Accepted) {
-
-//    }
 }

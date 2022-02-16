@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QUrl>
 #include <QJsonObject>
+#include <QImage>
 class QPainter;
 class QPrinter;
 class ReceiptGenerator : public QObject
@@ -12,7 +13,8 @@ class ReceiptGenerator : public QObject
 public:
     explicit ReceiptGenerator(QObject *parent = nullptr);
 
-    static QImage create(QJsonObject receiptData, QPrinter *printer);
+    static void create(QJsonObject receiptData, QPaintDevice *device);
+    static int receiptHeight(const QJsonObject &receiptData);
 
     static int centerStart(int canvasWidth, int rectWidth);
 
@@ -23,6 +25,8 @@ public:
     static QUrl imageToUrl(const QImage& image);
 
     Q_INVOKABLE static QUrl generateReceiptUrl(QJsonObject receiptData);
+    Q_INVOKABLE static QImage generateImage(QJsonObject receiptData);
+
     Q_INVOKABLE static QUrl sampleData();
 
     Q_INVOKABLE static void printReceipt(QJsonObject receiptData);

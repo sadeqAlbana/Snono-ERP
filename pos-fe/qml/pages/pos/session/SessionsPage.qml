@@ -14,10 +14,9 @@ import app.models 1.0
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
 
-ScrollView{
+Page{
     //anchors.margins: 20
-    contentWidth: baseLoader.width
-    property string title: "Pos sessions"
+     title: "Pos Sessions"
 
     //ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     //    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
