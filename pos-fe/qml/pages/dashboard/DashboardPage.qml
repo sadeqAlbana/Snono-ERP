@@ -193,6 +193,8 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
+                        salesChartModel.setupData(dashboard.sales_chart);
+
                     }
                 }
             }//gridLayout end
@@ -202,22 +204,39 @@ Page{
                 Layout.fillWidth: true
                 //Layout.fillHeight: true
                 implicitHeight: 600
-                SplineSeries {
-                    name: "SplineSeries"
-                    XYPoint { x: 0; y: 0.0 }
-                    XYPoint { x: 1.1; y: 3.2 }
-                    XYPoint { x: 1.9; y: 2.4 }
-                    XYPoint { x: 2.1; y: 2.1 }
-                    XYPoint { x: 2.9; y: 2.6 }
-                    XYPoint { x: 3.4; y: 2.3 }
-                    XYPoint { x: 4.1; y: 3.1 }
+                smooth: true
+                legend.font.bold: true
+                theme: ChartView.ChartThemeLight
+                animationOptions: ChartView.AllAnimations
+                LineSeries {
+                    id: splineSeries
+                    name: "Sales"
+                    axisX: DateTimeAxis{
+                        format: "yyyy-MM-dd"
+                        min: Utils.firstDayOfMonth()
+                        max: Utils.lastDayOfMonth()
+                        tickCount: 15
+                    }
+                    axisY: ValueAxis{
+                        min: 0
+                        max: 5000000
+                    }
+                }
+
+                VXYModelMapper{
+                    id: chartMapper
+                    series: splineSeries
+                    model: SalesChartModel{id: salesChartModel}
+                    firstRow: 0
+                    xColumn: 0
+                    yColumn: 1
                 }
             }
-        }
+        } //columnLayout End
 
         Component.onCompleted: {
             Api.requestDashboard();
-        }
+        } //ScrollView End
     }
 
 

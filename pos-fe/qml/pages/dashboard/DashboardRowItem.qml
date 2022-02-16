@@ -47,7 +47,7 @@ Item {
     Label{
         id: valueLabel
         clip: true
-        font.pixelSize: 16
+        font.pixelSize: 18
         font.bold: true
         text: value
         color: "white"

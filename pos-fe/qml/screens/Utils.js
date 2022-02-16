@@ -24,3 +24,13 @@ function createObject(path,container,options){
         obj=component.createObject(container);
     return obj;
 }
+
+function firstDayOfMonth(){
+    var date = new Date();
+    return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+function lastDayOfMonth(){
+    var date = new Date();
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+}

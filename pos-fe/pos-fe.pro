@@ -32,6 +32,7 @@ SOURCES += \
         main.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
+    models/charts/saleschartmodel.cpp \
     models/customersmodel.cpp \
     models/customvendorcartmodel.cpp \
     models/journalentriesitemsmodel.cpp \
@@ -69,6 +70,7 @@ HEADERS += \
     api.h \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
+    models/charts/saleschartmodel.h \
     models/customersmodel.h \
     models/customvendorcartmodel.h \
     models/journalentriesitemsmodel.h \
