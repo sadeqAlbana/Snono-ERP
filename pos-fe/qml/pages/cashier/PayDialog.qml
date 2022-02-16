@@ -112,6 +112,8 @@ Popup {
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
+                implicitWidth: 80
+
                 onClicked: dialog.close();
 
 
@@ -122,6 +124,8 @@ Popup {
                 textColor: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
+                implicitWidth: 80
+
                 onClicked: dialog.accepted(paid,tendered);
             }
         } //footer end

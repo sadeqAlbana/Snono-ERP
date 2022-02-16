@@ -43,12 +43,19 @@ Popup {
         anchors.fill: parent;
 
 
-        Image {
+        ScrollView{
+            clip: true
             anchors.fill: parent;
-            source: receiptData? ReceiptGenerator.generateReceiptUrl(receiptData) : ""
-            fillMode: Image.PreserveAspectFit
+            contentWidth: availableWidth
+            Image {
+                anchors.fill: parent;
+                source: receiptData? ReceiptGenerator.generateReceiptUrl(receiptData) : ""
+                fillMode: Image.PreserveAspectFit
 
+            }
         }
+
+
 
 
         footer: RowLayout{
@@ -66,10 +73,13 @@ Popup {
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.close();
+                implicitWidth: 80
+
 
 
             }
             CButton{
+                implicitWidth: 80
                 text: qsTr("Print")
                 color: "#2eb85c"
                 textColor: "#ffffff"
