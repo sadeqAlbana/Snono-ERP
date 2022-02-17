@@ -218,8 +218,8 @@ Page{
                         tickCount: 15
                     }
                     axisY: ValueAxis{
-                        min: 0
-                        max: 5000000
+                        min: salesChartModel.minValue;
+                        max: salesChartModel.maxValue*1.1;
                     }
                 }
 

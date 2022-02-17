@@ -77,7 +77,7 @@ void ReceiptGenerator::create(QJsonObject receiptData,QPaintDevice *device)
     painter.drawText(QRect(20,height-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
     painter.drawText(QRect(20,height-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
 
-    painter.end();//?
+    //painter.end();//?
 }
 
 int ReceiptGenerator::receiptHeight(const QJsonObject &receiptData)
@@ -141,5 +141,6 @@ QUrl ReceiptGenerator::sampleData()
 void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 {
     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+    qDebug()<<QPrinterInfo::defaultPrinter().printerName();
     create(receiptData,&printer);
 }

@@ -88,6 +88,15 @@ Card{
             } //slot end
         }
 
+        ReceiptDialog{
+            id: receiptDialog
+
+            function openDialog(){
+
+            }
+
+        }
+
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -106,7 +115,9 @@ Card{
                 Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
                 //Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
                 Action{ text: qsTr("Edit"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openEditDialog()},
-                Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
+                Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()},
+                Action{ text: qsTr("Print"); icon.source: "qrc:/assets/icons/coreui/free/cil-print.svg"; onTriggered: receiptDialog.openDialog()}
+
             ]
 
 

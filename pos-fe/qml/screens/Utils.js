@@ -1,7 +1,6 @@
 .pragma library
 
 
-
 function formatNumber(num) {
     if(num===null){
         return ""
