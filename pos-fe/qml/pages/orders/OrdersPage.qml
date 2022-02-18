@@ -63,6 +63,16 @@ Card{
 
 
         }
+
+        ReceiptDialog{
+            id: receiptDialog
+
+            function openDialog(){
+                receiptData=model.jsonObject(tableView.selectedRow)
+                open();
+            }
+
+        }
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -109,21 +119,22 @@ Card{
             }
 
             actions: [
-                Action{ text: "Details"; icon.source: "qrc:/assets/icons/coreui/free/cil-info.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.source: "qrc:/assets/icons/coreui/free/cil-info.svg"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
                     } },
 
-                Action{ text: "Update Status"; icon.source: "qrc:/assets/icons/coreui/free/cil-reload.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.source: "qrc:/assets/icons/coreui/free/cil-reload.svg"; onTriggered: {
                         deliveryStatusDialog.open();
 
 
                     } },
-                Action{ text: "Return"; icon.source: "qrc:/assets/icons/coreui/free/cil-action-undo.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.source: "qrc:/assets/icons/coreui/free/cil-action-undo.svg"; onTriggered: {
                         var order =model.jsonObject(tableView.selectedRow);
                         model.returnableItems(order.id);
-                    }}
+                    }},
+                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.source: "qrc:/assets/icons/coreui/free/cil-print.svg"; onTriggered: receiptDialog.openDialog()}
             ]
         }
 

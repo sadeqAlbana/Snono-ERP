@@ -6,13 +6,5 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 CTableViewDelegate {
-    id: control
-    contentItem: Text {
-        anchors.centerIn: parent
-        text: model.display!==undefined ? Utils.formatCurrency(model.display) : ""
-        horizontalAlignment: TextEdit.AlignHCenter
-        verticalAlignment: TextEdit.AlignVCenter
-        color: control.textColor
-
-    }
+    text: model.display!==undefined ? Utils.formatCurrency(model.display) : ""
 }

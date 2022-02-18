@@ -16,12 +16,9 @@ Popup {
 
 
     property var receiptData;
-
-
-
-    //    margins: 0
-    //    padding: 0
-    //    closePolicy: Popup.NoAutoClose
+//    margins: 0
+//    padding: 0
+//    closePolicy: Popup.NoAutoClose
     width: parent.width*0.3
     height: parent.height*0.8
     background: Rectangle{color: "transparent"}

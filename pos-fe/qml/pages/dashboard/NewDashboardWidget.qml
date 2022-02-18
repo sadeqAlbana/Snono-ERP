@@ -61,6 +61,6 @@ Page {
     }
 
     footer:Item{
-        implicitHeight: 45
+        implicitHeight: 40
     }
 }

@@ -57,8 +57,8 @@ Card{
             color: "#2eb85c"
             textColor: "#ffffff"
             //Layout.minimumWidth: implicitWidth
-            implicitHeight: 35
-            implicitWidth: 70
+            implicitHeight: 45
+            implicitWidth: 80
             Layout.leftMargin: 25
             Layout.topMargin: 10
             Layout.bottomMargin: 10
@@ -69,8 +69,8 @@ Card{
             text: qsTr("Close")
             color: "#e55353"
             textColor: "#ffffff"
-            implicitHeight: 35
-            implicitWidth: 70
+            implicitHeight: 45
+            implicitWidth: 80
 
             Layout.topMargin: 10
             Layout.bottomMargin: 10

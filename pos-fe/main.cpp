@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 
 //    qDebug()<<"count: "<<QSerialPortInfo::availablePorts().count();
 
-    qDebug()<<"available: "<<QPrinterInfo::availablePrinterNames();
+    //qDebug()<<"available: "<<QPrinterInfo::availablePrinterNames();
 
 //    QTimer timer;
 //    timer.singleShot(5000,[](){

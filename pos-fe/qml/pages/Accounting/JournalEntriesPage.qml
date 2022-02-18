@@ -15,7 +15,6 @@ import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
 
 Card{
-
     title: qsTr("Journal Entries")
     padding: 10
     ColumnLayout{
@@ -45,8 +44,7 @@ Card{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            actions: [
-                Action{ text: qsTr("Deposit Money"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
+
 
             delegate: DelegateChooser{
                 role: "delegateType"

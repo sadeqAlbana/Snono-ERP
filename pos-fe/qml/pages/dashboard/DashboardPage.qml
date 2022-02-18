@@ -30,9 +30,15 @@ Page{
         //padding: 25
         ColumnLayout{
             anchors.fill: parent
+
+
             GridLayout{
+                clip: true
                 id: gridLayout
                 columnSpacing: 20
+                Layout.leftMargin: 10
+                Layout.rightMargin: 10
+
                 property int maxWidth: 0
                 onWidthChanged: {
                     var childrenLength=gridLayout.children.length;
@@ -98,7 +104,6 @@ Page{
                         DashboardRowItem{
                             label: qsTr("Sales Returns This Month (IQD)")
                             value: dashboard? dashboard["sales_returns_month"] : ""
-                            showAccent: false
                         }
                     }
                 }
@@ -126,7 +131,6 @@ Page{
                         DashboardRowItem{
                             label: qsTr("Partial Return")
                             value: dashboard? dashboard["orders_partial_return"] : ""
-                            showAccent: false
                         }
                     }
 
@@ -154,7 +158,6 @@ Page{
                         DashboardRowItem{
                             label: qsTr("Returns this Month")
                             value: dashboard? dashboard["returns_month"] : ""
-                            showAccent: false
                         }
                     }
                 }
@@ -200,6 +203,7 @@ Page{
             }//gridLayout end
 
             ChartView{
+
                 antialiasing: true
                 Layout.fillWidth: true
                 //Layout.fillHeight: true
@@ -220,6 +224,8 @@ Page{
                     axisY: ValueAxis{
                         min: salesChartModel.minValue;
                         max: salesChartModel.maxValue*1.1;
+                        labelFormat: "IQD%.2i"
+
                     }
                 }
 

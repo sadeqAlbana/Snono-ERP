@@ -20,7 +20,6 @@ void SalesChartModel::onEndResetModel()
 {
     double min=m_minValue, max=m_maxValue;
     for(int row=0; row<rowCount(); row++){
-        qDebug()<<row;
         double value=data(row,1).toDouble();
         if(value<min){
             min=value;

@@ -17,13 +17,14 @@ import "qrc:/common"
 Page{
     //anchors.margins: 20
      title: "Pos Sessions"
+    palette.window: "transparent"
 
     //ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
     //    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
     GridLayout{
         columns: 4
         anchors.fill: parent;
-        //anchors.margins: 50
+       anchors.margins: 50
         width: parent.width
 
 

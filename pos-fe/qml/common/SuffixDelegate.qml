@@ -8,12 +8,5 @@ import "qrc:/screens/Utils.js" as Utils
 CTableViewDelegate {
     id: control
     property string suffix;
-    contentItem: Text {
-        anchors.centerIn: parent
-        text: model.display!==undefined ? model.display + suffix : ""
-        horizontalAlignment: TextEdit.AlignHCenter
-        verticalAlignment: TextEdit.AlignVCenter
-        color: control.textColor
-
-    }
+    text: model.display!==undefined ? model.display + suffix : ""
 }
