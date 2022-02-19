@@ -15,11 +15,11 @@ import "qrc:/common"
 Card{
 
     title: qsTr("Taxes")
-
+    padding: 15
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
+
         RowLayout{
             spacing: 15
 

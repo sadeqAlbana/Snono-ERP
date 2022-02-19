@@ -68,6 +68,7 @@ SOURCES += \
 
 HEADERS += \
     api.h \
+    models/Models \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \
     models/charts/saleschartmodel.h \

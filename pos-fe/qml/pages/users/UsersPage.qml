@@ -15,7 +15,7 @@ import app.models 1.0
 
 Card{
 
-    title: qsTr("Orders Returns")
+    title: qsTr("Users")
     padding: 15
     ColumnLayout{
         id: page
@@ -61,7 +61,7 @@ Card{
                 //Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: {}}
             ]
 
-            model: OrdersReturnsModel{
+            model: UsersModel{
                 id: model
 
             }//model end

@@ -1,9 +1,9 @@
 #ifndef ORDERSRETURNSMODEL_H
 #define ORDERSRETURNSMODEL_H
 
-#include <QObject>
+#include "appnetworkedjsonmodel.h"
 
-class OrdersReturnsModel : public QObject
+class OrdersReturnsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
 public:

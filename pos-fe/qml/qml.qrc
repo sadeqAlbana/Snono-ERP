@@ -64,5 +64,6 @@
         <file>pages/dashboard/DashboardRowItem.qml</file>
         <file>pages/dashboard/NewDashboardWidget.qml</file>
         <file>common/ReceiptDialog.qml</file>
+        <file>pages/users/UsersPage.qml</file>
     </qresource>
 </RCC>

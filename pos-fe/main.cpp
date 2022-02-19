@@ -4,32 +4,13 @@
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 #include "authmanager.h"
-#include "models/productsmodel.h"
-#include "models/ordersmodel.h"
-#include "models/orderitemsmodel.h"
-#include "models/cashiermodel.h"
-#include "models/categoriesmodel.h"
 #include "posnumpadwidget/utils/numbereditor.h"
-#include "models/jsonModel/treeproxymodel.h"
-#include "models/taxescheckablemodel.h"
-#include "models/vendorsmodel.h"
-#include "models/vendorsbillsmodel.h"
-#include "models/accountsmodel.h"
-#include "models/customersmodel.h"
-#include "models/possessionsmodel.h"
-#include "models/journalentriesitemsmodel.h"
-#include "models/journalentriesmodel.h"
-#include "models/taxesmodel.h"
-#include "models/receiptmodel.h"
+
 #include "receiptgenerator.h"
 #include <QTimer>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include "models/vendorcartmodel.h"
-#include "models/returnordermodel.h"
-#include "models/customvendorcartmodel.h"
-#include "models/productsattributesattributesmodel.h"
-#include "models/charts/saleschartmodel.h"
+#include "models/Models"
 #include "api.h"
 #include <printer/epsonprinter.h>
 #include "printer/cepsonesccontrol.h"
@@ -85,6 +66,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<CustomVendorCartModel>("app.models", 1, 0, "CustomVendorCartModel");
     qmlRegisterType<ProductsAttributesAttributesModel>("app.models", 1, 0, "ProductsAttributesAttributesModel");
     qmlRegisterType<SalesChartModel>("app.models", 1, 0, "SalesChartModel");
+    qmlRegisterType<UsersModel>("app.models", 1, 0, "UsersModel");
+    qmlRegisterType<OrdersReturnsModel>("app.models", 1, 0, "OrdersReturnsModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

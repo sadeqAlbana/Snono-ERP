@@ -96,7 +96,7 @@
       "title":"Users",
       "category":"MAIN",
       "image":"qrc:/assets/icons/coreui/free/cil-user.svg",
-      "path":"qrc:/pages/orders/OrdersPage.qml"
+      "path":"qrc:/pages/users/UsersPage.qml"
    },
    {
       "title":"Reports",
