@@ -36,7 +36,6 @@ Card{
                 color: "transparent"
             }
 
-
             CTextField{
                 id: search
                 Layout.preferredHeight: 50
@@ -50,10 +49,8 @@ Card{
 
                 onEntered: {
                     var filter=model.filter;
-                    filter['barcode']=search.text
-                    //filter['name']=search.text
-
-                    model.setFilter(filter);
+                    filter['query']=search.text
+                    model.filter=filter;
                     model.requestData();
                 }
             }
@@ -141,10 +138,13 @@ Card{
 
             model: ProductsModel{
                 id: model
+
+
                 Component.onCompleted: requestData();
                 //filter: {"parent_id":0}
-                filter: {"only_variants":true}
-
+//                filter: {"only_variants":true}
+//                filter: {}
+                //onFilterChanged: console.log(JSON.stringify(filter))
 
                 onProductRemoveReply: {
                     if(reply.status===200){

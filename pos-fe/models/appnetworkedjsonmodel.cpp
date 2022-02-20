@@ -12,7 +12,7 @@ void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
     //qDebug()<<"current page: " <<_currentPage;
-    QJsonObject params{{"page",++m_currentPage},
+    QJsonObject params{{"page",m_currentPage},
                        {"count",100},
                        {"sortBy","id"},
                        {"direction","desc"},
@@ -39,6 +39,7 @@ void AppNetworkedJsonModel::search()
 void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
 {
     m_filter=filter;
+    emit filterChanged(filter);
 }
 
 QJsonObject AppNetworkedJsonModel::filter() const
@@ -49,10 +50,6 @@ QJsonObject AppNetworkedJsonModel::filter() const
 
 void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-//    QFile file("/home/sadeq/table.json");
-//    file.open(QIODevice::WriteOnly);
-//    file.write(QJsonDocument(reply->json().toObject()).toJson(QJsonDocument::Indented));
-//    file.close();
     //qDebug()<<reply->json().toObject();
     //qDebug()<<"page received : " << _currentPage;
 
@@ -61,8 +58,9 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     //qDebug()<<"last page: " << _lastPage;
 
     QJsonArray data=filterData(reply->json("data").toArray());
+//    qDebug()<<data;
     if(m_currentPage<=1){
-    setupData(data);
+        setupData(data);
     }
     else{
         appendData(data);

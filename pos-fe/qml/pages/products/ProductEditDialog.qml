@@ -55,15 +55,15 @@ AppDialog{
 
             }
 
-            CComboBox{
-                model: ProductsAttributesAttributesModel{
-                }
-                Layout.fillWidth: true
-                textRole: "name";
-                valueRole: "id"
-//                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+//            CComboBox{
+//                model: ProductsAttributesAttributesModel{
+//                }
+//                Layout.fillWidth: true
+//                textRole: "name";
+//                valueRole: "id"
+////                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
 
-            }
+//            }
 
 //            ListView{
 //             Layout.fillWidth: true
