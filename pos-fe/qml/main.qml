@@ -11,9 +11,9 @@ ApplicationWindow {
     id: mainWindow
     visible: true
     title: qsTr("POS")
-    width: 1366
-    height: 768
-    //visibility: Window.Maximized
+    width: 640
+    height: 480
+    visibility: Window.Maximized
     minimumWidth: rootLoader.implicitWidth
     minimumHeight: rootLoader.implicitHeight
     property real activityCount : 0
