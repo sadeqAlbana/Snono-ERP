@@ -21,13 +21,13 @@ Page{
     background: Rectangle{
         color: "transparent"
     }
+    padding: 15
     property bool pay: false
 
     property int sessionId : -1
 
     GridLayout{
         anchors.fill: parent;
-        anchors.margins: 20
         rows: 2
         columns: 2
         flow: GridLayout.LeftToRight

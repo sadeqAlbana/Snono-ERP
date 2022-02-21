@@ -3,16 +3,11 @@ import QtQuick.Controls 2.12
 import QtMultimedia 5.15
 Button {
     id: control
-    width: 100
-    height: 100
+    implicitWidth: 80
+    implicitHeight: implicitWidth
+    width: 80
+    height: width
     property string type
-
     font.family: "Open Sans Regular"
-
-    //font.pixelSize: height * fontHeight
     onPressed: beep.play();
-
-
-
-
 }
