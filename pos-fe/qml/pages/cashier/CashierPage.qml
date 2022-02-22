@@ -37,16 +37,16 @@ Page{
             Layout.fillWidth: true
             Layout.minimumWidth: 500
             model: CashierModel{
-                id: model
+                id: cashierModel
 
 
-                onDataRecevied: {
-                    if(pay){
-                        //console.log("pay !!!")
-                        model.processCart(model.total,0,notesLE.text);
-                        pay=false
-                    }
-                }
+//                onDataRecevied: {
+//                    if(pay){
+//                        //console.log("pay !!!")
+//                        cashierModel.processCart(cashierModel.total,0,notesLE.text);
+//                        pay=false
+//                    }
+//                }
 
                 onPurchaseResponseReceived: {
                     if(res.status!==200){
@@ -67,6 +67,13 @@ Page{
                 onUpdateCustomerResponseReceived: {
                     if(res.status===200){
                         toastrService.push("Success",res.message,"success",2000)
+
+                        if(pay){
+                            //console.log("pay !!!")
+                            cashierModel.processCart(cashierModel.total,0,notesLE.text);
+                            pay=false
+                        }
+
 
                     }else{
                         toastrService.push("Error",res.message,"error",2000)
@@ -143,7 +150,7 @@ Page{
                     modelValue=model.data(tableView.selectedRow,model.indexOf(key));
 
                     var newValue=NumberEditor.appendDigit(parseFloat(modelValue),digit,waitingForDecimal);
-                    model.setData(row,key,newValue);
+                    cashierModel.setData(row,key,newValue);
                     //                        waitingForDecimal=false
                 }
                 function commandClicked(command){
@@ -170,12 +177,12 @@ Page{
                         clearClicked();
                     }else{
                         var newValue=NumberEditor.removeDigit(modelValue);
-                        model.setData(row,key,newValue);
+                        cashierModel.setData(row,key,newValue);
 
                     }
                 }
                 function clearClicked(){
-                    model.removeProduct(tableView.selectedRow);
+                    cashierModel.removeProduct(tableView.selectedRow);
                 }
             }
             Rectangle{
@@ -189,7 +196,7 @@ Page{
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 onAccepted:{
-                    model.addProduct(text);
+                    cashierModel.addProduct(text);
                     text=""
                 }
                 placeholderText: qsTr("Barcode...")
@@ -208,14 +215,14 @@ Page{
                 implicitHeight: 60
                 model: CustomersModel{
                     id: customersModel
-                    onDataRecevied: {
-                        customerCB.currentIndex=0
-                    }
+//                    onDataRecevied: {
+//                        customerCB.currentIndex=0
+//                    }
 
                     onAddCustomerReply: {
                         if(reply.status===200){
-                            model.updateCustomer(reply.customer.id)
-                            //customerCB.currentIndex=model.rowCount()-1;
+                            cashierModel.updateCustomer(reply.customer.id)
+                            //customerCB.currentIndex=customersModel.rowCount()-1;
                         }
                     }
                 }
@@ -244,13 +251,13 @@ Page{
 //                }
 
                 onCurrentIndexChanged: {
-                    console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
+                    //console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
                     if(currentIndex>=0){
                         var currentCustomer=customersModel.jsonObject(customerCB.currentIndex);
                         phoneLE.text=customersModel.jsonObject(customerCB.currentIndex).phone
                         addressLE.text=customersModel.jsonObject(customerCB.currentIndex).address
                         //console.log("current value: " + currentValue)
-                        console.log("updating customer >=0: " + currentIndex )
+                        //console.log("updating customer >=0: " + currentIndex )
                         tableView.model.updateCustomer(currentCustomer.id);
                         //                        customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
                     }else{
@@ -320,7 +327,7 @@ Page{
             CTextInput{
                 id: total
                 readOnly: true
-                text: Utils.formatNumber(model.total) + " IQD";
+                text: Utils.formatNumber(cashierModel.total) + " IQD";
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 font.pixelSize: 20
@@ -335,7 +342,7 @@ Page{
                 Layout.fillWidth: true
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();
-                enabled: model.total>0
+                enabled: cashierModel.total>0
             }
             Rectangle{
                 Layout.fillHeight: true
@@ -347,8 +354,8 @@ Page{
             }
 
             function confirmPayment(){
-                paymentDialog.amount=model.total;
-                paymentDialog.paid=model.total;
+                paymentDialog.amount=cashierModel.total;
+                paymentDialog.paid=cashierModel.total;
                 paymentDialog.open();
             }
 
@@ -360,7 +367,7 @@ Page{
                         pay=true
                         customersModel.addCustomer(customerCB.editText,"","","",phoneLE.text,addressLE.text)
                     }else{
-                        model.processCart(paid,tendered,notesLE.text);
+                        cashierModel.processCart(paid,tendered,notesLE.text);
                     }
 
                 }

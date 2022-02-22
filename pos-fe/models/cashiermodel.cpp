@@ -197,7 +197,10 @@ void CashierModel::onRequestCartResponse(NetworkResponse *res)
 
 void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
 {
-    emit updateCustomerResponseReceived(res->json().toObject());
-    if(res->json("status").toInt()==200)
+    if(res->json("status").toInt()==200){
+        qDebug()<<"updating customer";
         setCartData(res->json("cart").toObject());
+    }
+    emit updateCustomerResponseReceived(res->json().toObject());
+
 }
