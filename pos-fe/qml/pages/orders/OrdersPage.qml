@@ -119,22 +119,22 @@ Card{
             }
 
             actions: [
-                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.source: "qrc:/icons/CoreUI/free/cil-info.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.name: "cil-info"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
                     } },
 
-                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.source: "qrc:/icons/CoreUI/free/cil-reload.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.name: "cil-reload"; onTriggered: {
                         deliveryStatusDialog.open();
 
 
                     } },
-                Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.source: "qrc:/icons/CoreUI/free/cil-action-undo.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.name: "cil-action-undo"; onTriggered: {
                         var order =model.jsonObject(tableView.selectedRow);
                         model.returnableItems(order.id);
                     }},
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.source: "qrc:/icons/CoreUI/free/cil-print.svg"; onTriggered: receiptDialog.openDialog()}
+                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()}
             ]
         }
 

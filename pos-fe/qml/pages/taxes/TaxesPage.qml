@@ -66,8 +66,8 @@ Card{
             }
 
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
-                Action{ text: qsTr("Delete"); icon.source: "qrc:/icons/CoreUI/free/cil-delete.svg"; onTriggered: tableView.removeProduct()}
+                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
+                Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
             ]
 
 

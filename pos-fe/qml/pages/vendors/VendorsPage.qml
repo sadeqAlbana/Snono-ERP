@@ -56,8 +56,8 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: dialog.open();},
-                Action{ text: "Delete"; icon.source: "qrc:/icons/CoreUI/free/cil-delete.svg"; onTriggered: tableView.removeVendor()}
+                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open();},
+                Action{ text: "Delete"; icon.name: "cil-delete"; onTriggered: tableView.removeVendor()}
 
             ]
 

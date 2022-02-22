@@ -141,7 +141,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.rightMargin: 15
                     onClicked: layout.login();
-                    //icon.source:"qrc:/icons/CoreUI/free/cil-settings.svg"
+                    //icon.name:"cil-settings"
                     //display: AbstractButton.TextUnderIcon
                     //icon.color: "white"
                     //icon.width: 25

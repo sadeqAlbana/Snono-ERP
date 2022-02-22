@@ -58,7 +58,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Pay"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: dialog.open();}]
+                Action{ text: qsTr("Pay"); icon.name: "cil-plus"; onTriggered: dialog.open();}]
 
             delegate: DelegateChooser{
                 role: "delegateType"

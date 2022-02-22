@@ -57,8 +57,8 @@ Card{
             }
 
             actions: [
-                //Action{ text: qsTr("Add"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: {}},
-                //Action{ text: qsTr("Delete"); icon.source: "qrc:/icons/CoreUI/free/cil-delete.svg"; onTriggered: {}}
+                //Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: {}},
+                //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
             ]
 
             model: OrdersReturnsModel{
