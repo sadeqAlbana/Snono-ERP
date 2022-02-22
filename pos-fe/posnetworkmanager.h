@@ -15,6 +15,7 @@ public:
 
 
 signals:
+    void networkReply(const int &status, const QString &message); //used for toastr service
     void networkError(const QString &title, const QString &text);
 
 private:

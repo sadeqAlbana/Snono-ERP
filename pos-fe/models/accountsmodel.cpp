@@ -13,14 +13,3 @@ AccountsModel::AccountsModel(QObject *parent) :
 }
 
 
-void AccountsModel::depositCash(const double &amount)
-{
-    QJsonObject data{
-        {"amount",amount}};
-    PosNetworkManager::instance()->post("/accounts/depositCash",data)->subcribe(this,&AccountsModel::onDepostCashResponse);
-}
-
-void AccountsModel::onDepostCashResponse(NetworkResponse *res)
-{
-    emit depositCashResponseReceived(res->json().toObject());
-}

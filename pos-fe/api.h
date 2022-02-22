@@ -7,18 +7,27 @@
 class Api : public QObject
 {
     Q_OBJECT
-public:
     explicit Api(QObject *parent = nullptr);
+
+public:
+    Q_INVOKABLE void depositCash(const double &amount);
+
     Q_INVOKABLE void processCustomBill(const QString &name, const int &vendorId,const QJsonArray &items);
     Q_INVOKABLE void updateProduct(const QJsonObject &product);
 
     Q_INVOKABLE void updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes);
     Q_INVOKABLE void requestDashboard();
+    static Api *instance();
 
 signals:
     void processCustomBillResponse(QJsonObject reply);
     void updateProductReply(QJsonObject reply);
     void dashboardReply(QJsonObject reply);
+    void depositCashResponseReceived(QJsonObject reply);
+
+
+private:
+    static Api *m_api;
 
 };
 

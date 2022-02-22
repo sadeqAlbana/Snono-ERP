@@ -19,7 +19,7 @@ AppDialog{
     parent: Overlay.overlay
 
     width:  Math.max(card.implicitWidth,parent.width*0.6)
-    height: Math.max(card.implicitHeight,parent.height*0.7)
+    height: Math.max(card.implicitHeight,parent.height*0.6)
 
 
     background: Rectangle{color: "transparent"}
@@ -49,6 +49,7 @@ AppDialog{
 
                 rowSpacing: 20
                 columnSpacing: 20
+                columns: 2
 
                 flow: GridLayout.TopToBottom
                 CTextFieldGroup{id: nameTF;        label.text: qsTr("Name");}

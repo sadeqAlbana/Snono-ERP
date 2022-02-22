@@ -44,6 +44,9 @@ Card{
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
                 rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+
+
+
                 //rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
 
 

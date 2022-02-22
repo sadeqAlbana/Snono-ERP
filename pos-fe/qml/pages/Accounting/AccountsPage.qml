@@ -17,78 +17,41 @@ import "qrc:/common"
 Card{
     title: qsTr("Accounts")
     padding: 10
+    Connections{
+        target: Api
+        function onDepositCashResponseReceived(reply) {
+            if(reply.status===200){
+                model.requestData();
+            }
+        } //slot end
+    }//connections
+
+    DepositMoneyDialog{
+        id: dialog
+        onAccepted: Api.depositCash(amount);
+    }//dialog
+
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        RowLayout{
-            spacing: 15
+        AppToolBar{
 
-            CMenuBar{
-                CMenu{
-                    title: qsTr("Actions");
-                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
-                    actions: tableView.actions
-                }
-            }
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
-            }
         }
-
-
 
         CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            actions: [
-                Action{ text: qsTr("Deposit Money"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
-
+            model: AccountsModel{ id: model;}
+            actions: [Action{ text: qsTr("Deposit Money"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
             delegate: DelegateChooser{
                 role: "delegateType"
                 DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
                 DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
-            }
-
-            model: AccountsModel{
-                id: model;
-
-                onDepositCashResponseReceived: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                } //slot end
-
-            } //model end
-
-            DepositMoneyDialog{
-                id: dialog
-
-                onAccepted: model.depositCash(amount);
-
-            }//dialog end
-
-
-
-
-        }
-    }
-}
+            } //delegate
+        }//tableview
+    } //layout
+} //page
 

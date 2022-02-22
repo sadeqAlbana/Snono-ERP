@@ -28,6 +28,8 @@ ApplicationWindow {
     }
 
 
+
+
     Connections{
         target: AuthManager
         function onLoggedIn(){
@@ -49,6 +51,14 @@ ApplicationWindow {
             //busySpinner.close();
         }
 
+        function onNetworkReply(status,message){
+            if(status===200){
+                toastrService.push("Success",message,"success",2000)
+            }
+            else{
+                toastrService.push("Error",message,"error",2000)
+            }
+        }
 
         function onNetworkError(title,text){
             console.log(title + " " + text)

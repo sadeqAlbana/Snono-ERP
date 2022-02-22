@@ -1,9 +1,18 @@
 #include "api.h"
 #include <QJsonObject>
 #include "posnetworkmanager.h"
+Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
 
+}
+
+void Api::depositCash(const double &amount)
+{
+    QJsonObject data{{"amount",amount}};
+    PosNetworkManager::instance()->post("/accounts/depositCash",data)->subcribe([this](NetworkResponse *res){
+        emit depositCashResponseReceived(res->json().toObject());
+    });
 }
 
 void Api::processCustomBill(const QString &name, const int &vendorId, const QJsonArray &items)
@@ -53,4 +62,12 @@ void Api::requestDashboard()
                 [this](NetworkResponse *res){
         emit dashboardReply(res->json("data").toObject());
     });
+}
+
+Api *Api::instance()
+{
+    if(!m_api)
+        m_api=new Api();
+
+    return m_api;
 }

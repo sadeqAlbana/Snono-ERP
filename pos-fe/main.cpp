@@ -33,13 +33,12 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     NumberEditor nb;
     ReceiptGenerator gen;
-    Api api;
     engine.rootContext()->setContextProperty("KApp",&a);
     engine.rootContext()->setContextProperty("AuthManager",AuthManager::instance());
     engine.rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
     engine.rootContext()->setContextProperty("NumberEditor",&nb);
     engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
-    engine.rootContext()->setContextProperty("Api",&api);
+    engine.rootContext()->setContextProperty("Api",Api::instance());
 //    TestPalette pal;
 //    engine.rootContext()->setContextProperty("Pal",pal);
 
