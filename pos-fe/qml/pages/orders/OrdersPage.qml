@@ -41,7 +41,7 @@ Card{
             CMenuBar{
                 CMenu{
                     title: qsTr("Actions");
-                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
                     actions: tableView.actions
                 }
             }
@@ -58,7 +58,7 @@ Card{
                     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                     font.pixelSize: 18
                     placeholderText: qsTr("Search...")
-                    rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                    rightIcon: "cil-search"
                 }
 
 
@@ -119,22 +119,22 @@ Card{
             }
 
             actions: [
-                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.source: "qrc:/assets/icons/coreui/free/cil-info.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.source: "qrc:/icons/CoreUI/free/cil-info.svg"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
                     } },
 
-                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.source: "qrc:/assets/icons/coreui/free/cil-reload.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.source: "qrc:/icons/CoreUI/free/cil-reload.svg"; onTriggered: {
                         deliveryStatusDialog.open();
 
 
                     } },
-                Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.source: "qrc:/assets/icons/coreui/free/cil-action-undo.svg"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.source: "qrc:/icons/CoreUI/free/cil-action-undo.svg"; onTriggered: {
                         var order =model.jsonObject(tableView.selectedRow);
                         model.returnableItems(order.id);
                     }},
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.source: "qrc:/assets/icons/coreui/free/cil-print.svg"; onTriggered: receiptDialog.openDialog()}
+                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.source: "qrc:/icons/CoreUI/free/cil-print.svg"; onTriggered: receiptDialog.openDialog()}
             ]
         }
 

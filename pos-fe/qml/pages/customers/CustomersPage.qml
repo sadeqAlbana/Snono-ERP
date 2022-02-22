@@ -26,7 +26,7 @@ Card{
             CMenuBar{
                 CMenu{
                     title: qsTr("Actions");
-                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
                     actions: tableView.actions
                 }
             }
@@ -43,7 +43,7 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                rightIcon: "cil-search"
                 onAccepted: {
                     var filter=model.filter();
                     filter['query']=search.text
@@ -63,9 +63,9 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();},
+                Action{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
 
-                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeVendor()}]
+                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: tableView.removeVendor()}]
 
 
             model: CustomersModel{

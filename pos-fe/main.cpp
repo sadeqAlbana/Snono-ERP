@@ -15,6 +15,7 @@
 #include <printer/epsonprinter.h>
 #include "printer/cepsonesccontrol.h"
 #include <QPrinterInfo>
+#include <QIcon>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
-
+    QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);
     QQmlApplicationEngine engine;
     NumberEditor nb;

@@ -85,7 +85,7 @@ Page{
                 NewDashboardWidget{
                     title: "Sales & Returns"
                     palette.window : "#2518AD"
-                    icon: "qrc:/assets/icons/coreui/free/cil-dollar.svg"
+                    icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     Layout.minimumWidth: gridLayout.maxWidth
                     ColumnLayout{
                         anchors.fill: parent;
@@ -112,7 +112,7 @@ Page{
                     title: "Orders Status"
                     palette.window : "#5FA7EA"
                     Layout.minimumWidth: gridLayout.maxWidth
-                    icon: "qrc:/assets/icons/coreui/free/cil-graph.svg"
+                    icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
 
                     ColumnLayout{
                         anchors.fill: parent;
@@ -140,7 +140,7 @@ Page{
                     title: "Orders Statistics"
                     palette.window : "#F7A20F"
                     Layout.minimumWidth: gridLayout.maxWidth
-                    icon: "qrc:/assets/icons/coreui/free/cil-gauge.svg"
+                    icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     ColumnLayout{
                         anchors.fill: parent;
                         DashboardRowItem{
@@ -165,7 +165,7 @@ Page{
                 NewDashboardWidget{
                     title: "Statistics"
                     palette.window : "#DE4343"
-                    icon: "qrc:/assets/icons/coreui/free/cil-gauge.svg"
+                    icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
 
                     Layout.minimumWidth: gridLayout.maxWidth
 

@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.0
+import Qt.labs.qmlmodels 1.0
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -9,10 +11,9 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
-import QtGraphicalEffects 1.0
-import app.models 1.0
-import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
+import app.models 1.0
+
 
 Card{
 
@@ -35,7 +36,7 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                rightIcon: "cil-search"
             }
         }
 
@@ -46,7 +47,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Deposit Money"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open();}]
+                Action{ text: qsTr("Deposit Money"); icon.name: "cil-plus"; onTriggered: dialog.open();}]
 
             delegate: DelegateChooser{
                 role: "delegateType"

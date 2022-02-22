@@ -27,7 +27,7 @@ Card{
             CMenuBar{
                 CMenu{
                     title: qsTr("Actions");
-                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
                     actions: tableView.actions
                 }
             }
@@ -43,7 +43,7 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                rightIcon: "cil-search"
             }
         }
 
@@ -73,11 +73,11 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: {
+                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
                         dialog.open();}},
-                Action{ text: qsTr("New Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: newBillDlg.open();},
-                Action{ text: qsTr("New Custom Bill"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: customBillDlg.open();}
+                Action{ text: qsTr("New Bill"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: newBillDlg.open();},
+                Action{ text: qsTr("New Custom Bill"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: customBillDlg.open();}
 
             ]
 

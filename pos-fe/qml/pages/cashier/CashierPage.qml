@@ -232,7 +232,7 @@ Page{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-user.svg"
+                leftIcon: "cil-user"
 
                 //                onCurrentValueChanged: {
                 //                    //console.log(currentText)
@@ -288,7 +288,7 @@ Page{
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: "Phone..."
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-phone.svg"
+                leftIcon: "cil-phone"
 
             }
             CTextField{
@@ -300,7 +300,7 @@ Page{
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: "Address..."
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-location-pin.svg"
+                leftIcon: "cil-location-pin"
 
             }
             CTextField{
@@ -310,7 +310,7 @@ Page{
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: "Note..."
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-notes.svg"
+                leftIcon: "cil-notes"
 
             }
             Rectangle{

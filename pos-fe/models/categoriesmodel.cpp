@@ -59,18 +59,4 @@ QHash<int, QByteArray> CategoriesModel::roleNames() const
     return roles;
 }
 
-void CategoriesModel::addCategory(const QString &name, const int &parentId)
-{
-    PosNetworkManager::instance()->post("/categories/add",QJsonObject{{"name",name},{"parent_id",parentId}})
-            ->subcribe([this](NetworkResponse *res){
-        emit categoryAddReply(res->json().toObject());
-    });
-}
 
-void CategoriesModel::removeCategory(const int &categoryId)
-{
-    PosNetworkManager::instance()->post("/categories/remove",QJsonObject{{"id",categoryId}})
-            ->subcribe([this](NetworkResponse *res){
-        emit categoryRemoveReply(res->json().toObject());
-    });
-}

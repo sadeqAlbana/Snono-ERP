@@ -26,7 +26,7 @@ Card{
         CMenuBar{
             CMenu{
                 title: qsTr("Actions");
-                icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
                 actions: tableView.actions
             }
         }
@@ -43,11 +43,11 @@ Card{
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 font.pixelSize: 18
                 placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                rightIcon: "cil-search"
 
 
 
-                //rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+                //rightIcon: "cil-search"
 
 
                 onEntered: {
@@ -105,10 +105,10 @@ Card{
             }
 
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
-                //Action{ text: qsTr("Delete"); icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
-                Action{ text: qsTr("Edit"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openEditDialog()},
-                Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
+                Action{ text: qsTr("Add"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: tableView.openAddDialog()},
+                //Action{ text: qsTr("Delete"); icon.source: "qrc:/icons/CoreUI/free/cil-delete.svg"; onTriggered: tableView.removeProduct()},
+                Action{ text: qsTr("Edit"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: tableView.openEditDialog()},
+                Action{ text: qsTr("Purchase Stock"); icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"; onTriggered: tableView.openPurchaseDialog()}
             ]
 
 

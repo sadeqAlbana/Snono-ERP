@@ -97,7 +97,7 @@ Rectangle {
 
                 placeholderText : qsTr("username...")
                 text: "sadeq"
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-user.svg"
+                leftIcon: "cil-user"
                 helpBlock : CTextField.HelpBlockDelegate{text: usernameTF.helpBlockText; color: "red"}
 
             }
@@ -117,7 +117,7 @@ Rectangle {
 
                 helpBlock : CTextField.HelpBlockDelegate{text: passwordTF.helpBlockText; color: "red"}
 
-                leftIcon: "qrc:/assets/icons/coreui/free/cil-lock-locked.svg"
+                leftIcon: "cil-lock-locked"
 
 
             }
@@ -141,7 +141,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.rightMargin: 15
                     onClicked: layout.login();
-                    //icon.source:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                    //icon.source:"qrc:/icons/CoreUI/free/cil-settings.svg"
                     //display: AbstractButton.TextUnderIcon
                     //icon.color: "white"
                     //icon.width: 25

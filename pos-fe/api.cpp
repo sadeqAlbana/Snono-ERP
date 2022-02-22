@@ -63,6 +63,22 @@ void Api::requestDashboard()
         emit dashboardReply(res->json("data").toObject());
     });
 }
+void Api::addCategory(const QString &name, const int &parentId)
+{
+    PosNetworkManager::instance()->post("/categories/add",QJsonObject{{"name",name},{"parent_id",parentId}})
+            ->subcribe([this](NetworkResponse *res){
+        emit categoryAddReply(res->json().toObject());
+    });
+}
+
+void Api::removeCategory(const int &categoryId)
+{
+    PosNetworkManager::instance()->post("/categories/remove",QJsonObject{{"id",categoryId}})
+            ->subcribe([this](NetworkResponse *res){
+        emit categoryRemoveReply(res->json().toObject());
+    });
+}
+
 
 Api *Api::instance()
 {

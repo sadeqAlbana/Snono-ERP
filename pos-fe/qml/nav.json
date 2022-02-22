@@ -2,19 +2,19 @@
    {
       "title":"Dashboard",
       "category":"",
-      "image":"qrc:/assets/icons/coreui/free/cil-speedometer.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-speedometer.svg",
       "path":"qrc:/pages/dashboard/DashboardPage.qml"
    },
    {
       "title":"POS",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-cash.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-cash.svg",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
    },
    {
       "title":"Accounting",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
       "path":"",
       "childItems":[
          {
@@ -35,7 +35,7 @@
    {
       "title":"Products",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
       "path":"",
       "childItems":[
          {
@@ -51,7 +51,7 @@
    {
       "title":"Orders",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-pen.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
       "path": "",
       "childItems":[
          {
@@ -67,19 +67,19 @@
    {
       "title":"Taxes",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-money.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-money.svg",
       "path":"qrc:/pages/taxes/TaxesPage.qml"
    },
    {
       "title":"Customers",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-user.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
       "path":"qrc:/pages/customers/CustomersPage.qml"
    },
    {
       "title":"Vendors",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
       "path":"",
       "childItems":[
          {
@@ -95,13 +95,13 @@
    {
       "title":"Users",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-user.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
       "path":"qrc:/pages/users/UsersPage.qml"
    },
    {
       "title":"Reports",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-pen.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
       "path":"qrc:/pages/orders/OrdersPage.qml",
       "childItems":[
          {
@@ -117,7 +117,7 @@
    {
       "title":"Settings",
       "category":"MAIN",
-      "image":"qrc:/assets/icons/coreui/free/cil-pen.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
       "path":"",
       "childItems":[
          {

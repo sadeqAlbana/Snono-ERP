@@ -66,5 +66,8 @@
         <file>common/ReceiptDialog.qml</file>
         <file>pages/users/UsersPage.qml</file>
         <file>common/AppToolBar.qml</file>
+        <file>common/DialogFooter.qml</file>
+        <file>common/AppDialogFooter.qml</file>
+        <file>common/AppDelegateChooser.qml</file>
     </qresource>
 </RCC>

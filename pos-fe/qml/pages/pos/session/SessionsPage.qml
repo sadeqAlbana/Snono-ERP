@@ -76,7 +76,7 @@ Page{
             radius: width> height ? width : height
             color: "#39f";
             icon.color: "white"
-            icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"
+            icon.source: "qrc:/icons/CoreUI/free/cil-plus.svg"
             icon.height: height*0.8
             icon.width: width*0.8
             implicitHeight: 200

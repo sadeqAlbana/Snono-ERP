@@ -19,11 +19,18 @@ public:
     Q_INVOKABLE void requestDashboard();
     static Api *instance();
 
+    Q_INVOKABLE void addCategory(const QString &name, const int &parentId);
+    Q_INVOKABLE void removeCategory(const int &categoryId);
+
+
 signals:
     void processCustomBillResponse(QJsonObject reply);
     void updateProductReply(QJsonObject reply);
     void dashboardReply(QJsonObject reply);
     void depositCashResponseReceived(QJsonObject reply);
+
+    void categoryAddReply(QJsonObject reply);
+    void categoryRemoveReply(QJsonObject reply);
 
 
 private:

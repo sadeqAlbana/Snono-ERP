@@ -1,6 +1,8 @@
 import QtQuick 2.15
-import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtGraphicalEffects 1.0
+import app.models 1.0
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -8,43 +10,26 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
-
-import QtGraphicalEffects 1.0
-import app.models 1.0
+import "qrc:/common"
 
 Card{
-
     title: qsTr("Categories")
+    padding: 10
+
+    Connections{
+        target: Api
+        function onCategoryRemoveReply(reply) {
+            if(reply.status===200){
+                categoriesModel.requestData();
+            }
+        } //slot end
+    }//connections
 
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
-        RowLayout{
-            spacing: 15
-
-            CMenuBar{
-                CMenu{
-                    title: qsTr("Actions");
-                    icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
-                    actions: tableView.actions
-                }
-            }
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
-            }
+        AppToolBar{
+            id: toolBar
         }
 
         AddCategoryDialog{
@@ -57,30 +42,20 @@ Card{
             Layout.fillWidth: true
             title: "categories"
             actions: [
-                Action{ text: qsTr("Add"); icon.source: "qrc:/assets/icons/coreui/free/cil-plus.svg"; onTriggered: dialog.open()},
-                Action{ text: "Delete"; icon.source: "qrc:/assets/icons/coreui/free/cil-delete.svg"; onTriggered: tableView.removeCategory()}]
+                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open()},
+                Action{ text: "Delete"; icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
 
             model: CategoriesModel{
-                id: model;
-
-                onCategoryRemoveReply: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                } //slot end
-
+                id: categoriesModel;
             } //model end
 
-            function removeCategory(){
-                var categoryId= model.data(tableView.currentIndex,"id");
-                model.removeCategory(categoryId);
-            }
 
-        }
-    }
+
+            function removeCategory(){
+                var categoryId = categoriesModel.data(tableView.currentIndex,"id");
+                Api.removeCategory(categoryId);
+            }
+        }//listView
+    }//layout
 }
 

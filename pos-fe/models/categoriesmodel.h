@@ -14,14 +14,7 @@ public:
 
 
     //network requests
-    Q_INVOKABLE void addCategory(const QString &name, const int &parentId);
-    Q_INVOKABLE void removeCategory(const int &categoryId);
-
-
 signals:
-    void categoryAddReply(QJsonObject reply);
-    void categoryRemoveReply(QJsonObject reply);
-
 
 };
 

@@ -25,7 +25,7 @@ ToolBar {
             CMenu{
                 id: _menu
                 title: qsTr("Actions");
-                icon:"qrc:/assets/icons/coreui/free/cil-settings.svg"
+                icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
                 actions: tableView.actions
             }//Menu
         }//MenuBar
@@ -38,7 +38,7 @@ ToolBar {
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             font.pixelSize: 18
             placeholderText: qsTr("Search...")
-            rightIcon: "qrc:/assets/icons/coreui/free/cil-search.svg"
+            rightIcon: "cil-search"
         }//search
     }// layout end
 }

@@ -32,11 +32,19 @@ Popup{
     }
 
 
+
     Card{
         id: card
         title: qsTr("Add Category")
         anchors.fill: parent;
-
+        Connections{
+            target: Api
+            function onCategoryAddReply(reply){
+                if(reply.status===200){
+                    model.requestData();
+                }
+            }//slot
+        }//connections
         ColumnLayout{
             anchors.margins: 10
             anchors.fill: parent;
@@ -53,29 +61,14 @@ Popup{
                 comboBox.model: CategoriesModel{
                     id: model;
 
-                    onCategoryAddReply: {
-                        if(reply.status===200){
-                            toastrService.push("Success",reply.message,"success",2000)
-                            model.requestData();
-
-                        }
-                        else{
-                            toastrService.push("Error",reply.message,"error",2000)
-                        }
-                    }
-                }
-
-            }
-
-
-
-
-        } //layout end
+                }//model
+            }//cb
+        } //layout
 
         function addCategory(){
             var parentId= model.data(categoriesCB.comboBox.currentIndex,"id");
             var name=nameLE.text;
-            model.addCategory(name,parentId);
+            Api.addCategory(name,parentId);
         }
 
         footer: RowLayout{
@@ -93,9 +86,8 @@ Popup{
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.close();
-
-
             }
+
             CButton{
                 text: qsTr("Add")
                 color: "#2eb85c"
@@ -108,5 +100,4 @@ Popup{
         } //footer end
 
     } //card end
-
-}
+}//Popup
