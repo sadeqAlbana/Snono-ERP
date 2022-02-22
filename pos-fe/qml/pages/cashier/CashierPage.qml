@@ -49,7 +49,7 @@ Page{
                 }
 
                 onPurchaseResponseReceived: {
-                    if(!res.status){
+                    if(res.status!==200){
                         toastrService.push("Error",res.message,"error",2000)
                     }else{
                         paymentDialog.close();
@@ -60,6 +60,7 @@ Page{
                             customersModel.refresh();
                         }
                         notesLE.text=""
+                        requestCart();
                     }
                 }
 
@@ -243,12 +244,13 @@ Page{
 //                }
 
                 onCurrentIndexChanged: {
-                    //console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
+                    console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
                     if(currentIndex>=0){
                         var currentCustomer=customersModel.jsonObject(customerCB.currentIndex);
                         phoneLE.text=customersModel.jsonObject(customerCB.currentIndex).phone
                         addressLE.text=customersModel.jsonObject(customerCB.currentIndex).address
                         //console.log("current value: " + currentValue)
+                        console.log("updating customer >=0: " + currentIndex )
                         tableView.model.updateCustomer(currentCustomer.id);
                         //                        customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
                     }else{

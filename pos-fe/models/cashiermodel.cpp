@@ -110,6 +110,7 @@ void CashierModel::setCartData(const QJsonObject &cartData)
     _cartData = cartData;
     //qDebug()<<cartData;
     setupData(cartData["products"].toArray());
+    emit totalChanged(this->cartData()["order_total"].toDouble());
 }
 
 QString CashierModel::reference() const
@@ -180,7 +181,6 @@ void CashierModel::processCart(const double paid, const double change, const QSt
 void CashierModel::onProcessCartRespnse(NetworkResponse *res)
 {
     emit purchaseResponseReceived(res->json().toObject());
-    requestCart();
 }
 
 void CashierModel::requestCart()
@@ -199,5 +199,5 @@ void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
 {
     emit updateCustomerResponseReceived(res->json().toObject());
     if(res->json("status").toInt()==200)
-        refresh();
+        setCartData(res->json("cart").toObject());
 }

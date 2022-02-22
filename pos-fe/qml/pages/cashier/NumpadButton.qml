@@ -3,9 +3,9 @@ import QtQuick.Controls 2.12
 import QtMultimedia 5.15
 Button {
     id: control
-    implicitWidth: 80
+    implicitWidth: 75
     implicitHeight: implicitWidth
-    width: 80
+    width: 75
     height: width
     property string type
     font.family: "Open Sans Regular"
