@@ -31,11 +31,9 @@ Card{
         AppToolBar{
             id: toolBar
         }
-
         AddCategoryDialog{
             id: dialog;
         }
-
         CListView{
             id: tableView
             Layout.fillHeight: true
@@ -48,8 +46,6 @@ Card{
             model: CategoriesModel{
                 id: categoriesModel;
             } //model end
-
-
 
             function removeCategory(){
                 var categoryId = categoriesModel.data(tableView.currentIndex,"id");

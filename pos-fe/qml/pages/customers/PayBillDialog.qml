@@ -13,9 +13,7 @@ Popup {
     modal: true
     anchors.centerIn: parent;
     parent: Overlay.overlay
-
     property real amount;
-
     width: parent.width*0.4
     height: parent.height*0.5
     background: Rectangle{color: "transparent"}

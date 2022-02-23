@@ -10,7 +10,6 @@ Item{
     ButtonGroup{
         id: buttonGroup
         buttons: grid.children
-        //onClicked: buttonClicked(button);
         exclusive: true
 
     }

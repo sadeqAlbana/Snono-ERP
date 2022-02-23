@@ -2,30 +2,27 @@ import QtQuick 2.15
 
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls 1.4 as TT
+import QtGraphicalEffects 1.0
+import QtQuick.Controls.Styles 1.4 as TS
+import Qt.labs.qmlmodels 1.0
+import app.models 1.0
+
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
+import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/CoreUI/components/buttons"
-import "qrc:/common"
-import QtQuick.Controls 1.4 as TT
-import QtGraphicalEffects 1.0
-
-import QtQuick.Controls.Styles 1.4 as TS
-import app.models 1.0
 import "qrc:/screens/Utils.js" as Utils
-import Qt.labs.qmlmodels 1.0
+import "qrc:/common"
 
 Page{
     title: qsTr("Cashier")
-    background: Rectangle{
-        color: "transparent"
-    }
-    padding: 15
+    palette.window: "transparent"
+    padding: 10
     property bool pay: false
-
     property int sessionId : -1
-
     GridLayout{
         anchors.fill: parent;
         rows: 2
@@ -38,22 +35,9 @@ Page{
             Layout.minimumWidth: 500
             model: CashierModel{
                 id: cashierModel
-
-
-//                onDataRecevied: {
-//                    if(pay){
-//                        //console.log("pay !!!")
-//                        cashierModel.processCart(cashierModel.total,0,notesLE.text);
-//                        pay=false
-//                    }
-//                }
-
                 onPurchaseResponseReceived: {
-                    if(res.status!==200){
-                        toastrService.push("Error",res.message,"error",2000)
-                    }else{
+                    if(res.status===200){
                         paymentDialog.close();
-                        toastrService.push("Success",res.message,"success",2000)
                         receiptDialog.receiptData=res.order;
                         receiptDialog.open();
                         if(customerCB.currentIndex<0){
@@ -63,47 +47,25 @@ Page{
                         requestCart();
                     }
                 }
-
                 onUpdateCustomerResponseReceived: {
                     if(res.status===200){
-                        toastrService.push("Success",res.message,"success",2000)
-
                         if(pay){
-                            //console.log("pay !!!")
                             cashierModel.processCart(cashierModel.total,0,notesLE.text);
                             pay=false
                         }
-
-
-                    }else{
-                        toastrService.push("Error",res.message,"error",2000)
-
                     }
-                }
-
-
+                }//onUpdateCustomerResponseReceived
                 onAddProductReply: {
                     if(res.status===200){
                         scannerBeep.play()
-                    }else{
+                    }/*else{
                         toastrService.push("Warning",res.message,"warning",2000)
-
-                    }
-                }
+                    }*/
+                }//onAddProductReply
             }
 
-
-
-            delegate: DelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
-                DelegateChoice{roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
-            }
-
+            delegate: AppDelegateChooser{}
         }
-
-
 
         ColumnLayout{
             Layout.fillHeight: true
@@ -111,12 +73,8 @@ Page{
             //            Layout.rowSpan: 2
             Numpad{
                 id: numpad
-
-
                 enabled: tableView.selectedRow>=0
-                //                Layout.fillHeight: true
                 Layout.fillWidth: true
-                //                Layout.maximumHeight: implicitHeight
                 property bool waitingForDecimal: false
                 property var decimalBtn;
 
@@ -125,7 +83,6 @@ Page{
                     decimalBtn.enabled=Qt.binding(function(){return !waitingForDecimal})
                     decimalBtn.clicked.connect(function(){waitingForDecimal=true})
                 }
-
 
                 onButtonClicked: {
                     switch(button.type){
@@ -215,61 +172,29 @@ Page{
                 implicitHeight: 60
                 model: CustomersModel{
                     id: customersModel
-//                    onDataRecevied: {
-//                        customerCB.currentIndex=0
-//                    }
-
                     onAddCustomerReply: {
                         if(reply.status===200){
                             cashierModel.updateCustomer(reply.customer.id)
-                            //customerCB.currentIndex=customersModel.rowCount()-1;
                         }
                     }
                 }
-
-
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
                 leftIcon: "cil-user"
 
-                //                onCurrentValueChanged: {
-                //                    //console.log(currentText)
-                //                    //console.log(currentIndex);
-
-                //                }
-                onEditTextChanged: {
-                    //                    console.log("edit text: " + customerCB.editText );
-                    //                    console.log("current text: "+ customerCB.currentText)
-                    //                    console.log("current value: " + customerCB.currentValue)
-                    //                    console.log("current index: " + customerCB.currentIndex)
-
-                }
-//                onCurrentTextChanged: {
-//                    console.log("current text:   " + currentText)
-//                }
-
                 onCurrentIndexChanged: {
-                    //console.log("onCurrentIndexChanged: " + customerCB.currentIndex)
                     if(currentIndex>=0){
                         var currentCustomer=customersModel.jsonObject(customerCB.currentIndex);
                         phoneLE.text=customersModel.jsonObject(customerCB.currentIndex).phone
                         addressLE.text=customersModel.jsonObject(customerCB.currentIndex).address
-                        //console.log("current value: " + currentValue)
-                        //console.log("updating customer >=0: " + currentIndex )
                         tableView.model.updateCustomer(currentCustomer.id);
-                        //                        customerPhone.text=customersModel.data(customerCB.currentIndex,"phone")
                     }else{
                         phoneLE.text=""
                         addressLE.text=""
                     }
-
-                }
-                //                onAcceptableInputChanged: {
-                //                    console.log("acceptable: " + acceptableInput)
-                //                }
-
+                }//onCurrentIndexChanged
 
                 onActiveFocusChanged: {
                     var edit=editText
@@ -277,31 +202,26 @@ Page{
                         currentIndex=-1;
                     }
                     editText=edit;
-                }
-
-
+                }//onActiveFocusChanged
             }
             CTextField{
-                Layout.alignment: Qt.AlignTop
-                enabled: !customerCB.isValid
                 id: phoneLE
+                enabled: !customerCB.isValid
+
+                Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: "Phone..."
                 leftIcon: "cil-phone"
-
             }
             CTextField{
-                Layout.alignment: Qt.AlignTop
                 id: addressLE
                 enabled: !customerCB.isValid
-
-                //id: customerPhone
+                Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: "Address..."
                 leftIcon: "cil-location-pin"
-
             }
             CTextField{
                 Layout.alignment: Qt.AlignTop
@@ -323,18 +243,15 @@ Page{
 
 
         ColumnLayout{
-
             CTextInput{
                 id: total
                 readOnly: true
                 text: Utils.formatNumber(cashierModel.total) + " IQD";
-                //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 font.pixelSize: 20
                 implicitHeight: 60
 
             }
-
             CButton{
                 text: qsTr("Pay")
                 color: "#2eb85c"
@@ -344,14 +261,13 @@ Page{
                 onClicked: parent.confirmPayment();
                 enabled: cashierModel.total>0
             }
-            Rectangle{
+            Item{
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "transparent"
             }
             ReceiptDialog{
                 id: receiptDialog
-            }
+            }//receiptDialog
 
             function confirmPayment(){
                 paymentDialog.amount=cashierModel.total;
@@ -369,14 +285,10 @@ Page{
                     }else{
                         cashierModel.processCart(paid,tendered,notesLE.text);
                     }
-
-                }
-            }
-        }
-
+                }//accepted
+            }//payDialog
+        }//ColumnLayout
     } // GridLayout end
-
-
 }
 
 

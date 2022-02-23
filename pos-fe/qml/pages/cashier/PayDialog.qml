@@ -7,13 +7,10 @@ import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
+import "qrc:/common"
 
-Popup {
+AppDialog {
     id: dialog
-    modal: true
-    anchors.centerIn: parent;
-    parent: Overlay.overlay
-
     property real amount;
     property real paid;
     property real tendered;
@@ -22,25 +19,8 @@ Popup {
     onPaidChanged: {
         tendered=paid-amount;
     }
-
-    //    margins: 0
-    //    padding: 0
-    //    closePolicy: Popup.NoAutoClose
     width: parent.width*0.4
     height: parent.height*0.5
-    background: Rectangle{color: "transparent"}
-    Overlay.modal: Rectangle {
-        color: "#C0000000"
-    }
-
-    enter: Transition {
-        NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
-    }
-
-
-    exit: Transition {
-        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
-    }
 
     Card{
         title: qsTr("Pay")

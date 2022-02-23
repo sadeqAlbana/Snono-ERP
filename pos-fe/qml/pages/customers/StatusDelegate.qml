@@ -10,7 +10,6 @@ CTableViewDelegate {
     leftPadding: (width/3)
     rightPadding: leftPadding
     contentItem: Badge{
-
         text: switch(model.display){
               case 0: return qsTr("Unpaid");
               case 1: return qsTr("Paid");

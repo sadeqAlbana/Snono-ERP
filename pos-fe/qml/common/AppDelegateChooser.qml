@@ -4,6 +4,8 @@ import "qrc:/CoreUI/components/tables"
 
 DelegateChooser{
     role: "delegateType"
-    DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-    DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
-} //delegate
+    DelegateChoice{ roleValue: "text";       CTableViewDelegate{}}
+    DelegateChoice{ roleValue: "currency";   CurrencyDelegate{}}
+    DelegateChoice{ roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
+
+}

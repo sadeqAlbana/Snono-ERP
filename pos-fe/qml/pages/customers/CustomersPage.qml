@@ -9,55 +9,24 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
+import "qrc:/common"
+
 import QtGraphicalEffects 1.0
 import app.models 1.0
 
 Card{
-
     title: qsTr("Customers")
-
+    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
-        RowLayout{
-            spacing: 15
-
-            CMenuBar{
-                CMenu{
-                    title: qsTr("Actions");
-                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
-                    actions: tableView.actions
-                }
-            }
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                id: search
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "cil-search"
-                onAccepted: {
-                    var filter=model.filter();
-                    filter['query']=search.text
-                    model.setFilter(filter);
-                    model.requestData();
-                }
-            }
+        AppToolBar{
+            id: toolBar
         }
-
         AddCustomerDialog{
             id: dialog;
             onAddedCustomer: model.requestData();
         }
-
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -65,27 +34,13 @@ Card{
             actions: [
                 Action{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
 
-                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: tableView.removeVendor()}]
-
+                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: tableView.removeVendor()}
+            ]//actions
 
             model: CustomersModel{
-                id: model;
-
-//                onCategoryRemoveReply: {
-//                    if(reply.status===200){
-//                        toastrService.push("Success",reply.message,"success",2000)
-//                        model.requestData();
-//                    }
-//                    else{
-//                        toastrService.push("Error",reply.message,"error",2000)
-//                    }
-//                } //slot end
-
-            } //model end
-
-
-
-        }
-    }
-}
+                id: model
+            }//model
+        }//tableview
+    }//layout
+}//card
 
