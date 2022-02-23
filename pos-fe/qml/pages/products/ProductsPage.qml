@@ -13,53 +13,22 @@ import "qrc:/screens/Utils.js" as Utils
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
 Card{
-
     title: qsTr("Products")
-    padding: 15
+    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;
-
         spacing: 10
-        RowLayout{
-            spacing: 15
-        CMenuBar{
-            CMenu{
-                title: qsTr("Actions");
-                icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
-                actions: tableView.actions
+        AppToolBar{
+            id: toolBar
+            actions: tableView.actions
+            onSearch: {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
             }
         }
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                id: search
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "cil-search"
-
-
-
-                //rightIcon: "cil-search"
-
-
-                onEntered: {
-                    var filter=model.filter;
-                    filter['query']=search.text
-                    model.filter=filter;
-                    model.requestData();
-                }
-            }
-        }//end row layout
-
-
         ProductAddDialog{
             id: productAddDialog;
 
@@ -71,7 +40,6 @@ Card{
                 Api.updateProduct(editDlg.product)
                 editDlg.close();
             }
-
         }
 
         Connections{
@@ -141,9 +109,6 @@ Card{
 
             model: ProductsModel{
                 id: model
-
-
-                Component.onCompleted: requestData();
                 //filter: {"parent_id":0}
 //                filter: {"only_variants":true}
 //                filter: {}
@@ -151,26 +116,19 @@ Card{
 
                 onProductRemoveReply: {
                     if(reply.status===200){
-                        toastrService.push(qsTr("Success"),reply.message,"success",2000)
                         model.requestData();
-                    }
-                    else{
-                        toastrService.push(qsTr("Error"),reply.message,"error",2000)
                     }
                 } //slot end
 
-
-
                 onStockPurchasedReply: {
                     if(reply.status===200){
-                        toastrService.push(qsTr("Success"),reply.message,"success",2000)
                         model.requestData();
                     }
-                    else{
-                        toastrService.push(qsTr("Error"),reply.message,"error",2000)
-                    }
                 }
-            }
+
+                Component.onCompleted: requestData();
+
+            }//model
 
             function removeProduct(){
                 var productId= model.data(tableView.selectedRow,"id");

@@ -14,7 +14,7 @@ import Qt.labs.qmlmodels 1.0
 import QtQuick.Layouts 1.15
 ToolBar {
     id: control
-    property alias search : _search
+    signal search(var searchString);
     property alias actions : _menu.actions
     Layout.fillWidth: true
     palette.button: "transparent"
@@ -39,6 +39,7 @@ ToolBar {
             font.pixelSize: 18
             placeholderText: qsTr("Search...")
             rightIcon: "cil-search"
+            onEntered: control.search(_search.text)
         }//search
     }// layout end
 }

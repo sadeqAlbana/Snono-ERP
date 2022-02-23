@@ -1,6 +1,9 @@
 import QtQuick 2.15
-import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtGraphicalEffects 1.0
+import Qt.labs.qmlmodels 1.0
+import app.models 1.0
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -9,22 +12,15 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
-import QtGraphicalEffects 1.0
-import app.models 1.0
-import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
 
 Page{
-    //anchors.margins: 20
-     title: "Pos Sessions"
+    title: qsTr("Pos Sessions")
     palette.window: "transparent"
-
-    //ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-    //    ScrollBar.vertical.policy: ScrollBar.AlwaysOn
     GridLayout{
         columns: 4
         anchors.fill: parent;
-       anchors.margins: 50
+        anchors.margins: 50
         width: parent.width
 
 
@@ -38,7 +34,6 @@ Page{
             }
 
             onCurrentSessionResponse: {
-                //console.log(JSON.stringify(reply))
                 if(reply.status===200){ //there is an open session
                     var session=reply.pos_session;
                     sessionCard.totalAmount=reply.pos_session.total;
@@ -56,20 +51,13 @@ Page{
 
             onCloseSessionResponse: {
                 if(reply.status===200){
-                    toastrService.push("Success",reply.message,"success",2000)
                     sessionsModel.requestData();
-                }else{
-                    toastrService.push("Error",reply.message,"error",2000)
-
                 }
             }
             function initSession(session){
                 baseLoader.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": session.id})
-
             }
         }
-
-
 
         CButton{
             id: newSessionButton
@@ -98,11 +86,9 @@ Page{
                 sessionCard.visible=false
                 newSessionButton.visible=true
             }
-
             onResume: {
                 sessionsModel.initSession(session.id)
             }
         }
-
     }
 }

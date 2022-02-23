@@ -13,11 +13,8 @@ import QtGraphicalEffects 1.0
 import app.models 1.0
 
 Card{
-
     title: qsTr("Vendors")
-
-
-
+    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;

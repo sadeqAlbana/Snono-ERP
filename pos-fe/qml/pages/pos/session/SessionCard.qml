@@ -1,14 +1,13 @@
 import QtQuick 2.15
-
-import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
-import "qrc:/common"
 import "qrc:/screens/Utils.js" as Utils
+import "qrc:/common"
 
 Card{
     id: rect;
@@ -77,7 +76,6 @@ Card{
             onClicked: close();
 
         }
-
         Rectangle{color: "transparent"; Layout.fillWidth: true}
 
     } //footer end
