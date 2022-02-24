@@ -129,7 +129,7 @@ Page{
 
                     default: break;
                     }
-                    var modelValue=model.data(tableView.selectedRow,model.indexOf(key));
+                    var modelValue=cashierModel.data(tableView.selectedRow,cashierModel.indexOf(key));
                     if(modelValue===0 && activeButton.text==="Qty"){
                         clearClicked();
                     }else{
