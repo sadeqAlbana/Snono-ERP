@@ -16,11 +16,12 @@
 #include "printer/cepsonesccontrol.h"
 #include <QPrinterInfo>
 #include <QIcon>
+#include "possettings.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("sadeqTech");
     QCoreApplication::setApplicationName("pos-fe");
-    QSettings settings;
+    PosSettings settings;
     //settings.setValue("http_server_url","http://naaom.net:8000");
     //settings.setValue("http_server_url","http://127.0.0.1:8000");
 
@@ -40,6 +41,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("NumberEditor",&nb);
     engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
     engine.rootContext()->setContextProperty("Api",Api::instance());
+    engine.rootContext()->setContextProperty("Settings",&settings);
+
 //    TestPalette pal;
 //    engine.rootContext()->setContextProperty("Pal",pal);
 

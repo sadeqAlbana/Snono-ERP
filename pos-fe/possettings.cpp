@@ -14,6 +14,7 @@ QUrl PosSettings::serverUrl() const
 void PosSettings::setServerUrl(const QUrl &url)
 {
     setValue("http_server_url",url);
+    emit serverUrlChanged(url);
 }
 
 void PosSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)

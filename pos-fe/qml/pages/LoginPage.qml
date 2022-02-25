@@ -1,19 +1,26 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.12
+import QtGraphicalEffects 1.0
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
-import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/CoreUI/palettes"
+import "qrc:/common"
+
 Rectangle {
     id : loginPage
     anchors.fill: parent;
     color: "#EBEDEF"
 
     signal loggedIn();
+    ServerSettingsDialog{
+
+        id: serverSettingsDlg
+    }
     Connections{
         target: AuthManager
 
@@ -102,8 +109,6 @@ Rectangle {
 
             }
 
-
-
             CTextField{
                 id: passwordTF
                 Layout.fillWidth: true
@@ -111,15 +116,10 @@ Rectangle {
                 font.pixelSize: 21
                 echoMode: TextInput.Password
                 property string helpBlockText : " "
-
                 placeholderText : qsTr("password...")
                 text: "admin"
-
                 helpBlock : CTextField.HelpBlockDelegate{text: passwordTF.helpBlockText; color: "red"}
-
                 leftIcon: "cil-lock-locked"
-
-
             }
 
 
@@ -137,41 +137,28 @@ Rectangle {
                     Layout.fillHeight: false
                     implicitHeight: 50
                     font.pixelSize: 17
-                    //Layout.preferredHeight: 100
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                     Layout.rightMargin: 15
                     onClicked: layout.login();
-                    //icon.name:"cil-settings"
-                    //display: AbstractButton.TextUnderIcon
-                    //icon.color: "white"
-                    //icon.width: 25
-                    //icon.height: 25
+                }
 
-                    //palette: CPalette{}
-                    //palette: ButtonPrimary.primary
-                    //palette: Pal
-
+                HorizontalSpacer{
 
                 }
 
-
-//                CButton{
-//                    id: cancelButton
-//                    text: qsTr("Cancel")
-//                    color: "#e55353"
-//                    textColor: "#ffffff"
-//                    Layout.fillHeight: false
-//                    implicitHeight: 50
-//                    font.pixelSize: 17
-//                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-//                    onClicked: canceled();
-
-//                }
-
-//                Rectangle{ //spacer
-//                    color: "transparent"
-//                    Layout.fillWidth: true
-//                }
+                CButton{
+                    id: settingsButton
+                    implicitWidth: 80
+                    color: "#e55353"
+                    textColor: "#ffffff"
+                    Layout.fillHeight: false
+                    implicitHeight: 50
+                    font.pixelSize: 17
+                    icon.name: "cil-settings"
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.rightMargin: 15
+                    onClicked: serverSettingsDlg.open();
+                }
 
             }
 
@@ -180,5 +167,7 @@ Rectangle {
             }
             Component.onCompleted: login();
         }
-    }
+
+
+    }//card
 }

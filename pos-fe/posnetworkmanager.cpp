@@ -8,9 +8,14 @@ PosNetworkManager* PosNetworkManager::_instance;
 
 PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkManager(parent)
 {
-    setBaseUrl(settings.value("http_server_url").toString());
+    reloadBaseUrl();
+//    setRawHeader("Connection","close");
+    setTransferTimeout(QNetworkRequest::DefaultTransferTimeoutConstant);
+    //setTransferTimeout(10*1000);
+
     if(!jwt().isNull())
         setRawHeader("authorization",_jwt);
+    ignoreSslErrors(true);
 }
 
 void PosNetworkManager::routeReply(QNetworkReply *reply)
@@ -52,6 +57,12 @@ PosNetworkManager *PosNetworkManager::instance()
 
     return _instance;
 }
+
+void PosNetworkManager::reloadBaseUrl()
+{
+    setBaseUrl(settings.serverUrl().toString());
+}
+
 
 void PosNetworkManager::setJWT(const QByteArray jwt)
 {

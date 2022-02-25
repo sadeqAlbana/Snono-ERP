@@ -1,16 +1,22 @@
 #ifndef POSSETTINGS_H
 #define POSSETTINGS_H
 #include <QSettings>
-class QUrl;
+#include <QUrl>
 class PosSettings : public QSettings
 {
+    Q_OBJECT
+    Q_PROPERTY(QUrl serverUrl READ serverUrl NOTIFY serverUrlChanged)
+
 public:
     PosSettings();
 
-    QUrl serverUrl() const;
-    void setServerUrl(const QUrl &url);
+    Q_INVOKABLE QUrl serverUrl() const;
+    Q_INVOKABLE void setServerUrl(const QUrl &url);
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
     static QString hwID();
+
+signals:
+    void serverUrlChanged(QUrl url);
 };
 
 #endif // POSSETTINGS_H

@@ -1,7 +1,7 @@
 #ifndef POSNETWORKMANAGER_H
 #define POSNETWORKMANAGER_H
 #include <networkmanager.h>
-#include <QSettings>
+#include "possettings.h"
 class PosNetworkManager : public NetworkManager
 {
     Q_OBJECT
@@ -13,6 +13,7 @@ public:
 
     static PosNetworkManager *instance();
 
+    Q_INVOKABLE void reloadBaseUrl();
 
 signals:
     void networkReply(const int &status, const QString &message); //used for toastr service
@@ -23,7 +24,7 @@ private:
     void setJWT(const QByteArray jwt);
 
     QByteArray jwt() const;
-    QSettings settings;
+    PosSettings settings;
     static PosNetworkManager *_instance;
 
 

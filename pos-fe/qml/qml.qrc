@@ -69,5 +69,6 @@
         <file>common/DialogFooter.qml</file>
         <file>common/AppDialogFooter.qml</file>
         <file>common/AppDelegateChooser.qml</file>
+        <file>pages/ServerSettingsDialog.qml</file>
     </qresource>
 </RCC>
