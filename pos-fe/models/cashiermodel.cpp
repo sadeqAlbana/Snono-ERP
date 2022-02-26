@@ -137,14 +137,14 @@ int CashierModel::customerId() const
     return cartData()["customer_id"].toInt();
 }
 
-
-
-void CashierModel::addProduct(const QString &barcode)
+void CashierModel::addProduct(const QJsonValue &id, bool findByBarcode)
 {
     PosNetworkManager::instance()->post("/pos/cart/addProduct",QJsonObject{{"reference",reference()},
-                                                                           {"id",barcode},
-                                                                           {"find_by_barcode",true}})->subcribe(this,&CashierModel::onAddProductReply);
+                                                                           {"id",id},
+                                                                           {"find_by_barcode",findByBarcode}})->subcribe(this,&CashierModel::onAddProductReply);
 }
+
+
 
 void CashierModel::onAddProductReply(NetworkResponse *res)
 {

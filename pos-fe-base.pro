@@ -6,3 +6,4 @@ SUBDIRS += \
 
 RESOURCES += \
     pos-fe/gui/qrc.qrc
+

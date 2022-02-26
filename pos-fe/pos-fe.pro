@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts
+QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+android: include(C:/Users/sadeq/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
 include(posnumpadwidget/posnumpadwidget.pri)
 include(../json-model/json-model.pri)
 
@@ -131,3 +132,15 @@ RESOURCES += \
 
 #target.path = ~/pos-fe
 #INSTALLS += target
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/gradle.properties \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android

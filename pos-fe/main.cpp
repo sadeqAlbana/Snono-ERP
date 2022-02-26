@@ -17,11 +17,12 @@
 #include <QPrinterInfo>
 #include <QIcon>
 #include "possettings.h"
+#include "models/appnetworkedjsonmodel.h"
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationName("sadeqTech");
-    QCoreApplication::setApplicationName("pos-fe");
-    PosSettings settings;
+    QCoreApplication::setOrganizationName("com");
+    QCoreApplication::setOrganizationDomain("sadeqTech");
+    QCoreApplication::setApplicationName("pos_fe");
     //settings.setValue("http_server_url","http://naaom.net:8000");
     //settings.setValue("http_server_url","http://127.0.0.1:8000");
 
@@ -30,6 +31,8 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
+    PosSettings settings;
+
     QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);
     QQmlApplicationEngine engine;
@@ -71,6 +74,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<SalesChartModel>("app.models", 1, 0, "SalesChartModel");
     qmlRegisterType<UsersModel>("app.models", 1, 0, "UsersModel");
     qmlRegisterType<OrdersReturnsModel>("app.models", 1, 0, "OrdersReturnsModel");
+    qmlRegisterType<AppNetworkedJsonModel>("app.models", 1, 0, "NetworkModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

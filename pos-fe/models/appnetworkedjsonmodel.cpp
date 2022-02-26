@@ -7,6 +7,11 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &colu
 {
 }
 
+AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject *parent) : NetworkedJsonModel(columns,parent)
+{
+
+}
+
 
 void AppNetworkedJsonModel::requestData()
 {

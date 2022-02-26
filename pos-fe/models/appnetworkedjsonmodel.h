@@ -7,7 +7,9 @@ class AppNetworkedJsonModel : public NetworkedJsonModel
 {
     Q_OBJECT
 public:
-    explicit AppNetworkedJsonModel(QString url,const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
+    AppNetworkedJsonModel(QString url,const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
+    Q_INVOKABLE AppNetworkedJsonModel(const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
+
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 
     Q_INVOKABLE QJsonObject filter() const;

@@ -6,7 +6,6 @@ import QtQuick.Controls 1.4 as TT
 import QtGraphicalEffects 1.0
 import QtQuick.Controls.Styles 1.4 as TS
 import Qt.labs.qmlmodels 1.0
-import app.models 1.0
 
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
@@ -16,10 +15,12 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
+import app.models 1.0
 
 Page{
     title: qsTr("Cashier")
-    palette.window: "transparent"
+//    palette.window: "transparent"
+    background: Rectangle{color: "transparent"}
     padding: 10
     property bool pay: false
     property int sessionId : -1
@@ -58,6 +59,8 @@ Page{
                 onAddProductReply: {
                     if(res.status===200){
                         scannerBeep.play()
+                        productsCB.currentIndex=-1;
+
                     }/*else{
                         toastrService.push("Warning",res.message,"warning",2000)
                     }*/
@@ -148,12 +151,31 @@ Page{
                 color: "transparent"
             }
 
+            CComboBox{
+                id: productsCB
+                Layout.fillWidth: true
+
+                textRole: "name"
+                valueRole: "id"
+                currentIndex: 0
+                editable: true
+                onCurrentValueChanged:{
+                    if(currentValue!==undefined)
+                        cashierModel.addProduct(currentValue);
+                }
+
+                model: NetworkModel{
+                    url: "/products/list"
+                    Component.onCompleted: requestData();
+                }
+            }
+
             CTextInput{
                 id: numpadInput
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 onAccepted:{
-                    cashierModel.addProduct(text);
+                    cashierModel.addProduct(text,true);
                     text=""
                 }
                 placeholderText: qsTr("Barcode...")

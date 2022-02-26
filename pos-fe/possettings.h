@@ -10,7 +10,7 @@ class PosSettings : public QSettings
 public:
     PosSettings();
 
-    Q_INVOKABLE QUrl serverUrl() const;
+    Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
     static QString hwID();

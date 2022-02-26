@@ -6,8 +6,9 @@ PosSettings::PosSettings()
 
 }
 
-QUrl PosSettings::serverUrl() const
+QUrl PosSettings::serverUrl()
 {
+
     return value("http_server_url").toUrl();
 }
 

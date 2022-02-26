@@ -30,7 +30,8 @@ public:
     void setChangedIndex(const QModelIndex &changedIndex);
     Q_INVOKABLE void updateCustomer(const int &customerId);
     int customerId() const;
-    Q_INVOKABLE void addProduct(const QString &barcode);
+    Q_INVOKABLE void addProduct(const QJsonValue &id, bool findByBarcode=false);
+
     void onAddProductReply(NetworkResponse *res);
     Q_INVOKABLE void removeProduct(const int &index);
     void onRemoveProductReply(NetworkResponse *res);
