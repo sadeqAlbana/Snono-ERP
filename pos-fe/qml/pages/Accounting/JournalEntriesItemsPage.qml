@@ -47,7 +47,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Deposit Money"); icon.name: "cil-plus"; onTriggered: dialog.open();}]
+                Action{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}]
 
             delegate: DelegateChooser{
                 role: "delegateType"

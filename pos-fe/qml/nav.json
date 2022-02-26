@@ -8,13 +8,13 @@
    {
       "title":"POS",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-cash.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-screen-desktop.svg",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
    },
    {
       "title":"Accounting",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-money.svg",
       "path":"",
       "childItems":[
          {

@@ -159,14 +159,18 @@ Page{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
+                property bool dataReceived: false
                 onCurrentValueChanged:{
-                    if(currentValue!==undefined)
+                    if(currentValue!==undefined && dataReceived)
                         cashierModel.addProduct(currentValue);
                 }
 
                 model: NetworkModel{
                     url: "/products/list"
                     Component.onCompleted: requestData();
+                    onDataRecevied: {
+                        productsCB.dataReceived=true;
+                    }
                 }
             }
 

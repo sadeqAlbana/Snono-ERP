@@ -40,7 +40,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             model: AccountsModel{ id: model;}
-            actions: [Action{ text: qsTr("Deposit Money"); icon.name: "cil-plus"; onTriggered: dialog.open();}]
+            actions: [Action{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}]
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}

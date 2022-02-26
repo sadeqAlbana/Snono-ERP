@@ -54,7 +54,7 @@ Card{
             Layout.fillWidth: true
             actions: [
                 Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open();},
-                Action{ text: "Delete"; icon.name: "cil-delete"; onTriggered: tableView.removeVendor()}
+                Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeVendor()}
 
             ]
 

@@ -74,10 +74,10 @@ Card{
             }
 
             actions: [
-                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
+                Action{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()},
-                Action{ text: qsTr("Edit"); icon.name: "cil-plus"; onTriggered: tableView.openEditDialog()},
-                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-plus"; onTriggered: tableView.openPurchaseDialog()}
+                Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog()},
+                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog()}
             ]
 
 

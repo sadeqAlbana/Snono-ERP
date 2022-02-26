@@ -38,6 +38,12 @@ Card{
         AppToolBar{
             id: toolBar
             actions: tableView.actions
+            onSearch: {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
+            }
         }
 
         CTableView{
@@ -70,7 +76,7 @@ Card{
             }
 
             actions: [
-                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.name: "cil-info"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Details"; icon.name: "cil-notes"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();

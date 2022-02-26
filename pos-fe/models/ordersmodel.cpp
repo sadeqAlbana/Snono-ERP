@@ -1,12 +1,14 @@
 #include "ordersmodel.h"
 #include "posnetworkmanager.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
-                                                                  Column{"id","ID"} ,
-                                                                  Column{"name","Customer","customers"} ,
+//                                                                  Column{"id","ID"} ,
                                                                   Column{"reference","Reference"} ,
+                                                                  Column{"name","Customer","customers"} ,
+                                                                  Column{"phone","Phone","customers"} ,
+                                                                  Column{"address","Address","customers"} ,
                                                                   Column{"total","Total",QString(),"currency"} ,
                                                                   Column{"date","Date"} ,
-                                                                  Column{"tax_amount","Tax Amount",QString(),"currency"},
+                                                                  //Column{"tax_amount","Tax Amount",QString(),"currency"},
                                                                   Column{"delivery_status","Status",QString(),"OrderStatus"} ,
 
                                                                   },
