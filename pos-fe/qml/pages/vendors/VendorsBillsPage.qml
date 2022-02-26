@@ -73,7 +73,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.name: "cil-check"; onTriggered: {
+                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
                         dialog.open();}},
                 Action{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: newBillDlg.open();},

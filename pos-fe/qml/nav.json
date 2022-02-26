@@ -35,7 +35,7 @@
    {
       "title":"Products",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-inbox.svg",
       "path":"",
       "childItems":[
          {
@@ -79,7 +79,7 @@
    {
       "title":"Vendors",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-drop.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
       "path":"",
       "childItems":[
          {
@@ -101,7 +101,7 @@
    {
       "title":"Reports",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-chart.svg",
       "path":"qrc:/pages/orders/OrdersPage.qml",
       "childItems":[
          {
@@ -117,7 +117,7 @@
    {
       "title":"Settings",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
+      "image":"qrc:/icons/CoreUI/free/cil-settings.svg",
       "path":"",
       "childItems":[
          {
