@@ -88,8 +88,14 @@ ListView {
             id: cost;
             Layout.preferredWidth: 150
             placeholderText: "cost"
-            text: Utils.formatCurrency(model.cost)
-            readOnly: true;
+            text: model.cost
+            Binding{
+                target: model;
+                property: "cost"
+                value: parseInt(cost.text)
+            }
+
+            //readOnly: true;
         }
 
         CTextField{
