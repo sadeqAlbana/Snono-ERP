@@ -107,7 +107,7 @@ Page{
 
                     default: break;
                     }
-                    modelValue=model.data(tableView.selectedRow,model.indexOf(key));
+                    modelValue=cashierModel.data(tableView.selectedRow,cashierModel.indexOf(key));
 
                     var newValue=NumberEditor.appendDigit(parseFloat(modelValue),digit,waitingForDecimal);
                     cashierModel.setData(row,key,newValue);
