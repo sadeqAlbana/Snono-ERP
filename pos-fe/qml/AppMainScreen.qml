@@ -6,6 +6,8 @@ import QtQml.Models 2.12
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/SharedComponents"
+import QtQuick.Controls.impl 2.15 as Impl
+
 Item {
     id: rootItem
     implicitWidth: baseLoader.implicitWidth
@@ -187,35 +189,59 @@ Item {
                 height: 48.33
                 hoverEnabled: true
                 highlighted: ListView.isCurrentItem
+                icon.color: "#afb5c0"
+                icon.width: 17
+                icon.height: 17
+                icon.cache: true
+                icon.name: model.image? model.image : ""
                 //: "normal"
                 contentItem: RowLayout{
                     anchors.fill: parent
-                    Image{
-                        id: itemImage
-                        property color color : "#afb5c0"
-                        source: model.image ? model.image : source
-                        sourceSize.width: 17
-                        sourceSize.height: 17
+//                    Image{
+//                        id: itemImage
+//                        property color color : "#afb5c0"
+//                        source: model.image ? model.image : source
+//                        sourceSize.width: 17
+//                        sourceSize.height: 17
 
-                        width: 17
-                        height: 17
-                        //                        width: 56
-                        //                        height: 17.5
-                        Layout.alignment: Qt.AlignVCenter
-                        Layout.leftMargin: 13
-                        layer.enabled: true
-                        layer.effect: ColorOverlay{
-                            //id: overlay
-//                            anchors.fill: itemImage
-//                            source:itemImage
-                            color: itemImage.color
-                            cached: true
-                        }
+//                        width: 17
+//                        height: 17
+//                        //                        width: 56
+//                        //                        height: 17.5
+//                        Layout.alignment: Qt.AlignVCenter
+//                        Layout.leftMargin: 13
+//                        layer.enabled: true
+//                        layer.effect: ColorOverlay{
+//                            //id: overlay
+////                            anchors.fill: itemImage
+////                            source:itemImage
+//                            color: itemImage.color
+//                            cached: true
+//                        }
+
+//                    }
+
+
+
+                    Impl.IconImage{
+                   id: itemImage
+                    name: control.icon.name
+                    source: control.icon.name.length? control.icon.name : control.icon.source
+                    color: control.icon.color
+                    width: control.icon.width
+                    height: control.icon.height
+                    cache: control.icon.cache
+                    fillMode: Image.PreserveAspectFit
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 13
+
+                    sourceSize: Qt.size(control.icon.width,control.icon.height)
 
                     }
+
                     Label{
                         id:  itemText
-                        text:model.title
+                        text: model.title
                         color : "#afb5c0"
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                         Layout.fillWidth: true

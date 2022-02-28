@@ -2,19 +2,19 @@
    {
       "title":"Dashboard",
       "category":"",
-      "image":"qrc:/icons/CoreUI/free/cil-speedometer.svg",
+      "image":"cil-speedometer",
       "path":"qrc:/pages/dashboard/DashboardPage.qml"
    },
    {
       "title":"POS",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-screen-desktop.svg",
+      "image":"cil-screen-desktop",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
    },
    {
       "title":"Accounting",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-money.svg",
+      "image":"cil-money",
       "path":"",
       "childItems":[
          {
@@ -35,7 +35,7 @@
    {
       "title":"Products",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-inbox.svg",
+      "image":"cil-inbox",
       "path":"",
       "childItems":[
          {
@@ -51,7 +51,7 @@
    {
       "title":"Orders",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-pen.svg",
+      "image":"cil-pen",
       "path": "",
       "childItems":[
          {
@@ -67,19 +67,19 @@
    {
       "title":"Taxes",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-money.svg",
+      "image":"cil-money",
       "path":"qrc:/pages/taxes/TaxesPage.qml"
    },
    {
       "title":"Customers",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
+      "image":"cil-user",
       "path":"qrc:/pages/customers/CustomersPage.qml"
    },
    {
       "title":"Vendors",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
+      "image":"cil-user",
       "path":"",
       "childItems":[
          {
@@ -95,13 +95,13 @@
    {
       "title":"Users",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-user.svg",
+      "image":"cil-user",
       "path":"qrc:/pages/users/UsersPage.qml"
    },
    {
       "title":"Reports",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-chart.svg",
+      "image":"cil-chart",
       "path":"qrc:/pages/orders/OrdersPage.qml",
       "childItems":[
          {
@@ -117,7 +117,7 @@
    {
       "title":"Settings",
       "category":"MAIN",
-      "image":"qrc:/icons/CoreUI/free/cil-settings.svg",
+      "image":"cil-settings",
       "path":"",
       "childItems":[
          {

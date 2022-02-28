@@ -25,6 +25,7 @@ void AuthManager::onAuthReply(NetworkResponse *res)
             settings.setValue("jwt",res->json("token").toString());
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
             emit loggedIn();
+
         }
         else {
             emit invalidCredentails();
