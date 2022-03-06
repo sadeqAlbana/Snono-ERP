@@ -7,9 +7,9 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 CTableViewDelegate {
     id: control
+    implicitWidth: 100
 
     contentItem: Image{
-        anchors.centerIn: parent;
         height: 60
         fillMode: Image.PreserveAspectFit
         source: model.display? model.display : ""

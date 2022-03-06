@@ -9,7 +9,7 @@ CTableViewDelegate {
     padding: 12
     leftPadding: (width/3)
     rightPadding: leftPadding
-    Component.onCompleted: console.log(model.display)
+    //Component.onCompleted: console.log(model.display)
     contentItem: Badge{
 
         text: switch(model.display){

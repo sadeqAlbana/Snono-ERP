@@ -19,7 +19,7 @@ ApplicationWindow {
     property real activityCount : 0
 
     onActivityCountChanged:{
-        console.log(activityCount)
+        //console.log(activityCount)
         if(activityCount>0){
             busySpinner.open();
         }else{

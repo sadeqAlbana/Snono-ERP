@@ -91,7 +91,7 @@ Card{
             Connections{
                 target: Api
 
-                function onProcessCustomBillResponse(status){
+                function onProcessCustomBillResponse(reply){
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)
                         model.requestData();

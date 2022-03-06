@@ -76,14 +76,21 @@ void ReceiptGenerator::create(QJsonObject receiptData,QPaintDevice *device)
     painter.setFont(font);
     painter.drawText(QRect(20,height-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
     painter.drawText(QRect(20,height-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
-
+    if(receiptData.contains("external_delivery")){
+        double totalWithDelivery=total+receiptData["external_delivery"].toDouble();
+        painter.drawText(QRect(20,height-40, 600,40),Qt::AlignLeft, "Total With Delivery: " +  Currency::formatString(totalWithDelivery));
+    }
     //painter.end();//?
 }
 
 int ReceiptGenerator::receiptHeight(const QJsonObject &receiptData)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
-    return 400+((items.count()+1)*55)+200;
+    int height= 400+((items.count()+1)*55)+200;
+
+    if(receiptData.contains("external_delivery"))
+        height+=40;
+    return height;
 }
 
 
@@ -141,6 +148,6 @@ QUrl ReceiptGenerator::sampleData()
 void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 {
     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-    qDebug()<<QPrinterInfo::defaultPrinter().printerName();
+    //qDebug()<<QPrinterInfo::defaultPrinter().printerName();
     create(receiptData,&printer);
 }

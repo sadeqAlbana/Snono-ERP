@@ -14,7 +14,7 @@ import "qrc:/screens/Utils.js" as Utils
 Popup{
     Connections{
     target: KApp;
-    onAboutToQuit:{
+    function onAboutToQuit(){
         dialog.destroy();
     }
 }

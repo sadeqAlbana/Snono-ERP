@@ -191,12 +191,32 @@ Page{
                 }
 
 
+                NewDashboardWidget{
+                    title: "Profits"
+                    palette.window : "#2518AD"
+                    icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
+                    Layout.minimumWidth: gridLayout.maxWidth
+                    ColumnLayout{
+                        anchors.fill: parent;
+                        DashboardRowItem{
+                            label: qsTr("Daily Sales Profits (IQD)")
+                            value: dashboard? dashboard["daily_sales_profits"] : ""
+                        }
+                        DashboardRowItem{
+                            label: qsTr("Monthly Sales Profits (IQD)")
+                            value: dashboard? dashboard["monthly_sales_profits"] : ""
+                        }
+
+                    }
+                }
+
 
                 Connections{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
                         salesChartModel.setupData(dashboard.sales_chart);
+                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart);
 
                     }
                 }
@@ -212,31 +232,56 @@ Page{
                 legend.font.bold: true
                 theme: ChartView.ChartThemeLight
                 animationOptions: ChartView.AllAnimations
-                LineSeries {
-                    id: splineSeries
-                    name: "Sales"
-                    axisX: DateTimeAxis{
-                        format: "yyyy-MM-dd"
-                        min: Utils.firstDayOfMonth()
-                        max: Utils.lastDayOfMonth()
-                        tickCount: 15
-                    }
-                    axisY: ValueAxis{
-                        min: salesChartModel.minValue;
-                        max: salesChartModel.maxValue*1.1;
-                        labelFormat: "IQD%.2i"
 
-                    }
+                DateTimeAxis{
+                    id: dtAxis
+                    format: "yyyy-MM-dd"
+                    min: Utils.firstDayOfMonth()
+                    max: Utils.lastDayOfMonth()
+                    tickCount: 15
+                }
+                ValueAxis{
+                    id: valueAxis
+                    min: salesChartModel.minValue;
+                    max: salesChartModel.maxValue*1.1;
+                    labelFormat: "IQD%.2i"
+                    tickCount: 10
+                }
+
+                LineSeries {
+                    id: salesSeries
+                    name: "Sales"
+                    axisX: dtAxis
+                    axisY: valueAxis
+
+                }
+
+
+                LineSeries {
+                    id: salesProfitsSeries
+                    name: "Sales Profits"
+                    axisX: dtAxis
+                    axisY: valueAxis
                 }
 
                 VXYModelMapper{
-                    id: chartMapper
-                    series: splineSeries
+                    series: salesSeries
                     model: SalesChartModel{id: salesChartModel}
                     firstRow: 0
                     xColumn: 0
                     yColumn: 1
                 }
+
+
+                VXYModelMapper{
+                    series: salesProfitsSeries
+                    model: SalesChartModel{id: salesProfitsChartModel}
+                    firstRow: 0
+                    xColumn: 0
+                    yColumn: 1
+                }
+
+
             }
         } //columnLayout End
 

@@ -36,6 +36,7 @@ Popup {
     }
 
     Card{
+        id: card
         title: qsTr("Receipt")
         anchors.fill: parent;
 
@@ -83,10 +84,31 @@ Popup {
                 implicitHeight: 60
                 Layout.margins: 10
 
-                onClicked: ReceiptGenerator.printReceipt(receiptData);
+                onClicked: card.print();
+            }
+
+            CComboBox{
+                id: externalDelivery
+                Layout.fillWidth: true
+                textRole: "name"
+                valueRole: "value"
+                currentIndex: 1
+                model: ListModel{
+                    ListElement{name: "No Delivery"; value: 0}
+                    ListElement{name: "Baghdad";     value: 5000}
+                    ListElement{name: "Provinces ";  value: 10000}
+                }
             }
 
 
+        }
+
+        function print(){
+
+            if(externalDelivery.currentValue>0){
+                receiptData["external_delivery"]=externalDelivery.currentValue;
+            }
+            ReceiptGenerator.printReceipt(receiptData);
         }
 
     } //card end

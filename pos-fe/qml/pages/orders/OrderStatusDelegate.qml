@@ -10,6 +10,12 @@ CTableViewDelegate {
     leftPadding: (width/3)
     rightPadding: leftPadding
     property var order;
+
+
+
+
+//    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+//                            implicitContentWidth + leftPadding + rightPadding)
     contentItem: Badge{
 
         text: switch(model.display){

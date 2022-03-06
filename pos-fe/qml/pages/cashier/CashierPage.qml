@@ -19,7 +19,7 @@ import app.models 1.0
 
 Page{
     title: qsTr("Cashier")
-//    palette.window: "transparent"
+    //    palette.window: "transparent"
     background: Rectangle{color: "transparent"}
     padding: 10
     property bool pay: false
@@ -39,7 +39,7 @@ Page{
                 onPurchaseResponseReceived: {
                     if(res.status===200){
                         paymentDialog.close();
-                        receiptDialog.receiptData=res.order;
+                        receiptDialog.receiptData=res.order
                         receiptDialog.open();
                         if(customerCB.currentIndex<0){
                             customersModel.refresh();
@@ -150,6 +150,10 @@ Page{
                 Layout.fillWidth: true
                 color: "transparent"
             }
+
+
+
+
 
             CComboBox{
                 id: productsCB
@@ -285,7 +289,7 @@ Page{
                 Layout.fillWidth: true
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();
-                enabled: cashierModel.total>0
+                enabled: tableView.rows>0
             }
             Item{
                 Layout.fillHeight: true
