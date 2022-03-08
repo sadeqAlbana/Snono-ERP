@@ -10,7 +10,7 @@ CTableViewDelegate {
     leftPadding: (width/3)
     rightPadding: leftPadding
     property var order;
-
+    implicitWidth: 150
 
 
 

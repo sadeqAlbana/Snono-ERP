@@ -18,7 +18,7 @@ ToolBar {
     property alias actions : _menu.actions
     Layout.fillWidth: true
     palette.button: "transparent"
-    RowLayout{
+    contentItem: RowLayout{
         spacing: 15
         anchors.fill: parent;
         CMenuBar{

@@ -9,6 +9,8 @@ CTableViewDelegate {
     padding: 12
     leftPadding: (width/3)
     rightPadding: leftPadding
+    implicitWidth: 150
+
     contentItem: Badge{
 
         text: switch(model.display){

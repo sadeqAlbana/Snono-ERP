@@ -29,6 +29,65 @@ Card{
                 model.filter=filter;
                 model.requestData();
             }
+            CButton{
+                id: btn
+                onClicked: popup.open();
+                Layout.preferredWidth: 500
+                Layout.preferredHeight: 48
+                text: "visible"
+                Popup{
+                    id: popup
+                    width: 300
+                    height: 500
+                    implicitWidth: 300
+                    implicitHeight: 500
+
+                    parent: btn
+//                    padding:0
+//                    leftInset: 0
+//                    rightInset: 0
+//                    topInset: 0
+//                    bottomInset: 0
+
+                    Flickable{
+                        id: flickable
+                        clip: true
+                        anchors.fill: parent;
+                        contentWidth: layout.implicitWidth
+                        contentHeight: layout.implicitHeight
+                        flickableDirection: Flickable.VerticalFlick
+                        ColumnLayout{
+                            id: layout
+                            anchors.fill: parent;
+                            Repeater{
+                                model: tableView.model.columnCount();
+                                CheckDelegate{
+                                    text: tableView.model.headerData(modelData,Qt.Horizontal)
+                                    implicitWidth: 300
+                                    Layout.fillWidth: true
+                                    //LayoutMirroring.enabled: true
+                                    //LayoutMirroring.childrenInherit: true
+                                }//delegate
+                            }//repeater
+                        }//layout
+
+
+                    }//flickable
+
+                }
+            }
+
+//            MenuBar{
+//                implicitWidth: 150
+//                implicitHeight: 50
+
+//                //use repeater ?
+
+//                Menu{
+
+//                }
+
+//            }//MenuBar
         }
         ProductAddDialog{
             id: productAddDialog;
@@ -57,17 +116,13 @@ Card{
             } //slot end
         }
 
-
-
         CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: DelegateChooser{
+            delegate: AppDelegateChooser{
                 role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
                 DelegateChoice{ roleValue: "image"; ImageDelegate{}}
 
 
