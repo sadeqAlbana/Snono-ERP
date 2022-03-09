@@ -34,6 +34,7 @@ Card{
                 onClicked: popup.open();
                 Layout.preferredWidth: 500
                 Layout.preferredHeight: 48
+                color: "red"
                 text: "visible"
                 Popup{
                     id: popup
@@ -61,10 +62,19 @@ Card{
                             anchors.fill: parent;
                             Repeater{
                                 model: tableView.model.columnCount();
-                                CheckDelegate{
+                                CheckBox{
                                     text: tableView.model.headerData(modelData,Qt.Horizontal)
-                                    implicitWidth: 300
                                     Layout.fillWidth: true
+                                    checkState: Qt.Checked
+                                    onCheckStateChanged: {
+
+                                        if(checkState==Qt.Checked)
+                                            tableView.showColumn(modelData);
+                                        else{
+                                            tableView.hideColumn(modelData)
+                                        }
+                                    }
+
                                     //LayoutMirroring.enabled: true
                                     //LayoutMirroring.childrenInherit: true
                                 }//delegate
