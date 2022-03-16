@@ -17,6 +17,7 @@ ApplicationWindow {
     minimumWidth: rootLoader.implicitWidth
     minimumHeight: rootLoader.implicitHeight
     property real activityCount : 0
+    property bool mobileLayout : height>width
 
     onActivityCountChanged:{
         //console.log(activityCount)
@@ -27,9 +28,9 @@ ApplicationWindow {
         }
     }
 
-
-
-
+    FontMetrics{
+        id: metrics
+    }
     Connections{
         target: AuthManager
         function onLoggedIn(){
@@ -80,7 +81,8 @@ ApplicationWindow {
     Loader {
         id : rootLoader
         anchors.fill: parent
-
+//        width: parent.width
+//        height: parent.height
         sourceComponent: LoginPage{
 
         }

@@ -14,16 +14,18 @@ import "qrc:/common"
 AppDialog {
     id: dialog
     width:  card.implicitWidth*1.2
-    height: card.implicitWidth*1.2
+    height: card.implicitHeight*1.2
+
     Card{
         id: card
-        anchors.fill: parent
         padding: 20
+        anchors.fill: parent;
         title: qsTr("Server Settings");
-
-
         ColumnLayout{
             anchors.fill: parent;
+
+
+
             CTextField{
                 id: serverTF
                 font.pixelSize: 21

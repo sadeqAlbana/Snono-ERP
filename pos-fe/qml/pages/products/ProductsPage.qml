@@ -19,85 +19,17 @@ Card{
     ColumnLayout{
         id: page
         anchors.fill: parent;
+
         spacing: 10
         AppToolBar{
             id: toolBar
-            actions: tableView.actions
+            tableView: tableView
             onSearch: {
                 var filter=model.filter;
                 filter['query']=searchString
                 model.filter=filter;
                 model.requestData();
             }
-            CButton{
-                id: btn
-                onClicked: popup.open();
-                Layout.preferredWidth: 500
-                Layout.preferredHeight: 48
-                color: "red"
-                text: "visible"
-                Popup{
-                    id: popup
-                    width: 300
-                    height: 500
-                    implicitWidth: 300
-                    implicitHeight: 500
-
-                    parent: btn
-//                    padding:0
-//                    leftInset: 0
-//                    rightInset: 0
-//                    topInset: 0
-//                    bottomInset: 0
-
-                    Flickable{
-                        id: flickable
-                        clip: true
-                        anchors.fill: parent;
-                        contentWidth: layout.implicitWidth
-                        contentHeight: layout.implicitHeight
-                        flickableDirection: Flickable.VerticalFlick
-                        ColumnLayout{
-                            id: layout
-                            anchors.fill: parent;
-                            Repeater{
-                                model: tableView.model.columnCount();
-                                CheckBox{
-                                    text: tableView.model.headerData(modelData,Qt.Horizontal)
-                                    Layout.fillWidth: true
-                                    checkState: Qt.Checked
-                                    onCheckStateChanged: {
-
-                                        if(checkState==Qt.Checked)
-                                            tableView.showColumn(modelData);
-                                        else{
-                                            tableView.hideColumn(modelData)
-                                        }
-                                    }
-
-                                    //LayoutMirroring.enabled: true
-                                    //LayoutMirroring.childrenInherit: true
-                                }//delegate
-                            }//repeater
-                        }//layout
-
-
-                    }//flickable
-
-                }
-            }
-
-//            MenuBar{
-//                implicitWidth: 150
-//                implicitHeight: 50
-
-//                //use repeater ?
-
-//                Menu{
-
-//                }
-
-//            }//MenuBar
         }
         ProductAddDialog{
             id: productAddDialog;

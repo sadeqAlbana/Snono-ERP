@@ -12,12 +12,16 @@ Item {
     id: rootItem
     implicitWidth: baseLoader.implicitWidth
     property alias stackView: baseLoader
+    property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
+    onDrawerAboveContentChanged: {
+        if(!drawerAboveContent && drawer.opened)
+            drawer.close();
+    }
     ToolBar{
         id: toolBar;
-        y:0
-        width:drawer.opened ? rootItem.width-drawer.width : rootItem.width
-        //        x: rootItem.width-drawer.width
-        x: drawer.opened ? drawer.width  : 0
+        anchors.left: rootItem.left
+        anchors.right: rootItem.right
+        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
         height: 56
         background: Rectangle{
 
@@ -30,17 +34,11 @@ Item {
                 Layout.leftMargin: 20
                 id : toggleButton
                 text: qsTr("☰")
-                contentItem: Text{
-                    color: "#7f7f8a"
-                    text: toggleButton.text
-                    font.pointSize: 15
-                }
-
+                display: AbstractButton.TextOnly
+                palette.buttonText: "#7f7f8a"
+                palette.button: "#FFFFFF"
+                font.pixelSize: metrics.font.pixelSize*1.5
                 onClicked: drawer.opened ? drawer.close() : drawer.open();
-                background: Rectangle{
-                    color: "white"
-                }
-
             }
 
             Label {
@@ -72,11 +70,10 @@ Item {
     ToolBar{
         id: breadcrumbToolbar
         y:toolBar.height
-        width:drawer.opened ? rootItem.width-drawer.width : rootItem.width
-        //        x: rootItem.width-drawer.width
-        x: drawer.opened ? drawer.width  : 0
+        anchors.left: rootItem.left
+        anchors.right: rootItem.right
+        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
         height: 56
-
         background: Rectangle{
 
             color: "white"
@@ -85,9 +82,7 @@ Item {
 
     Drawer{
         id: drawer
-
         width: 256
-
         height: rootItem.height
         dim:false
         closePolicy: Popup.NoAutoClose //this causes a problem in closing
@@ -439,19 +434,22 @@ Item {
 
     Rectangle{
         id: contentArea
-        y: toolBar.height+breadcrumbToolbar.height
-        width:drawer.opened ? rootItem.width-drawer.width : rootItem.width
-        x: drawer.opened ? drawer.width  : 0
-        height: rootItem.height-toolBar.height-breadcrumbToolbar.height
+
+        anchors{
+            left: rootItem.left
+            right: rootItem.right
+            leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+            top: toolBar.bottom
+            bottom: rootItem.bottom
+        }
+
         color: "#ebedef"
 
         //content here
-
-
         StackView{
             id: baseLoader
             anchors.fill: parent
-            anchors.margins: 20
+            anchors.margins: drawerAboveContent? 0 : 20
             //padding: 20
 
             clip:true

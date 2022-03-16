@@ -37,7 +37,8 @@ Card{
 
         AppToolBar{
             id: toolBar
-            actions: tableView.actions
+            tableView: tableView
+
             onSearch: {
                 var filter=model.filter;
                 filter['query']=searchString

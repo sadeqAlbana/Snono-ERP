@@ -15,7 +15,7 @@ import QtQuick.Layouts 1.15
 ToolBar {
     id: control
     signal search(var searchString);
-    property alias actions : _menu.actions
+    required property var tableView
     Layout.fillWidth: true
     palette.button: "transparent"
     contentItem: RowLayout{
@@ -25,10 +25,56 @@ ToolBar {
             CMenu{
                 id: _menu
                 title: qsTr("Actions");
-                icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
+                icon:"cil-settings"
                 actions: tableView.actions
             }//Menu
         }//MenuBar
+
+        CButton{
+            id: btn
+            onClicked: popup.open();
+            Layout.preferredHeight: 55
+            icon.name: "cil-list"
+            color: "#3399ff"
+            checkable: false
+            palette.buttonText: "#FFFFFF"
+            display: AbstractButton.IconOnly
+            Popup{
+                id: popup
+                parent: btn
+                y:parent.height
+                Flickable{
+                    id: flickable
+                    clip: true
+                    implicitWidth: contentWidth
+                    implicitHeight: Math.min(contentHeight,400)
+                    anchors.fill: parent;
+                    contentWidth: layout.implicitWidth
+                    contentHeight: layout.implicitHeight
+                    flickableDirection: Flickable.VerticalFlick
+                    ColumnLayout{
+                        id: layout
+                        anchors.fill: parent;
+                        Repeater{
+                            model: tableView.model.columnCount();
+                            CheckBox{
+                                text: tableView.model.headerData(modelData,Qt.Horizontal)
+                                Layout.fillWidth: true
+                                checkState: Qt.Checked
+                                onCheckStateChanged: {
+                                    if(checkState==Qt.Checked)
+                                        tableView.showColumn(modelData);
+                                    else{
+                                        tableView.hideColumn(modelData)
+                                    }
+                                }
+                            }//delegate
+                        }//repeater
+                    }//layout
+                }//flickable
+            }//popup
+        }//button
+
         HorizontalSpacer{}
 
         CTextField{

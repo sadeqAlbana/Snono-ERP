@@ -22,6 +22,7 @@ Card{
         anchors.fill: parent;
         AppToolBar{
             id: toolBar
+            tableView: tableView
         }
         CTableView{
             id: tableView

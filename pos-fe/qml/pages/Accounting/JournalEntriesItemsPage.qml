@@ -22,22 +22,9 @@ Card{
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        RowLayout{
-            spacing: 15
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "cil-search"
-            }
+        AppToolBar{
+            id: toolBar
+            tableView: tableView
         }
 
 

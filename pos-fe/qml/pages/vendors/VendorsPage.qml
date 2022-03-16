@@ -11,7 +11,7 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
 import app.models 1.0
-
+import "qrc:/common"
 Card{
     title: qsTr("Vendors")
     padding: 10
@@ -19,34 +19,11 @@ Card{
         id: page
         anchors.fill: parent;
         anchors.margins: 20
-        RowLayout{
-            spacing: 15
 
-            CMenuBar{
-                CMenu{
-                    title: qsTr("Actions");
-                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
-                    actions: tableView.actions
-                }
-            }
-
-            Rectangle{
-                Layout.fillWidth: true
-                color: "transparent"
-            }
-
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "cil-search"
-            }
+        AppToolBar{
+            id: toolBar
+            tableView: tableView
         }
-
-
-
 
         CTableView{
             id: tableView

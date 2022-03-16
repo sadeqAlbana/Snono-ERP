@@ -24,16 +24,35 @@ Page{
     padding: 10
     property bool pay: false
     property int sessionId : -1
-    GridLayout{
+
+    ReceiptDialog{
+        id: receiptDialog
+    }//receiptDialog
+
+    PayDialog{
+        id: paymentDialog
+        onAccepted: {
+            if(customerCB.currentIndex<0){
+                //update customer then process cart
+                pay=true
+                customersModel.addCustomer(customerCB.editText,"","","",phoneLE.text,addressLE.text)
+            }else{
+                cashierModel.processCart(paid,tendered,notesLE.text);
+            }
+        }//accepted
+    }//payDialog
+
+    GridLayout{ //main   grid
         anchors.fill: parent;
         rows: 2
         columns: 2
         flow: GridLayout.LeftToRight
         CTableView{
             id: tableView
+            delegate: AppDelegateChooser{}
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumWidth: 500
+            //Layout.minimumWidth: 1000
             model: CashierModel{
                 id: cashierModel
                 onPurchaseResponseReceived: {
@@ -67,17 +86,16 @@ Page{
                 }//onAddProductReply
             }
 
-            delegate: AppDelegateChooser{}
         }
 
-        ColumnLayout{
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            //            Layout.rowSpan: 2
+        ColumnLayout{ //numpad layout
+            Layout.alignment: Qt.AlignCenter
             Numpad{
                 id: numpad
                 enabled: tableView.selectedRow>=0
                 Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignCenter
                 property bool waitingForDecimal: false
                 property var decimalBtn;
 
@@ -145,20 +163,19 @@ Page{
                     cashierModel.removeProduct(tableView.selectedRow);
                 }
             }
-            Rectangle{
+            Item{
                 Layout.fillHeight: true
+                implicitWidth: 50
                 Layout.fillWidth: true
-                color: "transparent"
+                Layout.maximumWidth: numpad.width
+
             }
 
-
-
-
-
             CComboBox{
+                Layout.maximumWidth: numpad.width
+
                 id: productsCB
                 Layout.fillWidth: true
-
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
@@ -182,6 +199,8 @@ Page{
                 id: numpadInput
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
+                Layout.maximumWidth: numpad.width
+
                 onAccepted:{
                     cashierModel.addProduct(text,true);
                     text=""
@@ -190,11 +209,12 @@ Page{
                 implicitHeight: 60
 
             }
-        }
+        }//
 
-        GridLayout{
+        GridLayout{ //customer grid
+            Layout.alignment: Qt.AlignCenter
+
             columns: 2
-            Layout.fillHeight: true
             CComboBox{
                 property bool isValid: currentText===editText
                 id: customerCB;
@@ -263,16 +283,17 @@ Page{
                 leftIcon: "cil-notes"
 
             }
-            Rectangle{
+            Item{
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "transparent"
                 Layout.columnSpan: 2
             }
         }
 
 
-        ColumnLayout{
+        ColumnLayout{ //total and pay layout
+            Layout.alignment: Qt.AlignCenter
+            Layout.maximumWidth: numpad.width
             CTextInput{
                 id: total
                 readOnly: true
@@ -293,30 +314,15 @@ Page{
             }
             Item{
                 Layout.fillHeight: true
-                Layout.fillWidth: true
+ //               Layout.fillWidth: true
             }
-            ReceiptDialog{
-                id: receiptDialog
-            }//receiptDialog
+
 
             function confirmPayment(){
                 paymentDialog.amount=cashierModel.total;
                 paymentDialog.paid=cashierModel.total;
                 paymentDialog.open();
             }
-
-            PayDialog{
-                id: paymentDialog
-                onAccepted: {
-                    if(customerCB.currentIndex<0){
-                        //update customer then process cart
-                        pay=true
-                        customersModel.addCustomer(customerCB.editText,"","","",phoneLE.text,addressLE.text)
-                    }else{
-                        cashierModel.processCart(paid,tendered,notesLE.text);
-                    }
-                }//accepted
-            }//payDialog
         }//ColumnLayout
     } // GridLayout end
 }

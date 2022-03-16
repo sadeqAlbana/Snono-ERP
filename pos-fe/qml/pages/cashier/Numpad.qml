@@ -1,9 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-Item{
-    implicitHeight: grid.childrenRect.height
-    implicitWidth: grid.childrenRect.width
+GridLayout {
+    //implicitHeight: grid.implicitHeight
+    //implicitWidth: grid.implicitWidth
     signal buttonClicked(var button);
     property bool decimalEnabled: true
     property var activeButton: qty
@@ -23,7 +23,6 @@ Item{
         return null;
     }
 
-    Grid {
         id: grid
         columns: 4
         columnSpacing: 10
@@ -45,5 +44,5 @@ Item{
         NumpadButton { text: "."; type: "COMMAND"; palette.button: "#636f83"; palette.buttonText: "white"; enabled: decimalEnabled; onPressed: buttonClicked(this); }
         NumpadButton { text: "<"; type: "COMMAND"; palette.button: "#f9b115"; palette.buttonText: "white";  onPressed: buttonClicked(this);}
 
-    } //end grid
+    //} //end grid
 }
