@@ -30,6 +30,7 @@ include(../json-model/json-model.pri)
 
 SOURCES += \
     api.cpp \
+    appqmlnetworkaccessmanagerfactory.cpp \
         main.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/categoriesmodel.cpp \
@@ -69,6 +70,7 @@ SOURCES += \
 
 HEADERS += \
     api.h \
+    appqmlnetworkaccessmanagerfactory.h \
     models/Models \
     models/appnetworkedjsonmodel.h \
     models/categoriesmodel.h \

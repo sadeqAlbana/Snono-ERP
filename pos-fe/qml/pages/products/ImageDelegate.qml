@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -14,5 +15,28 @@ CTableViewDelegate {
         fillMode: Image.PreserveAspectFit
         source: model.display? model.display : ""
         antialiasing: true
+    }
+
+    Popup{
+        id: popup
+        parent: control
+        x:0
+        y: parent.height
+        Image{
+                fillMode: Image.PreserveAspectFit
+                source: model.display? model.display : ""
+                antialiasing: true
+            }
+    }
+
+    MouseArea{
+        anchors.fill: parent;
+        hoverEnabled: true
+        onContainsMouseChanged: {
+            if(containsMouse)
+                popup.open();
+            else
+                popup.close();
+        }
     }
 }

@@ -18,6 +18,7 @@
 #include <QIcon>
 #include "possettings.h"
 #include "models/appnetworkedjsonmodel.h"
+#include "appqmlnetworkaccessmanagerfactory.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -36,6 +37,7 @@ int main(int argc, char *argv[])
     QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);
     QQmlApplicationEngine engine;
+    engine.setNetworkAccessManagerFactory(new AppQmlNetworkAccessManagerFactory);
     NumberEditor nb;
     ReceiptGenerator gen;
     engine.rootContext()->setContextProperty("KApp",&a);

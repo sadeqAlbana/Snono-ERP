@@ -35,7 +35,7 @@ Card{
             actions: [
                 Action{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
 
-                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: tableView.removeVendor()}
+                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: {}}
             ]//actions
 
             model: CustomersModel{
