@@ -11,7 +11,7 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
-import app.models 1.0
+import App.Models 1.0
 
 Card{
 
@@ -21,28 +21,17 @@ Card{
         id: page
         anchors.fill: parent;
 
-        RowLayout{
-            spacing: 15
+        AppToolBar{
+            id: toolBar
+            tableView: tableView
 
-            CMenuBar{
-                CMenu{
-                    title: qsTr("Actions");
-                    icon:"qrc:/icons/CoreUI/free/cil-settings.svg"
-                    actions: tableView.actions
-                }
+            onSearch: {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
             }
-
-            Item{Layout.fillWidth: true}
-
-            CTextField{
-                Layout.preferredHeight: 50
-                Layout.preferredWidth: 300
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 18
-                placeholderText: qsTr("Search...")
-                rightIcon: "cil-search"
-            }
-        }//top layout end
+        }
 
 
         CTableView{
@@ -50,10 +39,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: DelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-
+            delegate: AppDelegateChooser{
             }
 
             actions: [

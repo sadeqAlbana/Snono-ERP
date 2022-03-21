@@ -10,7 +10,7 @@ import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
-import app.models 1.0
+import App.Models 1.0
 import QtQml 2.15
 
 ListView {

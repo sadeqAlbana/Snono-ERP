@@ -19,6 +19,7 @@
 #include "possettings.h"
 #include "models/appnetworkedjsonmodel.h"
 #include "appqmlnetworkaccessmanagerfactory.h"
+#include <QClipboard>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
     engine.setNetworkAccessManagerFactory(new AppQmlNetworkAccessManagerFactory);
     NumberEditor nb;
     ReceiptGenerator gen;
+
     engine.rootContext()->setContextProperty("KApp",&a);
     engine.rootContext()->setContextProperty("AuthManager",AuthManager::instance());
     engine.rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
@@ -47,36 +49,37 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
     engine.rootContext()->setContextProperty("Api",Api::instance());
     engine.rootContext()->setContextProperty("Settings",&settings);
+    engine.rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
 //    TestPalette pal;
 //    engine.rootContext()->setContextProperty("Pal",pal);
 
 
-    qmlRegisterType<AccountsModel>("app.models", 1, 0, "AccountsModel");
+    qmlRegisterType<AccountsModel>("App.Models", 1, 0, "AccountsModel");
 
-    qmlRegisterType<ProductsModel>("app.models", 1, 0, "ProductsModel");
-    qmlRegisterType<OrdersModel>("app.models", 1, 0, "OrdersModel");
-    qmlRegisterType<OrderItemsModel>("app.models", 1, 0, "OrderItemsModel");
-    qmlRegisterType<CashierModel>("app.models", 1, 0, "CashierModel");
-    qmlRegisterType<CategoriesModel>("app.models", 1, 0, "CategoriesModel");
-    qmlRegisterType<TreeProxyModel>("app.models", 1, 0, "TreeProxyModel");
-    qmlRegisterType<TaxesCheckableModel>("app.models", 1, 0, "TaxesCheckableModel");
-    qmlRegisterType<VendorsModel>("app.models", 1, 0, "VendorsModel");
-    qmlRegisterType<VendorsBillsModel>("app.models", 1, 0, "VendorsBillsModel");
-    qmlRegisterType<CustomersModel>("app.models", 1, 0, "CustomersModel");
-    qmlRegisterType<PosSessionsModel>("app.models", 1, 0, "PosSessionsModel");
-    qmlRegisterType<JournalEntriesItemsModel>("app.models", 1, 0, "JournalEntriesItemsModel");
-    qmlRegisterType<JournalEntriesModel>("app.models", 1, 0, "JournalEntriesModel");
-    qmlRegisterType<TaxesModel>("app.models", 1, 0, "TaxesModel");
-    qmlRegisterType<ReceiptModel>("app.models", 1, 0, "ReceiptModel");
-    qmlRegisterType<VendorCartModel>("app.models", 1, 0, "VendorCartModel");
-    qmlRegisterType<ReturnOrderModel>("app.models", 1, 0, "ReturnOrderModel");
-    qmlRegisterType<CustomVendorCartModel>("app.models", 1, 0, "CustomVendorCartModel");
-    qmlRegisterType<ProductsAttributesAttributesModel>("app.models", 1, 0, "ProductsAttributesAttributesModel");
-    qmlRegisterType<SalesChartModel>("app.models", 1, 0, "SalesChartModel");
-    qmlRegisterType<UsersModel>("app.models", 1, 0, "UsersModel");
-    qmlRegisterType<OrdersReturnsModel>("app.models", 1, 0, "OrdersReturnsModel");
-    qmlRegisterType<AppNetworkedJsonModel>("app.models", 1, 0, "NetworkModel");
+    qmlRegisterType<ProductsModel>("App.Models", 1, 0, "ProductsModel");
+    qmlRegisterType<OrdersModel>("App.Models", 1, 0, "OrdersModel");
+    qmlRegisterType<OrderItemsModel>("App.Models", 1, 0, "OrderItemsModel");
+    qmlRegisterType<CashierModel>("App.Models", 1, 0, "CashierModel");
+    qmlRegisterType<CategoriesModel>("App.Models", 1, 0, "CategoriesModel");
+    qmlRegisterType<TreeProxyModel>("App.Models", 1, 0, "TreeProxyModel");
+    qmlRegisterType<TaxesCheckableModel>("App.Models", 1, 0, "TaxesCheckableModel");
+    qmlRegisterType<VendorsModel>("App.Models", 1, 0, "VendorsModel");
+    qmlRegisterType<VendorsBillsModel>("App.Models", 1, 0, "VendorsBillsModel");
+    qmlRegisterType<CustomersModel>("App.Models", 1, 0, "CustomersModel");
+    qmlRegisterType<PosSessionsModel>("App.Models", 1, 0, "PosSessionsModel");
+    qmlRegisterType<JournalEntriesItemsModel>("App.Models", 1, 0, "JournalEntriesItemsModel");
+    qmlRegisterType<JournalEntriesModel>("App.Models", 1, 0, "JournalEntriesModel");
+    qmlRegisterType<TaxesModel>("App.Models", 1, 0, "TaxesModel");
+    qmlRegisterType<ReceiptModel>("App.Models", 1, 0, "ReceiptModel");
+    qmlRegisterType<VendorCartModel>("App.Models", 1, 0, "VendorCartModel");
+    qmlRegisterType<ReturnOrderModel>("App.Models", 1, 0, "ReturnOrderModel");
+    qmlRegisterType<CustomVendorCartModel>("App.Models", 1, 0, "CustomVendorCartModel");
+    qmlRegisterType<ProductsAttributesAttributesModel>("App.Models", 1, 0, "ProductsAttributesAttributesModel");
+    qmlRegisterType<SalesChartModel>("App.Models", 1, 0, "SalesChartModel");
+    qmlRegisterType<UsersModel>("App.Models", 1, 0, "UsersModel");
+    qmlRegisterType<OrdersReturnsModel>("App.Models", 1, 0, "OrdersReturnsModel");
+    qmlRegisterType<AppNetworkedJsonModel>("App.Models", 1, 0, "NetworkModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

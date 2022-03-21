@@ -8,7 +8,7 @@ import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import QtGraphicalEffects 1.0
-import app.models 1.0
+import App.Models 1.0
 import "qrc:/screens/Utils.js" as Utils
 
 Popup{

@@ -10,7 +10,7 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/common"
 
 import QtGraphicalEffects 1.0
-import app.models 1.0
+import App.Models 1.0
 
 AppDialog{
     id: dialog

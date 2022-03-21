@@ -15,7 +15,7 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
-import app.models 1.0
+import App.Models 1.0
 
 Page{
     title: qsTr("Cashier")

@@ -4,7 +4,7 @@ import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/tables"
 
 import QtQuick.Layouts 1.12
-import app.models 1.0
+import App.Models 1.0
 
 import "qrc:/screens/Utils.js" as Utils
 import Qt.labs.qmlmodels 1.0

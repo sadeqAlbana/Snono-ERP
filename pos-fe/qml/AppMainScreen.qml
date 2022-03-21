@@ -24,7 +24,7 @@ Item {
         anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
         height: 56
         background: Rectangle{
-
+            border.color: "#d8dbe0"
             color: "white"
         }
 
@@ -49,23 +49,57 @@ Item {
                 Layout.fillWidth: true
                 color: "#7f7f8a"
             }
-            ToolButton {
-                text: qsTr("‹")
-                //onClicked: stack.pop()
-                background: Rectangle{
-                    color: "white"
-                }
+
+            ToolButton{
+               icon.name: "cil-account-logout"
+               display: AbstractButton.IconOnly
+               //onClicked: AuthManager.logout();
+
             }
-        }
 
-        Rectangle{
-            anchors.fill: parent;
-            border.color: "#d8dbe0"
-            color: "transparent"
-        }
+            ToolButton{
+                id: ctrl
+                display: AbstractButton.IconOnly
+                icon.source: "https://coreui.io/demo/4.2/assets/img/avatars/8.jpg"
+                property bool rounded: true
+                property bool adapt: true
+                icon.width: 48
+                icon.height: 48
+                implicitWidth: 48
+                implicitHeight: 48
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignCenter
+//                background: Rectangle{color: "transparent"}
+                layer.enabled: rounded
+                icon.color: "transparent"
+                padding: 0
+
+                layer.effect: OpacityMask {
+                    maskSource: Item {
+                        width: ctrl.width
+                        height: ctrl.height
+                        Rectangle {
+                            anchors.centerIn: parent
+                            width: ctrl.adapt ? ctrl.width : Math.min(ctrl.width, ctrl.height)
+                            height: ctrl.adapt ? ctrl.height : width
+                            radius: Math.max(ctrl.width, ctrl.height)
+                        }
+                    }
+                }
 
 
-    }
+            }
+
+        }//layout
+
+//        Rectangle{
+//            anchors.fill: parent;
+//            border.color: "#d8dbe0"
+//            color: "transparent"
+//        }
+
+
+    }//toolbar
 
     ToolBar{
         id: breadcrumbToolbar

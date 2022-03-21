@@ -12,7 +12,7 @@ import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
-import app.models 1.0
+import App.Models 1.0
 
 Card{
     title: qsTr("Journal Entries")
