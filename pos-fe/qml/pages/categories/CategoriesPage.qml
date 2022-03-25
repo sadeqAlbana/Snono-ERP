@@ -24,7 +24,9 @@ Card{
             }
         } //slot end
     }//connections
-
+    AddCategoryDialog{
+        id: dialog;
+    }
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -33,14 +35,12 @@ Card{
             tableView: tableView
 
         }
-        AddCategoryDialog{
-            id: dialog;
-        }
-        CListView{
+
+        CTableView{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            title: "categories"
+//            title: "categories"
             actions: [
                 Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open()},
                 Action{ text: "Delete"; icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
