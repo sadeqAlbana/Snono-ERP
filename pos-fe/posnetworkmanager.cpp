@@ -38,7 +38,7 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
 
     }
     else{
-        router.route(response);
+        m_router.route(response);
 
         if(response->json().toObject().contains("message")){
             emit networkReply(response->json("status").toInt(),response->json("message").toString());

@@ -2,17 +2,21 @@
 #include "networkresponse.h"
 #include <QJsonArray>
 #include <posnetworkmanager.h>
+#include <QFile>
+#include <QTextStream>
 ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
                                                                        Column{"id","ID"} ,
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
                                                                        Column{"sku","SKU"} ,
+                                                                       Column{"parent_id","Parent"} ,
+
 //                                                                       Column{"external_sku","e_SKU"} ,
 //                                                                       Column{"size","Size"} ,
 
-                                                                       Column{"barcode","Barcode"} ,
-                                                                       Column{"cost","Cost",QString(), "currency"} ,
-                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
+//                                                                       Column{"barcode","Barcode"} ,
+//                                                                       Column{"cost","Cost",QString(), "currency"} ,
+//                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
                                                                        Column{"qty","Stock","products_stocks"} ,
                                                                        Column{"list_price","List Price", QString(), "currency"}},parent)
 {
@@ -117,6 +121,43 @@ void ProductsModel::removeProduct(const int &productId)
 QVariantMap ProductsModel::jsonMap(const int &row)
 {
     return this->jsonObject(row).toVariantMap();
+}
+
+void ProductsModel::exportJson()
+{
+    QFile file("exported.csv");
+    file.open(QIODevice::WriteOnly);
+
+    QStringList keys;
+    for(int i=0; i<columnCount(); i++){
+        keys << headerData(i,Qt::Horizontal,Qt::EditRole).toString();
+    }
+    QString line=keys.join(',');
+    //QTextStream stream(&file);
+    //stream << line << Qt::endl;
+    file.write(QByteArray(line.toUtf8()+'\n'));
+    for(int row=0; row< rowCount(); row++){
+        QString line;
+        for(int column=0; column<columnCount(); column++){
+            QVariant variant=this->data(index(row,column),Qt::DisplayRole);
+            QString value=PosNetworkManager::rawData(variant);
+//            if(column==indexOf("name")){
+//                qDebug()<<value;
+//            }
+            if(value.isEmpty())
+                value="N.A";
+            line.append(value);
+            if(column<columnCount()-1){
+                line.append(',');
+            }
+        }
+
+        //stream << line << Qt::endl;;
+        file.write(QByteArray(line.toUtf8()+'\n'));
+
+    }
+    file.close();
+
 }
 
 QJsonArray ProductsModel::filterData(QJsonArray data)

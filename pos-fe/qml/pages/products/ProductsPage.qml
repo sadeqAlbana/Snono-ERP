@@ -126,6 +126,10 @@ Card{
 
                 Component.onCompleted: requestData();
 
+                onDataRecevied: {
+                    model.exportJson();
+                }
+
             }//model
 
             function removeProduct(){
