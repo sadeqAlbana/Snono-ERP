@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
+import QtQuick.Layouts
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -66,8 +66,8 @@ Popup {
 
             CButton{
                 text: qsTr("Close")
-                color: "#e55353"
-                textColor: "#ffffff"
+                palette.button: "#e55353"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.close();
@@ -79,12 +79,12 @@ Popup {
             CButton{
                 implicitWidth: 80
                 text: qsTr("Print")
-                color: "#2eb85c"
-                textColor: "#ffffff"
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
 
-                onClicked: card.print();
+                onClicked: card.printReceipt();
             }
 
             CComboBox{
@@ -103,7 +103,7 @@ Popup {
 
         }
 
-        function print(){
+        function printReceipt(){
 
             if(externalDelivery.currentValue>0){
                 receiptData["external_delivery"]=externalDelivery.currentValue;

@@ -1,13 +1,13 @@
-import QtQuick 2.15
+import QtQuick;import QtQuick.Controls.Basic;
 
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick.Layouts
+import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 
 Popup{
@@ -138,8 +138,8 @@ Popup{
 
             CButton{
                 text: qsTr("Close")
-                color: "#e55353"
-                textColor: "#ffffff"
+                palette.button: "#e55353"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.close();
@@ -148,8 +148,8 @@ Popup{
             }
             CButton{
                 text: qsTr("Add")
-                color: "#2eb85c"
-                textColor: "#ffffff"
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: card.addProduct();

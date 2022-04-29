@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Layouts
+import QtQuick.Controls
 import Qt.labs.qmlmodels 1.0
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"

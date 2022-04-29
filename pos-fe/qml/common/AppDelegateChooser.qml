@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick;import QtQuick.Controls.Basic;
 import Qt.labs.qmlmodels 1.0
 import "qrc:/CoreUI/components/tables"
 import "qrc:/common";

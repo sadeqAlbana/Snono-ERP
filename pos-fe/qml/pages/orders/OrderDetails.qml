@@ -1,9 +1,9 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.5
+import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/tables"
 
-import QtQuick.Layouts 1.12
+import QtQuick.Layouts
 import App.Models 1.0
 
 import "qrc:/screens/Utils.js" as Utils

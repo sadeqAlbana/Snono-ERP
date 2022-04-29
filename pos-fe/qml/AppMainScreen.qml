@@ -1,12 +1,12 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtGraphicalEffects 1.15
-import QtQml.Models 2.12
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
+import QtQml.Models
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/SharedComponents"
-import QtQuick.Controls.impl 2.15 as Impl
+import QtQuick.Controls.impl as Impl
 
 Item {
     id: rootItem
@@ -209,9 +209,10 @@ Item {
                 property bool hidden: model.parentId ? model.hidden : false
                 MouseArea{
                     anchors.fill: parent;
-                    onPressed:  mouse.accepted = false
+                    onPressed:(mouse)=>{
+                        mouse.accepted = false;
+                    }
                     cursorShape: Qt.PointingHandCursor
-
                 }
 
                 width: ListView.view.width

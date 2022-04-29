@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -8,10 +8,10 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 import Qt.labs.qmlmodels 1.0
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts
 ToolBar {
     id: control
     signal search(var searchString);
@@ -35,7 +35,7 @@ ToolBar {
             onClicked: popup.open();
             Layout.preferredHeight: 55
             icon.name: "cil-list"
-            color: "#3399ff"
+            palette.button: "#3399ff"
             checkable: false
             palette.buttonText: "#FFFFFF"
             display: AbstractButton.IconOnly
@@ -78,7 +78,7 @@ ToolBar {
         CButton{
             Layout.preferredHeight: 55
             icon.name: "cil-list"
-            color: "#3399ff"
+            palette.button: "#3399ff"
             checkable: false
             palette.buttonText: "#FFFFFF"
             text: qsTr("scroll down")

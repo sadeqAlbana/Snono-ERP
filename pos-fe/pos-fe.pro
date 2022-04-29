@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg
+QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -61,7 +61,6 @@ SOURCES += \
     posapplication.cpp \
     possettings.cpp \
     models/productsmodel.cpp \
-    printer/cepsonesccontrol.cpp \
     printer/epsonprinter.cpp \
     receiptgenerator.cpp \
     testpalette.cpp \
@@ -101,7 +100,6 @@ HEADERS += \
     posapplication.h \
     possettings.h \
     models/productsmodel.h \
-    printer/cepsonesccontrol.h \
     printer/epsonprinter.h \
     receiptgenerator.h \
     testpalette.h \

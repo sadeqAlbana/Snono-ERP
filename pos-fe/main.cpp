@@ -13,7 +13,6 @@
 #include "models/Models"
 #include "api.h"
 #include <printer/epsonprinter.h>
-#include "printer/cepsonesccontrol.h"
 #include <QPrinterInfo>
 #include <QIcon>
 #include "possettings.h"
@@ -25,6 +24,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("com");
     QCoreApplication::setOrganizationDomain("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
+    qputenv("QML_XHR_ALLOW_FILE_READ","1");
     //settings.setValue("http_server_url","http://naaom.net:8000");
     //settings.setValue("http_server_url","http://127.0.0.1:8000");
 

@@ -1,12 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.5
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import QtQuick.Layouts
 import "qrc:/CoreUI/components"
 import "qrc:/screens"
 import "qrc:/pages"
 import "qrc:/common"
-import QtMultimedia 5.12
+import QtMultimedia
 ApplicationWindow {
     id: mainWindow
     visible: true

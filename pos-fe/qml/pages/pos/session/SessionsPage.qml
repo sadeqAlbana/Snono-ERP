@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-import QtGraphicalEffects 1.0
-import Qt.labs.qmlmodels 1.0
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
+import Qt.labs.qmlmodels
 import App.Models 1.0
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
@@ -28,12 +28,12 @@ Page{
             id: sessionsModel
             Component.onCompleted: currentSession();
 
-            onNewSessionResponse: {
-                initSession(reply.pos_session);
+            onNewSessionResponse:(reply)=> {
+                initSession(reply.pos_session.id);
 
             }
 
-            onCurrentSessionResponse: {
+            onCurrentSessionResponse:(reply) => {
                 if(reply.status===200){ //there is an open session
                     var session=reply.pos_session;
                     sessionCard.totalAmount=reply.pos_session.total;
@@ -49,20 +49,20 @@ Page{
                 }
             }
 
-            onCloseSessionResponse: {
+            onCloseSessionResponse:(reply)=> {
                 if(reply.status===200){
                     sessionsModel.requestData();
                 }
             }
-            function initSession(session){
-                baseLoader.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": session.id})
+            function initSession(sessionId){
+                baseLoader.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": sessionId})
             }
         }
 
         CButton{
             id: newSessionButton
             radius: width> height ? width : height
-            color: "#39f";
+            palette.button: "#39f";
             icon.color: "white"
             icon.name: "cil-plus"
             icon.height: height*0.8
@@ -81,12 +81,12 @@ Page{
             Layout.fillWidth: true
             //ordersCount: sessionsModel.data(model.row,"pos_orders") ? sessionsModel.data(model.row,"pos_orders").length : 0
             //totalAmount: model.total? Utils.formatNumber(model.total) : Utils.formatNumber(0.0)
-            onClose: {
+            onClose:()=> {
                 sessionsModel.closeSession(session.id)
                 sessionCard.visible=false
                 newSessionButton.visible=true
             }
-            onResume: {
+            onResume:()=> {
                 sessionsModel.initSession(session.id)
             }
         }

@@ -1,6 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick.Controls
+import QtQuick.Layouts
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -18,16 +18,16 @@ RowLayout{
     HorizontalSpacer{}
     CButton{
         text: qsTr(cancelText)
-        color: "#e55353"
-        textColor: "#ffffff"
+        palette.button: "#e55353"
+        palette.buttonText: "#ffffff"
         implicitHeight: 45
         Layout.margins: 10
         onClicked: cancel();
     }
     CButton{
         text: qsTr(acceptText)
-        color: "#2eb85c"
-        textColor: "#ffffff"
+        palette.button: "#2eb85c"
+        palette.buttonText: "#ffffff"
         implicitHeight: 45
         Layout.margins: 10
         onClicked: accept();

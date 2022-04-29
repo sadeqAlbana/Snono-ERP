@@ -1,7 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.12
-import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.0
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Layouts
+import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
 
 Item {
     //color: "transparent";

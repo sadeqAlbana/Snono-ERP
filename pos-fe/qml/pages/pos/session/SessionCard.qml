@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
+import QtQuick.Layouts
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -53,8 +53,8 @@ Card{
     footer: RowLayout{
         CButton{
             text: qsTr("Resume")
-            color: "#2eb85c"
-            textColor: "#ffffff"
+            palette.button: "#2eb85c"
+            palette.buttonText: "#ffffff"
             //Layout.minimumWidth: implicitWidth
             implicitHeight: 45
             implicitWidth: 80
@@ -66,8 +66,8 @@ Card{
 
         CButton{
             text: qsTr("Close")
-            color: "#e55353"
-            textColor: "#ffffff"
+            palette.button: "#e55353"
+            palette.buttonText: "#ffffff"
             implicitHeight: 45
             implicitWidth: 80
 

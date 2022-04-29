@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Layouts
+import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -9,7 +9,7 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 import QtQml 2.15
 
@@ -88,7 +88,7 @@ ListView {
             Layout.topMargin: 10
             checkState: model.checkState
             //color: "#e55353"
-            //textColor: "#ffffff"
+            //palette.buttonText: "#ffffff"
             Layout.preferredHeight: 40
             Layout.preferredWidth: 40
             Binding{

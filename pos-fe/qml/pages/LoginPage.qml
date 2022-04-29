@@ -1,7 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -133,8 +133,8 @@ Pane {
                         id: loginButton
                         implicitWidth: 80
                         text: qsTr("Login")
-                        color: "#321fdb"
-                        textColor: "#ffffff"
+                        palette.button: "#321fdb"
+                        palette.buttonText: "#ffffff"
                         Layout.fillHeight: false
                         implicitHeight: 50
                         font.pixelSize: 17
@@ -150,8 +150,8 @@ Pane {
                     CButton{
                         id: settingsButton
                         implicitWidth: 80
-                        color: "#e55353"
-                        textColor: "#ffffff"
+                        palette.button: "#e55353"
+                        palette.buttonText: "#ffffff"
                         Layout.fillHeight: false
                         implicitHeight: 50
                         font.pixelSize: 17

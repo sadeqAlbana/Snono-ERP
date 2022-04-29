@@ -1,10 +1,10 @@
-import QtQuick 2.15
+import QtQuick;import QtQuick.Controls.Basic;
 
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
-import QtQuick.Controls 1.4 as TT
-import QtGraphicalEffects 1.0
-import QtQuick.Controls.Styles 1.4 as TS
+import QtQuick.Layouts
+import QtQuick.Controls
+
+import Qt5Compat.GraphicalEffects
+
 import Qt.labs.qmlmodels 1.0
 
 import "qrc:/CoreUI/components/base"
@@ -55,7 +55,7 @@ Page{
             //Layout.minimumWidth: 1000
             model: CashierModel{
                 id: cashierModel
-                onPurchaseResponseReceived: {
+                onPurchaseResponseReceived: (res)=> {
                     if(res.status===200){
                         paymentDialog.close();
                         receiptDialog.receiptData=res.order
@@ -67,7 +67,7 @@ Page{
                         requestCart();
                     }
                 }
-                onUpdateCustomerResponseReceived: {
+                onUpdateCustomerResponseReceived:(res)=> {
                     if(res.status===200){
                         if(pay){
                             cashierModel.processCart(cashierModel.total,0,notesLE.text);
@@ -75,7 +75,7 @@ Page{
                         }
                     }
                 }//onUpdateCustomerResponseReceived
-                onAddProductReply: {
+                onAddProductReply:(res)=> {
                     if(res.status===200){
                         scannerBeep.play()
                         productsCB.currentIndex=-1;
@@ -305,8 +305,8 @@ Page{
             }
             CButton{
                 text: qsTr("Pay")
-                color: "#2eb85c"
-                textColor: "#ffffff"
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
                 Layout.fillWidth: true
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();

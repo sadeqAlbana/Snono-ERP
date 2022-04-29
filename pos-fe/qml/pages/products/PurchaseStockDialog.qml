@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.5
+import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/forms"
@@ -7,7 +7,7 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
 
 
-import QtQuick.Layouts 1.12
+import QtQuick.Layouts
 import App.Models 1.0
 Popup{
     id: dialog
@@ -75,8 +75,8 @@ Popup{
 
             CButton{
                 text: qsTr("Close")
-                color: "#e55353"
-                textColor: "#ffffff"
+                palette.button: "#e55353"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.close();
@@ -85,8 +85,8 @@ Popup{
             }
             CButton{
                 text: qsTr("Purchase")
-                color: "#2eb85c"
-                textColor: "#ffffff"
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
                 onClicked: dialog.accepted(parseInt(quantity.input.text), vendorsCB.comboBox.currentValue);
