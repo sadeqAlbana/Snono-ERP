@@ -75,6 +75,16 @@ ToolBar {
             }//popup
         }//button
 
+        CButton{
+            Layout.preferredHeight: 55
+            icon.name: "cil-list"
+            color: "#3399ff"
+            checkable: false
+            palette.buttonText: "#FFFFFF"
+            text: qsTr("scroll down")
+            onClicked: tableView.contentY=tableView.contentHeight
+        }
+
         HorizontalSpacer{}
 
         CTextField{

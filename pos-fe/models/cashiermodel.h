@@ -40,6 +40,7 @@ public:
     Q_INVOKABLE void requestCart();
     void onRequestCartResponse(NetworkResponse *res);
     void onUpadteCustomerReply(NetworkResponse *res);
+    virtual QJsonArray filterData(QJsonArray data) override;
 
 signals:
     void purchaseResponseReceived(QJsonObject res);

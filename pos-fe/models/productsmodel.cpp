@@ -9,13 +9,13 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
                                                                        Column{"sku","SKU"} ,
-                                                                       Column{"parent_id","Parent"} ,
+                                                                       //Column{"parent_id","Parent"} ,
 
 //                                                                       Column{"external_sku","e_SKU"} ,
 //                                                                       Column{"size","Size"} ,
 
 //                                                                       Column{"barcode","Barcode"} ,
-//                                                                       Column{"cost","Cost",QString(), "currency"} ,
+                                                                       Column{"cost","Cost",QString(), "currency"} ,
 //                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
                                                                        Column{"qty","Stock","products_stocks"} ,
                                                                        Column{"list_price","List Price", QString(), "currency"}},parent)

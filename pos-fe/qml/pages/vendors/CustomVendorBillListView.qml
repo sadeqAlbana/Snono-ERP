@@ -12,6 +12,7 @@ import "qrc:/screens/Utils.js" as Utils
 import QtGraphicalEffects 1.0
 import App.Models 1.0
 import QtQml 2.15
+import QtQuick.Controls.impl 2.15 as Impl
 
 ListView {
     id :listView

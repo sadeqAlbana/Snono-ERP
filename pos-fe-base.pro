@@ -1,9 +1,7 @@
 TEMPLATE = subdirs
 CONFIG += have_gui
 SUBDIRS += \
-    pos-fe \
-    network-manager \
-
+    pos-fe
 RESOURCES += \
     pos-fe/gui/qrc.qrc
 

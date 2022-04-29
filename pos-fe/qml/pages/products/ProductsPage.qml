@@ -63,12 +63,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: AppDelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "image"; ImageDelegate{}}
-
-
-            }
+            delegate: AppDelegateChooser{}
 
             actions: [
                 Action{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},

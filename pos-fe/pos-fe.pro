@@ -114,18 +114,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 include(coreui-qml/CoreUI-QML.pri)
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../network-manager/release/ -lnetwork-manager
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../network-manager/debug/ -lnetwork-manager
-else:unix: LIBS += -L$$OUT_PWD/../network-manager/ -lnetwork-manager
+include(../network-manager/network-manager.pri)
 
-INCLUDEPATH += $$PWD/../network-manager/src
-DEPENDPATH += $$PWD/../network-manager/src
-
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/release/libnetwork-manager.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/debug/libnetwork-manager.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/release/network-manager.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../network-manager/debug/network-manager.lib
-else:unix: PRE_TARGETDEPS += $$OUT_PWD/../network-manager/libnetwork-manager.a
 
 RESOURCES += \
     images.qrc \

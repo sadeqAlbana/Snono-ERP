@@ -63,7 +63,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     //qDebug()<<"last page: " << _lastPage;
 
     QJsonArray data=filterData(reply->json("data").toArray());
-//    qDebug()<<data;
+    //qDebug()<<data;
     if(m_currentPage<=1){
         setupData(data);
     }

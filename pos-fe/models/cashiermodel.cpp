@@ -12,6 +12,7 @@
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
                          Column{"name","Name"} ,
+                         Column{"thumb","Image",QString(),"image"} ,
                          Column{"unit_price","Price",QString(),"currency"} ,
                          Column{"qty","Qty"} ,
                          Column{"discount","Discount",QString(),"percentage"} ,
@@ -109,7 +110,8 @@ void CashierModel::setCartData(const QJsonObject &cartData)
 {
     _cartData = cartData;
     //qDebug()<<cartData;
-    setupData(cartData["products"].toArray());
+    QJsonArray data=filterData(cartData["products"].toArray());
+    setupData(data);
     emit totalChanged(this->cartData()["order_total"].toDouble());
 }
 
@@ -204,3 +206,23 @@ void CashierModel::onUpadteCustomerReply(NetworkResponse *res)
     emit updateCustomerResponseReceived(res->json().toObject());
 
 }
+
+QJsonArray CashierModel::filterData(QJsonArray data)
+{
+    QStringList wanted{"thumb","size","sku","external_sku"};
+    for(int i=0; i<data.size(); i++){
+        QJsonObject product=data.at(i).toObject();
+        QJsonArray attributes=product["attributes"].toArray();
+
+        for(int j=0; j<attributes.size(); j++){
+            QJsonObject attribute=attributes.at(j).toObject();
+            QString attributeId=attribute["attribute_id"].toString();
+            if(wanted.contains(attributeId)){
+                product[attributeId]=attribute["value"];
+            }
+        }
+        data.replace(i,product);
+    }
+    return data;
+}
+
