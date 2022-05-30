@@ -1,4 +1,5 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
@@ -541,7 +542,6 @@ Item {
 
 
     Component.onCompleted: {
-
         var xhr = new XMLHttpRequest;
         xhr.open("GET", "qrc:/nav.json");
         xhr.onreadystatechange = function() {

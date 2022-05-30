@@ -9,16 +9,25 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        Column{"thumb","Image",QString(),"image"} ,
                                                                        Column{"name","Name"} ,
                                                                        Column{"sku","SKU"} ,
-                                                                       //Column{"parent_id","Parent"} ,
+                                                                       Column{"description","description"} ,
 
-//                                                                       Column{"external_sku","e_SKU"} ,
-//                                                                       Column{"size","Size"} ,
+                                                                       Column{"parent_id","Parent"} ,
+                                                                       Column{"name_en","name_en"} ,
+                                                                       Column{"name_ar","name_ar"} ,
+                                                                       Column{"color","color"} ,
+                                                                       Column{"color_en","color_en"} ,
+                                                                       Column{"color_ar","color_ar"} ,
+                                                                       Column{"goods_id","goods_id"} ,
+                                                                       Column{"external_id","external_id"} ,
+
+                                                                       Column{"external_sku","e_SKU"} ,
+                                                                       Column{"size","Size"} ,
 
 //                                                                       Column{"barcode","Barcode"} ,
-                                                                       Column{"cost","Cost",QString(), "currency"} ,
+                                                                       //Column{"cost","Cost",QString(), "currency"} ,
 //                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
                                                                        Column{"qty","Stock","products_stocks"} ,
-                                                                       Column{"list_price","List Price", QString(), "currency"}},parent)
+                                                                       Column{"list_price","List Price", QString()}},parent)
 {
     //requestData();
 }
@@ -162,7 +171,7 @@ void ProductsModel::exportJson()
 
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
-    QStringList wanted{"thumb","size","sku","external_sku"};
+    QStringList wanted{"thumb","size","sku","external_sku","color","color_ar","color_en","goods_id","external_id","name_en","name_ar"};
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
         QJsonArray attributes=product["attributes"].toArray();

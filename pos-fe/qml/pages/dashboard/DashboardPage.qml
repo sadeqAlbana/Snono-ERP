@@ -235,7 +235,7 @@ Page{
 
                 DateTimeAxis{
                     id: dtAxis
-                    format: "yyyy-MM-dd"
+                    format: "yyyy-MM-dd hh:mm"
                     min: Utils.firstDayOfMonth()
                     max: Utils.lastDayOfMonth()
                     tickCount: 15

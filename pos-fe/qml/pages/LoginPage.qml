@@ -133,8 +133,7 @@ Pane {
                         id: loginButton
                         implicitWidth: 80
                         text: qsTr("Login")
-                        palette.button: "#321fdb"
-                        palette.buttonText: "#ffffff"
+                        palette: BrandPrimary{}
                         Layout.fillHeight: false
                         implicitHeight: 50
                         font.pixelSize: 17
@@ -150,8 +149,7 @@ Pane {
                     CButton{
                         id: settingsButton
                         implicitWidth: 80
-                        palette.button: "#e55353"
-                        palette.buttonText: "#ffffff"
+                        palette: BrandDanger{}
                         Layout.fillHeight: false
                         implicitHeight: 50
                         font.pixelSize: 17

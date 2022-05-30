@@ -121,9 +121,9 @@ Card{
 
                 Component.onCompleted: requestData();
 
-                onDataRecevied: {
-                    model.exportJson();
-                }
+//                onDataRecevied: {
+//                    model.exportJson();
+//                }
 
             }//model
 

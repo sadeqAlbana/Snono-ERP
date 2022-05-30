@@ -1,7 +1,7 @@
 #include "ordersmodel.h"
 #include "posnetworkmanager.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
-//                                                                  Column{"id","ID"} ,
+                                                                  Column{"id","ID"} ,
                                                                   Column{"reference","Reference"} ,
                                                                   Column{"name","Customer","customers"} ,
                                                                   Column{"phone","Phone","customers"} ,

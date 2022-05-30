@@ -21,6 +21,11 @@ void SalesChartModel::onEndResetModel()
     double min=m_minValue, max=m_maxValue;
     for(int row=0; row<rowCount(); row++){
         double value=data(row,1).toDouble();
+
+        QVariant dt=data(row,0);
+        QDateTime datetime=QDateTime::fromMSecsSinceEpoch(dt.toLongLong());
+        qDebug()<<dt;
+        qDebug()<<datetime;
         if(value<min){
             min=value;
         }

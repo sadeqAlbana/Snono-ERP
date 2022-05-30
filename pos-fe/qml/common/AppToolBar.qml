@@ -12,6 +12,8 @@ import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 import Qt.labs.qmlmodels 1.0
 import QtQuick.Layouts
+import "qrc:/CoreUI/palettes"
+
 ToolBar {
     id: control
     signal search(var searchString);
@@ -35,9 +37,8 @@ ToolBar {
             onClicked: popup.open();
             Layout.preferredHeight: 55
             icon.name: "cil-list"
-            palette.button: "#3399ff"
+            palette: BrandInfo{}
             checkable: false
-            palette.buttonText: "#FFFFFF"
             display: AbstractButton.IconOnly
             Popup{
                 id: popup
@@ -78,9 +79,10 @@ ToolBar {
         CButton{
             Layout.preferredHeight: 55
             icon.name: "cil-list"
-            palette.button: "#3399ff"
+            palette: BrandInfo{}
+
             checkable: false
-            palette.buttonText: "#FFFFFF"
+
             text: qsTr("scroll down")
             onClicked: tableView.contentY=tableView.contentHeight
         }

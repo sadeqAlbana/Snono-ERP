@@ -25,12 +25,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
     qputenv("QML_XHR_ALLOW_FILE_READ","1");
+    qputenv("QT_FONT_DPI","96");
     //settings.setValue("http_server_url","http://naaom.net:8000");
     //settings.setValue("http_server_url","http://127.0.0.1:8000");
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+    QApplication::setAttribute(Qt::AA_Use96Dpi);
 
     PosApplication a(argc, argv);
     PosSettings settings;

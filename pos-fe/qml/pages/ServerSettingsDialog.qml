@@ -1,7 +1,7 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -15,7 +15,6 @@ AppDialog {
     id: dialog
     width:  card.implicitWidth*1.2
     height: card.implicitHeight*1.2
-
     Card{
         id: card
         padding: 20
@@ -23,9 +22,6 @@ AppDialog {
         title: qsTr("Server Settings");
         ColumnLayout{
             anchors.fill: parent;
-
-
-
             CTextField{
                 id: serverTF
                 font.pixelSize: 21

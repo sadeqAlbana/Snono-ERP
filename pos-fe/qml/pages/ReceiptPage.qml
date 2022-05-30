@@ -13,6 +13,8 @@ import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
+import "qrc:/CoreUI/palettes"
+
 //https://stackoverflow.com/questions/17146747/capture-qml-drawing-buffer-without-displaying
 
 Card{
