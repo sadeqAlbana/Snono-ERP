@@ -43,6 +43,10 @@
             "path":"qrc:/pages/products/ProductsPage.qml"
          },
          {
+            "title":"Mobile List",
+            "path":"qrc:/pages/products/ProductsMobilePage.qml"
+         },
+         {
             "title":"Categories",
             "path":"qrc:/pages/categories/CategoriesPage.qml"
          }

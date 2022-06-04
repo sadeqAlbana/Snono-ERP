@@ -71,5 +71,6 @@
         <file>common/AppDelegateChooser.qml</file>
         <file>pages/ServerSettingsDialog.qml</file>
         <file>common/Spinner.qml</file>
+        <file>pages/products/ProductsMobilePage.qml</file>
     </qresource>
 </RCC>
