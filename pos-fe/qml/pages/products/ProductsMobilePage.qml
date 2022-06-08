@@ -20,20 +20,29 @@ Card{
     ColumnLayout{
         id: page
         anchors.fill: parent;
-
         spacing: 10
 
 
-        AppToolBar{
-            id: toolBar
-            tableView: tableView
-            onSearch: (searchString) => {
+
+
+        CTextField{
+            id: search
+            Layout.preferredHeight: 50
+            Layout.preferredWidth: 300
+            Layout.fillWidth: true
+            Layout.alignment: Qt.AlignCenter
+            font.pixelSize: 18
+            placeholderText: qsTr("Search...")
+            rightIcon: "cil-search"
+
+            onEntered: () => {
                 var filter=model.filter;
-                filter['query']=searchString
+                filter['query']=search.text
                 model.filter=filter;
                 model.requestData();
             }
-        }
+        }//search
+
 
 
         ListView{
@@ -55,19 +64,18 @@ Card{
                 property string name: model.name
 
                 contentItem: RowLayout{
-                    spacing: control.spacing
+                    spacing: 0
                     Image{
                         id: image
                         //Layout.preferredHeight: 120
                         Layout.fillHeight: true
-//                        Layout.preferredWidth: height*1.375
+                        Layout.fillWidth: false
                         smooth: true
                         cache: true
-                        horizontalAlignment: Image.AlignHCenter
-                        verticalAlignment: Image.AlignVCenter
                         antialiasing: true
                         fillMode: Image.PreserveAspectFit
                         source: model.thumb
+                        Layout.preferredWidth: 80
 
                         BusyIndicator{
                             running: image.status===Image.Loading
@@ -75,8 +83,11 @@ Card{
                             width: 55
                             height: 55
                         }
+
+
                     }
                     ColumnLayout{
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                         Text{
                             font.family: "roboto"
                             color: "#000000";
@@ -85,6 +96,7 @@ Card{
                             font.weight: Font.Medium
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
 
                         }
                         Text{
@@ -94,6 +106,8 @@ Card{
                             font.weight: Font.DemiBold
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
 
                         }
                         Text{
@@ -103,13 +117,12 @@ Card{
                             font.weight: Font.DemiBold
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
                         }
 
                     }
 
-                    Item{
-                        Layout.fillWidth: true
-                    }
 
 
                 }//contentItem
