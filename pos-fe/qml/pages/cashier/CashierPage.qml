@@ -1,4 +1,5 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 
 import QtQuick.Layouts
 import QtQuick.Controls
@@ -195,7 +196,7 @@ Page{
                 }
             }
 
-            CTextInput{
+            CTextField{
                 id: numpadInput
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
@@ -294,7 +295,7 @@ Page{
         ColumnLayout{ //total and pay layout
             Layout.alignment: Qt.AlignCenter
             Layout.maximumWidth: numpad.width
-            CTextInput{
+            CTextField{
                 id: total
                 readOnly: true
                 text: Utils.formatNumber(cashierModel.total) + " IQD";

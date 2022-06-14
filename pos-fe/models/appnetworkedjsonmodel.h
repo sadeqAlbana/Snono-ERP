@@ -13,8 +13,6 @@ public:
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 
     Q_INVOKABLE QJsonObject filter() const;
-    virtual bool canFetchMore(const QModelIndex &parent) const override;
-    void fetchMore(const QModelIndex &parent) override;
 signals:
     void filterChanged(QJsonObject filter);
 

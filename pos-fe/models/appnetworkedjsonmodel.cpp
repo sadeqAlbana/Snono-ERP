@@ -16,7 +16,7 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject 
 void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
-    QJsonObject params{{"page",m_currentPage+1},
+    QJsonObject params{{"page",currentPage()+1},
                        {"count",100},
                        {"sortBy","id"},
                        {"direction","desc"},
@@ -54,15 +54,17 @@ QJsonObject AppNetworkedJsonModel::filter() const
 
 void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
+    qDebug()<<"current_page: " <<reply->json("current_page").toInt();
+    qDebug()<<"last_page: " <<reply->json("last_page").toInt();
+
     if(reply->json("current_page").toInt()){
         setCurrentPage(reply->json("current_page").toInt());
+        _lastPage=reply->json("last_page").toInt();
         m_hasPagination=true;
-
     }
-    //_lastPage=reply->json("last_page").toInt();
 
     QJsonArray data=filterData(reply->json("data").toArray());
-
+    qDebug()<<"data size: " << reply->json("data").toArray().size();
     if(m_currentPage<=1){
         setupData(data);
     }
@@ -70,25 +72,11 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
         appendData(data);
     }
 
-    if(data.isEmpty())
-        _lastPage=-2;
+
     emit dataRecevied();
     _busy=false;
 }
 
 
-bool AppNetworkedJsonModel::canFetchMore(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    if(!m_hasPagination)
-        return false;
 
-    return  (_lastPage!=-2 && !_busy);
-}
-
-void AppNetworkedJsonModel::fetchMore(const QModelIndex &parent)
-{
-    Q_UNUSED(parent);
-    requestData();
-}
 
