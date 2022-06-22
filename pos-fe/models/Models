@@ -25,4 +25,5 @@
 #include "jsonModel/checkablelistmodel.h"
 #include "jsonModel/treeproxymodel.h"
 #include "charts/saleschartmodel.h"
+#include "barqlocationsmodel.h"
 #endif // MODELS_H

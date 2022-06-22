@@ -284,10 +284,44 @@ Page{
                 leftIcon: "cil-notes"
 
             }
-            Item{
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                Layout.columnSpan: 2
+            CComboBox{
+                id: cityCB
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                textRole: "name"
+                valueRole: "id"
+                currentIndex: 0
+                editable: true
+                leftIcon: "cil-location-pin"
+                model: BarqLocationsModel{
+                    id: cityModel
+                    Component.onCompleted: requestData();
+                }
+                onCurrentIndexChanged: {
+                    if(currentIndex>=0){
+                        districtModel.filter={"parentId": cityModel.data(currentIndex,"id")};
+                    }else{
+
+                    }
+                }
+            }
+
+            CComboBox{
+                id: districtCB
+                Layout.fillWidth: true;
+                implicitHeight: 60
+                textRole: "name"
+                valueRole: "id"
+                currentIndex: 0
+                editable: true
+                leftIcon: "cil-location-pin"
+
+
+                model: BarqLocationsModel{
+                    id: districtModel
+
+                    onFilterChanged: requestData();
+                }
             }
         }
 
@@ -313,10 +347,7 @@ Page{
                 onClicked: parent.confirmPayment();
                 enabled: tableView.rows>0
             }
-            Item{
-                Layout.fillHeight: true
- //               Layout.fillWidth: true
-            }
+
 
 
             function confirmPayment(){

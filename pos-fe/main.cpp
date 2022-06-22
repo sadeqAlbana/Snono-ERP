@@ -18,6 +18,7 @@
 #include "models/appnetworkedjsonmodel.h"
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -87,6 +88,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<UsersModel>("App.Models", 1, 0, "UsersModel");
     qmlRegisterType<OrdersReturnsModel>("App.Models", 1, 0, "OrdersReturnsModel");
     qmlRegisterType<AppNetworkedJsonModel>("App.Models", 1, 0, "NetworkModel");
+    qmlRegisterType<BarqLocationsModel>("App.Models", 1, 0, "BarqLocationsModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

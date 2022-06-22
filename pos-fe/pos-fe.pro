@@ -33,6 +33,7 @@ SOURCES += \
     appqmlnetworkaccessmanagerfactory.cpp \
         main.cpp \
     models/appnetworkedjsonmodel.cpp \
+    models/barqlocationsmodel.cpp \
     models/categoriesmodel.cpp \
     models/charts/saleschartmodel.cpp \
     models/customersmodel.cpp \
@@ -72,6 +73,7 @@ HEADERS += \
     appqmlnetworkaccessmanagerfactory.h \
     models/Models \
     models/appnetworkedjsonmodel.h \
+    models/barqlocationsmodel.h \
     models/categoriesmodel.h \
     models/charts/saleschartmodel.h \
     models/customersmodel.h \

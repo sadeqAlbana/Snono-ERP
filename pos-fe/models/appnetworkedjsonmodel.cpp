@@ -16,6 +16,12 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject 
 void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
+    if(m_oldFilter!=m_filter){
+        m_oldFilter=m_filter;
+        m_currentPage=0;
+        _lastPage=-1;
+    }
+
     QJsonObject params{{"page",currentPage()+1},
                        {"count",100},
                        {"sortBy","id"},

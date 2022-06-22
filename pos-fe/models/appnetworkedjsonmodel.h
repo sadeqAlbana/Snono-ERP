@@ -26,6 +26,7 @@ protected:
 private:
     QString _query;
     QJsonObject m_filter;
+    QJsonObject m_oldFilter;
 
 
 
