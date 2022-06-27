@@ -2,6 +2,8 @@ import QtQuick
 import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Controls.Basic
+
 Popup {
     id: dialog
     modal: true

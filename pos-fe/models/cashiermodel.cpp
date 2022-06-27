@@ -5,9 +5,7 @@
 #include <QJsonObject>
 #include <QLocale>
 #include <QTextDocument>
-//#include <QPrinter>
 #include <QFile>
-//#include "messageservice.h"
 #include  "posnetworkmanager.h"
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
@@ -171,7 +169,7 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
     }
 }
 
-void CashierModel::processCart(const double paid, const double change, const QString &note)
+void CashierModel::processCart(const double paid, const double change, const QString &note, const QJsonObject &deliveryInfo)
 {
     QJsonObject data{{"paid",paid},
                      {"returned",change},

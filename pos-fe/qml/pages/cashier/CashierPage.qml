@@ -286,6 +286,9 @@ Page{
             }
             CComboBox{
                 id: cityCB
+                enabled: false
+
+                property bool isValid: currentText===editText
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 textRole: "name"
@@ -293,13 +296,18 @@ Page{
                 currentIndex: 0
                 editable: true
                 leftIcon: "cil-location-pin"
+
                 model: BarqLocationsModel{
                     id: cityModel
                     Component.onCompleted: requestData();
+//                    onDataRecevied: {
+//                        townModel.requestData();
+//                    }
                 }
                 onCurrentIndexChanged: {
                     if(currentIndex>=0){
-                        districtModel.filter={"parentId": cityModel.data(currentIndex,"id")};
+                        townModel.filter={"parentId": cityModel.data(currentIndex,"id")};
+                        townCB.currentIndex=0;
                     }else{
 
                     }
@@ -307,7 +315,9 @@ Page{
             }
 
             CComboBox{
-                id: districtCB
+                id: townCB
+                enabled: false
+                property bool isValid: currentText===editText
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 textRole: "name"
@@ -316,10 +326,16 @@ Page{
                 editable: true
                 leftIcon: "cil-location-pin"
 
+                onCurrentIndexChanged:{
+                    var city=cityModel.data(cityCB.currentIndex,"name");
+                    var town=townModel.data(townCB.currentIndex,"name");
+                    addressLE.text=city + " - " + town
+
+                }
 
                 model: BarqLocationsModel{
-                    id: districtModel
-
+                    id: townModel
+                    filter: {"parentId": 1}
                     onFilterChanged: requestData();
                 }
             }

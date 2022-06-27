@@ -35,6 +35,7 @@ ApplicationWindow {
         target: AuthManager
         function onLoggedIn(){
             rootLoader.setSource("qrc:/AppMainScreen.qml")
+            //Api.barqReceipt("PO183882522555913")
         }
     }
 

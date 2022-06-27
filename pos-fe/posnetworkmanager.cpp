@@ -14,7 +14,7 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkManager(parent)
     //setTransferTimeout(10*1000);
 
     if(!jwt().isNull())
-        setRawHeader("authorization",_jwt);
+        setRawHeader("Authorization",_jwt);
     ignoreSslErrors(true);
 }
 
@@ -67,7 +67,7 @@ void PosNetworkManager::reloadBaseUrl()
 void PosNetworkManager::setJWT(const QByteArray jwt)
 {
     _jwt="Bearer "+ jwt;
-    setRawHeader("authorization",_jwt);
+    setRawHeader("Authorization",_jwt);
 }
 
 QByteArray PosNetworkManager::jwt() const

@@ -1,6 +1,12 @@
 #include "api.h"
 #include <QJsonObject>
 #include "posnetworkmanager.h"
+#include <QPdfDocument>
+#include <QBuffer>
+#include <QPrinter>
+#include <QPrinterInfo>
+#include <QPainter>
+#include <QPrintDialog>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -76,6 +82,40 @@ void Api::removeCategory(const int &categoryId)
     PosNetworkManager::instance()->post("/categories/remove",QJsonObject{{"id",categoryId}})
             ->subcribe([this](NetworkResponse *res){
         emit categoryRemoveReply(res->json().toObject());
+    });
+}
+
+void Api::barqReceipt(const QString &reference)
+{
+    PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
+            ->subcribe([this](NetworkResponse *res){
+        QByteArray pdf=res->binaryData();
+        QBuffer *buffer=new QBuffer(&pdf);
+        buffer->open(QIODevice::ReadOnly);
+        QPdfDocument *doc=new QPdfDocument();
+        connect(doc,&QPdfDocument::statusChanged,[this,doc](QPdfDocument::Status status){
+            if(status!=QPdfDocument::Ready)
+                return;
+
+            //QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+            QPrinter printer;
+            QPrintDialog *dlg = new QPrintDialog(&printer,0);
+            if(dlg->exec() == QDialog::Accepted) {
+                printer.setFullPage(true);
+
+
+                QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
+                QPainter painter(&printer);
+
+                painter.drawImage(QPoint(0,0),image);
+                painter.end();
+                delete dlg;
+            }
+        });
+        doc->load(buffer);
+
+
+
     });
 }
 

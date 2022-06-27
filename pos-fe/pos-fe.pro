@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat
+QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat pdf
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe

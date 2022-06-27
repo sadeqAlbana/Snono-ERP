@@ -21,6 +21,7 @@ public:
 
     Q_INVOKABLE void addCategory(const QString &name, const int &parentId);
     Q_INVOKABLE void removeCategory(const int &categoryId);
+    Q_INVOKABLE void barqReceipt(const QString &reference);
 
 
 signals:
@@ -31,7 +32,7 @@ signals:
 
     void categoryAddReply(QJsonObject reply);
     void categoryRemoveReply(QJsonObject reply);
-
+    void barqReceiptReply(const QByteArray &reply);
 
 private:
     static Api *m_api;

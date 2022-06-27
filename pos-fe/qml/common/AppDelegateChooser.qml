@@ -1,5 +1,6 @@
-import QtQuick;import QtQuick.Controls.Basic;
-import Qt.labs.qmlmodels 1.0
+import QtQuick;
+import QtQuick.Controls.Basic;
+import Qt.labs.qmlmodels
 import "qrc:/CoreUI/components/tables"
 import "qrc:/common";
 DelegateChooser{
