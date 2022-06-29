@@ -39,7 +39,7 @@ Card{
             id: toolBar
             tableView: tableView
 
-            onSearch: {
+            onSearch:(searchString)=> {
                 var filter=model.filter;
                 filter['query']=searchString
                 model.filter=filter;
