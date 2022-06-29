@@ -19,6 +19,7 @@ import "qrc:/common"
 import App.Models 1.0
 
 Page{
+    id: page
     title: qsTr("Cashier")
     //    palette.window: "transparent"
     background: Rectangle{color: "transparent"}
@@ -30,6 +31,18 @@ Page{
         id: receiptDialog
     }//receiptDialog
 
+
+    function processCart(){
+        let deliveryInfo={}
+        if(deliverySwitch.checked){
+            deliveryInfo["city_id"]=cityModel.data(cityCB.currentIndex,"id")
+            deliveryInfo["town_id"]=townModel.data(townCB.currentIndex,"id")
+        }
+
+        cashierModel.processCart(cashierModel.total,0,notesLE.text,deliveryInfo);
+
+    }
+
     PayDialog{
         id: paymentDialog
         onAccepted: {
@@ -38,7 +51,7 @@ Page{
                 pay=true
                 customersModel.addCustomer(customerCB.editText,"","","",phoneLE.text,addressLE.text)
             }else{
-                cashierModel.processCart(paid,tendered,notesLE.text);
+                page.processCart();
             }
         }//accepted
     }//payDialog
@@ -50,54 +63,61 @@ Page{
         flow: GridLayout.LeftToRight
         CTableView{
             id: tableView
+            Layout.row: 0
+            Layout.column: 0
+            Layout.fillHeight: false
             delegate: AppDelegateChooser{}
-            Layout.fillHeight: true
             Layout.fillWidth: true
+            implicitHeight: 535
+            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
             //Layout.minimumWidth: 1000
             model: CashierModel{
                 id: cashierModel
                 onPurchaseResponseReceived: (res)=> {
-                    if(res.status===200){
-                        paymentDialog.close();
-                        receiptDialog.receiptData=res.order
-                        receiptDialog.open();
-                        if(customerCB.currentIndex<0){
-                            customersModel.refresh();
-                        }
-                        notesLE.text=""
-                        requestCart();
-                    }
-                }
+                                                if(res.status===200){
+                                                    paymentDialog.close();
+                                                    receiptDialog.receiptData=res.order
+                                                    receiptDialog.open();
+                                                    if(customerCB.currentIndex<0){
+                                                        customersModel.refresh();
+                                                    }
+                                                    notesLE.text=""
+                                                    requestCart();
+                                                }
+                                            }
                 onUpdateCustomerResponseReceived:(res)=> {
-                    if(res.status===200){
-                        if(pay){
-                            cashierModel.processCart(cashierModel.total,0,notesLE.text);
-                            pay=false
-                        }
-                    }
-                }//onUpdateCustomerResponseReceived
+                                                     if(res.status===200){
+                                                         if(pay){
+                                                             page.processCart();
+                                                             pay=false
+                                                         }
+                                                     }
+                                                 }//onUpdateCustomerResponseReceived
                 onAddProductReply:(res)=> {
-                    if(res.status===200){
-                        scannerBeep.play()
-                        productsCB.currentIndex=-1;
+                                      if(res.status===200){
+                                          scannerBeep.play()
+                                          productsCB.currentIndex=-1;
 
-                    }/*else{
+                                      }/*else{
                         toastrService.push("Warning",res.message,"warning",2000)
                     }*/
-                }//onAddProductReply
+                                  }//onAddProductReply
             }
 
-        }
+        }//tableView
 
-        ColumnLayout{ //numpad layout
-            Layout.alignment: Qt.AlignCenter
+        ColumnLayout{
+            Layout.column: 1
+            Layout.row: 0
+            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+
             Numpad{
                 id: numpad
                 enabled: tableView.selectedRow>=0
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.alignment: Qt.AlignCenter
-                property bool waitingForDecimal: false
+                  property bool waitingForDecimal: false
                 property var decimalBtn;
 
                 Component.onCompleted: {
@@ -164,14 +184,6 @@ Page{
                     cashierModel.removeProduct(tableView.selectedRow);
                 }
             }
-            Item{
-                Layout.fillHeight: true
-                implicitWidth: 50
-                Layout.fillWidth: true
-                Layout.maximumWidth: numpad.width
-
-            }
-
             CComboBox{
                 Layout.maximumWidth: numpad.width
 
@@ -189,6 +201,7 @@ Page{
 
                 model: NetworkModel{
                     url: "/products/list"
+                    filter: {"only_variants":true}
                     Component.onCompleted: requestData();
                     onDataRecevied: {
                         productsCB.dataReceived=true;
@@ -210,11 +223,13 @@ Page{
                 implicitHeight: 60
 
             }
-        }//
+        }
+
 
         GridLayout{ //customer grid
             Layout.alignment: Qt.AlignCenter
-
+            Layout.row: 1
+            Layout.column: 0
             columns: 2
             CComboBox{
                 property bool isValid: currentText===editText
@@ -223,7 +238,7 @@ Page{
                 implicitHeight: 60
                 model: CustomersModel{
                     id: customersModel
-                    onAddCustomerReply: {
+                    onAddCustomerReply:(reply)=> {
                         if(reply.status===200){
                             cashierModel.updateCustomer(reply.customer.id)
                         }
@@ -286,7 +301,7 @@ Page{
             }
             CComboBox{
                 id: cityCB
-                enabled: false
+                enabled: deliverySwitch.checked
 
                 property bool isValid: currentText===editText
                 Layout.fillWidth: true;
@@ -300,9 +315,9 @@ Page{
                 model: BarqLocationsModel{
                     id: cityModel
                     Component.onCompleted: requestData();
-//                    onDataRecevied: {
-//                        townModel.requestData();
-//                    }
+                    //                    onDataRecevied: {
+                    //                        townModel.requestData();
+                    //                    }
                 }
                 onCurrentIndexChanged: {
                     if(currentIndex>=0){
@@ -316,7 +331,7 @@ Page{
 
             CComboBox{
                 id: townCB
-                enabled: false
+                enabled: deliverySwitch.checked
                 property bool isValid: currentText===editText
                 Layout.fillWidth: true;
                 implicitHeight: 60
@@ -345,6 +360,11 @@ Page{
         ColumnLayout{ //total and pay layout
             Layout.alignment: Qt.AlignCenter
             Layout.maximumWidth: numpad.width
+            Layout.row: 1
+            Layout.column: 1
+
+
+
             CTextField{
                 id: total
                 readOnly: true
@@ -362,6 +382,16 @@ Page{
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();
                 enabled: tableView.rows>0
+            }
+
+            SwitchDelegate{
+                id: deliverySwitch
+                checked: true
+                text: qsTr("Barq Delivery")
+                icon.source: "qrc:/images/icons/barq_logo.png"
+                icon.color: "transparent"
+                icon.height: 50
+                Layout.fillWidth: true
             }
 
 

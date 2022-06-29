@@ -87,6 +87,8 @@ void Api::removeCategory(const int &categoryId)
 
 void Api::barqReceipt(const QString &reference)
 {
+    qDebug()<<"making request";
+    qDebug()<<"Reference: " << reference;
     PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
             ->subcribe([this](NetworkResponse *res){
         QByteArray pdf=res->binaryData();
@@ -113,9 +115,6 @@ void Api::barqReceipt(const QString &reference)
             }
         });
         doc->load(buffer);
-
-
-
     });
 }
 

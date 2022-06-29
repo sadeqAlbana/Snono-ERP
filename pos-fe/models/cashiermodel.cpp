@@ -174,7 +174,8 @@ void CashierModel::processCart(const double paid, const double change, const QSt
     QJsonObject data{{"paid",paid},
                      {"returned",change},
                      {"note",note},
-                     {"cart",cartData()}};
+                     {"cart",cartData()},
+                     {"delivery_info",deliveryInfo}};
     PosNetworkManager::instance()->post("/pos/purchase",data)->subcribe(this,&CashierModel::onProcessCartRespnse);
 }
 

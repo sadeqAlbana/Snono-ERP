@@ -105,8 +105,9 @@ Popup {
         }
 
         function printReceipt(){
-
             if(externalDelivery.currentValue>0){
+                let reference=receiptData.reference;
+                Api.barqReceipt(reference);
                 receiptData["external_delivery"]=externalDelivery.currentValue;
             }
             ReceiptGenerator.printReceipt(receiptData);
