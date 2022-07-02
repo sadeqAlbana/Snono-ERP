@@ -39,7 +39,7 @@ Card{
             id: toolBar
             tableView: tableView
 
-            onSearch: {
+            onSearch:(searchString)=> {
                 var filter=model.filter;
                 filter['query']=searchString
                 model.filter=filter;
@@ -85,14 +85,17 @@ Card{
 
                 Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.name: "cil-reload"; onTriggered: {
                         deliveryStatusDialog.open();
-
-
                     } },
                 Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.name: "cil-action-undo"; onTriggered: {
                         var order =model.jsonObject(tableView.selectedRow);
                         model.returnableItems(order.id);
                     }},
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()}
+                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
+                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
+                    let reference=model.data(tableView.selectedRow,"reference")
+                        Api.barqReceipt(reference);
+                    }}
+
             ]
         }
 

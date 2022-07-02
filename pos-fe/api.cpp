@@ -87,7 +87,6 @@ void Api::removeCategory(const int &categoryId)
 
 void Api::barqReceipt(const QString &reference)
 {
-    qDebug()<<"making request";
     qDebug()<<"Reference: " << reference;
     PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
             ->subcribe([this](NetworkResponse *res){
@@ -100,19 +99,22 @@ void Api::barqReceipt(const QString &reference)
                 return;
 
             //QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-            QPrinter printer;
-            QPrintDialog *dlg = new QPrintDialog(&printer,0);
-            if(dlg->exec() == QDialog::Accepted) {
-                printer.setFullPage(true);
-
+            //QPrinter printer;
+            QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+//            qDebug()<<"printer width:" << printer.width();
+//            qDebug()<<"printer height:" << printer.height();
+//            qDebug()<<"printer widthmm:" << printer.widthMM();
+//            qDebug()<<"printer heightmm:" << printer.heightMM();
+            printer.setPageSize(QPageSize::A5);
+            printer.setPageMargins(QMarginsF(0,0,0,0));
+            printer.setCopyCount(3);
 
                 QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
-                QPainter painter(&printer);
 
+                QPainter painter(&printer);
                 painter.drawImage(QPoint(0,0),image);
                 painter.end();
-                delete dlg;
-            }
+
         });
         doc->load(buffer);
     });

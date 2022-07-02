@@ -141,7 +141,7 @@ Item {
                         stackView.replace(item.path)
             }
             Component.onCompleted: {
-                //listView.currentIndex=1                
+                //listView.currentIndex=1
             }
 
             property real delegateHeight: 0

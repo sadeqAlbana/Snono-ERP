@@ -18,13 +18,15 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 }
 
 
-void ReceiptGenerator::create(QJsonObject receiptData,QPaintDevice *device)
+void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int scaleFactor)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
     int height=receiptHeight(receiptData);
     int width=575;
 
     QPainter painter(device);
+    if(scaleFactor>1)
+    painter.scale(scaleFactor,scaleFactor);
     painter.setPen(Qt::black);
     QFont font=painter.font();
     font.setPixelSize(17);
@@ -80,7 +82,8 @@ void ReceiptGenerator::create(QJsonObject receiptData,QPaintDevice *device)
         double totalWithDelivery=total+receiptData["external_delivery"].toDouble();
         painter.drawText(QRect(20,height-40, 600,40),Qt::AlignLeft, "Total With Delivery: " +  Currency::formatString(totalWithDelivery));
     }
-    //painter.end();//?
+    painter.end();//?
+
 }
 
 int ReceiptGenerator::receiptHeight(const QJsonObject &receiptData)
@@ -148,6 +151,19 @@ QUrl ReceiptGenerator::sampleData()
 void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 {
     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+    printer.setPageMargins(QMarginsF(0,0,0,0));
+
+    QImage image(575*10,receiptHeight(receiptData)*10,QImage::Format_Grayscale16);
+    image.fill(Qt::white);
+    printer.setPageSize(QPageSize::A5);
+    //printer.setFullPage(true);
+
+
     //qDebug()<<QPrinterInfo::defaultPrinter().printerName();
-    create(receiptData,&printer);
+    create(receiptData,&image,10);
+
+    QPainter painter(&printer);
+    image=image.scaledToHeight(printer.height()*0.9,Qt::SmoothTransformation);
+    painter.drawImage((printer.width()-image.width())/2,0,image);
+    painter.end();
 }

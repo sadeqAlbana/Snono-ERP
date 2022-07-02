@@ -13,7 +13,7 @@ class ReceiptGenerator : public QObject
 public:
     explicit ReceiptGenerator(QObject *parent = nullptr);
 
-    static void create(QJsonObject receiptData, QPaintDevice *device);
+    static void create(QJsonObject receiptData, QPaintDevice *device,int scaleFactor=1);
     static int receiptHeight(const QJsonObject &receiptData);
 
     static int centerStart(int canvasWidth, int rectWidth);
