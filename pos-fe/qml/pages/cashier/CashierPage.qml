@@ -341,6 +341,8 @@ Page{
                 editable: true
                 leftIcon: "cil-location-pin"
 
+
+
 //                onCurrentIndexChanged:{
 //                    var city=cityModel.data(cityCB.currentIndex,"name");
 //                    var town=townModel.data(townCB.currentIndex,"name");
@@ -381,7 +383,13 @@ Page{
                 Layout.fillWidth: true
                 implicitHeight: 60
                 onClicked: parent.confirmPayment();
-                enabled: tableView.rows>0
+                enabled: {
+                    if(deliverySwitch.enabled){
+                        return cityCB.isValid && townCB.isValid
+                    }else{
+                        return tableView.rows>0
+                    }
+                }
             }
 
             SwitchDelegate{

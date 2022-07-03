@@ -41,9 +41,13 @@ ApplicationWindow {
     Connections{
         target: NetworkManager
         function onNetworkActivity(url){
+            console.log("netweork accitivity")
             activityCount++;
-            if(url!=="/pos/cart/updateProduct" && url!=="/pos/cart/getCart")
+            if(url.pathname!=="/pos/cart/updateProduct" && url.pathname!=="/pos/cart/getCart"){
                 busySpinner.open();
+                console.log("opened busy spinner")
+
+            }
         }
         function onFinishedNetworkActivity(url){
             if(activityCount>0)
