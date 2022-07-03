@@ -9,7 +9,9 @@ AccountsModel::AccountsModel(QObject *parent) :
                            Column{"type","Type",QString(),"type"} ,
                            Column{"balance","Balance","journal_entries_items","currency"}},parent)
 {
+    setDirection("asc");
     requestData();
+
 }
 
 

@@ -13,6 +13,9 @@ public:
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 
     Q_INVOKABLE QJsonObject filter() const;
+    const QString &direction() const;
+    void setDirection(const QString &newDirection);
+
 signals:
     void filterChanged(QJsonObject filter);
 
@@ -27,6 +30,7 @@ private:
     QString _query;
     QJsonObject m_filter;
     QJsonObject m_oldFilter;
+    QString m_direction;
 
 
 

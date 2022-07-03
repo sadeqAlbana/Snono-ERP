@@ -3,7 +3,7 @@
 #include <QJsonDocument>
 #include <QFile>
 AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent) :
-    NetworkedJsonModel(Url,columns,parent)
+    NetworkedJsonModel(Url,columns,parent),m_direction("desc")
 {
 }
 
@@ -25,7 +25,7 @@ void AppNetworkedJsonModel::requestData()
     QJsonObject params{{"page",currentPage()+1},
                        {"count",100},
                        {"sortBy","id"},
-                       {"direction","desc"},
+                       {"direction",m_direction},
                        {"search",_query}, //depricated
                        {"filter",m_filter}
                      };
@@ -50,6 +50,16 @@ void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
 {
     m_filter=filter;
     emit filterChanged(filter);
+}
+
+const QString &AppNetworkedJsonModel::direction() const
+{
+    return m_direction;
+}
+
+void AppNetworkedJsonModel::setDirection(const QString &newDirection)
+{
+    m_direction = newDirection;
 }
 
 QJsonObject AppNetworkedJsonModel::filter() const
