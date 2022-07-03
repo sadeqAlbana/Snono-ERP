@@ -34,10 +34,10 @@ Page{
 
     function processCart(){
         let deliveryInfo={}
-//        if(deliverySwitch.checked){
-//            deliveryInfo["city_id"]=cityModel.data(cityCB.currentIndex,"id")
-//            deliveryInfo["town_id"]=townModel.data(townCB.currentIndex,"id")
-//        }
+        if(deliverySwitch.checked){
+            deliveryInfo["city_id"]=cityModel.data(cityCB.currentIndex,"id")
+            deliveryInfo["town_id"]=townModel.data(townCB.currentIndex,"id")
+        }
 
         cashierModel.processCart(cashierModel.total,0,notesLE.text,deliveryInfo);
 
@@ -341,12 +341,12 @@ Page{
                 editable: true
                 leftIcon: "cil-location-pin"
 
-                onCurrentIndexChanged:{
-                    var city=cityModel.data(cityCB.currentIndex,"name");
-                    var town=townModel.data(townCB.currentIndex,"name");
-                    addressLE.text=city + " - " + town
+//                onCurrentIndexChanged:{
+//                    var city=cityModel.data(cityCB.currentIndex,"name");
+//                    var town=townModel.data(townCB.currentIndex,"name");
+//                    addressLE.text=city + " - " + town
 
-                }
+//                }
 
                 model: BarqLocationsModel{
                     id: townModel
