@@ -33,6 +33,13 @@ void AuthManager::onAuthReply(NetworkResponse *res)
 
 }
 
+void AuthManager::logout()
+{
+    settings.setValue("jwt",QVariant());
+    PosNetworkManager::instance()->setJWT(QByteArray());
+    emit loggedOut();
+}
+
 AuthManager *AuthManager::instance()
 {
     if(!_instance)

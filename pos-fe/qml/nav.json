@@ -111,10 +111,6 @@
          {
             "title":"Stock",
             "path":"qrc:/pages/reports/StockReport.qml"
-         },
-         {
-            "title":"Profits",
-            "path":""
          }
       ]
    },

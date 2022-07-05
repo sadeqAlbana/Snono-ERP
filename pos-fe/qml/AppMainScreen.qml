@@ -18,6 +18,7 @@ Item {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
     }
+
     ToolBar{
         id: toolBar;
         anchors.left: rootItem.left
@@ -54,7 +55,7 @@ Item {
             ToolButton{
                icon.name: "cil-account-logout"
                display: AbstractButton.IconOnly
-               //onClicked: AuthManager.logout();
+               onClicked: AuthManager.logout();
 
             }
 

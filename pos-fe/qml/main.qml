@@ -36,6 +36,9 @@ ApplicationWindow {
         function onLoggedIn(){
             rootLoader.setSource("qrc:/AppMainScreen.qml")
         }
+        function onLoggedOut(){
+            rootLoader.setSource("qrc:/pages/LoginPage.qml")
+        }
     }
 
     Connections{

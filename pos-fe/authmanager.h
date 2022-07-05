@@ -12,7 +12,7 @@ private:
 public:
     Q_INVOKABLE void authenticate(QString username, QString password);
     void onAuthReply(NetworkResponse *res);
-
+    Q_INVOKABLE void logout();
     static AuthManager *instance();
 
 signals:
