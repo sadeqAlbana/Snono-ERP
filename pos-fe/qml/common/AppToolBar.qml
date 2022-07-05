@@ -18,6 +18,7 @@ ToolBar {
     id: control
     signal search(var searchString);
     required property var tableView
+    property bool searchVisible: true
     Layout.fillWidth: true
     palette.button: "transparent"
     contentItem: RowLayout{
@@ -91,6 +92,7 @@ ToolBar {
 
         CTextField{
             id: _search
+            visible: searchVisible
             Layout.preferredHeight: 50
             Layout.preferredWidth: 300
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight

@@ -52,6 +52,7 @@ SOURCES += \
     models/productsattributesattributesmodel.cpp \
     models/receiptmodel.cpp \
     models/returnordermodel.cpp \
+    models/stockreportmodel.cpp \
     models/taxescheckablemodel.cpp \
     models/taxesmodel.cpp \
     models/usersmodel.cpp \
@@ -92,6 +93,7 @@ HEADERS += \
     models/productsattributesattributesmodel.h \
     models/receiptmodel.h \
     models/returnordermodel.h \
+    models/stockreportmodel.h \
     models/taxescheckablemodel.h \
     models/taxesmodel.h \
     models/usersmodel.h \

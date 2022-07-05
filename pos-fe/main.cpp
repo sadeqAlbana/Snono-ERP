@@ -16,6 +16,8 @@
 #include <QIcon>
 #include "possettings.h"
 #include "models/appnetworkedjsonmodel.h"
+#include "models/stockreportmodel.h""
+
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
 
@@ -89,6 +91,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<OrdersReturnsModel>("App.Models", 1, 0, "OrdersReturnsModel");
     qmlRegisterType<AppNetworkedJsonModel>("App.Models", 1, 0, "NetworkModel");
     qmlRegisterType<BarqLocationsModel>("App.Models", 1, 0, "BarqLocationsModel");
+    qmlRegisterType<StockReportModel>("App.Models", 1, 0, "StockReportModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 

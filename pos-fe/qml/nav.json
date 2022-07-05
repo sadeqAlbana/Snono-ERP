@@ -109,8 +109,8 @@
       "path":"qrc:/pages/orders/OrdersPage.qml",
       "childItems":[
          {
-            "title":"Sales",
-            "path":"qrc:/pages/categories/CategoriesPage.qml"
+            "title":"Stock",
+            "path":"qrc:/pages/reports/StockReport.qml"
          },
          {
             "title":"Profits",
