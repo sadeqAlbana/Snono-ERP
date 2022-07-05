@@ -24,6 +24,7 @@ void AuthManager::onAuthReply(NetworkResponse *res)
         if(res->json("status").toInt()==200){
             settings.setValue("jwt",res->json("token").toString());
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
+            setUser(res->json("user").toObject());
             emit loggedIn();
 
         }
@@ -46,4 +47,22 @@ AuthManager *AuthManager::instance()
         _instance=new AuthManager(QApplication::instance());
 
     return _instance;
+}
+
+const QJsonObject &AuthManager::user() const
+{
+    return m_user;
+}
+
+void AuthManager::setUser(const QJsonObject &newUser)
+{
+    if (m_user == newUser)
+        return;
+    m_user = newUser;
+    emit userChanged();
+}
+
+void AuthManager::resetUser()
+{
+    setUser({}); // TODO: Adapt to use your actual default value
 }

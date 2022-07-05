@@ -53,16 +53,9 @@ Item {
             }
 
             ToolButton{
-               icon.name: "cil-account-logout"
-               display: AbstractButton.IconOnly
-               onClicked: AuthManager.logout();
-
-            }
-
-            ToolButton{
                 id: ctrl
                 display: AbstractButton.IconOnly
-                icon.source: "https://coreui.io/demo/4.2/assets/img/avatars/8.jpg"
+                icon.source: AuthManager.user.avatar
                 property bool rounded: true
                 property bool adapt: true
                 icon.width: 48
@@ -76,6 +69,17 @@ Item {
                 icon.color: "transparent"
                 padding: 0
 
+                onClicked: {
+                    menu.open();
+                }
+
+                CMenu{
+                    id:menu
+                    parent: ctrl
+                    y:parent.height
+                    actions: [Action{text: qsTr("Logout"); icon.name: "cil-account-logout"; onTriggered: AuthManager.logout();}]
+                }
+
                 layer.effect: OpacityMask {
                     maskSource: Item {
                         width: ctrl.width
@@ -88,6 +92,8 @@ Item {
                         }
                     }
                 }
+
+
 
 
             }
