@@ -126,7 +126,7 @@ Page{
                     decimalBtn.clicked.connect(function(){waitingForDecimal=true})
                 }
 
-                onButtonClicked: {
+                onButtonClicked:(button)=> {
                     switch(button.type){
                     case "DIGIT": digitClicked(parseInt(button.text)); break;
                     case "COMMAND": commandClicked(button.text); break;
