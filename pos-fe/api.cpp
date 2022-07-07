@@ -1,7 +1,9 @@
 #include "api.h"
 #include <QJsonObject>
 #include "posnetworkmanager.h"
+#ifndef Q_OS_ANDROID
 #include <QPdfDocument>
+#endif
 #include <QBuffer>
 #include <QPrinter>
 #include <QPrinterInfo>
@@ -87,6 +89,8 @@ void Api::removeCategory(const int &categoryId)
 
 void Api::barqReceipt(const QString &reference)
 {
+#ifndef Q_OS_ANDROID
+
     qDebug()<<"Reference: " << reference;
     PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
             ->subcribe([this](NetworkResponse *res){
@@ -118,6 +122,7 @@ void Api::barqReceipt(const QString &reference)
         });
         doc->load(buffer);
     });
+#endif
 }
 
 

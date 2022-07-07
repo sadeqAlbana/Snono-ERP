@@ -238,10 +238,15 @@ Page{
                 implicitHeight: 60
                 model: CustomersModel{
                     id: customersModel
+                    usePagination: false
                     onAddCustomerReply:(reply)=> {
                         if(reply.status===200){
                             cashierModel.updateCustomer(reply.customer.id)
                         }
+                    }
+                    Component.onCompleted: {
+                        usePagination=false;
+                        requestData();
                     }
                 }
                 textRole: "name"

@@ -3,8 +3,9 @@
 #include <QJsonDocument>
 #include <QFile>
 AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent) :
-    NetworkedJsonModel(Url,columns,parent),m_direction("desc")
+    NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(true)
 {
+
 }
 
 AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject *parent) : NetworkedJsonModel(columns,parent)
@@ -16,19 +17,26 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject 
 void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
+
+    qDebug()<<"use pagination: " << m_usePagination;
     if(m_oldFilter!=m_filter){
         m_oldFilter=m_filter;
-        m_currentPage=0;
-        _lastPage=-1;
+        if(m_usePagination){
+            m_currentPage=0;
+            _lastPage=-1;
+        }
     }
 
-    QJsonObject params{{"page",currentPage()+1},
-                       {"count",100},
-                       {"sortBy","id"},
-                       {"direction",m_direction},
-                       {"search",_query}, //depricated
-                       {"filter",m_filter}
-                     };
+    QJsonObject params;
+    params["filter"]=m_filter;
+    if(m_usePagination){
+        params["page"]=currentPage()+1;
+        params["count"]=100;
+    }
+    params["sortBy"]="id";
+    params["direction"]=m_direction;
+    params["search"]=_query;
+
 
     PosNetworkManager::instance()->post(url(),params)->subcribe(this,&AppNetworkedJsonModel::onTableRecieved);
 }
@@ -40,8 +48,10 @@ void AppNetworkedJsonModel::setSearchQuery(const QString _query)
 
 void AppNetworkedJsonModel::search()
 {
-    m_currentPage=0;
-    _lastPage=-1;
+    if(m_usePagination){
+        m_currentPage=0;
+        _lastPage=-1;
+    }
     qDebug()<<"search: " << _query;
     requestData();
 }
@@ -50,6 +60,21 @@ void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
 {
     m_filter=filter;
     emit filterChanged(filter);
+}
+
+bool AppNetworkedJsonModel::usePagination() const
+{
+    return m_usePagination;
+}
+
+void AppNetworkedJsonModel::setUsePagination(bool newUsePagination)
+{
+    if (m_usePagination == newUsePagination)
+        return;
+    m_usePagination = newUsePagination;
+
+    qDebug()<<"use pagination changed !";
+    emit usePaginationChanged();
 }
 
 const QString &AppNetworkedJsonModel::direction() const
@@ -73,19 +98,25 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     qDebug()<<"current_page: " <<reply->json("current_page").toInt();
     qDebug()<<"last_page: " <<reply->json("last_page").toInt();
 
-    if(reply->json("current_page").toInt()){
-        setCurrentPage(reply->json("current_page").toInt());
-        _lastPage=reply->json("last_page").toInt();
-        m_hasPagination=true;
+    if(m_usePagination){
+        if(reply->json("current_page").toInt()){
+            setCurrentPage(reply->json("current_page").toInt());
+            _lastPage=reply->json("last_page").toInt();
+            m_hasPagination=true;
+        }
     }
 
     QJsonArray data=filterData(reply->json("data").toArray());
     qDebug()<<"data size: " << reply->json("data").toArray().size();
-    if(m_currentPage<=1){
+    if(m_usePagination){
+        if(m_currentPage<=1){
+            setupData(data);
+        }
+        else{
+            appendData(data);
+        }
+    }else{
         setupData(data);
-    }
-    else{
-        appendData(data);
     }
 
 

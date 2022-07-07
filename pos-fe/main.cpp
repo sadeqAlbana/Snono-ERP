@@ -16,7 +16,7 @@
 #include <QIcon>
 #include "possettings.h"
 #include "models/appnetworkedjsonmodel.h"
-#include "models/stockreportmodel.h""
+#include "models/stockreportmodel.h"
 
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>

@@ -40,7 +40,9 @@ AppDialog{
 
             CustomersModel{
                 id: mdl;
-
+                Component.onCompleted: {
+                    requestData();
+                }
                 onAddCustomerReply: {
                     if(reply.status===200){
                         toastrService.push("Success",reply.message,"success",2000)

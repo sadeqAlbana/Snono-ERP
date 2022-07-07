@@ -9,7 +9,6 @@ CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/custo
                                                                          Column{"address","Address"} ,
                                                                          Column{"email","Email"}} ,parent)
 {
-    requestData();
 }
 
 void CustomersModel::addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address)

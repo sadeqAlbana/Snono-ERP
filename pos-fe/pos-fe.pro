@@ -5,6 +5,10 @@
 #-------------------------------------------------
 
 QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat pdf
+#win32,unix{
+#QT +=
+#}
+
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -22,6 +26,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+
+
 
 android: include(C:/Users/sadeq/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
 include(posnumpadwidget/posnumpadwidget.pri)

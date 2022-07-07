@@ -40,6 +40,9 @@ Card{
 
             model: CustomersModel{
                 id: model
+                Component.onCompleted: {
+                    requestData();
+                }
             }//model
         }//tableview
     }//layout
