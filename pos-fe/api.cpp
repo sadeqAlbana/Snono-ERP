@@ -125,6 +125,20 @@ void Api::barqReceipt(const QString &reference)
 #endif
 }
 
+void Api::adjustStock(const int productId, const int newQty, const QString &reason)
+{
+    QJsonObject params{
+        {"product_id",productId},
+        {"new_qty",newQty},
+        {"reason",reason},
+
+    };
+
+    PosNetworkManager::instance()->post("/products/adjustStock",params)->subcribe([this](NetworkResponse *res){
+        emit adjustStockReply(res->json().toObject());
+    });
+}
+
 
 Api *Api::instance()
 {

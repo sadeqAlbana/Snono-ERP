@@ -44,8 +44,26 @@ Card{
             }
         }
 
+        AdjustStockDialog{
+            id: adjustStockDlg
+            onAccepted:(productId, quantity, reason)=> {
+                Api.adjustStock(productId, quantity,reason)
+                adjustStockDlg.close();
+            }
+        }
+
         Connections{
             target: Api
+
+            function onAdjustStockReply(reply) {
+                if(reply.status===200){
+                    toastrService.push("Success",reply.message,"success",2000)
+                    model.refresh();
+                }
+                else{
+                    toastrService.push("Error",reply.message,"error",2000)
+                }
+            } //slot end
 
             function onUpdateProductReply(reply) {
                 if(reply.status===200){
@@ -69,7 +87,9 @@ Card{
                 Action{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()},
                 Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog()},
-                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog()}
+                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog()},
+                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.selectedRow>=0}
+
             ]
 
 
@@ -84,6 +104,11 @@ Card{
 
             }
 
+            function openAdjustStockDialog(){
+                adjustStockDlg.productId=model.data(tableView.selectedRow,"id");
+                adjustStockDlg.originalQty=model.data(tableView.selectedRow,"products_stocks.qty")
+                adjustStockDlg.open();
+            }
 
 
             function openAddDialog(){

@@ -73,5 +73,6 @@
         <file>common/Spinner.qml</file>
         <file>pages/products/ProductsMobilePage.qml</file>
         <file>pages/reports/StockReport.qml</file>
+        <file>pages/products/AdjustStockDialog.qml</file>
     </qresource>
 </RCC>
