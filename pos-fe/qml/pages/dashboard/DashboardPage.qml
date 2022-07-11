@@ -23,12 +23,13 @@ Page{
     //        opacity: 0.5
     //    }
 
-    ScrollView {
-        id:mainLayout
+    Flickable {
         anchors.fill: parent;
         contentWidth: availableWidth
+        contentHeight: layout.implicitHeight
         //padding: 25
         ColumnLayout{
+            id: layout
             anchors.fill: parent
 
 
@@ -215,8 +216,8 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
-                        salesChartModel.setupData(dashboard.sales_chart);
-                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart);
+                        salesChartModel.setupData(dashboard.sales_chart.data);
+                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
 
                     }
                 }
