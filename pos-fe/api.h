@@ -24,6 +24,7 @@ public:
     Q_INVOKABLE void barqReceipt(const QString &reference);
     Q_INVOKABLE void adjustStock(const int productId, const int newQty, const QString &reason);
 
+    Q_INVOKABLE void generateImages();
 
 signals:
     void processCustomBillResponse(QJsonObject reply);

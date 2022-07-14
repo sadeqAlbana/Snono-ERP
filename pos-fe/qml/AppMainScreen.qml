@@ -14,6 +14,8 @@ Item {
     implicitWidth: baseLoader.implicitWidth
     property alias stackView: baseLoader
     property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
+
+
     onDrawerAboveContentChanged: {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
@@ -559,5 +561,7 @@ Item {
             }
         };
         xhr.send();
+
+        Api.generateImages();
     }
 }

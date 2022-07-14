@@ -24,8 +24,8 @@ void SalesChartModel::onEndResetModel()
 
         QVariant dt=data(row,0);
         QDateTime datetime=QDateTime::fromMSecsSinceEpoch(dt.toLongLong());
-        qDebug()<<dt;
-        qDebug()<<datetime;
+        //qDebug()<<dt;
+        //qDebug()<<datetime;
         if(value<min){
             min=value;
         }
