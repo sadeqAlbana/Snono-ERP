@@ -3,6 +3,8 @@
 #include <QJsonValue>
 #include <QDebug>
 #include <QApplication>
+#include <QNetworkDiskCache>
+#include <QStandardPaths>
 QByteArray PosNetworkManager::_jwt;
 PosNetworkManager* PosNetworkManager::_instance;
 
@@ -16,6 +18,12 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkManager(parent)
     if(!jwt().isNull())
         setRawHeader("Authorization",_jwt);
     ignoreSslErrors(true);
+
+    QNetworkDiskCache* cache = new QNetworkDiskCache(this);
+    QString cachePath = QStandardPaths::displayName(QStandardPaths::CacheLocation);
+    cache->setCacheDirectory(cachePath);
+    m_manager->setCache(cache);
+    m_synchronousManager->setCache(cache);
 }
 
 void PosNetworkManager::routeReply(QNetworkReply *reply)

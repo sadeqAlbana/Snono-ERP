@@ -145,19 +145,19 @@ void Api::adjustStock(const int productId, const int newQty, const QString &reas
 void Api::generateImages()
 {
     return;
-    PosNetworkManager::instance()->post("/products",QJsonObject{{"filter",QJsonObject{{"parent_id",0}}}})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;
 
         QJsonArray products=res->json("data").toArray();
         for(QJsonValue product : products){
-            QJsonArray attributes = product["attributes"].toArray();
-            for(QJsonValue attribute : attributes){
-                if(attribute["attribute_id"]=="thumb"){
-                    QString productName=product["name"].toString();
+
+                    QString productName=QString::number(product["name2"].toInt());
                     QString productPrice=QString::number(product["list_price"].toDouble());
-                    QImage image = QImage::fromData(mgr.getSynch(attribute["value"].toString()).binaryData());
+                    QString thumb=product["thumb"].toString();
+
+                    QImage image = QImage::fromData(mgr.getSynch(thumb).binaryData());
                     QPainter painter(&image);
                     painter.setBrush(Qt::white);
                     painter.setPen(Qt::white);
@@ -185,19 +185,21 @@ void Api::generateImages()
                     images << image;
                     //qDebug()<<image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(productName));
                     //return;
-                }
-            }
+
+
         }
 
         for(int i=0; i<images.size(); i+=9){
             QImage image(219*3,293*3,QImage::Format_RGB32);
             image.fill(Qt::white);
+            int row=0;
             QPainter painter(&image);
-            for(int x=0; x<3; x++){
+            for(int x=0; x<9; x+=3){
                 for(int y=0; y<3; y++){
-                    QImage unit = images.at(i+x+y);
-                    painter.drawImage(QRect(QPoint(219*x,293*y),unit.size()),unit);
+                    QImage unit = images.value(i+x+y);
+                    painter.drawImage(QRect(QPoint(219*y,293*row),unit.size()),unit);
                 }
+                row++;
             }
             painter.end();
             image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(i));

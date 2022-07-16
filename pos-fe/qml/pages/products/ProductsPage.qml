@@ -1,9 +1,10 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
-import App.Models 1.0
+import Qt.labs.qmlmodels
+import App.Models
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -86,9 +87,9 @@ Card{
             actions: [
                 Action{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()},
-                Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog()},
-                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog()},
-                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.selectedRow>=0}
+                Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow},
+                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow},
+                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow}
 
             ]
 
