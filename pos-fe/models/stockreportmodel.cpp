@@ -4,6 +4,10 @@
 #include <QStringList>
 #include <QPrinter>
 #include <QPrinterInfo>
+#include <QFile>
+#include <QBuffer>
+#include <QStandardPaths>
+#include <QTextStream>
 StockReportModel::StockReportModel(QObject *parent)
     : AppNetworkedJsonModel{"/reports/stock",ColumnList(),parent}
 {
@@ -60,5 +64,27 @@ void StockReportModel::print()
     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
     printer.setPageSize(QPageSize::A4);
     doc.print(&printer);
+
+    printCSV();
+
+}
+
+void StockReportModel::printCSV()
+{
+    QFile file(QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0)+"/report.csv");
+    file.open(QIODevice::WriteOnly | QFile::Truncate);
+    QTextStream out(&file);
+
+    out << "item" << "," <<"qty" << Qt::endl;
+
+    for(int i=0; i<rowCount(); i++){
+        QJsonObject record=this->record(i);
+
+        out << record["name"].toString() << "," <<QString::number(record["stock"].toDouble()) << Qt::endl;
+
+        }
+
+
+    file.close();
 
 }
