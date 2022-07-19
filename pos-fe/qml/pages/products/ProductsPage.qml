@@ -5,6 +5,8 @@ import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import Qt.labs.qmlmodels
 import App.Models
+import QtQuick.Dialogs
+import QtCore
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -43,6 +45,15 @@ Card{
                 Api.updateProduct(editDlg.product)
                 editDlg.close();
             }
+        }
+
+        FileDialog{
+            id: fileDialog
+            currentFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+            onAccepted: {
+                console.log("Accepted: " + currentFile)
+            }
+
         }
 
         AdjustStockDialog{
@@ -89,7 +100,8 @@ Card{
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()},
                 Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow},
                 Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow},
-                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow}
+                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow},
+                Action{ text: qsTr("Bulck Stock Adjustment"); icon.name: "cil-cart";     onTriggered: fileDialog.open();}
 
             ]
 

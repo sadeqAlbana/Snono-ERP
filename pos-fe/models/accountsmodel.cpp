@@ -3,6 +3,7 @@
 #include "posnetworkmanager.h"
 AccountsModel::AccountsModel(QObject *parent) :
     AppNetworkedJsonModel ("/accounts",{
+                           Column{"id","ID"} ,
                            Column{"code","Code"} ,
                            Column{"name","Name"} ,
                            Column{"internal_type","Internal Type",QString(),"internal_type"} ,
