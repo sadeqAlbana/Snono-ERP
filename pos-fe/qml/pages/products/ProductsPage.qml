@@ -50,11 +50,13 @@ Card{
         FileDialog{
             id: fileDialog
             currentFolder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+            nameFilters: [ "CSV files (*.csv)", "All files (*)" ]
             onAccepted: {
-                console.log("Accepted: " + currentFile)
+                Api.bulckStockAdjustment(selectedFile)
             }
 
         }
+
 
         AdjustStockDialog{
             id: adjustStockDlg

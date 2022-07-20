@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE void removeCategory(const int &categoryId);
     Q_INVOKABLE void barqReceipt(const QString &reference);
     Q_INVOKABLE void adjustStock(const int productId, const int newQty, const QString &reason);
+    Q_INVOKABLE bool bulckStockAdjustment(const QUrl &url);
 
     Q_INVOKABLE void generateImages();
 
@@ -36,7 +37,7 @@ signals:
     void categoryRemoveReply(QJsonObject reply);
     void barqReceiptReply(const QByteArray &reply);
     void adjustStockReply(const QJsonObject &reply);
-
+    void bulckStockAdjustment(const QJsonObject &reply);
 private:
     static Api *m_api;
 

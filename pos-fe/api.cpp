@@ -12,6 +12,7 @@
 #include <QJsonArray>
 #include <QDebug>
 #include <QFontMetrics>
+#include <QFile>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -140,6 +141,26 @@ void Api::adjustStock(const int productId, const int newQty, const QString &reas
     PosNetworkManager::instance()->post("/products/adjustStock",params)->subcribe([this](NetworkResponse *res){
         emit adjustStockReply(res->json().toObject());
     });
+}
+
+bool Api::bulckStockAdjustment(const QUrl &url)
+{
+    QFile file(url.toLocalFile());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return false;
+
+    QTextStream in(&file);
+    QString line=in.readLine();
+
+    QJsonArray array;
+    while(!line.isNull()){
+        QStringList columns=line.split(',');
+        qDebug()<<"columns size: "<<columns.size();
+        line=in.readLine();
+
+    }
+
+
 }
 
 void Api::generateImages()
