@@ -37,7 +37,7 @@ signals:
     void categoryRemoveReply(QJsonObject reply);
     void barqReceiptReply(const QByteArray &reply);
     void adjustStockReply(const QJsonObject &reply);
-    void bulckStockAdjustment(const QJsonObject &reply);
+    void bulckStockAdjustmentReply(const QJsonObject &reply);
 private:
     static Api *m_api;
 
