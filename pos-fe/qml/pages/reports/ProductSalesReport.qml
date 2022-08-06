@@ -12,6 +12,7 @@ import "qrc:/CoreUI/components/buttons"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
+import "qrc:/CoreUI/palettes"
 
 Card{
     title: qsTr("Products")
@@ -26,6 +27,24 @@ Card{
             tableView: tableView
             searchVisible: false
 
+            CTextField{
+                id: fromTF
+                text: "2022-01-01"
+                inputMask: "0000-00-00"
+
+            }
+            CTextField{
+                id: toTF
+                text: "2022-10-01"
+                inputMask: "0000-00-00"
+            }
+
+            CButton{
+                palette: BrandInfo{}
+                text: qsTr("Apply")
+                onClicked: model.requestData();
+
+            }
 
         }
 
@@ -39,8 +58,12 @@ Card{
             actions: [
                 Action{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
-            model: StockReportModel{
+            model: ProductSalesReportModel{
                 id: model
+                filter: {
+                    "from": fromTF.text,
+                    "to": toTF.text
+                }
                 Component.onCompleted: requestData();
 
             }//model

@@ -55,6 +55,7 @@ SOURCES += \
     models/ordersmodel.cpp \
     models/ordersreturnsmodel.cpp \
     models/possessionsmodel.cpp \
+    models/productsalesreportmodel.cpp \
     models/productsattributesattributesmodel.cpp \
     models/receiptmodel.cpp \
     models/returnordermodel.cpp \
@@ -96,6 +97,7 @@ HEADERS += \
     models/ordersmodel.h \
     models/ordersreturnsmodel.h \
     models/possessionsmodel.h \
+    models/productsalesreportmodel.h \
     models/productsattributesattributesmodel.h \
     models/receiptmodel.h \
     models/returnordermodel.h \

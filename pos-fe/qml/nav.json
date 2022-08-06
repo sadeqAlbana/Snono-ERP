@@ -111,6 +111,10 @@
          {
             "title":"Stock",
             "path":"qrc:/pages/reports/StockReport.qml"
+         },
+         {
+            "title":"Product Sales",
+            "path":"qrc:/pages/reports/ProductSalesReport.qml"
          }
       ]
    },

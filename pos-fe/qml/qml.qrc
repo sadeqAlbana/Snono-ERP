@@ -74,5 +74,6 @@
         <file>pages/products/ProductsMobilePage.qml</file>
         <file>pages/reports/StockReport.qml</file>
         <file>pages/products/AdjustStockDialog.qml</file>
+        <file>pages/reports/ProductSalesReport.qml</file>
     </qresource>
 </RCC>
