@@ -23,6 +23,11 @@ AppDialog{
         property real cost;
         property variant taxes:[]
     }
+
+    onProductChanged: {
+
+    }
+
     signal accepted();
 
     width:  Math.max(card.implicitWidth,parent.width*0.6)

@@ -35,8 +35,8 @@ signals:
 private:
     QString displayColumn;
     QString dataColumn;
-    QSet<int> selected;
-    QSet<int> originalSelectedIds;
+    QSet<int> m_selected;
+    QSet<int> m_originalSelectedIds;
     void onDataRecevied();
 };
 

@@ -14,7 +14,7 @@ CheckableListModel::CheckableListModel(const QString &displayColumn,
                            parent),
     displayColumn(displayColumn),
     dataColumn(dataColumn),
-    originalSelectedIds(original)
+    m_originalSelectedIds(original)
 {
     connect(this,&CheckableListModel::dataRecevied,this,&CheckableListModel::onDataRecevied);
 }
@@ -41,7 +41,7 @@ QVariant CheckableListModel::data(const QModelIndex &index, int role) const
 //    qDebug()<<"data: " <<index<< " " << (role==Qt::CheckStateRole);
     if(role==Qt::CheckStateRole){
 
-        if(selected.contains(index.row()))
+        if(m_selected.contains(index.row()))
             return Qt::Checked;
         return Qt::Unchecked;
     }
@@ -57,9 +57,9 @@ bool CheckableListModel::setData(const QModelIndex &index, const QVariant &value
     if(role==Qt::CheckStateRole){
         int state=value.toInt();
         if(state==Qt::Checked)
-            selected.insert(index.row());
+            m_selected.insert(index.row());
         else if(state==Qt::Unchecked)
-            selected.remove(index.row());
+            m_selected.remove(index.row());
         emit dataChanged(index, index, QVector<int>() << role); //not sure about index !
         emit selectedItemsChanged();
 
@@ -71,7 +71,7 @@ bool CheckableListModel::setData(const QModelIndex &index, const QVariant &value
 QJsonArray CheckableListModel::selectedRows()
 {
     QJsonArray array;
-    for(int row : selected){
+    for(int row : m_selected){
         array <<  jsonObject(row);
     }
     return array;
@@ -80,7 +80,7 @@ QJsonArray CheckableListModel::selectedRows()
 QString CheckableListModel::selectedItems() const
 {
     QStringList items;
-    for(int row : selected){
+    for(int row : m_selected){
         items << AppNetworkedJsonModel::data(row,displayColumn).toString();
     }
     return items.join(", ");
@@ -88,7 +88,7 @@ QString CheckableListModel::selectedItems() const
 
 QList<int> CheckableListModel::selectedIds()
 {
-    return selected.values();
+    return m_selected.values();
 }
 
 QHash<int, QByteArray> CheckableListModel::roleNames() const
@@ -104,7 +104,7 @@ void CheckableListModel::onDataRecevied()
 {
     for(int i=0; i < rowCount(); i++){
         int id = AppNetworkedJsonModel::jsonObject(i).value(dataColumn).toInt();
-        if(originalSelectedIds.contains(id))
+        if(m_originalSelectedIds.contains(id))
            setData(index(i,0),Qt::Checked,Qt::CheckStateRole);
     }
 }
