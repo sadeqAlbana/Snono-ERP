@@ -17,7 +17,7 @@
 #include "possettings.h"
 #include "models/appnetworkedjsonmodel.h"
 #include "models/stockreportmodel.h"
-#include "models/productsalesreportmodel.h""
+#include "models/productsalesreportmodel.h"
 
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>

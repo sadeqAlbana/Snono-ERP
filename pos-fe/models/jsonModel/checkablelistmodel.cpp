@@ -56,6 +56,8 @@ bool CheckableListModel::setData(const QModelIndex &index, const QVariant &value
 
     if(role==Qt::CheckStateRole){
         int state=value.toInt();
+        if(data(index,role).toInt()==state)
+            return true;
         if(state==Qt::Checked)
             m_selected.insert(index.row());
         else if(state==Qt::Unchecked)
@@ -91,6 +93,27 @@ QList<int> CheckableListModel::selectedIds()
     return m_selected.values();
 }
 
+void CheckableListModel::setSelected(const QSet<int> &ids)
+{
+    for(int i=0; i < rowCount(); i++){
+        int id = AppNetworkedJsonModel::jsonObject(i).value(dataColumn).toInt();
+        if(ids.contains(id))
+           setData(index(i,0),Qt::Checked,Qt::CheckStateRole);
+    }
+}
+
+void CheckableListModel::setCheckStateForAll(Qt::CheckState checkstate)
+{
+    for(int i=0; i < rowCount(); i++){
+           setData(index(i,0),checkstate,Qt::CheckStateRole);
+    }
+}
+
+void CheckableListModel::uncheckAll()
+{
+    setCheckStateForAll(Qt::Unchecked);
+}
+
 QHash<int, QByteArray> CheckableListModel::roleNames() const
 {
     QHash<int,QByteArray> roles=AppNetworkedJsonModel::roleNames();
@@ -102,11 +125,7 @@ QHash<int, QByteArray> CheckableListModel::roleNames() const
 
 void CheckableListModel::onDataRecevied()
 {
-    for(int i=0; i < rowCount(); i++){
-        int id = AppNetworkedJsonModel::jsonObject(i).value(dataColumn).toInt();
-        if(m_originalSelectedIds.contains(id))
-           setData(index(i,0),Qt::Checked,Qt::CheckStateRole);
-    }
+    setSelected(m_originalSelectedIds);
 }
 
 

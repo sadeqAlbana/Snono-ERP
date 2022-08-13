@@ -21,11 +21,16 @@ AppDialog{
         property string description;
         property real list_price;
         property real cost;
-        property variant taxes:[]
+        property var taxes:[] //this is the problem
     }
 
     onProductChanged: {
-
+        taxesModel.uncheckAll();
+        var ids=[];
+        product.taxes.forEach(tax => {
+                   ids.push(tax.id)
+                              });
+        taxesModel.setSelected(ids);
     }
 
     signal accepted();
@@ -93,8 +98,12 @@ AppDialog{
             product.list_price=parseFloat(listPriceTF.input.text)
             product.cost=parseFloat(costTF.input.text)
             product.barcode=barcodeTF.input.text
-            if(taxesModel.selectedIds().length)
+            if(taxesModel.selectedIds().length){
+                console.log("idst: " + taxesModel.selectedIds())
                 product.taxes=taxesModel.selectedIds();
+                console.log("ptaxes: " + product.taxes)
+
+            }
 
 
         }

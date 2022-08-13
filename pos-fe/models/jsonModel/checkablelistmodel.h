@@ -28,6 +28,9 @@ public:
 
     Q_INVOKABLE QString selectedItems() const; //used for combobox display text
     Q_INVOKABLE QList<int> selectedIds();
+    Q_INVOKABLE void setSelected(const QSet<int> &ids);
+    Q_INVOKABLE void setCheckStateForAll(Qt::CheckState checkstate);
+    Q_INVOKABLE void uncheckAll();
 
 signals:
     void selectedItemsChanged();
