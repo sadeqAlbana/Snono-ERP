@@ -43,7 +43,7 @@
 
 class Code128
 {
-    typedef char * Symbol;
+    typedef const char * Symbol;
     enum Symbols { SYM_CodeC=99, SYM_CodeB = 100, SYM_StartA=103, SYM_StartB, SYM_StartC, SYM_Stop, SYM_NA };
     static Code128::Symbol symbols[108];
 
