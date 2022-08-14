@@ -21,7 +21,9 @@
 
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
-
+#include <QDir>
+#include <QDirIterator>
+#include <QFontDatabase>
 
 
 int main(int argc, char *argv[])
@@ -47,6 +49,13 @@ int main(int argc, char *argv[])
 
     PosApplication a(argc, argv);
     PosSettings settings;
+
+    //first load font files
+    QDirIterator it(":/fonts", QStringList{{"*.ttf"}}, QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()){
+        QString next= it.next();
+        QFontDatabase::addApplicationFont(next);
+    }
 
     QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);
@@ -98,48 +107,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<ProductSalesReportModel>("App.Models", 1, 0, "ProductSalesReportModel");
 
     //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
-
-//    QPrinter printer(QPrinter::HighResolution);
-//    printer.setPrinterName("POS-80(copy of 2)");
-//    QPrinterInfo info(printer);
-//    qDebug()<<printer.width();
-//    qDebug()<<info.defaultPageSize();
-//    qDebug()<<info.supportedResolutions();
-//    auto sizes =info.supportedPageSizes();
-//    for(auto size : sizes){
-//        qDebug()<<size;
-//    }
-//    //EpsonPrinter *printer = new EpsonPrinter();
-
-//    qDebug()<<"count: "<<QSerialPortInfo::availablePorts().count();
-
-    //qDebug()<<"available: "<<QPrinterInfo::availablePrinterNames();
-
-//    QTimer timer;
-//    timer.singleShot(5000,[](){
-
-////        QJsonDocument doc=QJsonDocument::fromJson(R"({"cart_id":5,"created_at":"2021-12-19T12:55:24.000","customer_id":1,"customers":{"account_id":1001,"address":"N.A","created_at":"2021-12-16T10:37:31.000","deleted_at":"","email":"N.A","first_name":"N.A","id":1,"last_name":"N.A","name":"Customer","phone":"N.A","updated_at":""},"date":"2021-12-19T12:55:24.000","deleted_at":"","id":2,"journal_entry_id":55,"paid_amount":19087.5,"pos_order_items":[{"created_at":"2021-12-19T12:55:24.000","deleted_at":"","discount":0,"id":2,"order_id":2,"product_id":42,"products":{"barcode":"sw2106259185997506-l","category_id":1,"cost":10725,"costing_method":"FIFO","created_at":"2021-12-16T10:37:37.000","current_cost":10725,"deleted_at":"","description":"","flags":0,"id":42,"list_price":19087.5,"name":"SHEIN فستان نوم كامي زين تفاصيل حافة منديل شبكة - L","parent_id":0,"type":1,"updated_at":"2021-12-16T10:37:37.000"},"qty":1,"subtotal":19087.5,"total":19087.5,"unit_price":19087.5,"updated_at":"2021-12-19T12:55:24.000"}],"pos_session_id":1,"reference":"3dcc3168-0488-40c0-81dd-a4d1cd11b1d3","returned_amount":0,"tax_amount":0,"total":19087.5,"updated_at":"2021-12-19T12:55:24.000"})");
-//        CEpsonEscControl *m_ctrl=new CEpsonEscControl();
-//        m_ctrl->setPortName("COM1");
-//        if(!m_ctrl->openSerialPort(QSerialPort::WriteOnly)) {
-//            qDebug() << "open fails";
-//        }
-//        int sendBytes = m_ctrl->
-//                c_init()
-//                .c_addFont("im mark")
-//                .c_objLayout('c')
-//                .c_beginFontSize(2)
-//                .c_addFont("big font")
-//                .c_endFontSize()
-//                .c_lineSpace_b(2)
-//                .c_addFont("hello!!")
-//                .c_cutPaper(false,1,20)
-//                .sendBufferToPrinter();
-//        qDebug() << "actual send = " << sendBytes;
-
-//    });
-
-
 
 
 

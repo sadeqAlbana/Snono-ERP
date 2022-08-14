@@ -38,6 +38,8 @@ include(libs/QrCodeGenerator/QrCodeGenerator.pri)
 SOURCES += \
     api.cpp \
     appqmlnetworkaccessmanagerfactory.cpp \
+    code128.cpp \
+    code128item.cpp \
         main.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/barqlocationsmodel.cpp \
@@ -80,6 +82,8 @@ SOURCES += \
 HEADERS += \
     api.h \
     appqmlnetworkaccessmanagerfactory.h \
+    code128.h \
+    code128item.h \
     models/Models \
     models/appnetworkedjsonmodel.h \
     models/barqlocationsmodel.h \
@@ -130,7 +134,8 @@ include(../network-manager/network-manager.pri)
 
 RESOURCES += \
     images.qrc \
-    qml/qml.qrc
+    qml/qml.qrc \
+    fonts/fonts.qrc
 
 
 #target.path = ~/pos-fe

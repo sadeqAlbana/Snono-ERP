@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/fonts">
+        <file>EAN-13.ttf</file>
+        <file>code128.ttf</file>
+    </qresource>
+</RCC>

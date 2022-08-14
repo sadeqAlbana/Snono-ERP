@@ -21,6 +21,9 @@
 #include <iostream>
 #include <sstream>
 #include <QSvgRenderer>
+#include "code128.h"
+#include "code128item.h"
+#include <QGraphicsScene>
 std::string ReceiptGenerator::toSvgString(const qrcodegen::QrCode &qr, int border) {
     if (border < 0)
         throw std::domain_error("Border must be non-negative");
@@ -46,6 +49,20 @@ std::string ReceiptGenerator::toSvgString(const qrcodegen::QrCode &qr, int borde
     sb << "\" fill=\"#000000\"/>\n";
     sb << "</svg>\n";
     return sb.str();
+}
+
+QString ReceiptGenerator::encodeBarcode128(const QString &code)
+{
+    QString encoded;
+
+    // start set with B Code 104
+    encoded.prepend(QChar(codeToChar(CODE128_B_START)));
+    encoded.append(code);
+    encoded.append(QChar(calculateCheckCharacter(code)));
+
+    // end set with Stop Code 106
+    encoded.append(QChar(codeToChar(CODE128_STOP)));
+    return encoded;
 }
 
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
@@ -132,12 +149,40 @@ void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int
     qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(QString::number(orderId).toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
     std::string svgString = toSvgString(qr0, 4);  // See QrCodeGeneratorDemo
 
-    QSvgRenderer svg(QByteArray::fromStdString(svgString));
-    QPixmap qrPixmap(180,180);
-    QPainter qrPainter(&qrPixmap);
-    svg.render(&qrPainter);
-    qrPainter.end();
-    painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
+//    QSvgRenderer svg(QByteArray::fromStdString(svgString));
+//    QPixmap qrPixmap(180,180);
+//    QPainter qrPainter(&qrPixmap);
+//    svg.render(&qrPainter);
+//    qrPainter.end();
+//    painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
+
+
+
+
+    QFont barcodefont = QFont("Code 128", 46, QFont::Normal);
+    barcodefont.setLetterSpacing(QFont::AbsoluteSpacing,0.0);
+
+
+    Code128::BarCode barcode=Code128::encode("1");
+
+    QString encoded;
+    for(int i=0; i<barcode.length(); i++)
+    encoded.append((char)barcode.at(i));
+    painter.setFont(barcodefont);
+
+    painter.drawText(20,100,encoded);
+
+
+
+//    Code128Item item;
+//    painter.setFont(QFont());
+//    item.setPos(0,0);
+//    item.setWidth( 200 );
+//    item.setHeight( 80 );
+//    item.setText("1");
+//    item.update();
+//    item.paint(&painter,nullptr,nullptr);
+
 
     painter.end();//?
 
@@ -200,7 +245,7 @@ QImage ReceiptGenerator::generateImage(QJsonObject receiptData)
 
 QUrl ReceiptGenerator::sampleData()
 {
-    QJsonDocument doc=QJsonDocument::fromJson(R"({"cart_id":5,"created_at":"2021-12-19T12:55:24.000","customer_id":1,"customers":{"account_id":1001,"address":"Baghdad, Hay Alkhadraa","created_at":"2021-12-16T10:37:31.000","deleted_at":"","email":"N.A","first_name":"Sadeq","id":1,"last_name":"Albana","name":"Customer","phone":"07823815562","updated_at":""},"date":"2021-12-19T12:55:24.000","deleted_at":"","id":2,"journal_entry_id":55,"paid_amount":19087.5,"pos_order_items":[{"created_at":"2021-12-19T12:55:24.000","deleted_at":"","discount":0,"id":2,"order_id":2,"product_id":42,"products":{"barcode":"sw2106259185997506-l","category_id":1,"cost":10725,"costing_method":"FIFO","created_at":"2021-12-16T10:37:37.000","current_cost":10725,"deleted_at":"","description":"","flags":0,"id":42,"list_price":19087.5,"name":"SHEIN فستان نوم كامي زين تفاصيل حافة منديل شبكة - L","parent_id":0,"type":1,"updated_at":"2021-12-16T10:37:37.000"},"qty":1,"subtotal":19087.5,"total":19087.5,"unit_price":19087.5,"updated_at":"2021-12-19T12:55:24.000"}],"pos_session_id":1,"reference":"3dcc3168-0488-40c0-81dd-a4d1cd11b1d3","returned_amount":0,"tax_amount":0,"total":19087.5,"updated_at":"2021-12-19T12:55:24.000"})");
+    QJsonDocument doc=QJsonDocument::fromJson(R"({"cart_id":5,"created_at":"2021-12-19T12:55:24.000","customer_id":1,"customers":{"account_id":1001,"address":"Baghdad, Hay Alkhadraa","created_at":"2021-12-16T10:37:31.000","deleted_at":"","email":"N.A","first_name":"Sadeq","id":1,"last_name":"Albana","name":"Customer","phone":"07823815562","updated_at":""},"date":"2021-12-19T12:55:24.000","deleted_at":"","id":2,"journal_entry_id":55,"paid_amount":19087.5,"pos_order_items":[{"created_at":"2021-12-19T12:55:24.000","deleted_at":"","discount":0,"id":2,"order_id":2,"product_id":42,"products":{"barcode":"sw2106259185997506-l","category_id":1,"cost":10725,"costing_method":"FIFO","created_at":"2021-12-16T10:37:37.000","current_cost":10725,"deleted_at":"","description":"","flags":0,"id":993,"list_price":19087.5,"name":"SHEIN فستان نوم كامي زين تفاصيل حافة منديل شبكة - L","parent_id":0,"type":1,"updated_at":"2021-12-16T10:37:37.000"},"qty":1,"subtotal":19087.5,"total":19087.5,"unit_price":19087.5,"updated_at":"2021-12-19T12:55:24.000"}],"pos_session_id":1,"reference":"3dcc3168-0488-40c0-81dd-a4d1cd11b1d3","returned_amount":0,"tax_amount":0,"total":19087.5,"updated_at":"2021-12-19T12:55:24.000"})");
     return generateReceiptUrl(doc.object());
 
 }
@@ -224,4 +269,52 @@ void ReceiptGenerator::printReceipt(QJsonObject receiptData)
     image=image.scaledToHeight(printer.height()*0.9,Qt::SmoothTransformation);
     painter.drawImage((printer.width()-image.width())/2,0,image);
     painter.end();
+}
+
+
+int ReceiptGenerator::calculateCheckCharacter(const QString &code)
+{
+    // convert code to utf8
+    QByteArray encapBarcode(code.toUtf8());
+
+    // calculate check character
+
+    // the sum starts with the B Code start character value
+    long long sum = CODE128_B_START;
+    int weight = 1; // Initial weight is 1
+
+    foreach(char ch, encapBarcode)
+    {
+        // calculate character code
+        const int code_char = charToCode(int(ch));
+
+        // add weighted code to sum
+        sum += code_char * weight;
+
+        weight++; // increment weight
+    }
+
+    // the check character is the modulo 103 of the sum
+    int remain = sum%103;
+
+    // calculate the font integer from the code integer
+    if (remain >= 95)
+    {
+        remain += 105;
+    }
+    else
+    {
+        remain += 32;
+    }
+    return remain;
+}
+
+int ReceiptGenerator::codeToChar(int code)
+{
+    return code + 105;
+}
+
+int ReceiptGenerator::charToCode(int ch)
+{
+    return ch - 32;
 }
