@@ -9,7 +9,6 @@ class QPainter;
 class QPrinter;
 #define CODE128_B_START 104
 #define CODE128_STOP 106
-#include "qrcodegen.hpp"
 class ReceiptGenerator : public QObject
 {
     Q_OBJECT
@@ -37,15 +36,7 @@ public:
 signals:
 
 private:
-    static std::string toSvgString(const qrcodegen::QrCode &qr, int border);
-    static QString encodeBarcode128(const QString &code);
 
-    static int calculateCheckCharacter(const QString &code);
-
-    static int codeToChar(int code);
-
-
-    static int charToCode(int ch);
 
 
 };

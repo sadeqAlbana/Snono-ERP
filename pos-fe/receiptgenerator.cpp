@@ -17,53 +17,12 @@
 //using namespace qrcodegen;
 #include <vector>
 #include <string>
-#include <ostream>
-#include <iostream>
-#include <sstream>
+
 #include <QSvgRenderer>
 #include "code128.h"
-#include "code128item.h"
 #include <QGraphicsScene>
-std::string ReceiptGenerator::toSvgString(const qrcodegen::QrCode &qr, int border) {
-    if (border < 0)
-        throw std::domain_error("Border must be non-negative");
-    if (border > INT_MAX / 2 || border * 2 > INT_MAX - qr.getSize())
-        throw std::overflow_error("Border too large");
+#include "utils.h"
 
-    std::ostringstream sb;
-    sb << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-    sb << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-    sb << "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 ";
-    sb << (qr.getSize() + border * 2) << " " << (qr.getSize() + border * 2) << "\" stroke=\"none\">\n";
-    sb << "\t<rect width=\"100%\" height=\"100%\" fill=\"#FFFFFF\"/>\n";
-    sb << "\t<path d=\"";
-    for (int y = 0; y < qr.getSize(); y++) {
-        for (int x = 0; x < qr.getSize(); x++) {
-            if (qr.getModule(x, y)) {
-                if (x != 0 || y != 0)
-                    sb << " ";
-                sb << "M" << (x + border) << "," << (y + border) << "h1v1h-1z";
-            }
-        }
-    }
-    sb << "\" fill=\"#000000\"/>\n";
-    sb << "</svg>\n";
-    return sb.str();
-}
-
-QString ReceiptGenerator::encodeBarcode128(const QString &code)
-{
-    QString encoded;
-
-    // start set with B Code 104
-    encoded.prepend(QChar(codeToChar(CODE128_B_START)));
-    encoded.append(code);
-    encoded.append(QChar(calculateCheckCharacter(code)));
-
-    // end set with Stop Code 106
-    encoded.append(QChar(codeToChar(CODE128_STOP)));
-    return encoded;
-}
 
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
@@ -147,7 +106,7 @@ void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int
     painter.drawText(QRect(0,height-40, 575,40),Qt::AlignCenter, "0783 666 5444");
 
     qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(QString::number(orderId).toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
-    std::string svgString = toSvgString(qr0, 4);  // See QrCodeGeneratorDemo
+    std::string svgString = QrCode::toSvgString(qr0, 4);  // See QrCodeGeneratorDemo
 
 //    QSvgRenderer svg(QByteArray::fromStdString(svgString));
 //    QPixmap qrPixmap(180,180);
@@ -272,49 +231,3 @@ void ReceiptGenerator::printReceipt(QJsonObject receiptData)
 }
 
 
-int ReceiptGenerator::calculateCheckCharacter(const QString &code)
-{
-    // convert code to utf8
-    QByteArray encapBarcode(code.toUtf8());
-
-    // calculate check character
-
-    // the sum starts with the B Code start character value
-    long long sum = CODE128_B_START;
-    int weight = 1; // Initial weight is 1
-
-    foreach(char ch, encapBarcode)
-    {
-        // calculate character code
-        const int code_char = charToCode(int(ch));
-
-        // add weighted code to sum
-        sum += code_char * weight;
-
-        weight++; // increment weight
-    }
-
-    // the check character is the modulo 103 of the sum
-    int remain = sum%103;
-
-    // calculate the font integer from the code integer
-    if (remain >= 95)
-    {
-        remain += 105;
-    }
-    else
-    {
-        remain += 32;
-    }
-    return remain;
-}
-
-int ReceiptGenerator::codeToChar(int code)
-{
-    return code + 105;
-}
-
-int ReceiptGenerator::charToCode(int ch)
-{
-    return ch - 32;
-}
