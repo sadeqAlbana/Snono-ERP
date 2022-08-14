@@ -32,6 +32,7 @@ CONFIG += c++11
 android: include(C:/Users/sadeq/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
 include(posnumpadwidget/posnumpadwidget.pri)
 include(../json-model/json-model.pri)
+include(libs/QrCodeGenerator/QrCodeGenerator.pri)
 
 
 SOURCES += \

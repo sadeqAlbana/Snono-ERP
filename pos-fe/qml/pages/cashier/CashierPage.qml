@@ -399,7 +399,7 @@ Page{
 
             SwitchDelegate{
                 id: deliverySwitch
-                checked: true
+                checked: false
                 text: qsTr("Barq Delivery")
                 icon.source: "qrc:/images/icons/barq_logo.png"
                 icon.color: "transparent"

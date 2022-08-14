@@ -22,6 +22,8 @@
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
 
+
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");

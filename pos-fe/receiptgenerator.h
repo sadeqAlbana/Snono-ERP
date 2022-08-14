@@ -7,6 +7,7 @@
 #include <QImage>
 class QPainter;
 class QPrinter;
+#include "qrcodegen.hpp"
 class ReceiptGenerator : public QObject
 {
     Q_OBJECT
@@ -32,6 +33,10 @@ public:
     Q_INVOKABLE static void printReceipt(QJsonObject receiptData);
 
 signals:
+
+private:
+    static std::string toSvgString(const qrcodegen::QrCode &qr, int border);
+
 
 };
 

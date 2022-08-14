@@ -12,6 +12,42 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPrinterInfo>
+
+#include "qrcodegen.hpp"
+//using namespace qrcodegen;
+#include <vector>
+#include <string>
+#include <ostream>
+#include <iostream>
+#include <sstream>
+#include <QSvgRenderer>
+std::string ReceiptGenerator::toSvgString(const qrcodegen::QrCode &qr, int border) {
+    if (border < 0)
+        throw std::domain_error("Border must be non-negative");
+    if (border > INT_MAX / 2 || border * 2 > INT_MAX - qr.getSize())
+        throw std::overflow_error("Border too large");
+
+    std::ostringstream sb;
+    sb << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    sb << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
+    sb << "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 ";
+    sb << (qr.getSize() + border * 2) << " " << (qr.getSize() + border * 2) << "\" stroke=\"none\">\n";
+    sb << "\t<rect width=\"100%\" height=\"100%\" fill=\"#FFFFFF\"/>\n";
+    sb << "\t<path d=\"";
+    for (int y = 0; y < qr.getSize(); y++) {
+        for (int x = 0; x < qr.getSize(); x++) {
+            if (qr.getModule(x, y)) {
+                if (x != 0 || y != 0)
+                    sb << " ";
+                sb << "M" << (x + border) << "," << (y + border) << "h1v1h-1z";
+            }
+        }
+    }
+    sb << "\" fill=\"#000000\"/>\n";
+    sb << "</svg>\n";
+    return sb.str();
+}
+
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -38,7 +74,8 @@ void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int
 
 
     //qDebug()<<"Test: "<<receiptData;
-    QString reference=receiptData["reference"].toString();
+    int orderId=receiptData["id"].toInt();
+    QString reference=QString("No. %1").arg(orderId);
     //qDebug()<<"Reference: " << reference;
     double taxAmount=receiptData["tax_amount"].toDouble();
     QString customer=receiptData["customers"].toObject()["name"].toString();
@@ -76,12 +113,32 @@ void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int
 
     font.setPixelSize(25);
     painter.setFont(font);
-    painter.drawText(QRect(20,height-120, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
-    painter.drawText(QRect(20,height-80, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
+    painter.drawText(QRect(20,height-220, 600,40),Qt::AlignLeft,"Taxes: " + Currency::formatString(taxAmount));
+    painter.drawText(QRect(20,height-180, 600,40),Qt::AlignLeft, "Total: " +  Currency::formatString(total));
+
     if(receiptData.contains("external_delivery")){
         double totalWithDelivery=total+receiptData["external_delivery"].toDouble();
-        painter.drawText(QRect(20,height-40, 600,40),Qt::AlignLeft, "Total With Delivery: " +  Currency::formatString(totalWithDelivery));
+        painter.drawText(QRect(20,height-140, 600,40),Qt::AlignLeft, "Total With Delivery: " +  Currency::formatString(totalWithDelivery));
+
     }
+
+    font.setPixelSize(22);
+    font.setBold(true);
+
+    painter.setFont(font);
+    painter.drawText(QRect(0,height-80, 575,40),Qt::AlignCenter, "رقم المتجر");
+    painter.drawText(QRect(0,height-40, 575,40),Qt::AlignCenter, "0783 666 5444");
+
+    qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(QString::number(orderId).toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
+    std::string svgString = toSvgString(qr0, 4);  // See QrCodeGeneratorDemo
+
+    QSvgRenderer svg(QByteArray::fromStdString(svgString));
+    QPixmap qrPixmap(180,180);
+    QPainter qrPainter(&qrPixmap);
+    svg.render(&qrPainter);
+    qrPainter.end();
+    painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
+
     painter.end();//?
 
 }
@@ -89,7 +146,7 @@ void ReceiptGenerator::create(QJsonObject receiptData, QPaintDevice *device, int
 int ReceiptGenerator::receiptHeight(const QJsonObject &receiptData)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
-    int height= 400+((items.count()+1)*55)+200;
+    int height= 400+((items.count()+1)*55)+300;
 
     if(receiptData.contains("external_delivery"))
         height+=40;
@@ -156,6 +213,7 @@ void ReceiptGenerator::printReceipt(QJsonObject receiptData)
     QImage image(575*10,receiptHeight(receiptData)*10,QImage::Format_Grayscale16);
     image.fill(Qt::white);
     printer.setPageSize(QPageSize::A5);
+    printer.setCopyCount(3);
     //printer.setFullPage(true);
 
 
