@@ -135,7 +135,8 @@ include(../network-manager/network-manager.pri)
 RESOURCES += \
     images.qrc \
     qml/qml.qrc \
-    fonts/fonts.qrc
+    fonts/fonts.qrc \
+    misc/receipt.qrc
 
 
 #target.path = ~/pos-fe

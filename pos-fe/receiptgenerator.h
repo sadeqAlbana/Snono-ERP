@@ -9,6 +9,7 @@ class QPainter;
 class QPrinter;
 #define CODE128_B_START 104
 #define CODE128_STOP 106
+#include <QTextDocument>
 class ReceiptGenerator : public QObject
 {
     Q_OBJECT
@@ -16,6 +17,8 @@ public:
     explicit ReceiptGenerator(QObject *parent = nullptr);
 
     static void create(QJsonObject receiptData, QPaintDevice *device,int scaleFactor=1);
+    Q_INVOKABLE static QString createNew(QJsonObject receiptData);
+
     static int receiptHeight(const QJsonObject &receiptData);
 
     static int centerStart(int canvasWidth, int rectWidth);
@@ -29,7 +32,7 @@ public:
     Q_INVOKABLE static QUrl generateReceiptUrl(QJsonObject receiptData);
     Q_INVOKABLE static QImage generateImage(QJsonObject receiptData);
 
-    Q_INVOKABLE static QUrl sampleData();
+    Q_INVOKABLE static QString sampleData();
 
     Q_INVOKABLE static void printReceipt(QJsonObject receiptData);
 

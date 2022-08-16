@@ -22,20 +22,26 @@ Card{
 
 
 
-        Image{
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.margins: 20
-            //width: sourceSize.width
-            //height: sourceSize.height
+//        Image{
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.top: parent.top
+//            anchors.margins: 20
+//            //width: sourceSize.width
+//            //height: sourceSize.height
 
-            anchors.fill: parent;
-            fillMode: Image.PreserveAspectFit
-            source: ReceiptGenerator.sampleData();
+//            anchors.fill: parent;
+//            fillMode: Image.PreserveAspectFit
+//            source: ReceiptGenerator.sampleData();
 
 
 
-        }
+//        }
+
+    TextArea{
+        anchors.fill: parent;
+        textFormat: TextEdit.RichText
+        text: ReceiptGenerator.sampleData();
+    }
 
 
 }
