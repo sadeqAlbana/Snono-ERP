@@ -174,8 +174,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
         const QString baseName = "pos-fe_" + QLocale("ar-IQ").name();
         qDebug()<<"Base name: " << baseName;
-        QTranslator *translator= new QTranslator(qApp); //memory leak !
-        qDebug()<<"translator load: "<< translator->load(":/i18n/" + baseName);
+        QTranslator translator;
+        qDebug()<<"translator load: "<< translator.load(":/i18n/" + baseName);
 
 
 
@@ -237,8 +237,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeAttribute("width","32%");
                     stream.writeAttribute("style","vertical-align: middle;");
                             stream.writeStartElement("img");
-                            stream.writeAttribute("width","75");
-                            stream.writeAttribute("height","75");
+                            stream.writeAttribute("width","50");
+                            stream.writeAttribute("height","50");
                             stream.writeAttribute("src", "qr_code");
                             stream.writeEndElement(); //img
                     stream.writeEndElement(); //th
@@ -246,8 +246,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("th");
                     stream.writeAttribute("width","36%");
                             stream.writeStartElement("img");
-                            stream.writeAttribute("width","100");
-                            stream.writeAttribute("height","100");
+                            stream.writeAttribute("width","75");
+                            stream.writeAttribute("height","75");
                             stream.writeAttribute("src", "logo_image");
                             stream.writeEndElement(); //img
                     stream.writeEndElement(); //th
@@ -256,8 +256,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeAttribute("width","32%");
                     stream.writeAttribute("style","vertical-align: middle;");
                             stream.writeStartElement("img");
-                            stream.writeAttribute("width","100");
-                            stream.writeAttribute("height","40");
+                            stream.writeAttribute("width","75");
+                            stream.writeAttribute("height","30");
                             stream.writeAttribute("src", "barcode_img");
                             stream.writeEndElement(); //img
                     stream.writeEndElement(); //th
@@ -272,7 +272,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
 
             stream.writeStartElement("table");
-            stream.writeAttribute("class","boxed");
+            stream.writeAttribute("class","boxed center");
 
             stream.writeAttribute("style", "width: 100%;");
                 stream.writeStartElement("tbody");
@@ -281,9 +281,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                 stream.writeStartElement("tr");
                 stream.writeAttribute("class","boxed");
                     stream.writeStartElement("th");
-                    stream.writeAttribute("class","boxed");
+                    stream.writeAttribute("class","boxed center-align");
                     stream.writeAttribute("width","25%");
-                    stream.writeCharacters(tr("No."));
+                    stream.writeCharacters(translator.translate("receipt","No."));
                     stream.writeEndElement(); //th
                     stream.writeStartElement("td");
                     stream.writeAttribute("class","boxed");
@@ -295,9 +295,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("tr");
                     stream.writeAttribute("class","boxed");
                         stream.writeStartElement("th");
-                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("class","boxed center-align");
                         stream.writeAttribute("width","25%");
-                        stream.writeCharacters(tr("Date"));
+                        stream.writeCharacters(translator.translate("receipt","Date"));
                         stream.writeEndElement(); //th
                         stream.writeStartElement("td");
                         stream.writeAttribute("class","boxed");
@@ -309,9 +309,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("tr");
                     stream.writeAttribute("class","boxed");
                         stream.writeStartElement("th");
-                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("class","boxed center-align");
                         stream.writeAttribute("width","25%");
-                        stream.writeCharacters(tr("Name:"));
+                        stream.writeCharacters(translator.translate("receipt","Name"));
                         stream.writeEndElement(); //th
                         stream.writeStartElement("td");
                         stream.writeAttribute("class","boxed");
@@ -323,9 +323,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("tr");
                     stream.writeAttribute("class","boxed");
                         stream.writeStartElement("th");
-                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("class","boxed center-align");
                         stream.writeAttribute("width","25%");
-                        stream.writeCharacters(tr("Address"));
+                        stream.writeCharacters(translator.translate("receipt","Address"));
                         stream.writeEndElement(); //th
                         stream.writeStartElement("td");
                         stream.writeAttribute("class","boxed");
@@ -337,9 +337,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("tr");
                     stream.writeAttribute("class","boxed");
                         stream.writeStartElement("th");
-                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("class","boxed center-align");
                         stream.writeAttribute("width","25%");
-                        stream.writeCharacters(tr("Phone"));
+                        stream.writeCharacters(translator.translate("receipt","Phone"));
                         stream.writeEndElement(); //th
                         stream.writeStartElement("td");
                         stream.writeAttribute("class","boxed");
@@ -351,9 +351,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                     stream.writeStartElement("tr");
                     stream.writeAttribute("class","boxed");
                         stream.writeStartElement("th");
-                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("class","boxed center-align");
                         stream.writeAttribute("width","25%");
-                        stream.writeCharacters(tr("Notes"));
+                        stream.writeCharacters(translator.translate("receipt","Notes"));
                         stream.writeEndElement(); //th
                         stream.writeStartElement("td");
                         stream.writeAttribute("class","boxed");
@@ -368,7 +368,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
             stream.writeStartElement("h2");
             stream.writeAttribute("align","center");
-            stream.writeCharacters("Original Receipt");
+            stream.writeCharacters(translator.translate("receipt","Original Receipt"));
             stream.writeEndElement(); //h2
 
 
@@ -383,37 +383,37 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","25%");
-                     stream.writeCharacters(translator->translate("receipt","Item"));
+                     stream.writeCharacters(translator.translate("receipt","Item"));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","15%");
-                     stream.writeCharacters(tr("Price"));
+                     stream.writeCharacters(translator.translate("receipt","Price"));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","10%");
-                     stream.writeCharacters(tr("Qty"));
+                     stream.writeCharacters(translator.translate("receipt","Qty"));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","10%");
-                     stream.writeCharacters(tr("Disc."));
+                     stream.writeCharacters(translator.translate("receipt","Disc."));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","20%");
-                     stream.writeCharacters(tr("Subtotal"));
+                     stream.writeCharacters(translator.translate("receipt","Subtotal"));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","20%");
-                     stream.writeCharacters(tr("Total"));
+                     stream.writeCharacters(translator.translate("receipt","Total"));
                      stream.writeEndElement(); //th
                  stream.writeEndElement(); //tr
          stream.writeEndElement(); //thead
@@ -442,23 +442,11 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
          }
 
          //receipt totals
-         stream.writeStartElement("tr");
-            stream.writeStartElement("th");
-            stream.writeAttribute("class","line left");
-            stream.writeCharacters("Delivery");
-            stream.writeEndElement(); //th
-
-            stream.writeStartElement("th");
-            stream.writeAttribute("class","line left");
-            stream.writeAttribute("colspan","5");
-            stream.writeCharacters(Currency::formatString(deliveryFee));
-            stream.writeEndElement(); //th
-         stream.writeEndElement(); //tr
 
          stream.writeStartElement("tr");
             stream.writeStartElement("th");
             stream.writeAttribute("class","dashed left");
-            stream.writeCharacters("Total");
+            stream.writeCharacters(translator.translate("receipt","Total"));
             stream.writeEndElement(); //th
 
             stream.writeStartElement("th");
@@ -471,7 +459,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
          stream.writeStartElement("tr");
             stream.writeStartElement("th");
             stream.writeAttribute("class","dashed-bottom left");
-            stream.writeCharacters("Total + Delivery");
+            stream.writeCharacters(translator.translate("receipt","Total + Delivery"));
             stream.writeEndElement(); //th
 
             stream.writeStartElement("th");
@@ -493,13 +481,54 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
      stream.writeStartElement("p");
      stream.writeAttribute("class","receipt");
-     stream.writeCharacters(tr("Thank you for chosing Shein IQ"));
+     stream.writeCharacters(translator.translate("receipt","Thank you for choosing Shein IQ"));
      stream.writeEndElement(); //p
 
      stream.writeStartElement("p");
      stream.writeAttribute("class","receipt");
      stream.writeCharacters("fb.com/sheiniq");
      stream.writeEndElement(); //p
+
+     stream.writeStartElement("p");
+     stream.writeAttribute("class","receipt");
+     stream.writeCharacters(translator.translate("receipt","Please Return each item to it's original bag"));
+     stream.writeEndElement(); //p
+
+
+     stream.writeStartElement("table");
+     stream.writeAttribute("width","100%");
+         stream.writeStartElement("tr");
+
+             stream.writeStartElement("th");
+             stream.writeAttribute("width","32%");
+             stream.writeAttribute("style","vertical-align: middle;");
+                     stream.writeStartElement("img");
+                     stream.writeAttribute("width","50");
+                     stream.writeAttribute("height","50");
+                     stream.writeAttribute("src", "qr_code");
+                     stream.writeEndElement(); //img
+             stream.writeEndElement(); //th
+
+             stream.writeStartElement("th");
+             stream.writeAttribute("width","36%");
+
+             stream.writeEndElement(); //th
+
+             stream.writeStartElement("th");
+             stream.writeAttribute("width","32%");
+             stream.writeAttribute("style","vertical-align: middle;");
+                     stream.writeStartElement("img");
+                     stream.writeAttribute("width","75");
+                     stream.writeAttribute("height","30");
+                     stream.writeAttribute("src", "barcode_img");
+                     stream.writeEndElement(); //img
+             stream.writeEndElement(); //th
+
+         stream.writeEndElement(); //tr
+
+     stream.writeEndElement(); //table
+
+
 
      stream.writeEndElement(); //footer
 

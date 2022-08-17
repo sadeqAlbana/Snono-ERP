@@ -75,7 +75,7 @@
     <message>
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="54"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الاسم</translation>
     </message>
     <message>
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="55"/>
@@ -631,7 +631,7 @@
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="55"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الاسم</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="56"/>
@@ -694,7 +694,7 @@
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="51"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الاسم</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="52"/>
@@ -856,64 +856,52 @@
         <translation type="vanished">الاسم</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="391"/>
         <source>Price</source>
-        <translation>السعر</translation>
+        <translation type="vanished">السعر</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="397"/>
         <source>Qty</source>
-        <translation>العدد</translation>
+        <translation type="vanished">العدد</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="403"/>
         <source>Disc.</source>
-        <translation>التخفيض</translation>
+        <translation type="vanished">التخفيض</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="409"/>
         <source>Subtotal</source>
-        <translation>الحاصل</translation>
+        <translation type="vanished">الحاصل</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="415"/>
         <source>Total</source>
-        <translation>المجموع</translation>
+        <translation type="vanished">المجموع</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="285"/>
         <source>No.</source>
-        <translation>الوصل</translation>
+        <translation type="vanished">الوصل</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="299"/>
         <source>Date</source>
-        <translation>التاريخ</translation>
+        <translation type="vanished">التاريخ</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="313"/>
         <source>Name:</source>
-        <translation>الاسم</translation>
+        <translation type="vanished">الاسم</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="327"/>
         <source>Address</source>
-        <translation>العنوان</translation>
+        <translation type="vanished">العنوان</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="341"/>
         <source>Phone</source>
-        <translation>الهاتف</translation>
+        <translation type="vanished">الهاتف</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="355"/>
         <source>Notes</source>
-        <translation>ملاحضات</translation>
+        <translation type="vanished">ملاحضات</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="495"/>
         <source>Thank you for chosing Shein IQ</source>
-        <translation>شكراً لشرائكم من Shein IQ</translation>
+        <translation type="vanished">شكراً لشرائكم من Shein IQ</translation>
     </message>
 </context>
 <context>
@@ -1143,9 +1131,89 @@
 <context>
     <name>receipt</name>
     <message>
-        <location filename="../receiptgenerator.cpp" line="385"/>
+        <location filename="../receiptgenerator.cpp" line="286"/>
+        <source>No.</source>
+        <translation>رقم الوصل</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="300"/>
+        <source>Date</source>
+        <translation>التاريخ</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="314"/>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="328"/>
+        <source>Address</source>
+        <translation>العنوان</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="342"/>
+        <source>Phone</source>
+        <translation>الهاتف</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="356"/>
+        <source>Notes</source>
+        <translation>الملاحظات</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="371"/>
+        <source>Original Receipt</source>
+        <translation>التفاصيل</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="386"/>
         <source>Item</source>
         <translation>الاسم</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="392"/>
+        <source>Price</source>
+        <translation>السعر</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="398"/>
+        <source>Qty</source>
+        <translation>العدد</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="404"/>
+        <source>Disc.</source>
+        <translation>التخفيض</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="410"/>
+        <source>Subtotal</source>
+        <translation>الحاصل</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="416"/>
+        <location filename="../receiptgenerator.cpp" line="449"/>
+        <source>Total</source>
+        <translation>المجموع</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="494"/>
+        <source>Please Return each item to it&apos;s original bag</source>
+        <translation>عند القياس يرجى إعادة كل قطعة الى كيسها الأصلي</translation>
+    </message>
+    <message>
+        <source>Delivery</source>
+        <translation type="vanished">التوصيل</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="462"/>
+        <source>Total + Delivery</source>
+        <translation>السعر مع التوصل</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="484"/>
+        <source>Thank you for choosing Shein IQ</source>
+        <translation>شكراً لاختياركم Shein IQ</translation>
     </message>
 </context>
 </TS>

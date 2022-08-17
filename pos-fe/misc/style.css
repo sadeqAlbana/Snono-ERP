@@ -29,9 +29,7 @@
             text-align: center;
         }
 
-        .center-align {
-            text-align: center;
-        }
+
 
         .receipt {
             font-size: medium;
@@ -66,11 +64,15 @@
 .boxed  {
     border: 1px solid black;
     border-collapse: collapse;
-    left-padding: 5px;
+    padding-left: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     text-align: left;
 }
 
-
+.center-align {
+    text-align: center;
+}
         .left{
             text-align: left;
         }
