@@ -28,6 +28,7 @@
 #include <QFile>
 #include <QTranslator>
 #include <QApplication>
+#include <QStandardPaths>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -186,7 +187,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
     QByteArray css=file.readAll();
     file.close();
-    doc.setDefaultStyleSheet(css);
+    //doc.setDefaultStyleSheet(css);
 
     doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
@@ -225,7 +226,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 //    stream.writeAttribute("dir","rtl");
 //    stream.writeAttribute("lang","ar");
     stream.writeStartElement("head");
-//    stream.writeTextElement("style",css);
+    stream.writeTextElement("style",css);
     stream.writeEndElement(); //head
 
         stream.writeStartElement("body");
@@ -540,14 +541,19 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
      doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
      doc.setHtml(text);
 
-     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-//     printer.setPageMargins(QMarginsF(0,0,0,0));
-//     printer.setFullPage(true);
-     printer.setPageSize(QPageSize(QPageSize::A5));
+//     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+////     printer.setPageMargins(QMarginsF(0,0,0,0));
+////     printer.setFullPage(true);
+//     printer.setPageSize(QPageSize(QPageSize::A5));
+//     doc.print(&printer);
+
+     QPrinter printer(QPrinter::HighResolution);
+     printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+     printer.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+"/tmp.pdf");
+     qDebug()<<"path: " <<printer.outputFileName();
      doc.print(&printer);
+     return printer.outputFileName();
 
-
-     return doc.toHtml();
 
 }
 
