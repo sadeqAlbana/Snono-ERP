@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ar_IQ">
 <context>
+    <name></name>
+    <message>
+        <source>Item</source>
+        <translation type="obsolete">الاسم</translation>
+    </message>
+</context>
+<context>
     <name>AccountsPage</name>
     <message>
         <location filename="../qml/pages/Accounting/AccountsPage.qml" line="18"/>
@@ -804,7 +811,7 @@
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="52"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">المجموع</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="77"/>
@@ -845,73 +852,66 @@
 <context>
     <name>ReceiptGenerator</name>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="376"/>
         <source>Item</source>
-        <translation>الاسم</translation>
+        <translation type="vanished">الاسم</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="382"/>
+        <location filename="../receiptgenerator.cpp" line="391"/>
         <source>Price</source>
         <translation>السعر</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="388"/>
+        <location filename="../receiptgenerator.cpp" line="397"/>
         <source>Qty</source>
         <translation>العدد</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="394"/>
+        <location filename="../receiptgenerator.cpp" line="403"/>
         <source>Disc.</source>
         <translation>التخفيض</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="400"/>
+        <location filename="../receiptgenerator.cpp" line="409"/>
         <source>Subtotal</source>
         <translation>الحاصل</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="212"/>
-        <location filename="../receiptgenerator.cpp" line="406"/>
+        <location filename="../receiptgenerator.cpp" line="415"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="276"/>
+        <location filename="../receiptgenerator.cpp" line="285"/>
         <source>No.</source>
         <translation>الوصل</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="290"/>
+        <location filename="../receiptgenerator.cpp" line="299"/>
         <source>Date</source>
         <translation>التاريخ</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="304"/>
+        <location filename="../receiptgenerator.cpp" line="313"/>
         <source>Name:</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="318"/>
+        <location filename="../receiptgenerator.cpp" line="327"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="332"/>
+        <location filename="../receiptgenerator.cpp" line="341"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="346"/>
+        <location filename="../receiptgenerator.cpp" line="355"/>
         <source>Notes</source>
         <translation>ملاحضات</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="486"/>
+        <location filename="../receiptgenerator.cpp" line="495"/>
         <source>Thank you for chosing Shein IQ</source>
         <translation>شكراً لشرائكم من Shein IQ</translation>
     </message>
@@ -1138,6 +1138,14 @@
         <location filename="../qml/main.qml" line="13"/>
         <source>POS</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>receipt</name>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="385"/>
+        <source>Item</source>
+        <translation>الاسم</translation>
     </message>
 </context>
 </TS>

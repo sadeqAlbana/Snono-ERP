@@ -73,7 +73,6 @@ void AppNetworkedJsonModel::setUsePagination(bool newUsePagination)
         return;
     m_usePagination = newUsePagination;
 
-    qDebug()<<"use pagination changed !";
     emit usePaginationChanged();
 }
 
@@ -107,7 +106,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     }
 
     QJsonArray data=filterData(reply->json("data").toArray());
-    qDebug()<<"data size: " << reply->json("data").toArray().size();
+//    qDebug()<<"data size: " << reply->json("data").toArray().size();
     if(m_usePagination){
         if(m_currentPage<=1){
             setupData(data);

@@ -28,7 +28,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 
-
 android: include(C:/Users/sadeq/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
 include(posnumpadwidget/posnumpadwidget.pri)
 include(../json-model/json-model.pri)
@@ -140,6 +139,9 @@ RESOURCES += \
 
 TRANSLATIONS += \
     language/pos-fe_ar_IQ.ts
+
+CONFIG += lrelease
+CONFIG += embed_translations
 
 #target.path = ~/pos-fe
 #INSTALLS += target

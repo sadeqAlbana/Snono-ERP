@@ -27,6 +27,7 @@
 #include <QXmlStreamWriter>
 #include <QFile>
 #include <QTranslator>
+#include <QApplication>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -172,8 +173,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
     //painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
 
         const QString baseName = "pos-fe_" + QLocale("ar-IQ").name();
-        QTranslator *translator= new QTranslator(); //memory leak !
-        translator->load(":/i18n/" + baseName);
+        qDebug()<<"Base name: " << baseName;
+        QTranslator *translator= new QTranslator(qApp); //memory leak !
+        qDebug()<<"translator load: "<< translator->load(":/i18n/" + baseName);
 
 
 
@@ -217,7 +219,6 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
     QString text;
     QXmlStreamWriter stream(&text);
-    QStringList headers{tr("Item"),tr("Price"),tr("Qty"),tr("Disc."),tr("Subtotal"),tr("Total")};
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("html");
@@ -382,7 +383,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
                      stream.writeStartElement("th");
                      stream.writeAttribute("class","heading");
                      stream.writeAttribute("width","25%");
-                     stream.writeCharacters(tr("Item"));
+                     stream.writeCharacters(translator->translate("receipt","Item"));
                      stream.writeEndElement(); //th
 
                      stream.writeStartElement("th");
