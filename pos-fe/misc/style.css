@@ -63,6 +63,14 @@
             border-top: 1px solid black !important;
         }
 
+.boxed  {
+    border: 1px solid black;
+    border-collapse: collapse;
+    left-padding: 5px;
+    text-align: left;
+}
+
+
         .left{
             text-align: left;
         }

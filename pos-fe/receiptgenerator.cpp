@@ -26,6 +26,7 @@
 #include <QTextDocument>
 #include <QXmlStreamWriter>
 #include <QFile>
+#include <QTranslator>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -147,7 +148,6 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
     QJsonArray items=receiptData["pos_order_items"].toArray();
 
     QImage logo(":/images/icons/SheinIQ-circule.png");
-    logo=logo.scaledToHeight(150);
 
 
     int orderId=receiptData["id"].toInt();
@@ -171,8 +171,15 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
     //painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
 
+        const QString baseName = "pos-fe_" + QLocale("ar-IQ").name();
+        QTranslator *translator= new QTranslator(); //memory leak !
+        translator->load(":/i18n/" + baseName);
+
+
+
 
     QTextDocument doc;
+
     QFile file(":/receipt/style.css");
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
     QByteArray css=file.readAll();
@@ -186,20 +193,20 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
 
     QSvgRenderer svg(QByteArray::fromStdString(svgString));
-    QPixmap qrPixmap(1000,1000);
+    QPixmap qrPixmap(750,750);
     QPainter qrPainter(&qrPixmap);
     svg.render(&qrPainter);
     qrPainter.end();
 
     doc.addResource(QTextDocument::ImageResource,QUrl("qr_code"),qrPixmap);
 
-    QImage barcodeImg(100,40,QImage::Format_RGB32);
+    QImage barcodeImg(200,80,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
     item.setPos(0,0);
-    item.setWidth( 100 );
-    item.setHeight( 40 );
+    item.setWidth( barcodeImg.width() );
+    item.setHeight( barcodeImg.height() );
     item.setText(QString::number(orderId));
     item.update();
     item.paint(&imgPainter,nullptr,nullptr);
@@ -214,33 +221,39 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("html");
+//    stream.writeAttribute("dir","rtl");
+//    stream.writeAttribute("lang","ar");
     stream.writeStartElement("head");
 //    stream.writeTextElement("style",css);
     stream.writeEndElement(); //head
 
         stream.writeStartElement("body");
-            stream.writeStartElement("table"); //row
+            stream.writeStartElement("table");
             stream.writeAttribute("width","100%");
                 stream.writeStartElement("tr");
-                stream.writeAttribute("style","text-align:center");
 
                     stream.writeStartElement("th");
+                    stream.writeAttribute("width","32%");
+                    stream.writeAttribute("style","vertical-align: middle;");
                             stream.writeStartElement("img");
-                            stream.writeAttribute("width","50");
-                            stream.writeAttribute("height","50");
+                            stream.writeAttribute("width","75");
+                            stream.writeAttribute("height","75");
                             stream.writeAttribute("src", "qr_code");
                             stream.writeEndElement(); //img
                     stream.writeEndElement(); //th
 
                     stream.writeStartElement("th");
+                    stream.writeAttribute("width","36%");
                             stream.writeStartElement("img");
-                            stream.writeAttribute("width","75");
-                            stream.writeAttribute("height","75");
+                            stream.writeAttribute("width","100");
+                            stream.writeAttribute("height","100");
                             stream.writeAttribute("src", "logo_image");
                             stream.writeEndElement(); //img
                     stream.writeEndElement(); //th
 
                     stream.writeStartElement("th");
+                    stream.writeAttribute("width","32%");
+                    stream.writeAttribute("style","vertical-align: middle;");
                             stream.writeStartElement("img");
                             stream.writeAttribute("width","100");
                             stream.writeAttribute("height","40");
@@ -254,34 +267,100 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 
 
 
-            stream.writeTextElement("h1",QString("No# : %1").arg(orderId));
 
 
 
             stream.writeStartElement("table");
+            stream.writeAttribute("class","boxed");
+
             stream.writeAttribute("style", "width: 100%;");
                 stream.writeStartElement("tbody");
+                stream.writeAttribute("class","boxed");
+
+                stream.writeStartElement("tr");
+                stream.writeAttribute("class","boxed");
+                    stream.writeStartElement("th");
+                    stream.writeAttribute("class","boxed");
+                    stream.writeAttribute("width","25%");
+                    stream.writeCharacters(tr("No."));
+                    stream.writeEndElement(); //th
+                    stream.writeStartElement("td");
+                    stream.writeAttribute("class","boxed");
+                    stream.writeAttribute("width","75%");
+                    stream.writeCharacters(QString::number(orderId));
+                    stream.writeEndElement(); //td
+                stream.writeEndElement(); //tr
+
                     stream.writeStartElement("tr");
+                    stream.writeAttribute("class","boxed");
+                        stream.writeStartElement("th");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","25%");
+                        stream.writeCharacters(tr("Date"));
+                        stream.writeEndElement(); //th
                         stream.writeStartElement("td");
-                        stream.writeAttribute("width","40%");
-                        stream.writeCharacters(QString("Date : %1").arg(date));
-                        stream.writeEndElement(); //td
-                        stream.writeStartElement("td");
-                        stream.writeAttribute("width","60%");
-                        stream.writeCharacters(QString("Address : %1").arg(address));
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","75%");
+                        stream.writeCharacters(dt.date().toString(Qt::ISODate));
                         stream.writeEndElement(); //td
                     stream.writeEndElement(); //tr
 
                     stream.writeStartElement("tr");
+                    stream.writeAttribute("class","boxed");
+                        stream.writeStartElement("th");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","25%");
+                        stream.writeCharacters(tr("Name:"));
+                        stream.writeEndElement(); //th
                         stream.writeStartElement("td");
-                        stream.writeAttribute("width","40%");
-                        stream.writeCharacters(QString("Customer : %1").arg(customer));
-                        stream.writeEndElement(); //td
-                        stream.writeStartElement("td");
-                        stream.writeAttribute("width","60%");
-                        stream.writeCharacters(QString("Phone : %1").arg(phone));
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","75%");
+                        stream.writeCharacters(customer);
                         stream.writeEndElement(); //td
                     stream.writeEndElement(); //tr
+
+                    stream.writeStartElement("tr");
+                    stream.writeAttribute("class","boxed");
+                        stream.writeStartElement("th");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","25%");
+                        stream.writeCharacters(tr("Address"));
+                        stream.writeEndElement(); //th
+                        stream.writeStartElement("td");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","75%");
+                        stream.writeCharacters(address);
+                        stream.writeEndElement(); //td
+                    stream.writeEndElement(); //tr
+
+                    stream.writeStartElement("tr");
+                    stream.writeAttribute("class","boxed");
+                        stream.writeStartElement("th");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","25%");
+                        stream.writeCharacters(tr("Phone"));
+                        stream.writeEndElement(); //th
+                        stream.writeStartElement("td");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","75%");
+                        stream.writeCharacters(phone);
+                        stream.writeEndElement(); //td
+                    stream.writeEndElement(); //tr
+
+                    stream.writeStartElement("tr");
+                    stream.writeAttribute("class","boxed");
+                        stream.writeStartElement("th");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","25%");
+                        stream.writeCharacters(tr("Notes"));
+                        stream.writeEndElement(); //th
+                        stream.writeStartElement("td");
+                        stream.writeAttribute("class","boxed");
+                        stream.writeAttribute("width","75%");
+                        stream.writeCharacters(note);
+                        stream.writeEndElement(); //td
+                    stream.writeEndElement(); //tr
+
 
                 stream.writeEndElement(); //tbody
             stream.writeEndElement(); //table

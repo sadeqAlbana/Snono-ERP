@@ -138,6 +138,8 @@ RESOURCES += \
     fonts/fonts.qrc \
     misc/receipt.qrc
 
+TRANSLATIONS += \
+    language/pos-fe_ar_IQ.ts
 
 #target.path = ~/pos-fe
 #INSTALLS += target

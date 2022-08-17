@@ -24,7 +24,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QFontDatabase>
-
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -55,6 +55,14 @@ int main(int argc, char *argv[])
     while (it.hasNext()){
         QString next= it.next();
         QFontDatabase::addApplicationFont(next);
+    }
+
+
+    const QStringList uiLanguages = QStringList{"ar-IQ"};
+    for (const QString &locale : uiLanguages) {
+        const QString baseName = "pos-fe_" + QLocale(locale).name();
+        QTranslator *translator= new QTranslator(&a);
+        translator->load(":/i18n/" + baseName);
     }
 
     QIcon::setThemeName("CoreUI");
