@@ -2,8 +2,8 @@
 #include "posnetworkmanager.h"
 #include <QJsonDocument>
 #include <QFile>
-AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent) :
-    NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(true)
+AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent, bool usePagination) :
+    NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(usePagination)
 {
 
 }

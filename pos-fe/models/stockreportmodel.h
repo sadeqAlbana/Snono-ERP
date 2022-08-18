@@ -10,6 +10,9 @@ public:
     Q_INVOKABLE explicit StockReportModel(QObject *parent = nullptr);
     Q_INVOKABLE void print();
     Q_INVOKABLE void printCSV();
+
+private:
+    bool test;
 signals:
 
 };

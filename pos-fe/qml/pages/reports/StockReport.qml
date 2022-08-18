@@ -34,7 +34,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: AppDelegateChooser{}
+//            delegate: AppDelegateChooser{}
 
             actions: [
                 Action{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}

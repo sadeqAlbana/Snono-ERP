@@ -8,8 +8,8 @@
 #include <QBuffer>
 #include <QStandardPaths>
 #include <QTextStream>
-StockReportModel::StockReportModel(QObject *parent)
-    : AppNetworkedJsonModel{"/reports/stock",ColumnList(),parent}
+StockReportModel::StockReportModel(QObject *parent) :
+     AppNetworkedJsonModel("/reports/stock",ColumnList(),parent,false)
 {
 
 }
@@ -24,7 +24,7 @@ void StockReportModel::print()
     stream.writeStartDocument();
     stream.writeStartElement("html");
 
-    stream.writeTextElement("style","table, th,td,tr,h2 {border:1px solid black; text-align: center; width:100%}");
+    stream.writeTextElement("style","table, th,td,tr,h2 {border:1px solid black; text-align: center; width:100%; border-collapse: collapse;}");
 
     stream.writeTextElement("h2",QString("Stock Report for %1").arg(dt.toString()));
 

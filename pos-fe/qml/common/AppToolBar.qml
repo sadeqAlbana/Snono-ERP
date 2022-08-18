@@ -77,16 +77,17 @@ ToolBar {
             }//popup
         }//button
 
-//        CButton{
-//            Layout.preferredHeight: 55
-//            icon.name: "cil-list"
-//            palette: BrandInfo{}
+        CButton{
+            Layout.preferredHeight: 55
+            icon.name: "cil-filter"
+            palette: BrandInfo{}
 
-//            checkable: false
+            checkable: false
 
-//            text: qsTr("scroll down")
-//            onClicked: tableView.contentY=tableView.contentHeight
-//        }
+
+
+
+        }
 
         HorizontalSpacer{}
 
