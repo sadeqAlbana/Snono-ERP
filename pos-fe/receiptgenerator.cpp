@@ -29,6 +29,7 @@
 #include <QTranslator>
 #include <QApplication>
 #include <QStandardPaths>
+#include <QPdfDocument>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -37,7 +38,7 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 
 
 
-QString ReceiptGenerator::createNew(QJsonObject receiptData)
+QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
 
@@ -70,6 +71,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
         QTranslator translator;
         qDebug()<<"translator load: "<< translator.load(":/i18n/" + baseName);
 
+        bool rtl=translator.language().isRightToLeft();
 
 
 
@@ -115,7 +117,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("html");
-//    stream.writeAttribute("dir","rtl");
+//    if(rtl){
+//        stream.writeAttribute("dir","rtl");
+//    }
 //    stream.writeAttribute("lang","ar");
     stream.writeStartElement("head");
     stream.writeTextElement("style",css);
@@ -439,13 +443,23 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData)
 //     printer.setPageSize(QPageSize(QPageSize::A5));
 //     doc.print(&printer);
 
-     QPrinter printer(QPrinter::HighResolution);
-     printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+     QPrinter pdfPrinter(QPrinter::HighResolution);
+     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
      QString random=QString::number(QRandomGenerator::global()->generate());
-     printer.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
-     qDebug()<<"path: " <<printer.outputFileName();
-     doc.print(&printer);
-     return printer.outputFileName();
+     pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
+     qDebug()<<"path: " <<pdfPrinter.outputFileName();
+     doc.print(&pdfPrinter);
+
+     if(print){
+         QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+         printer.setCopyCount(3);
+         printer.setPageSize(QPageSize::A5);
+         doc.print(&printer);
+     }
+
+
+
+     return pdfPrinter.outputFileName();
 }
 
 
@@ -461,25 +475,5 @@ QString ReceiptGenerator::sampleData()
 
 }
 
-void ReceiptGenerator::printReceipt(QJsonObject receiptData)
-{
-//    QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-//    printer.setPageMargins(QMarginsF(0,0,0,0));
-
-//    QImage image(575*10,receiptHeight(receiptData)*10,QImage::Format_Grayscale16);
-//    image.fill(Qt::white);
-//    printer.setPageSize(QPageSize::A5);
-//    printer.setCopyCount(3);
-//    //printer.setFullPage(true);
-
-
-//    //qDebug()<<QPrinterInfo::defaultPrinter().printerName();
-//    create(receiptData,&image,10);
-
-//    QPainter painter(&printer);
-//    image=image.scaledToHeight(printer.height()*0.9,Qt::SmoothTransformation);
-//    painter.drawImage((printer.width()-image.width())/2,0,image);
-//    painter.end();
-}
 
 

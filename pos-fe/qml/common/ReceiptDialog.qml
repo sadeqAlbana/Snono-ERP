@@ -115,7 +115,7 @@ Popup {
                 Api.barqReceipt(reference); //need to deal with later!
                 receiptData["external_delivery"]=externalDelivery.currentValue;
             }
-            ReceiptGenerator.printReceipt(receiptData);
+            ReceiptGenerator.createNew(receiptData,true);
         }
 
     } //card end
