@@ -8,19 +8,19 @@ import "qrc:/CoreUI/components/tables"
 import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/buttons"
 import "qrc:/screens/Utils.js" as Utils
+import QtQuick.Pdf
 
 Popup {
     id: dialog
     modal: true
     anchors.centerIn: parent;
     parent: Overlay.overlay
-
-
     property var receiptData;
 //    margins: 0
 //    padding: 0
 //    closePolicy: Popup.NoAutoClose
-    width: parent.width*0.3
+//    width: parent.width*0.3
+    width: 620
     height: parent.height*0.8
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
@@ -42,15 +42,18 @@ Popup {
         anchors.fill: parent;
 
 
-        ScrollView{
+        Flickable{
             clip: true
             anchors.fill: parent;
-            contentWidth: availableWidth
-            Image {
-                anchors.fill: parent;
-                source: receiptData? ReceiptGenerator.generateReceiptUrl(receiptData) : ""
-                fillMode: Image.PreserveAspectFit
 
+            contentWidth: pdf.width; contentHeight: pdf.height
+
+            PdfPageView{
+                id: pdf
+//                anchors.fill: parent
+                width: sourceSize.width
+                height: sourceSize.height
+                document: PdfDocument{source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""}
             }
         }
 
@@ -109,7 +112,7 @@ Popup {
         function printReceipt(){
             if(externalDelivery.currentValue>0){
                 let reference=receiptData.reference;
-                Api.barqReceipt(reference);
+                Api.barqReceipt(reference); //need to deal with later!
                 receiptData["external_delivery"]=externalDelivery.currentValue;
             }
             ReceiptGenerator.printReceipt(receiptData);

@@ -1208,7 +1208,7 @@
     <message>
         <location filename="../receiptgenerator.cpp" line="462"/>
         <source>Total + Delivery</source>
-        <translation>السعر مع التوصل</translation>
+        <translation>السعر مع التوصيل</translation>
     </message>
     <message>
         <location filename="../receiptgenerator.cpp" line="484"/>

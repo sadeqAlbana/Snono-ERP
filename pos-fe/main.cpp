@@ -33,11 +33,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("pos_fe");
     qputenv("QML_XHR_ALLOW_FILE_READ","1");
 #ifndef Q_OS_ANDROID
-
     qputenv("QT_FONT_DPI","96");
 #endif
-    //settings.setValue("http_server_url","http://naaom.net:8000");
-    //settings.setValue("http_server_url","http://127.0.0.1:8000");
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -58,12 +55,12 @@ int main(int argc, char *argv[])
     }
 
 
-    const QStringList uiLanguages = QStringList{"ar-IQ"};
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "pos-fe_" + QLocale(locale).name();
-        QTranslator *translator= new QTranslator(&a);
-        translator->load(":/i18n/" + baseName);
-    }
+//    const QStringList uiLanguages = QStringList{"ar-IQ"};
+//    for (const QString &locale : uiLanguages) {
+//        const QString baseName = "pos-fe_" + QLocale(locale).name();
+//        QTranslator *translator= new QTranslator(&a);
+//        translator->load(":/i18n/" + baseName);
+//    }
 
     QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);
@@ -81,8 +78,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("Settings",&settings);
     engine.rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
-//    TestPalette pal;
-//    engine.rootContext()->setContextProperty("Pal",pal);
+
 
 
     qmlRegisterType<AccountsModel>("App.Models", 1, 0, "AccountsModel");
@@ -114,7 +110,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<StockReportModel>("App.Models", 1, 0, "StockReportModel");
     qmlRegisterType<ProductSalesReportModel>("App.Models", 1, 0, "ProductSalesReportModel");
 
-    //qmlRegisterType<TestPalette>("test.palettes", 1, 0, "TestPalette");
 
 
 
