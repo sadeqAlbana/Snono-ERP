@@ -112,6 +112,10 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
+
+    QJsonArray rtable{
+        QJsonObject{{"key",""}}
+    };
     QString text;
     QXmlStreamWriter stream(&text);
     stream.setAutoFormatting(true);
@@ -324,9 +328,12 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
              QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
              QString qty=QString::number(item["qty"].toDouble());
              QString discount=QString::number(item["discount"].toDouble())+"%";
-
              QString subtotal=Currency::formatString(item["subtotal"].toDouble());
              QString total=Currency::formatString(item["total"].toDouble());
+
+             QJsonObject tableRow{{"description",description},
+                                  {"unitPrice",unitPrice},{"qty",qty},{"discount",discount},
+                                  {"subtotal",subtotal},{"total",total}};
 
              stream.writeTextElement("td",description);
              stream.writeTextElement("td", unitPrice);
