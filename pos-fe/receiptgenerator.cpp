@@ -30,6 +30,11 @@
 #include <QApplication>
 #include <QStandardPaths>
 #include <QPdfDocument>
+#include <algorithm>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonValue>
+#include <QVariant>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -71,7 +76,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         QTranslator translator;
         qDebug()<<"translator load: "<< translator.load(":/i18n/" + baseName);
 
-        bool rtl=translator.language().isRightToLeft();
+        bool rtl=true;
+
 
 
 
@@ -113,17 +119,26 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
 
-    QJsonArray rtable{
-        QJsonObject{{"key",""}}
+    QList<QJsonObject> rtable{
+        QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","25%"}},
+        QJsonObject{{"key","price"},{"label",translator.translate("receipt","Price")},{"width","15%"}},
+        QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+        QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","10%"}},
+        QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+        QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
     };
+
+    if(rtl){
+        std::reverse(rtable.begin(),rtable.end());
+    }
     QString text;
     QXmlStreamWriter stream(&text);
     stream.setAutoFormatting(true);
     stream.writeStartDocument();
     stream.writeStartElement("html");
-//    if(rtl){
-//        stream.writeAttribute("dir","rtl");
-//    }
+    if(rtl){
+        stream.writeAttribute("dir","rtl");
+    }
 //    stream.writeAttribute("lang","ar");
     stream.writeStartElement("head");
     stream.writeTextElement("style",css);
@@ -281,41 +296,14 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
          stream.writeStartElement("thead");
              stream.writeStartElement("tr");
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","25%");
-                     stream.writeCharacters(translator.translate("receipt","Item"));
-                     stream.writeEndElement(); //th
-
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","15%");
-                     stream.writeCharacters(translator.translate("receipt","Price"));
-                     stream.writeEndElement(); //th
-
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","10%");
-                     stream.writeCharacters(translator.translate("receipt","Qty"));
-                     stream.writeEndElement(); //th
-
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","10%");
-                     stream.writeCharacters(translator.translate("receipt","Disc."));
-                     stream.writeEndElement(); //th
-
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","20%");
-                     stream.writeCharacters(translator.translate("receipt","Subtotal"));
-                     stream.writeEndElement(); //th
-
-                     stream.writeStartElement("th");
-                     stream.writeAttribute("class","heading");
-                     stream.writeAttribute("width","20%");
-                     stream.writeCharacters(translator.translate("receipt","Total"));
-                     stream.writeEndElement(); //th
+             for(int i=0; i<rtable.count(); i++){
+                 QJsonObject column=rtable.at(i);
+                 stream.writeStartElement("th");
+                 stream.writeAttribute("class","heading");
+                 stream.writeAttribute("width",column["width"].toString());
+                 stream.writeCharacters(column["label"].toString());
+                 stream.writeEndElement(); //th
+             }
                  stream.writeEndElement(); //tr
          stream.writeEndElement(); //thead
          stream.writeStartElement("tbody");
@@ -335,17 +323,26 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
                                   {"unitPrice",unitPrice},{"qty",qty},{"discount",discount},
                                   {"subtotal",subtotal},{"total",total}};
 
-             stream.writeTextElement("td",description);
-             stream.writeTextElement("td", unitPrice);
-             stream.writeTextElement("td", qty);
-             stream.writeTextElement("td", discount);
-             stream.writeTextElement("td", subtotal);
-             stream.writeTextElement("td", total);
+             for(int i=0;i<rtable.count(); i++){
+                 QJsonObject column=rtable.at(i);
+                 stream.writeTextElement("td",tableRow[column["key"].toString()].toString());
+
+             }
              stream.writeEndElement(); //tr
 
          }
 
          //receipt totals
+
+         QList<QJsonObject> totals{
+             {{"label",translator.translate("receipt","Total")}},
+             {{"label",Currency::formatString(total)},{"colspan",5}}
+         };
+
+         QList<QJsonObject> totalsWidthDelivery{
+             {{"label",translator.translate("receipt","Total + Delivery")}},
+             {{"label",Currency::formatString(totalWithDelivery)},{"colspan",5}}
+         };
 
          stream.writeStartElement("tr");
             stream.writeStartElement("th");
