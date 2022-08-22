@@ -12,14 +12,11 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPrinterInfo>
-
 #include "code128item.h"
 #include <QRandomGenerator64>
 #include "qrcodegen.hpp"
-//using namespace qrcodegen;
 #include <vector>
 #include <string>
-
 #include <QSvgRenderer>
 #include <QGraphicsScene>
 #include "utils.h"
@@ -27,14 +24,9 @@
 #include <QXmlStreamWriter>
 #include <QFile>
 #include <QTranslator>
-#include <QApplication>
 #include <QStandardPaths>
 #include <QPdfDocument>
 #include <algorithm>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QJsonValue>
-#include <QVariant>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -436,6 +428,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
      doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
+
      doc.setHtml(text);
 
 //     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);

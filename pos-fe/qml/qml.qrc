@@ -76,5 +76,6 @@
         <file>pages/products/AdjustStockDialog.qml</file>
         <file>pages/reports/ProductSalesReport.qml</file>
         <file>common/ButtonPopup.qml</file>
+        <file>common/TableFilter.qml</file>
     </qresource>
 </RCC>

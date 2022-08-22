@@ -78,12 +78,21 @@ ToolBar {
         }//button
 
         CButton{
+            id: filter
             Layout.preferredHeight: 55
             icon.name: "cil-filter"
             palette: BrandInfo{}
-
             checkable: false
 
+            onClicked: pp.open();
+
+            TableFilter{
+                id: pp
+                parent: filter
+
+
+
+            }
 
 
 
