@@ -77,5 +77,6 @@
         <file>pages/reports/ProductSalesReport.qml</file>
         <file>common/ButtonPopup.qml</file>
         <file>common/TableFilter.qml</file>
+        <file>common/CFilterComboBox.qml</file>
     </qresource>
 </RCC>
