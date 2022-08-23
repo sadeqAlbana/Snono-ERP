@@ -17,16 +17,7 @@ import "qrc:/screens/Utils.js" as Utils
 ButtonPopup {
     id: popup
     signal clicked(var filter);
-    property var form: [
-        {"type": "text","label": "name","key": "name"},
-        {"type": "combo","label": "product","key": "product_id",
-            "options":{"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
-                "filter":{"onlyVariants":true}}},
-        {"type": "date","label": "from","key": "from"},
-        {"type": "date","label": "to","key": "to"}
-
-    ]
-    property list<Item> delegs;
+    property var form;
 
     Flickable{
         id: flickable
@@ -57,16 +48,15 @@ ButtonPopup {
 
         let delegate=null;
         form.forEach(item => {
-
                          let label=Utils.createObject("qrc:/CoreUI/components/forms/CLabel.qml",layout);
                          label.text=item.label;
                          let options=item.options?? null
 
-                         if(item.type==="text"){
-                             delegate=Utils.createObject("qrc:/CoreUI/components/forms/CTextField.qml",layout,options);
-                             delegate.Layout.fillWidth=true;
-                             delegate.placeholderText =item.label
-                         }
+                                                    if(item.type==="text"){
+                                                        delegate=Utils.createObject("qrc:/CoreUI/components/forms/CTextField.qml",layout,options);
+                                                        delegate.Layout.fillWidth=true;
+                                                        //delegate.placeholderText =item.label;
+                                                    }
                          if(item.type==="combo"){
                              delegate=Utils.createObject("qrc:/common/CFilterComboBox.qml",layout,options);
                          }
@@ -74,22 +64,37 @@ ButtonPopup {
                              delegate=Utils.createObject("qrc:/CoreUI/components/forms/CDateInput.qml",layout,options);
                          }
                          delegate.Layout.fillWidth=true;
-                         delegs.push(delegate);
-
+                         item.delegate=delegate
                      });
 
-        let apply=Utils.createObject("qrc:/CoreUI/components/buttons/CButton.qml",layout,{"id": "apply"});
+        let apply=Utils.createObject("qrc:/CoreUI/components/buttons/CButton.qml",layout);
         apply.Layout.fillWidth=true;
         apply.text=qsTr("Apply");
         apply.clicked.connect(function(){
 
-            for(var i=0; i<delegs.length; i++){
-                let child=delegs[i];
-                if(child.id==="apply")
-                    return;
-                console.log(child.y)
-            }
+            let filter={};
+            form.forEach(item => {
+                             if(item.type==="text"){
+                                 if(item.delegate.text.length){
+                                     filter[item.key]=item.delegate.text;
+                                 }
+                             }
 
+                             if(item.type==="date"){
+                                 filter[item.key]=item.delegate.text;
+                             }
+
+                             if(item.type==="combo"){
+
+                                 if(item.delegate.currentValue){
+                                     filter[item.key]=item.delegate.currentValue;
+                                 }
+
+                             }
+                         });
+
+            console.log(JSON.stringify(filter));
+            popup.clicked(filter);
 
         });
 

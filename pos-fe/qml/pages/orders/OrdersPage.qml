@@ -38,13 +38,30 @@ Card{
         AppToolBar{
             id: toolBar
             tableView: tableView
+            advancedFilter:  [
+                {"type": "text","label": "Customer Name","key": "customer_name","options":{"placeholderText":"All..."}},
+                {"type": "text","label": "Customer Phone","key": "customer_phone","options":{"placeholderText":"All..."}},
+                {"type": "text","label": "Customer Address","key": "customer_address","options":{"placeholderText":"All..."}},
 
+                {"type": "combo","label": "product","key": "product_id",
+                    "options":{"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
+                        "filter":{"onlyVariants":true}}},
+                {"type": "date","label": "from","key": "from"},
+                {"type": "date","label": "to","key": "to"}
+
+            ]
             onSearch:(searchString)=> {
                 var filter=model.filter;
                 filter['query']=searchString
                 model.filter=filter;
                 model.requestData();
             }
+
+            onFilterClicked: (filter) => {
+                                 model.filter=filter
+                                 model.requestData();
+                             }
+
         }
 
         CTableView{

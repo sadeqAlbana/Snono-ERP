@@ -28,11 +28,12 @@ Card{
             id: toolBar
             tableView: tableView
             onSearch: (searchString) => {
-                var filter=model.filter;
-                filter['query']=searchString
-                model.filter=filter;
-                model.requestData();
-            }
+                          var filter=model.filter;
+                          filter['query']=searchString
+                          model.filter=filter;
+                          model.requestData();
+                      }
+
         }
         ProductAddDialog{
             id: productAddDialog;
@@ -61,9 +62,9 @@ Card{
         AdjustStockDialog{
             id: adjustStockDlg
             onAccepted:(productId, quantity, reason)=> {
-                Api.adjustStock(productId, quantity,reason)
-                adjustStockDlg.close();
-            }
+                           Api.adjustStock(productId, quantity,reason)
+                           adjustStockDlg.close();
+                       }
         }
 
         Connections{
@@ -143,8 +144,8 @@ Card{
             model: ProductsModel{
                 id: model
                 //filter: {"parent_id":0}
-//                filter: {"only_variants":true}
-//                filter: {}
+                //                filter: {"only_variants":true}
+                //                filter: {}
                 //onFilterChanged: console.log(JSON.stringify(filter))
 
                 onProductRemoveReply: {
@@ -161,9 +162,9 @@ Card{
 
                 Component.onCompleted: requestData();
 
-//                onDataRecevied: {
-//                    model.exportJson();
-//                }
+                //                onDataRecevied: {
+                //                    model.exportJson();
+                //                }
 
             }//model
 

@@ -17,6 +17,8 @@ import "qrc:/CoreUI/palettes"
 ToolBar {
     id: control
     signal search(var searchString);
+    signal filterClicked(var filter);
+    property var advancedFilter;
     required property var tableView
     property bool searchVisible: true
     Layout.fillWidth: true
@@ -89,9 +91,11 @@ ToolBar {
             TableFilter{
                 id: pp
                 parent: filter
+                form: advancedFilter;
 
-
-
+                onClicked: (filter)=>{
+                    filterClicked(filter);
+                }
             }
 
 
