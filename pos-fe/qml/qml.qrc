@@ -78,5 +78,7 @@
         <file>common/ButtonPopup.qml</file>
         <file>common/TableFilter.qml</file>
         <file>common/CFilterComboBox.qml</file>
+        <file>common/DateDelegate.qml</file>
+        <file>common/DateTimeDelegate.qml</file>
     </qresource>
 </RCC>

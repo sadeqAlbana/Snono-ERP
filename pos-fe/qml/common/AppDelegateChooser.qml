@@ -10,5 +10,8 @@ DelegateChooser{
     DelegateChoice{ roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
     DelegateChoice{ roleValue: "image"; ImageDelegate{}}
 
+    DelegateChoice{ roleValue: "date"; DateDelegate{}}
+    DelegateChoice{ roleValue: "datetime"; DateTimeDelegate{}}
+
 
 }

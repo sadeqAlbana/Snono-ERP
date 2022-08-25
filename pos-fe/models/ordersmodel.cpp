@@ -7,7 +7,7 @@ OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   Column{"phone","Phone","customers"} ,
                                                                   Column{"address","Address","customers"} ,
                                                                   Column{"total","Total",QString(),"currency"} ,
-                                                                  Column{"date","Date"} ,
+                                                                  Column{"date","Date",QString(),"datetime"} ,
                                                                   //Column{"tax_amount","Tax Amount",QString(),"currency"},
                                                                   Column{"delivery_status","Status",QString(),"OrderStatus"} ,
 
