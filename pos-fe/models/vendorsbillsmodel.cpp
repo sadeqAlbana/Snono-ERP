@@ -6,8 +6,8 @@ VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                                              Column{"name"," Name"} ,
                                                                                              Column{"reference","Reference"} ,
                                                                                              Column{"external_reference","External Reference"} ,
-                                                                                             Column{"date","Date"} ,
-                                                                                             Column{"due_date","Due Date"} ,
+                                                                                             Column{"date","Date",QString(),"datetime"} ,
+                                                                                             Column{"due_date","Due Date",QString(),"datetime"} ,
                                                                                              Column{"total","Total",QString(),"currency"} ,
                                                                                              Column{"status","Status",QString(),"status"}}
                                                                                                                ,parent)

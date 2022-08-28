@@ -18,7 +18,7 @@ ToolBar {
     id: control
     signal search(var searchString);
     signal filterClicked(var filter);
-    property var advancedFilter;
+    property var advancedFilter : null;
     required property var tableView
     property bool searchVisible: true
     Layout.fillWidth: true
@@ -81,6 +81,7 @@ ToolBar {
 
         CButton{
             id: filter
+            visible: advancedFilter
             Layout.preferredHeight: 55
             icon.name: "cil-filter"
             palette: BrandInfo{}

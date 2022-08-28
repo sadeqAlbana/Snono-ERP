@@ -4,7 +4,7 @@ OrdersReturnsModel::OrdersReturnsModel(QObject *parent) : AppNetworkedJsonModel(
 //                                                                                Column{"name","Customer","customers"} ,
                                                                                 Column{"reference","Order Reference","order"} ,
                                                                                 Column{"total","Total",QString(),"currency"} ,
-                                                                                Column{"date","Date"} ,
+                                                                                Column{"date","Date",QString(),"datetime"} ,
                                                                                 Column{"tax_amount","Tax Amount",QString(),"currency"}
                                                                                 },
                                                                                 parent)

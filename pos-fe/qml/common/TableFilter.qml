@@ -47,6 +47,8 @@ ButtonPopup {
     Component.onCompleted: {
 
         let delegate=null;
+        if(!form)
+            return
         form.forEach(item => {
                          let label=Utils.createObject("qrc:/CoreUI/components/forms/CLabel.qml",layout);
                          label.text=item.label;
@@ -81,7 +83,8 @@ ButtonPopup {
                              }
 
                              if(item.type==="date"){
-                                 filter[item.key]=item.delegate.text;
+                                 if(item.delegate.acceptableInput)
+                                    filter[item.key]=item.delegate.text;
                              }
 
                              if(item.type==="combo"){
@@ -93,10 +96,36 @@ ButtonPopup {
                              }
                          });
 
-            console.log(JSON.stringify(filter));
+            //console.log(JSON.stringify(filter));
             popup.clicked(filter);
 
-        });
+        });//clicked
 
+        let reset=Utils.createObject("qrc:/CoreUI/components/buttons/CButton.qml",layout);
+        reset.Layout.fillWidth=true;
+        reset.text=qsTr("Reset");
+        reset.clicked.connect(function(){
+
+
+            form.forEach(item => {
+                             if(item.type==="text"){
+                                 item.delegate.clear();
+                             }
+
+                             if(item.type==="date"){
+                                 if(item.delegate.acceptableInput)
+                                 item.delegate.clearDate();
+                             }
+
+                             if(item.type==="combo"){
+                                 item.delegate.currentIndex=0;
+
+                             }
+                         });
+
+
+            popup.clicked({});
+
+        });
     }
 }

@@ -60,11 +60,8 @@ Card{
 
             ]
 
-            delegate: DelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
+            delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "status"; StatusDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
             }
 
             Connections{

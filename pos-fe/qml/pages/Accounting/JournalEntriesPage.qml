@@ -29,10 +29,7 @@ Card{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: DelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
+            delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
             }
