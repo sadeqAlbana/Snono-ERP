@@ -66,7 +66,6 @@ Item {
                 implicitHeight: 48
                 Layout.rightMargin: 10
                 Layout.alignment: Qt.AlignCenter
-//                background: Rectangle{color: "transparent"}
                 layer.enabled: rounded
                 icon.color: "transparent"
                 padding: 0
@@ -102,11 +101,11 @@ Item {
 
         }//layout
 
-//        Rectangle{
-//            anchors.fill: parent;
-//            border.color: "#d8dbe0"
-//            color: "transparent"
-//        }
+        //        Rectangle{
+        //            anchors.fill: parent;
+        //            border.color: "#d8dbe0"
+        //            color: "transparent"
+        //        }
 
 
     }//toolbar
@@ -131,11 +130,11 @@ Item {
         dim:false
         closePolicy: Popup.NoAutoClose //this causes a problem in closing
         visible: true
-        property color backgroundColor: "#3c4b64"
+        palette.base: "#3c4b64"
 
         background: Rectangle{
             //color: "#29363d"
-            color: drawer.backgroundColor
+            color: drawer.palette.base
         }
 
 
@@ -161,7 +160,6 @@ Item {
                 width: parent.width
                 height: toolBar.height
                 Image{
-                    id: image
                     anchors.centerIn: parent;
                     source:"qrc:/images/icons/SS_Logo_Color.svg"
                     //sourceSize.width: 82
@@ -216,13 +214,16 @@ Item {
             delegate: ItemDelegate{
                 id: control
                 clip:true
+                palette.button: drawer.palette.base
+                palette.buttonText: "#afb5c0"
+
                 property bool expanded: model.expanded ? model.expanded : false
                 property bool hidden: model.parentId ? model.hidden : false
                 MouseArea{
                     anchors.fill: parent;
                     onPressed:(mouse)=>{
-                        mouse.accepted = false;
-                    }
+                                  mouse.accepted = false;
+                              }
                     cursorShape: Qt.PointingHandCursor
                 }
 
@@ -238,52 +239,24 @@ Item {
                 //: "normal"
                 contentItem: RowLayout{
                     anchors.fill: parent
-//                    Image{
-//                        id: itemImage
-//                        property color color : "#afb5c0"
-//                        source: model.image ? model.image : source
-//                        sourceSize.width: 17
-//                        sourceSize.height: 17
-
-//                        width: 17
-//                        height: 17
-//                        //                        width: 56
-//                        //                        height: 17.5
-//                        Layout.alignment: Qt.AlignVCenter
-//                        Layout.leftMargin: 13
-//                        layer.enabled: true
-//                        layer.effect: ColorOverlay{
-//                            //id: overlay
-////                            anchors.fill: itemImage
-////                            source:itemImage
-//                            color: itemImage.color
-//                            cached: true
-//                        }
-
-//                    }
-
-
-
                     Impl.IconImage{
-                   id: itemImage
-                    name: control.icon.name
-                    source: control.icon.name.length? control.icon.name : control.icon.source
-                    color: control.icon.color
-                    width: control.icon.width
-                    height: control.icon.height
-                    cache: control.icon.cache
-                    fillMode: Image.PreserveAspectFit
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 13
+                        name: control.icon.name
+                        source: control.icon.name.length? control.icon.name : control.icon.source
+                        color: control.icon.color
+                        width: control.icon.width
+                        height: control.icon.height
+                        cache: control.icon.cache
+                        fillMode: Image.PreserveAspectFit
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.leftMargin: 13
 
-                    sourceSize: Qt.size(control.icon.width,control.icon.height)
+                        sourceSize: Qt.size(control.icon.width,control.icon.height)
 
                     }
 
                     Label{
-                        id:  itemText
                         text: model.title
-                        color : "#afb5c0"
+                        color : control.palette.buttonText
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                         Layout.fillWidth: true
                         Layout.fillHeight: true
@@ -296,22 +269,24 @@ Item {
                     }
 
                     Label{
-                        id: treeLabel
                         visible: model.childItems ? true : false
                         Layout.alignment: Qt.AlignRight
                         Layout.rightMargin: 13
                         text: "‹"
                         font.pointSize: 13
-                        color: "#7f7f8a"
+                        color: control.hovered? "#fff" : "#7f7f8a"
+
                         smooth: true
+                        font.bold: control.hovered
+                        rotation: control.expanded? -90 : 0
 
-                        states:
-                            State{
-                            name: "toggled"
-                            PropertyChanges {target: treeLabel; rotation: -90}
+                        Behavior on color{
+                            ColorAnimation {
+                                easing.type: Easing.InOutQuad;
+                                duration: 300;
+                            }
                         }
-
-                        transitions: Transition {
+                        Behavior on rotation {
                             RotationAnimation { duration: 150; direction: RotationAnimation.Shortest }
                         }
 
@@ -330,7 +305,7 @@ Item {
                 transitions:[
                     Transition {
                         from: "hidden"
-//                        to: ""
+                        //                        to: ""
                         reversible: true
                         SequentialAnimation {
                             PropertyAnimation {property: "height"; duration: 75 }
@@ -352,19 +327,12 @@ Item {
                 states: [
 
                     State{
-
                         name: "visibleChild";
                         when: model.parentId && !model.hidden && !hovered && !highlighted;
-                        PropertyChanges {target: controlBackground; color: "#303c50"}
+                        PropertyChanges {target: control; palette.button: "#303c50"}
                     },
 
-                    State{
-                        id:expandedHovered
-                        name: "expandedHovered";
-                        when: expanded && hovered;
-                        extend: "hovered";
-                        PropertyChanges {target: treeLabel; state: "toggled";}
-                    },
+
                     State{
                         id:stateHidden
                         name: "hidden";
@@ -373,39 +341,31 @@ Item {
                     },
 
                     State{
-                        id:stateExpanded
                         name: "expanded";
                         when: control.expanded;
-                        PropertyChanges {target: treeLabel; state: "toggled";}
-                        PropertyChanges {target: controlBackground; color: "#303c50"}
+                        PropertyChanges {target: control; palette.button: "#303c50"}
                     },
                     State{
-                        id: stateHovered;
                         name: "hovered"
                         when: control.hovered
-                        PropertyChanges {target: controlBackground; color: "#321fdb"}
-                        PropertyChanges {target: itemText; color: "white"}
-                        PropertyChanges {target: itemImage; color: "white"}
-                        PropertyChanges {target: treeLabel; color: "white"}
-                        PropertyChanges {target: treeLabel; font.bold: true}
+                        PropertyChanges {target: control; palette.button: "#321fdb"}
+                        PropertyChanges {target: control; palette.buttonText: "white"}
+                        PropertyChanges {target: control; icon.color: "white"}
                     },
                     State{
-                        id:stateHighlighted
                         name: "highlighted"
                         when: control.highlighted
-                        PropertyChanges {target: controlBackground; color: "#46546c" }
-                        PropertyChanges {target: itemText; color: "white"}
-                        PropertyChanges {target: itemImage; color: "white"}
-                        //PropertyChanges {target: treeLabel; state: "toggled";}
+                        PropertyChanges {target: control; palette.button: "#46546c" }
+                        PropertyChanges {target: control; palette.buttonText: "white"}
+                        PropertyChanges {target: control; icon.color: "white"}
                     }
 
                 ]
 
 
                 background: Rectangle{
-                    id: controlBackground
                     opacity: enabled ? 1 : 0.3
-                    color: drawer.backgroundColor
+                    color: control.palette.button
                 }
 
 
@@ -440,9 +400,9 @@ Item {
                     }
                 }
 
-            }
+            }//delegate
 
-            model: ListModel{
+            ListModel{
                 id: listModel;
                 dynamicRoles: false
 
@@ -455,14 +415,14 @@ Item {
                     return -1;
                 }
             }
+            model: listModel
 
             section.property: "category"
             section.criteria: ViewSection.FullString
             section.delegate: Rectangle{ //change to item delegate  ?
-                id: sectionHeading
                 width: parent.width
                 height: 52.33
-                color: drawer.backgroundColor;
+                color: drawer.palette.base;
                 Label {
                     text: section
                     font.bold: true
@@ -479,7 +439,7 @@ Item {
     }
 
     Rectangle{
-        id: contentArea
+        color: "#ebedef"
 
         anchors{
             left: rootItem.left
@@ -489,7 +449,6 @@ Item {
             bottom: rootItem.bottom
         }
 
-        color: "#ebedef"
 
         //content here
         StackView{
@@ -499,10 +458,6 @@ Item {
             //padding: 20
 
             clip:true
-            //initialItem: "qrc:/pages/orders/OrdersPage.qml"
-            //source: listModel.get(listView.currentIndex).path; //change this later
-
-
             replaceEnter: Transition {
                 NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
             }
@@ -533,23 +488,8 @@ Item {
                 listModel.append(item);
             }
         }
-
-        //listView.currentIndex=5
-        //listView.currentIndex=30
-        //listView.currentIndex=48
-        //listView.currentIndex=listModel.indexOf("activities");
-        //listView.currentIndex=2
-
-
-
         //stackView.replace(listModel.get(listView.currentIndex).path)
-
-
-
     }
-
-
-
 
     Component.onCompleted: {
         var xhr = new XMLHttpRequest;
@@ -559,7 +499,7 @@ Item {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
 
-                listView.currentIndex=listModel.indexOf("Orders List");
+                //listView.currentIndex=listModel.indexOf("Orders List");
             }
         };
         xhr.send();

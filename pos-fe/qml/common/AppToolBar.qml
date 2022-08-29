@@ -1,4 +1,5 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
@@ -23,12 +24,11 @@ ToolBar {
     property bool searchVisible: true
     Layout.fillWidth: true
     palette.button: "transparent"
-    contentItem: RowLayout{
+    component ToolBarContentItem: RowLayout{
         spacing: 15
         anchors.fill: parent;
         CMenuBar{
             CMenu{
-                id: _menu
                 title: qsTr("Actions");
                 icon:"cil-settings"
                 actions: tableView.actions
@@ -48,7 +48,6 @@ ToolBar {
                 parent: btn
                 y:parent.height
                 Flickable{
-                    id: flickable
                     clip: true
                     implicitWidth: contentWidth
                     implicitHeight: Math.min(contentHeight,400)
@@ -117,4 +116,6 @@ ToolBar {
             onEntered: control.search(_search.text)
         }//search
     }// layout end
+
+    contentItem: ToolBarContentItem{}
 }
