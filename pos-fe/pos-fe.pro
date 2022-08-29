@@ -5,12 +5,16 @@
 #-------------------------------------------------
 
 QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat pdf
-#win32,unix{
-#QT +=
-#}
 
 android{
 QT -= pdf
+defines += QT_NO_PDF
+}
+
+wasm{
+QT -= pdf serialport
+DEFINES += QT_NO_PDF
+
 }
 
 
@@ -87,7 +91,6 @@ SOURCES += \
     posapplication.cpp \
     possettings.cpp \
     models/productsmodel.cpp \
-    printer/epsonprinter.cpp \
     receiptgenerator.cpp \
     testpalette.cpp \
     utils.cpp \
@@ -131,7 +134,6 @@ HEADERS += \
     posapplication.h \
     possettings.h \
     models/productsmodel.h \
-    printer/epsonprinter.h \
     receiptgenerator.h \
     testpalette.h \
     utils.h \

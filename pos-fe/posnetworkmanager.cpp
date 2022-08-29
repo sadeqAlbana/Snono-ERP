@@ -68,7 +68,8 @@ PosNetworkManager *PosNetworkManager::instance()
 
 void PosNetworkManager::reloadBaseUrl()
 {
-    setBaseUrl(settings.serverUrl().toString());
+    setBaseUrl("https://65.20.142.96:50519");
+    //setBaseUrl(settings.serverUrl().toString());
 }
 
 

@@ -31,6 +31,8 @@ QString PosSettings::hwID()
 {
 #ifdef Q_OS_ANDROID
     return QStringLiteral("galaxytabs2");
+#elif defined(Q_OS_WASM)
+    return QStringLiteral("wasm");
 #else
     return QSysInfo::machineUniqueId();
 #endif
