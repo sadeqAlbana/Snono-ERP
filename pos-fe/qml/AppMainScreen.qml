@@ -131,10 +131,11 @@ Item {
         dim:false
         closePolicy: Popup.NoAutoClose //this causes a problem in closing
         visible: true
+        property color backgroundColor: "#3c4b64"
 
         background: Rectangle{
             //color: "#29363d"
-            color: "#3c4b64"
+            color: drawer.backgroundColor
         }
 
 
@@ -155,7 +156,7 @@ Item {
 
             property real delegateHeight: 0
             header : Rectangle{
-                //color: drawer.background.color
+                //color: drawer.backgroundColor
                 color: "#303c54"
                 width: parent.width
                 height: toolBar.height
@@ -404,7 +405,7 @@ Item {
                 background: Rectangle{
                     id: controlBackground
                     opacity: enabled ? 1 : 0.3
-                    color: drawer.background.color
+                    color: drawer.backgroundColor
                 }
 
 
@@ -461,7 +462,7 @@ Item {
                 id: sectionHeading
                 width: parent.width
                 height: 52.33
-                color: drawer.background.color;
+                color: drawer.backgroundColor;
                 Label {
                     text: section
                     font.bold: true

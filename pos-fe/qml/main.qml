@@ -90,8 +90,6 @@ ApplicationWindow {
     Loader {
         id : rootLoader
         anchors.fill: parent
-//        width: parent.width
-//        height: parent.height
         sourceComponent: LoginPage{
 
         }

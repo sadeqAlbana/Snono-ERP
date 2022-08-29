@@ -1,6 +1,5 @@
 #include "accountsmodel.h"
 #include <QJsonObject>
-#include "posnetworkmanager.h"
 AccountsModel::AccountsModel(QObject *parent) :
     AppNetworkedJsonModel ("/accounts",{
                            Column{"id","ID"} ,
@@ -12,6 +11,16 @@ AccountsModel::AccountsModel(QObject *parent) :
 {
     setDirection("asc");
     requestData();
+
+}
+
+QVariant AccountsModel::data(const QModelIndex &index, int role) const
+{
+
+    if(role==Qt::DisplayRole && index.column()==indexOf("code")){
+        return QString::number(AppNetworkedJsonModel::data(index,role).toInt());
+    }
+    return AppNetworkedJsonModel::data(index,role);
 
 }
 

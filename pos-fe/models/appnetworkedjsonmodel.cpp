@@ -18,7 +18,6 @@ void AppNetworkedJsonModel::requestData()
 {
     _busy=true;
 
-    qDebug()<<"use pagination: " << m_usePagination;
     if(m_oldFilter!=m_filter){
         m_oldFilter=m_filter;
         if(m_usePagination){
@@ -52,7 +51,6 @@ void AppNetworkedJsonModel::search()
         m_currentPage=0;
         _lastPage=-1;
     }
-    qDebug()<<"search: " << _query;
     requestData();
 }
 
@@ -94,8 +92,6 @@ QJsonObject AppNetworkedJsonModel::filter() const
 
 void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-    qDebug()<<"current_page: " <<reply->json("current_page").toInt();
-    qDebug()<<"last_page: " <<reply->json("last_page").toInt();
 
     if(m_usePagination){
         if(reply->json("current_page").toInt()){
