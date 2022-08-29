@@ -25,7 +25,7 @@
 #include <QFile>
 #include <QTranslator>
 #include <QStandardPaths>
-#include <QPdfDocument>
+
 #include <algorithm>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {

@@ -9,6 +9,11 @@ QT += core widgets network gui quick quickcontrols2 multimedia printsupport seri
 #QT +=
 #}
 
+android{
+QT -= pdf
+}
+
+
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -28,7 +33,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 
-android: include(C:/Users/sadeq/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
+android{
+ANDROID_HOME = $$(ANDROID_HOME)
+    contains(QMAKE_HOST.os, win32){
+        include($$home/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
+    }
+
+    contains(QMAKE_HOST.os, Linux){
+        include($$ANDROID_HOME/android_openssl/openssl.pri)
+    }
+}
+
 include(posnumpadwidget/posnumpadwidget.pri)
 include(../json-model/json-model.pri)
 include(libs/QrCodeGenerator/QrCodeGenerator.pri)
