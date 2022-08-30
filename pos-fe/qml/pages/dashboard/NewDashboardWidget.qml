@@ -1,4 +1,5 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
@@ -6,15 +7,10 @@ import QtQuick.Layouts
 //preferred <minimum/maximum < width/height
 Page {
     id: control
-    background: Rectangle{
-        color: palette.window
-        radius: 5
-
-    }
     property string icon: ""
     //implicitWidth: implicitContentWidth<200? 200 : implicitContentWidth
-    implicitWidth: implicitContentWidth
-    Layout.minimumWidth: implicitContentWidth
+//    implicitWidth: control.implicitContentWidth
+//    Layout.minimumWidth: control.implicitContentWidth
     Layout.fillWidth:true
     header: Rectangle{
         color: "transparent"
@@ -58,9 +54,14 @@ Page {
             verticalAlignment: Text.AlignVCenter
 
         }
-    }
+    }//header
 
     footer:Item{
         implicitHeight: 40
+    }//footer
+
+    background: Rectangle{
+        color: palette.window
+        radius: 5
     }
 }

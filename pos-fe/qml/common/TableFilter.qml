@@ -104,6 +104,7 @@ ButtonPopup {
         let reset=Utils.createObject("qrc:/CoreUI/components/buttons/CButton.qml",layout);
         reset.Layout.fillWidth=true;
         reset.text=qsTr("Reset");
+        reset.palette=Utils.createObject("qrc:/CoreUI/palettes/BrandWarning.qml",reset)
         reset.clicked.connect(function(){
 
 

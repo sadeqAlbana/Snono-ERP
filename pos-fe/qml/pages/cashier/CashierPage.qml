@@ -229,6 +229,7 @@ Page{
         GridLayout{ //customer grid
             Layout.alignment: Qt.AlignCenter
             Layout.row: 1
+            columnSpacing: 15
             Layout.column: 0
             columns: 2
             CComboBox{

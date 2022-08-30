@@ -1,4 +1,5 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import QtQuick.Controls
 import "qrc:/CoreUI/components/base"
@@ -25,13 +26,12 @@ Page{
 
     Flickable {
         anchors.fill: parent;
-        contentWidth: availableWidth
+        //contentWidth: availableWidth
         contentHeight: layout.implicitHeight
         //padding: 25
         ColumnLayout{
             id: layout
             anchors.fill: parent
-
 
             GridLayout{
                 clip: true
@@ -71,7 +71,7 @@ Page{
                     }
                     var columnCount=parseInt(gridLayout.width/(maxLength),10);
                     if(Number.isNaN(columnCount))
-                        return1
+                        return 1
                     if(columnCount===1)
                         return 1
 
@@ -87,79 +87,42 @@ Page{
                     title: "Sales & Returns"
                     palette.window : "#2518AD"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
-                    Layout.minimumWidth: gridLayout.maxWidth
-                    ColumnLayout{
-                        anchors.fill: parent;
-                        DashboardRowItem{
-                            label: qsTr("Sales Today (IQD)")
-                            value: dashboard? dashboard["sales_day"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Sales This Month (IQD)")
-                            value: dashboard? dashboard["sales_month"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Sales Returns Today (IQD)")
-                            value: dashboard? dashboard["sales_returns_day"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Sales Returns This Month (IQD)")
-                            value: dashboard? dashboard["sales_returns_month"] : ""
-                        }
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Sales Today"), value: dashboard? dashboard["sales_day"] : ""},
+                            {label:qsTr("Sales This Month"), value: dashboard? dashboard["sales_month"] : ""},
+                            {label: qsTr("Sales Returns Today"), value: dashboard? dashboard["sales_returns_month"] : ""},
+                            {label: qsTr("Sales Returns This Month"), value: dashboard? dashboard["sales_day"] : ""}
+                        ]
                     }
                 }
 
                 NewDashboardWidget{
                     title: "Orders Status"
                     palette.window : "#5FA7EA"
-                    Layout.minimumWidth: gridLayout.maxWidth
+//                    Layout.minimumWidth: gridLayout.maxWidth
                     icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
-
-                    ColumnLayout{
-                        anchors.fill: parent;
-                        DashboardRowItem{
-                            label: qsTr("Pending")
-                            value: dashboard ? dashboard["orders_pending"]  : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Processing")
-                            value: dashboard? dashboard["orders_processing"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Returned")
-                            value: dashboard? dashboard["orders_returned"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Partial Return")
-                            value: dashboard? dashboard["orders_partial_return"] : ""
-                        }
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Pending"), value: dashboard? dashboard["orders_pending"] : ""},
+                            {label:qsTr("Processing"), value: dashboard? dashboard["orders_processing"] : ""},
+                            {label: qsTr("Returned"), value: dashboard? dashboard["orders_returned"] : ""},
+                            {label: qsTr("Partial Return"), value: dashboard? dashboard["orders_partial_return"] : ""}
+                        ]
                     }
-
                 }
 
                 NewDashboardWidget{
                     title: "Orders Statistics"
                     palette.window : "#F7A20F"
-                    Layout.minimumWidth: gridLayout.maxWidth
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
-                    ColumnLayout{
-                        anchors.fill: parent;
-                        DashboardRowItem{
-                            label: qsTr("Orders Today")
-                            value: dashboard ? dashboard["orders_day"]  : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Orders this Month")
-                            value: dashboard? dashboard["orders_month"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Returns Today")
-                            value: dashboard? dashboard["returns_day"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Returns this Month")
-                            value: dashboard? dashboard["returns_month"] : ""
-                        }
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Orders Today"), value: dashboard? dashboard["orders_day"] : ""},
+                            {label:qsTr("Orders this Month"), value: dashboard? dashboard["orders_month"] : ""},
+                            {label: qsTr("Returns Today"), value: dashboard? dashboard["returns_day"] : ""},
+                            {label: qsTr("Returns this Month"), value: dashboard? dashboard["returns_month"] : ""}
+                        ]
                     }
                 }
 
@@ -167,47 +130,25 @@ Page{
                     title: "Statistics"
                     palette.window : "#DE4343"
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
-
-                    Layout.minimumWidth: gridLayout.maxWidth
-
-                    ColumnLayout{
-                        anchors.fill: parent;
-                        DashboardRowItem{
-                            label: qsTr("Orders Total")
-                            value: dashboard ? dashboard["orders_total"]  : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Returns Total")
-                            value: dashboard? dashboard["returns_total"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Available Stock")
-                            value: dashboard? dashboard["stock_total"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Sold Stock")
-                            value: dashboard? dashboard["sold_stock_total"] : ""
-                        }
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Orders Total"), value: dashboard? dashboard["orders_total"] : ""},
+                            {label:qsTr("Returns Total"), value: dashboard? dashboard["returns_total"] : ""},
+                            {label: qsTr("Available Stock"), value: dashboard? dashboard["stock_total"] : ""},
+                            {label: qsTr("Sold Stock"), value: dashboard? dashboard["sold_stock_total"] : ""}
+                        ]
                     }
                 }
-
 
                 NewDashboardWidget{
                     title: "Profits"
                     palette.window : "#2518AD"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
-                    Layout.minimumWidth: gridLayout.maxWidth
-                    ColumnLayout{
-                        anchors.fill: parent;
-                        DashboardRowItem{
-                            label: qsTr("Daily Sales Profits (IQD)")
-                            value: dashboard? dashboard["daily_sales_profits"] : ""
-                        }
-                        DashboardRowItem{
-                            label: qsTr("Monthly Sales Profits (IQD)")
-                            value: dashboard? dashboard["monthly_sales_profits"] : ""
-                        }
-
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Daily Sales Profits"), value: dashboard? dashboard["daily_sales_profits"] : ""},
+                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
+                        ]
                     }
                 }
 

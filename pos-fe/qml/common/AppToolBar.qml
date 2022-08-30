@@ -24,10 +24,11 @@ ToolBar {
     property bool searchVisible: true
     Layout.fillWidth: true
     palette.button: "transparent"
-    component ToolBarContentItem: RowLayout{
+    RowLayout{
         spacing: 15
         anchors.fill: parent;
         CMenuBar{
+            Layout.preferredHeight: 45
             CMenu{
                 title: qsTr("Actions");
                 icon:"cil-settings"
@@ -37,22 +38,42 @@ ToolBar {
 
         CButton{
             id: btn
+            palette: BrandLight{}
             onClicked: popup.open();
-            Layout.preferredHeight: 55
+            Layout.preferredHeight: 45
             icon.name: "cil-list"
-            palette: BrandInfo{}
+            text: qsTr("Columns")
             checkable: false
-            display: AbstractButton.IconOnly
+//            display: AbstractButton.IconOnly
             Popup{
                 id: popup
                 parent: btn
                 y:parent.height
+                leftPadding: 0
+                rightPadding: 0
+                palette.window: "#fff"
+                palette.shadow: "silver"
+                width: Math.max(flickable.contentWidth,250)
+                background: Rectangle{
+                    radius: 4
+                    color: popup.palette.window
+                    layer.enabled: true
+                    layer.effect:  DropShadow{
+                        radius: 8
+                        verticalOffset: 1
+                        spread: 0.1
+                        color: popup.palette.shadow
+                        cached: true
+                        transparentBorder: true
+                    }
+                }
+
                 Flickable{
+                    id: flickable
                     clip: true
                     implicitWidth: contentWidth
                     implicitHeight: Math.min(contentHeight,400)
                     anchors.fill: parent;
-                    contentWidth: layout.implicitWidth
                     contentHeight: layout.implicitHeight
                     flickableDirection: Flickable.VerticalFlick
                     ColumnLayout{
@@ -60,8 +81,9 @@ ToolBar {
                         anchors.fill: parent;
                         Repeater{
                             model: tableView.model.columnCount();
-                            CheckBox{
+                            CheckDelegate{
                                 text: tableView.model.headerData(modelData,Qt.Horizontal)
+                                Layout.preferredHeight: 35
                                 Layout.fillWidth: true
                                 checkState: Qt.Checked
                                 onCheckStateChanged: {
@@ -81,8 +103,9 @@ ToolBar {
         CButton{
             id: filter
             visible: advancedFilter
-            Layout.preferredHeight: 55
+            Layout.preferredHeight: 45
             icon.name: "cil-filter"
+            text: qsTr("Filter")
             palette: BrandInfo{}
             checkable: false
 
@@ -116,6 +139,4 @@ ToolBar {
             onEntered: control.search(_search.text)
         }//search
     }// layout end
-
-    contentItem: ToolBarContentItem{}
 }

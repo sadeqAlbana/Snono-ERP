@@ -48,10 +48,12 @@ Item {
             Label {
                 text: baseLoader.currentItem? baseLoader.currentItem.title : ""
                 //elide: Label.ElideRight
+                font.pixelSize: 15
+                font.weight: Font.DemiBold
                 horizontalAlignment: Qt.AlignHCenter
                 verticalAlignment: Qt.AlignVCenter
                 Layout.fillWidth: true
-                color: "#7f7f8a"
+                color: "#4f5d73"
             }
 
             ToolButton{
