@@ -457,8 +457,8 @@ Item {
             id: stack
             anchors.fill: parent
             anchors.margins: drawerAboveContent? 0 : 20
-            implicitWidth:currentItem.implicitWidth
-            implicitHeight: currentItem.implicitHeight
+            implicitWidth:currentItem.implicitWidth+40
+            implicitHeight: currentItem.implicitHeight+40
             //padding: 20
 
             initialItem: Page{

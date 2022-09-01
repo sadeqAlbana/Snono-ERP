@@ -43,50 +43,85 @@ Page{
                 clip: true
                 id: gridLayout
                 columnSpacing: 20
-                Layout.leftMargin: 10
-                Layout.rightMargin: 10
-                property int maxWidth: 0
-                onWidthChanged: {
-                    var childrenLength=gridLayout.children.length;
-                    var maxLength=0;
-                    for (var i=0; i<childrenLength; i++){
-                        var child=gridLayout.children[i];
-                        if(child.implicitContentWidth>maxLength){
-                            maxLength=child.implicitWidth;
-                        }
-                    }
-                    maxWidth=maxLength
-                }
+                //columns: 1
+                property int maxImplicitWidth: 0
+                Layout.minimumWidth: maxImplicitWidth
+                onWidthChanged: updateValues()
+                onImplicitWidthChanged: updateValues();
 
-//                rowSpacing: 20
-
-                columns: {
-                    var childrenLength=0;
-                    var columnsCount=1;
-                    var maxLength=0;
-                    var childCount=0
+                function updateValues()
+                {
+                    let maxLength=0;
+                    let count=0;
                     for (var i=0; i<gridLayout.children.length; i++){
-                        var child=gridLayout.children[i];
+                        let child=gridLayout.children[i];
+                        if(child.width!==0){
+                            if(child.implicitWidth>maxLength){
+                                maxLength=child.implicitWidth;
 
-                        if(child.width!==0 && child.implicitContentWidth>maxLength){
-                            childCount++;
-                            maxLength=child.implicitContentWidth;
+                            }
 
+                            count++;
                         }
                     }
-                    var columnCount=parseInt(gridLayout.width/(maxLength),10);
-                    if(Number.isNaN(columnCount))
-                        return 1
-                    if(columnCount===1)
-                        return 1
+                    maxImplicitWidth=maxLength;
+                    let childCount=count;
+                    //part 2
 
-                    while(gridLayout.children.length%columnCount!==0){
-                        if(columnCount<=1)
-                            return 1
-                        columnCount--;
+                    let decimalColumnCount=gridLayout.width/(maxImplicitWidth);
+//                    console.log("gw: " + gridLayout.width)
+
+//                    console.log("dc: " + decimalColumnCount)
+//                    console.log("maxI: " + maxImplicitWidth)
+
+                    for (let j=0; j<gridLayout.children.length; j++){
+                        let c=gridLayout.children[j];
+                        if(c.width!==0){
+                            c.Layout.minimumWidth=maxImplicitWidth;
+                        }
                     }
-                    return columnCount
+
+                    let columnCount=parseInt(decimalColumnCount,10)
+//                    if(decimalColumnCount%1!==0){
+//                        columnCount++;
+//                    }
+
+
+                    if(Number.isNaN(columnCount) || columnCount<=1){
+                        columns=columnCount;
+                        return;
+                    }
+
+                    if(columnCount>=childCount){
+//                        console.log("child count: " + childCount)
+//                        console.log("reached here");
+                        columns=childCount;
+                        return;
+                    }
+
+
+                  //  if(childCount%2===0 && childCount%columnCount==0){
+                        while(childCount%columnCount!==0){
+                            //console.log("mod: " + (childCount%columnCount))
+                            if(columnCount<=1){
+                                columns=columnCount;
+                                return;
+                            }
+                            columnCount--;
+                        }
+                  //  }
+
+
+
+
+
+
+                    columns=columnCount;
+//                    console.log("cc: " + columnCount)
+
                 }
+
+
 
                 NewDashboardWidget{
                     title: "Sales & Returns"
@@ -157,6 +192,17 @@ Page{
                     }
                 }
 
+                NewDashboardWidget{
+                    title: "Profits"
+                    palette.window : "#2518AD"
+                    icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
+                    DashboardWidgetTable{
+                        modelRows: [
+                            {label: qsTr("Daily Sales Profitsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), value: dashboard? dashboard["daily_sales_profits"] : ""},
+                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
+                        ]
+                    }
+                }
 
                 Connections{
                     target: Api;
