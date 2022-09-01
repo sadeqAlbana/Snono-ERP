@@ -11,8 +11,8 @@ import QtQuick.Controls.impl as Impl
 
 Item {
     id: rootItem
-    implicitWidth: baseLoader.implicitWidth
-    property alias stackView: baseLoader
+    implicitWidth: stack.implicitWidth
+    implicitHeight: stack.implicitHeight
     property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
 
 
@@ -46,7 +46,7 @@ Item {
             }
 
             Label {
-                text: baseLoader.currentItem? baseLoader.currentItem.title : ""
+                text: stack.currentItem? stack.currentItem.title : ""
                 //elide: Label.ElideRight
                 font.pixelSize: 15
                 font.weight: Font.DemiBold
@@ -149,7 +149,7 @@ Item {
                 var item=listModel.get(listView.currentIndex);
                 if(item!==undefined)
                     if(item.path!==null)
-                        stackView.replace(item.path)
+                        stack.replace(item.path)
             }
             Component.onCompleted: {
                 //listView.currentIndex=1
@@ -454,10 +454,22 @@ Item {
 
         //content here
         StackView{
-            id: baseLoader
+            id: stack
             anchors.fill: parent
             anchors.margins: drawerAboveContent? 0 : 20
+            implicitWidth:currentItem.implicitWidth
+            implicitHeight: currentItem.implicitHeight
             //padding: 20
+
+            initialItem: Page{
+
+
+                Rectangle{
+                    implicitHeight: 500
+                    implicitWidth: 500
+                    anchors.fill: parent
+                }
+            }
 
             clip:true
             replaceEnter: Transition {
@@ -490,7 +502,7 @@ Item {
                 listModel.append(item);
             }
         }
-        //stackView.replace(listModel.get(listView.currentIndex).path)
+        //stack.replace(listModel.get(listView.currentIndex).path)
     }
 
     Component.onCompleted: {

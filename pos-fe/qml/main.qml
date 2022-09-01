@@ -93,6 +93,10 @@ ApplicationWindow {
         sourceComponent: LoginPage{
 
         }
+//        onLoaded: {
+//            mainWindow.minimumWidth=rootLoader.item.implicitWidth
+//            minimumHeight= rootLoader.item.implicitHeight
+//        }
     }
 
     SoundEffect{

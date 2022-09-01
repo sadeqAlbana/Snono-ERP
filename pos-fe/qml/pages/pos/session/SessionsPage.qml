@@ -55,7 +55,7 @@ Page{
                 }
             }
             function initSession(sessionId){
-                baseLoader.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": sessionId})
+                stack.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": sessionId})
             }
         }
 

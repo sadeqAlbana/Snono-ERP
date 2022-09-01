@@ -36,7 +36,6 @@ Pane {
         id: mainLayout
         spacing: 10
         anchors.fill: parent
-
         Item{
             Layout.maximumWidth: 620
             Layout.maximumHeight: 155
@@ -44,7 +43,6 @@ Pane {
             Layout.fillHeight: true
             implicitWidth: card.implicitWidth
             implicitHeight: logo.implicitHeight
-
             Layout.alignment: Qt.AlignCenter
             Image{
                 id: logo
@@ -67,7 +65,6 @@ Pane {
             //Layout.minimumWidth: implicitWidth
             //anchors.verticalCenterOffset: -1*parent.height/8
             //anchors.verticalCenterOffset: logo.height/2
-
             ColumnLayout{
                 id: layout
                 //             anchors.margins: 20

@@ -18,28 +18,33 @@ Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
     property var dashboard;
-    //    Rectangle{
-    //        anchors.fill: parent
-    //        color: "blue"
-    //        opacity: 0.5
-    //    }
 
+//    Flickable{
+//        anchors.fill: parent;
+//        implicitWidth: rect.implicitWidth
+//        Rectangle{
+//            id: rect
+//            anchors.fill: parent
+//            implicitHeight: 500
+//            implicitWidth: 500
+//        }
+//    }
     Flickable {
         anchors.fill: parent;
-        //contentWidth: availableWidth
+        implicitWidth: layout.implicitWidth
         contentHeight: layout.implicitHeight
+        //contentWidth: availableWidth
+        //implicitHeight: layout.implicitHeight
         //padding: 25
         ColumnLayout{
             id: layout
             anchors.fill: parent
-
             GridLayout{
                 clip: true
                 id: gridLayout
                 columnSpacing: 20
                 Layout.leftMargin: 10
                 Layout.rightMargin: 10
-
                 property int maxWidth: 0
                 onWidthChanged: {
                     var childrenLength=gridLayout.children.length;
@@ -53,7 +58,7 @@ Page{
                     maxWidth=maxLength
                 }
 
-                rowSpacing: 20
+//                rowSpacing: 20
 
                 columns: {
                     var childrenLength=0;
@@ -100,7 +105,7 @@ Page{
                 NewDashboardWidget{
                     title: "Orders Status"
                     palette.window : "#5FA7EA"
-//                    Layout.minimumWidth: gridLayout.maxWidth
+                    //                    Layout.minimumWidth: gridLayout.maxWidth
                     icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
                     DashboardWidgetTable{
                         modelRows: [
@@ -165,7 +170,6 @@ Page{
             }//gridLayout end
 
             ChartView{
-
                 antialiasing: true
                 Layout.fillWidth: true
                 //Layout.fillHeight: true
@@ -230,9 +234,6 @@ Page{
         Component.onCompleted: {
             Api.requestDashboard();
         } //ScrollView End
-    }
-
-
-
+    }//flickable
 }
 

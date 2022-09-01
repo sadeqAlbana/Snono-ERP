@@ -10,12 +10,13 @@ Page {
     property string icon: ""
     //implicitWidth: implicitContentWidth<200? 200 : implicitContentWidth
 //    implicitWidth: control.implicitContentWidth
-//    Layout.minimumWidth: control.implicitContentWidth
+    Layout.minimumWidth: implicitWidth
     Layout.fillWidth:true
     header: Rectangle{
         color: "transparent"
 
         implicitHeight: 50
+        implicitWidth: image.implicitWidth+ 25+label.implicitHeight
         Image{
             id: image
             anchors.margins: 5
@@ -41,6 +42,7 @@ Page {
             }
         }
         Label{
+            id: label
             font.pixelSize: 17
             font.bold: true
             text: control.title

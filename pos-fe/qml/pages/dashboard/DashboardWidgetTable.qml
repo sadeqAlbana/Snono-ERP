@@ -6,28 +6,26 @@ import Qt5Compat.GraphicalEffects
 import Qt.labs.qmlmodels
 import "qrc:/CoreUI/components/tables"
 
-TableView{
+CTableView{
     id: tableView
-    //horizontalHeaderView.visible: false
+    horizontalHeaderView.visible: false
     property var modelRows;
     anchors.fill: parent;
     interactive: false
-//    implicitWidth: contentWidth
-    implicitHeight: contentHeight
-
-    onWidthChanged: forceLayout();
-    columnWidthProvider: function(column){return tableView.width/tableView.columns}
 
     model:  TableModel{
+        id: tableModel
         TableModelColumn{display: "label"}
         TableModelColumn{display: "value"}
         rows: modelRows
     }
+    implicitHeight: 100
+    rowHeightProvider: function(row){return 35}
+    rowSpacing: 0
     delegate: Label{
         clip: true
         property bool accentVisible: model.row!==TableView.view.rows-1
         font.pixelSize: 18
-
         font.bold: column===1
         text: model.display
         color: "white"
@@ -35,6 +33,7 @@ TableView{
         bottomPadding: 5
         Layout.fillWidth: true
         horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
         leftPadding: 10
         rightPadding: 10
         Rectangle{
@@ -45,7 +44,5 @@ TableView{
             anchors.bottom: parent.bottom
             width: parent.width
         }
-
-
     }//delegate
 }
