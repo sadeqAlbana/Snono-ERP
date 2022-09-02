@@ -43,7 +43,6 @@ Page{
                 clip: true
                 id: gridLayout
                 columnSpacing: 20
-                //columns: 1
                 property int maxImplicitWidth: 0
                 Layout.minimumWidth: maxImplicitWidth
                 onWidthChanged: updateValues()
@@ -69,10 +68,6 @@ Page{
                     //part 2
 
                     let decimalColumnCount=gridLayout.width/(maxImplicitWidth);
-//                    console.log("gw: " + gridLayout.width)
-
-//                    console.log("dc: " + decimalColumnCount)
-//                    console.log("maxI: " + maxImplicitWidth)
 
                     for (let j=0; j<gridLayout.children.length; j++){
                         let c=gridLayout.children[j];
@@ -82,9 +77,7 @@ Page{
                     }
 
                     let columnCount=parseInt(decimalColumnCount,10)
-//                    if(decimalColumnCount%1!==0){
-//                        columnCount++;
-//                    }
+
 
 
                     if(Number.isNaN(columnCount) || columnCount<=1){
@@ -93,31 +86,22 @@ Page{
                     }
 
                     if(columnCount>=childCount){
-//                        console.log("child count: " + childCount)
-//                        console.log("reached here");
                         columns=childCount;
                         return;
                     }
 
 
-                  //  if(childCount%2===0 && childCount%columnCount==0){
+                    if(childCount%2===0 && childCount%columnCount!==0){
                         while(childCount%columnCount!==0){
-                            //console.log("mod: " + (childCount%columnCount))
                             if(columnCount<=1){
                                 columns=columnCount;
                                 return;
                             }
                             columnCount--;
                         }
-                  //  }
-
-
-
-
-
+                    }
 
                     columns=columnCount;
-//                    console.log("cc: " + columnCount)
 
                 }
 
@@ -198,7 +182,7 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Daily Sales Profitsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), value: dashboard? dashboard["daily_sales_profits"] : ""},
+                            {label: qsTr("Daily Sales Profits"), value: dashboard? dashboard["daily_sales_profits"] : ""},
                             {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
                         ]
                     }
