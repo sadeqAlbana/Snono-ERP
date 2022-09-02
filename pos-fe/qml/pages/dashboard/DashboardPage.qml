@@ -18,6 +18,7 @@ Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
     property var dashboard;
+    padding: 20
 
 //    Flickable{
 //        anchors.fill: parent;

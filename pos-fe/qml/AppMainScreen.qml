@@ -23,9 +23,12 @@ Item {
 
     ToolBar{
         id: toolBar;
-        anchors.left: rootItem.left
-        anchors.right: rootItem.right
-        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+        //anchors.left: rootItem.left
+        //anchors.right: rootItem.right
+        width: drawerAboveContent? rootItem.width :
+                                   drawer.opened ? rootItem.width-drawer.width : rootItem.width
+        x: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
+        //anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
         height: 56
         background: Rectangle{
             border.color: "#d8dbe0"
@@ -440,26 +443,31 @@ Item {
         modal: false
     }
 
-    Rectangle{
-        color: "#ebedef"
+//    Rectangle{
+//        color: "#ebedef"
 
-        anchors{
-            left: rootItem.left
-            right: rootItem.right
-            leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
-            top: toolBar.bottom
-            bottom: rootItem.bottom
-        }
+//        anchors{
+//            left: rootItem.left
+//            right: rootItem.right
+//            leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+//            top: toolBar.bottom
+//            bottom: rootItem.bottom
+//        }
 
 
         //content here
         StackView{
+
+            background: Rectangle{color: "#ebedef"}
             id: stack
-            anchors.fill: parent
-            anchors.margins: drawerAboveContent? 0 : 20
+            width: drawerAboveContent? rootItem.width :
+                                       drawer.opened ? rootItem.width-drawer.width : rootItem.width
+            x: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
+            y: toolBar.height
+            height: rootItem.height-toolBar.height
+            padding: 20
             implicitWidth:currentItem.implicitWidth+40
             implicitHeight: currentItem.implicitHeight+40
-            //padding: 20
 
             initialItem: Page{
 
@@ -479,7 +487,7 @@ Item {
                 NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
             }
         }
-    }
+
 
     function parseNavbar(listItems){
         for(var i=0; i<listItems.length; i++){

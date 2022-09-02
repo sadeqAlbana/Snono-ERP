@@ -1,6 +1,8 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
 import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
+
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/forms"
 import "qrc:/CoreUI/components/tables"
@@ -23,10 +25,23 @@ CTableViewDelegate {
         parent: control
         x:0
         y: parent.height
+        padding: 0
+        background: Rectangle{color: "transparent"; border.color: "transparent"}
+
         Image{
                 fillMode: Image.PreserveAspectFit
                 source: model.display? model.display : ""
                 antialiasing: true
+
+                layer.enabled: control.enabled
+                layer.effect:  DropShadow{
+                    radius: 32
+                    verticalOffset: 1
+                    spread: 0.1
+                    color: "silver"
+                    cached: true
+                    transparentBorder: true
+                }
             }
     }
 
