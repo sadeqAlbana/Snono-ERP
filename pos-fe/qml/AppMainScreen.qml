@@ -132,14 +132,28 @@ Item {
         id: drawer
         width: 256
         height: rootItem.height
-        dim:false
+        dim:rootItem.drawerAboveContent
         closePolicy: Popup.NoAutoClose //this causes a problem in closing
         visible: true
         palette.base: "#3c4b64"
+        modal: rootItem.drawerAboveContent
 
+        Overlay.modal: Rectangle{
+             color: rootItem.drawerAboveContent ?   "#C0000000" : "transparent"
+        }
         background: Rectangle{
             //color: "#29363d"
             color: drawer.palette.base
+            border.color: "transparent"
+//            layer.enabled: rootItem.drawerAboveContent
+//            layer.effect:  DropShadow{
+//                radius: 4
+//                verticalOffset: 1
+//                spread: 0.1
+//                color: "silver"
+//                cached: true
+//                transparentBorder: true
+//            }
         }
 
 
@@ -237,8 +251,8 @@ Item {
                 hoverEnabled: true
                 highlighted: ListView.isCurrentItem
                 icon.color: "#afb5c0"
-                icon.width: 17
-                icon.height: 17
+                icon.width: 19
+                icon.height: 19
                 icon.cache: true
                 icon.name: model.image? model.image : ""
                 //: "normal"
@@ -269,8 +283,10 @@ Item {
                         verticalAlignment: Qt.AlignVCenter
                         Layout.leftMargin: 10
                         //font.family: "-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji"
+                        font.family: "Roboto"
                         font.bold: false
-                        font.pixelSize: 14
+                        font.pixelSize: 16
+                        font.weight: Font.Medium
                     }
 
                     Label{
@@ -281,7 +297,6 @@ Item {
                         font.pointSize: 13
                         color: control.hovered? "#fff" : "#7f7f8a"
 
-                        smooth: true
                         font.bold: control.hovered
                         rotation: control.expanded? -90 : 0
 
@@ -440,7 +455,6 @@ Item {
                 }
             }
         }
-        modal: false
     }
 
 //    Rectangle{

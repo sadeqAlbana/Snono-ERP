@@ -29,7 +29,6 @@ Page {
             sourceSize.height: height
             sourceSize.width: width
             antialiasing: true
-            smooth: true
             //width: parent.height
             fillMode: Image.PreserveAspectFit
 

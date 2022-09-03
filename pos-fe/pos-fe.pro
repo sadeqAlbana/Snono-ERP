@@ -8,7 +8,7 @@ QT += core widgets network gui quick quickcontrols2 multimedia printsupport seri
 
 android{
 QT -= pdf
-defines += QT_NO_PDF
+DEFINES += QT_NO_PDF
 }
 
 wasm{
@@ -39,13 +39,15 @@ CONFIG += c++11
 
 android{
 ANDROID_HOME = $$(ANDROID_HOME)
-    contains(QMAKE_HOST.os, win32){
-        include($$home/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
-    }
+include($$ANDROID_HOME/android_openssl/openssl.pri)
 
-    contains(QMAKE_HOST.os, Linux){
-        include($$ANDROID_HOME/android_openssl/openssl.pri)
-    }
+#    contains(QMAKE_HOST.os, Windows){
+#        include($$ANDROID_HOME/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
+#    }
+
+#    contains(QMAKE_HOST.os, Linux){
+#        include($$ANDROID_HOME/android_openssl/openssl.pri)
+#    }
 }
 
 include(posnumpadwidget/posnumpadwidget.pri)

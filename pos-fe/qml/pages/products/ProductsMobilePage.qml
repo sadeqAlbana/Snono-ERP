@@ -70,7 +70,6 @@ Card{
                         //Layout.preferredHeight: 120
                         Layout.fillHeight: true
                         Layout.fillWidth: false
-                        smooth: true
                         cache: true
                         antialiasing: true
                         fillMode: Image.PreserveAspectFit

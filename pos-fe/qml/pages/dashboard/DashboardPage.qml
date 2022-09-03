@@ -18,24 +18,13 @@ Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
     property var dashboard;
-    padding: 20
-
-//    Flickable{
-//        anchors.fill: parent;
-//        implicitWidth: rect.implicitWidth
-//        Rectangle{
-//            id: rect
-//            anchors.fill: parent
-//            implicitHeight: 500
-//            implicitWidth: 500
-//        }
-//    }
+    padding: 15
     Flickable {
+        id: flickable;
         anchors.fill: parent;
+
         implicitWidth: layout.implicitWidth
         contentHeight: layout.implicitHeight
-        //contentWidth: availableWidth
-        //implicitHeight: layout.implicitHeight
         //padding: 25
         ColumnLayout{
             id: layout
@@ -55,10 +44,10 @@ Page{
                     let count=0;
                     for (var i=0; i<gridLayout.children.length; i++){
                         let child=gridLayout.children[i];
-                        if(child.width!==0){
+
+                        if(!child.width<=0){
                             if(child.implicitWidth>maxLength){
                                 maxLength=child.implicitWidth;
-
                             }
 
                             count++;
@@ -68,17 +57,21 @@ Page{
                     let childCount=count;
                     //part 2
 
-                    let decimalColumnCount=gridLayout.width/(maxImplicitWidth);
+                    let decimalColumnCount=(gridLayout.width-(columnSpacing*childCount))/(maxImplicitWidth);
 
                     for (let j=0; j<gridLayout.children.length; j++){
                         let c=gridLayout.children[j];
-                        if(c.width!==0){
+                        if(!c.width<=0){
                             c.Layout.minimumWidth=maxImplicitWidth;
                         }
                     }
 
                     let columnCount=parseInt(decimalColumnCount,10)
 
+                    if(columnCount<=0){
+                        columns=1
+                        return;
+                    }
 
 
                     if(Number.isNaN(columnCount) || columnCount<=1){
@@ -90,6 +83,8 @@ Page{
                         columns=childCount;
                         return;
                     }
+
+
 
 
                     if(childCount%2===0 && childCount%columnCount!==0){
@@ -105,6 +100,18 @@ Page{
                     columns=columnCount;
 
                 }
+
+//                Timer{
+//                    running: true
+//                    interval: 5000
+//                    repeat: true
+
+//                    onTriggered: {
+//                        console.log("flicked")
+//                        gridLayout.lay
+
+//                    }
+//                }
 
 
 
@@ -205,24 +212,38 @@ Page{
                 Layout.fillWidth: true
                 //Layout.fillHeight: true
                 implicitHeight: 600
-                smooth: true
                 legend.font.bold: true
                 theme: ChartView.ChartThemeLight
                 animationOptions: ChartView.AllAnimations
 
+                    margins.left: 5
+                    margins.right:5
+                    margins.top:0
+                    margins.bottom:5
+
+
                 DateTimeAxis{
                     id: dtAxis
-                    format: "yyyy-MM-dd hh:mm"
-                    min: Utils.firstDayOfMonth()
-                    max: Utils.lastDayOfMonth()
-                    tickCount: 15
+                    format: "dd"
+                    min:  salesChartModel.maxDateUTC? new Date(1659301200000) : new Date()
+                    max:  salesChartModel.maxDateUTC? new Date(1661893200000) : new Date()
+                    tickCount: 4
+                    labelsFont.family: "Roboto"
+                    labelsFont.bold: true
+                    labelsColor: "#666666"
+
+//                    gridVisible: false
                 }
+
                 ValueAxis{
                     id: valueAxis
                     min: salesChartModel.minValue;
                     max: salesChartModel.maxValue*1.1;
                     labelFormat: "IQD%.2i"
-                    tickCount: 10
+                    tickCount: 5
+                    labelsFont.bold: true
+                    labelsFont.family: "Roboto"
+                    labelsColor: "#666666"
                 }
 
                 LineSeries {
@@ -237,13 +258,18 @@ Page{
                 LineSeries {
                     id: salesProfitsSeries
                     name: "Sales Profits"
+
                     axisX: dtAxis
                     axisY: valueAxis
                 }
 
                 VXYModelMapper{
                     series: salesSeries
-                    model: SalesChartModel{id: salesChartModel}
+                    model: SalesChartModel{id: salesChartModel;
+                    onMinDateUTCChanged: console.log("min: " + minDateUTC);
+                    onMaxDateUTCChanged: console.log("max: " + maxDateUTC);
+
+                    }
                     firstRow: 0
                     xColumn: 0
                     yColumn: 1

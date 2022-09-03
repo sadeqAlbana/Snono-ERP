@@ -46,11 +46,12 @@ Pane {
             Layout.alignment: Qt.AlignCenter
             Image{
                 id: logo
-                source: "qrc:/images/icons/SS_Logo_Color.png"
+                source: "qrc:/images/icons/SS_Logo_Color-cropped.svg"
                 fillMode: Image.PreserveAspectFit
                 antialiasing: true
                 anchors.fill: parent
                 sourceSize.width: parent.width
+//                asynchronous: true //this is important for performance reasons while resizing the window
             }
         }
         Card{

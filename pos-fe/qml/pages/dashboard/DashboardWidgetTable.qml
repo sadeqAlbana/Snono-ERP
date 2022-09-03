@@ -19,7 +19,8 @@ CTableView{
         TableModelColumn{display: "value"}
         rows: modelRows
     }
-    implicitHeight: 100
+    implicitHeight: 140
+    implicitWidth: 400
     rowHeightProvider: function(row){return 35}
     rowSpacing: 0
     delegate: Label{
