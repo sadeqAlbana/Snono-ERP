@@ -100,7 +100,7 @@ Card{
                         dialog.open();
                     } },
 
-                Action{checkable: true; enabled:tableView.selectedRow>=0; text: "Update Status"; icon.name: "cil-reload"; onTriggered: {
+                Action{enabled:tableView.selectedRow>=0; text: "Update Status"; icon.name: "cil-reload"; onTriggered: {
                         deliveryStatusDialog.open();
                     } },
                 Action{enabled:tableView.selectedRow>=0; text: "Return"; icon.name: "cil-action-undo"; onTriggered: {

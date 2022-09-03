@@ -60,6 +60,11 @@ ToolBar {
 
 
             CMenu{
+                padding: 20
+                spacing: 1
+                title: "Filter";
+                icon: "cil-filter"
+                //it's better to implement a custom content item
                 Repeater{
                     id: repeater
                     model: [

@@ -5,9 +5,9 @@ import "qrc:/CoreUI/components/forms"
 
 CComboBox {
     id: control
-    required property url dataUrl
+    property url dataUrl;
     property var filter: null
-    required property var defaultEntry
+    property var defaultEntry;
     currentIndex: 0
     //editable: true
     model: NetworkModel{
