@@ -15,7 +15,6 @@ Item {
     implicitHeight: stack.implicitHeight
     property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
 
-
     onDrawerAboveContentChanged: {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
@@ -79,7 +78,7 @@ Item {
                     menu.open();
                 }
 
-                CMenu{
+                CActionsMenu{
                     id:menu
                     parent: ctrl
                     y:parent.height

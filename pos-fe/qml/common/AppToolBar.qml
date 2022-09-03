@@ -28,77 +28,73 @@ ToolBar {
         spacing: 15
         anchors.fill: parent;
         CMenuBar{
+            spacing: 20
             Layout.preferredHeight: 45
-            CMenu{
+            CActionsMenu{
                 title: qsTr("Actions");
                 icon:"cil-settings"
                 actions: tableView.actions
             }//Menu
-        }//MenuBar
 
-        CButton{
-            id: btn
-            palette: BrandLight{}
-            onClicked: popup.open();
-            Layout.preferredHeight: 45
-            icon.name: "cil-list"
-            text: qsTr("Columns")
-            checkable: false
-//            display: AbstractButton.IconOnly
-            Popup{
-                id: popup
-                parent: btn
-                y:parent.height
-                leftPadding: 0
-                rightPadding: 0
-                palette.window: "#fff"
-                palette.shadow: "silver"
-                width: Math.max(flickable.contentWidth,250)
-                background: Rectangle{
-                    radius: 4
-                    color: popup.palette.window
-                    layer.enabled: true
-                    layer.effect:  DropShadow{
-                        radius: 8
-                        verticalOffset: 1
-                        spread: 0.1
-                        color: popup.palette.shadow
-                        cached: true
-                        transparentBorder: true
+            CMenu{
+                title: qsTr("columns");
+                icon:"cil-list"
+                Repeater{
+                    model: tableView.columns
+                    CMenuItem{
+                        checkable: true
+                        text: tableView.model.headerData(modelData,Qt.Horizontal)
+                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
+                        checked: true
+                        onCheckedChanged: {
+                            if(checked)
+                                tableView.showColumn(modelData);
+                            else{
+                                tableView.hideColumn(modelData)
+                            }
+                        }
                     }
                 }
+            }//Menu
 
-                Flickable{
-                    id: flickable
-                    clip: true
-                    implicitWidth: contentWidth
-                    implicitHeight: Math.min(contentHeight,400)
-                    anchors.fill: parent;
-                    contentHeight: layout.implicitHeight
-                    flickableDirection: Flickable.VerticalFlick
-                    ColumnLayout{
-                        id: layout
-                        anchors.fill: parent;
-                        Repeater{
-                            model: tableView.model.columnCount();
-                            CheckDelegate{
-                                text: tableView.model.headerData(modelData,Qt.Horizontal)
-                                Layout.preferredHeight: 35
-                                Layout.fillWidth: true
-                                checkState: Qt.Checked
-                                onCheckStateChanged: {
-                                    if(checkState==Qt.Checked)
-                                        tableView.showColumn(modelData);
-                                    else{
-                                        tableView.hideColumn(modelData)
-                                    }
-                                }
-                            }//delegate
-                        }//repeater
-                    }//layout
-                }//flickable
-            }//popup
-        }//button
+
+
+            CMenu{
+                Repeater{
+                    id: repeater
+                    model: [
+                        {"type": "text","label": "Customer Name","key": "customer_name","options":{"placeholderText":"All..."}},
+                        {"type": "text","label": "Customer Phone","key": "customer_phone","options":{"placeholderText":"All..."}},
+                        {"type": "text","label": "Customer Address","key": "customer_address","options":{"placeholderText":"All..."}},
+
+                        {"type": "combo","label": "product","key": "product_id",
+                            "options":{"editable":true,"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
+                                "filter":{"onlyVariants":true}}},
+
+                        {"type": "date","label": "from","key": "from"},
+                        {"type": "date","label": "to","key": "to"}]
+
+                    delegate: DelegateChooser{
+                        role: "type"
+                        DelegateChoice {roleValue: "text"; CTextField {}}
+                        DelegateChoice {roleValue: "combo"; CFilterComboBox {
+                                dataUrl: modelData.options["dataUrl"]
+                                editText: modelData.options["editable"];
+                                valueRole: modelData.options["valueRole"]
+                                textRole: modelData.options["textRole"]
+                                defaultEntry: modelData.options["defaultEntry"]
+                                filter: modelData.options["filter"]
+                                Component.onCompleted: console.log("ttt: "+ JSON.stringify(model))
+                            }
+                        }
+
+                        DelegateChoice {roleValue: "date"; CDateInput {}}
+                    }
+                }
+            }
+
+            //now delegate choice for filter
+        }//MenuBar
 
         CButton{
             id: filter
@@ -108,7 +104,6 @@ ToolBar {
             text: qsTr("Filter")
             palette: BrandInfo{}
             checkable: false
-
             onClicked: pp.open();
 
             TableFilter{
@@ -117,8 +112,8 @@ ToolBar {
                 form: advancedFilter;
 
                 onClicked: (filter)=>{
-                    filterClicked(filter);
-                }
+                               filterClicked(filter);
+                           }
             }
 
 

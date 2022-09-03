@@ -22,7 +22,6 @@ Page{
     Flickable {
         id: flickable;
         anchors.fill: parent;
-
         implicitWidth: layout.implicitWidth
         contentHeight: layout.implicitHeight
         //padding: 25
@@ -174,19 +173,20 @@ Page{
 
                 NewDashboardWidget{
                     title: "Profits"
-                    palette.window : "#2518AD"
+                    palette.window : "#2eb85c"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
                             {label: qsTr("Daily Sales Profits"), value: dashboard? dashboard["daily_sales_profits"] : ""},
-                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
+                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""},
+                            {label:qsTr("All Time Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
                         ]
                     }
                 }
 
                 NewDashboardWidget{
                     title: "Profits"
-                    palette.window : "#2518AD"
+                    palette.window : "#4f5d73"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
@@ -208,12 +208,24 @@ Page{
             }//gridLayout end
 
             ChartView{
+                id: chartView
                 antialiasing: true
                 Layout.fillWidth: true
                 //Layout.fillHeight: true
                 implicitHeight: 600
-                legend.font.bold: true
+                legend.font.bold: false
+                legend.font.family: "Roboto"
+                legend.font.pixelSize: 20
                 theme: ChartView.ChartThemeLight
+                layer.enabled: true
+                layer.effect:  DropShadow{
+                    radius: 8
+                    verticalOffset: 1
+                    spread: 0.1
+                    color: "silver"
+                    cached: true
+                    transparentBorder: true
+                }
                 animationOptions: ChartView.AllAnimations
 
                     margins.left: 5
@@ -224,29 +236,30 @@ Page{
 
                 DateTimeAxis{
                     id: dtAxis
-                    format: "dd"
-                    min:  salesChartModel.maxDateUTC? new Date(1659301200000) : new Date()
-                    max:  salesChartModel.maxDateUTC? new Date(1661893200000) : new Date()
-                    tickCount: 4
+                    format: "MMM, dd"
+                    min:  new Date(salesChartModel.minDateUTC)
+                    max:  new Date(salesChartModel.maxDateUTC)
+                    tickCount: Math.min(chartView.width/130,31)
                     labelsFont.family: "Roboto"
-                    labelsFont.bold: true
                     labelsColor: "#666666"
 
-//                    gridVisible: false
+                    gridVisible: false
                 }
+
+
 
                 ValueAxis{
                     id: valueAxis
                     min: salesChartModel.minValue;
                     max: salesChartModel.maxValue*1.1;
                     labelFormat: "IQD%.2i"
-                    tickCount: 5
-                    labelsFont.bold: true
+                    tickCount: 4
                     labelsFont.family: "Roboto"
                     labelsColor: "#666666"
                 }
 
-                LineSeries {
+
+                SplineSeries {
                     id: salesSeries
                     name: "Sales"
                     axisX: dtAxis
@@ -255,7 +268,7 @@ Page{
                 }
 
 
-                LineSeries {
+                SplineSeries {
                     id: salesProfitsSeries
                     name: "Sales Profits"
 
@@ -266,8 +279,6 @@ Page{
                 VXYModelMapper{
                     series: salesSeries
                     model: SalesChartModel{id: salesChartModel;
-                    onMinDateUTCChanged: console.log("min: " + minDateUTC);
-                    onMaxDateUTCChanged: console.log("max: " + maxDateUTC);
 
                     }
                     firstRow: 0

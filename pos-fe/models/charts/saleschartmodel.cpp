@@ -32,8 +32,7 @@ void SalesChartModel::onEndResetModel()
 
 
         if((dateTime<minDate || !minDate.isValid()) && dateTime.isValid()){
-            qDebug()<<"minDate: " << minDate.isValid();
-            qDebug()<<"it is smaller";
+
             minDate=dateTime;
         }
         if((dateTime>maxDate || !maxDate.isValid()) && dateTime.isValid()){
@@ -57,11 +56,11 @@ void SalesChartModel::onEndResetModel()
         emit minValueChanged();
     }
 
-//    setMinDate(minDate);
-//    setMaxDate(maxDate);
 
-    qDebug()<<"min: " << minDate.toMSecsSinceEpoch() << " " << minDate;
-    qDebug()<<"max: " << maxDate.toMSecsSinceEpoch() << " " << maxDate;
+    setMinDate(minDate);
+    setMaxDate(maxDate);
+
+
 
     setMinDateUTC(minDate.toMSecsSinceEpoch());
 

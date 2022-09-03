@@ -31,18 +31,8 @@ ButtonPopup {
         ColumnLayout{
             id: layout
             anchors.fill: parent;
-
-
-
-
-
         }//layout
     }//flickable
-
-
-
-
-
 
     Component.onCompleted: {
 
