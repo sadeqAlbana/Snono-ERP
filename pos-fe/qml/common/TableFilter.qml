@@ -86,7 +86,6 @@ ButtonPopup {
                              }
                          });
 
-            //console.log(JSON.stringify(filter));
             popup.clicked(filter);
 
         });//clicked
@@ -96,7 +95,6 @@ ButtonPopup {
         reset.text=qsTr("Reset");
         reset.palette=Utils.createObject("qrc:/CoreUI/palettes/BrandWarning.qml",reset)
         reset.clicked.connect(function(){
-
 
             form.forEach(item => {
                              if(item.type==="text"){

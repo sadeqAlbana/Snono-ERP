@@ -534,7 +534,7 @@ Item {
                 var listItems = xhr.responseText;
                 parseNavbar(JSON.parse(listItems));
 
-                //listView.currentIndex=listModel.indexOf("Orders List");
+                listView.currentIndex=listModel.indexOf("Orders List");
             }
         };
         xhr.send();

@@ -23,6 +23,8 @@ ToolBar {
     required property var tableView
     property bool searchVisible: true
     Layout.fillWidth: true
+    Layout.alignment: Qt.AlignVCenter
+    Layout.preferredHeight: 60
     palette.button: "transparent"
     RowLayout{
         spacing: 15
@@ -30,6 +32,7 @@ ToolBar {
         CMenuBar{
             spacing: 20
             Layout.preferredHeight: 45
+            Layout.alignment: Qt.AlignVCenter
             CActionsMenu{
                 title: qsTr("Actions");
                 icon:"cil-settings"
@@ -59,71 +62,26 @@ ToolBar {
 
 
 
-            CMenu{
+            CFilterMenu{
                 padding: 20
                 spacing: 1
                 title: "Filter";
                 icon: "cil-filter"
+
+
+                onClicked: (filter)=> {
+                               control.filterClicked(filter);
+                           }
+
+
                 //it's better to implement a custom content item
-                Repeater{
-                    id: repeater
-                    model: [
-                        {"type": "text","label": "Customer Name","key": "customer_name","options":{"placeholderText":"All..."}},
-                        {"type": "text","label": "Customer Phone","key": "customer_phone","options":{"placeholderText":"All..."}},
-                        {"type": "text","label": "Customer Address","key": "customer_address","options":{"placeholderText":"All..."}},
-
-                        {"type": "combo","label": "product","key": "product_id",
-                            "options":{"editable":true,"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
-                                "filter":{"onlyVariants":true}}},
-
-                        {"type": "date","label": "from","key": "from"},
-                        {"type": "date","label": "to","key": "to"}]
-
-                    delegate: DelegateChooser{
-                        role: "type"
-                        DelegateChoice {roleValue: "text"; CTextField {}}
-                        DelegateChoice {roleValue: "combo"; CFilterComboBox {
-                                dataUrl: modelData.options["dataUrl"]
-                                editText: modelData.options["editable"];
-                                valueRole: modelData.options["valueRole"]
-                                textRole: modelData.options["textRole"]
-                                defaultEntry: modelData.options["defaultEntry"]
-                                filter: modelData.options["filter"]
-                                Component.onCompleted: console.log("ttt: "+ JSON.stringify(model))
-                            }
-                        }
-
-                        DelegateChoice {roleValue: "date"; CDateInput {}}
-                    }
-                }
+                model: control.advancedFilter
             }
+
+
 
             //now delegate choice for filter
         }//MenuBar
-
-        CButton{
-            id: filter
-            visible: advancedFilter
-            Layout.preferredHeight: 45
-            icon.name: "cil-filter"
-            text: qsTr("Filter")
-            palette: BrandInfo{}
-            checkable: false
-            onClicked: pp.open();
-
-            TableFilter{
-                id: pp
-                parent: filter
-                form: advancedFilter;
-
-                onClicked: (filter)=>{
-                               filterClicked(filter);
-                           }
-            }
-
-
-
-        }
 
         HorizontalSpacer{}
 

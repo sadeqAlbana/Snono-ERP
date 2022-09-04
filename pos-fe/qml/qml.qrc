@@ -81,5 +81,6 @@
         <file>common/DateDelegate.qml</file>
         <file>common/DateTimeDelegate.qml</file>
         <file>pages/dashboard/DashboardWidgetTable.qml</file>
+        <file>common/CFilterMenu.qml</file>
     </qresource>
 </RCC>
