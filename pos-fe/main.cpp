@@ -68,6 +68,7 @@ int main(int argc, char *argv[])
         const QString baseName = "pos-fe_" + QLocale(locale).name();
         QTranslator *translator= new QTranslator(&a);
         qDebug()<<"load: " <<translator->load(":/i18n/" + baseName);
+        a.installTranslator(translator);
     }
     if(locale.language()==QLocale::Arabic){
         a.setLayoutDirection(Qt::RightToLeft);

@@ -14,7 +14,6 @@ Item {
     implicitWidth: stack.implicitWidth
     implicitHeight: stack.implicitHeight
     property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
-
     onDrawerAboveContentChanged: {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
@@ -136,7 +135,7 @@ Item {
         visible: true
         palette.base: "#3c4b64"
         modal: rootItem.drawerAboveContent
-
+        edge: (Qt.application.layoutDirection === Qt.RightToLeft ? Qt.RightEdge : Qt.LeftEdge)
         Overlay.modal: Rectangle{
             color: rootItem.drawerAboveContent ?   "#C0000000" : "transparent"
         }
@@ -279,7 +278,7 @@ Item {
                         verticalAlignment: Qt.AlignVCenter
                         Layout.leftMargin: 10
                         //font.family: "-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji"
-                        font.family: "Roboto"
+                        //font.family: "Roboto"
                         font.bold: false
                         font.pixelSize: 16
                         font.weight: Font.Medium
@@ -516,7 +515,7 @@ Item {
     Component.onCompleted: {
         var listItems = Nav.navBarData;
         parseNavbar(listItems);
-        listView.currentIndex=listModel.indexOf("Orders List");
+        listView.currentIndex=listModel.indexOf(qsTr("Orders List"));
         Api.generateImages();
     }
 }

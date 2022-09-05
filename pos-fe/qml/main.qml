@@ -18,7 +18,8 @@ ApplicationWindow {
     minimumHeight: rootLoader.implicitHeight
     property real activityCount : 0
     property bool mobileLayout : height>width
-
+    LayoutMirroring.enabled: (Qt.application.layoutDirection === Qt.RightToLeft ? true : false)
+    LayoutMirroring.childrenInherit: true
     onActivityCountChanged:{
         //console.log(activityCount)
         if(activityCount>0){

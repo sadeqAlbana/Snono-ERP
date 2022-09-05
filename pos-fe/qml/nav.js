@@ -8,126 +8,126 @@ var navBarData=[
       "path":"qrc:/pages/dashboard/DashboardPage.qml"
    },
    {
-      "title":"POS",
+      "title": qsTr("POS"),
       "category":"MAIN",
       "image":"cil-screen-desktop",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
    },
    {
-      "title":"Accounting",
-      "category":"MAIN",
+      "title":qsTr("Accounting"),
+      "category":qsTr("MAIN"),
       "image":"cil-money",
       "path":"",
       "childItems":[
          {
-            "title":"Accounts",
+            "title":qsTr("Accounts"),
             "path":"qrc:/pages/Accounting/AccountsPage.qml"
          },
          {
-            "title":"Journal Entries",
+            "title":qsTr("Journal Entries"),
             "path":"qrc:/pages/Accounting/JournalEntriesPage.qml"
          },
          {
-            "title":"Journal Entries Items",
+            "title":qsTr("Journal Entries Items"),
             "path":"qrc:/pages/Accounting/JournalEntriesItemsPage.qml"
          }
       ]
    },
 
    {
-      "title":"Products",
-      "category":"MAIN",
+      "title":qsTr("Products"),
+      "category":qsTr("MAIN"),
       "image":"cil-inbox",
       "path":"",
       "childItems":[
          {
-            "title":"Products List",
+            "title":qsTr("Products List"),
             "path":"qrc:/pages/products/ProductsPage.qml"
          },
          {
-            "title":"Mobile List",
+            "title":qsTr("Mobile List"),
             "path":"qrc:/pages/products/ProductsMobilePage.qml"
          },
          {
-            "title":"Categories",
+            "title":qsTr("Categories"),
             "path":"qrc:/pages/categories/CategoriesPage.qml"
          }
       ]
    },
    {
-      "title":"Orders",
-      "category":"MAIN",
+      "title":qsTr("Orders"),
+      "category":qsTr("MAIN"),
       "image":"cil-pen",
       "path": "",
       "childItems":[
          {
-            "title":"Orders List",
+            "title":qsTr("Orders List"),
             "path":"qrc:/pages/orders/OrdersPage.qml"
          },
          {
-            "title":"Returns",
+            "title":qsTr("Returns"),
             "path":"qrc:/pages/orders/OrdersReturnsPage.qml"
          }
       ]
    },
    {
-      "title":"Taxes",
-      "category":"MAIN",
+      "title":qsTr("Taxes"),
+      "category":qsTr("MAIN"),
       "image":"cil-money",
       "path":"qrc:/pages/taxes/TaxesPage.qml"
    },
    {
-      "title":"Customers",
-      "category":"MAIN",
+      "title":qsTr("Customers"),
+      "category":qsTr("MAIN"),
       "image":"cil-user",
       "path":"qrc:/pages/customers/CustomersPage.qml"
    },
    {
-      "title":"Vendors",
-      "category":"MAIN",
+      "title":qsTr("Vendors"),
+      "category":qsTr("MAIN"),
       "image":"cil-user",
       "path":"",
       "childItems":[
          {
-            "title":"Vendors List",
+            "title":qsTr("Vendors List"),
             "path":"qrc:/pages/vendors/VendorsPage.qml"
          },
          {
-            "title":"Bills",
+            "title":qsTr("Bills"),
             "path":"qrc:/pages/vendors/VendorsBillsPage.qml"
          }
       ]
    },
    {
-      "title":"Users",
-      "category":"MAIN",
+      "title":qsTr("Users"),
+      "category":qsTr("MAIN"),
       "image":"cil-user",
       "path":"qrc:/pages/users/UsersPage.qml"
    },
    {
-      "title":"Reports",
-      "category":"MAIN",
+      "title":qsTr("Reports"),
+      "category":qsTr("MAIN"),
       "image":"cil-chart",
       "path":"qrc:/pages/orders/OrdersPage.qml",
       "childItems":[
          {
-            "title":"Stock",
+            "title":qsTr("Stock"),
             "path":"qrc:/pages/reports/StockReport.qml"
          },
          {
-            "title":"Product Sales",
+            "title":qsTr("Product Sales"),
             "path":"qrc:/pages/reports/ProductSalesReport.qml"
          }
       ]
    },
    {
-      "title":"Settings",
-      "category":"MAIN",
+      "title":qsTr("Settings"),
+      "category":qsTr("MAIN"),
       "image":"cil-settings",
       "path":"",
       "childItems":[
          {
-            "title":"Receipt",
+            "title":qsTr("Receipt"),
             "path":"qrc:/pages/ReceiptPage.qml"
          }
       ]

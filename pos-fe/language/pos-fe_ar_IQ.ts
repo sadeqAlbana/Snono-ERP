@@ -115,7 +115,7 @@
     <message>
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="90"/>
         <source>select Taxes...</source>
-        <translation>الضرائب</translation>
+        <translation>الضرائب...</translation>
     </message>
     <message>
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="140"/>
@@ -452,12 +452,12 @@
     <message>
         <location filename="../qml/pages/Accounting/JournalEntriesItemsPage.qml" line="20"/>
         <source>Journal Entries Items</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntriesItemsPage.qml" line="37"/>
         <source>Deposit Money</source>
-        <translation type="unfinished">إيداع نقود</translation>
+        <translation>إيداع نقود</translation>
     </message>
 </context>
 <context>
@@ -465,7 +465,7 @@
     <message>
         <location filename="../qml/pages/Accounting/JournalEntriesPage.qml" line="18"/>
         <source>Journal Entries</source>
-        <translation type="unfinished"></translation>
+        <translation>القيود</translation>
     </message>
 </context>
 <context>
@@ -473,28 +473,28 @@
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="28"/>
         <source>Invalid Credentials</source>
-        <translation type="unfinished"></translation>
+        <translation>صلاحيات خاطئة</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="75"/>
         <location filename="../qml/pages/LoginPage.qml" line="133"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>دخول</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="85"/>
         <source>Sign in to your account</source>
-        <translation type="unfinished"></translation>
+        <translation>سجل الدخول الى حستسجيل الدخول الى حسابك</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="105"/>
         <source>username...</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم المستخدم...</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="119"/>
         <source>password...</source>
-        <translation type="unfinished"></translation>
+        <translation>كلمة المرور...</translation>
     </message>
 </context>
 <context>
@@ -502,12 +502,12 @@
     <message>
         <location filename="../qml/screens/LoginScreen.qml" line="60"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>الدخول</translation>
     </message>
     <message>
         <location filename="../qml/screens/LoginScreen.qml" line="66"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>الخروج</translation>
     </message>
 </context>
 <context>
@@ -515,12 +515,12 @@
     <message>
         <location filename="../coreui-qml/src/MainScreen.qml" line="36"/>
         <source>☰</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coreui-qml/src/MainScreen.qml" line="59"/>
         <source>‹</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -528,7 +528,7 @@
     <message>
         <location filename="../qml/pages/orders/OrderDetails.qml" line="41"/>
         <source>Order Details</source>
-        <translation type="unfinished"></translation>
+        <translation>تفاصيل الطلب</translation>
     </message>
 </context>
 <context>
@@ -536,17 +536,17 @@
     <message>
         <location filename="../qml/pages/orders/OrderReturnDialog.qml" line="49"/>
         <source>Return Order</source>
-        <translation type="unfinished"></translation>
+        <translation>إرجاع الطلب</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderReturnDialog.qml" line="77"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderReturnDialog.qml" line="87"/>
         <source>Return</source>
-        <translation type="unfinished"></translation>
+        <translation>إرجاع</translation>
     </message>
 </context>
 <context>
@@ -554,27 +554,27 @@
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="22"/>
         <source>Pending</source>
-        <translation type="unfinished">في الانتظار</translation>
+        <translation>في الانتظار</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="23"/>
         <source>Processing</source>
-        <translation type="unfinished">تحت المعالجة</translation>
+        <translation>تحت المعالجة</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="24"/>
         <source>Delivered</source>
-        <translation type="unfinished"></translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="25"/>
         <source>returned</source>
-        <translation type="unfinished"></translation>
+        <translation>راجع</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="26"/>
         <source>Partial</source>
-        <translation type="unfinished"></translation>
+        <translation>جزئي</translation>
     </message>
 </context>
 <context>
@@ -694,32 +694,32 @@
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="69"/>
         <source>Storable Product</source>
-        <translation type="unfinished">مخزون</translation>
+        <translation>مخزون</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="70"/>
         <source>Consumable Product</source>
-        <translation type="unfinished">استهلاكي</translation>
+        <translation>استهلاكي</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="71"/>
         <source>Service Product</source>
-        <translation type="unfinished">خدمة</translation>
+        <translation>خدمة</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="94"/>
         <source>select Taxes...</source>
-        <translation type="unfinished">الضرائب</translation>
+        <translation>الضرائب...</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="144"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="154"/>
         <source>Add</source>
-        <translation type="unfinished">إضافة</translation>
+        <translation>إضافة</translation>
     </message>
 </context>
 <context>
@@ -727,47 +727,47 @@
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="43"/>
         <source>Edit Product</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل المنتج</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="51"/>
         <source>Name</source>
-        <translation type="unfinished">الاسم</translation>
+        <translation>الاسم</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="52"/>
         <source>Barcode</source>
-        <translation type="unfinished">الباركود</translation>
+        <translation>الباركود</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="54"/>
         <source>Description</source>
-        <translation type="unfinished">الوصف</translation>
+        <translation>الوصف</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="55"/>
         <source>List Price</source>
-        <translation type="unfinished">سعر العرض</translation>
+        <translation>سعر العرض</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="56"/>
         <source>Cost</source>
-        <translation type="unfinished">الكلفة</translation>
+        <translation>الكلفة</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="64"/>
         <source>select Taxes...</source>
-        <translation type="unfinished">الضرائب</translation>
+        <translation>الضرائب...</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="121"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="133"/>
         <source>Apply</source>
-        <translation type="unfinished">تطبيق</translation>
+        <translation>تطبيق</translation>
     </message>
 </context>
 <context>
@@ -775,17 +775,17 @@
     <message>
         <location filename="../qml/pages/reports/ProductSalesReport.qml" line="18"/>
         <source>Products</source>
-        <translation type="unfinished"></translation>
+        <translation>المنتجات</translation>
     </message>
     <message>
         <location filename="../qml/pages/reports/ProductSalesReport.qml" line="44"/>
         <source>Apply</source>
-        <translation type="unfinished">تطبيق</translation>
+        <translation>تطبيق</translation>
     </message>
     <message>
         <location filename="../qml/pages/reports/ProductSalesReport.qml" line="59"/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
@@ -793,12 +793,12 @@
     <message>
         <location filename="../qml/pages/products/ProductsMobilePage.qml" line="18"/>
         <source>Products</source>
-        <translation type="unfinished"></translation>
+        <translation>المنتجات</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsMobilePage.qml" line="35"/>
         <source>Search...</source>
-        <translation type="unfinished">بحث...</translation>
+        <translation>بحث...</translation>
     </message>
 </context>
 <context>
@@ -806,32 +806,32 @@
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="20"/>
         <source>Products</source>
-        <translation type="unfinished"></translation>
+        <translation>المنتجات</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="102"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة منتج</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="104"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل المنتج</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="105"/>
         <source>Purchase Stock</source>
-        <translation type="unfinished"></translation>
+        <translation>شراء المنتج</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="106"/>
         <source>Adjust Stock</source>
-        <translation type="unfinished">تعديل المخزون</translation>
+        <translation>تعديل المخزون</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="107"/>
         <source>Bulck Stock Adjustment</source>
-        <translation type="unfinished"></translation>
+        <translation>تعديل مخزون بالجملة</translation>
     </message>
 </context>
 <context>
@@ -839,34 +839,34 @@
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="46"/>
         <source>Purchase Stock</source>
-        <translation type="unfinished"></translation>
+        <translation>شراء مخزون</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="50"/>
         <source>Quantity</source>
-        <translation type="unfinished"></translation>
+        <translation>الكمية</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="52"/>
         <source>Total</source>
-        <translation type="unfinished">المجموع</translation>
+        <translation>المجموع</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="77"/>
         <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="83"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../qml/pages/products/PurchaseStockDialog.qml" line="87"/>
         <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="93"/>
         <source>Purchase</source>
-        <translation type="unfinished"></translation>
+        <translation>شراء</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="39"/>
         <source>New Bill</source>
-        <translation type="unfinished">فاتورة جديدة</translation>
+        <translation>فاتورة جديدة</translation>
     </message>
 </context>
 <context>
@@ -874,17 +874,17 @@
     <message>
         <location filename="../qml/common/ReceiptDialog.qml" line="41"/>
         <source>Receipt</source>
-        <translation type="unfinished"></translation>
+        <translation>الوصل</translation>
     </message>
     <message>
         <location filename="../qml/common/ReceiptDialog.qml" line="72"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../qml/common/ReceiptDialog.qml" line="85"/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
@@ -947,7 +947,7 @@
     <message>
         <location filename="../qml/pages/ReceiptPage.qml" line="22"/>
         <source>Receipt</source>
-        <translation type="unfinished"></translation>
+        <translation>الوصل</translation>
     </message>
 </context>
 <context>
@@ -955,7 +955,7 @@
     <message>
         <location filename="../qml/pages/ServerSettingsDialog.qml" line="22"/>
         <source>Server Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>اعدادات الخادم</translation>
     </message>
 </context>
 <context>
@@ -963,22 +963,22 @@
     <message>
         <location filename="../qml/pages/pos/session/SessionCard.qml" line="31"/>
         <source>Total Orders</source>
-        <translation type="unfinished"></translation>
+        <translation>الطلبات الكلية</translation>
     </message>
     <message>
         <location filename="../qml/pages/pos/session/SessionCard.qml" line="41"/>
         <source>Total Amount</source>
-        <translation type="unfinished"></translation>
+        <translation>المبلغ الكلي</translation>
     </message>
     <message>
         <location filename="../qml/pages/pos/session/SessionCard.qml" line="55"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>متابعة</translation>
     </message>
     <message>
         <location filename="../qml/pages/pos/session/SessionCard.qml" line="68"/>
         <source>Close</source>
-        <translation type="unfinished">غلق</translation>
+        <translation>غلق</translation>
     </message>
 </context>
 <context>
@@ -986,7 +986,7 @@
     <message>
         <location filename="../qml/pages/pos/session/SessionsPage.qml" line="18"/>
         <source>Pos Sessions</source>
-        <translation type="unfinished"></translation>
+        <translation>جلسات البيع</translation>
     </message>
 </context>
 <context>
@@ -995,13 +995,13 @@
         <location filename="../qml/pages/customers/StatusDelegate.qml" line="14"/>
         <location filename="../qml/pages/vendors/StatusDelegate.qml" line="16"/>
         <source>Unpaid</source>
-        <translation type="unfinished"></translation>
+        <translation>غير مدفوع</translation>
     </message>
     <message>
         <location filename="../qml/pages/customers/StatusDelegate.qml" line="15"/>
         <location filename="../qml/pages/vendors/StatusDelegate.qml" line="17"/>
         <source>Paid</source>
-        <translation type="unfinished">المدفوع</translation>
+        <translation>مدفوع</translation>
     </message>
 </context>
 <context>
@@ -1009,12 +1009,12 @@
     <message>
         <location filename="../qml/pages/reports/StockReport.qml" line="17"/>
         <source>Products</source>
-        <translation type="unfinished"></translation>
+        <translation>المنتجات</translation>
     </message>
     <message>
         <location filename="../qml/pages/reports/StockReport.qml" line="40"/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
@@ -1022,12 +1022,12 @@
     <message>
         <location filename="../qml/common/TableFilter.qml" line="64"/>
         <source>Apply</source>
-        <translation type="unfinished">تطبيق</translation>
+        <translation>تطبيق</translation>
     </message>
     <message>
         <location filename="../qml/common/TableFilter.qml" line="95"/>
         <source>Reset</source>
-        <translation type="unfinished">إعادة</translation>
+        <translation>إعادة</translation>
     </message>
 </context>
 <context>
@@ -1035,12 +1035,12 @@
     <message>
         <location filename="../qml/pages/taxes/TaxTypeDelegate.qml" line="17"/>
         <source>Percentage</source>
-        <translation type="unfinished"></translation>
+        <translation>نسبة</translation>
     </message>
     <message>
         <location filename="../qml/pages/taxes/TaxTypeDelegate.qml" line="18"/>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>ثابتة</translation>
     </message>
 </context>
 <context>
@@ -1048,17 +1048,17 @@
     <message>
         <location filename="../qml/pages/taxes/TaxesPage.qml" line="18"/>
         <source>Taxes</source>
-        <translation type="unfinished"></translation>
+        <translation>الضرائب</translation>
     </message>
     <message>
         <location filename="../qml/pages/taxes/TaxesPage.qml" line="47"/>
         <source>Add</source>
-        <translation type="unfinished">إضافة</translation>
+        <translation>إضافة</translation>
     </message>
     <message>
         <location filename="../qml/pages/taxes/TaxesPage.qml" line="48"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف</translation>
     </message>
 </context>
 <context>
@@ -1066,22 +1066,22 @@
     <message>
         <location filename="../qml/pages/Accounting/TypeDeleagate.qml" line="16"/>
         <source>Receivable</source>
-        <translation type="unfinished"></translation>
+        <translation>مدين</translation>
     </message>
     <message>
         <location filename="../qml/pages/Accounting/TypeDeleagate.qml" line="17"/>
         <source>Payable</source>
-        <translation type="unfinished"></translation>
+        <translation>دائن</translation>
     </message>
     <message>
         <location filename="../qml/pages/Accounting/TypeDeleagate.qml" line="18"/>
         <source>Liquidity</source>
-        <translation type="unfinished"></translation>
+        <translation>سيولة</translation>
     </message>
     <message>
         <location filename="../qml/pages/Accounting/TypeDeleagate.qml" line="19"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>اخرى</translation>
     </message>
 </context>
 <context>
@@ -1089,37 +1089,37 @@
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="41"/>
         <source>Update Delivery Status</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديث حالة التوصيل</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="49"/>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>الحالة</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="53"/>
         <source>Pending</source>
-        <translation type="unfinished">في الانتظار</translation>
+        <translation>في الانتظار</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="54"/>
         <source>Processing</source>
-        <translation type="unfinished">تحت المعالجة</translation>
+        <translation>قيد المعالجة</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="55"/>
         <source>Delivered</source>
-        <translation type="unfinished"></translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="70"/>
         <source>Cancel</source>
-        <translation type="unfinished">إلغاء</translation>
+        <translation>الغاء</translation>
     </message>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="80"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديث</translation>
     </message>
 </context>
 <context>
@@ -1127,7 +1127,7 @@
     <message>
         <location filename="../qml/pages/users/UsersPage.qml" line="18"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>المستخدمين</translation>
     </message>
 </context>
 <context>
@@ -1135,22 +1135,22 @@
     <message>
         <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="18"/>
         <source>Vendors Bills</source>
-        <translation type="unfinished">فواتير الموردين</translation>
+        <translation>فواتير الموردين</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="55"/>
         <source>Pay</source>
-        <translation type="unfinished">دفع</translation>
+        <translation>دفع</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="58"/>
         <source>New Bill</source>
-        <translation type="unfinished">فاتورة جديدة</translation>
+        <translation>فاتورة جديدة</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="59"/>
         <source>New Custom Bill</source>
-        <translation type="unfinished"></translation>
+        <translation>فاتورة خاصة جديدة</translation>
     </message>
 </context>
 <context>
@@ -1158,17 +1158,17 @@
     <message>
         <location filename="../qml/pages/vendors/VendorsPage.qml" line="16"/>
         <source>Vendors</source>
-        <translation type="unfinished"></translation>
+        <translation>الموردين</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorsPage.qml" line="33"/>
         <source>Add</source>
-        <translation type="unfinished">إضافة</translation>
+        <translation>إضافة</translation>
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorsPage.qml" line="34"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف</translation>
     </message>
 </context>
 <context>
@@ -1176,7 +1176,13 @@
     <message>
         <location filename="../qml/main.qml" line="13"/>
         <source>POS</source>
-        <translation type="unfinished"></translation>
+        <translation>نقطة البيع</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="21"/>
+        <source>QT_LAYOUT_DIRECTION</source>
+        <comment>QGuiApplication</comment>
+        <translation>RTL</translation>
     </message>
 </context>
 <context>
@@ -1185,6 +1191,134 @@
         <location filename="../qml/nav.js" line="5"/>
         <source>Dashboard</source>
         <translation>الرئيسية</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="11"/>
+        <source>POS</source>
+        <translation>نقطة البيع</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="17"/>
+        <source>Accounting</source>
+        <translation>المحاسبة</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="18"/>
+        <location filename="../qml/nav.js" line="39"/>
+        <location filename="../qml/nav.js" line="59"/>
+        <location filename="../qml/nav.js" line="75"/>
+        <location filename="../qml/nav.js" line="81"/>
+        <location filename="../qml/nav.js" line="87"/>
+        <location filename="../qml/nav.js" line="103"/>
+        <location filename="../qml/nav.js" line="109"/>
+        <location filename="../qml/nav.js" line="125"/>
+        <source>MAIN</source>
+        <translation>الرئيسية</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="23"/>
+        <source>Accounts</source>
+        <translation>الحسابات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="27"/>
+        <source>Journal Entries</source>
+        <translation>القيود</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="31"/>
+        <source>Journal Entries Items</source>
+        <translation>تفاصيل القيود</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="38"/>
+        <source>Products</source>
+        <translation>المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="44"/>
+        <source>Products List</source>
+        <translation>قائمة المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="48"/>
+        <source>Mobile List</source>
+        <translation>قائمة الهاتف</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="52"/>
+        <source>Categories</source>
+        <translation>الفئات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="58"/>
+        <source>Orders</source>
+        <translation>الطلبات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="64"/>
+        <source>Orders List</source>
+        <translation>قائمة الطلبات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="68"/>
+        <source>Returns</source>
+        <translation>الرواجع</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="74"/>
+        <source>Taxes</source>
+        <translation>الضرائب</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="80"/>
+        <source>Customers</source>
+        <translation>الزبائن</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="86"/>
+        <source>Vendors</source>
+        <translation>الموردين</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="92"/>
+        <source>Vendors List</source>
+        <translation>قائمة الموردين</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="96"/>
+        <source>Bills</source>
+        <translation>الفواتير</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="102"/>
+        <source>Users</source>
+        <translation>المستخدمين</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="108"/>
+        <source>Reports</source>
+        <translation>التقارير</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="114"/>
+        <source>Stock</source>
+        <translation>المخزون</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="118"/>
+        <source>Product Sales</source>
+        <translation>مبيعات المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="124"/>
+        <source>Settings</source>
+        <translation>الإعدادات</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="130"/>
+        <source>Receipt</source>
+        <translation>الوصل</translation>
     </message>
 </context>
 <context>
