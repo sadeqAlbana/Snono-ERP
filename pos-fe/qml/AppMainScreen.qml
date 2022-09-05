@@ -25,8 +25,9 @@ Item {
         //anchors.right: rootItem.right
         width: drawerAboveContent? rootItem.width :
                                    drawer.opened ? rootItem.width-drawer.width : rootItem.width
-        x: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
-        //anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+        anchors.left: rootItem.left
+        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
+
         height: 65
         background: Rectangle{
             border.color: "#d8dbe0"
@@ -465,6 +466,9 @@ Item {
         width: drawerAboveContent? rootItem.width-padding*2  :
                                    drawer.opened ? rootItem.width-drawer.width-padding*2 : rootItem.width-padding*2
         x: drawerAboveContent? 0 : drawer.opened ? drawer.width+padding  : padding
+        anchors.left: parent.left
+        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened ? drawer.width+padding  : padding
+
         y: toolBar.height+ padding
         height: rootItem.height-toolBar.height-padding*2
         implicitWidth:currentItem.implicitWidth+40
