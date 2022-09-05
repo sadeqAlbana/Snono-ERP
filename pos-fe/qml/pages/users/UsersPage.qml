@@ -32,10 +32,7 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            delegate: DelegateChooser{
-                role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-
+            delegate: AppDelegateChooser{
             }
 
             actions: [
@@ -45,7 +42,6 @@ AppPage{
 
             model: UsersModel{
                 id: model
-
             }//model end
         }//tableview end
     }//ColumnLayout end

@@ -66,7 +66,7 @@ ToolBar {
             CFilterMenu{
                 padding: 20
                 spacing: 1
-                title: "Filter";
+                title: qsTr("Filter");
                 icon: "cil-filter"
                 onClicked: (filter)=> {
                                control.filterClicked(filter);

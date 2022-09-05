@@ -5,10 +5,10 @@
 #include <QFile>
 #include <QTextStream>
 ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
-                                                                       Column{"id","ID"} ,
-                                                                       Column{"thumb","Image",QString(),"image"} ,
-                                                                       Column{"name","Name"} ,
-                                                                       Column{"sku","SKU"} ,
+                                                                       Column{"id",tr("ID")} ,
+                                                                       Column{"thumb",tr("Image"),QString(),"image"} ,
+                                                                       Column{"name",tr("Name")} ,
+                                                                       Column{"sku",tr("SKU")} ,
                                                                        //Column{"description","description"} ,
 
                                                                        //Column{"parent_id","Parent"} ,
@@ -21,13 +21,13 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
                                                                        //Column{"external_id","external_id"} ,
 
                                                                        //Column{"external_sku","e_SKU"} ,
-                                                                       Column{"size","Size"} ,
+                                                                       Column{"size",tr("Size")} ,
 
 //                                                                       Column{"barcode","Barcode"} ,
-                                                                       Column{"cost","Cost",QString(), "currency"} ,
+                                                                       Column{"cost",tr("Cost"),QString(), "currency"} ,
 //                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
-                                                                       Column{"qty","Stock","products_stocks"} ,
-                                                                       Column{"list_price","List Price",QString(), "currency"}},parent)
+                                                                       Column{"qty",tr("Stock"),"products_stocks"} ,
+                                                                       Column{"list_price",tr("List Price"),QString(), "currency"}},parent)
 {
     //requestData();
 }

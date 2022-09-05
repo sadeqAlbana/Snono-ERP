@@ -31,15 +31,15 @@ GridLayout {
         NumpadButton { text: "7"; type: "DIGIT";  onPressed: buttonClicked(this); }
         NumpadButton { text: "8"; type: "DIGIT";  onPressed: buttonClicked(this);}
         NumpadButton { text: "9" ; type: "DIGIT"; onPressed: buttonClicked(this);}
-        NumpadButton {id: qty; checked: true; text: "Qty"; type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this)}
+        NumpadButton {text: qsTr("Qty"); checked: true; type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this) ;id: qty; }
         NumpadButton { text: "4" ; type: "DIGIT"; onPressed: buttonClicked(this);}
         NumpadButton { text: "5"; type: "DIGIT";  onPressed: buttonClicked(this);}
         NumpadButton { text: "6"; type: "DIGIT";  onPressed: buttonClicked(this);}
-        NumpadButton { text: "Disc"; type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this); }
+        NumpadButton { text: qsTr("Disc"); type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this); }
         NumpadButton { text: "1" ; type: "DIGIT"; onPressed: buttonClicked(this);}
         NumpadButton { text: "2"; type: "DIGIT";  onPressed: buttonClicked(this);}
         NumpadButton { text: "3"; type: "DIGIT";  onPressed: buttonClicked(this);}
-        NumpadButton { text: "Price"; type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this); }
+        NumpadButton { text: qsTr("Price"); type: "SPECIAL"; checkable: true; palette.button: "#3399ff"; palette.buttonText: "white"; onPressed: buttonClicked(this); }
         NumpadButton { text: "C"; type: "COMMAND"; palette.button: "#e55353"; palette.buttonText: "white";  onPressed: buttonClicked(this);}
         NumpadButton { text: "0"; type: "DIGIT"; onPressed: buttonClicked(this); }
         NumpadButton { text: "."; type: "COMMAND"; palette.button: "#636f83"; palette.buttonText: "white"; enabled: decimalEnabled; onPressed: buttonClicked(this); }

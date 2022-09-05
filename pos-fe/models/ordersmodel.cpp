@@ -1,15 +1,15 @@
 #include "ordersmodel.h"
 #include "posnetworkmanager.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
-                                                                  Column{"id","ID"} ,
-                                                                  Column{"reference","Reference"} ,
-                                                                  Column{"name","Customer","customers"} ,
-                                                                  Column{"phone","Phone","customers"} ,
-                                                                  Column{"address","Address","customers"} ,
-                                                                  Column{"total","Total",QString(),"currency"} ,
-                                                                  Column{"date","Date",QString(),"datetime"} ,
-                                                                  //Column{"tax_amount","Tax Amount",QString(),"currency"},
-                                                                  Column{"delivery_status","Status",QString(),"OrderStatus"} ,
+                                                                  Column{"id",tr("ID")} ,
+                                                                  Column{"reference",tr("Reference")} ,
+                                                                  Column{"name",tr("Customer"),"customers"} ,
+                                                                  Column{"phone",tr("Phone"),"customers"} ,
+                                                                  Column{"address",tr("Address"),"customers"} ,
+                                                                  Column{"total",tr("Total"),QString(),"currency"} ,
+                                                                  Column{"date",tr("Date"),QString(),"datetime"} ,
+                                                                  //Column{"tax_amount",tr("Tax Amount"),QString(),"currency"},
+                                                                  Column{"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
 
                                                                   },
                                                                   parent)

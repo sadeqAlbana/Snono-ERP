@@ -18,11 +18,12 @@ import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 import App.Models 1.0
 
-Page{
+AppPage{
     id: page
     title: qsTr("Cashier")
     //    palette.window: "transparent"
     background: Rectangle{color: "transparent"}
+    LayoutMirroring.enabled: false
     padding: 10
     property bool pay: false
     property int sessionId : -1
@@ -140,9 +141,9 @@ Page{
                     var modelValue=null;
                     var key;
                     switch(numpad.activeButton.text){
-                    case "Qty": key="qty"; break;
-                    case "Price": key="unit_price"; break;
-                    case "Disc": key="discount"; break;
+                    case qsTr("Qty"): key="qty"; break;
+                    case qsTr("Price"): key="unit_price"; break;
+                    case qsTr("Disc"): key="discount"; break;
 
                     default: break;
                     }
@@ -165,14 +166,14 @@ Page{
                     var row=tableView.selectedRow;
                     var key;
                     switch(activeButton.text){
-                    case "Qty": key="qty"; break;
-                    case "Price": key="unit_price"; break;
-                    case "Disc": key="discount"; break;
+                    case qsTr("Qty"): key="qty"; break;
+                    case qsTr("Price"): key="unit_price"; break;
+                    case qsTr("Disc"): key="discount"; break;
 
                     default: break;
                     }
                     var modelValue=cashierModel.data(tableView.selectedRow,cashierModel.indexOf(key));
-                    if(modelValue===0 && activeButton.text==="Qty"){
+                    if(modelValue===0 && activeButton.text===qsTr("Qty")){
                         clearClicked();
                     }else{
                         var newValue=NumberEditor.removeDigit(modelValue);
@@ -283,7 +284,7 @@ Page{
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
                 implicitHeight: 60
-                placeholderText: "Phone..."
+                placeholderText: qsTr("Phone...")
                 leftIcon: "cil-phone"
             }
             CTextField{
@@ -292,7 +293,7 @@ Page{
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
                 implicitHeight: 60
-                placeholderText: "Address..."
+                placeholderText: qsTr("Address...")
                 leftIcon: "cil-location-pin"
             }
             CTextField{
@@ -301,7 +302,7 @@ Page{
                 //id: customerPhone
                 Layout.fillWidth: true;
                 implicitHeight: 60
-                placeholderText: "Note..."
+                placeholderText: qsTr("Note...")
                 leftIcon: "cil-notes"
 
             }

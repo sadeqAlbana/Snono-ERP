@@ -1,10 +1,10 @@
 #include "customvendorcartmodel.h"
 #include "posnetworkmanager.h"
 CustomVendorCartModel::CustomVendorCartModel(QObject *parent) : JsonModel(QJsonArray(),{
-                                                              Column{"name","Name"},
-                                                              Column{"cost","Cost"},
-                                                              Column{"qty","Qty"},
-                                                              Column{"total","Total"}
+                                                              Column{"name",tr("Name")},
+                                                              Column{"cost",tr("Cost")},
+                                                              Column{"qty",tr("Qty")},
+                                                              Column{"total",tr("Total")}
 
                                                               }
                                                               ,parent)

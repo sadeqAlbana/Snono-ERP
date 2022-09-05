@@ -3,9 +3,9 @@
 
 
 CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/categories",{
-                                                                          Column{"id","ID"},
-                                                                          Column{"name","Name"},
-                                                                          Column{"parent_id","Parent"}},
+                                                                          Column{"id",tr("ID")},
+                                                                          Column{"name",tr("Name")},
+                                                                          Column{"parent_id",tr("Parent")}},
                                                                           parent)
 {
     requestData();

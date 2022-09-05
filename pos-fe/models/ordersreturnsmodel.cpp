@@ -2,10 +2,10 @@
 
 OrdersReturnsModel::OrdersReturnsModel(QObject *parent) : AppNetworkedJsonModel("/orders/returns",{
 //                                                                                Column{"name","Customer","customers"} ,
-                                                                                Column{"reference","Order Reference","order"} ,
-                                                                                Column{"total","Total",QString(),"currency"} ,
-                                                                                Column{"date","Date",QString(),"datetime"} ,
-                                                                                Column{"tax_amount","Tax Amount",QString(),"currency"}
+                                                                                Column{"reference",tr("Order Reference"),"order"} ,
+                                                                                Column{"total",tr("Total"),QString(),"currency"} ,
+                                                                                Column{"date",tr("Date"),QString(),"datetime"} ,
+                                                                                Column{"tax_amount",tr("Tax Amount"),QString(),"currency"}
                                                                                 },
                                                                                 parent)
 {

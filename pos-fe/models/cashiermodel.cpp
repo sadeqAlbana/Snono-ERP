@@ -9,13 +9,13 @@
 #include  "posnetworkmanager.h"
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
-                         Column{"name","Name"} ,
-                         Column{"thumb","Image",QString(),"image"} ,
-                         Column{"unit_price","Price",QString(),"currency"} ,
-                         Column{"qty","Qty"} ,
-                         Column{"discount","Discount",QString(),"percentage"} ,
-                         Column{"subtotal","Subtotal",QString(),"currency"} ,
-                         Column{"total","Total",QString(),"currency"}},parent)
+                         Column{"name", tr("Name")} ,
+                         Column{"thumb", tr("Image"),QString(),"image"} ,
+                         Column{"unit_price", tr("Price"),QString(),"currency"} ,
+                         Column{"qty", tr("Qty")} ,
+                         Column{"discount", tr("Discount"),QString(),"percentage"} ,
+                         Column{"subtotal", tr("Subtotal"),QString(),"currency"} ,
+                         Column{"total", tr("Total"),QString(),"currency"}},parent)
 {
     //setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
     requestCart();

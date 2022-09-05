@@ -16,6 +16,8 @@ Pane {
     anchors.fill: parent;
     palette.window: "#EBEDEF"
     padding: 20
+    LayoutMirroring.childrenInherit: true
+
     signal loggedIn();
     ServerSettingsDialog{
 

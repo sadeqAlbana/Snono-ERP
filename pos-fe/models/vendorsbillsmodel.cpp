@@ -2,14 +2,14 @@
 #include "posnetworkmanager.h"
 #include <QJsonObject>
 VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
-                                                                                             Column{"id","ID"} ,
-                                                                                             Column{"name"," Name"} ,
-                                                                                             Column{"reference","Reference"} ,
-                                                                                             Column{"external_reference","External Reference"} ,
-                                                                                             Column{"date","Date",QString(),"datetime"} ,
-                                                                                             Column{"due_date","Due Date",QString(),"datetime"} ,
-                                                                                             Column{"total","Total",QString(),"currency"} ,
-                                                                                             Column{"status","Status",QString(),"status"}}
+                                                                                             Column{"id",tr("ID")} ,
+                                                                                             Column{"name",tr("Name")} ,
+                                                                                             Column{"reference",tr("Reference")} ,
+                                                                                             Column{"external_reference",tr("External Reference")} ,
+                                                                                             Column{"date",tr("Date"),QString(),"datetime"} ,
+                                                                                             Column{"due_date",tr("Due Date"),QString(),"datetime"} ,
+                                                                                             Column{"total",tr("Total"),QString(),"currency"} ,
+                                                                                             Column{"status",tr("Status"),QString(),"status"}}
                                                                                                                ,parent)
 {
     requestData();

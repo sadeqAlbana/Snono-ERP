@@ -115,7 +115,7 @@ Page{
 
 
                 NewDashboardWidget{
-                    title: "Sales & Returns"
+                    title: qsTr("Sales & Returns")
                     palette.window : "#2518AD"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
@@ -129,7 +129,7 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Orders Status"
+                    title: qsTr("Orders Status")
                     palette.window : "#5FA7EA"
                     //                    Layout.minimumWidth: gridLayout.maxWidth
                     icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
@@ -144,7 +144,7 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Orders Statistics"
+                    title: qsTr("Orders Statistics")
                     palette.window : "#F7A20F"
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
@@ -158,7 +158,7 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Statistics"
+                    title: qsTr("Statistics")
                     palette.window : "#DE4343"
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
@@ -172,7 +172,7 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Profits"
+                    title: qsTr("Profits")
                     palette.window : "#2eb85c"
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
@@ -214,7 +214,7 @@ Page{
                 //Layout.fillHeight: true
                 implicitHeight: 600
                 legend.font.bold: false
-                legend.font.family: "Roboto"
+                //legend.font.family: "Roboto"
                 legend.font.pixelSize: 20
                 theme: ChartView.ChartThemeLight
                 layer.enabled: true
@@ -261,7 +261,7 @@ Page{
 
                 SplineSeries {
                     id: salesSeries
-                    name: "Sales"
+                    name: qsTr("Sales")
                     axisX: dtAxis
                     axisY: valueAxis
 
@@ -270,7 +270,7 @@ Page{
 
                 SplineSeries {
                     id: salesProfitsSeries
-                    name: "Sales Profits"
+                    name: qsTr("Sales Profits")
 
                     axisX: dtAxis
                     axisY: valueAxis

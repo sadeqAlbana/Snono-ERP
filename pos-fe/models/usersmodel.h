@@ -5,6 +5,7 @@
 
 class UsersModel : public AppNetworkedJsonModel
 {
+    Q_OBJECT
 public:
     UsersModel(QObject *parent=nullptr);
 };

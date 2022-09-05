@@ -2,8 +2,8 @@
 
 ProductsAttributesAttributesModel::ProductsAttributesAttributesModel(QObject *parent)
     : AppNetworkedJsonModel ("/proucts/attributes",{
-                             Column{"id","ID"} ,
-                             Column{"name","Name"}},parent)
+                             Column{"id",tr("ID")} ,
+                             Column{"name",tr("Name")}},parent)
 {
     requestData();
 }

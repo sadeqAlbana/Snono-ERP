@@ -35,7 +35,7 @@ AppPage{
             actions: [
                 Action{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
 
-                Action{ text: "Delete"; icon.name: "cil-delete.svg"; onTriggered: {}}
+                Action{ text: qsTr("Delete"); icon.name: "cil-delete.svg"; onTriggered: {}}
             ]//actions
 
             model: CustomersModel{

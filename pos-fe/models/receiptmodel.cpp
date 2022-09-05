@@ -1,11 +1,11 @@
 #include "receiptmodel.h"
 #include "posnetworkmanager.h"
 ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
-                                                                     Column{"name","Description","products"} ,
-                                                                     Column{"unit_price","Price",QString(),"currency"} ,
-                                                                     Column{"qty","Qty"} ,
-                                                                     Column{"subtotal","Subtotal",QString(),"currency"},
-                                                                     Column{"total","Total",QString(),"currency"}
+                                                                     Column{"name",tr("Description"),"products"} ,
+                                                                     Column{"unit_price",tr("Price"),QString(),"currency"} ,
+                                                                     Column{"qty",tr("Qty")} ,
+                                                                     Column{"subtotal",tr("Subtotal"),QString(),"currency"},
+                                                                     Column{"total",tr("Total"),QString(),"currency"}
                                                                      },parent),m_orderId(2)
 {
 

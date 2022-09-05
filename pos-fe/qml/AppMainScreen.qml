@@ -14,6 +14,8 @@ Item {
     implicitWidth: stack.implicitWidth
     implicitHeight: stack.implicitHeight
     property bool drawerAboveContent : ApplicationWindow.window.mobileLayout
+    LayoutMirroring.enabled: (Qt.application.layoutDirection === Qt.RightToLeft ? true : false)
+    LayoutMirroring.childrenInherit: true
     onDrawerAboveContentChanged: {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
@@ -463,6 +465,7 @@ Item {
     StackView{
         id: stack
         background: Rectangle{color: "transparent"}
+        LayoutMirroring.childrenInherit: true
         width: drawerAboveContent? rootItem.width-padding*2  :
                                    drawer.opened ? rootItem.width-drawer.width-padding*2 : rootItem.width-padding*2
         x: drawerAboveContent? 0 : drawer.opened ? drawer.width+padding  : padding
@@ -488,6 +491,11 @@ Item {
         }
         replaceExit: Transition {
             NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+        }
+
+        Component.onCompleted: {
+            console.log("layout mrroring: " + LayoutMirroring.enabled)
+            console.log("children inherit: " + LayoutMirroring.childrenInherit)
         }
     }
 
@@ -519,7 +527,7 @@ Item {
     Component.onCompleted: {
         var listItems = Nav.navBarData;
         parseNavbar(listItems);
-        listView.currentIndex=listModel.indexOf(qsTr("Orders List"));
+        //listView.currentIndex=listModel.indexOf(qsTr("Dashboard"));
         Api.generateImages();
     }
 }

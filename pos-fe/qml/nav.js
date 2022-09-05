@@ -9,7 +9,7 @@ var navBarData=[
    },
    {
       "title": qsTr("POS"),
-      "category":"MAIN",
+      "category":qsTr("MAIN"),
       "image":"cil-screen-desktop",
       "path":"qrc:/pages/pos/session/SessionsPage.qml"
    },

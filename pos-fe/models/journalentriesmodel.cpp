@@ -1,13 +1,13 @@
 #include "journalentriesmodel.h"
 
 JournalEntriesModel::JournalEntriesModel(QObject *parent) : AppNetworkedJsonModel("/journal/entries",
-                                                                                 {Column{"id","ID"},
-                                                                                  Column{"name","Name"},
-                                                                                  Column{"reference","Reference"},
-                                                                                  Column{"posted","Posted"},
-                                                                                  Column{"posted_date","Posted Date",QString(),"datetime"},
-                                                                                  Column{"date","Date",QString(),"datetime"} ,
-                                                                                  Column{"amount_total","Total",QString(),"currency"}},
+                                                                                 {Column{"id",tr("ID")},
+                                                                                  Column{"name",tr("Name")},
+                                                                                  Column{"reference",tr("Reference")},
+                                                                                  Column{"posted",tr("Posted")},
+                                                                                  Column{"posted_date",tr("Posted Date"),QString(),"datetime"},
+                                                                                  Column{"date",tr("Date"),QString(),"datetime"} ,
+                                                                                  Column{"amount_total",tr("Total"),QString(),"currency"}},
                                                                                   parent)
 {
     requestData();

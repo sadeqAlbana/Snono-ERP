@@ -1,11 +1,11 @@
 #include "taxesmodel.h"
 
 TaxesModel::TaxesModel(QObject *parent) : AppNetworkedJsonModel ("/taxes",{
-                                                                 Column{"id","ID"} ,
-                                                                 Column{"name","Name"} ,
-                                                                 Column{"type","Type",QString(),"taxType"} ,
-                                                                 Column{"value","Value"} ,
-                                                                 Column{"account_id","Account ID"}
+                                                                 {"id",tr("ID")} ,
+                                                                 {"name",tr("Name")} ,
+                                                                 {"type",tr("Type"),QString(),"taxType"} ,
+                                                                 {"value",tr("Value")} ,
+                                                                 {"account_id",tr("Account ID")}
                                                                  },parent)
 {
     requestData();
