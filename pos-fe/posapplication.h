@@ -3,19 +3,25 @@
 
 #include <QApplication>
 #include <QSettings>
-class MainWindow;
+
+class QQmlApplicationEngine;
+class AppSettings;
 class PosApplication : public QApplication
 {
+    Q_OBJECT
 public:
     PosApplication(int &argc, char **argv);
     ~PosApplication();
-    //static QWidget *mainWidget();
 
+    Q_INVOKABLE QStringList languages() const;
 private:
-    QSettings settings;
+    AppSettings *m_settings;
     void initSettings();
-    //MainWindow _mainWindow;
+    void loadFonts();
+    void loadTranslators();
+    QList<QTranslator *> m_translators;
 
+    QQmlApplicationEngine *m_engine;
 };
 
 #endif // POSAPPLICATION_H

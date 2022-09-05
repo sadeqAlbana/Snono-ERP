@@ -94,7 +94,6 @@ void Api::removeCategory(const int &categoryId)
 void Api::barqReceipt(const QString &reference)
 {
 #ifndef QT_NO_PDF
-
     qDebug()<<"Reference: " << reference;
     PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
             ->subcribe([this](NetworkResponse *res){

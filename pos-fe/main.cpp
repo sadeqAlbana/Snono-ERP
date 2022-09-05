@@ -14,7 +14,7 @@
 #include "api.h"
 #include <QPrinterInfo>
 #include <QIcon>
-#include "possettings.h"
+#include "appsettings.h"
 #include "models/appnetworkedjsonmodel.h"
 #include "models/stockreportmodel.h"
 #include "models/productsalesreportmodel.h"
@@ -31,11 +31,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("com");
     QCoreApplication::setOrganizationDomain("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
-    qputenv("QML_XHR_ALLOW_FILE_READ","1");
 #ifndef Q_OS_ANDROID
     qputenv("QT_FONT_DPI","96");
 #endif
-
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
@@ -45,92 +43,8 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
-    PosSettings settings;
-
-    //first load font files
-    QDirIterator it(":/fonts", QStringList{{"*.ttf"}}, QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()){
-        QString next= it.next();
-        QFontDatabase::addApplicationFont(next);
-    }
 
 
-    QFont font=a.font();
-    font.setFamily("STV");
-    a.setFont(font);
-
-    QLocale::Language language=QLocale::Arabic;
-    QLocale locale(language);
-    QLocale::setDefault(locale);
-
-    const QStringList uiLanguages = QStringList{"ar-IQ"};
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "pos-fe_" + QLocale(locale).name();
-        QTranslator *translator= new QTranslator(&a);
-        qDebug()<<"load: " <<translator->load(":/i18n/" + baseName);
-        a.installTranslator(translator);
-    }
-    if(locale.language()==QLocale::Arabic){
-        a.setLayoutDirection(Qt::RightToLeft);
-    }
-
-
-
-    QIcon::setThemeName("CoreUI");
-//   QGuiApplication a(argc, argv);
-    QQmlApplicationEngine engine;
-    engine.setNetworkAccessManagerFactory(new AppQmlNetworkAccessManagerFactory);
-    NumberEditor nb;
-    ReceiptGenerator gen;
-
-    engine.rootContext()->setContextProperty("KApp",&a);
-    engine.rootContext()->setContextProperty("AuthManager",AuthManager::instance());
-    engine.rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
-    engine.rootContext()->setContextProperty("NumberEditor",&nb);
-    engine.rootContext()->setContextProperty("ReceiptGenerator",&gen);
-    engine.rootContext()->setContextProperty("Api",Api::instance());
-    engine.rootContext()->setContextProperty("Settings",&settings);
-    engine.rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
-
-
-
-
-    qmlRegisterType<AccountsModel>("App.Models", 1, 0, "AccountsModel");
-
-    qmlRegisterType<ProductsModel>("App.Models", 1, 0, "ProductsModel");
-    qmlRegisterType<OrdersModel>("App.Models", 1, 0, "OrdersModel");
-    qmlRegisterType<OrderItemsModel>("App.Models", 1, 0, "OrderItemsModel");
-    qmlRegisterType<CashierModel>("App.Models", 1, 0, "CashierModel");
-    qmlRegisterType<CategoriesModel>("App.Models", 1, 0, "CategoriesModel");
-    qmlRegisterType<TreeProxyModel>("App.Models", 1, 0, "TreeProxyModel");
-    qmlRegisterType<TaxesCheckableModel>("App.Models", 1, 0, "TaxesCheckableModel");
-    qmlRegisterType<VendorsModel>("App.Models", 1, 0, "VendorsModel");
-    qmlRegisterType<VendorsBillsModel>("App.Models", 1, 0, "VendorsBillsModel");
-    qmlRegisterType<CustomersModel>("App.Models", 1, 0, "CustomersModel");
-    qmlRegisterType<PosSessionsModel>("App.Models", 1, 0, "PosSessionsModel");
-    qmlRegisterType<JournalEntriesItemsModel>("App.Models", 1, 0, "JournalEntriesItemsModel");
-    qmlRegisterType<JournalEntriesModel>("App.Models", 1, 0, "JournalEntriesModel");
-    qmlRegisterType<TaxesModel>("App.Models", 1, 0, "TaxesModel");
-    qmlRegisterType<ReceiptModel>("App.Models", 1, 0, "ReceiptModel");
-    qmlRegisterType<VendorCartModel>("App.Models", 1, 0, "VendorCartModel");
-    qmlRegisterType<ReturnOrderModel>("App.Models", 1, 0, "ReturnOrderModel");
-    qmlRegisterType<CustomVendorCartModel>("App.Models", 1, 0, "CustomVendorCartModel");
-    qmlRegisterType<ProductsAttributesAttributesModel>("App.Models", 1, 0, "ProductsAttributesAttributesModel");
-    qmlRegisterType<SalesChartModel>("App.Models", 1, 0, "SalesChartModel");
-    qmlRegisterType<UsersModel>("App.Models", 1, 0, "UsersModel");
-    qmlRegisterType<OrdersReturnsModel>("App.Models", 1, 0, "OrdersReturnsModel");
-    qmlRegisterType<AppNetworkedJsonModel>("App.Models", 1, 0, "NetworkModel");
-    qmlRegisterType<BarqLocationsModel>("App.Models", 1, 0, "BarqLocationsModel");
-    qmlRegisterType<StockReportModel>("App.Models", 1, 0, "StockReportModel");
-    qmlRegisterType<ProductSalesReportModel>("App.Models", 1, 0, "ProductSalesReportModel");
-
-
-
-
-    //instances should be added before engine.load
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-    if (engine.rootObjects().isEmpty())
-        return -1;
 
     return a.exec();
 }

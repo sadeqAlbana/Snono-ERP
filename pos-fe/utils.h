@@ -12,4 +12,6 @@ namespace QrCode{
 std::string toSvgString(const qrcodegen::QrCode &qr, int border);
 
 }
+
+
 #endif // UTILS_H

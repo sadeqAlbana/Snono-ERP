@@ -126,6 +126,11 @@ var navBarData=[
       "image":"cil-settings",
       "path":"",
       "childItems":[
+                    {
+                        "title": qsTr("General"),
+                        "path": "qrc:/pages/settings/GeneralSettings.qml"
+                    },
+
          {
             "title":qsTr("Receipt"),
             "path":"qrc:/pages/ReceiptPage.qml"

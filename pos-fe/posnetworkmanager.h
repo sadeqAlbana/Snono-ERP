@@ -1,7 +1,7 @@
 #ifndef POSNETWORKMANAGER_H
 #define POSNETWORKMANAGER_H
 #include <networkmanager.h>
-#include "possettings.h"
+#include "appsettings.h"
 class PosNetworkManager : public NetworkManager
 {
     Q_OBJECT
@@ -24,7 +24,7 @@ private:
     void setJWT(const QByteArray jwt);
 
     QByteArray jwt() const;
-    PosSettings settings;
+    AppSettings settings;
     static PosNetworkManager *_instance;
 
 

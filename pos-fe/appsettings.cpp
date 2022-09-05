@@ -1,24 +1,24 @@
-#include "possettings.h"
+#include "appsettings.h"
 #include <QUrl>
 #include <QDebug>
-PosSettings::PosSettings()
+AppSettings::AppSettings(QObject *parent) : QSettings(parent)
 {
 
 }
 
-QUrl PosSettings::serverUrl()
+QUrl AppSettings::serverUrl()
 {
 
     return value("http_server_url").toUrl();
 }
 
-void PosSettings::setServerUrl(const QUrl &url)
+void AppSettings::setServerUrl(const QUrl &url)
 {
     setValue("http_server_url",url);
     emit serverUrlChanged(url);
 }
 
-void PosSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)
+void AppSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)
 {
     QUrl url;
     url.setHost(host);
@@ -27,7 +27,7 @@ void PosSettings::setServerUrl(const QString &host, const uint port, const bool 
 
     setServerUrl(url);
 }
-QString PosSettings::hwID()
+QString AppSettings::hwID()
 {
 #ifdef Q_OS_ANDROID
     return QStringLiteral("galaxytabs2");

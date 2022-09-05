@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QJsonObject>
-#include "possettings.h"
+#include "appsettings.h"
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
@@ -14,7 +14,7 @@ void AuthManager::authenticate(QString username, QString password)
 {
     PosNetworkManager::instance()->post("/auth/login",QJsonObject{{"username",username},
                                  {"password",password},
-                                 {"hw_id",PosSettings::hwID()}
+                                 {"hw_id",AppSettings::hwID()}
 
                                         })->subcribe(this,&AuthManager::onAuthReply);
 }

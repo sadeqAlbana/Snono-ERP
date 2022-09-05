@@ -1,14 +1,14 @@
-#ifndef POSSETTINGS_H
-#define POSSETTINGS_H
+#ifndef APPSETTINGS_H
+#define APPSETTINGS_H
 #include <QSettings>
 #include <QUrl>
-class PosSettings : public QSettings
+class AppSettings : public QSettings
 {
     Q_OBJECT
     Q_PROPERTY(QUrl serverUrl READ serverUrl NOTIFY serverUrlChanged)
 
 public:
-    PosSettings();
+    explicit AppSettings(QObject *parent=nullptr);
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
@@ -19,4 +19,4 @@ signals:
     void serverUrlChanged(QUrl url);
 };
 
-#endif // POSSETTINGS_H
+#endif // APPSETTINGS_H

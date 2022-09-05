@@ -83,5 +83,6 @@
         <file>pages/dashboard/DashboardWidgetTable.qml</file>
         <file>common/CFilterMenu.qml</file>
         <file>common/AppPage.qml</file>
+        <file>pages/settings/GeneralSettings.qml</file>
     </qresource>
 </RCC>

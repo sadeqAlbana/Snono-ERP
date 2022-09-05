@@ -6,18 +6,6 @@
 
 QT += core widgets network gui quick quickcontrols2 multimedia printsupport serialport charts svg core5compat pdf
 
-android{
-QT -= pdf
-DEFINES += QT_NO_PDF
-}
-
-wasm{
-QT -= pdf serialport
-DEFINES += QT_NO_PDF
-
-}
-
-
 #greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pos-fe
@@ -36,31 +24,52 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-
-android{
-ANDROID_HOME = $$(ANDROID_HOME)
-include($$ANDROID_HOME/android_openssl/openssl.pri)
-
-#    contains(QMAKE_HOST.os, Windows){
-#        include($$ANDROID_HOME/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
-#    }
-
-#    contains(QMAKE_HOST.os, Linux){
-#        include($$ANDROID_HOME/android_openssl/openssl.pri)
-#    }
-}
-
 include(posnumpadwidget/posnumpadwidget.pri)
 include(../json-model/json-model.pri)
 include(libs/QrCodeGenerator/QrCodeGenerator.pri)
+include(coreui-qml/CoreUI-QML.pri)
+include(../network-manager/network-manager.pri)
+android{
+QT -= pdf
+DEFINES += QT_NO_PDF
+ANDROID_HOME = $$(ANDROID_HOME)
+include($$ANDROID_HOME/android_openssl/openssl.pri)
+
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/build.gradle \
+    android/gradle.properties \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml
+
+}
+#    contains(QMAKE_HOST.os, Windows){
+#        include($$ANDROID_HOME/AppData/Local/Android/Sdk/android_openssl/openssl.pri)
+#    }
+}
+
+wasm{
+QT -= pdf serialport
+DEFINES += QT_NO_PDF
+}
+
+
 
 
 SOURCES += \
     api.cpp \
     appqmlnetworkaccessmanagerfactory.cpp \
+    appsettings.cpp \
     code128.cpp \
     code128item.cpp \
-        main.cpp \
+    main.cpp \
     models/appnetworkedjsonmodel.cpp \
     models/barqlocationsmodel.cpp \
     models/categoriesmodel.cpp \
@@ -91,7 +100,6 @@ SOURCES += \
     models/vendorsmodel.cpp \
     posnetworkmanager.cpp \
     posapplication.cpp \
-    possettings.cpp \
     models/productsmodel.cpp \
     receiptgenerator.cpp \
     testpalette.cpp \
@@ -101,6 +109,7 @@ SOURCES += \
 HEADERS += \
     api.h \
     appqmlnetworkaccessmanagerfactory.h \
+    appsettings.h \
     code128.h \
     code128item.h \
     models/Models \
@@ -134,7 +143,6 @@ HEADERS += \
     models/vendorsmodel.h \
     posnetworkmanager.h \
     posapplication.h \
-    possettings.h \
     models/productsmodel.h \
     receiptgenerator.h \
     testpalette.h \
@@ -146,8 +154,7 @@ HEADERS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-include(coreui-qml/CoreUI-QML.pri)
-include(../network-manager/network-manager.pri)
+
 
 
 RESOURCES += \
@@ -165,20 +172,8 @@ CONFIG += embed_translations
 #target.path = ~/pos-fe
 #INSTALLS += target
 
-DISTFILES += \
-    android/AndroidManifest.xml \
-    android/build.gradle \
-    android/gradle.properties \
-    android/gradle/wrapper/gradle-wrapper.jar \
-    android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew \
-    android/gradlew.bat \
-    android/res/values/libs.xml
 
-contains(ANDROID_TARGET_ARCH,arm64-v8a) {
-    ANDROID_PACKAGE_SOURCE_DIR = \
-        $$PWD/android
-}
+
 
 
 
