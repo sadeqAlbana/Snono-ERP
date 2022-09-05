@@ -12,7 +12,7 @@ import "qrc:/CoreUI/components/views"
 import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/common"
 
-Card{
+AppPage{
     title: qsTr("Categories")
     padding: 10
 

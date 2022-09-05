@@ -1,6 +1,51 @@
 <RCC>
     <qresource prefix="/fonts">
+        <file>Roboto_Condensed/LICENSE.txt</file>
+        <file>Roboto_Condensed/RobotoCondensed-Bold.ttf</file>
+        <file>Roboto_Condensed/RobotoCondensed-BoldItalic.ttf</file>
+        <file>Roboto_Condensed/RobotoCondensed-Italic.ttf</file>
+        <file>Roboto_Condensed/RobotoCondensed-Light.ttf</file>
+        <file>Roboto_Condensed/RobotoCondensed-LightItalic.ttf</file>
+        <file>Roboto_Condensed/RobotoCondensed-Regular.ttf</file>
+        <file>STV.ttf</file>
+        <file>STV-Bold.ttf</file>
+        <file>univers-next-arabic-regular.ttf</file>
+        <file>29ltbukrabold.otf</file>
+        <file>29LTBUKRAREGULAR.OTF</file>
+        <file>Hacen Liner/Hacen Liner Broadcast HD.ttf</file>
+        <file>Hacen Liner/Hacen Liner Broadcast Live.ttf</file>
+        <file>Hacen Liner/Hacen Liner Broadcast.ttf</file>
+        <file>Hacen Liner/Hacen Liner Screen St.ttf</file>
+        <file>Hacen Liner/Hacen Liner XXL.ttf</file>
+        <file>Hacen Liner/Hacen Liner XL.ttf</file>
+        <file>Hacen Liner/Hacen Liner Screen.ttf</file>
+        <file>Hacen Liner/Hacen Liner Screen Wd.ttf</file>
+        <file>Hacen Liner/Hacen Liner Screen Bd.ttf</file>
+        <file>Hacen Liner/Hacen Liner Printout.ttf</file>
+        <file>Hacen Liner/Hacen Liner Printout Lt.ttf</file>
+        <file>Hacen_Maghreb/Hacen Maghreb Bd.ttf</file>
+        <file>Hacen_Maghreb/Hacen Maghreb Lt.ttf</file>
+        <file>Hacen_Maghreb/Hacen Maghreb.ttf</file>
+        <file>Markazi_Text/static/MarkaziText-Bold.ttf</file>
+        <file>Markazi_Text/static/MarkaziText-Medium.ttf</file>
+        <file>Markazi_Text/static/MarkaziText-Regular.ttf</file>
+        <file>Markazi_Text/static/MarkaziText-SemiBold.ttf</file>
+        <file>Markazi_Text/MarkaziText-VariableFont_wght.ttf</file>
+        <file>Roboto/LICENSE.txt</file>
+        <file>Roboto/Roboto-Black.ttf</file>
+        <file>Roboto/Roboto-BlackItalic.ttf</file>
+        <file>Roboto/Roboto-Bold.ttf</file>
+        <file>Roboto/Roboto-BoldItalic.ttf</file>
+        <file>Roboto/Roboto-Italic.ttf</file>
+        <file>Roboto/Roboto-Light.ttf</file>
+        <file>Roboto/Roboto-LightItalic.ttf</file>
+        <file>Roboto/Roboto-Medium.ttf</file>
+        <file>Roboto/Roboto-MediumItalic.ttf</file>
+        <file>Roboto/Roboto-Regular.ttf</file>
+        <file>Roboto/Roboto-Thin.ttf</file>
+        <file>Roboto/Roboto-ThinItalic.ttf</file>
         <file>EAN-13.ttf</file>
         <file>code128.ttf</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

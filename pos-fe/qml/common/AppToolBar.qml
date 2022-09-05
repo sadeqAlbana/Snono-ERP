@@ -30,8 +30,9 @@ ToolBar {
         spacing: 15
         anchors.fill: parent;
         CMenuBar{
-            spacing: 20
-            Layout.preferredHeight: 45
+
+            spacing: -5
+            Layout.preferredHeight: 50
             Layout.alignment: Qt.AlignVCenter
             CActionsMenu{
                 title: qsTr("Actions");
@@ -67,8 +68,6 @@ ToolBar {
                 spacing: 1
                 title: "Filter";
                 icon: "cil-filter"
-
-
                 onClicked: (filter)=> {
                                control.filterClicked(filter);
                            }

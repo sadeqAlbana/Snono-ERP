@@ -15,7 +15,7 @@ import "qrc:/common"
 import App.Models 1.0
 
 
-Card{
+AppPage{
 
     title: qsTr("Journal Entries Items")
     padding: 10

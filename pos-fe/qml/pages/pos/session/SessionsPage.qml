@@ -14,7 +14,7 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 
-Page{
+AppPage{
     title: qsTr("Pos Sessions")
     palette.window: "transparent"
     GridLayout{

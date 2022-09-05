@@ -14,7 +14,7 @@ import "qrc:/common"
 import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 
-Card{
+AppPage{
     title: qsTr("Customers")
     padding: 10
     ColumnLayout{

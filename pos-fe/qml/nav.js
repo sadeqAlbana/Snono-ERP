@@ -1,6 +1,8 @@
-[
+.pragma library
+
+var navBarData=[
    {
-      "title":"Dashboard",
+      "title": qsTr("Dashboard"),
       "category":"",
       "image":"cil-speedometer",
       "path":"qrc:/pages/dashboard/DashboardPage.qml"
@@ -130,4 +132,4 @@
          }
       ]
    }
-]
+];

@@ -13,7 +13,7 @@ import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 import App.Models 1.0
 
-Card{
+AppPage{
 
     title: qsTr("Orders Returns")
     padding: 15

@@ -13,9 +13,10 @@ import "qrc:/CoreUI/components/SharedComponents"
 import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 
-Card{
+AppPage{
     title: qsTr("Orders")
     padding: 10
+//    background: Rectangle{color:"red";}
     ColumnLayout{
         id: page
         //tableView.actions
@@ -70,18 +71,18 @@ Card{
             Layout.fillWidth: true
             model: OrdersModel{
                 id: model
-                onUpdateDeliveryStatusResponse: {
+                onUpdateDeliveryStatusResponse:(reply)=> {
                     if(reply.status===200){
                         model.requestData();
                     }
                 }
-                onReturnOrderResponse: {
+                onReturnOrderResponse:(reply)=> {
                     if(reply.status===200){
                         model.requestData();
                     }
                 }
 
-                onReturnableItemsResponse: {
+                onReturnableItemsResponse:(reply)=> {
                     var dialog=Utils.createObject("qrc:/pages/orders/OrderReturnDialog.qml",
                                                   tableView,{order: reply.order});
                     dialog.accepted.connect(function(orderId, items){model.returnOrder(orderId,items)});

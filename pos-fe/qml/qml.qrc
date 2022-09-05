@@ -7,7 +7,7 @@
         <file>pages/LoginPage.qml</file>
         <file>common/BusySpinner.qml</file>
         <file>AppMainScreen.qml</file>
-        <file>nav.json</file>
+        <file>nav.js</file>
         <file>pages/products/ProductsPage.qml</file>
         <file>pages/orders/OrdersPage.qml</file>
         <file>screens/Utils.js</file>
@@ -82,5 +82,6 @@
         <file>common/DateTimeDelegate.qml</file>
         <file>pages/dashboard/DashboardWidgetTable.qml</file>
         <file>common/CFilterMenu.qml</file>
+        <file>common/AppPage.qml</file>
     </qresource>
 </RCC>

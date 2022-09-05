@@ -14,7 +14,7 @@ import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 import "qrc:/CoreUI/palettes"
 
-Card{
+AppPage{
     title: qsTr("Products")
     padding: 10
     ColumnLayout{

@@ -8,7 +8,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/SharedComponents"
 import QtQuick.Controls.impl as Impl
-
+import "qrc:/nav.js" as Nav;
 Item {
     id: rootItem
     implicitWidth: stack.implicitWidth
@@ -28,7 +28,7 @@ Item {
                                    drawer.opened ? rootItem.width-drawer.width : rootItem.width
         x: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
         //anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
-        height: 56
+        height: 65
         background: Rectangle{
             border.color: "#d8dbe0"
             color: "white"
@@ -114,18 +114,18 @@ Item {
 
     }//toolbar
 
-    ToolBar{
-        id: breadcrumbToolbar
-        y:toolBar.height
-        anchors.left: rootItem.left
-        anchors.right: rootItem.right
-        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
-        height: 56
-        background: Rectangle{
+    //    ToolBar{
+    //        id: breadcrumbToolbar
+    //        y:toolBar.height
+    //        anchors.left: rootItem.left
+    //        anchors.right: rootItem.right
+    //        anchors.leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+    //        height: 56
+    //        background: Rectangle{
 
-            color: "white"
-        }
-    }
+    //            color: "white"
+    //        }
+    //    }
 
     Drawer{
         id: drawer
@@ -138,21 +138,21 @@ Item {
         modal: rootItem.drawerAboveContent
 
         Overlay.modal: Rectangle{
-             color: rootItem.drawerAboveContent ?   "#C0000000" : "transparent"
+            color: rootItem.drawerAboveContent ?   "#C0000000" : "transparent"
         }
         background: Rectangle{
             //color: "#29363d"
             color: drawer.palette.base
             border.color: "transparent"
-//            layer.enabled: rootItem.drawerAboveContent
-//            layer.effect:  DropShadow{
-//                radius: 4
-//                verticalOffset: 1
-//                spread: 0.1
-//                color: "silver"
-//                cached: true
-//                transparentBorder: true
-//            }
+            //            layer.enabled: rootItem.drawerAboveContent
+            //            layer.effect:  DropShadow{
+            //                radius: 4
+            //                verticalOffset: 1
+            //                spread: 0.1
+            //                color: "silver"
+            //                cached: true
+            //                transparentBorder: true
+            //            }
         }
 
 
@@ -209,9 +209,6 @@ Item {
                     font.pointSize: 30
                     color: "#7f7f8a"
                 }
-
-
-
 
                 MouseArea{ //cursor  flickers when pointing at label !
                     anchors.fill: parent;
@@ -405,13 +402,7 @@ Item {
                             listModel.get(i).expanded=false;
                         }
                     }
-
-
-
-
                 }
-
-
 
                 onExpandedChanged: {
                     for(var i=0; i<model.childCount;i++){
@@ -456,50 +447,46 @@ Item {
         }
     }
 
-//    Rectangle{
-//        color: "#ebedef"
+    //    Rectangle{
+    //        color: "#ebedef"
 
-//        anchors{
-//            left: rootItem.left
-//            right: rootItem.right
-//            leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
-//            top: toolBar.bottom
-//            bottom: rootItem.bottom
-//        }
-
-
-        //content here
-        StackView{
-
-            background: Rectangle{color: "#ebedef"}
-            id: stack
-            width: drawerAboveContent? rootItem.width :
-                                       drawer.opened ? rootItem.width-drawer.width : rootItem.width
-            x: drawerAboveContent? 0 : drawer.opened ? drawer.width  : 0
-            y: toolBar.height
-            height: rootItem.height-toolBar.height
-            padding: 20
-            implicitWidth:currentItem.implicitWidth+40
-            implicitHeight: currentItem.implicitHeight+40
-
-            initialItem: Page{
+    //        anchors{
+    //            left: rootItem.left
+    //            right: rootItem.right
+    //            leftMargin: drawerAboveContent? 0 : drawer.opened? drawer.width : 0
+    //            top: toolBar.bottom
+    //            bottom: rootItem.bottom
+    //        }
 
 
-                Rectangle{
-                    implicitHeight: 500
-                    implicitWidth: 500
-                    anchors.fill: parent
-                }
-            }
-
-            clip:true
-            replaceEnter: Transition {
-                NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
-            }
-            replaceExit: Transition {
-                NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+    //content here
+    StackView{
+        id: stack
+        background: Rectangle{color: "transparent"}
+        width: drawerAboveContent? rootItem.width-padding*2  :
+                                   drawer.opened ? rootItem.width-drawer.width-padding*2 : rootItem.width-padding*2
+        x: drawerAboveContent? 0 : drawer.opened ? drawer.width+padding  : padding
+        y: toolBar.height+ padding
+        height: rootItem.height-toolBar.height-padding*2
+        implicitWidth:currentItem.implicitWidth+40
+        implicitHeight: currentItem.implicitHeight+40
+        padding: rootItem.drawerAboveContent? 0 : 15
+        initialItem: Page{
+            Rectangle{
+                implicitHeight: 500
+                implicitWidth: 500
+                anchors.fill: parent
             }
         }
+
+        clip:true
+        replaceEnter: Transition {
+            NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
+        }
+        replaceExit: Transition {
+            NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+        }
+    }
 
 
     function parseNavbar(listItems){
@@ -527,18 +514,9 @@ Item {
     }
 
     Component.onCompleted: {
-        var xhr = new XMLHttpRequest;
-        xhr.open("GET", "qrc:/nav.json");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                var listItems = xhr.responseText;
-                parseNavbar(JSON.parse(listItems));
-
-                listView.currentIndex=listModel.indexOf("Orders List");
-            }
-        };
-        xhr.send();
-
+        var listItems = Nav.navBarData;
+        parseNavbar(listItems);
+        listView.currentIndex=listModel.indexOf("Orders List");
         Api.generateImages();
     }
 }

@@ -14,7 +14,7 @@ import "qrc:/screens/Utils.js" as Utils
 import "qrc:/common"
 import App.Models 1.0
 
-Card{
+AppPage{
     title: qsTr("Journal Entries")
     padding: 10
     ColumnLayout{

@@ -12,7 +12,7 @@ import "qrc:/screens/Utils.js" as Utils
 import Qt5Compat.GraphicalEffects
 import App.Models 1.0
 import "qrc:/common"
-Card{
+AppPage{
     title: qsTr("Vendors")
     padding: 10
     ColumnLayout{

@@ -55,12 +55,25 @@ int main(int argc, char *argv[])
     }
 
 
-//    const QStringList uiLanguages = QStringList{"ar-IQ"};
-//    for (const QString &locale : uiLanguages) {
-//        const QString baseName = "pos-fe_" + QLocale(locale).name();
-//        QTranslator *translator= new QTranslator(&a);
-//        translator->load(":/i18n/" + baseName);
-//    }
+    QFont font=a.font();
+    font.setFamily("STV");
+    a.setFont(font);
+
+    QLocale::Language language=QLocale::Arabic;
+    QLocale locale(language);
+    QLocale::setDefault(locale);
+
+    const QStringList uiLanguages = QStringList{"ar-IQ"};
+    for (const QString &locale : uiLanguages) {
+        const QString baseName = "pos-fe_" + QLocale(locale).name();
+        QTranslator *translator= new QTranslator(&a);
+        qDebug()<<"load: " <<translator->load(":/i18n/" + baseName);
+    }
+    if(locale.language()==QLocale::Arabic){
+        a.setLayoutDirection(Qt::RightToLeft);
+    }
+
+
 
     QIcon::setThemeName("CoreUI");
 //   QGuiApplication a(argc, argv);

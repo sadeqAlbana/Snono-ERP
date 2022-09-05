@@ -49,6 +49,7 @@ CMenu {
         ScrollIndicator.vertical: ScrollIndicator {}
 
         footer: RowLayout{
+            visible: listView.count
             width: ListView.view? ListView.view.width: 200
             CButton{
                 Layout.topMargin: 15
