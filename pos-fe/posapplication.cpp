@@ -33,7 +33,10 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     loadFonts();
     loadTranslators();
     initSettings();
+    updateAppLanguage();
+
     QIcon::setThemeName("CoreUI");
+    connect(this,&PosApplication::languageChanged,this,&PosApplication::updateAppLanguage);
     m_engine->setNetworkAccessManagerFactory(new AppQmlNetworkAccessManagerFactory);
     NumberEditor *nb=new NumberEditor(this);
     ReceiptGenerator *gen=new ReceiptGenerator(this);
@@ -91,13 +94,24 @@ PosApplication::~PosApplication()
 
 }
 
-QStringList PosApplication::languages() const
+QVariantList PosApplication::languages() const
 {
-    QStringList list;
-
-    list << "English";
+    QVariantList list;
+    list << QVariantMap{{"key","American English"},{"value",QLocale::English}};
     for(const QTranslator *translator : m_translators){
-        list << QLocale(translator->language()).nativeLanguageName();
+        QLocale locale(translator->language());
+        list << QVariantMap{{"key",locale.nativeLanguageName()},{"value",locale.language()}};
+    }
+    return list;
+}
+
+QList<QLocale> PosApplication::locales() const
+{
+    QList<QLocale>  list;
+    list << QLocale(QLocale::English);
+    for(const QTranslator *translator : m_translators){
+        list << QLocale(translator->language());
+
     }
     return list;
 }
@@ -129,4 +143,44 @@ void PosApplication::loadTranslators()
             qDebug()<<"language direction: " << QLocale(translator->language()).textDirection();
         }
     }
+}
+
+QLocale::Language PosApplication::language() const
+{
+    return m_settings->language();
+}
+
+void PosApplication::setLanguage(const QLocale::Language newLanguage)
+{
+    if (language() == newLanguage)
+        return;
+    this->m_settings->setLanguage(newLanguage);
+    emit languageChanged();
+}
+
+void PosApplication::updateAppLanguage()
+{
+    qDebug()<<"language: " << language();
+    QTranslator *translator=nullptr;
+    for(QTranslator *item : m_translators){
+        if(QLocale(item->language()).language()==language()){
+            translator=item;
+        }
+    }
+    if(translator){
+        qDebug()<<"Translator: " << translator->language();
+        QCoreApplication::installTranslator(translator);
+        if(language()==QLocale::Arabic){
+            m_settings->setFont("STV");
+            this->updateAppFont();
+        }
+        setLayoutDirection(QLocale(language()).textDirection());
+    }
+}
+
+void PosApplication::updateAppFont()
+{
+    QFont font=this->font();
+    font.setFamily(m_settings->font());
+    this->setFont(font);
 }

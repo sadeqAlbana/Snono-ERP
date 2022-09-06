@@ -201,6 +201,19 @@
     </message>
 </context>
 <context>
+    <name>AppDialogFooter</name>
+    <message>
+        <location filename="../qml/common/AppDialogFooter.qml" line="18"/>
+        <source>Accept</source>
+        <translation>قبول</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AppDialogFooter.qml" line="19"/>
+        <source>Cancel</source>
+        <translation>إلغاء</translation>
+    </message>
+</context>
+<context>
     <name>AppMainScreen</name>
     <message>
         <location filename="../qml/AppMainScreen.qml" line="44"/>
@@ -211,6 +224,11 @@
         <location filename="../qml/AppMainScreen.qml" line="87"/>
         <source>Logout</source>
         <translation>تسجيل الخروج</translation>
+    </message>
+    <message>
+        <location filename="../qml/AppMainScreen.qml" line="531"/>
+        <source>General Settings</source>
+        <translation>الاعدادات العامة</translation>
     </message>
 </context>
 <context>
@@ -265,12 +283,12 @@
 <context>
     <name>CFilterMenu</name>
     <message>
-        <location filename="../qml/common/CFilterMenu.qml" line="56"/>
+        <location filename="../qml/common/CFilterMenu.qml" line="60"/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
-        <location filename="../qml/common/CFilterMenu.qml" line="92"/>
+        <location filename="../qml/common/CFilterMenu.qml" line="101"/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -657,6 +675,34 @@
         <location filename="../qml/pages/Accounting/DepositMoneyDialog.qml" line="28"/>
         <source>Amount</source>
         <translation>المبلغ</translation>
+    </message>
+</context>
+<context>
+    <name>GeneralSettings</name>
+    <message>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="25"/>
+        <source>Language</source>
+        <translation>اللغة</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="38"/>
+        <source>Receipt Language</source>
+        <translation>لغة الوصل</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="50"/>
+        <source>Country</source>
+        <translation>الدولة</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="61"/>
+        <source>Apply</source>
+        <translation>تطبيق</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="62"/>
+        <source>Reset</source>
+        <translation>إعادة</translation>
     </message>
 </context>
 <context>
@@ -1326,27 +1372,42 @@
         <translation>المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="102"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="39"/>
+        <source>Barcode</source>
+        <translation>الباركود</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="40"/>
+        <source>Only Variants</source>
+        <translation>الانواع فقط</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="41"/>
+        <source>In stock</source>
+        <translation>متوفر</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="115"/>
         <source>New</source>
         <translation>إضافة منتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="104"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="117"/>
         <source>Edit</source>
         <translation>تعديل المنتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="105"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="118"/>
         <source>Purchase Stock</source>
         <translation>شراء المنتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="106"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="119"/>
         <source>Adjust Stock</source>
         <translation>تعديل المخزون</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="107"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="120"/>
         <source>Bulck Stock Adjustment</source>
         <translation>تعديل مخزون بالجملة</translation>
     </message>
@@ -1923,7 +1984,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="13"/>
+        <location filename="../qml/main.qml" line="14"/>
         <source>POS</source>
         <translation>نقطة البيع</translation>
     </message>
@@ -2066,6 +2127,21 @@
     </message>
     <message>
         <location filename="../qml/nav.js" line="130"/>
+        <source>General Settings</source>
+        <translation>الاعدادات العامة</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="134"/>
+        <source>Printer Settings</source>
+        <translation>إعدادات الطابعة</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="138"/>
+        <source>Server Settings</source>
+        <translation>اعدادات الخادم</translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="143"/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>
@@ -2123,9 +2199,8 @@
         <translation>العدد</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="257"/>
         <source>Disc.</source>
-        <translation>التخفيض</translation>
+        <translation type="vanished">التخفيض</translation>
     </message>
     <message>
         <source>Subtotal</source>
@@ -2133,12 +2208,12 @@
     </message>
     <message>
         <location filename="../receiptgenerator.cpp" line="259"/>
-        <location filename="../receiptgenerator.cpp" line="320"/>
+        <location filename="../receiptgenerator.cpp" line="326"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="378"/>
+        <location filename="../receiptgenerator.cpp" line="384"/>
         <source>Please Return each item to it&apos;s original bag</source>
         <translation>عند القياس يرجى إعادة كل قطعة الى كيسها الأصلي</translation>
     </message>
@@ -2147,7 +2222,7 @@
         <translation type="vanished">التوصيل</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="325"/>
+        <location filename="../receiptgenerator.cpp" line="331"/>
         <source>Total + Delivery</source>
         <translation>السعر مع التوصيل</translation>
     </message>

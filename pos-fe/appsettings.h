@@ -2,6 +2,7 @@
 #define APPSETTINGS_H
 #include <QSettings>
 #include <QUrl>
+#include <QLocale>
 class AppSettings : public QSettings
 {
     Q_OBJECT
@@ -12,9 +13,13 @@ public:
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
-    Q_INVOKABLE QString language();
-    Q_INVOKABLE void setLanguage(const QString &language);
+    Q_INVOKABLE QLocale::Language language();
+    Q_INVOKABLE void setLanguage(const QLocale::Language language);
+    Q_INVOKABLE void setFont(const QString &font);
+    Q_INVOKABLE QString font();
+
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
+
     static QString hwID();
 
 signals:

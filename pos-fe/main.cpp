@@ -3,23 +3,11 @@
 #include <mainwindow.h>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
-#include "authmanager.h"
-#include "posnumpadwidget/utils/numbereditor.h"
-
-#include "receiptgenerator.h"
 #include <QTimer>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include "models/Models"
-#include "api.h"
 #include <QPrinterInfo>
 #include <QIcon>
-#include "appsettings.h"
-#include "models/appnetworkedjsonmodel.h"
-#include "models/stockreportmodel.h"
-#include "models/productsalesreportmodel.h"
-
-#include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
 #include <QDir>
 #include <QDirIterator>

@@ -17,14 +17,25 @@ void AppSettings::setServerUrl(const QUrl &url)
     emit serverUrlChanged(url);
 }
 
-QString AppSettings::language()
+QLocale::Language AppSettings::language()
 {
-    return value("app_language","English").toString();
+    return static_cast<QLocale::Language>(value("app_language",QLocale::English).toUInt());
 }
 
-void AppSettings::setLanguage(const QString &language)
+void AppSettings::setLanguage(const QLocale::Language language)
 {
     setValue("app_language",language);
+
+}
+
+void AppSettings::setFont(const QString &font)
+{
+    setValue("app_font",font);
+}
+
+QString AppSettings::font()
+{
+    return value("app_font","Arial").toString();
 }
 
 void AppSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)

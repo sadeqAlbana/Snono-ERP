@@ -210,6 +210,7 @@ Item {
                     //font.bold: true
                     font.pointSize: 30
                     color: "#7f7f8a"
+                    rotation: LayoutMirroring.enabled? 180 : 0
                 }
 
                 MouseArea{ //cursor  flickers when pointing at label !

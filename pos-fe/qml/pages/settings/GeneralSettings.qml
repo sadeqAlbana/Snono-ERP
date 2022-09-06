@@ -18,18 +18,23 @@ import "qrc:/common"
 
 AppPage{
     title: "General Settings"
-    anchors.centerIn: parent
     GridLayout{
+        anchors.fill: parent
         columns: 2
         rowSpacing: 20
+        LayoutMirroring.childrenInherit: true
+
         Label{
             text: qsTr("Language");
         }
         CComboBox{
+            id: language
             leftIcon: "cil-language"
             model: App.languages();
-            currentIndex: indexOfValue(Settings.language())
+            valueRole: "value";
+            textRole: "key"
             editable: true
+            Component.onCompleted: currentIndex = indexOfValue(App.language)
         }
 
         Label{
@@ -37,9 +42,11 @@ AppPage{
         }
 
         CComboBox{
-
             model: App.languages();
             editable: true
+            valueRole: "value";
+            textRole: "key"
+
         }
 
         Label{
@@ -58,7 +65,7 @@ AppPage{
         cancelText: qsTr("Reset")
 
         onAccept: {
-
+            App.language=language.currentValue
         }
     }
 }

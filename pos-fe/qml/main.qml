@@ -7,6 +7,7 @@ import "qrc:/screens"
 import "qrc:/pages"
 import "qrc:/common"
 import QtMultimedia
+import QtQml
 ApplicationWindow {
     id: mainWindow
     visible: true
@@ -28,6 +29,7 @@ ApplicationWindow {
             busySpinner.close();
         }
     }
+
 
     FontMetrics{
         id: metrics
