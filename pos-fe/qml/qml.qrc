@@ -84,5 +84,7 @@
         <file>common/CFilterMenu.qml</file>
         <file>common/AppPage.qml</file>
         <file>pages/settings/GeneralSettings.qml</file>
+        <file>pages/settings/PrinterSettings.qml</file>
+        <file>actions/ChangeLanguageAction.qml</file>
     </qresource>
 </RCC>

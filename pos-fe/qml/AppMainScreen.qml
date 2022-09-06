@@ -527,7 +527,7 @@ Item {
     Component.onCompleted: {
         var listItems = Nav.navBarData;
         parseNavbar(listItems);
-        //listView.currentIndex=listModel.indexOf(qsTr("Dashboard"));
+        listView.currentIndex=listModel.indexOf(qsTr("General Settings"));
         Api.generateImages();
     }
 }

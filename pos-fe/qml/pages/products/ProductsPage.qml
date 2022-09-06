@@ -34,6 +34,19 @@ AppPage{
                           model.requestData();
                       }
 
+            advancedFilter:  [
+
+                {"type": "text","label": qsTr("Barcode"),"key": "barcode","options":{"placeholderText":"All..."}},
+                {"type": "check","label":"","inner_label": qsTr("Only Variants"),"key": "only_variants"},
+                {"type": "check","label":"","inner_label": qsTr("In stock"),"key": "in_stock"},
+
+            ]
+
+            onFilterClicked: (filter) => {
+                                 model.filter=filter
+                                 model.requestData();
+                             }
+
         }
         ProductAddDialog{
             id: productAddDialog;

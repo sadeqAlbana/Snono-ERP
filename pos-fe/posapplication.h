@@ -20,8 +20,8 @@ private:
     void loadFonts();
     void loadTranslators();
     QList<QTranslator *> m_translators;
-
     QQmlApplicationEngine *m_engine;
+    QString m_language;
 };
 
 #endif // POSAPPLICATION_H

@@ -12,6 +12,8 @@ public:
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
+    Q_INVOKABLE QString language();
+    Q_INVOKABLE void setLanguage(const QString &language);
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
     static QString hwID();
 

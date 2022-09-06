@@ -27,8 +27,8 @@
 #include <QFontDatabase>
 #include <QTranslator>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
-    m_engine(new QQmlApplicationEngine(this)),
-    m_settings(new AppSettings(this))
+    m_settings(new AppSettings(this)),
+    m_engine(new QQmlApplicationEngine(this))
 {
     loadFonts();
     loadTranslators();

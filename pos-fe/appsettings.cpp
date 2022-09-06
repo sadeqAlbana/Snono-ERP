@@ -8,7 +8,6 @@ AppSettings::AppSettings(QObject *parent) : QSettings(parent)
 
 QUrl AppSettings::serverUrl()
 {
-
     return value("http_server_url").toUrl();
 }
 
@@ -16,6 +15,16 @@ void AppSettings::setServerUrl(const QUrl &url)
 {
     setValue("http_server_url",url);
     emit serverUrlChanged(url);
+}
+
+QString AppSettings::language()
+{
+    return value("app_language","English").toString();
+}
+
+void AppSettings::setLanguage(const QString &language)
+{
+    setValue("app_language",language);
 }
 
 void AppSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)

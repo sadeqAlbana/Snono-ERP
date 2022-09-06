@@ -12,7 +12,8 @@ CTableView{
     property var modelRows;
     anchors.fill: parent;
     interactive: false
-
+    Layout.fillWidth: true
+    Layout.minimumWidth: implicitWidth
     model:  TableModel{
         id: tableModel
         TableModelColumn{display: "label"}

@@ -18,15 +18,17 @@ import "qrc:/common"
 
 AppPage{
     title: "General Settings"
+    anchors.centerIn: parent
     GridLayout{
         columns: 2
         rowSpacing: 20
         Label{
             text: qsTr("Language");
         }
-
         CComboBox{
+            leftIcon: "cil-language"
             model: App.languages();
+            currentIndex: indexOfValue(Settings.language())
             editable: true
         }
 
@@ -35,6 +37,7 @@ AppPage{
         }
 
         CComboBox{
+
             model: App.languages();
             editable: true
         }
@@ -42,18 +45,20 @@ AppPage{
         Label{
             text: qsTr("Country");
         }
-
         CComboBox{
+            leftIcon: "cil-logo"
+
             model: ["Iraq"]
             editable: true
         }
+    }
 
-        Label{
-            text: qsTr("Printer");
-        }
+    footer: AppDialogFooter{
+        acceptText: qsTr("Apply")
+        cancelText: qsTr("Reset")
 
-        CComboBox{
-            model: ["printer 1"]
+        onAccept: {
+
         }
     }
 }

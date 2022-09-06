@@ -15,8 +15,8 @@ import "qrc:/common"
 RowLayout{
     signal accept();
     signal cancel();
-    property string acceptText : "Accept"
-    property string cancelText : "Cancel"
+    property string acceptText : qsTr("Accept")
+    property string cancelText : qsTr("Cancel")
     HorizontalSpacer{}
     CButton{
         text: qsTr(cancelText)

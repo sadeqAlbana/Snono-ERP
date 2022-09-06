@@ -127,8 +127,16 @@ var navBarData=[
       "path":"",
       "childItems":[
                     {
-                        "title": qsTr("General"),
+                        "title": qsTr("General Settings"),
                         "path": "qrc:/pages/settings/GeneralSettings.qml"
+                    },
+                    {
+                        "title": qsTr("Printer Settings"),
+                        "path": "qrc:/pages/settings/ServerSettings.qml"
+                    },
+                    {
+                        "title": qsTr("Server Settings"),
+                        "path": "qrc:/pages/settings/ServerSettings.qml"
                     },
 
          {

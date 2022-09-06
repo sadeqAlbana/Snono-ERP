@@ -42,6 +42,10 @@ CMenu {
                 }
             }
             DelegateChoice {roleValue: "date"; CDateInput {width: ListView.view.width}}
+
+            DelegateChoice {roleValue: "check"; CheckBox {width: ListView.view.width;
+                    text: modelData.inner_label ;checked: false;}}
+
         }
 
         currentIndex: control.currentIndex
@@ -80,6 +84,11 @@ CMenu {
                             }
                         }
 
+                        if(data.type==="check"){
+                            console.log("checked: " + item.checked)
+                                filter[data.key]=item.checked
+                        }
+
                     }//for loop
 
                     control.clicked(filter);
@@ -110,7 +119,10 @@ CMenu {
 
                         if(data.type==="combo"){
                             item.currentIndex=0;
+                        }
 
+                        if(data.type==="check"){
+                            item.checked=false;
                         }
                     }
 
