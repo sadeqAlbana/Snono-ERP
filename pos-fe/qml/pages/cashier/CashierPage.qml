@@ -255,7 +255,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                leftIcon: "cil-user"
+                icon.name: "cil-user"
 
                 onCurrentIndexChanged: {
                     if(currentIndex>=0){
@@ -317,7 +317,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                leftIcon: "cil-location-pin"
+                icon.name: "cil-location-pin"
 
                 model: BarqLocationsModel{
                     id: cityModel
@@ -346,7 +346,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                leftIcon: "cil-location-pin"
+                icon.name: "cil-location-pin"
 
 
 

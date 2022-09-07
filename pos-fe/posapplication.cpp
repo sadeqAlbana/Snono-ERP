@@ -174,8 +174,17 @@ void PosApplication::updateAppLanguage()
             m_settings->setFont("STV");
             this->updateAppFont();
         }
-        setLayoutDirection(QLocale(language()).textDirection());
     }
+    else if
+        (language()==QLocale::English){
+            for(QTranslator *item : m_translators){
+                QCoreApplication::removeTranslator(item);
+            }
+        }
+
+    m_engine->setUiLanguage(QLocale(language()).name());
+    m_engine->retranslate();
+    setLayoutDirection(QLocale(language()).textDirection());
 }
 
 void PosApplication::updateAppFont()

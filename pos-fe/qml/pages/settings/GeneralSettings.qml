@@ -29,7 +29,7 @@ AppPage{
         }
         CComboBox{
             id: language
-            leftIcon: "cil-language"
+            icon.name: "cil-language"
             model: App.languages();
             valueRole: "value";
             textRole: "key"
@@ -41,20 +41,17 @@ AppPage{
             text: qsTr("Receipt Language");
         }
 
-        CComboBox{
+        ComboBox{
             model: App.languages();
             editable: true
             valueRole: "value";
             textRole: "key"
-
         }
 
         Label{
             text: qsTr("Country");
         }
         CComboBox{
-            leftIcon: "cil-logo"
-
             model: ["Iraq"]
             editable: true
         }
@@ -65,7 +62,11 @@ AppPage{
         cancelText: qsTr("Reset")
 
         onAccept: {
-            App.language=language.currentValue
+            if(App.language!==language.currentValue){
+                App.language=language.currentValue
+
+            }
+
         }
     }
 }

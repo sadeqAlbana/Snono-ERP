@@ -8,7 +8,7 @@ import "qrc:/CoreUI/components/notifications"
 import "qrc:/CoreUI/components/base"
 import "qrc:/CoreUI/components/SharedComponents"
 import QtQuick.Controls.impl as Impl
-import "qrc:/nav.js" as Nav;
+import "qrc:/nav.js" as NavJS;
 Item {
     id: rootItem
     implicitWidth: stack.implicitWidth
@@ -20,6 +20,11 @@ Item {
         if(!drawerAboveContent && drawer.opened)
             drawer.close();
     }
+
+
+    LayoutMirroring.onEnabledChanged: populateNavBar();
+
+
 
     ToolBar{
         id: toolBar;
@@ -502,11 +507,11 @@ Item {
 
 
     function parseNavbar(listItems){
+        listModel.clear();
         for(var i=0; i<listItems.length; i++){
             var item=listItems[i];
             item.id=listModel.count;
             if(item.childItems){
-
                 item.childCount=item.childItems.length;
                 item.expanded=false;
                 listModel.append(item);
@@ -525,8 +530,9 @@ Item {
         //stack.replace(listModel.get(listView.currentIndex).path)
     }
 
-    Component.onCompleted: {
-        var listItems = Nav.navBarData;
+    Component.onCompleted: populateNavBar();
+    function populateNavBar() {
+        var listItems = NavJS.navBar();
         parseNavbar(listItems);
         listView.currentIndex=listModel.indexOf(qsTr("General Settings"));
         Api.generateImages();
