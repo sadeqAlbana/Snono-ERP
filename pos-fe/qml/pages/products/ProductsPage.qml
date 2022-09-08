@@ -35,17 +35,41 @@ AppPage{
                       }
 
             advancedFilter:  [
-
                 {"type": "text","label": qsTr("Barcode"),"key": "barcode","options":{"placeholderText":"All..."}},
+                {"type": "combo","label": "Category","key": "category_id",
+                    "options":{"editable":true,"defaultEntry":{"name":"All Categories","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/categories",
+                    }},
+
                 {"type": "check","label":"","inner_label": qsTr("Only Variants"),"key": "only_variants"},
                 {"type": "check","label":"","inner_label": qsTr("In stock"),"key": "in_stock"},
-
             ]
+
+
 
             onFilterClicked: (filter) => {
                                  model.filter=filter
                                  model.requestData();
                              }
+
+            ProductsAttributesAttributesModel{
+
+                onDataRecevied: {
+                    for(var i=0; i< rowCount(); i++){
+//                        console.log(JSON.stringify(jsonObject(i)));
+
+                        let attribute=jsonObject(i);
+                        let id=attribute['id']
+                        let name=attribute['name']
+                        let values=attribute['values']
+
+                        toolBar.advancedFilter.push({"type": "combo","label": name,"key": id,
+                                                "options":{"editable":true,"defaultEntry":{"name":"All","id":null},"textRole": "value", "valueRole": "id","values": values
+                                                }})
+                        toolBar.advancedFilterChanged();
+
+                    }
+                }
+            }
 
         }
         ProductAddDialog{

@@ -37,11 +37,12 @@ CMenu {
             role: "type"
             DelegateChoice {roleValue: "text"; CTextField {width: ListView.view.width}}
             DelegateChoice {roleValue: "combo"; CFilterComboBox {
-                    dataUrl: modelData.options["dataUrl"]
+                    dataUrl: modelData.options["dataUrl"]?? ""
                     editable: modelData.options["editable"];
                     valueRole: modelData.options["valueRole"]
                     textRole: modelData.options["textRole"]
                     defaultEntry: modelData.options["defaultEntry"]
+                    values: modelData.options["values"]?? null;
                     filter: modelData.options["filter"]
                     width: ListView.view.width
                     //Component.onCompleted: console.log("ttt: "+ JSON.stringify(modelData))
