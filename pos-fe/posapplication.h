@@ -22,12 +22,12 @@ public:
 
     void updateAppLanguage();
     void updateAppFont();
+    Q_INVOKABLE QStringList availablePrinters();
 
 signals:
     void languageChanged();
 
 private:
-    AppSettings *m_settings;
     void initSettings();
     void loadFonts();
     void loadTranslators();

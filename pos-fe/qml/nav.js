@@ -133,7 +133,7 @@ function navBar(){
                         },
                         {
                             "title": qsTr("Printer Settings"),
-                            "path": "qrc:/pages/settings/ServerSettings.qml"
+                            "path": "qrc:/pages/settings/PrinterSettings.qml"
                         },
                         {
                             "title": qsTr("Server Settings"),

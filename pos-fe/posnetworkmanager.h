@@ -24,7 +24,6 @@ private:
     void setJWT(const QByteArray jwt);
 
     QByteArray jwt() const;
-    AppSettings settings;
     static PosNetworkManager *_instance;
 
 

@@ -13,7 +13,7 @@
 #include <QDirIterator>
 #include <QFontDatabase>
 #include <QTranslator>
-
+#include <QFileSelector>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -31,18 +31,6 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
-
-
-
-    QLocale english("en");
-    QLocale arabicN("ar");
-    QLocale arabic("Arabic");
-
-    qDebug()<< english.language();
-    qDebug()<< arabicN.language();
-    qDebug()<< arabic.language();
-    qDebug()<<QLocale::languageToString(QLocale::Arabic);
-    qDebug()<<QLocale::languageToCode(QLocale::Arabic);
 
     return a.exec();
 }

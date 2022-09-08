@@ -87,5 +87,6 @@
         <file>pages/settings/PrinterSettings.qml</file>
         <file>actions/ChangeLanguageAction.qml</file>
         <file>Nav.qml</file>
+        <file>common/+emscripten/ReceiptDialog.qml</file>
     </qresource>
 </RCC>

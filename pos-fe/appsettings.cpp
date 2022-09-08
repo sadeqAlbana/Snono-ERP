@@ -1,9 +1,19 @@
 #include "appsettings.h"
 #include <QUrl>
 #include <QDebug>
+#include <QCoreApplication>
+AppSettings* AppSettings::m_instance;
+
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
 {
 
+}
+
+AppSettings *AppSettings::instance()
+{
+    if(!m_instance)
+        m_instance= new AppSettings(qApp);
+    return m_instance;
 }
 
 QUrl AppSettings::serverUrl()

@@ -135,7 +135,7 @@ property var navBarData: [
                     {
                         "title": qsTr("Printer Settings"),
                         "path": "qrc:/pages/settings/ServerSettings.qml"
-                    },
+                },
                     {
                         "title": qsTr("Server Settings"),
                         "path": "qrc:/pages/settings/ServerSettings.qml"

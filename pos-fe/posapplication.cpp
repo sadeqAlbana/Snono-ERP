@@ -27,7 +27,6 @@
 #include <QFontDatabase>
 #include <QTranslator>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
-    m_settings(new AppSettings(this)),
     m_engine(new QQmlApplicationEngine(this))
 {
     loadFonts();
@@ -47,7 +46,7 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("NumberEditor",nb);
     m_engine->rootContext()->setContextProperty("ReceiptGenerator",gen);
     m_engine->rootContext()->setContextProperty("Api",Api::instance());
-    m_engine->rootContext()->setContextProperty("Settings",m_settings);
+    m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance());
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
 
@@ -139,28 +138,25 @@ void PosApplication::loadTranslators()
         QTranslator *translator= new QTranslator(this);
         if(translator->load(next)){
             m_translators << translator;
-            qDebug()<<"translator language: " << translator->language();
-            qDebug()<<"language direction: " << QLocale(translator->language()).textDirection();
         }
     }
 }
 
 QLocale::Language PosApplication::language() const
 {
-    return m_settings->language();
+    return AppSettings::instance()->language();
 }
 
 void PosApplication::setLanguage(const QLocale::Language newLanguage)
 {
     if (language() == newLanguage)
         return;
-    this->m_settings->setLanguage(newLanguage);
+    AppSettings::instance()->setLanguage(newLanguage);
     emit languageChanged();
 }
 
 void PosApplication::updateAppLanguage()
 {
-    qDebug()<<"language: " << language();
     QTranslator *translator=nullptr;
     for(QTranslator *item : m_translators){
         if(QLocale(item->language()).language()==language()){
@@ -168,10 +164,9 @@ void PosApplication::updateAppLanguage()
         }
     }
     if(translator){
-        qDebug()<<"Translator: " << translator->language();
         QCoreApplication::installTranslator(translator);
         if(language()==QLocale::Arabic){
-            m_settings->setFont("STV");
+            AppSettings::instance()->setFont("STV");
             this->updateAppFont();
         }
     }
@@ -190,6 +185,13 @@ void PosApplication::updateAppLanguage()
 void PosApplication::updateAppFont()
 {
     QFont font=this->font();
-    font.setFamily(m_settings->font());
+    font.setFamily(AppSettings::instance()->font());
     this->setFont(font);
+}
+
+QStringList PosApplication::availablePrinters()
+{
+    QStringList printers = QPrinterInfo::availablePrinterNames();
+    printers.prepend("Default Printer");
+    return printers;
 }

@@ -499,10 +499,7 @@ Item {
             NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
         }
 
-        Component.onCompleted: {
-            console.log("layout mrroring: " + LayoutMirroring.enabled)
-            console.log("children inherit: " + LayoutMirroring.childrenInherit)
-        }
+
     }
 
 
@@ -534,7 +531,7 @@ Item {
     function populateNavBar() {
         var listItems = NavJS.navBar();
         parseNavbar(listItems);
-        listView.currentIndex=listModel.indexOf(qsTr("General Settings"));
+        //listView.currentIndex=listModel.indexOf(qsTr("General Settings"));
         Api.generateImages();
     }
 }

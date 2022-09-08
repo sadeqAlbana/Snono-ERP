@@ -68,7 +68,7 @@ PosNetworkManager *PosNetworkManager::instance()
 
 void PosNetworkManager::reloadBaseUrl()
 {
-    setBaseUrl(settings.serverUrl().toString());
+    setBaseUrl(AppSettings::instance()->serverUrl().toString());
 }
 
 

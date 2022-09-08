@@ -19,10 +19,10 @@ import "qrc:/common"
 AppPage{
     title: "General Settings"
     GridLayout{
-        anchors.fill: parent
         columns: 2
         rowSpacing: 20
         LayoutMirroring.childrenInherit: true
+        anchors.left: parent.left
 
         Label{
             text: qsTr("Language");
@@ -41,8 +41,9 @@ AppPage{
             text: qsTr("Receipt Language");
         }
 
-        ComboBox{
+        CComboBox{
             model: App.languages();
+            icon.name: "cil-language"
             editable: true
             valueRole: "value";
             textRole: "key"
@@ -54,6 +55,7 @@ AppPage{
         CComboBox{
             model: ["Iraq"]
             editable: true
+            icon.name: "cil-globe"
         }
     }
 
@@ -66,7 +68,6 @@ AppPage{
                 App.language=language.currentValue
 
             }
-
         }
     }
 }

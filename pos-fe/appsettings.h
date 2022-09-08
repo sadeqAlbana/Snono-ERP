@@ -8,8 +8,9 @@ class AppSettings : public QSettings
     Q_OBJECT
     Q_PROPERTY(QUrl serverUrl READ serverUrl NOTIFY serverUrlChanged)
 
-public:
     explicit AppSettings(QObject *parent=nullptr);
+    static AppSettings *m_instance;
+public:
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
@@ -22,8 +23,14 @@ public:
 
     static QString hwID();
 
+    static AppSettings *instance() ;
+
 signals:
     void serverUrlChanged(QUrl url);
+
+
+
+
 };
 
 #endif // APPSETTINGS_H

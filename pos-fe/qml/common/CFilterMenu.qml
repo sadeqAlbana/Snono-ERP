@@ -22,10 +22,16 @@ CMenu {
                         ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height
                         : false
         clip: false
+
         section.property: "label"
         section.delegate: CLabel{
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
             text: section
+            width: listView.width
+            bottomPadding: 8
         }
+
 
         delegate: DelegateChooser{
             role: "type"
