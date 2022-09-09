@@ -9,12 +9,6 @@ CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/cate
                                                                           parent)
 {
     requestData();
-
-    QList<int> test{1,2,3};
-
-    QList<QJsonObject>{QJsonObject()};
-
-    QStringList{"test","test"};
 }
 
 

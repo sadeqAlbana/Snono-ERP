@@ -5,7 +5,7 @@ import "qrc:/CoreUI/components/forms"
 
 CComboBox {
     id: control
-    property url dataUrl;
+    property string dataUrl;
     property var values: null;
     property var filter: null
     property var defaultEntry;
@@ -16,14 +16,28 @@ CComboBox {
         url: control.dataUrl
         filter: control.filter?? {}
 
-        Component.onCompleted: {
+        Component.onCompleted: {            
             if(control.values){
+                let emptyRecord=jsonModel.record;
+                Object.keys(defaultEntry).forEach(key =>{
+                    emptyRecord[key]=defaultEntry[key]
+                });
                 setupData(control.values)
+                insertRecord(emptyRecord);
+                control.currentIndex=0;
             }
+            if(dataUrl.length){
+                jsonModel.requestData();
+            }
+
         }
 
         onDataRecevied: {
-            jsonModel.insertRecord(defaultEntry);
+            let emptyRecord=jsonModel.record;
+            Object.keys(defaultEntry).forEach(key=>{
+                emptyRecord[key]=defaultEntry[key]
+            });
+            jsonModel.insertRecord(emptyRecord);
             control.currentIndex=0;
         }
     }

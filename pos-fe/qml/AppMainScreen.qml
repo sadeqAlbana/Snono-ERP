@@ -507,13 +507,18 @@ Item {
         listModel.clear();
         for(var i=0; i<listItems.length; i++){
             var item=listItems[i];
+            if(!AuthManager.hasPermission(item.permission) && item.permission.length)
+                continue;
             item.id=listModel.count;
+
             if(item.childItems){
                 item.childCount=item.childItems.length;
                 item.expanded=false;
                 listModel.append(item);
                 for(var j=0; j<item.childItems.length; j++){
                     var child=item.childItems[j];
+                    if(!AuthManager.hasPermission(child.permission) && child.permission.length)
+                        continue;
                     child.id=listModel.count
                     child.parentId=item.id
                     child.hidden=true;

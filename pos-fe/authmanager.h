@@ -16,9 +16,15 @@ public:
     Q_INVOKABLE void logout();
     static AuthManager *instance();
 
-    const QJsonObject &user() const;
+    QJsonObject user() const;
     void setUser(const QJsonObject &newUser);
     void resetUser();
+
+    Q_INVOKABLE bool hasPermission(const QString &permission) const;
+
+    const QStringList &permissions() const;
+    void setPermissions(const QStringList &newPermissions);
+    void resetPermissions();
 
 signals:
     void loggedIn();
@@ -27,12 +33,15 @@ signals:
 
     void userChanged();
 
+    void permissionsChanged();
+
 private:
     QSettings settings;
     QJsonObject m_user;
-
+    QStringList m_permissions;
     static AuthManager *_instance;
     Q_PROPERTY(QJsonObject user READ user WRITE setUser RESET resetUser NOTIFY userChanged)
+    Q_PROPERTY(QStringList permissions READ permissions WRITE setPermissions RESET resetPermissions NOTIFY permissionsChanged)
 };
 
 #endif // AUTHMANAGER_H

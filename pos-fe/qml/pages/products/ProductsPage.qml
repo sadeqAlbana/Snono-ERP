@@ -56,18 +56,20 @@ AppPage{
                 onDataRecevied: {
                     for(var i=0; i< rowCount(); i++){
 //                        console.log(JSON.stringify(jsonObject(i)));
-
                         let attribute=jsonObject(i);
+                        if(!attribute['filter_visible'])
+                            continue;
+
                         let id=attribute['id']
                         let name=attribute['name']
                         let values=attribute['values']
 
                         toolBar.advancedFilter.push({"type": "combo","label": name,"key": id,
-                                                "options":{"editable":true,"defaultEntry":{"name":"All","id":null},"textRole": "value", "valueRole": "id","values": values
+                                                "options":{"editable":true,"defaultEntry":{"value":"All","id":null},"textRole": "value", "valueRole": "id","values": values
                                                 }})
-                        toolBar.advancedFilterChanged();
-
                     }
+                    toolBar.advancedFilterChanged();
+
                 }
             }
 

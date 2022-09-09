@@ -183,7 +183,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 void Api::generateImages()
 {
     return;
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",1500}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;
@@ -192,56 +192,76 @@ void Api::generateImages()
         for(QJsonValue product : products){
 
                     QString productName=QString::number(product["name2"].toInt());
-                    QString productPrice=QString::number(product["list_price"].toDouble());
+                     QString productPrice=QString::number(product["list_price"].toDouble()/1000);
+                     productPrice.append("\nالف دينار");
+                    //QString productPrice="15 \nk Dinar";
+
+                    //textOption.setTextDirection(Qt::RightToLeft);
                     QString thumb=product["thumb"].toString();
+                    thumb=thumb.left(thumb.lastIndexOf("_thumbnail"));
+                    thumb+=".jpg";
+
 
                     QImage image = QImage::fromData(mgr.getSynch(thumb).binaryData());
                     QPainter painter(&image);
+                    painter.setRenderHint(QPainter::SmoothPixmapTransform);
                     painter.setBrush(Qt::white);
                     painter.setPen(Qt::white);
-                    QFont font;
-                    font.setPixelSize(40);
 
+                    QFont font;
+                    font.setPixelSize(120);
+                    font.setBold(true);
                     painter.setFont(font);
 
 
 
+
                     QFontMetrics metrics(font);
-                    QRect rect=metrics.boundingRect(productName);
+                    QRect rect=QRect(QPoint(0,0),metrics.size(0,productName)).marginsAdded(QMargins(20,0,0,20));
+
+
 
 //                    rect.moveTo(QPoint((image.width()-rect.width())/2,image.height()-rect.height()));
-                    rect.moveTo(0,0);
-
-                    painter.fillRect(rect,Qt::black);
+                    rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.05);
+                    painter.setBrush(Qt::black);
+                    painter.drawRoundedRect(rect,40,40);
+                    painter.setBrush(Qt::white);
                     painter.drawText(rect,productName,QTextOption(Qt::AlignCenter));
 
-                    rect=metrics.boundingRect(productPrice);
-                    rect.moveTo(image.width()-rect.width(),image.height()-rect.height());
-                    painter.fillRect(rect,Qt::black);
-                    painter.drawText(rect,productPrice,QTextOption(Qt::AlignCenter));
+
+                    font.setFamily("STV");
+                    painter.setFont(font);
+                    QTextOption textOption(Qt::AlignCenter);
+                    textOption.setWrapMode(QTextOption::WordWrap);
+                    rect=QRect(QPoint(0,0),metrics.size(0,productPrice));
+                    rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.95-rect.height());
+                    painter.setBrush(Qt::black);
+                    painter.drawRoundedRect(rect,20,20);
+                    painter.setBrush(Qt::white);
+                    painter.drawText(rect,productPrice,textOption);
                     painter.end();
                     images << image;
-                    //qDebug()<<image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(productName));
+                    qDebug()<<image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(productName));
                     //return;
 
 
         }
 
-        for(int i=0; i<images.size(); i+=9){
-            QImage image(219*3,293*3,QImage::Format_RGB32);
-            image.fill(Qt::white);
-            int row=0;
-            QPainter painter(&image);
-            for(int x=0; x<9; x+=3){
-                for(int y=0; y<3; y++){
-                    QImage unit = images.value(i+x+y);
-                    painter.drawImage(QRect(QPoint(219*y,293*row),unit.size()),unit);
-                }
-                row++;
-            }
-            painter.end();
-            image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(i));
-        }
+//        for(int i=0; i<images.size(); i+=9){
+//            QImage image(219*3,293*3,QImage::Format_RGB32);
+//            image.fill(Qt::white);
+//            int row=0;
+//            QPainter painter(&image);
+//            for(int x=0; x<9; x+=3){
+//                for(int y=0; y<3; y++){
+//                    QImage unit = images.value(i+x+y);
+//                    painter.drawImage(QRect(QPoint(219*y,293*row),unit.size()),unit);
+//                }
+//                row++;
+//            }
+//            painter.end();
+//            image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(i));
+//        }
     });
 }
 
