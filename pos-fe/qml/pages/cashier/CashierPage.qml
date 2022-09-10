@@ -66,10 +66,10 @@ AppPage{
             id: tableView
             Layout.row: 0
             Layout.column: 0
-            Layout.fillHeight: false
+            Layout.fillHeight: true
             delegate: AppDelegateChooser{}
             Layout.fillWidth: true
-            implicitHeight: 535
+            implicitHeight: 300
             Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
             //Layout.minimumWidth: 1000
             model: CashierModel{

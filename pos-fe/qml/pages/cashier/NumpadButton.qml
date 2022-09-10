@@ -6,12 +6,12 @@ Button {
     id: control
     Layout.fillWidth:true
     Layout.fillHeight: true
-    Layout.minimumWidth: 50
-    Layout.minimumHeight: 50
+    Layout.minimumWidth: 40
+    Layout.minimumHeight: 40
     Layout.maximumWidth: 100
     Layout.maximumHeight: 100
     Layout.alignment: Qt.AlignCenter
-    implicitWidth: 75
+    implicitWidth: 50
     implicitHeight: implicitWidth
     width: 75
     height: width
