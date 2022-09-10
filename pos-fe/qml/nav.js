@@ -52,7 +52,7 @@ function navBar(){
                         {
                             "title":qsTr("Products List"),
                             "path":"qrc:/pages/products/ProductsPage.qml",
-                            "permission": ""
+                            "permission": "prm_view_full_products"
 
                         },
                         {

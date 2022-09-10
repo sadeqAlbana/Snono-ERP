@@ -34,6 +34,13 @@ ApplicationWindow {
     FontMetrics{
         id: metrics
     }
+
+    Component.onCompleted: {
+        if(Settings.jwt){
+            AuthManager.testAuth();
+
+        }
+    }
     Connections{
         target: AuthManager
         function onLoggedIn(){
@@ -41,6 +48,11 @@ ApplicationWindow {
         }
         function onLoggedOut(){
             rootLoader.setSource("qrc:/pages/LoginPage.qml")
+        }
+        function onTestAuthResponse(success){
+            if(success){
+                rootLoader.setSource("qrc:/AppMainScreen.qml")
+            }
         }
     }
 

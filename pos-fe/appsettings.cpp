@@ -2,6 +2,7 @@
 #include <QUrl>
 #include <QDebug>
 #include <QCoreApplication>
+#include <QJsonDocument>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
@@ -14,6 +15,19 @@ AppSettings *AppSettings::instance()
     if(!m_instance)
         m_instance= new AppSettings(qApp);
     return m_instance;
+}
+
+QByteArray AppSettings::jwt() const
+{
+    return value("jwt").toByteArray();
+}
+
+void AppSettings::setJwt(const QByteArray &newJwt)
+{
+    if (jwt() == newJwt)
+        return;
+    setValue("jwt",newJwt);
+    emit jwtChanged();
 }
 
 QUrl AppSettings::serverUrl()
@@ -46,6 +60,19 @@ void AppSettings::setFont(const QString &font)
 QString AppSettings::font()
 {
     return value("app_font","Arial").toString();
+}
+
+QJsonObject AppSettings::user() const
+{
+    QJsonDocument doc=QJsonDocument::fromJson(this->value("user").toByteArray());
+
+    return doc.object();
+}
+
+void AppSettings::setUser(const QJsonObject &user)
+{
+    QJsonDocument doc(user);
+    setValue("user",doc.toJson(QJsonDocument::Compact));
 }
 
 void AppSettings::setServerUrl(const QString &host, const uint port, const bool useSSL)

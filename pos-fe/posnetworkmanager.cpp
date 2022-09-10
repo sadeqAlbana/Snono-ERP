@@ -34,7 +34,7 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
     QNetworkReply::NetworkError error=response->error();
     if(error!=QNetworkReply::NoError)
     {
-        qDebug()<<reply->error();
+        qDebug()<<reply->url() << " " <<reply->error();
 
         if(error==QNetworkReply::InternalServerError || error==QNetworkReply::ProtocolInvalidOperationError){
             emit networkError("Internal Server Error",

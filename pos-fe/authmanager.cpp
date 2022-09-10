@@ -8,42 +8,37 @@
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
-
+    connect(this,&AuthManager::userChanged,this,&AuthManager::reloadPermissions);
 }
 
-void AuthManager::authenticate(QString username, QString password)
+void AuthManager::authenticate(QString username, QString password, bool remember)
 {
     PosNetworkManager::instance()->post("/auth/login",QJsonObject{{"username",username},
-                                 {"password",password},
-                                 {"hw_id",AppSettings::hwID()}
+                                                                  {"password",password},
+                                                                  {"hw_id",AppSettings::hwID()}
 
-                                        })->subcribe(this,&AuthManager::onAuthReply);
-}
-
-void AuthManager::onAuthReply(NetworkResponse *res)
-{
+                                        })->subcribe([this,remember](NetworkResponse *res){
         if(res->json("status").toInt()==200){
-            settings.setValue("jwt",res->json("token").toString());
+
+            if(remember){
+                AppSettings::instance()->setJwt(res->json("token").toString().toUtf8());
+            }
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
             setUser(res->json("user").toObject());
-
-            QJsonArray items=m_user["acl_group"].toObject()["items"].toArray();
-            QStringList permissions;
-            for(const QJsonValue &item : items){
-                permissions << item["permission"].toString();
-            }
-            setPermissions(permissions);
             emit loggedIn();
 
         }
         else {
             emit invalidCredentails();
         }
+    });
 }
+
+
 
 void AuthManager::logout()
 {
-    settings.setValue("jwt",QVariant());
+    AppSettings::instance()->setValue("jwt",QVariant());
     PosNetworkManager::instance()->setJWT(QByteArray());
     emit loggedOut();
 }
@@ -56,6 +51,27 @@ AuthManager *AuthManager::instance()
     return _instance;
 }
 
+void AuthManager::testAuth()
+{
+
+    PosNetworkManager::instance()->setJWT(AppSettings::instance()->jwt());
+    PosNetworkManager::instance()->post("/auth/test",QJsonObject{}
+
+                                        )->subcribe([this](NetworkResponse *res){
+
+        bool success=res->json("status").toInt()==200;
+        qDebug()<<res->json();
+
+        if(success){
+            setUser(AppSettings::instance()->user());
+        }
+
+        emit testAuthResponse(success);
+
+
+    });
+}
+
 QJsonObject AuthManager::user() const
 {
     return m_user;
@@ -65,6 +81,8 @@ void AuthManager::setUser(const QJsonObject &newUser)
 {
     if (m_user == newUser)
         return;
+
+    AppSettings::instance()->setUser(newUser);
     m_user = newUser;
     emit userChanged();
 }
@@ -95,4 +113,14 @@ void AuthManager::setPermissions(const QStringList &newPermissions)
 void AuthManager::resetPermissions()
 {
     setPermissions({}); // TODO: Adapt to use your actual default value
+}
+
+void AuthManager::reloadPermissions()
+{
+    QJsonArray items=m_user["acl_group"].toObject()["items"].toArray();
+    QStringList permissions;
+    for(const QJsonValue &item : items){
+        permissions << item["permission"].toString();
+    }
+    setPermissions(permissions);
 }

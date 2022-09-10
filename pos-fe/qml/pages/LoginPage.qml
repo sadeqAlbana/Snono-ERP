@@ -60,10 +60,9 @@ Pane {
             id: card
             padding: 20
             //Layout.fillWidth: true
-            Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.maximumWidth: 620
-            Layout.maximumHeight: 400
+            Layout.preferredHeight: implicitHeight
             Layout.alignment: Qt.AlignCenter
             //Layout.minimumWidth: implicitWidth
             //anchors.verticalCenterOffset: -1*parent.height/8
@@ -105,7 +104,6 @@ Pane {
                     //leftRectVisible: true
 
                     placeholderText : qsTr("username...")
-                    text: "sadeq"
                     leftIcon: "cil-user"
                     helpBlock : CTextField.HelpBlockDelegate{text: usernameTF.helpBlockText; color: "red"}
 
@@ -119,9 +117,16 @@ Pane {
                     echoMode: TextInput.Password
                     property string helpBlockText : " "
                     placeholderText : qsTr("password...")
-                    text: "admin"
                     helpBlock : CTextField.HelpBlockDelegate{text: passwordTF.helpBlockText; color: "red"}
                     leftIcon: "cil-lock-locked"
+                }
+                CheckBox{
+                    id: rememberMe
+                    text: qsTr("Remember Me")
+                    checked: false
+                    font.pixelSize: 18
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                    Layout.bottomMargin: 20
                 }
 
 
@@ -145,7 +150,6 @@ Pane {
                     HorizontalSpacer{
 
                     }
-
                     CButton{
                         id: settingsButton
                         implicitWidth: 80
@@ -158,14 +162,12 @@ Pane {
                         Layout.rightMargin: 15
                         onClicked: serverSettingsDlg.open();
                     }
-
                 }
 
 
                 function login(){
-                    AuthManager.authenticate(usernameTF.text,passwordTF.text)
+                    AuthManager.authenticate(usernameTF.text,passwordTF.text,rememberMe.checked)
                 }
-                //Component.onCompleted: login();
             }
 
 
