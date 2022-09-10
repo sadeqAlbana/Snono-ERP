@@ -31,6 +31,8 @@ public:
     QByteArray jwt() const;
     void setJwt(const QByteArray &newJwt);
 
+    static QString macAddress();
+
 signals:
     void serverUrlChanged(QUrl url);
 

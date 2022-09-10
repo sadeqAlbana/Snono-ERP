@@ -14,6 +14,7 @@
 #include <QFontDatabase>
 #include <QTranslator>
 #include <QFileSelector>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
+
 
     return a.exec();
 }

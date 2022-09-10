@@ -3,10 +3,12 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QJsonDocument>
+#include <QNetworkInterface>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
 {
+    qDebug()<<"mac: "<<macAddress();
 
 }
 
@@ -28,6 +30,19 @@ void AppSettings::setJwt(const QByteArray &newJwt)
         return;
     setValue("jwt",newJwt);
     emit jwtChanged();
+}
+
+QString AppSettings::macAddress()
+{
+
+        for(QNetworkInterface netInterface: QNetworkInterface::allInterfaces())
+        {
+            // Return only the first non-loopback MAC Address
+            if (!(netInterface.flags() & QNetworkInterface::IsLoopBack))
+                return netInterface.hardwareAddress();
+        }
+        return QString();
+
 }
 
 QUrl AppSettings::serverUrl()
@@ -86,8 +101,9 @@ void AppSettings::setServerUrl(const QString &host, const uint port, const bool 
 }
 QString AppSettings::hwID()
 {
+
 #ifdef Q_OS_ANDROID
-    return QStringLiteral("galaxytabs2");
+    return macAddress();
 #elif defined(Q_OS_WASM)
     return QStringLiteral("wasm");
 #else

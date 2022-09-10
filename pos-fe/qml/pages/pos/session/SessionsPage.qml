@@ -20,7 +20,6 @@ AppPage{
     GridLayout{
         columns: 4
         anchors.fill: parent;
-        anchors.margins: 50
         width: parent.width
 
 

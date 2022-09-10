@@ -54,17 +54,18 @@ AppPage{
                 id: control
                 icon.source: model.thumb
                 width: ListView.view.width
-                height: 120
-                implicitHeight: 120
+                height: 140
+                implicitHeight: 140
                 icon.color: "transparent"
                 icon.cache: true
                 text: model.sku
                 spacing: 10
                 property var stock: model["products_stocks.qty"]? model["products_stocks.qty"]: 0
                 property string name: model.name
+                property real listPrice: model.list_price
 
                 contentItem: RowLayout{
-                    spacing: 0
+                    spacing: 30
                     Image{
                         id: image
                         //Layout.preferredHeight: 120
@@ -88,33 +89,46 @@ AppPage{
                     ColumnLayout{
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                         Text{
-                            font.family: "roboto"
                             color: "#000000";
                             text: control.text
-                            font.pixelSize: metrics.font.pixelSize*1.2
+                            font.pixelSize: metrics.font.pixelSize*1.3
                             font.weight: Font.Medium
-                            horizontalAlignment: Text.AlignHCenter
+                            horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignVCenter
                             Layout.fillWidth: true
 
                         }
                         Text{
-                            font.family: "roboto"
                             //color: control.palette.mid
                             text: control.name
                             font.weight: Font.DemiBold
-                            horizontalAlignment: Text.AlignHCenter
+                            font.pixelSize: metrics.font.pixelSize*1.3
+
+                            horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignVCenter
                             Layout.fillWidth: true
 
 
                         }
                         Text{
-                            font.family: "roboto"
                             //color: "#A0A0A0"
                             text: control.stock
+                            font.pixelSize: metrics.font.pixelSize*1.3
+
                             font.weight: Font.DemiBold
-                            horizontalAlignment: Text.AlignHCenter
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+                        }
+
+                        Text{
+                            //color: "#A0A0A0"
+                            font.pixelSize: metrics.font.pixelSize*1.3
+
+                            text: Utils.formatCurrency(control.listPrice)
+                            font.weight: Font.DemiBold
+                            horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignVCenter
                             Layout.fillWidth: true
 
