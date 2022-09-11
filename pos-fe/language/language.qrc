@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/i18n">
+        <file>pos-fe_ar_IQ.ts</file>
+    </qresource>
+</RCC>

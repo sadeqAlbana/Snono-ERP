@@ -1,16 +1,3 @@
-find_package(Qt6  COMPONENTS Core REQUIRED)
-find_package(Qt6  COMPONENTS Quick REQUIRED)
-find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
-find_package(Qt6  COMPONENTS Pdf REQUIRED)
-find_package(Qt6  COMPONENTS Multimedia REQUIRED)
-find_package(Qt6  COMPONENTS Gui REQUIRED)
-find_package(Qt6  COMPONENTS Network REQUIRED)
-find_package(Qt6  COMPONENTS Charts REQUIRED)
-find_package(Qt6  COMPONENTS Svg REQUIRED)
-find_package(Qt6  COMPONENTS Core5Compat REQUIRED)
-find_package(Qt6  COMPONENTS Widgets REQUIRED)
-find_package(Qt6  COMPONENTS PrintSupport REQUIRED)
-
 qt_add_executable(pos-fe
     appsettings.cpp appsettings.h
     posnetworkmanager.cpp posnetworkmanager.h
@@ -54,8 +41,20 @@ qt_add_executable(pos-fe
     models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
     models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
     models/Models
+    misc/receipt.qrc
+    language/language.qrc
+    qml/qml.qrc
+    images.qrc
+    fonts/fonts.qrc
+    coreui-qml/src/CoreUI.qrc
+    coreui-qml/assets/assets.qrc
     main.cpp
 )
+
+
+
+qt_add_translations(pos-fe
+    TS_FILES language/pos-fe_ar_IQ.ts)
 
 qt_add_qml_module(pos-fe
     URI pos-fe
@@ -71,6 +70,8 @@ set_target_properties(pos-fe PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+target_compile_definitions(pos-fe
+    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
 target_link_libraries(pos-fe PRIVATE Qt6::Quick)
 target_link_libraries(pos-fe PRIVATE Qt6::Core)
@@ -84,6 +85,3 @@ target_link_libraries(pos-fe PRIVATE Qt6::Svg)
 target_link_libraries(pos-fe PRIVATE Qt6::Core5Compat)
 target_link_libraries(pos-fe PRIVATE Qt6::Widgets)
 target_link_libraries(pos-fe PRIVATE Qt6::PrintSupport)
-
-
-
