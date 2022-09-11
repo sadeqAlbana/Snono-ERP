@@ -166,18 +166,18 @@ function navBar(){
                             "title": qsTr("Printer Settings"),
                             "path": "qrc:/pages/settings/PrinterSettings.qml",
                             "permission": ""
-                        },
-                        {
-                            "title": qsTr("Server Settings"),
-                            "path": "qrc:/pages/settings/ServerSettings.qml",
-                            "permission": ""
-                        },
-
-                        {
-                            "title":qsTr("Receipt"),
-                            "path":"qrc:/pages/ReceiptPage.qml",
-                            "permission": ""
                         }
+//                        {
+//                            "title": qsTr("Server Settings"),
+//                            "path": "qrc:/pages/settings/ServerSettings.qml",
+//                            "permission": ""
+//                        },
+
+//                        {
+//                            "title":qsTr("Receipt"),
+//                            "path":"qrc:/pages/ReceiptPage.qml",
+//                            "permission": ""
+//                        }
                     ]
                 }
             ];

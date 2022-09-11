@@ -216,19 +216,18 @@
 <context>
     <name>AppMainScreen</name>
     <message>
-        <location filename="../qml/AppMainScreen.qml" line="44"/>
+        <location filename="../qml/AppMainScreen.qml" line="49"/>
         <source>☰</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/AppMainScreen.qml" line="87"/>
+        <location filename="../qml/AppMainScreen.qml" line="92"/>
         <source>Logout</source>
         <translation>تسجيل الخروج</translation>
     </message>
     <message>
-        <location filename="../qml/AppMainScreen.qml" line="531"/>
         <source>General Settings</source>
-        <translation>الاعدادات العامة</translation>
+        <translation type="vanished">الاعدادات العامة</translation>
     </message>
 </context>
 <context>
@@ -283,12 +282,12 @@
 <context>
     <name>CFilterMenu</name>
     <message>
-        <location filename="../qml/common/CFilterMenu.qml" line="60"/>
+        <location filename="../qml/common/CFilterMenu.qml" line="67"/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
-        <location filename="../qml/common/CFilterMenu.qml" line="101"/>
+        <location filename="../qml/common/CFilterMenu.qml" line="108"/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -680,27 +679,27 @@
 <context>
     <name>GeneralSettings</name>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="25"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="28"/>
         <source>Language</source>
         <translation>اللغة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="38"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="41"/>
         <source>Receipt Language</source>
         <translation>لغة الوصل</translation>
     </message>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="50"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="53"/>
         <source>Country</source>
         <translation>الدولة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="61"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="63"/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="62"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="64"/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -838,25 +837,30 @@
         <translation>صلاحيات خاطئة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="77"/>
-        <location filename="../qml/pages/LoginPage.qml" line="135"/>
+        <location filename="../qml/pages/LoginPage.qml" line="76"/>
+        <location filename="../qml/pages/LoginPage.qml" line="140"/>
         <source>Login</source>
         <translation>دخول</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="87"/>
+        <location filename="../qml/pages/LoginPage.qml" line="86"/>
         <source>Sign in to your account</source>
         <translation>سجل الدخول الى حستسجيل الدخول الى حسابك</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="107"/>
+        <location filename="../qml/pages/LoginPage.qml" line="106"/>
         <source>username...</source>
         <translation>اسم المستخدم...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="121"/>
+        <location filename="../qml/pages/LoginPage.qml" line="119"/>
         <source>password...</source>
         <translation>كلمة المرور...</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginPage.qml" line="125"/>
+        <source>Remember Me</source>
+        <translation>تذكرني</translation>
     </message>
 </context>
 <context>
@@ -883,6 +887,158 @@
         <location filename="../coreui-qml/src/MainScreen.qml" line="59"/>
         <source>‹</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Nav</name>
+    <message>
+        <location filename="../qml/Nav.qml" line="7"/>
+        <source>Dashboard</source>
+        <translation>الرئيسية</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="13"/>
+        <source>POS</source>
+        <translation>نقطة البيع</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="14"/>
+        <location filename="../qml/Nav.qml" line="20"/>
+        <location filename="../qml/Nav.qml" line="41"/>
+        <location filename="../qml/Nav.qml" line="61"/>
+        <location filename="../qml/Nav.qml" line="77"/>
+        <location filename="../qml/Nav.qml" line="83"/>
+        <location filename="../qml/Nav.qml" line="89"/>
+        <location filename="../qml/Nav.qml" line="105"/>
+        <location filename="../qml/Nav.qml" line="111"/>
+        <location filename="../qml/Nav.qml" line="127"/>
+        <source>MAIN</source>
+        <translation>الرئيسية</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="19"/>
+        <source>Accounting</source>
+        <translation>المحاسبة</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="25"/>
+        <source>Accounts</source>
+        <translation>الحسابات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="29"/>
+        <source>Journal Entries</source>
+        <translation>القيود</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="33"/>
+        <source>Journal Entries Items</source>
+        <translation>تفاصيل القيود</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="40"/>
+        <source>Products</source>
+        <translation>المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="46"/>
+        <source>Products List</source>
+        <translation>قائمة المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="50"/>
+        <source>Mobile List</source>
+        <translation>قائمة الهاتف</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="54"/>
+        <source>Categories</source>
+        <translation>الفئات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="60"/>
+        <source>Orders</source>
+        <translation>الطلبات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="66"/>
+        <source>Orders List</source>
+        <translation>قائمة الطلبات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="70"/>
+        <source>Returns</source>
+        <translation>الرواجع</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="76"/>
+        <source>Taxes</source>
+        <translation>الضرائب</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="82"/>
+        <source>Customers</source>
+        <translation>الزبائن</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="88"/>
+        <source>Vendors</source>
+        <translation>الموردين</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="94"/>
+        <source>Vendors List</source>
+        <translation>قائمة الموردين</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="98"/>
+        <source>Bills</source>
+        <translation>الفواتير</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="104"/>
+        <source>Users</source>
+        <translation>المستخدمين</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="110"/>
+        <source>Reports</source>
+        <translation>التقارير</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="116"/>
+        <source>Stock</source>
+        <translation>المخزون</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="120"/>
+        <source>Product Sales</source>
+        <translation>مبيعات المنتجات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="126"/>
+        <source>Settings</source>
+        <translation>الإعدادات</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="132"/>
+        <source>General Settings</source>
+        <translation>الاعدادات العامة</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="136"/>
+        <source>Printer Settings</source>
+        <translation>إعدادات الطابعة</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="140"/>
+        <source>Server Settings</source>
+        <translation>اعدادات الخادم</translation>
+    </message>
+    <message>
+        <location filename="../qml/Nav.qml" line="145"/>
+        <source>Receipt</source>
+        <translation>الوصل</translation>
     </message>
 </context>
 <context>
@@ -1149,6 +1305,35 @@
     </message>
 </context>
 <context>
+    <name>PrinterSettings</name>
+    <message>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="28"/>
+        <source>Receipt Printer</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="37"/>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="54"/>
+        <source>Paper Size</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="45"/>
+        <source>Reports Printer</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="63"/>
+        <source>Apply</source>
+        <translation>تطبيق</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="64"/>
+        <source>Reset</source>
+        <translation>إعادة</translation>
+    </message>
+</context>
+<context>
     <name>ProductAddDialog</name>
     <message>
         <location filename="../qml/pages/products/ProductAddDialog.qml" line="42"/>
@@ -1372,42 +1557,42 @@
         <translation>المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="39"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="38"/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="40"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="43"/>
         <source>Only Variants</source>
         <translation>الانواع فقط</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="41"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="44"/>
         <source>In stock</source>
         <translation>متوفر</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="115"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="141"/>
         <source>New</source>
         <translation>إضافة منتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="117"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="143"/>
         <source>Edit</source>
         <translation>تعديل المنتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="118"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="144"/>
         <source>Purchase Stock</source>
         <translation>شراء المنتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="119"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="145"/>
         <source>Adjust Stock</source>
         <translation>تعديل المخزون</translation>
     </message>
     <message>
-        <location filename="../qml/pages/products/ProductsPage.qml" line="120"/>
+        <location filename="../qml/pages/products/ProductsPage.qml" line="146"/>
         <source>Bulck Stock Adjustment</source>
         <translation>تعديل مخزون بالجملة</translation>
     </message>
@@ -1450,19 +1635,35 @@
 <context>
     <name>ReceiptDialog</name>
     <message>
+        <location filename="../qml/common/+android/ReceiptDialog.qml" line="40"/>
+        <location filename="../qml/common/+emscripten/ReceiptDialog.qml" line="40"/>
         <location filename="../qml/common/ReceiptDialog.qml" line="41"/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>
     <message>
+        <location filename="../qml/common/+android/ReceiptDialog.qml" line="49"/>
+        <source>receipt is not supported on Android !</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/+android/ReceiptDialog.qml" line="67"/>
+        <location filename="../qml/common/+emscripten/ReceiptDialog.qml" line="67"/>
         <location filename="../qml/common/ReceiptDialog.qml" line="72"/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
+        <location filename="../qml/common/+android/ReceiptDialog.qml" line="80"/>
+        <location filename="../qml/common/+emscripten/ReceiptDialog.qml" line="80"/>
         <location filename="../qml/common/ReceiptDialog.qml" line="85"/>
         <source>Print</source>
         <translation>طباعة</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/+emscripten/ReceiptDialog.qml" line="49"/>
+        <source>receipt is not supported on WASM !</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1997,151 +2198,151 @@
 <context>
     <name>nav</name>
     <message>
-        <location filename="../qml/nav.js" line="5"/>
+        <location filename="../qml/nav.js" line="6"/>
         <source>Dashboard</source>
         <translation>الرئيسية</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="11"/>
+        <location filename="../qml/nav.js" line="13"/>
         <source>POS</source>
         <translation>نقطة البيع</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="17"/>
+        <location filename="../qml/nav.js" line="20"/>
         <source>Accounting</source>
         <translation>المحاسبة</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="12"/>
-        <location filename="../qml/nav.js" line="18"/>
-        <location filename="../qml/nav.js" line="39"/>
-        <location filename="../qml/nav.js" line="59"/>
-        <location filename="../qml/nav.js" line="75"/>
-        <location filename="../qml/nav.js" line="81"/>
-        <location filename="../qml/nav.js" line="87"/>
-        <location filename="../qml/nav.js" line="103"/>
+        <location filename="../qml/nav.js" line="14"/>
+        <location filename="../qml/nav.js" line="21"/>
+        <location filename="../qml/nav.js" line="47"/>
+        <location filename="../qml/nav.js" line="73"/>
+        <location filename="../qml/nav.js" line="94"/>
+        <location filename="../qml/nav.js" line="102"/>
         <location filename="../qml/nav.js" line="109"/>
-        <location filename="../qml/nav.js" line="125"/>
+        <location filename="../qml/nav.js" line="128"/>
+        <location filename="../qml/nav.js" line="135"/>
+        <location filename="../qml/nav.js" line="155"/>
         <source>MAIN</source>
         <translation>الرئيسية</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="23"/>
+        <location filename="../qml/nav.js" line="27"/>
         <source>Accounts</source>
         <translation>الحسابات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="27"/>
+        <location filename="../qml/nav.js" line="32"/>
         <source>Journal Entries</source>
         <translation>القيود</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="31"/>
+        <location filename="../qml/nav.js" line="38"/>
         <source>Journal Entries Items</source>
         <translation>تفاصيل القيود</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="38"/>
+        <location filename="../qml/nav.js" line="46"/>
         <source>Products</source>
         <translation>المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="44"/>
+        <location filename="../qml/nav.js" line="53"/>
         <source>Products List</source>
         <translation>قائمة المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="48"/>
+        <location filename="../qml/nav.js" line="59"/>
         <source>Mobile List</source>
         <translation>قائمة الهاتف</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="52"/>
+        <location filename="../qml/nav.js" line="65"/>
         <source>Categories</source>
         <translation>الفئات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="58"/>
+        <location filename="../qml/nav.js" line="72"/>
         <source>Orders</source>
         <translation>الطلبات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="64"/>
+        <location filename="../qml/nav.js" line="79"/>
         <source>Orders List</source>
         <translation>قائمة الطلبات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="68"/>
+        <location filename="../qml/nav.js" line="85"/>
         <source>Returns</source>
         <translation>الرواجع</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="74"/>
+        <location filename="../qml/nav.js" line="93"/>
         <source>Taxes</source>
         <translation>الضرائب</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="80"/>
+        <location filename="../qml/nav.js" line="101"/>
         <source>Customers</source>
         <translation>الزبائن</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="86"/>
+        <location filename="../qml/nav.js" line="108"/>
         <source>Vendors</source>
         <translation>الموردين</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="92"/>
+        <location filename="../qml/nav.js" line="115"/>
         <source>Vendors List</source>
         <translation>قائمة الموردين</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="96"/>
+        <location filename="../qml/nav.js" line="120"/>
         <source>Bills</source>
         <translation>الفواتير</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="102"/>
+        <location filename="../qml/nav.js" line="127"/>
         <source>Users</source>
         <translation>المستخدمين</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="108"/>
+        <location filename="../qml/nav.js" line="134"/>
         <source>Reports</source>
         <translation>التقارير</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="114"/>
+        <location filename="../qml/nav.js" line="141"/>
         <source>Stock</source>
         <translation>المخزون</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="118"/>
+        <location filename="../qml/nav.js" line="147"/>
         <source>Product Sales</source>
         <translation>مبيعات المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="124"/>
+        <location filename="../qml/nav.js" line="154"/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="130"/>
+        <location filename="../qml/nav.js" line="161"/>
         <source>General Settings</source>
         <translation>الاعدادات العامة</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="134"/>
+        <location filename="../qml/nav.js" line="166"/>
         <source>Printer Settings</source>
         <translation>إعدادات الطابعة</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="138"/>
+        <location filename="../qml/nav.js" line="171"/>
         <source>Server Settings</source>
         <translation>اعدادات الخادم</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="143"/>
+        <location filename="../qml/nav.js" line="177"/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>

@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
-    qDebug()<<AppSettings::deviceUuid();
 
 
     return a.exec();

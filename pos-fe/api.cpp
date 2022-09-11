@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QFontMetrics>
 #include <QFile>
+#include <QStandardPaths>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -42,7 +43,6 @@ void Api::processCustomBill(const QString &name, const int &vendorId, const QJso
 
 void Api::updateProduct(const QJsonObject &product)
 {
-    qDebug()<<product;
     PosNetworkManager::instance()->post("/products/update",product)->subcribe(
                 [this](NetworkResponse *res){
         emit updateProductReply(res->json().toObject());
@@ -183,11 +183,11 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 void Api::generateImages()
 {
     return;
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",1500}})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",5}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;
-
+        QString desktop=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
         QJsonArray products=res->json("data").toArray();
         for(QJsonValue product : products){
 
@@ -209,7 +209,7 @@ void Api::generateImages()
                     painter.setPen(Qt::white);
 
                     QFont font;
-                    font.setPixelSize(120);
+                    font.setPixelSize(90);
                     font.setBold(true);
                     painter.setFont(font);
 
@@ -217,7 +217,7 @@ void Api::generateImages()
 
 
                     QFontMetrics metrics(font);
-                    QRect rect=QRect(QPoint(0,0),metrics.size(0,productName)).marginsAdded(QMargins(20,0,0,20));
+                    QRect rect=QRect(QPoint(0,0),metrics.size(0,productName)).marginsAdded(QMargins(20,20,20,20));
 
 
 
@@ -233,7 +233,7 @@ void Api::generateImages()
                     painter.setFont(font);
                     QTextOption textOption(Qt::AlignCenter);
                     textOption.setWrapMode(QTextOption::WordWrap);
-                    rect=QRect(QPoint(0,0),metrics.size(0,productPrice));
+                    rect=QRect(QPoint(0,0),metrics.size(0,productPrice)).marginsAdded(QMargins(20,20,20,20));
                     rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.95-rect.height());
                     painter.setBrush(Qt::black);
                     painter.drawRoundedRect(rect,20,20);
@@ -241,27 +241,27 @@ void Api::generateImages()
                     painter.drawText(rect,productPrice,textOption);
                     painter.end();
                     images << image;
-                    qDebug()<<image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(productName));
+                    //qDebug()<<image.save(QString("%1/products/%2.jpg").arg(desktop).arg(productName));
                     //return;
 
 
         }
 
-//        for(int i=0; i<images.size(); i+=9){
-//            QImage image(219*3,293*3,QImage::Format_RGB32);
-//            image.fill(Qt::white);
-//            int row=0;
-//            QPainter painter(&image);
-//            for(int x=0; x<9; x+=3){
-//                for(int y=0; y<3; y++){
-//                    QImage unit = images.value(i+x+y);
-//                    painter.drawImage(QRect(QPoint(219*y,293*row),unit.size()),unit);
-//                }
-//                row++;
-//            }
-//            painter.end();
-//            image.save(QString("C:/users/sadeq/Desktop/products/%1.jpg").arg(i));
-//        }
+        for(int i=0; i<images.size(); i+=9){
+            QImage image(1340*3,1785*3,QImage::Format_RGB32);
+            image.fill(Qt::white);
+            int row=0;
+            QPainter painter(&image);
+            for(int x=0; x<9; x+=3){
+                for(int y=0; y<3; y++){
+                    QImage unit = images.value(i+x+y);
+                    painter.drawImage(QRect(QPoint(1340*y,1785*row),unit.size()),unit);
+                }
+                row++;
+            }
+            painter.end();
+            qDebug()<<image.save(QString("%1/products/%2.png").arg(desktop).arg(i));
+        }
     });
 }
 
