@@ -14,7 +14,7 @@
 #include <QFontDatabase>
 #include <QTranslator>
 #include <QFileSelector>
-
+#include "appsettings.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 #endif
 
     PosApplication a(argc, argv);
+    qDebug()<<AppSettings::deviceUuid();
 
 
     return a.exec();

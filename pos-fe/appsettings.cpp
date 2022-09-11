@@ -4,11 +4,11 @@
 #include <QCoreApplication>
 #include <QJsonDocument>
 #include <QNetworkInterface>
+#include <QUuid>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
 {
-    qDebug()<<"mac: "<<macAddress();
 
 }
 
@@ -43,6 +43,17 @@ QString AppSettings::macAddress()
         }
         return QString();
 
+}
+
+QByteArray AppSettings::deviceUuid()
+{
+    QByteArray value=instance()->value("uuid").toByteArray();
+    if(value.isEmpty()){
+        QUuid uuid=QUuid::createUuid();
+        instance()->setValue("uuid",uuid.toByteArray(QUuid::WithoutBraces));
+        value=instance()->value("uuid").toByteArray();
+    }
+    return value;
 }
 
 QUrl AppSettings::serverUrl()
@@ -103,7 +114,7 @@ QString AppSettings::hwID()
 {
 
 #ifdef Q_OS_ANDROID
-    return macAddress();
+    return deviceUuid();
 #elif defined(Q_OS_WASM)
     return QStringLiteral("wasm");
 #else

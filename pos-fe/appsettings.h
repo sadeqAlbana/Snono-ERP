@@ -32,7 +32,7 @@ public:
     void setJwt(const QByteArray &newJwt);
 
     static QString macAddress();
-
+    static QByteArray deviceUuid();
 signals:
     void serverUrlChanged(QUrl url);
 
