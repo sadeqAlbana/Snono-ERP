@@ -2,7 +2,7 @@
 #define UTILS_H
 
 #include <QVariant>
-#include <qrcodegen.hpp>
+#include "qrcodegen.hpp"
 namespace Currency
 {
     QString formatString(const QVariant &value);
