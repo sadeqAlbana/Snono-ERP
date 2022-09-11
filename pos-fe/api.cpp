@@ -209,7 +209,7 @@ void Api::generateImages()
                     painter.setPen(Qt::white);
 
                     QFont font;
-                    font.setPixelSize(90);
+                    font.setPixelSize(140);
                     font.setBold(true);
                     painter.setFont(font);
 

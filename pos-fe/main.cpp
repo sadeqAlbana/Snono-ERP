@@ -1,6 +1,5 @@
-#include <posapplication.h>
+#include "posapplication.h"
 #include <QSettings>
-#include <mainwindow.h>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
 #include <QTimer>
