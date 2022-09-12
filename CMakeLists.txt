@@ -5,11 +5,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(ANDROID)
+    set(ANDROID_PACKAGE_SOURCE_DIR app/android
+        CACHE INTERNAL "")
+endif()
 
 find_package(Qt6  COMPONENTS Core REQUIRED)
 find_package(Qt6  COMPONENTS Quick REQUIRED)
-find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
-find_package(Qt6  COMPONENTS Pdf REQUIRED)
 find_package(Qt6  COMPONENTS Multimedia REQUIRED)
 find_package(Qt6  COMPONENTS Gui REQUIRED)
 find_package(Qt6  COMPONENTS Network REQUIRED)
@@ -19,12 +21,24 @@ find_package(Qt6  COMPONENTS Core5Compat REQUIRED)
 find_package(Qt6  COMPONENTS Widgets REQUIRED)
 find_package(Qt6  COMPONENTS PrintSupport REQUIRED)
 find_package(Qt6  COMPONENTS LinguistTools)
+if(NOT ANDROID)
+find_package(Qt6  COMPONENTS Pdf REQUIRED)
+find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
+endif()
+
 
 add_subdirectory(network-manager/src)
 add_subdirectory(json-model/src)
-
-add_subdirectory(pos-fe)
+add_subdirectory(app)
 
 
 target_link_libraries(pos-fe PRIVATE network-manager)
 target_link_libraries(pos-fe PRIVATE json-model)
+
+target_compile_definitions(pos-fe
+    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+
+
+if(ANDROID)
+    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
+endif()
