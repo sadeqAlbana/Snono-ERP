@@ -183,7 +183,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 void Api::generateImages()
 {
     return;
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",5}})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",1500}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;
@@ -241,7 +241,7 @@ void Api::generateImages()
                     painter.drawText(rect,productPrice,textOption);
                     painter.end();
                     images << image;
-                    //qDebug()<<image.save(QString("%1/products/%2.jpg").arg(desktop).arg(productName));
+                    qDebug()<<image.save(QString("%1/products/single/%2.jpg").arg(desktop).arg(productName));
                     //return;
 
 

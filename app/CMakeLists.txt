@@ -73,6 +73,9 @@ set_target_properties(pos-fe PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+if(ANDROID)
+set_target_properties(pos-fe PROPERTIES QT_ANDROID_EXTRA_LIBS "${ANDROID_EXTRA_LIBS}")
+endif()
 
 target_link_libraries(pos-fe PRIVATE Qt6::Quick)
 target_link_libraries(pos-fe PRIVATE Qt6::Core)

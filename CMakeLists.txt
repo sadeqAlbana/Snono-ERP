@@ -6,8 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(ANDROID)
-    set(ANDROID_PACKAGE_SOURCE_DIR app/android
+    set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
         CACHE INTERNAL "")
+    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
 endif()
 
 find_package(Qt6  COMPONENTS Core REQUIRED)
@@ -39,6 +40,4 @@ target_compile_definitions(pos-fe
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
 
-if(ANDROID)
-    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
-endif()
+
