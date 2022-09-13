@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Point of Sale</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="qrc.qrc">
+    <normaloff>:/icons/snono.png</normaloff>:/icons/snono.png</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>64</width>
+    <height>40</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="mainPage">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="tabShape">
+           <enum>QTabWidget::Rounded</enum>
+          </property>
+          <property name="currentIndex">
+           <number>-1</number>
+          </property>
+          <property name="elideMode">
+           <enum>Qt::ElideNone</enum>
+          </property>
+          <property name="documentMode">
+           <bool>false</bool>
+          </property>
+          <property name="tabsClosable">
+           <bool>true</bool>
+          </property>
+          <property name="movable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menufile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionCashier"/>
+    <addaction name="actionUsers"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuoptions">
+    <property name="title">
+     <string>&amp;Options</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menufile"/>
+   <addaction name="menuoptions"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCashier"/>
+   <addaction name="actionUsers"/>
+   <addaction name="actionOrders"/>
+   <addaction name="actionProducts"/>
+   <addaction name="actionSuppliers"/>
+   <addaction name="actionAccounting"/>
+   <addaction name="actionDatabase"/>
+   <addaction name="actionCharts"/>
+   <addaction name="actionSettings"/>
+   <addaction name="actionDebug"/>
+   <addaction name="actionExit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCashier">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-cashier-machine-96.png</normaloff>:/icons/color/icons8-cashier-machine-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cashier</string>
+   </property>
+  </action>
+  <action name="actionUsers">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-person-96.png</normaloff>:/icons/color/icons8-person-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Users</string>
+   </property>
+  </action>
+  <action name="actionMachines">
+   <property name="text">
+    <string>Machines</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Logout</string>
+   </property>
+  </action>
+  <action name="actionCharts">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-combo-chart-96.png</normaloff>:/icons/color/icons8-combo-chart-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Charts</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-settings-480.png</normaloff>:/icons/color/icons8-settings-480.png</iconset>
+   </property>
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionDatabase">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-database-96.png</normaloff>:/icons/color/icons8-database-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Database</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-cancel-480.png</normaloff>:/icons/color/icons8-cancel-480.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionSuppliers">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-supplier-96.png</normaloff>:/icons/color/icons8-supplier-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Suppliers</string>
+   </property>
+  </action>
+  <action name="actionOrders">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-paid-96.png</normaloff>:/icons/color/icons8-paid-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Orders</string>
+   </property>
+  </action>
+  <action name="actionDebug">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-bug-96.png</normaloff>:/icons/color/icons8-bug-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Debug</string>
+   </property>
+  </action>
+  <action name="actionProducts">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-product-96.png</normaloff>:/icons/color/icons8-product-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Products</string>
+   </property>
+  </action>
+  <action name="actionAccounting">
+   <property name="icon">
+    <iconset resource="qrc.qrc">
+     <normaloff>:/icons/color/icons8-accounting-96.png</normaloff>:/icons/color/icons8-accounting-96.png</iconset>
+   </property>
+   <property name="text">
+    <string>Accounting</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="qrc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

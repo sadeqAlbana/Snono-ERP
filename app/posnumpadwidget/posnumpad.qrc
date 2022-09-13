@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/numpad/img">
+        <file>appbar.math.plus.minus.png</file>
+        <file>appbar.clear.reflect.horizontal.png</file>
+        <file>appbar.arrow.left.png</file>
+    </qresource>
+</RCC>
