@@ -3,8 +3,6 @@ if(ANDROID)
     add_compile_definitions(QT_NO_PDF TRUE)
 endif()
 
-
-
 qt_add_executable(pos-fe
     appsettings.cpp appsettings.h
     posnetworkmanager.cpp posnetworkmanager.h

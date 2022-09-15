@@ -35,13 +35,13 @@ AppPage{
                       }
 
             advancedFilter:  [
-                {"type": "text","label": qsTr("Barcode"),"key": "barcode","options":{"placeholderText":"All..."}},
-                {"type": "combo","label": "Category","key": "category_id",
+                {"type": "text","label": qsTr("Barcode"),"key": "barcode","dynamic": false, "category": null,"options":{"placeholderText":"All..."}},
+                {"type": "combo","label": "Category","key": "category_id","dynamic": false, "category": null,
                     "options":{"editable":true,"defaultEntry":{"name":"All Categories","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/categories",
                     }},
 
-                {"type": "check","label":"","inner_label": qsTr("Only Variants"),"key": "only_variants"},
-                {"type": "check","label":"","inner_label": qsTr("In stock"),"key": "in_stock"},
+                {"type": "check","label":"","inner_label": qsTr("Only Variants"),"key": "only_variants" ,"dynamic": false, "category" :null},
+                {"type": "check","label":"","inner_label": qsTr("In stock"),"key": "in_stock" ,"dynamic": false, "category" :null},
             ]
 
 
@@ -64,8 +64,9 @@ AppPage{
                         let name=attribute['name']
                         let values=attribute['values']
 
-                        toolBar.advancedFilter.push({"type": "combo","label": name,"key": id,
+                        toolBar.advancedFilter.push({"type": "combo","label": name,"key": id, "dynamic": true, "category": "attributes",
                                                 "options":{"editable":true,"defaultEntry":{"value":"All","id":null},"textRole": "value", "valueRole": "id","values": values
+
                                                 }})
                     }
                     toolBar.advancedFilterChanged();

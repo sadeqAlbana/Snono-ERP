@@ -260,7 +260,7 @@ void Api::generateImages()
                 row++;
             }
             painter.end();
-            qDebug()<<image.save(QString("%1/products/%2.png").arg(desktop).arg(i));
+            qDebug()<<image.save(QString("%1/products/%2.jpg").arg(desktop).arg(i));
         }
     });
 }

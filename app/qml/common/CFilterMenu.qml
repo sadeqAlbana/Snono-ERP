@@ -70,33 +70,51 @@ CMenu {
                 implicitHeight: 40
 
                 onClicked: {
-                    let filter={}
+                    let filter={};
                     for(var i=0; i<listView.count; i++){
                         let data =listView.model[i]
                         let item=listView.itemAtIndex(i)
+                        let value=null;
+
                         if(data.type==="text"){
                             if(item.text.length){
-                                filter[data.key]=item.text;
+                                value=item.text
                             }
                         }
 
                         if(data.type==="date"){
                             if(item.acceptableInput)
-                               filter[data.key]=item.text;
+                               value=item.text
                         }
 
                         if(data.type==="combo"){
                             if(item.currentValue){
-                                filter[data.key]=item.currentValue;
+                                value=item.currentValue;
                             }
                         }
 
                         if(data.type==="check"){
-                            console.log("checked: " + item.checked)
-                                filter[data.key]=item.checked
+                                value=item.checked
                         }
 
+                        if(value){
+                            if(data.category){
+                                if(!filter.hasOwnProperty(data.category)){
+                                    filter[data.category]=Array()
+
+                                }
+                                let obj={"key": data.key, "value" : value};
+                                filter[data.category].push(obj)
+                            }
+                            else{
+                                filter[data.key]=value;
+                            }
+
+                        }//end if value
+
+
                     }//for loop
+                    console.log(JSON.stringify(filter));
 
                     control.clicked(filter);
 
