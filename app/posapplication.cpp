@@ -26,6 +26,7 @@
 #include <QDirIterator>
 #include <QFontDatabase>
 #include <QTranslator>
+#include <QSortFilterProxyModel>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
     m_engine(new QQmlApplicationEngine(this))
 {
@@ -78,6 +79,7 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     qmlRegisterType<BarqLocationsModel>("App.Models", 1, 0, "BarqLocationsModel");
     qmlRegisterType<StockReportModel>("App.Models", 1, 0, "StockReportModel");
     qmlRegisterType<ProductSalesReportModel>("App.Models", 1, 0, "ProductSalesReportModel");
+    qmlRegisterType<QSortFilterProxyModel>("App.Models", 1, 0, "SortFilterProxyModel");
 
 
 

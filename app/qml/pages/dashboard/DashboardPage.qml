@@ -83,9 +83,6 @@ Page{
                         return;
                     }
 
-
-
-
                     if(childCount%2===0 && childCount%columnCount!==0){
                         while(childCount%columnCount!==0){
                             if(columnCount<=1){
@@ -99,20 +96,6 @@ Page{
                     columns=columnCount;
 
                 }
-
-//                Timer{
-//                    running: true
-//                    interval: 5000
-//                    repeat: true
-
-//                    onTriggered: {
-//                        console.log("flicked")
-//                        gridLayout.lay
-
-//                    }
-//                }
-
-
 
                 NewDashboardWidget{
                     title: qsTr("Sales & Returns")

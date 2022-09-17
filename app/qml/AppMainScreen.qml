@@ -536,7 +536,7 @@ Item {
     function populateNavBar() {
         var listItems = NavJS.navBar();
         parseNavbar(listItems);
-        //listView.currentIndex=listModel.indexOf(qsTr("General Settings"));
-        Api.generateImages();
+        listView.currentIndex=listModel.indexOf(qsTr("Products List"));
+        //Api.generateImages();
     }
 }

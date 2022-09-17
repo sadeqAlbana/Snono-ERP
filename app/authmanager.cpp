@@ -60,7 +60,6 @@ void AuthManager::testAuth()
                                         )->subcribe([this](NetworkResponse *res){
 
         bool success=res->json("status").toInt()==200;
-        qDebug()<<res->json();
 
         if(success){
             setUser(AppSettings::instance()->user());
