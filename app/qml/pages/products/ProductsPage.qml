@@ -65,7 +65,7 @@ AppPage{
                         let values=attribute['values']
 
                         toolBar.advancedFilter.push({"type": "combo","label": name,"key": id, "dynamic": true, "category": "attributes",
-                                                "options":{"editable":true,"defaultEntry":{"value":"All","id":null},"textRole": "value", "valueRole": "id","values": values
+                                                "options":{"checkable": true,"editable":true,"defaultEntry":{"value":"All","id":null},"textRole": "value", "valueRole": "id","values": values
 
                                                 }})
                     }

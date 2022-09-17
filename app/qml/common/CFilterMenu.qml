@@ -19,8 +19,8 @@ CMenu {
         implicitHeight: contentHeight
         model: control.model
         interactive: Window.window
-                        ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height
-                        : false
+                     ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height
+                     : false
         clip: false
 
         section.property: "label"
@@ -44,6 +44,7 @@ CMenu {
                     defaultEntry: modelData.options["defaultEntry"]
                     values: modelData.options["values"]?? null;
                     filter: modelData.options["filter"]
+                    checkable: modelData.options.checkable?? false
                     width: ListView.view.width
                     //Component.onCompleted: console.log("ttt: "+ JSON.stringify(modelData))
                 }
@@ -84,17 +85,28 @@ CMenu {
 
                         if(data.type==="date"){
                             if(item.acceptableInput)
-                               value=item.text
+                                value=item.text
                         }
 
+                        //use different delegate for checkable combo?
                         if(data.type==="combo"){
-                            if(item.currentValue){
-                                value=item.currentValue;
+
+                            {
+                                if(data.checkable){
+
+                                }
+                                else{
+                                    if(item.currentValue){
+                                        value=[item.currentValue];
+                                    }
+                                }
                             }
+
+
                         }
 
                         if(data.type==="check"){
-                                value=item.checked
+                            value=item.checked
                         }
 
                         if(value){
@@ -138,7 +150,7 @@ CMenu {
 
                         if(data.type==="date"){
                             if(item.acceptableInput)
-                            item.clearDate();
+                                item.clearDate();
                         }
 
 

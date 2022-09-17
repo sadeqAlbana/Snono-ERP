@@ -183,7 +183,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 void Api::generateImages()
 {
     return;
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",1500}})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",6}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;

@@ -3,17 +3,20 @@ import QtQuick.Controls
 import App.Models
 import "qrc:/CoreUI/components/forms"
 
-CComboBox {
+CCheckableComboBox {
     id: control
     property string dataUrl;
     property var values: null;
     property var filter: null
     property var defaultEntry;
+    property bool checkable: false  //use different delegate for checkable combo?
+
     currentIndex: 0
     //editable: true
     model: NetworkModel{
         id: jsonModel
         url: control.dataUrl
+        checkable: control.checkable
         filter: control.filter?? {}
 
         Component.onCompleted: {            
