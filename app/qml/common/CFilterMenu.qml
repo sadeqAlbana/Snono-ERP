@@ -44,7 +44,7 @@ CMenu {
                     defaultEntry: modelData.options["defaultEntry"]
                     values: modelData.options["values"]?? null;
                     filter: modelData.options["filter"]
-                    checkable: modelData.options.checkable?? false
+                    //checkable: modelData.options.checkable?? false
                     width: ListView.view.width
                     //Component.onCompleted: console.log("ttt: "+ JSON.stringify(modelData))
                 }

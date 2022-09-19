@@ -9,7 +9,8 @@ import App.Models 1.0
 import "qrc:/screens/Utils.js" as Utils
 import Qt.labs.qmlmodels 1.0
 import "qrc:/common"
-Popup{
+
+Popup {
     id: orderDetails
 
     modal: true
@@ -20,44 +21,63 @@ Popup{
     //height: parent.height
     width: 1000
     height: 500
-    anchors.centerIn: parent;
-    property var order;
-
+    anchors.centerIn: parent
+    property var order
 
     //closePolicy: Popup.NoAutoClose
-    background: Rectangle{color: "transparent"}
-
+    background: Rectangle {
+        color: "transparent"
+    }
 
     enter: Transition {
-        NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
+        NumberAnimation {
+            property: "opacity"
+            from: 0.0
+            to: 1.0
+        }
     }
     exit: Transition {
-        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+        NumberAnimation {
+            property: "opacity"
+            from: 1.0
+            to: 0.0
+        }
     }
 
-    Card{
+    Card {
         width: 1000
         height: 500
         title: qsTr("Order Details")
 
-         CTableView{
-            rowHeightProvider: function(row){return 50}
-            anchors.fill: parent;
-            delegate: DelegateChooser{
+        function test(a) {}
+        CTableView {
+            rowHeightProvider: function (row) {
+                return 50
+            }
+            anchors.fill: parent
+            delegate: DelegateChooser {
                 role: "delegateType"
-                DelegateChoice{ roleValue: "text"; CTableViewDelegate{}}
-                DelegateChoice{ roleValue: "currency"; CurrencyDelegate{}}
-                DelegateChoice{roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
-
+                DelegateChoice {
+                    roleValue: "text"
+                    CTableViewDelegate {}
+                }
+                DelegateChoice {
+                    roleValue: "currency"
+                    CurrencyDelegate {}
+                }
+                DelegateChoice {
+                    roleValue: "percentage"
+                    SuffixDelegate {
+                        suffix: "%"
+                    }
+                }
             }
 
-            model : OrderItemsModel{
+            model: OrderItemsModel {
                 Component.onCompleted: {
                     setupData(order.pos_order_items)
                 }
             }
         }
     }
-
-
 }

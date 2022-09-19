@@ -3,7 +3,7 @@ import QtQuick.Controls
 import App.Models
 import "qrc:/CoreUI/components/forms"
 
-CCheckableComboBox {
+CComboBox {
     id: control
     property string dataUrl;
     property var values: null;
