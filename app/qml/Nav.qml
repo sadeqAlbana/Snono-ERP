@@ -7,13 +7,13 @@ property var navBarData: [
       "title": qsTr("Dashboard"),
       "category":"",
       "image":"cil-speedometer",
-      "path":"qrc:/pages/dashboard/DashboardPage.qml"
+      "path":"pages/dashboard/DashboardPage.qml"
    },
    {
       "title": qsTr("POS"),
       "category":qsTr("MAIN"),
       "image":"cil-screen-desktop",
-      "path":"qrc:/pages/pos/session/SessionsPage.qml"
+      "path":"pages/pos/session/SessionsPage.qml"
    },
    {
       "title":qsTr("Accounting"),
@@ -23,15 +23,15 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Accounts"),
-            "path":"qrc:/pages/Accounting/AccountsPage.qml"
+            "path":"pages/Accounting/AccountsPage.qml"
          },
          {
             "title":qsTr("Journal Entries"),
-            "path":"qrc:/pages/Accounting/JournalEntriesPage.qml"
+            "path":"pages/Accounting/JournalEntriesPage.qml"
          },
          {
             "title":qsTr("Journal Entries Items"),
-            "path":"qrc:/pages/Accounting/JournalEntriesItemsPage.qml"
+            "path":"pages/Accounting/JournalEntriesItemsPage.qml"
          }
       ]
    },
@@ -44,15 +44,15 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Products List"),
-            "path":"qrc:/pages/products/ProductsPage.qml"
+            "path":"pages/products/ProductsPage.qml"
          },
          {
             "title":qsTr("Mobile List"),
-            "path":"qrc:/pages/products/ProductsMobilePage.qml"
+            "path":"pages/products/ProductsMobilePage.qml"
          },
          {
             "title":qsTr("Categories"),
-            "path":"qrc:/pages/categories/CategoriesPage.qml"
+            "path":"pages/categories/CategoriesPage.qml"
          }
       ]
    },
@@ -64,11 +64,11 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Orders List"),
-            "path":"qrc:/pages/orders/OrdersPage.qml"
+            "path":"pages/orders/OrdersPage.qml"
          },
          {
             "title":qsTr("Returns"),
-            "path":"qrc:/pages/orders/OrdersReturnsPage.qml"
+            "path":"pages/orders/OrdersReturnsPage.qml"
          }
       ]
    },
@@ -76,13 +76,13 @@ property var navBarData: [
       "title":qsTr("Taxes"),
       "category":qsTr("MAIN"),
       "image":"cil-money",
-      "path":"qrc:/pages/taxes/TaxesPage.qml"
+      "path":"pages/taxes/TaxesPage.qml"
    },
    {
       "title":qsTr("Customers"),
       "category":qsTr("MAIN"),
       "image":"cil-user",
-      "path":"qrc:/pages/customers/CustomersPage.qml"
+      "path":"pages/customers/CustomersPage.qml"
    },
    {
       "title":qsTr("Vendors"),
@@ -92,11 +92,11 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Vendors List"),
-            "path":"qrc:/pages/vendors/VendorsPage.qml"
+            "path":"pages/vendors/VendorsPage.qml"
          },
          {
             "title":qsTr("Bills"),
-            "path":"qrc:/pages/vendors/VendorsBillsPage.qml"
+            "path":"pages/vendors/VendorsBillsPage.qml"
          }
       ]
    },
@@ -104,21 +104,21 @@ property var navBarData: [
       "title":qsTr("Users"),
       "category":qsTr("MAIN"),
       "image":"cil-user",
-      "path":"qrc:/pages/users/UsersPage.qml"
+      "path":"pages/users/UsersPage.qml"
    },
    {
       "title":qsTr("Reports"),
       "category":qsTr("MAIN"),
       "image":"cil-chart",
-      "path":"qrc:/pages/orders/OrdersPage.qml",
+      "path":"pages/orders/OrdersPage.qml",
       "childItems":[
          {
             "title":qsTr("Stock"),
-            "path":"qrc:/pages/reports/StockReport.qml"
+            "path":"pages/reports/StockReport.qml"
          },
          {
             "title":qsTr("Product Sales"),
-            "path":"qrc:/pages/reports/ProductSalesReport.qml"
+            "path":"pages/reports/ProductSalesReport.qml"
          }
       ]
    },
@@ -130,20 +130,20 @@ property var navBarData: [
       "childItems":[
                     {
                         "title": qsTr("General Settings"),
-                        "path": "qrc:/pages/settings/GeneralSettings.qml"
+                        "path": "pages/settings/GeneralSettings.qml"
                     },
                     {
                         "title": qsTr("Printer Settings"),
-                        "path": "qrc:/pages/settings/ServerSettings.qml"
+                        "path": "pages/settings/ServerSettings.qml"
                 },
                     {
                         "title": qsTr("Server Settings"),
-                        "path": "qrc:/pages/settings/ServerSettings.qml"
+                        "path": "pages/settings/ServerSettings.qml"
                     },
 
          {
             "title":qsTr("Receipt"),
-            "path":"qrc:/pages/ReceiptPage.qml"
+            "path":"pages/ReceiptPage.qml"
          }
       ]
    }

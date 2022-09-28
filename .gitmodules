@@ -5,5 +5,5 @@
 	path = json-model
 	url = http://git.lan:9080/sadeq/json-model
 [submodule "app/CoreUI-QML"]
-	path = app/CoreUI-QML
+	path = libs/CoreUI-QML
 	url = http://git.lan:9080/sadeq/CoreUI-QML.git

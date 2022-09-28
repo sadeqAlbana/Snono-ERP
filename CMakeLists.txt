@@ -5,6 +5,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
 if(ANDROID)
     set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
         CACHE INTERNAL "")
@@ -30,14 +31,12 @@ endif()
 
 add_subdirectory(network-manager/src)
 add_subdirectory(json-model/src)
+add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
 
+list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/qml")
+set(QML_IMPORT_PATH "${QML_DIRS}" CACHE STRING "Qt Creator 4.1 extra qml import paths")
 
-target_link_libraries(pos-fe PRIVATE network-manager)
-target_link_libraries(pos-fe PRIVATE json-model)
-
-target_compile_definitions(pos-fe
-    PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
 
 

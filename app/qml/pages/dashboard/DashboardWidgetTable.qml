@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import Qt.labs.qmlmodels
-import "qrc:/CoreUI/components/tables"
+import CoreUI.Views
 
 CTableView{
     id: tableView

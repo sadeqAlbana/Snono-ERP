@@ -1,8 +1,8 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
 import Qt.labs.qmlmodels
-import "qrc:/CoreUI/components/tables"
-import "qrc:/common";
+import CoreUI
+import CoreUI.Views
 DelegateChooser{
     role: "delegateType"
     DelegateChoice{ roleValue: "text";       CTableViewDelegate{}}

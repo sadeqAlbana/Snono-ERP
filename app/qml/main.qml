@@ -2,12 +2,13 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
-import "qrc:/CoreUI/components"
-import "qrc:/screens"
-import "qrc:/pages"
-import "qrc:/common"
+import QtQuick.Controls.Basic
+import CoreUI
+import CoreUI.Notifications
+import PosFe
 import QtMultimedia
 import QtQml
+
 ApplicationWindow {
     id: mainWindow
     visible: true
@@ -44,14 +45,14 @@ ApplicationWindow {
     Connections{
         target: AuthManager
         function onLoggedIn(){
-            rootLoader.setSource("qrc:/AppMainScreen.qml")
+            rootLoader.setSource("AppMainScreen.qml")
         }
         function onLoggedOut(){
-            rootLoader.setSource("qrc:/pages/LoginPage.qml")
+            rootLoader.setSource("pages/LoginPage.qml")
         }
         function onTestAuthResponse(success){
             if(success){
-                rootLoader.setSource("qrc:/AppMainScreen.qml")
+                rootLoader.setSource("AppMainScreen.qml")
             }
         }
     }

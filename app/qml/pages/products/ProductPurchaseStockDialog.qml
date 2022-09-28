@@ -1,10 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Controls
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/tables"
-import "qrc:/CoreUI/components/forms"
-import "qrc:/CoreUI/components/buttons"
-import "qrc:/screens/Utils.js" as Utils
+import CoreUI.Base
+import CoreUI.Views
+import CoreUI.Forms
+import CoreUI.Buttons
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 
 import QtQuick.Layouts

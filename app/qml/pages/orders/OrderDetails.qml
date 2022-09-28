@@ -1,14 +1,14 @@
 import QtQuick 2.0
 import QtQuick.Controls
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/tables"
+import CoreUI.Base
+import CoreUI.Views
 
 import QtQuick.Layouts
 import App.Models 1.0
 
-import "qrc:/screens/Utils.js" as Utils
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels 1.0
-import "qrc:/common"
+
 
 Popup {
     id: orderDetails

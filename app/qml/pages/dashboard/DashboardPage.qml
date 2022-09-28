@@ -2,18 +2,18 @@ import QtQuick;
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import QtQuick.Controls
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/forms"
-import "qrc:/CoreUI/components/tables"
-import "qrc:/CoreUI/components/notifications"
-import "qrc:/CoreUI/components/buttons"
+import CoreUI.Base
+import CoreUI.Forms
+import CoreUI.Views
+import CoreUI.Notifications
+import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-import App.Models 1.0
-import "qrc:/CoreUI/components/SharedComponents"
-import "qrc:/screens/Utils.js" as Utils
-import Qt.labs.qmlmodels 1.0
-import "qrc:/common"
-import QtCharts 2.15
+import App.Models
+import CoreUI.Impl
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
+import Qt.labs.qmlmodels
+
+import QtCharts
 Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
@@ -200,15 +200,18 @@ Page{
                 //legend.font.family: "Roboto"
                 legend.font.pixelSize: 20
                 theme: ChartView.ChartThemeLight
-                layer.enabled: true
-                layer.effect:  DropShadow{
-                    radius: 8
-                    verticalOffset: 1
-                    spread: 0.1
-                    color: "silver"
-                    cached: true
-                    transparentBorder: true
-                }
+                titleFont.pixelSize: 24
+                title: "test"
+//                layer.enabled: true
+//                layer.effect:  DropShadow{
+//                    radius: 8
+//                    verticalOffset: 1
+//                    spread: 0.1
+//                    color: "silver"
+//                    cached: true
+//                    transparentBorder: true
+//                }
+                dropShadowEnabled: true
                 animationOptions: ChartView.AllAnimations
 
                     margins.left: 5
@@ -225,7 +228,6 @@ Page{
                     tickCount: Math.min(chartView.width/130,31)
                     labelsFont.family: "Roboto"
                     labelsColor: "#666666"
-
                     gridVisible: false
                 }
 
@@ -247,6 +249,7 @@ Page{
                     name: qsTr("Sales")
                     axisX: dtAxis
                     axisY: valueAxis
+                    pointsVisible: true
 
                 }
 
@@ -257,6 +260,8 @@ Page{
 
                     axisX: dtAxis
                     axisY: valueAxis
+                    pointsVisible: true
+
                 }
 
                 VXYModelMapper{

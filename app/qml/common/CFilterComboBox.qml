@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import App.Models
-import "qrc:/CoreUI/components/forms"
+import CoreUI.Forms
 
 CComboBox {
     id: control

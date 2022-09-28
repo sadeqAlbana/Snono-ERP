@@ -6,14 +6,14 @@ function navBar(){
                     "title": qsTr("Dashboard"),
                     "category":"",
                     "image":"cil-speedometer",
-                    "path":"qrc:/pages/dashboard/DashboardPage.qml",
+                    "path":"pages/dashboard/DashboardPage.qml",
                     "permission": "prm_view_dashboard"
                 },
                 {
                     "title": qsTr("POS"),
                     "category":qsTr("MAIN"),
                     "image":"cil-screen-desktop",
-                    "path":"qrc:/pages/pos/session/SessionsPage.qml",
+                    "path":"pages/pos/session/SessionsPage.qml",
                     "permission": "prm_purchase_products"
                 },
                 {
@@ -25,18 +25,18 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Accounts"),
-                            "path":"qrc:/pages/Accounting/AccountsPage.qml",
+                            "path":"pages/Accounting/AccountsPage.qml",
                             "permission": ""
                         },
                         {
                             "title":qsTr("Journal Entries"),
-                            "path":"qrc:/pages/Accounting/JournalEntriesPage.qml",
+                            "path":"pages/Accounting/JournalEntriesPage.qml",
                             "permission": "prm_view_journal_entries",
 
                         },
                         {
                             "title":qsTr("Journal Entries Items"),
-                            "path":"qrc:/pages/Accounting/JournalEntriesItemsPage.qml",
+                            "path":"pages/Accounting/JournalEntriesItemsPage.qml",
                             "permission": "prm_view_journal_entries"
                         }
                     ]
@@ -51,19 +51,19 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Products List"),
-                            "path":"qrc:/pages/products/ProductsPage.qml",
+                            "path":"pages/products/ProductsPage.qml",
                             "permission": "prm_view_full_products"
 
                         },
                         {
                             "title":qsTr("Mobile List"),
-                            "path":"qrc:/pages/products/ProductsMobilePage.qml",
+                            "path":"pages/products/ProductsMobilePage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("Categories"),
-                            "path":"qrc:/pages/categories/CategoriesPage.qml",
+                            "path":"pages/categories/CategoriesPage.qml",
                             "permission": "prm_view_categories",
                         }
                     ]
@@ -77,13 +77,13 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Orders List"),
-                            "path":"qrc:/pages/orders/OrdersPage.qml",
+                            "path":"pages/orders/OrdersPage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("Returns"),
-                            "path":"qrc:/pages/orders/OrdersReturnsPage.qml",
+                            "path":"pages/orders/OrdersReturnsPage.qml",
                             "permission": ""
 
                         }
@@ -93,7 +93,7 @@ function navBar(){
                     "title":qsTr("Taxes"),
                     "category":qsTr("MAIN"),
                     "image":"cil-money",
-                    "path":"qrc:/pages/taxes/TaxesPage.qml",
+                    "path":"pages/taxes/TaxesPage.qml",
                     "permission": "prm_view_taxes"
 
                 },
@@ -101,7 +101,7 @@ function navBar(){
                     "title":qsTr("Customers"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"qrc:/pages/customers/CustomersPage.qml",
+                    "path":"pages/customers/CustomersPage.qml",
                     "permission": "prm_view_customers"
                 },
                 {
@@ -113,12 +113,12 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Vendors List"),
-                            "path":"qrc:/pages/vendors/VendorsPage.qml",
+                            "path":"pages/vendors/VendorsPage.qml",
                             "permission": ""
                         },
                         {
                             "title":qsTr("Bills"),
-                            "path":"qrc:/pages/vendors/VendorsBillsPage.qml",
+                            "path":"pages/vendors/VendorsBillsPage.qml",
                             "permission": "prm_view_vendor_bills"
                         }
                     ]
@@ -127,25 +127,25 @@ function navBar(){
                     "title":qsTr("Users"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"qrc:/pages/users/UsersPage.qml",
+                    "path":"pages/users/UsersPage.qml",
                     "permission": "prm_view_users"
                 },
                 {
                     "title":qsTr("Reports"),
                     "category":qsTr("MAIN"),
                     "image":"cil-chart",
-                    "path":"qrc:/pages/orders/OrdersPage.qml",
+                    "path":"pages/orders/OrdersPage.qml",
                     "permission": "prm_view_reports",
                     "childItems":[
                         {
                             "title":qsTr("Stock"),
-                            "path":"qrc:/pages/reports/StockReport.qml",
+                            "path":"pages/reports/StockReport.qml",
                             "permission": "prm_view_stock"
 
                         },
                         {
                             "title":qsTr("Product Sales"),
-                            "path":"qrc:/pages/reports/ProductSalesReport.qml",
+                            "path":"pages/reports/ProductSalesReport.qml",
                             "permission": "prm_view_product_sales"
                         }
                     ]
@@ -159,23 +159,23 @@ function navBar(){
                     "childItems":[
                         {
                             "title": qsTr("General Settings"),
-                            "path": "qrc:/pages/settings/GeneralSettings.qml",
+                            "path": "pages/settings/GeneralSettings.qml",
                             "permission": ""
                         },
                         {
                             "title": qsTr("Printer Settings"),
-                            "path": "qrc:/pages/settings/PrinterSettings.qml",
+                            "path": "pages/settings/PrinterSettings.qml",
                             "permission": ""
                         }
 //                        {
 //                            "title": qsTr("Server Settings"),
-//                            "path": "qrc:/pages/settings/ServerSettings.qml",
+//                            "path": "pages/settings/ServerSettings.qml",
 //                            "permission": ""
 //                        },
 
 //                        {
 //                            "title":qsTr("Receipt"),
-//                            "path":"qrc:/pages/ReceiptPage.qml",
+//                            "path":"pages/ReceiptPage.qml",
 //                            "permission": ""
 //                        }
                     ]

@@ -2,7 +2,7 @@ import QtQuick;import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
-import "qrc:/CoreUI/components/base"
+import CoreUI.Base
 
 DashboardWidget{
 

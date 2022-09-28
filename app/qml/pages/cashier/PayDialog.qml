@@ -1,14 +1,15 @@
 import QtQuick;
-import QtQuick.Controls.Basic;
 import QtQuick.Controls
+import QtQuick.Controls.Basic;
+
 import QtQuick.Layouts
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/forms"
-import "qrc:/CoreUI/components/tables"
-import "qrc:/CoreUI/components/notifications"
-import "qrc:/CoreUI/components/buttons"
-import "qrc:/screens/Utils.js" as Utils
-import "qrc:/common"
+import CoreUI.Base
+import CoreUI.Forms
+import CoreUI.Views
+import CoreUI.Notifications
+import CoreUI.Buttons
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
+import PosFe
 
 AppDialog {
     id: dialog

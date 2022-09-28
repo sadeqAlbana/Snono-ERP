@@ -3,11 +3,12 @@ import QtQuick.Controls
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import Qt.labs.qmlmodels
-import "qrc:/CoreUI/components/forms"
-import "qrc:/CoreUI/components/SharedComponents"
-import "qrc:/CoreUI/components/buttons"
-import "qrc:/CoreUI/palettes"
-
+import CoreUI.Forms
+import CoreUI.Impl
+import CoreUI.Buttons
+import CoreUI.Palettes
+import CoreUI.Menus
+import CoreUI.Base
 CMenu {
     id: control
     property var model;

@@ -4,11 +4,12 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import QtQml.Models
-import "qrc:/CoreUI/components/notifications"
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/SharedComponents"
+import CoreUI.Notifications
+import CoreUI.Base
+import CoreUI.Impl
+import CoreUI.Menus
 import QtQuick.Controls.impl as Impl
-import "qrc:/nav.js" as NavJS;
+import "qrc:/PosFe/qml/nav.js" as NavJS;
 Item {
     id: rootItem
     implicitWidth: stack.implicitWidth

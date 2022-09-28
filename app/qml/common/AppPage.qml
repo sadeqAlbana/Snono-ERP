@@ -1,7 +1,8 @@
 import QtQuick
-
+import QtQuick.Controls
 import QtQuick.Controls.Basic
-import "qrc:/CoreUI/components/base"
+import CoreUI.Base
+import CoreUI.Impl
 
 Card {
     header.visible: false

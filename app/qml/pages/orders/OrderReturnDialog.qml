@@ -2,14 +2,14 @@ import QtQuick;import QtQuick.Controls.Basic;
 
 import QtQuick.Layouts
 import QtQuick.Controls
-import "qrc:/CoreUI/components/base"
-import "qrc:/CoreUI/components/forms"
-import "qrc:/CoreUI/components/tables"
-import "qrc:/CoreUI/components/notifications"
-import "qrc:/CoreUI/components/buttons"
+import CoreUI.Base
+import CoreUI.Forms
+import CoreUI.Views
+import CoreUI.Notifications
+import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
 import App.Models 1.0
-import "qrc:/screens/Utils.js" as Utils
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 Popup{
     Connections{
