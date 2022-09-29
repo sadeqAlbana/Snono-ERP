@@ -13,7 +13,6 @@
 #include <QFontDatabase>
 #include <QTranslator>
 #include <QFileSelector>
-#include "appsettings.h"
 
 #include <QtQml/qqmlextensionplugin.h>
 Q_IMPORT_QML_PLUGIN(CoreUIPlugin)

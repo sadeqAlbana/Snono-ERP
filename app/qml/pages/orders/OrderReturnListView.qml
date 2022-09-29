@@ -6,7 +6,6 @@ import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
-import CoreUI.Views
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
@@ -15,6 +14,7 @@ import QtQml 2.15
 
 ListView {
     id :listView
+
     clip: true
     property var order;
     model: ReturnOrderModel{
