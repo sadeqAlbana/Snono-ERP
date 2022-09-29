@@ -15,7 +15,7 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
-
+import PosFe
 AppPage{
     title: "General Settings"
     GridLayout{

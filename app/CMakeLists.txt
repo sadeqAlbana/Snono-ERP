@@ -49,6 +49,7 @@ qt_add_executable(appposfe
     language/language.qrc
     images.qrc
     fonts/fonts.qrc
+    qrc.qrc
     main.cpp
 )
 
@@ -57,7 +58,6 @@ qt_add_executable(appposfe
 qt_add_qml_module(appposfe
     URI "PosFe"
     VERSION 1.0
-    IMPORTS CoreUI
     QML_FILES
     qml/pages/pos/session/SessionsPage.qml
     qml/pages/pos/session/SessionCard.qml
@@ -172,13 +172,14 @@ target_link_libraries(appposfe PRIVATE Qt6::Widgets)
 target_link_libraries(appposfe PRIVATE Qt6::PrintSupport)
 
 target_link_libraries(appposfe PRIVATE network-manager json-model )
-target_link_libraries(appposfe PUBLIC coreuiplugin)
+target_link_libraries(appposfe PRIVATE coreuiplugin)
 
 if(NOT ANDROID)
     target_link_libraries(appposfe PRIVATE Qt6::Pdf)
     target_link_libraries(appposfe PRIVATE Qt6::SerialPort)
 endif()
 
+list(APPEND QML_DIRS  "${CMAKE_CURRENT_BINARY_DIR}/qml")
 
 
 target_compile_definitions(appposfe

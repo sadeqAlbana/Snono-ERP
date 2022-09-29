@@ -54,7 +54,7 @@ AppPage{
                 }
             }
             function initSession(sessionId){
-                stack.push("qrc:/pages/cashier/CashierPage.qml",{"sessionId": sessionId})
+                stack.push("qrc:/PosFe/qml/pages/cashier/CashierPage.qml",{"sessionId": sessionId})
             }
         }
 

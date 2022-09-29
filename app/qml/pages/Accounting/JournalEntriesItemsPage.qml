@@ -9,7 +9,6 @@ import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
-import CoreUI.Views
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
@@ -34,8 +33,7 @@ AppPage{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            actions: [
-                Action{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}]
+
 
             delegate: DelegateChooser{
                 role: "delegateType"

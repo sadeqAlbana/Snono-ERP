@@ -14,6 +14,9 @@
 #include <QTranslator>
 #include <QFileSelector>
 #include "appsettings.h"
+
+#include <QtQml/qqmlextensionplugin.h>
+Q_IMPORT_QML_PLUGIN(CoreUIPlugin)
 int main(int argc, char *argv[])
 {
     QCoreApplication::setOrganizationName("com");
@@ -22,9 +25,7 @@ int main(int argc, char *argv[])
 //#ifndef Q_OS_ANDROID
 //    qputenv("QT_FONT_DPI","96");
 //#endif
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+
 
 //#ifndef Q_OS_ANDROID
 //    QApplication::setAttribute(Qt::AA_Use96Dpi);
@@ -33,7 +34,22 @@ int main(int argc, char *argv[])
 
 
     PosApplication a(argc, argv);
-
+    QFont font=QApplication::font();
+    //font.setFamily("Segoe UI");
+    font.setFamilies({
+                     "Segoe UI"
+                     "Helvetica Neue",
+                     "Noto Sans",
+                     "Liberation Sans",
+                     "Arial",
+                     "sans-serif",
+                     "Apple Color Emoji",
+                     "Segoe UI Emoji",
+                     "Segoe UI Symbol",
+                     "Noto Color Emoji"});
+    font.setWeight(QFont::Weight::Normal);
+    font.setPixelSize(16);
+    QApplication::setFont(font);
 //    QDirIterator it(":/", QStringList{{"main.qml"}}, QDir::Files, QDirIterator::Subdirectories);
 //    while (it.hasNext()){
 //        QString next= it.next();

@@ -13,7 +13,7 @@ import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 import CoreUI.Palettes
-
+import PosFe
 AppPage{
     title: qsTr("Products")
     padding: 10
