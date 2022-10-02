@@ -2,10 +2,11 @@
 #define CUSTOMVENDORCARTMODEL_H
 
 #include "jsonmodel.h"
-
+#include <QQmlEngine>
 class CustomVendorCartModel : public JsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(double cartTotal READ cartTotal NOTIFY cartTotalChanged)
 
 public:

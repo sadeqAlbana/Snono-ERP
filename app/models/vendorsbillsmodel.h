@@ -6,6 +6,7 @@
 class VendorsBillsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit VendorsBillsModel(QObject *parent = nullptr);
 

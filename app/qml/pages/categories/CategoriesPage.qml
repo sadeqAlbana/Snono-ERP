@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
-import App.Models 1.0
+
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views

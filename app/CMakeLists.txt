@@ -15,36 +15,6 @@ qt_add_executable(appposfe
     utils.cpp utils.h
     qrcodegen.cpp qrcodegen.hpp
     posnumpadwidget/utils/numbereditor.cpp posnumpadwidget/utils/numbereditor.h
-    models/appnetworkedjsonmodel.cpp models/appnetworkedjsonmodel.h
-    models/accountsmodel.cpp models/accountsmodel.h
-    models/barqlocationsmodel.cpp models/barqlocationsmodel.h
-    models/cashiermodel.cpp models/cashiermodel.h
-    models/categoriesmodel.cpp models/categoriesmodel.h
-    models/customersmodel.cpp models/customersmodel.h
-    models/customvendorcartmodel.cpp models/customvendorcartmodel.h
-    models/journalentriesmodel.cpp models/journalentriesmodel.h
-    models/journalentriesitemsmodel.cpp models/journalentriesitemsmodel.h
-    models/ordersmodel.cpp models/ordersmodel.h
-    models/orderitemsmodel.cpp models/orderitemsmodel.h
-    models/orderreturnitemsmodel.cpp models/orderreturnitemsmodel.h
-    models/ordersreturnsmodel.cpp models/ordersreturnsmodel.h
-    models/possessionsmodel.cpp models/possessionsmodel.h
-    models/productsalesreportmodel.cpp models/productsalesreportmodel.h
-    models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
-    models/productsmodel.cpp models/productsmodel.h
-    models/receiptmodel.cpp models/receiptmodel.h
-    models/returnordermodel.cpp models/returnordermodel.h
-    models/stockreportmodel.cpp models/stockreportmodel.h
-    models/taxescheckablemodel.cpp models/taxescheckablemodel.h
-    models/taxesmodel.cpp models/taxesmodel.h
-    models/usersmodel.cpp models/usersmodel.h
-    models/vendorcartmodel.cpp models/vendorcartmodel.h
-    models/vendorsbillsmodel.cpp models/vendorsbillsmodel.h
-    models/vendorsmodel.cpp models/vendorsmodel.h
-    models/charts/saleschartmodel.cpp models/charts/saleschartmodel.h
-    models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
-    models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
-    models/Models
     misc/receipt.qrc
     language/language.qrc
     images.qrc
@@ -58,6 +28,37 @@ qt_add_executable(appposfe
 qt_add_qml_module(appposfe
     URI "PosFe"
     VERSION 1.0
+    SOURCES
+        models/appnetworkedjsonmodel.cpp models/appnetworkedjsonmodel.h
+        models/accountsmodel.cpp models/accountsmodel.h
+        models/barqlocationsmodel.cpp models/barqlocationsmodel.h
+        models/cashiermodel.cpp models/cashiermodel.h
+        models/categoriesmodel.cpp models/categoriesmodel.h
+        models/customersmodel.cpp models/customersmodel.h
+        models/customvendorcartmodel.cpp models/customvendorcartmodel.h
+        models/journalentriesmodel.cpp models/journalentriesmodel.h
+        models/journalentriesitemsmodel.cpp models/journalentriesitemsmodel.h
+        models/ordersmodel.cpp models/ordersmodel.h
+        models/orderitemsmodel.cpp models/orderitemsmodel.h
+        models/orderreturnitemsmodel.cpp models/orderreturnitemsmodel.h
+        models/ordersreturnsmodel.cpp models/ordersreturnsmodel.h
+        models/possessionsmodel.cpp models/possessionsmodel.h
+        models/productsalesreportmodel.cpp models/productsalesreportmodel.h
+        models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
+        models/productsmodel.cpp models/productsmodel.h
+        models/receiptmodel.cpp models/receiptmodel.h
+        models/returnordermodel.cpp models/returnordermodel.h
+        models/stockreportmodel.cpp models/stockreportmodel.h
+        models/taxescheckablemodel.cpp models/taxescheckablemodel.h
+        models/taxesmodel.cpp models/taxesmodel.h
+        models/usersmodel.cpp models/usersmodel.h
+        models/vendorcartmodel.cpp models/vendorcartmodel.h
+        models/vendorsbillsmodel.cpp models/vendorsbillsmodel.h
+        models/vendorsmodel.cpp models/vendorsmodel.h
+        models/charts/saleschartmodel.cpp models/charts/saleschartmodel.h
+        models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
+        models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
+
     QML_FILES
     qml/pages/pos/session/SessionsPage.qml
     qml/pages/pos/session/SessionCard.qml
@@ -141,7 +142,15 @@ qt_add_qml_module(appposfe
     qml/screens/utils.js
     qml/nav.js
 
+
 )
+set(INCLUDE_DIR
+    models
+    models/charts
+    models/jsonModel
+    )
+target_include_directories(appposfe PUBLIC ${INCLUDE_DIR})
+
 
 qt_add_translations(appposfe
     TS_FILES language/pos-fe_ar_IQ.ts)

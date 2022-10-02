@@ -11,7 +11,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 
 import Qt5Compat.GraphicalEffects
-import App.Models 1.0
+
 import PosFe
 AppPage{
     title: qsTr("Customers")

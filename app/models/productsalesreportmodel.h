@@ -6,6 +6,7 @@
 class ProductSalesReportModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit ProductSalesReportModel(QObject *parent = nullptr);
 

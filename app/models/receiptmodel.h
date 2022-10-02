@@ -6,6 +6,7 @@
 class ReceiptModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(double total READ total NOTIFY totalChanged)
     Q_PROPERTY(double taxAmount READ taxAmount NOTIFY taxAmountChanged)
 

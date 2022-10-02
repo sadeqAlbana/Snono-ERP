@@ -8,7 +8,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 
 import QtQuick.Layouts
-import App.Models 1.0
+
 Popup{
     id: dialog
 

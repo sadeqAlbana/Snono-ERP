@@ -51,35 +51,6 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
 
-    qmlRegisterType<AccountsModel>("App.Models", 1, 0, "AccountsModel");
-
-    qmlRegisterType<ProductsModel>("App.Models", 1, 0, "ProductsModel");
-    qmlRegisterType<OrdersModel>("App.Models", 1, 0, "OrdersModel");
-    qmlRegisterType<OrderItemsModel>("App.Models", 1, 0, "OrderItemsModel");
-    qmlRegisterType<CashierModel>("App.Models", 1, 0, "CashierModel");
-    qmlRegisterType<CategoriesModel>("App.Models", 1, 0, "CategoriesModel");
-    qmlRegisterType<TreeProxyModel>("App.Models", 1, 0, "TreeProxyModel");
-    qmlRegisterType<TaxesCheckableModel>("App.Models", 1, 0, "TaxesCheckableModel");
-    qmlRegisterType<VendorsModel>("App.Models", 1, 0, "VendorsModel");
-    qmlRegisterType<VendorsBillsModel>("App.Models", 1, 0, "VendorsBillsModel");
-    qmlRegisterType<CustomersModel>("App.Models", 1, 0, "CustomersModel");
-    qmlRegisterType<PosSessionsModel>("App.Models", 1, 0, "PosSessionsModel");
-    qmlRegisterType<JournalEntriesItemsModel>("App.Models", 1, 0, "JournalEntriesItemsModel");
-    qmlRegisterType<JournalEntriesModel>("App.Models", 1, 0, "JournalEntriesModel");
-    qmlRegisterType<TaxesModel>("App.Models", 1, 0, "TaxesModel");
-    qmlRegisterType<ReceiptModel>("App.Models", 1, 0, "ReceiptModel");
-    qmlRegisterType<VendorCartModel>("App.Models", 1, 0, "VendorCartModel");
-    qmlRegisterType<ReturnOrderModel>("App.Models", 1, 0, "ReturnOrderModel");
-    qmlRegisterType<CustomVendorCartModel>("App.Models", 1, 0, "CustomVendorCartModel");
-    qmlRegisterType<ProductsAttributesAttributesModel>("App.Models", 1, 0, "ProductsAttributesAttributesModel");
-    qmlRegisterType<SalesChartModel>("App.Models", 1, 0, "SalesChartModel");
-    qmlRegisterType<UsersModel>("App.Models", 1, 0, "UsersModel");
-    qmlRegisterType<OrdersReturnsModel>("App.Models", 1, 0, "OrdersReturnsModel");
-    qmlRegisterType<AppNetworkedJsonModel>("App.Models", 1, 0, "NetworkModel");
-    qmlRegisterType<BarqLocationsModel>("App.Models", 1, 0, "BarqLocationsModel");
-    qmlRegisterType<StockReportModel>("App.Models", 1, 0, "StockReportModel");
-    qmlRegisterType<ProductSalesReportModel>("App.Models", 1, 0, "ProductSalesReportModel");
-    qmlRegisterType<QSortFilterProxyModel>("App.Models", 1, 0, "SortFilterProxyModel");
 
 
 

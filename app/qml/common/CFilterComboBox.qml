@@ -1,8 +1,9 @@
 import QtQuick
 import QtQuick.Controls
-import App.Models
+import CoreUI
+import PosFe
 import CoreUI.Forms
-
+import CoreUI.Views
 CComboBox {
     id: control
     property string dataUrl;
@@ -13,7 +14,7 @@ CComboBox {
 
     currentIndex: 0
     //editable: true
-    model: NetworkModel{
+    model: AppNetworkedJsonModel{
         id: jsonModel
         url: control.dataUrl
         checkable: control.checkable

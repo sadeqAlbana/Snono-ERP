@@ -6,6 +6,7 @@
 class CategoriesModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit CategoriesModel(QObject *parent = nullptr);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

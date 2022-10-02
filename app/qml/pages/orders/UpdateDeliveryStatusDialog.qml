@@ -7,7 +7,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import App.Models 1.0
+
 
 Popup {
     id: dialog

@@ -6,6 +6,7 @@
 class StockReportModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     Q_INVOKABLE explicit StockReportModel(QObject *parent = nullptr);
     Q_INVOKABLE void print();

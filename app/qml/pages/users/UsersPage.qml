@@ -11,7 +11,7 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
-import App.Models 1.0
+
 import PosFe
 AppPage{
 

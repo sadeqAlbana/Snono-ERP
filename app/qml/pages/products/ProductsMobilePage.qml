@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import Qt.labs.qmlmodels
-import App.Models
+
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views

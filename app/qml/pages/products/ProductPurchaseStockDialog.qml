@@ -5,10 +5,10 @@ import CoreUI.Views
 import CoreUI.Forms
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
+import PosFe
 
 import QtQuick.Layouts
-import App.Models 1.0
+
 Popup{
     id: dialog
 

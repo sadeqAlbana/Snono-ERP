@@ -6,6 +6,7 @@
 class ProductsAttributesAttributesModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit ProductsAttributesAttributesModel(QObject *parent = nullptr);
 

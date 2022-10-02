@@ -6,6 +6,7 @@
 class TaxesCheckableModel : public CheckableListModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit TaxesCheckableModel(QObject *parent = nullptr);
 

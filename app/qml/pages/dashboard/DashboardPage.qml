@@ -8,12 +8,13 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-import App.Models
+
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels
 
 import QtCharts
+import PosFe
 Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
@@ -183,8 +184,8 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
-                        salesChartModel.setupData(dashboard.sales_chart.data);
-                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
+                        //salesChartModel.setupData(dashboard.sales_chart.data);
+                        //salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
 
                     }
                 }

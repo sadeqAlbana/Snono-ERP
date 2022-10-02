@@ -6,6 +6,7 @@
 class TaxesModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit TaxesModel(QObject *parent = nullptr);
 

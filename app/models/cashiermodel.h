@@ -4,9 +4,11 @@
 #include <QAbstractTableModel>
 #include "networkedjsonmodel.h"
 #include <QSettings>
+#include <QQmlEngine>
 class CashierModel : public NetworkedJsonModel //make is json model
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(double total READ total NOTIFY totalChanged)
 public:
     explicit CashierModel(QObject *parent = nullptr);

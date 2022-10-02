@@ -6,6 +6,7 @@
 class PosSessionsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit PosSessionsModel(QObject *parent = nullptr);
     Q_INVOKABLE void newSession();

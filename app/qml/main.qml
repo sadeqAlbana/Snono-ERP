@@ -9,12 +9,14 @@ import PosFe
 import QtMultimedia
 import QtQml
 
+import CoreUI.Palettes
 ApplicationWindow {
     id: mainWindow
     visible: true
     title: qsTr("POS")
     width: 640
     height: 480
+    palette: CPalette{}
     visibility: Window.Maximized
     minimumWidth: rootLoader.implicitWidth
     minimumHeight: rootLoader.implicitHeight
@@ -38,7 +40,7 @@ ApplicationWindow {
 
     Component.onCompleted: {
         if(Settings.jwt){
-            AuthManager.testAuth();
+           AuthManager.testAuth();
 
         }
     }

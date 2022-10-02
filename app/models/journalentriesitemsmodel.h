@@ -6,6 +6,7 @@
 class JournalEntriesItemsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit JournalEntriesItemsModel(QObject *parent = nullptr);
 

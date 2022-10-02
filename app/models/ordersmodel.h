@@ -6,6 +6,7 @@
 class OrdersModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
     explicit OrdersModel(QObject *parent = nullptr);
 

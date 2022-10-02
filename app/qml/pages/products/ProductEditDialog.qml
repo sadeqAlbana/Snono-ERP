@@ -10,7 +10,7 @@ import CoreUI.Buttons
 
 
 import Qt5Compat.GraphicalEffects
-import App.Models 1.0
+
 import PosFe
 AppDialog{
     id: dialog

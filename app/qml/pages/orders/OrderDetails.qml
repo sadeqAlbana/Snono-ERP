@@ -4,7 +4,7 @@ import CoreUI.Base
 import CoreUI.Views
 
 import QtQuick.Layouts
-import App.Models 1.0
+
 
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels 1.0

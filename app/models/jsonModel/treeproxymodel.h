@@ -2,11 +2,14 @@
 #define TREEPROXYMODEL_H
 
 #include <QAbstractProxyModel>
+#include <QQmlEngine>
+
 class CategoriesModel;
 
 class TreeProxyModel : public QAbstractProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     explicit TreeProxyModel(QObject *parent = nullptr);

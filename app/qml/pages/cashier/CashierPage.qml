@@ -12,7 +12,7 @@ import CoreUI.Impl
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
-import App.Models 1.0
+
 
 AppPage{
     id: page
@@ -196,7 +196,7 @@ AppPage{
                         cashierModel.addProduct(currentValue);
                 }
 
-                model: NetworkModel{
+                model: AppNetworkedJsonModel{
                     url: "/products/list"
                     filter: {"only_variants":true}
                     Component.onCompleted: requestData();

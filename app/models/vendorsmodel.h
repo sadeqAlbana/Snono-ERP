@@ -6,8 +6,9 @@
 class VendorsModel : public AppNetworkedJsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
-    explicit VendorsModel(QObject *parent = nullptr);
+    Q_INVOKABLE explicit VendorsModel(QObject *parent = nullptr);
 
     Q_INVOKABLE void addVendor(const QString &name, const QString &email, const QString &address, const QString &phone);
     Q_INVOKABLE void removeVendor(const int &vendorId);

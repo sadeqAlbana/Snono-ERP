@@ -2,10 +2,12 @@
 #define SALESCHARTMODEL_H
 
 #include <jsonmodel.h>
+#include <QQmlEngine>
 
 class SalesChartModel : public JsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(double maxValue READ maxValue NOTIFY maxValueChanged)
     Q_PROPERTY(double minValue READ minValue NOTIFY minValueChanged)
 public:

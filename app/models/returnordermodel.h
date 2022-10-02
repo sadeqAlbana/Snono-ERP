@@ -4,9 +4,12 @@
 #include <QObject>
 
 #include "jsonmodel.h"
+#include <QQmlEngine>
+
 class ReturnOrderModel : public JsonModel
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(double returnTotal READ returnTotal NOTIFY returnTotalChanged)
 
 public:

@@ -8,7 +8,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-import App.Models 1.0
+
 
 Popup{
 
