@@ -91,10 +91,10 @@ void Api::removeCategory(const int &categoryId)
     });
 }
 
-void Api::barqReceipt(const QString &reference)
+void Api::barqReceipt(const int orderId)
 {
 #ifndef QT_NO_PDF
-    PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
+    PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_id",orderId}})
             ->subcribe([this](NetworkResponse *res){
         QByteArray pdf=res->binaryData();
         QBuffer *buffer=new QBuffer(&pdf);
