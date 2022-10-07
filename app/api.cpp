@@ -94,7 +94,6 @@ void Api::removeCategory(const int &categoryId)
 void Api::barqReceipt(const QString &reference)
 {
 #ifndef QT_NO_PDF
-    qDebug()<<"Reference: " << reference;
     PosNetworkManager::instance()->post("/barq/receipt",QJsonObject{{"pos_order_reference",reference}})
             ->subcribe([this](NetworkResponse *res){
         QByteArray pdf=res->binaryData();
@@ -105,13 +104,9 @@ void Api::barqReceipt(const QString &reference)
             if(status!=QPdfDocument::Ready)
                 return;
 
-            //QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-            //QPrinter printer;
+
             QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-//            qDebug()<<"printer width:" << printer.width();
-//            qDebug()<<"printer height:" << printer.height();
-//            qDebug()<<"printer widthmm:" << printer.widthMM();
-//            qDebug()<<"printer heightmm:" << printer.heightMM();
+
             printer.setPageSize(QPageSize::A5);
             printer.setPageMargins(QMarginsF(0,0,0,0));
             printer.setCopyCount(3);
