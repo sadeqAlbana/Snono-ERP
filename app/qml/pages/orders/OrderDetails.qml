@@ -1,14 +1,15 @@
-import QtQuick 2.0
+import QtQuick
 import QtQuick.Controls
+
+import QtQuick.Controls.Basic
 import CoreUI.Base
 import CoreUI.Views
-
 import QtQuick.Layouts
-
+import PosFe
 
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import Qt.labs.qmlmodels 1.0
-
+import Qt.labs.qmlmodels
+import "qrc:/PosFe/qml/common"
 
 Popup {
     id: orderDetails

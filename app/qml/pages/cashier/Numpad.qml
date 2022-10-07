@@ -1,6 +1,6 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
-import QtQuick.Controls
+
 import QtQuick.Layouts
 GridLayout {
     //implicitHeight: grid.implicitHeight

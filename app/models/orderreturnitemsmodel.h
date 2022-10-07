@@ -3,12 +3,13 @@
 
 #include <QObject>
 #include <QQmlEngine>
-class OrderReturnItemsModel : public QObject
+#include <jsonmodel.h>
+class OrderReturnItemsModel : public JsonModel
 {
     Q_OBJECT
     QML_ELEMENT
 public:
-    explicit OrderReturnItemsModel(QObject *parent = nullptr);
+    Q_INVOKABLE explicit OrderReturnItemsModel(QObject *parent = nullptr);
 
 signals:
 

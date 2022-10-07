@@ -1,12 +1,12 @@
-import QtQuick 2.0
+import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Basic
 import CoreUI.Base
 import CoreUI.Views
 import CoreUI.Forms
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
-
 import QtQuick.Layouts
 
 Popup{

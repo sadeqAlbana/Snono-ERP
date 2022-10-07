@@ -1,14 +1,15 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
 
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Controls.Basic;
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-
+import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 Popup{

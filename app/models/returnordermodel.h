@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include "jsonmodel.h"
+#include <jsonmodel.h>
 #include <QQmlEngine>
 
 class ReturnOrderModel : public JsonModel
@@ -11,9 +11,8 @@ class ReturnOrderModel : public JsonModel
     Q_OBJECT
     QML_ELEMENT
     Q_PROPERTY(double returnTotal READ returnTotal NOTIFY returnTotalChanged)
-
 public:
-    explicit ReturnOrderModel(const QJsonArray &data=QJsonArray(), QObject *parent = nullptr);
+    Q_INVOKABLE explicit ReturnOrderModel(QObject *parent = nullptr);
 
     virtual bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;

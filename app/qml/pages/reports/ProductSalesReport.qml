@@ -1,8 +1,8 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Layouts
-import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
+import Qt.labs.qmlmodels
 
 import CoreUI.Base
 import CoreUI.Forms

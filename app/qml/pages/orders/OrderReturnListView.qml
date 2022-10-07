@@ -1,6 +1,6 @@
-import QtQuick;import QtQuick.Controls.Basic;
+import QtQuick;
+import QtQuick.Controls.Basic;
 import QtQuick.Layouts
-import QtQuick.Controls
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
@@ -9,8 +9,7 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
-
-import QtQml 2.15
+import PosFe
 
 ListView {
     id :listView
@@ -19,7 +18,6 @@ ListView {
     property var order;
     model: ReturnOrderModel{
         id: returnModel
-        checkable: true
         Component.onCompleted: {
             var items=order.returnable_items
             setupData(items)

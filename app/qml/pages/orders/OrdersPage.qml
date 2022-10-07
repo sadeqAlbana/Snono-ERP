@@ -1,5 +1,4 @@
 import QtQuick;
-import QtQuick.Controls
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
@@ -84,12 +83,13 @@ AppPage{
                 }
 
                 onReturnableItemsResponse:(reply)=> {
-                    var dialog=Utils.createObject("qrc:/pages/orders/OrderReturnDialog.qml",
+                    var dialog=Utils.createObject("qrc:/PosFe/qml/pages/orders/OrderReturnDialog.qml",
                                                   tableView,{order: reply.order});
                     dialog.accepted.connect(function(orderId, items){model.returnOrder(orderId,items)});
                     dialog.open();
                 }
             }
+
 
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "OrderStatus"; OrderStatusDelegate{}}
@@ -97,7 +97,7 @@ AppPage{
 
             actions: [
                 Action{enabled:tableView.selectedRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
-                        var dialog=Utils.createObject("qrc:/pages/orders/OrderDetails.qml",
+                        var dialog=Utils.createObject("qrc:/PosFe/qml/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
                     } },

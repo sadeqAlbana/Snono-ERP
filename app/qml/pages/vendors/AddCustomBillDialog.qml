@@ -1,117 +1,112 @@
-import QtQuick;import QtQuick.Controls.Basic;
-
+import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Controls.Basic
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-
+import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
-Popup{
+Popup {
     id: dialog
     modal: true
-    anchors.centerIn: parent;
-    signal accepted(var vendorId, var products);
+    anchors.centerIn: parent
+    signal accepted(var vendorId, var products)
     parent: Overlay.overlay
     width: 900
     height: 900
-    background: Rectangle{color: "transparent"}
+    background: Rectangle {
+        color: "transparent"
+    }
     Overlay.modal: Rectangle {
         color: "#C0000000"
     }
 
     enter: Transition {
-        NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
+        NumberAnimation {
+            property: "opacity"
+            from: 0.0
+            to: 1.0
+        }
     }
-
 
     exit: Transition {
-        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+        NumberAnimation {
+            property: "opacity"
+            from: 1.0
+            to: 0.0
+        }
     }
 
-
-    Card{
+    Card {
         id: card
         title: qsTr("New Bill")
-        anchors.fill: parent;
+        anchors.fill: parent
         padding: 10
-        ColumnLayout{
-            anchors.fill: parent;
+        ColumnLayout {
+            anchors.fill: parent
 
-
-        RowLayout{
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            CComboBox{
-                id: vendorsCB
+            RowLayout {
                 Layout.fillWidth: true
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                model: VendorsModel{
+                Layout.fillHeight: true
+
+                CComboBox {
+                    id: vendorsCB
+                    Layout.fillWidth: true
+                    textRole: "name"
+                    valueRole: "id"
+                    currentIndex: 0
+                    model: VendorsModel {}
                 }
+
+                spacing: 30
             }
-
-            spacing: 30
-
-        }
             spacing: 10
 
-            CustomVendorBillListView{
+            CustomVendorBillListView {
                 id: cartListView
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                model: CustomVendorCartModel{
+                model: CustomVendorCartModel {
                     id: cartModel
-
                 }
-
             }
         }
 
+        footer: RowLayout {
 
-        footer: RowLayout{
-
-            Rectangle{
+            Rectangle {
                 color: "transparent"
                 Layout.fillWidth: true
-
             }
 
-            CButton{
+            CButton {
                 text: qsTr("Close")
                 palette.button: "#e55353"
                 palette.buttonText: "#ffffff"
                 implicitHeight: 50
                 Layout.margins: 10
-                onClicked: dialog.close();
-
-
+                onClicked: dialog.close()
             }
-            CButton{
+            CButton {
                 text: qsTr("Create")
                 palette.button: "#2eb85c"
                 palette.buttonText: "#ffffff"
                 implicitHeight: 50
                 Layout.margins: 10
-                onClicked: card.purchaseStock();
+                onClicked: card.purchaseStock()
             }
-
         } //footer end
 
-        function purchaseStock(){
-            var vendor=vendorsCB.currentValue;
-            var items=cartModel.toJsonArray();
-            var name=cartListView.billName
-            Api.processCustomBill(name,vendor,items);
+        function purchaseStock() {
+            var vendor = vendorsCB.currentValue
+            var items = cartModel.toJsonArray()
+            var name = cartListView.billName
+            Api.processCustomBill(name, vendor, items)
         }
-
     } //card End
-
-
 }

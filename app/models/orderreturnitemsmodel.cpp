@@ -1,6 +1,6 @@
 #include "orderreturnitemsmodel.h"
 
-OrderReturnItemsModel::OrderReturnItemsModel(QObject *parent) : QObject(parent)
+OrderReturnItemsModel::OrderReturnItemsModel(QObject *parent) : JsonModel(QJsonArray(),ColumnList(),parent)
 {
 
 }

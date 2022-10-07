@@ -9,7 +9,7 @@ class OrderItemsModel : public JsonModel
     Q_OBJECT
     QML_ELEMENT
 public:
-    explicit OrderItemsModel(const QJsonArray &data=QJsonArray(), QObject *parent = nullptr);
+    Q_INVOKABLE explicit OrderItemsModel(QObject *parent = nullptr);
 };
 
 #endif // ORDERITEMSMODEL_H

@@ -1,6 +1,6 @@
 import QtQuick;
+
 import QtQuick.Controls.Basic;
-import QtQuick.Controls
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views

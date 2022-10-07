@@ -1,7 +1,8 @@
-import QtQuick;import QtQuick.Controls.Basic;
-
-import QtQuick.Layouts
+import QtQuick;
 import QtQuick.Controls
+
+import QtQuick.Controls.Basic;
+import QtQuick.Layouts
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
@@ -10,7 +11,7 @@ import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
 
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
+import PosFe
 Popup{
     Connections{
     target: App;
@@ -28,7 +29,7 @@ Popup{
     onClosed: destroy();
     parent: Overlay.overlay
     width: 900
-    height: 900
+    height: 600
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
