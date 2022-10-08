@@ -112,6 +112,7 @@ Popup {
         function printReceipt(){
             if(externalDelivery.currentValue>0){
                 let orderId=receiptData.id;
+                console.log("order id: " + orderId)
                 Api.barqReceipt(orderId); //need to deal with later!
                 receiptData["external_delivery"]=externalDelivery.currentValue;
             }
