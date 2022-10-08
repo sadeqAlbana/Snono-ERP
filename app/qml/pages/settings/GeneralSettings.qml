@@ -65,7 +65,6 @@ AppPage{
         onAccept: {
             if(App.language!==language.currentValue){
                 App.language=language.currentValue
-
             }
         }
     }

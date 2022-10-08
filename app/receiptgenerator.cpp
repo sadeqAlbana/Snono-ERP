@@ -27,6 +27,7 @@
 #include <QStandardPaths>
 
 #include <algorithm>
+#include "appsettings.h"
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -452,7 +453,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     if(print){
         QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-        printer.setCopyCount(3);
+        printer.setCopyCount(AppSettings::instance()->receiptCopies());
         printer.setPageSize(QPageSize::A5);
         doc.print(&printer);
     }

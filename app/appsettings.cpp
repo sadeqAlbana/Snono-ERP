@@ -56,6 +56,32 @@ QByteArray AppSettings::deviceUuid()
     return value;
 }
 
+int AppSettings::receiptCopies() const
+{
+    return value("receipt_copies",1).toInt();
+}
+
+void AppSettings::setReceiptCopies(int newReceiptCopies)
+{
+    if (receiptCopies() == newReceiptCopies)
+        return;
+    setValue("receipt_copies", newReceiptCopies);
+    emit receiptCopiesChanged();
+}
+
+int AppSettings::externalReceiptCopies() const
+{
+    return value("external_receipt_copies",3).toInt();
+}
+
+void AppSettings::setExternalReceiptCopies(int newExternalReceiptCopies)
+{
+    if (externalReceiptCopies() == newExternalReceiptCopies)
+        return;
+    setValue("external_receipt_copies", newExternalReceiptCopies);
+    emit externalReceiptCopiesChanged();
+}
+
 QUrl AppSettings::serverUrl()
 {
     return value("http_server_url").toUrl();
