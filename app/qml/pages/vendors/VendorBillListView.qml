@@ -78,7 +78,7 @@ ListView {
             "type" : 1
         }
 
-        onDataRecevied: {
+        onDataRecevied:()=>{
             cartModel.addItem();
         }
         Component.onCompleted: requestData();

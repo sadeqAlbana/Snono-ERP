@@ -11,14 +11,11 @@
 #include <QTimer>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include "models/Models"
 #include "api.h"
 #include <QPrinterInfo>
 #include <QIcon>
 #include "appsettings.h"
-#include "models/appnetworkedjsonmodel.h"
-#include "models/stockreportmodel.h"
-#include "models/productsalesreportmodel.h"
+
 
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
@@ -57,6 +54,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
 
     //instances should be added before engine.load
     m_engine->addImportPath(QStringLiteral(":/"));
+    m_engine->addImportPath(QStringLiteral(":/qrc"));
+
     //m_engine->addImportPath(QStringLiteral(":/qml"));
     const QUrl url(u"qrc:/PosFe/qml/main.qml"_qs);
     m_engine->load(url);

@@ -184,8 +184,8 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
-                        //salesChartModel.setupData(dashboard.sales_chart.data);
-                        //salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
+                        salesChartModel.setupData(dashboard.sales_chart.data);
+                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
 
                     }
                 }
@@ -202,16 +202,7 @@ Page{
                 legend.font.pixelSize: 20
                 theme: ChartView.ChartThemeLight
                 titleFont.pixelSize: 24
-                title: "test"
-//                layer.enabled: true
-//                layer.effect:  DropShadow{
-//                    radius: 8
-//                    verticalOffset: 1
-//                    spread: 0.1
-//                    color: "silver"
-//                    cached: true
-//                    transparentBorder: true
-//                }
+
                 dropShadowEnabled: true
                 animationOptions: ChartView.AllAnimations
 

@@ -1,4 +1,5 @@
 import QtQuick;
+import QtQuick.Controls
 import QtQuick.Controls.Basic;
 
 import QtQuick.Layouts
@@ -8,7 +9,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-
+import PosFe
 
 Popup{
 

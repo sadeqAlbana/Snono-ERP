@@ -276,6 +276,9 @@ AppPage{
             CTextField{
                 id: phoneLE
                 enabled: !customerCB.isValid
+                validator: RegularExpressionValidator{
+                    regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+                }
 
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
@@ -397,12 +400,15 @@ AppPage{
 
             SwitchDelegate{
                 id: deliverySwitch
-                checked: false
+                checked: Settings.externalDelivery
                 text: qsTr("Barq Delivery")
                 icon.source: "qrc:/images/icons/barq_logo.png"
                 icon.color: "transparent"
                 icon.height: 50
                 Layout.fillWidth: true
+                onCheckedChanged: {
+                    Settings.externalDelivery=checked
+                }
             }
 
 

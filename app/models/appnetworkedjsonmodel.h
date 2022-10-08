@@ -7,6 +7,8 @@ class AppNetworkedJsonModel : public NetworkedJsonModel
 {
     Q_OBJECT
     QML_ELEMENT
+    Q_PROPERTY(bool usePagination READ usePagination WRITE setUsePagination NOTIFY usePaginationChanged)
+
 public:
     Q_INVOKABLE AppNetworkedJsonModel(QString url, const ColumnList &columns=ColumnList(), QObject *parent = nullptr, bool usePagination=true);
     Q_INVOKABLE AppNetworkedJsonModel(const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
@@ -42,7 +44,6 @@ private:
 
 
 
-    Q_PROPERTY(bool usePagination READ usePagination WRITE setUsePagination NOTIFY usePaginationChanged)
 };
 
 #endif // APPNETWORKEDJSONMODEL_H

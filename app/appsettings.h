@@ -39,6 +39,9 @@ public:
     int externalReceiptCopies() const;
     void setExternalReceiptCopies(int newExternalReceiptCopies);
 
+    bool externalDelivery() const;
+    void setExternalDelivery(bool newExternalDelivery);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -48,10 +51,14 @@ signals:
 
     void externalReceiptCopiesChanged();
 
+    void externalDeliveryChanged();
+
 private:
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
     Q_PROPERTY(int externalReceiptCopies READ externalReceiptCopies WRITE setExternalReceiptCopies NOTIFY externalReceiptCopiesChanged)
+
+    Q_PROPERTY(bool externalDelivery READ externalDelivery WRITE setExternalDelivery NOTIFY externalDeliveryChanged)
 };
 
 #endif // APPSETTINGS_H

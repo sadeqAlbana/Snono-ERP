@@ -82,6 +82,19 @@ void AppSettings::setExternalReceiptCopies(int newExternalReceiptCopies)
     emit externalReceiptCopiesChanged();
 }
 
+bool AppSettings::externalDelivery() const
+{
+    return value("external_delivery",false).toBool();
+}
+
+void AppSettings::setExternalDelivery(bool newExternalDelivery)
+{
+    if (externalDelivery() == newExternalDelivery)
+        return;
+    setValue("external_delivery", newExternalDelivery);
+    emit externalDeliveryChanged();
+}
+
 QUrl AppSettings::serverUrl()
 {
     return value("http_server_url").toUrl();
