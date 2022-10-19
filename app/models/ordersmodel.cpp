@@ -10,6 +10,7 @@ OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   Column{"date",tr("Date"),QString(),"datetime"} ,
                                                                   //Column{"tax_amount",tr("Tax Amount"),QString(),"currency"},
                                                                   Column{"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
+                                                                  Column{"external_delivery_id",tr("Delivery Id"),QString()} ,
 
                                                                   },
                                                                   parent)
@@ -46,5 +47,25 @@ void OrdersModel::returnableItems(const int &orderId)
 
         emit returnableItemsResponse(res->json().toObject());
     });
+}
+
+
+QJsonArray OrdersModel::filterData(QJsonArray data)
+{
+    QStringList wanted{"external_delivery_id","external_delivery_receipt","external_delivery_status"};
+    for(int i=0; i<data.size(); i++){
+        QJsonObject product=data.at(i).toObject();
+        QJsonArray attributes=product["attributes"].toArray();
+
+        for(int j=0; j<attributes.size(); j++){
+            QJsonObject attribute=attributes.at(j).toObject();
+            QString attributeId=attribute["id"].toString();
+            if(wanted.contains(attributeId)){
+                product[attributeId]=attribute["value"];
+            }
+        }
+        data.replace(i,product);
+    }
+    return data;
 }
 

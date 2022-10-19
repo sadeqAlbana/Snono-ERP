@@ -45,6 +45,16 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     int orderId=receiptData["id"].toInt();
     QString reference=QString("No. %1").arg(orderId);
+
+    QJsonArray orderAttributes=receiptData["attributes"].toArray();
+    QString externalDeliveryId;
+    for(auto value : orderAttributes){
+        QJsonObject orderAttribute=value.toObject();
+        if(orderAttribute["id"].toString()=="external_delivery_id"){
+            externalDeliveryId=orderAttribute["value"].toString();
+        }
+    }
+    qDebug()<<receiptData["attributes"];
     double taxAmount=receiptData["tax_amount"].toDouble();
     QString customer=receiptData["customers"].toObject()["name"].toString();
     QString address=receiptData["customers"].toObject()["address"].toString();
@@ -173,6 +183,11 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
+    QList<QJsonObject> hDeliveryId{
+        {{"label",translator.translate("receipt","Delivery No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",externalDeliveryId},{"width","75%",},{"class","boxed"},{"tag","td"}}
+    };
+
     QList<QJsonObject> hDate{
         {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
         {{"label",dt.date().toString(Qt::ISODate)},{"width","75%"},{"class","boxed"},{"tag","td"}}
@@ -203,6 +218,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     if(rtl){
         std::reverse(hNo.begin(),hNo.end());
+        std::reverse(hDeliveryId.begin(),hDeliveryId.end());
         std::reverse(hDate.begin(),hDate.end());
         std::reverse(hName.begin(),hName.end());
         std::reverse(hAddress.begin(),hAddress.end());
@@ -211,7 +227,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     }
 
-    QList<QList<QJsonObject>> header{hNo,hDate,hName,hAddress,hPhone,hNotes};
+    QList<QList<QJsonObject>> header{hNo,hDeliveryId,hDate,hName,hAddress,hPhone,hNotes};
     stream.writeStartElement("table");
     stream.writeAttribute("class","boxed center");
 
