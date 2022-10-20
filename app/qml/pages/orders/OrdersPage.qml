@@ -93,6 +93,8 @@ AppPage{
 
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "OrderStatus"; OrderStatusDelegate{}}
+                DelegateChoice{ roleValue: "externalDeliveryStatus"; ExternalDeliveryStatusDelegate{}}
+
             }
 
             actions: [

@@ -11,6 +11,7 @@ OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   //Column{"tax_amount",tr("Tax Amount"),QString(),"currency"},
                                                                   Column{"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
                                                                   Column{"external_delivery_id",tr("Delivery Id"),QString()} ,
+                                                                  Column{"external_delivery_status",tr("Delivery Status"),QString(),"externalDeliveryStatus"} ,
 
                                                                   },
                                                                   parent)
