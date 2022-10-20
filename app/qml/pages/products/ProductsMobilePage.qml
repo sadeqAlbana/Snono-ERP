@@ -66,9 +66,7 @@ AppPage{
 
                 contentItem: RowLayout{
                     spacing: 30
-                    Image{
-                        id: image
-                        //Layout.preferredHeight: 120
+                    LoadingImage{
                         Layout.fillHeight: true
                         Layout.fillWidth: false
                         cache: true
@@ -76,16 +74,8 @@ AppPage{
                         fillMode: Image.PreserveAspectFit
                         source: model.thumb
                         Layout.preferredWidth: 80
-
-                        BusyIndicator{
-                            running: image.status===Image.Loading
-                            anchors.fill: parent;
-                            width: 55
-                            height: 55
-                        }
-
-
                     }
+
                     ColumnLayout{
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                         Text{

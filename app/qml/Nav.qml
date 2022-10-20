@@ -7,13 +7,13 @@ property var navBarData: [
       "title": qsTr("Dashboard"),
       "category":"",
       "image":"cil-speedometer",
-      "path":"pages/dashboard/DashboardPage.qml"
+      "path":"qrc:/PosFe/qml/pages/dashboard/DashboardPage.qml"
    },
    {
       "title": qsTr("POS"),
       "category":qsTr("MAIN"),
       "image":"cil-screen-desktop",
-      "path":"pages/pos/session/SessionsPage.qml"
+      "path":"qrc:/PosFe/qml/pages/pos/session/SessionsPage.qml"
    },
    {
       "title":qsTr("Accounting"),
@@ -23,15 +23,15 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Accounts"),
-            "path":"pages/Accounting/AccountsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/Accounting/AccountsPage.qml"
          },
          {
             "title":qsTr("Journal Entries"),
-            "path":"pages/Accounting/JournalEntriesPage.qml"
+            "path":"qrc:/PosFe/qml/pages/Accounting/JournalEntriesPage.qml"
          },
          {
             "title":qsTr("Journal Entries Items"),
-            "path":"pages/Accounting/JournalEntriesItemsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/Accounting/JournalEntriesItemsPage.qml"
          }
       ]
    },
@@ -44,15 +44,15 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Products List"),
-            "path":"pages/products/ProductsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/products/ProductsPage.qml"
          },
          {
             "title":qsTr("Mobile List"),
-            "path":"pages/products/ProductsMobilePage.qml"
+            "path":"qrc:/PosFe/qml/pages/products/ProductsMobilePage.qml"
          },
          {
             "title":qsTr("Categories"),
-            "path":"pages/categories/CategoriesPage.qml"
+            "path":"qrc:/PosFe/qml/pages/categories/CategoriesPage.qml"
          }
       ]
    },
@@ -64,11 +64,11 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Orders List"),
-            "path":"pages/orders/OrdersPage.qml"
+            "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml"
          },
          {
             "title":qsTr("Returns"),
-            "path":"pages/orders/OrdersReturnsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/orders/OrdersReturnsPage.qml"
          }
       ]
    },
@@ -76,13 +76,13 @@ property var navBarData: [
       "title":qsTr("Taxes"),
       "category":qsTr("MAIN"),
       "image":"cil-money",
-      "path":"pages/taxes/TaxesPage.qml"
+      "path":"qrc:/PosFe/qml/pages/taxes/TaxesPage.qml"
    },
    {
       "title":qsTr("Customers"),
       "category":qsTr("MAIN"),
       "image":"cil-user",
-      "path":"pages/customers/CustomersPage.qml"
+      "path":"qrc:/PosFe/qml/pages/customers/CustomersPage.qml"
    },
    {
       "title":qsTr("Vendors"),
@@ -92,11 +92,11 @@ property var navBarData: [
       "childItems":[
          {
             "title":qsTr("Vendors List"),
-            "path":"pages/vendors/VendorsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/vendors/VendorsPage.qml"
          },
          {
             "title":qsTr("Bills"),
-            "path":"pages/vendors/VendorsBillsPage.qml"
+            "path":"qrc:/PosFe/qml/pages/vendors/VendorsBillsPage.qml"
          }
       ]
    },
@@ -104,21 +104,21 @@ property var navBarData: [
       "title":qsTr("Users"),
       "category":qsTr("MAIN"),
       "image":"cil-user",
-      "path":"pages/users/UsersPage.qml"
+      "path":"qrc:/PosFe/qml/pages/users/UsersPage.qml"
    },
    {
       "title":qsTr("Reports"),
       "category":qsTr("MAIN"),
       "image":"cil-chart",
-      "path":"pages/orders/OrdersPage.qml",
+      "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml",
       "childItems":[
          {
             "title":qsTr("Stock"),
-            "path":"pages/reports/StockReport.qml"
+            "path":"qrc:/PosFe/qml/pages/reports/StockReport.qml"
          },
          {
             "title":qsTr("Product Sales"),
-            "path":"pages/reports/ProductSalesReport.qml"
+            "path":"qrc:/PosFe/qml/pages/reports/ProductSalesReport.qml"
          }
       ]
    },
@@ -130,20 +130,20 @@ property var navBarData: [
       "childItems":[
                     {
                         "title": qsTr("General Settings"),
-                        "path": "pages/settings/GeneralSettings.qml"
+                        "path":"qrc:/PosFe/qml/pages/settings/GeneralSettings.qml"
                     },
                     {
                         "title": qsTr("Printer Settings"),
-                        "path": "pages/settings/ServerSettings.qml"
+                        "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml"
                 },
                     {
                         "title": qsTr("Server Settings"),
-                        "path": "pages/settings/ServerSettings.qml"
+                        "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml"
                     },
 
          {
             "title":qsTr("Receipt"),
-            "path":"pages/ReceiptPage.qml"
+            "path":"qrc:/PosFe/qml/pages/ReceiptPage.qml"
          }
       ]
    }

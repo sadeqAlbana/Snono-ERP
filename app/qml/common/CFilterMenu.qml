@@ -13,10 +13,8 @@ CMenu {
     id: control
     property var model;
     signal clicked(var filter);
-
     implicitWidth: 300
     contentItem: ListView {
-        id: listView
         implicitHeight: contentHeight
         model: control.model
         interactive: Window.window
@@ -29,7 +27,7 @@ CMenu {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             text: section
-            width: listView.width
+            width: ListView.view.width
             bottomPadding: 8
         }
 
@@ -62,7 +60,7 @@ CMenu {
         ScrollIndicator.vertical: ScrollIndicator {}
 
         footer: RowLayout{
-            visible: listView.count
+            visible: ListView.view.count
             width: ListView.view? ListView.view.width: 200
             CButton{
                 Layout.topMargin: 15
@@ -73,9 +71,9 @@ CMenu {
 
                 onClicked: {
                     let filter={};
-                    for(var i=0; i<listView.count; i++){
-                        let data =listView.model[i]
-                        let item=listView.itemAtIndex(i)
+                    for(var i=0; i<ListView.view.count; i++){
+                        let data =ListView.view.model[i]
+                        let item=ListView.view.itemAtIndex(i)
                         let value=null;
 
                         if(data.type==="text"){
@@ -142,9 +140,9 @@ CMenu {
                 implicitHeight: 40
 
                 onClicked: {
-                    for(var i=0; i<listView.count; i++){
-                        let data =listView.model[i]
-                        let item=listView.itemAtIndex(i)
+                    for(var i=0; i<ListView.view.count; i++){
+                        let data =ListView.view.model[i]
+                        let item=ListView.view.itemAtIndex(i)
                         if(data.type==="text"){
                             item.clear();
                         }
@@ -170,9 +168,4 @@ CMenu {
         }
 
     }
-
-
-
-
-
 }

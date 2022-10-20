@@ -6,14 +6,14 @@ function navBar(){
                     "title": qsTr("Dashboard"),
                     "category":"",
                     "image":"cil-speedometer",
-                    "path":"pages/dashboard/DashboardPage.qml",
-                    "permission": "prm_view_dashboard"
+                    "path":"qrc:/PosFe/qml/pages/dashboard/DashboardPage.qml",
+                    "permission": "prm_view_dashboard",
                 },
                 {
                     "title": qsTr("POS"),
                     "category":qsTr("MAIN"),
                     "image":"cil-screen-desktop",
-                    "path":"pages/pos/session/SessionsPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/pos/session/SessionsPage.qml",
                     "permission": "prm_purchase_products"
                 },
                 {
@@ -25,18 +25,18 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Accounts"),
-                            "path":"pages/Accounting/AccountsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/Accounting/AccountsPage.qml",
                             "permission": ""
                         },
                         {
                             "title":qsTr("Journal Entries"),
-                            "path":"pages/Accounting/JournalEntriesPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/Accounting/JournalEntriesPage.qml",
                             "permission": "prm_view_journal_entries",
 
                         },
                         {
                             "title":qsTr("Journal Entries Items"),
-                            "path":"pages/Accounting/JournalEntriesItemsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/Accounting/JournalEntriesItemsPage.qml",
                             "permission": "prm_view_journal_entries"
                         }
                     ]
@@ -51,19 +51,19 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Products List"),
-                            "path":"pages/products/ProductsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/products/ProductsPage.qml",
                             "permission": "prm_view_full_products"
 
                         },
                         {
                             "title":qsTr("Mobile List"),
-                            "path":"pages/products/ProductsMobilePage.qml",
+                            "path":"qrc:/PosFe/qml/pages/products/ProductsMobilePage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("Categories"),
-                            "path":"pages/categories/CategoriesPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/categories/CategoriesPage.qml",
                             "permission": "prm_view_categories",
                         }
                     ]
@@ -77,13 +77,13 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Orders List"),
-                            "path":"pages/orders/OrdersPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("Returns"),
-                            "path":"pages/orders/OrdersReturnsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/orders/OrdersReturnsPage.qml",
                             "permission": ""
 
                         }
@@ -93,7 +93,7 @@ function navBar(){
                     "title":qsTr("Taxes"),
                     "category":qsTr("MAIN"),
                     "image":"cil-money",
-                    "path":"pages/taxes/TaxesPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/taxes/TaxesPage.qml",
                     "permission": "prm_view_taxes"
 
                 },
@@ -101,7 +101,7 @@ function navBar(){
                     "title":qsTr("Customers"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"pages/customers/CustomersPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/customers/CustomersPage.qml",
                     "permission": "prm_view_customers"
                 },
                 {
@@ -113,12 +113,12 @@ function navBar(){
                     "childItems":[
                         {
                             "title":qsTr("Vendors List"),
-                            "path":"pages/vendors/VendorsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/vendors/VendorsPage.qml",
                             "permission": ""
                         },
                         {
                             "title":qsTr("Bills"),
-                            "path":"pages/vendors/VendorsBillsPage.qml",
+                            "path":"qrc:/PosFe/qml/pages/vendors/VendorsBillsPage.qml",
                             "permission": "prm_view_vendor_bills"
                         }
                     ]
@@ -127,25 +127,25 @@ function navBar(){
                     "title":qsTr("Users"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"pages/users/UsersPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/users/UsersPage.qml",
                     "permission": "prm_view_users"
                 },
                 {
                     "title":qsTr("Reports"),
                     "category":qsTr("MAIN"),
                     "image":"cil-chart",
-                    "path":"pages/orders/OrdersPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml",
                     "permission": "prm_view_reports",
                     "childItems":[
                         {
                             "title":qsTr("Stock"),
-                            "path":"pages/reports/StockReport.qml",
+                            "path":"qrc:/PosFe/qml/pages/reports/StockReport.qml",
                             "permission": "prm_view_stock"
 
                         },
                         {
                             "title":qsTr("Product Sales"),
-                            "path":"pages/reports/ProductSalesReport.qml",
+                            "path":"qrc:/PosFe/qml/pages/reports/ProductSalesReport.qml",
                             "permission": "prm_view_product_sales"
                         }
                     ]
@@ -159,23 +159,23 @@ function navBar(){
                     "childItems":[
                         {
                             "title": qsTr("General Settings"),
-                            "path": "pages/settings/GeneralSettings.qml",
+                            "path":"qrc:/PosFe/qml/pages/settings/GeneralSettings.qml",
                             "permission": ""
                         },
                         {
                             "title": qsTr("Printer Settings"),
-                            "path": "pages/settings/PrinterSettings.qml",
+                            "path":"qrc:/PosFe/qml/pages/settings/PrinterSettings.qml",
                             "permission": ""
                         }
 //                        {
 //                            "title": qsTr("Server Settings"),
-//                            "path": "pages/settings/ServerSettings.qml",
+//                            "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml",
 //                            "permission": ""
 //                        },
 
 //                        {
 //                            "title":qsTr("Receipt"),
-//                            "path":"pages/ReceiptPage.qml",
+//                            "path":"qrc:/PosFe/qml/pages/ReceiptPage.qml",
 //                            "permission": ""
 //                        }
                     ]

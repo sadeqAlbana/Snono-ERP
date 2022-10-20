@@ -4,26 +4,19 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Controls.Basic
 import CoreUI
+import CoreUI.Base
 import CoreUI.Notifications
 import PosFe
 import QtMultimedia
 import QtQml
-
 import CoreUI.Palettes
-ApplicationWindow {
-    id: mainWindow
-    visible: true
+
+CApplicationWindow {
     title: qsTr("POS")
-    width: 640
-    height: 480
-    palette: CPalette{}
-    visibility: Window.Maximized
-    minimumWidth: rootLoader.implicitWidth
-    minimumHeight: rootLoader.implicitHeight
+    visible: true
+
     property real activityCount : 0
     property bool mobileLayout : height>width
-    LayoutMirroring.enabled: (Qt.application.layoutDirection === Qt.RightToLeft ? true : false)
-    LayoutMirroring.childrenInherit: true
     onActivityCountChanged:{
         //console.log(activityCount)
         if(activityCount>0){
@@ -96,25 +89,8 @@ ApplicationWindow {
         id: toastrService
     }
 
-
-
-
     BusySpinner{
         id: busySpinner
-    }
-
-
-
-    Loader {
-        id : rootLoader
-        anchors.fill: parent
-        sourceComponent: LoginPage{
-
-        }
-//        onLoaded: {
-//            mainWindow.minimumWidth=rootLoader.item.implicitWidth
-//            minimumHeight= rootLoader.item.implicitHeight
-//        }
     }
 
     SoundEffect{
@@ -128,3 +104,5 @@ ApplicationWindow {
     }
 
 }
+
+

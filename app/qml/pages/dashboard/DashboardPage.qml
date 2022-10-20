@@ -1,18 +1,16 @@
 import QtQuick;
+import QtQuick.Controls
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
-import QtQuick.Controls
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
-
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels
-
 import QtCharts
 import PosFe
 Page{
@@ -25,78 +23,77 @@ Page{
         anchors.fill: parent;
         implicitWidth: layout.implicitWidth
         contentHeight: layout.implicitHeight
-        //padding: 25
         ColumnLayout{
             id: layout
             anchors.fill: parent
-            GridLayout{
+            DynamicGridLayout{
                 clip: true
                 id: gridLayout
                 columnSpacing: 20
-                property int maxImplicitWidth: 0
-                Layout.minimumWidth: maxImplicitWidth
-                onWidthChanged: updateValues()
-                onImplicitWidthChanged: updateValues();
+//                property int maxImplicitWidth: 0
+//                Layout.minimumWidth: maxImplicitWidth
+//                onWidthChanged: updateValues()
+//                onImplicitWidthChanged: updateValues();
 
-                function updateValues()
-                {
-                    let maxLength=0;
-                    let count=0;
-                    for (var i=0; i<gridLayout.children.length; i++){
-                        let child=gridLayout.children[i];
+//                function updateValues()
+//                {
+//                    let maxLength=0;
+//                    let count=0;
+//                    for (var i=0; i<gridLayout.children.length; i++){
+//                        let child=gridLayout.children[i];
 
-                        if(!child.width<=0){
-                            if(child.implicitWidth>maxLength){
-                                maxLength=child.implicitWidth;
-                            }
+//                        if(!child.width<=0){
+//                            if(child.implicitWidth>maxLength){
+//                                maxLength=child.implicitWidth;
+//                            }
 
-                            count++;
-                        }
-                    }
-                    maxImplicitWidth=maxLength;
-                    let childCount=count;
-                    //part 2
+//                            count++;
+//                        }
+//                    }
+//                    maxImplicitWidth=maxLength;
+//                    let childCount=count;
+//                    //part 2
 
-                    let decimalColumnCount=(gridLayout.width-(columnSpacing*childCount))/(maxImplicitWidth);
+//                    let decimalColumnCount=(gridLayout.width-(columnSpacing*childCount))/(maxImplicitWidth);
 
-                    for (let j=0; j<gridLayout.children.length; j++){
-                        let c=gridLayout.children[j];
-                        if(!c.width<=0){
-                            c.Layout.minimumWidth=maxImplicitWidth;
-                        }
-                    }
+//                    for (let j=0; j<gridLayout.children.length; j++){
+//                        let c=gridLayout.children[j];
+//                        if(!c.width<=0){
+//                            c.Layout.minimumWidth=maxImplicitWidth;
+//                        }
+//                    }
 
-                    let columnCount=parseInt(decimalColumnCount,10)
+//                    let columnCount=parseInt(decimalColumnCount,10)
 
-                    if(columnCount<=0){
-                        columns=1
-                        return;
-                    }
+//                    if(columnCount<=0){
+//                        columns=1
+//                        return;
+//                    }
 
 
-                    if(Number.isNaN(columnCount) || columnCount<=1){
-                        columns=columnCount;
-                        return;
-                    }
+//                    if(Number.isNaN(columnCount) || columnCount<=1){
+//                        columns=columnCount;
+//                        return;
+//                    }
 
-                    if(columnCount>=childCount){
-                        columns=childCount;
-                        return;
-                    }
+//                    if(columnCount>=childCount){
+//                        columns=childCount;
+//                        return;
+//                    }
 
-                    if(childCount%2===0 && childCount%columnCount!==0){
-                        while(childCount%columnCount!==0){
-                            if(columnCount<=1){
-                                columns=columnCount;
-                                return;
-                            }
-                            columnCount--;
-                        }
-                    }
+//                    if(childCount%2===0 && childCount%columnCount!==0){
+//                        while(childCount%columnCount!==0){
+//                            if(columnCount<=1){
+//                                columns=columnCount;
+//                                return;
+//                            }
+//                            columnCount--;
+//                        }
+//                    }
 
-                    columns=columnCount;
+//                    columns=columnCount;
 
-                }
+//                }
 
                 NewDashboardWidget{
                     title: qsTr("Sales & Returns")

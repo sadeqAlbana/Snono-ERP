@@ -2,7 +2,6 @@
 #include <QSettings>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
-#include <QTimer>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPrinterInfo>

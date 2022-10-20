@@ -137,6 +137,7 @@ qt_add_qml_module(appposfe
     qml/common/AppDialogFooter.qml
     qml/common/CredentailsTextField.qml
     qml/common/ExternalDeliveryStatusDelegate.qml
+    qml/common/LoadingImage.qml
     qml/actions/ChangeLanguageAction.qml
     qml/main.qml
     qml/screens/LoginScreen.qml
