@@ -182,7 +182,7 @@ target_link_libraries(appposfe PRIVATE Qt6::Core5Compat)
 target_link_libraries(appposfe PRIVATE Qt6::Widgets)
 target_link_libraries(appposfe PRIVATE Qt6::PrintSupport)
 
-target_link_libraries(appposfe PRIVATE network-manager json-model )
+target_link_libraries(appposfe PRIVATE SNetworkManager jsonmodel)
 target_link_libraries(appposfe PRIVATE coreuiplugin)
 
 if(NOT ANDROID)

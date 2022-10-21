@@ -1,12 +1,12 @@
 #include "possessionsmodel.h"
 #include "../posnetworkmanager.h"
 PosSessionsModel::PosSessionsModel(QObject *parent) :  AppNetworkedJsonModel ("/posssession/opened",
-                                                                              ColumnList{}
-//                                                                              Column{"id","ID"} ,
-//                                                                              Column{"state","State"} ,
-//                                                                              Column{"username","User","users"} ,
-//                                                                              Column{"created_at","Date"} ,
-//                                                                              Column{"total","Total","orders"}}
+                                                                              JsonModelColumnList{}
+//                                                                              {"id","ID"} ,
+//                                                                              {"state","State"} ,
+//                                                                              {"username","User","users"} ,
+//                                                                              {"created_at","Date"} ,
+//                                                                              {"total","Total","orders"}}
                                                                                   ,parent)
 {
     requestData();

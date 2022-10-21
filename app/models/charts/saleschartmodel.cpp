@@ -1,7 +1,7 @@
 #include "saleschartmodel.h"
 #include <QDateTime>
 SalesChartModel::SalesChartModel(QObject *parent)
-    : JsonModel(QJsonArray(),ColumnList(),parent)
+    : JsonModel(QJsonArray(),{},parent)
 {
     connect(this,&QAbstractItemModel::modelReset,this,&SalesChartModel::onEndResetModel);
 }

@@ -181,8 +181,8 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
-                        salesChartModel.setupData(dashboard.sales_chart.data);
-                        salesProfitsChartModel.setupData(dashboard.sales_profits_chart.data);
+                        salesChartModel.setRecords(dashboard.sales_chart.data);
+                        salesProfitsChartModel.setRecords(dashboard.sales_profits_chart.data);
 
                     }
                 }

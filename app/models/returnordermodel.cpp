@@ -1,11 +1,11 @@
 #include "returnordermodel.h"
 
 ReturnOrderModel::ReturnOrderModel(QObject *parent) : JsonModel(QJsonArray(),{
-                                                                                        Column{"name",tr("Product"),"products"} ,
-                                                                                        Column{"qty",tr("Quantity")} ,
-                                                                                        Column{"unit_price",tr("Unit Price"),QString(),"currency"} ,
-                                                                                        Column{"subtotal",tr("Subtotal"),QString(),"currency"} ,
-                                                                                        Column{"total",tr("Total"),QString(),"currency"}},parent)
+                                                                                        {"name",tr("Product"),"products"} ,
+                                                                                        {"qty",tr("Quantity")} ,
+                                                                                        {"unit_price",tr("Unit Price"),QString(),"currency"} ,
+                                                                                        {"subtotal",tr("Subtotal"),QString(),"currency"} ,
+                                                                                        {"total",tr("Total"),QString(),"currency"}},parent)
 {
     setCheckable(true);
 }

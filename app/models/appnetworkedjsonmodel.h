@@ -1,7 +1,7 @@
 #ifndef APPNETWORKEDJSONMODEL_H
 #define APPNETWORKEDJSONMODEL_H
 
-#include "networkedjsonmodel.h"
+#include <networkedjsonmodel.h>
 #include <QQmlEngine>
 class AppNetworkedJsonModel : public NetworkedJsonModel
 {
@@ -10,8 +10,8 @@ class AppNetworkedJsonModel : public NetworkedJsonModel
     Q_PROPERTY(bool usePagination READ usePagination WRITE setUsePagination NOTIFY usePaginationChanged)
 
 public:
-    Q_INVOKABLE AppNetworkedJsonModel(QString url, const ColumnList &columns=ColumnList(), QObject *parent = nullptr, bool usePagination=true);
-    Q_INVOKABLE AppNetworkedJsonModel(const ColumnList &columns=ColumnList(),QObject *parent = nullptr);
+    Q_INVOKABLE AppNetworkedJsonModel(QString url, const JsonModelColumnList &columns=JsonModelColumnList(), QObject *parent = nullptr, bool usePagination=true);
+    Q_INVOKABLE AppNetworkedJsonModel(const JsonModelColumnList &columns=JsonModelColumnList(),QObject *parent = nullptr);
 
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 

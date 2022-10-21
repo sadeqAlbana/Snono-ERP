@@ -1,11 +1,11 @@
 #include "receiptmodel.h"
 #include "../posnetworkmanager.h"
 ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
-                                                                     Column{"name",tr("Description"),"products"} ,
-                                                                     Column{"unit_price",tr("Price"),QString(),"currency"} ,
-                                                                     Column{"qty",tr("Qty")} ,
-                                                                     Column{"subtotal",tr("Subtotal"),QString(),"currency"},
-                                                                     Column{"total",tr("Total"),QString(),"currency"}
+                                                                     {"name",tr("Description"),"products"} ,
+                                                                     {"unit_price",tr("Price"),QString(),"currency"} ,
+                                                                     {"qty",tr("Qty")} ,
+                                                                     {"subtotal",tr("Subtotal"),QString(),"currency"},
+                                                                     {"total",tr("Total"),QString(),"currency"}
                                                                      },parent),m_orderId(2)
 {
 
@@ -22,7 +22,7 @@ void ReceiptModel::onTableRecieved(NetworkResponse *reply)
 {
     //setCartData(reply->json().toObject()["cart"].toObject());
     m_orderData=reply->json("order").toObject();
-    setupData(reply->json("order").toObject()["pos_order_items"].toArray());
+    setRecords(reply->json("order").toObject()["pos_order_items"].toArray());
     //qDebug()<<reply->json("order").toObject();
     emit dataReceived();
     emit totalChanged(total());

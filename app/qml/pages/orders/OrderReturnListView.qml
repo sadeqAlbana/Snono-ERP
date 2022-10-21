@@ -20,7 +20,7 @@ ListView {
         id: returnModel
         Component.onCompleted: {
             var items=order.returnable_items
-            setupData(items)
+            setRecords(items)
             refreshReturnTotal();
         }
 

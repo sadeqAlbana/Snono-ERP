@@ -8,8 +8,8 @@ CheckableListModel::CheckableListModel(const QString &displayColumn,
                                        const QString &url, QObject *parent):
 
     AppNetworkedJsonModel(url,
-                           ColumnList() << Column{dataColumn,dataColumn}
-                            << Column{displayColumn,displayColumn},
+                           {{dataColumn,dataColumn},
+                            {displayColumn,displayColumn}},
 
                            parent),
     displayColumn(displayColumn),

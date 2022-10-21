@@ -2,13 +2,13 @@
 #include "../posnetworkmanager.h"
 #include <QJsonDocument>
 #include <QFile>
-AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const ColumnList &columns, QObject *parent, bool usePagination) :
+AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const JsonModelColumnList &columns, QObject *parent, bool usePagination) :
     NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(usePagination)
 {
 
 }
 
-AppNetworkedJsonModel::AppNetworkedJsonModel(const ColumnList &columns, QObject *parent) : NetworkedJsonModel(columns,parent)
+AppNetworkedJsonModel::AppNetworkedJsonModel(const JsonModelColumnList &columns, QObject *parent) : NetworkedJsonModel(columns,parent)
 {
 
 }
@@ -105,13 +105,13 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 //    qDebug()<<"data size: " << reply->json("data").toArray().size();
     if(m_usePagination){
         if(m_currentPage<=1){
-            setupData(data);
+            setRecords(data);
         }
         else{
             appendData(data);
         }
     }else{
-        setupData(data);
+        setRecords(data);
     }
 
 

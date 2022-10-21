@@ -1,17 +1,17 @@
 #include "ordersmodel.h"
 #include "../posnetworkmanager.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
-                                                                  Column{"id",tr("ID")} ,
-                                                                  Column{"reference",tr("Reference")} ,
-                                                                  Column{"name",tr("Customer"),"customers"} ,
-                                                                  Column{"phone",tr("Phone"),"customers"} ,
-                                                                  Column{"address",tr("Address"),"customers"} ,
-                                                                  Column{"total",tr("Total"),QString(),"currency"} ,
-                                                                  Column{"date",tr("Date"),QString(),"datetime"} ,
-                                                                  //Column{"tax_amount",tr("Tax Amount"),QString(),"currency"},
-                                                                  Column{"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
-                                                                  Column{"external_delivery_id",tr("Delivery Id"),QString()} ,
-                                                                  Column{"external_delivery_status",tr("Delivery Status"),QString(),"externalDeliveryStatus"} ,
+                                                                  {"id",tr("ID")} ,
+                                                                  {"reference",tr("Reference")} ,
+                                                                  {"name",tr("Customer"),"customers"} ,
+                                                                  {"phone",tr("Phone"),"customers"} ,
+                                                                  {"address",tr("Address"),"customers"} ,
+                                                                  {"total",tr("Total"),QString(),"currency"} ,
+                                                                  {"date",tr("Date"),QString(),"datetime"} ,
+                                                                  //{"tax_amount",tr("Tax Amount"),QString(),"currency"},
+                                                                  {"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
+                                                                  {"external_delivery_id",tr("Delivery Id"),QString()} ,
+                                                                  {"external_delivery_status",tr("Delivery Status"),QString(),"externalDeliveryStatus"} ,
 
                                                                   },
                                                                   parent)

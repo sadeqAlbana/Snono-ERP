@@ -57,7 +57,6 @@ Card{
             palette.buttonText: "#ffffff"
             //Layout.minimumWidth: implicitWidth
             implicitHeight: 45
-            implicitWidth: 80
             Layout.leftMargin: 25
             Layout.topMargin: 10
             Layout.bottomMargin: 10
@@ -69,7 +68,6 @@ Card{
             palette.button: "#e55353"
             palette.buttonText: "#ffffff"
             implicitHeight: 45
-            implicitWidth: 80
 
             Layout.topMargin: 10
             Layout.bottomMargin: 10

@@ -76,7 +76,7 @@ Popup {
 
             model: OrderItemsModel {
                 Component.onCompleted: {
-                    setupData(order.pos_order_items)
+                    setRecords(order.pos_order_items)
                 }
             }
         }

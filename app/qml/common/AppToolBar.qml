@@ -14,17 +14,20 @@ import Qt.labs.qmlmodels 1.0
 import QtQuick.Layouts
 import CoreUI.Palettes
 import CoreUI.Menus
-ToolBar {
+CToolBar {
     id: control
     signal search(var searchString);
     signal filterClicked(var filter);
     property var advancedFilter : null;
     required property var tableView
     property bool searchVisible: true
+    background: Rectangle{color: "transparent"}
     Layout.fillWidth: true
     Layout.alignment: Qt.AlignVCenter
     Layout.preferredHeight: 60
     palette.button: "transparent"
+    leftPadding: 10
+    rightPadding: 10
     RowLayout{
         spacing: 15
         anchors.fill: parent;

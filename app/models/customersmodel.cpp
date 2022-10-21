@@ -1,13 +1,13 @@
 #include "customersmodel.h"
 #include "../posnetworkmanager.h"
 CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/customers",{
-                                                                         Column{"id",tr("ID")} ,
-                                                                         Column{"name",tr("Name")} ,
-                                                                         Column{"first_name",tr("First Name")} ,
-                                                                         Column{"last_name",tr("Last Name")} ,
-                                                                         Column{"phone",tr("Phone")} ,
-                                                                         Column{"address",tr("Address")} ,
-                                                                         Column{"email",tr("Email")}} ,parent)
+                                                                         {"id",tr("ID")} ,
+                                                                         {"name",tr("Name")} ,
+                                                                         {"first_name",tr("First Name")} ,
+                                                                         {"last_name",tr("Last Name")} ,
+                                                                         {"phone",tr("Phone")} ,
+                                                                         {"address",tr("Address")} ,
+                                                                         {"email",tr("Email")}} ,parent)
 {
 }
 

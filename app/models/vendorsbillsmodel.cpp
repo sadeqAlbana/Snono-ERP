@@ -2,14 +2,14 @@
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
 VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
-                                                                                             Column{"id",tr("ID")} ,
-                                                                                             Column{"name",tr("Name")} ,
-                                                                                             Column{"reference",tr("Reference")} ,
-                                                                                             Column{"external_reference",tr("External Reference")} ,
-                                                                                             Column{"date",tr("Date"),QString(),"datetime"} ,
-                                                                                             Column{"due_date",tr("Due Date"),QString(),"datetime"} ,
-                                                                                             Column{"total",tr("Total"),QString(),"currency"} ,
-                                                                                             Column{"status",tr("Status"),QString(),"status"}}
+                                                                                             {"id",tr("ID")} ,
+                                                                                             {"name",tr("Name")} ,
+                                                                                             {"reference",tr("Reference")} ,
+                                                                                             {"external_reference",tr("External Reference")} ,
+                                                                                             {"date",tr("Date"),QString(),"datetime"} ,
+                                                                                             {"due_date",tr("Due Date"),QString(),"datetime"} ,
+                                                                                             {"total",tr("Total"),QString(),"currency"} ,
+                                                                                             {"status",tr("Status"),QString(),"status"}}
                                                                                                                ,parent)
 {
     requestData();

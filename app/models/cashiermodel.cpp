@@ -9,13 +9,13 @@
 #include "../posnetworkmanager.h"
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
-                         Column{"name", tr("Name")} ,
-                         Column{"thumb", tr("Image"),QString(),"image"} ,
-                         Column{"unit_price", tr("Price"),QString(),"currency"} ,
-                         Column{"qty", tr("Qty")} ,
-                         Column{"discount", tr("Discount"),QString(),"percentage"} ,
-                         Column{"subtotal", tr("Subtotal"),QString(),"currency"} ,
-                         Column{"total", tr("Total"),QString(),"currency"}},parent)
+                         {"name", tr("Name")} ,
+                         {"thumb", tr("Image"),QString(),"image"} ,
+                         {"unit_price", tr("Price"),QString(),"currency"} ,
+                         {"qty", tr("Qty")} ,
+                         {"discount", tr("Discount"),QString(),"percentage"} ,
+                         {"subtotal", tr("Subtotal"),QString(),"currency"} ,
+                         {"total", tr("Total"),QString(),"currency"}},parent)
 {
     //setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
     requestCart();
@@ -50,12 +50,12 @@ bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int 
     QJsonObject product=jsonObject(index.row());
 
 
-    Column column=columns().at(index.column());
+    JsonModelColumn column=columns().at(index.column());
     switch (static_cast<QMetaType::Type>(value.typeId())) {
-    case QMetaType::Double     :product[column.key]=value.toDouble();    break;
-    case QMetaType::QString    :product[column.key]=value.toString();    break;
-    case QMetaType::Int        :product[column.key]=value.toInt();       break;
-    case QMetaType::QJsonValue : product[column.key]=value.toJsonValue();break;
+    case QMetaType::Double     :product[column.m_key]=value.toDouble();    break;
+    case QMetaType::QString    :product[column.m_key]=value.toString();    break;
+    case QMetaType::Int        :product[column.m_key]=value.toInt();       break;
+    case QMetaType::QJsonValue : product[column.m_key]=value.toJsonValue();break;
     default: break;
     }
 
@@ -109,7 +109,7 @@ void CashierModel::setCartData(const QJsonObject &cartData)
     _cartData = cartData;
     //qDebug()<<cartData;
     QJsonArray data=filterData(cartData["products"].toArray());
-    setupData(data);
+    setRecords(data);
     emit totalChanged(this->cartData()["order_total"].toDouble());
 }
 

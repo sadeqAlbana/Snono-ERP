@@ -9,7 +9,7 @@
 #include <QStandardPaths>
 #include <QTextStream>
 StockReportModel::StockReportModel(QObject *parent) :
-     AppNetworkedJsonModel("/reports/stock",ColumnList(),parent,false)
+     AppNetworkedJsonModel("/reports/stock",JsonModelColumnList(),parent,false)
 {
 
 }

@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
 project(pos-fe VERSION 0.1 LANGUAGES CXX)
-
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
+#set(ALLOW_DUPLICATE_CUSTOM_TARGETS true)
+
 if(ANDROID)
     set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
         CACHE INTERNAL "")
     include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
 endif()
-
 find_package(Qt6  COMPONENTS Core REQUIRED)
 find_package(Qt6  COMPONENTS Quick REQUIRED)
 find_package(Qt6  COMPONENTS Multimedia REQUIRED)
@@ -29,8 +29,9 @@ find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
 endif()
 
 
-add_subdirectory(network-manager/src)
-add_subdirectory(json-model/src)
+add_subdirectory(network-manager)
+#add_subdirectory(json-model)
+
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
 

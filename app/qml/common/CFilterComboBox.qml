@@ -27,7 +27,7 @@ CComboBox {
                 Object.keys(defaultEntry).forEach(key =>{
                     emptyRecord[key]=defaultEntry[key]
                 });
-                setupData(control.values)
+                setRecords(control.values)
                 insertRecord(emptyRecord);
                 control.currentIndex=0;
             }

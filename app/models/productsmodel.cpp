@@ -5,29 +5,29 @@
 #include <QFile>
 #include <QTextStream>
 ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
-                                                                       Column{"id",tr("ID")} ,
-                                                                       Column{"thumb",tr("Image"),QString(),"image"} ,
-                                                                       Column{"name",tr("Name")} ,
-                                                                       Column{"sku",tr("SKU")} ,
-                                                                       //Column{"description","description"} ,
+                                                                       {"id",tr("ID")} ,
+                                                                       {"thumb",tr("Image"),QString(),"image"} ,
+                                                                       {"name",tr("Name")} ,
+                                                                       {"sku",tr("SKU")} ,
+                                                                       //{"description","description"} ,
 
-                                                                       //Column{"parent_id","Parent"} ,
-                                                                       //Column{"name_en","name_en"} ,
-                                                                       //Column{"name_ar","name_ar"} ,
-                                                                       //Column{"color","color"} ,
-                                                                       //Column{"color_en","color_en"} ,
-                                                                       //Column{"color_ar","color_ar"} ,
-                                                                       //Column{"goods_id","goods_id"} ,
-                                                                       //Column{"external_id","external_id"} ,
+                                                                       //{"parent_id","Parent"} ,
+                                                                       //{"name_en","name_en"} ,
+                                                                       //{"name_ar","name_ar"} ,
+                                                                       //{"color","color"} ,
+                                                                       //{"color_en","color_en"} ,
+                                                                       //{"color_ar","color_ar"} ,
+                                                                       //{"goods_id","goods_id"} ,
+                                                                       //{"external_id","external_id"} ,
 
-                                                                       //Column{"external_sku","e_SKU"} ,
-                                                                       Column{"size",tr("Size")} ,
+                                                                       //{"external_sku","e_SKU"} ,
+                                                                       {"size",tr("Size")} ,
 
-//                                                                       Column{"barcode","Barcode"} ,
-                                                                       Column{"cost",tr("Cost"),QString(), "currency"} ,
-//                                                                       Column{"current_cost","Current Cost",QString(), "currency"} ,
-                                                                       Column{"qty",tr("Stock"),"products_stocks"} ,
-                                                                       Column{"list_price",tr("List Price"),QString(), "currency"}},parent)
+//                                                                       {"barcode","Barcode"} ,
+                                                                       {"cost",tr("Cost"),QString(), "currency"} ,
+//                                                                       {"current_cost","Current Cost",QString(), "currency"} ,
+                                                                       {"qty",tr("Stock"),"products_stocks"} ,
+                                                                       {"list_price",tr("List Price"),QString(), "currency"}},parent)
 {
     //requestData();
 }

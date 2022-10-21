@@ -1,13 +1,13 @@
 #include "vendorcartmodel.h"
 
 VendorCartModel::VendorCartModel(QObject *parent) : JsonModel(QJsonArray(),{
-                                                              Column{"id",tr("ID")},
-                                                              Column{"cost",tr("Cost")},
-                                                              Column{"name",tr("Name")},
-                                                              Column{"qty",tr("Qty")},
-                                                              Column{"sku",tr("SKU")},
-                                                              Column{"thumb",tr("Thumb")},
-                                                              Column{"total",tr("Total")}
+                                                              {"id",tr("ID")},
+                                                              {"cost",tr("Cost")},
+                                                              {"name",tr("Name")},
+                                                              {"qty",tr("Qty")},
+                                                              {"sku",tr("SKU")},
+                                                              {"thumb",tr("Thumb")},
+                                                              {"total",tr("Total")}
 
                                                               }
                                                               ,parent)

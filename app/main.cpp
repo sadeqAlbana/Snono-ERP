@@ -22,12 +22,12 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
 //#ifndef Q_OS_ANDROID
-//    qputenv("QT_FONT_DPI","96");
+    qputenv("QT_FONT_DPI","96");
 //#endif
 
 
 //#ifndef Q_OS_ANDROID
-//    QApplication::setAttribute(Qt::AA_Use96Dpi);
+    QApplication::setAttribute(Qt::AA_Use96Dpi);
 //#endif
 
 

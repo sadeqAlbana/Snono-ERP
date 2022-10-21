@@ -2,12 +2,12 @@
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
 VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
-                                                                    Column{"id",tr("ID")} ,
-                                                                    Column{"name",tr("Name")} ,
-                                                                    Column{"address",tr("Address")} ,
-                                                                    Column{"email",tr("Email")} ,
-                                                                    Column{"phone",tr("Phone")} ,
-                                                                    Column{"account_id",tr("Account ID")}},parent)
+                                                                    {"id",tr("ID")} ,
+                                                                    {"name",tr("Name")} ,
+                                                                    {"address",tr("Address")} ,
+                                                                    {"email",tr("Email")} ,
+                                                                    {"phone",tr("Phone")} ,
+                                                                    {"account_id",tr("Account ID")}},parent)
 {
     requestData();
 }

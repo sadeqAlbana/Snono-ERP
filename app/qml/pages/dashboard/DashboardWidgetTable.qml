@@ -6,10 +6,10 @@ import Qt5Compat.GraphicalEffects
 import Qt.labs.qmlmodels
 import CoreUI.Views
 
-CTableView{
+TableView{
     id: tableView
-    horizontalHeaderView.visible: false
     property var modelRows;
+   // headerVisible: false
     anchors.fill: parent;
     interactive: false
     //Layout.fillWidth: true
@@ -23,6 +23,7 @@ CTableView{
     implicitHeight: 140
     implicitWidth: 400
     rowHeightProvider: function(row){return 35}
+    columnWidthProvider: function(row){return parseInt(width/2)}
     rowSpacing: 0
     delegate: Label{
         clip: true
