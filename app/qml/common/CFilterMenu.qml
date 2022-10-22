@@ -62,6 +62,95 @@ CMenu {
         footer: RowLayout{
             visible: ListView.view.count
             width: ListView.view? ListView.view.width: 200
+
+            function apply(){
+                let filter={};
+                for(var i=0; i<ListView.view.count; i++){
+                    let data =ListView.view.model[i]
+                    let item=ListView.view.itemAtIndex(i)
+                    let value=null;
+
+                    if(data.type==="text"){
+                        if(item.text.length){
+                            value=item.text
+                        }
+                    }
+
+                    if(data.type==="date"){
+                        if(item.acceptableInput)
+                            value=item.text
+                    }
+
+                    //use different delegate for checkable combo?
+                    if(data.type==="combo"){
+
+                        {
+                            if(data.checkable){
+
+                            }
+                            else{
+                                if(item.currentValue){
+                                    value=[item.currentValue];
+                                }
+                            }
+                        }
+
+
+                    }
+
+                    if(data.type==="check"){
+                        value=item.checked
+                    }
+
+                    if(value){
+                        if(data.category){
+                            if(!filter.hasOwnProperty(data.category)){
+                                filter[data.category]=Array()
+
+                            }
+                            let obj={"key": data.key, "value" : value};
+                            filter[data.category].push(obj)
+                        }
+                        else{
+                            filter[data.key]=value;
+                        }
+
+                    }//end if value
+
+
+                }//for loop
+                console.log(JSON.stringify(filter));
+
+                control.clicked(filter);
+
+            }//apply
+
+            function reset(){
+                for(var i=0; i<ListView.view.count; i++){
+                    let data =ListView.view.model[i]
+                    let item=ListView.view.itemAtIndex(i)
+                    if(data.type==="text"){
+                        item.clear();
+                    }
+
+                    if(data.type==="date"){
+                        if(item.acceptableInput)
+                            item.clearDate();
+                    }
+
+
+                    if(data.type==="combo"){
+                        item.currentIndex=0;
+                    }
+
+                    if(data.type==="check"){
+                        item.checked=false;
+                    }
+                }
+
+                control.clicked({});
+            }//clicked
+
             CButton{
                 Layout.topMargin: 15
                 text: qsTr("Apply");
@@ -69,67 +158,7 @@ CMenu {
                 Layout.fillWidth: true
                 implicitHeight: 40
 
-                onClicked: {
-                    let filter={};
-                    for(var i=0; i<ListView.view.count; i++){
-                        let data =ListView.view.model[i]
-                        let item=ListView.view.itemAtIndex(i)
-                        let value=null;
-
-                        if(data.type==="text"){
-                            if(item.text.length){
-                                value=item.text
-                            }
-                        }
-
-                        if(data.type==="date"){
-                            if(item.acceptableInput)
-                                value=item.text
-                        }
-
-                        //use different delegate for checkable combo?
-                        if(data.type==="combo"){
-
-                            {
-                                if(data.checkable){
-
-                                }
-                                else{
-                                    if(item.currentValue){
-                                        value=[item.currentValue];
-                                    }
-                                }
-                            }
-
-
-                        }
-
-                        if(data.type==="check"){
-                            value=item.checked
-                        }
-
-                        if(value){
-                            if(data.category){
-                                if(!filter.hasOwnProperty(data.category)){
-                                    filter[data.category]=Array()
-
-                                }
-                                let obj={"key": data.key, "value" : value};
-                                filter[data.category].push(obj)
-                            }
-                            else{
-                                filter[data.key]=value;
-                            }
-
-                        }//end if value
-
-
-                    }//for loop
-                    console.log(JSON.stringify(filter));
-
-                    control.clicked(filter);
-
-                }//onClicked
+                onClicked: apply();
             }
 
             CButton{
@@ -139,31 +168,7 @@ CMenu {
                 Layout.fillWidth: true
                 implicitHeight: 40
 
-                onClicked: {
-                    for(var i=0; i<ListView.view.count; i++){
-                        let data =ListView.view.model[i]
-                        let item=ListView.view.itemAtIndex(i)
-                        if(data.type==="text"){
-                            item.clear();
-                        }
-
-                        if(data.type==="date"){
-                            if(item.acceptableInput)
-                                item.clearDate();
-                        }
-
-
-                        if(data.type==="combo"){
-                            item.currentIndex=0;
-                        }
-
-                        if(data.type==="check"){
-                            item.checked=false;
-                        }
-                    }
-
-                    control.clicked({});
-                }//clicked
+                onClicked: reset();
             }
         }
 

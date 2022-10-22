@@ -44,8 +44,8 @@ AppPage{
                 {"type": "text","label": "Customer Phone","key": "customer_phone","options":{"placeholderText":"All..."}},
                 {"type": "text","label": "Customer Address","key": "customer_address","options":{"placeholderText":"All..."}},
 
-                {"type": "combo","label": "product","key": "product_id",
-                    "options":{"editable":true,"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
+                {"type": "combo","label": "product","key": "products",
+                    "options":{"checkable": true,"editable":true,"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
                         "filter":{"onlyVariants":true}}},
                 {"type": "date","label": "from","key": "from"},
                 {"type": "date","label": "to","key": "to"}
@@ -113,7 +113,7 @@ AppPage{
                     }},
                 Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
                 Action{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
-                    let reference=model.data(tableView.selectedRow,"reference")
+                    let reference=model.data(tableView.selectedRow,"id")
                         Api.barqReceipt(reference);
                     }}
 

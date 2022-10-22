@@ -2,6 +2,8 @@
 if(ANDROID)
     add_compile_definitions(QT_NO_PDF TRUE)
 endif()
+
+    set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/icons/appposfe.rc")
 qt_add_executable(appposfe
     appsettings.cpp appsettings.h
     posnetworkmanager.cpp posnetworkmanager.h
@@ -21,6 +23,8 @@ qt_add_executable(appposfe
     fonts/fonts.qrc
     qrc.qrc
     main.cpp
+
+    ${app_icon_resource_windows}
 )
 
 
@@ -184,6 +188,7 @@ target_link_libraries(appposfe PRIVATE Qt6::PrintSupport)
 
 target_link_libraries(appposfe PRIVATE SNetworkManager jsonmodel)
 target_link_libraries(appposfe PRIVATE coreuiplugin)
+#target_link_libraries(appposfe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/appposfe.res)
 
 if(NOT ANDROID)
     target_link_libraries(appposfe PRIVATE Qt6::Pdf)
