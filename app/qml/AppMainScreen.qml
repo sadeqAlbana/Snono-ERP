@@ -15,4 +15,8 @@ import "qrc:/PosFe/qml/nav.js" as NavJSS;
 MainScreen{
     navBar: NavJSS.navBar();
     permissionProvider: AuthManager.hasPermission
+    icon: "qrc:/images/icons/SS_Logo_Color-cropped.svg"
+    iconWidth: 177
+    iconHeight: 43
+
 }
