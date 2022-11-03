@@ -179,6 +179,14 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 
 }
 
+void Api::returnBill(const int billId, const QJsonArray &items)
+{
+    PosNetworkManager::instance()->post("/vendors/bills/return",QJsonObject{{"bill_id",billId},
+                                                                            {"items",items}})->subcribe([this](NetworkResponse *res){
+        emit billReturnReply(res->json().toObject());
+    });
+}
+
 void Api::generateImages()
 {
     return;

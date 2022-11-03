@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QJsonObject>
+#include <QJsonArray>
 //this class will be used to make all  api calls in the future !
 class Api : public QObject
 {
@@ -24,6 +25,7 @@ public:
     Q_INVOKABLE void barqReceipt(const int orderId);
     Q_INVOKABLE void adjustStock(const int productId, const int newQty, const QString &reason);
     Q_INVOKABLE bool bulckStockAdjustment(const QUrl &url);
+    Q_INVOKABLE void returnBill(const int billId, const QJsonArray &items=QJsonArray());
 
     Q_INVOKABLE void generateImages();
 
@@ -38,6 +40,8 @@ signals:
     void barqReceiptReply(const QByteArray &reply);
     void adjustStockReply(const QJsonObject &reply);
     void bulckStockAdjustmentReply(const QJsonObject &reply);
+    void billReturnReply(const QJsonObject &reply);
+
 private:
     static Api *m_api;
 
