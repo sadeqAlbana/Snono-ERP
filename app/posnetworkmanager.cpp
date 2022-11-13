@@ -38,10 +38,14 @@ void PosNetworkManager::routeReply(QNetworkReply *reply)
 
         if(error==QNetworkReply::InternalServerError || error==QNetworkReply::ProtocolInvalidOperationError){
             emit networkError("Internal Server Error",
-                                     QString("path: '%1'\nMessage: %2").arg(response->url().path()).
-                                     arg(response->json("message").toString()));
+                                     QString("path: '%1'\nMessage: %2").arg(response->url().path(),
+                                     response->json("message").toString()));
         }else{
             emit networkError("Netowork Error",response->errorString());
+        }
+
+        if(reply->url().toString().contains("/auth/test")){
+            m_router.route(response);
         }
 
     }

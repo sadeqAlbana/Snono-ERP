@@ -5,11 +5,14 @@ import QtQuick.Layouts
 import QtQuick.Controls.Basic
 import CoreUI
 import CoreUI.Base
+import CoreUI.Buttons
+
 import CoreUI.Notifications
 import PosFe
 import QtMultimedia
 import QtQml
 import CoreUI.Palettes
+
 
 CApplicationWindow {
     title: qsTr("POS")
@@ -36,7 +39,6 @@ CApplicationWindow {
            AuthManager.testAuth();
         }else{
             rootLoader.setSource("pages/LoginPage.qml")
-
         }
     }
     Connections{
@@ -50,6 +52,8 @@ CApplicationWindow {
         function onTestAuthResponse(success){
             if(success){
                 rootLoader.setSource("AppMainScreen.qml")
+            }else{
+                errorDlg.open();
             }
         }
     }
@@ -105,6 +109,38 @@ CApplicationWindow {
         source: "qrc:/cashier_regiser_beep.wav"
     }
 
+
+    AppDialog{
+        id: errorDlg
+        Card{
+            anchors.fill: parent
+            header.visible: true
+            title: qsTr("Error")
+            padding: 25
+            ColumnLayout{
+                anchors.fill: parent
+                Label{
+                    text: qsTr("Opps... an error occured, would you like to logout and try again?")
+                    font.pixelSize: 24
+                }
+
+
+            }
+
+            footer: RowLayout{
+                HorizontalSpacer{}
+                CButton{
+                    palette: BrandDanger{}
+                    text: qsTr("Logout")
+                    Layout.margins: 15
+                    onClicked: {
+                        AuthManager.logout();
+                        close();
+                    }
+                }
+            }
+        }//card
+    }
 }
 
 
