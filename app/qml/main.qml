@@ -32,8 +32,10 @@ CApplicationWindow {
     }
 
     Component.onCompleted: {
-        if(Settings.jwt){
+        if(Settings.jwt!=""){
            AuthManager.testAuth();
+        }else{
+            rootLoader.setSource("pages/LoginPage.qml")
 
         }
     }
