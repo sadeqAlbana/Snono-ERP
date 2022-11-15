@@ -4,32 +4,26 @@
 #include "../posnetworkmanager.h"
 #include <QFile>
 #include <QTextStream>
-ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",{
-                                                                       {"id",tr("ID")} ,
-                                                                       {"thumb",tr("Image"),QString(),"image"} ,
-                                                                       {"name",tr("Name")} ,
-                                                                       {"sku",tr("SKU")} ,
-                                                                       //{"description","description"} ,
-
-                                                                       //{"parent_id","Parent"} ,
-                                                                       //{"name_en","name_en"} ,
-                                                                       //{"name_ar","name_ar"} ,
-                                                                       //{"color","color"} ,
-                                                                       //{"color_en","color_en"} ,
-                                                                       //{"color_ar","color_ar"} ,
-                                                                       //{"goods_id","goods_id"} ,
-                                                                       //{"external_id","external_id"} ,
-
-                                                                       //{"external_sku","e_SKU"} ,
-                                                                       {"size",tr("Size")} ,
-
-//                                                                       {"barcode","Barcode"} ,
-                                                                       {"cost",tr("Cost"),QString(), "currency"} ,
-//                                                                       {"current_cost","Current Cost",QString(), "currency"} ,
-                                                                       {"qty",tr("Stock"),"products_stocks"} ,
-                                                                       {"list_price",tr("List Price"),QString(), "currency"}},parent)
+#include <authmanager.h>
+ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/products",
+                                                                       JsonModelColumnList(),parent)
 {
     //requestData();
+
+    JsonModelColumnList list{
+    {"id",tr("ID")} ,
+    {"thumb",tr("Image"),QString(),"image"} ,
+    {"name",tr("Name")} ,
+    {"sku",tr("SKU")} ,
+    {"size",tr("Size")} ,
+    {"cost",tr("Cost"),QString(), "currency"} ,
+//    {"current_cost","Current Cost",QString(), "currency"} ,
+    {"qty",tr("Stock"),"products_stocks"} ,
+    {"list_price",tr("List Price"),QString(), "currency"}};
+    if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
+        list.removeAt(5);
+    }
+    m_columns=list;
 }
 
 void ProductsModel::updateProduct(const int &productId, const QString &name, const QString &barcode, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)

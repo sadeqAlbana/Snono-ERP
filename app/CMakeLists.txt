@@ -175,24 +175,23 @@ if(ANDROID)
 set_target_properties(appposfe PROPERTIES QT_ANDROID_EXTRA_LIBS "${ANDROID_EXTRA_LIBS}")
 endif()
 
-target_link_libraries(appposfe PRIVATE Qt6::Quick)
-target_link_libraries(appposfe PRIVATE Qt6::Core)
-target_link_libraries(appposfe PRIVATE Qt6::Multimedia)
-target_link_libraries(appposfe PRIVATE Qt6::Gui)
-target_link_libraries(appposfe PRIVATE Qt6::Network)
-target_link_libraries(appposfe PRIVATE Qt6::Charts)
-target_link_libraries(appposfe PRIVATE Qt6::Svg)
-target_link_libraries(appposfe PRIVATE Qt6::Core5Compat)
-target_link_libraries(appposfe PRIVATE Qt6::Widgets)
-target_link_libraries(appposfe PRIVATE Qt6::PrintSupport)
-
-target_link_libraries(appposfe PRIVATE SNetworkManager jsonmodel)
-target_link_libraries(appposfe PRIVATE coreuiplugin)
-#target_link_libraries(appposfe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/appposfe.res)
+target_link_libraries(appposfe PRIVATE Qt6::Quick
+    Qt6::Core
+    Qt6::Multimedia
+    Qt6::Gui
+    Qt6::Network
+    Qt6::Charts
+    Qt6::Svg
+    Qt6::Core5Compat
+    Qt6::Widgets
+    Qt6::PrintSupport
+    SNetworkManager
+    jsonmodel
+    coreuiplugin
+)
 
 if(NOT ANDROID)
-    target_link_libraries(appposfe PRIVATE Qt6::Pdf)
-    target_link_libraries(appposfe PRIVATE Qt6::SerialPort)
+    target_link_libraries(appposfe PRIVATE Qt6::Pdf Qt6::SerialPort)
 endif()
 
 list(APPEND QML_DIRS  "${CMAKE_CURRENT_BINARY_DIR}/qml")

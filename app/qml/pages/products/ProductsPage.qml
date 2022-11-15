@@ -146,8 +146,8 @@ AppPage{
                 Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow},
                 Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow},
                 Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow},
+                Action{ text: qsTr("Generate Catalogue"); icon.name: "cil-image"; onTriggered: Api.generateImages();},
                 Action{ text: qsTr("Bulck Stock Adjustment"); icon.name: "cil-cart";     onTriggered: fileDialog.open();}
-
             ]
 
 
