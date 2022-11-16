@@ -55,6 +55,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     //instances should be added before engine.load
     m_engine->addImportPath(QStringLiteral(":/"));
     m_engine->addImportPath(QStringLiteral(":/qrc"));
+    //m_engine->addImportPath(QStringLiteral(":/qrc/qml"));
+
 
     //m_engine->addImportPath(QStringLiteral(":/qml"));
     const QUrl url(u"qrc:/PosFe/qml/main.qml"_qs);
