@@ -139,14 +139,15 @@ AppPage{
             Layout.fillWidth: true
 
             delegate: AppDelegateChooser{}
-
+            permissionProvider: AuthManager.hasPermission
             actions: [
-                Action{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog();},
+                CAction{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog();
+                permission: "prm_add_products"},
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
-                Action{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow},
-                Action{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow},
-                Action{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow},
-                Action{ text: qsTr("Bulck Stock Adjustment"); icon.name: "cil-cart";     onTriggered: fileDialog.open();}
+                CAction{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow},
+                CAction{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow},
+                CAction{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow},
+                CAction{ text: qsTr("Bulck Stock Adjustment"); icon.name: "cil-cart";     onTriggered: fileDialog.open();}
 
             ]
 

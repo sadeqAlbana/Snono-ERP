@@ -29,8 +29,8 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open();},
-                Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeVendor()}
+                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open();},
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeVendor()}
 
             ]
 

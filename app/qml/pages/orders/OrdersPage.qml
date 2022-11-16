@@ -98,21 +98,21 @@ AppPage{
             }
 
             actions: [
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
+                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
                         var dialog=Utils.createObject("qrc:/PosFe/qml/pages/orders/OrderDetails.qml",
                                                       tableView,{order: model.jsonObject(tableView.selectedRow)});
                         dialog.open();
                     } },
 
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {
+                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {
                         deliveryStatusDialog.open();
                     } },
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-action-undo"; onTriggered: {
+                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-action-undo"; onTriggered: {
                         var order =model.jsonObject(tableView.selectedRow);
                         model.returnableItems(order.id);
                     }},
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
-                Action{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
+                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
+                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
                     let reference=model.data(tableView.selectedRow,"id")
                         Api.barqReceipt(reference);
                     }}

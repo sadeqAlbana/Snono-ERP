@@ -41,8 +41,8 @@ AppPage{
             Layout.fillWidth: true
 //            title: "categories"
             actions: [
-                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open()},
-                Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
+                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open()},
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
 
             model: CategoriesModel{
                 id: categoriesModel;

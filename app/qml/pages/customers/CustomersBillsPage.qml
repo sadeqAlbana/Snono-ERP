@@ -32,7 +32,7 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Pay"); icon.name: "cil-check"; onTriggered: dialog.open();}
+                CAction{ text: qsTr("Pay"); icon.name: "cil-check"; onTriggered: dialog.open();}
             ]
 
             delegate: AppDelegateChooser{

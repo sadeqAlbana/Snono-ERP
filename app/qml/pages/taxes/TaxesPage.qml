@@ -43,8 +43,8 @@ AppPage{
             }
 
             actions: [
-                Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
-                Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
+                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog()},
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
             ]
 
 

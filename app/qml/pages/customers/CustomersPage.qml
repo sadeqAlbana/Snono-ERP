@@ -32,9 +32,9 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
+                CAction{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: dialog.open();},
 
-                Action{ text: qsTr("Delete"); icon.name: "cil-delete.svg"; onTriggered: {}}
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete.svg"; onTriggered: {}}
             ]//actions
 
             model: CustomersModel{

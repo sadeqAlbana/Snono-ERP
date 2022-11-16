@@ -43,8 +43,8 @@ AppPage{
             }
 
             actions: [
-                //Action{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: {}},
-                //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
+                //CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: {}},
+                //CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
             ]
 
             model: OrdersReturnsModel{

@@ -51,14 +51,14 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                Action{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
+                CAction{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.selectedRow).total;
                         dialog.open();}},
 //                Action{enabled: tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-task"; onTriggered: {
 //                        Api.returnBill(model.jsonObject(tableView.selectedRow).id)
 //                       }},
-                Action{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: newBillDlg.open();},
-                Action{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();}
+                CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: newBillDlg.open();},
+                CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();}
 
             ]
 
