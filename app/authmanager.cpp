@@ -93,7 +93,7 @@ void AuthManager::resetUser()
 
 bool AuthManager::hasPermission(const QString &permission) const
 {
-    return m_permissions.contains("*") || m_permissions.contains(permission);
+    return m_permissions.contains("*") || m_permissions.contains(permission,Qt::CaseSensitive);
 }
 
 const QStringList &AuthManager::permissions() const

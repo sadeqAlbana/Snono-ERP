@@ -40,6 +40,7 @@ CToolBar {
                 title: qsTr("Actions");
                 icon:"cil-settings"
                 actions: tableView.actions
+                permissionProvider: tableView.permissionProvider
             }//Menu
 
             CMenu{
