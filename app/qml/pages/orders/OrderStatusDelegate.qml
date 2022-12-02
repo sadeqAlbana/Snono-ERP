@@ -8,12 +8,10 @@ import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 CTableViewDelegate {
     padding: 12
-    leftPadding: (width/3)
+    leftPadding: (width/6)
     rightPadding: leftPadding
     property var order;
     implicitWidth: 150
-
-
 
 //    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
 //                            implicitContentWidth + leftPadding + rightPadding)

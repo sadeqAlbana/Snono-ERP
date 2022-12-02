@@ -26,6 +26,9 @@ CTableViewDelegate {
                case "تم تسليم الطلب": return "success";
                case "راجع": return "danger";
                case "راجع جزئي": return "warning";
+               case "راجع جزئي (عند المندوب)": return "warning";
+               case "راجع كلي (عند المندوب)": return "danger";
+               case "تغيير عنوان": return "secondary";
 
 
                default: return "Invalid";

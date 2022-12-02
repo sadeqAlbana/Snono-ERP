@@ -83,7 +83,7 @@ AppDialog{
                 } //end categoryCB
 
 
-                CheckableComboBox{
+                CCheckableComboBox{
                     Layout.fillWidth: true
                     //           Layout.maximumWidth: parent.width/2
                     model: TaxesCheckableModel{
