@@ -166,13 +166,16 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Profits"
+                    title: "Stock Sale"
                     palette.window : "#4f5d73"
-                    icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
+                    icon: "qrc:/icons/CoreUI/free/cil-bar-chart.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Daily Sales Profits"), value: dashboard? dashboard["daily_sales_profits"] : ""},
-                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
+                            {label: qsTr("Sold Stock This Month"), value: dashboard? dashboard["sold_stock_month"] : ""},
+                            {label:qsTr("returned Stock This Month"), value: dashboard? dashboard["returned_stock_month"] : ""},
+                            {label: qsTr("Net Sold Stock This Month"), value: dashboard? dashboard["net_sold_stock_month"] : ""},
+                            {label: qsTr("Stock Return Percentage"), value: dashboard? dashboard["stock_return_percentage"] : ""}
+
                         ]
                     }
                 }

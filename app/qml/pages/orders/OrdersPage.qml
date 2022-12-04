@@ -63,7 +63,7 @@ AppPage{
                                  model.requestData();
                              }
 
-        }
+        }//toolbar
 
         CTableView{
             id: tableView

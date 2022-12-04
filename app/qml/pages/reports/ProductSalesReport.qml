@@ -27,25 +27,11 @@ AppPage{
             tableView: tableView
             searchVisible: false
 
-            CTextField{
-                id: fromTF
-                text: "2022-01-01"
-                inputMask: "0000-00-00"
+            advancedFilter:  [
+                {"type": "date","label": "from","key": "from"},
+                {"type": "date","label": "to","key": "to"}
 
-            }
-            CTextField{
-                id: toTF
-                text: "2022-10-01"
-                inputMask: "0000-00-00"
-            }
-
-            CButton{
-                palette: BrandInfo{}
-                text: qsTr("Apply")
-                onClicked: model.requestData();
-
-            }
-
+            ]
         }
 
         CTableView{
@@ -61,8 +47,8 @@ AppPage{
             model: ProductSalesReportModel{
                 id: model
                 filter: {
-                    "from": fromTF.text,
-                    "to": toTF.text
+                    "from": '2022-11-01',
+                    "to": '2022-12-01'
                 }
                 Component.onCompleted: requestData();
 

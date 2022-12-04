@@ -26,7 +26,6 @@ AppPage{
             tableView: tableView
             searchVisible: false
 
-
         }
 
         CTableView{

@@ -2,9 +2,9 @@
 
 ProductSalesReportModel::ProductSalesReportModel(QObject *parent)
     : AppNetworkedJsonModel{"/reports/productSales",{
+                            {"thumb",tr("Thumb"),QString(),"image"} ,
                             {"name",tr("Name")} ,
                             {"qty",tr("Quantity")} ,
-
                             {"total",tr("Total"),QString(),"currency"}
                             }
                             ,parent}
