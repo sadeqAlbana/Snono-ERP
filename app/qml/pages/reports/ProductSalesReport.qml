@@ -32,6 +32,11 @@ AppPage{
                 {"type": "date","label": "to","key": "to"}
 
             ]
+
+            onFilterClicked: (filter) => {
+                                 model.filter=filter
+                                 model.requestData();
+                             }
         }
 
         CTableView{
@@ -46,10 +51,7 @@ AppPage{
             ]
             model: ProductSalesReportModel{
                 id: model
-                filter: {
-                    "from": '2022-11-01',
-                    "to": '2022-12-01'
-                }
+
                 Component.onCompleted: requestData();
 
             }//model
