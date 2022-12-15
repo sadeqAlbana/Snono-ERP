@@ -111,7 +111,7 @@ void Api::barqReceipt(const int orderId)
             printer.setPageMargins(QMarginsF(0,0,0,0));
             printer.setCopyCount(AppSettings::instance()->externalReceiptCopies());
 
-                QImage image=doc->render(0,doc->pagePointSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
+                QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
 
                 QPainter painter(&printer);
                 painter.drawImage(QPoint(0,0),image);
