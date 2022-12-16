@@ -24,8 +24,11 @@ public:
     void updateAppFont();
     Q_INVOKABLE QStringList availablePrinters();
 
+    void downloadVersion(const int version);
+
 signals:
     void languageChanged();
+    void downloadVersionReply(bool success);
 
 private:
     void initSettings();

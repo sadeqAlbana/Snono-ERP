@@ -4,6 +4,8 @@
 #include <ostream>
 #include <iostream>
 #include <sstream>
+#include <QDir>
+#include <QProcess>
 QString Currency::formatString(const QVariant &value)
 {
     QString text;
@@ -46,3 +48,69 @@ std::string QrCode::toSvgString(const qrcodegen::QrCode &qr, int border) {
     return sb.str();
 }
 
+FileUtils::OperationStatusCode FileUtils::copyDir(QString srcPath, QString dstPath)
+{
+
+    QDir src(srcPath);
+    if(!QDir().mkpath(dstPath+"/"+src.dirName())){
+        return FileUtils::OperationStatusCode::Failure;
+    }
+    dstPath+="/"+src.dirName();
+    int successCount=0;
+
+    for(const QFileInfo &fileInfo : src.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot)){
+        if(fileInfo.isDir()){
+            src.mkpath(dstPath+'/'+fileInfo.fileName());
+
+            FileUtils::OperationStatusCode sc=copyDir(dstPath+'/'+fileInfo.fileName(),fileInfo.absoluteFilePath());
+            if(sc!=FileUtils::OperationStatusCode::Success){
+                return successCount<=0? sc : OperationStatusCode::PartialSuccess;
+            }
+        }
+        if(QFile::copy(fileInfo.absoluteFilePath(), dstPath+'/'+fileInfo.fileName())){
+            successCount++;
+        }
+    }
+
+    if(successCount<=0)
+        return FileUtils::OperationStatusCode::Failure;
+    if(successCount!=src.count())
+        return FileUtils::OperationStatusCode::PartialSuccess;
+    return FileUtils::OperationStatusCode::Success;
+}
+
+QByteArray FileUtils::fileChecksum(const QString fileName, const QCryptographicHash::Algorithm algorithim)
+{
+    QFile f(fileName);
+    if (f.open(QFile::ReadOnly)) {
+        QCryptographicHash hash(algorithim);
+        if (hash.addData(&f)) {
+            f.close();
+            return hash.result().toHex();
+        }
+    }
+    return QByteArray();
+}
+
+QString SystemUtils::executeCommand(QString command, const QStringList args)
+{
+
+    QProcess process;
+    if(!args.isEmpty())
+        process.start(command,args);
+    process.waitForFinished(-1);
+    QString result=process.readAllStandardOutput();
+    return result;
+
+
+}
+
+void SystemUtils::rebootDevice()
+{
+
+#ifdef Q_OS_LINUX
+    sync();
+    reboot(RB_AUTOBOOT);
+#endif
+
+}
