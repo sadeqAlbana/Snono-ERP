@@ -7,7 +7,7 @@ AccountsModel::AccountsModel(QObject *parent) :
                            {"name",tr("Name")} ,
                            {"internal_type",tr("Internal Type"),QString(),"internal_type"} ,
                            {"type",tr("Type"),QString(),"type"} ,
-                           {"balance",tr("Balance"),"journal_entries_items","currency"}},parent)
+                           {"balance",tr("Balance"),QString(),"currency"}},parent)
 {
     setDirection("asc");
     requestData();

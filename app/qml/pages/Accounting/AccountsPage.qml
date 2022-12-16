@@ -38,6 +38,23 @@ AppPage{
             id: toolBar
             tableView: tableView
 
+            advancedFilter:  [
+                {"type": "date","label": "from","key": "from"},
+                {"type": "date","label": "to","key": "to"}
+
+            ]
+            onSearch:(searchString)=> {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
+            }
+
+            onFilterClicked: (filter) => {
+                                 model.filter=filter
+                                 model.requestData();
+                             }
+
         }//toolBar
         CTableView{
             id: tableView
