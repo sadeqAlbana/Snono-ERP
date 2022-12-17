@@ -3,7 +3,9 @@ if(ANDROID)
     add_compile_definitions(QT_NO_PDF TRUE)
 endif()
 
-    set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/icons/appposfe.rc")
+
+set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/icons/appposfe.rc")
+
 qt_add_executable(appposfe
     appsettings.cpp appsettings.h
     posnetworkmanager.cpp posnetworkmanager.h
@@ -142,6 +144,7 @@ qt_add_qml_module(appposfe
     qml/common/CredentailsTextField.qml
     qml/common/ExternalDeliveryStatusDelegate.qml
     qml/common/LoadingImage.qml
+    qml/common/Form.qml
     qml/actions/ChangeLanguageAction.qml
     qml/main.qml
     qml/screens/LoginScreen.qml
@@ -155,7 +158,7 @@ set(INCLUDE_DIR
     models/charts
     models/jsonModel
     )
-target_include_directories(appposfe PUBLIC ${INCLUDE_DIR})
+target_include_directories(appposfe PRIVATE ${INCLUDE_DIR})
 
 
 qt_add_translations(appposfe
@@ -164,7 +167,7 @@ qt_add_translations(appposfe
 
 
 set_target_properties(appposfe PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+    MACOSX_BUNDLE_GUI_IDENTIFIER com.snono.pos_fe
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE

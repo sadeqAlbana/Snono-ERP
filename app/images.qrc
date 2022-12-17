@@ -14,5 +14,6 @@
     <qresource prefix="/">
         <file>qml/common/ExternalDeliveryStatusDelegate.qml</file>
         <file>qml/common/LoadingImage.qml</file>
+        <file>qml/common/Form.qml</file>
     </qresource>
 </RCC>
