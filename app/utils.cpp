@@ -109,8 +109,8 @@ void SystemUtils::rebootDevice()
 {
 
 #ifdef Q_OS_LINUX
-    sync();
-    reboot(RB_AUTOBOOT);
+//    sync();
+//    reboot(RB_AUTOBOOT);
 #endif
 
 }

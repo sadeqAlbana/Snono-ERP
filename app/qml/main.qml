@@ -13,134 +13,147 @@ import QtMultimedia
 import QtQml
 import CoreUI.Palettes
 
-
 CApplicationWindow {
     title: qsTr("POS")
     visible: true
 
-    property real activityCount : 0
-    property bool mobileLayout : height>width
-    onActivityCountChanged:{
+    property real activityCount: 0
+    property bool mobileLayout: height > width
+    onActivityCountChanged: {
         //console.log(activityCount)
-        if(activityCount>0){
-            busySpinner.open();
-        }else{
-            busySpinner.close();
+        if (activityCount > 0) {
+            busySpinner.open()
+        } else {
+            busySpinner.close()
         }
     }
 
-
-    FontMetrics{
+    FontMetrics {
         id: metrics
     }
 
     Component.onCompleted: {
-        if(Settings.jwt!=""){
-           AuthManager.testAuth();
-        }else{
+        if (Settings.jwt != "") {
+            AuthManager.testAuth()
+        } else {
             rootLoader.setSource("pages/LoginPage.qml")
         }
     }
-    Connections{
+    Connections {
         target: AuthManager
-        function onLoggedIn(){
+        function onLoggedIn() {
             rootLoader.setSource("AppMainScreen.qml")
         }
-        function onLoggedOut(){
+        function onLoggedOut() {
             rootLoader.setSource("pages/LoginPage.qml")
         }
-        function onTestAuthResponse(success){
-            if(success){
+        function onTestAuthResponse(success) {
+            if (success) {
                 rootLoader.setSource("AppMainScreen.qml")
-            }else{
-                errorDlg.open();
+            } else {
+                errorDlg.open()
             }
         }
     }
 
-    Connections{
+    Connections {
         target: NetworkManager
-        function onNetworkActivity(url){
-            if(url.pathname!=="/pos/cart/updateProduct" && url.pathname!=="/pos/cart/getCart"){
+        function onNetworkActivity(url) {
+            if (url.pathname !== "/pos/cart/updateProduct"
+                    && url.pathname !== "/pos/cart/getCart") {
 
-                busySpinner.open();
+                busySpinner.open()
             }
         }
-        function onFinishedNetworkActivity(url){
-            if(activityCount>0)
-                activityCount--;
+        function onFinishedNetworkActivity(url) {
+            if (activityCount > 0)
+                activityCount--
 
-            if(activityCount<=0){
-                busySpinner.close();
-            }
-        }
-
-        function onNetworkReply(status,message){
-            if(status===200){
-                toastrService.push("Success",message,"success",2000)
-            }
-            else{
-                toastrService.push("Error",message,"error",2000)
+            if (activityCount <= 0) {
+                busySpinner.close()
             }
         }
 
-        function onNetworkError(title,text){
+        function onNetworkReply(status, message) {
+            if (status === 200) {
+                toastrService.push("Success", message, "success", 2000)
+            } else {
+                toastrService.push("Error", message, "error", 2000)
+            }
+        }
+
+        function onNetworkError(title, text) {
             console.log(title + " " + text)
-            toastrService.push(title,text,"error",3000)
+            toastrService.push(title, text, "error", 3000)
         }
     }
 
-
-    ToastrService{
+    ToastrService {
         id: toastrService
     }
 
-    BusySpinner{
+    BusySpinner {
         id: busySpinner
     }
 
-    SoundEffect{
+    SoundEffect {
         id: beep
         source: "qrc:/numpad_beep.wav"
     }
 
-    SoundEffect{
+    SoundEffect {
         id: scannerBeep
         source: "qrc:/cashier_regiser_beep.wav"
     }
 
-
-    AppDialog{
+    AppDialog {
         id: errorDlg
-        Card{
+        Card {
             anchors.fill: parent
             header.visible: true
             title: qsTr("Error")
             padding: 25
-            ColumnLayout{
+            ColumnLayout {
                 anchors.fill: parent
-                Label{
+                Label {
                     text: qsTr("Opps... an error occured, would you like to logout and try again?")
                     font.pixelSize: 24
                 }
-
-
             }
 
-            footer: RowLayout{
-                HorizontalSpacer{}
-                CButton{
-                    palette: BrandDanger{}
+            footer: RowLayout {
+                HorizontalSpacer {}
+                CButton {
+                    palette: BrandDanger {}
                     text: qsTr("Logout")
                     Layout.margins: 15
                     onClicked: {
-                        AuthManager.logout();
                         close();
+                        AuthManager.logout()
                     }
                 }
             }
-        }//card
+        } //card
+    }
+
+    AppDialog {
+        anchors.centerIn: parent
+        width: parent.width
+        height: parent.height
+
+        RowLayout {
+            anchors.fill: parent
+
+            Card {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                Form{
+                    anchors.fill:parent
+                    leftPadding:400
+                }
+            }
+        }
+        Component.onCompleted: open()
     }
 }
-
-
