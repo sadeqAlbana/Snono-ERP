@@ -166,6 +166,6 @@ CApplicationWindow {
                 }
             }
         }
-        Component.onCompleted: open()
+        //Component.onCompleted: open()
     }
 }
