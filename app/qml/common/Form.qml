@@ -1,14 +1,11 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Basic
-import Qt.labs.qmlmodels
-import CoreUI.Forms
-import QtQuick.Layouts
+
 QtObject {
     id: form
 
     required property list<Item> items;
-    function apply(){ //returns form data
+    function data(){ //returns form data
         let formData={}
         for(var i=0;i<items.length; i++){
             let item=items[i]
