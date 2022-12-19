@@ -4,60 +4,49 @@ import QtQuick.Controls.Basic
 import Qt.labs.qmlmodels
 import CoreUI.Forms
 import QtQuick.Layouts
-Container {
-    id: container
-    anchors.fill: parent
+QtObject {
+    id: form
 
-    property var model: [{
-            "type": "text",
-            "key": "username",
-            "label": qsTr("Username")
-        }, {
-            "type": "spinbox",
-            "key": "month",
-            "label": qsTr("Month")
-        }]
-    contentItem: GridView {
-        model: container.contentModel
-    }
+    required property list<Item> items;
+    function apply(){ //returns form data
+        let formData={}
+        for(var i=0;i<items.length; i++){
+            let item=items[i]
+            let key=item.objectName
 
-    Repeater {
-        model: container.model
-        delegate: Repeater {
-            model: [{
-                    "type": "label",
-                    "label": modelData.label
-                }, modelData]
+            let data=null
 
-            delegate: DelegateChooser {
-                role: "type"
-                DelegateChoice {
-                    roleValue: "text"
-                    TextField {
-                        required property var modelData
-                        width: 100
-                        height: 50
-                    }
-                }
-                DelegateChoice {
-                    roleValue: "label"
-                    Label {
-                        required property var modelData
-
-                        text: modelData.label
-                    }
-                }
-                DelegateChoice {
-
-                    roleValue: "spinbox"
-                    SpinBox {
-                        required property var modelData
-
-                    }
-                }
+            if(item instanceof TextInput || item instanceof TextEdit){
+                data=item.text;
             }
-        }
+            else if(item instanceof ComboBox){
+                data=item.currentValue;
+            }
+
+            else if(item instanceof SpinBox){
+                data=item.value;
+            }
+
+            else if(item instanceof Slider ){
+                data=item.value;
+            }
+
+            else if(item instanceof Switch || item instanceof SwitchDelegate){
+                data=item.position===1;
+            }
+            else if(item instanceof Dial ){
+                data=item.value;
+            }
+
+            if(data!==null){
+                formData[key]=data;
+            }
+        }//foreach
+
+        return formData;
     }
+
+
 }
 
 

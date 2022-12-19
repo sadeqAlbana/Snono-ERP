@@ -149,11 +149,23 @@ CApplicationWindow {
                 Layout.fillWidth: true
 
                 Form{
-                    anchors.fill:parent
-                    leftPadding:400
+                    id: form
+                    items: grid.children
+                }
+
+                GridLayout{
+                    id: grid
+                    Label{text: qsTr("Username");}
+                    TextField{objectName: "username";}
+                    anchors.leftMargin: 400
+
+                    Button{
+                        text: qsTr("Apply")
+                        onClicked: console.log(JSON.stringify(form.apply()))
+                    }
                 }
             }
         }
-        //Component.onCompleted: open()
+        Component.onCompleted: open()
     }
 }
