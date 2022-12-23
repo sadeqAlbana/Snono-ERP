@@ -26,17 +26,17 @@ AppPage {
         Label {
             text: qsTr("Receipt Printer")
         }
-        CComboBox {
+        IconComboBox {
             id: receiptPrinter
-            icon.name: "cil-printer"
+            leftIcon.name: "cil-printer"
             model: App.availablePrinters()
         }
 
         Label {
             text: qsTr("Paper Size")
         }
-        CComboBox {
-            icon.name: "cil-page"
+        IconComboBox {
+            leftIcon.name: "cil-page"
             model: ['A4', 'A5', 'A6']
         }
 
@@ -44,25 +44,25 @@ AppPage {
             text: qsTr("Reports Printer")
         }
 
-        CComboBox {
+        IconComboBox {
             model: App.availablePrinters()
-            icon.name: "cil-printer"
+            leftIcon.name: "cil-printer"
         }
 
         Label {
             text: qsTr("Paper Size")
         }
-        CComboBox {
-            icon.name: "cil-page"
+        IconComboBox {
+            leftIcon.name: "cil-page"
             model: ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']
         }
 
         Label {
             text: qsTr("Receipt copies")
         }
-        CComboBox {
+        IconComboBox {
             id: receiptCopies
-            icon.name: "cil-page"
+            leftIcon.name: "cil-page"
             model: [1, 2, 3, 4, 5]
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.receiptCopies)
@@ -71,9 +71,9 @@ AppPage {
         Label {
             text: qsTr("External Receipt copies")
         }
-        CComboBox {
+        IconComboBox {
             id: externalReceiptCopies
-            icon.name: "cil-page"
+            leftIcon.name: "cil-page"
             model: [1, 2, 3, 4, 5]
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.externalReceiptCopies)

@@ -26,9 +26,9 @@ AppPage{
         Label{
             text: qsTr("Language");
         }
-        CComboBox{
+        IconComboBox{
             id: language
-            icon.name: "cil-language"
+            leftIcon.name: "cil-language"
             model: App.languages();
             valueRole: "value";
             textRole: "key"
@@ -40,9 +40,9 @@ AppPage{
             text: qsTr("Receipt Language");
         }
 
-        CComboBox{
+        IconComboBox{
             model: App.languages();
-            icon.name: "cil-language"
+            leftIcon.name: "cil-language"
             editable: true
             valueRole: "value";
             textRole: "key"
@@ -51,10 +51,10 @@ AppPage{
         Label{
             text: qsTr("Country");
         }
-        CComboBox{
+        IconComboBox{
             model: ["Iraq"]
             editable: true
-            icon.name: "cil-globe"
+            leftIcon.name: "cil-globe"
         }
     }
 

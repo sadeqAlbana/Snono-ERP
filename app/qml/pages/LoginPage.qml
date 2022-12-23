@@ -93,7 +93,7 @@ Pane {
                     Layout.bottomMargin: 25
                 }
 
-                CTextField{
+                CIconTextField{
                     id: usernameTF
                     Layout.fillWidth: true
                     Layout.preferredHeight: 71
@@ -104,12 +104,13 @@ Pane {
                     //leftRectVisible: true
 
                     placeholderText : qsTr("username...")
-                    leftIcon: "cil-user"
-                    helpBlock : CTextField.HelpBlockDelegate{text: usernameTF.helpBlockText; color: "red"}
+                    leftIcon.name: "cil-user"
+                    helpBlock.text: usernameTF.helpBlockText;
+                    helpBlock.color: "red"
 
                 }
 
-                CTextField{
+                CIconTextField{
                     id: passwordTF
                     Layout.fillWidth: true
                     Layout.preferredHeight: 71
@@ -117,8 +118,9 @@ Pane {
                     echoMode: TextInput.Password
                     property string helpBlockText : " "
                     placeholderText : qsTr("password...")
-                    helpBlock : CTextField.HelpBlockDelegate{text: passwordTF.helpBlockText; color: "red"}
-                    leftIcon: "cil-lock-locked"
+                    helpBlock.text: usernameTF.helpBlockText;
+                    helpBlock.color: "red"
+                    leftIcon.name: "cil-lock-locked"
                 }
                 CheckBox{
                     id: rememberMe

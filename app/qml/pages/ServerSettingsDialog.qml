@@ -22,10 +22,10 @@ AppDialog {
         title: qsTr("Server Settings");
         ColumnLayout{
             anchors.fill: parent;
-            CTextField{
+            CIconTextField{
                 id: serverTF
                 font.pixelSize: 21
-                leftIcon: "cil-link"
+                leftIcon.name: "cil-link"
                 Layout.fillWidth: true
                 implicitHeight: 50
                 text: Settings.serverUrl;

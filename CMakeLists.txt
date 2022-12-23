@@ -35,8 +35,14 @@ add_subdirectory(network-manager)
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
 
+#list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/src")
+list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/qml" )
+
 list(REMOVE_DUPLICATES QML_DIRS)
-set(QML_IMPORT_PATH "${QML_DIRS}" CACHE STRING "Qt Creator 4.1 extra qml import paths")
+set(QML_IMPORT_PATH ${QML_DIRS}
+    CACHE STRING "Qt Creator 4.1 extra qml import paths"
+    FORCE
+)
 
 
 
