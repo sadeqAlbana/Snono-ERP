@@ -16,6 +16,7 @@ Card{
     property alias rows: grid.rows;
     property alias rowSpacing: grid.rowSpacing;
     property alias columnSpacing: grid.columnSpacing;
+    property alias initialValues: form.initialValues
 
     GridLayout {
         id: grid

@@ -145,6 +145,7 @@ CApplicationWindow {
             title: qsTr("Add Vendor")
             rowSpacing: 30
 
+            initialValues:{"name": "test"}
 
             Label {
                 text: qsTr("Name")
