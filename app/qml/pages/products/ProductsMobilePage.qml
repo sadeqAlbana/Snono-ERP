@@ -33,7 +33,7 @@ AppPage{
             Layout.alignment: Qt.AlignCenter
             font.pixelSize: 18
             placeholderText: qsTr("Search...")
-            rightIcon: "cil-search"
+            rightIcon.name: "cil-search"
 
             onEntered: () => {
                 var filter=model.filter;

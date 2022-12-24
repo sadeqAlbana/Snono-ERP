@@ -229,7 +229,7 @@ AppPage{
             columnSpacing: 15
             Layout.column: 0
             columns: 2
-            CComboBox{
+            IconComboBox{
                 property bool isValid: currentText===editText
                 id: customerCB;
                 Layout.fillWidth: true;
@@ -251,7 +251,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                icon.name: "cil-user"
+                leftIcon.name: "cil-user"
 
                 onCurrentIndexChanged: {
                     if(currentIndex>=0){
@@ -273,7 +273,7 @@ AppPage{
                     editText=edit;
                 }//onActiveFocusChanged
             }
-            CTextField{
+            CIconTextField{
                 id: phoneLE
                 enabled: !customerCB.isValid
                 validator: RegularExpressionValidator{
@@ -284,28 +284,28 @@ AppPage{
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: qsTr("Phone...")
-                leftIcon: "cil-phone"
+                leftIcon.name: "cil-phone"
             }
-            CTextField{
+            CIconTextField{
                 id: addressLE
                 enabled: !customerCB.isValid
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: qsTr("Address...")
-                leftIcon: "cil-location-pin"
+                leftIcon.name: "cil-location-pin"
             }
-            CTextField{
+            CIconTextField{
                 Layout.alignment: Qt.AlignTop
                 id: notesLE
                 //id: customerPhone
                 Layout.fillWidth: true;
                 implicitHeight: 60
                 placeholderText: qsTr("Note...")
-                leftIcon: "cil-notes"
+                leftIcon.name: "cil-notes"
 
             }
-            CComboBox{
+            IconComboBox{
                 id: cityCB
                 enabled: deliverySwitch.checked
 
@@ -316,7 +316,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                icon.name: "cil-location-pin"
+                leftIcon.name: "cil-location-pin"
 
                 model: BarqLocationsModel{
                     id: cityModel
@@ -335,7 +335,7 @@ AppPage{
                 }
             }
 
-            CComboBox{
+            IconComboBox{
                 id: townCB
                 enabled: deliverySwitch.checked
                 property bool isValid: currentText===editText
@@ -345,7 +345,7 @@ AppPage{
                 valueRole: "id"
                 currentIndex: 0
                 editable: true
-                icon.name: "cil-location-pin"
+                leftIcon.name: "cil-location-pin"
 
 
 

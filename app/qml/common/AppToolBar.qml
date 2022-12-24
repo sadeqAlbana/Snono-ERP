@@ -87,7 +87,7 @@ CToolBar {
 
         HorizontalSpacer{}
 
-        CTextField{
+        CIconTextField{
             id: _search
             visible: searchVisible
             Layout.preferredHeight: 50
@@ -95,7 +95,7 @@ CToolBar {
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             font.pixelSize: 18
             placeholderText: qsTr("Search...")
-            rightIcon: "cil-search"
+            rightIcon.name: "cil-search"
             onEntered: control.search(_search.text)
         }//search
     }// layout end

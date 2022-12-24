@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 import QtQuick.Controls.Basic
 import CoreUI.Base
 import CoreUI.Forms
@@ -42,35 +43,7 @@ AppPage {
                 }
             ]
 
-            Popup {
-                anchors.centerIn: parent
-                width: 500
-                height: 500
 
-
-
-                Component.onCompleted: open();
-                GridContainer {
-                    id: grid
-                    anchors.fill: parent
-                    padding: 20
-                    Form {
-                        id: form
-                        items: grid.contentItem.children
-                    }
-
-                    Label {text: qsTr("Name")}
-                    CTextField {objectName: "name"}
-
-                    Label {text: qsTr("Phone")}
-                    CTextField {objectName: "phone"}
-
-                    Label {text: qsTr("Email")}
-                    CTextField {objectName: "email"}
-
-                    CButton{text: qsTr("Apply"); Layout.columnSpan: 2; onClicked: console.log(JSON.stringify(form.data()))}
-                }
-            }
 
             AddVendorDialog {
                 id: dialog

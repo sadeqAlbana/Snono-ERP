@@ -146,6 +146,7 @@ qt_add_qml_module(appposfe
     qml/common/LoadingImage.qml
     qml/common/Form.qml
     qml/common/GridContainer.qml
+    qml/common/CFormView.qml
     qml/actions/ChangeLanguageAction.qml
     qml/main.qml
     qml/screens/LoginScreen.qml

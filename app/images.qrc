@@ -16,5 +16,6 @@
         <file>qml/common/LoadingImage.qml</file>
         <file>qml/common/Form.qml</file>
         <file>qml/common/GridContainer.qml</file>
+        <file>qml/common/CFormView.qml</file>
     </qresource>
 </RCC>

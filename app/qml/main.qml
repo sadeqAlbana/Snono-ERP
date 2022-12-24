@@ -6,7 +6,7 @@ import QtQuick.Controls.Basic
 import CoreUI
 import CoreUI.Base
 import CoreUI.Buttons
-
+import CoreUI.Forms
 import CoreUI.Notifications
 import PosFe
 import QtMultimedia
@@ -128,7 +128,7 @@ CApplicationWindow {
                     text: qsTr("Logout")
                     Layout.margins: 15
                     onClicked: {
-                        close();
+                        close()
                         AuthManager.logout()
                     }
                 }
@@ -138,34 +138,46 @@ CApplicationWindow {
 
     AppDialog {
         anchors.centerIn: parent
-        width: parent.width
-        height: parent.height
-
-        RowLayout {
+        width: 500
+        height: 350
+        CFormView {
             anchors.fill: parent
+            title: qsTr("Add Vendor")
+            rowSpacing: 30
 
-            Card {
-                Layout.fillHeight: true
+
+            Label {
+                text: qsTr("Name")
+            }
+            CIconTextField {
+                leftIcon.name: "cil-user"
+                objectName: "name"
+                Layout.fillWidth: true
+            }
+
+            Label {
+                text: qsTr("Phone")
+            }
+            CIconTextField {
+                leftIcon.name: "cil-phone"
+                objectName: "phone"
                 Layout.fillWidth: true
 
-                Form{
-                    id: form
-                    items: grid.children
-                }
 
-                GridLayout{
-                    id: grid
-                    Label{text: qsTr("Username");}
-                    TextField{objectName: "username";}
-                    anchors.leftMargin: 400
+            }
 
-                    Button{
-                        text: qsTr("Apply")
-                        onClicked: console.log(JSON.stringify(form.apply()))
-                    }
-                }
+            Label {
+                text: qsTr("Email")
+            }
+            CIconTextField {
+                leftIcon.name: "cib-mail-ru"
+                objectName: "cib-mail-ru"
+                Layout.fillWidth: true
+
+
             }
         }
-        //Component.onCompleted: open()
+
+        Component.onCompleted: open()
     }
 }
