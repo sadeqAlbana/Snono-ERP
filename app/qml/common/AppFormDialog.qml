@@ -9,7 +9,7 @@ AppDialog {
     id: control
     anchors.centerIn: parent
     width: 500
-    height: 350
+    height: contentHeight
     property string title
     property string url;
     property string method: "POST"
