@@ -17,6 +17,10 @@ Card{
     property alias rowSpacing: grid.rowSpacing;
     property alias columnSpacing: grid.columnSpacing;
     property alias initialValues: form.initialValues
+    property string method: "POST";
+    property string url;
+    required property var applyHandler;
+
 
     GridLayout {
         id: grid
@@ -27,12 +31,19 @@ Card{
     CForm {
         id: form
         items: grid.children
+        url: control.url
+        applyHandler: control.applyHandler
+        method: control.method
+
     }
 
     footer: CDialogButtonBox{
         alignment: Qt.AlignRight | Qt.AlignVCenter
         position: DialogButtonBox.Footer
         spacing: 15
+        onReset: form.setInitialValues();
+        onAccepted: form.apply();
+
         background: RoundedRect{
             radius: CoreUI.borderRadius
             border.color: palette.shadow
@@ -45,12 +56,20 @@ Card{
             text: qsTr("Apply")
             palette: BrandSuccess{}
             DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+
+
         }
 
         CButton{
             text: qsTr("Cancel")
             palette: BrandDanger{}
             DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+        }
+
+        CButton{
+            text: qsTr("Reset")
+            palette: BrandWarning{}
+            DialogButtonBox.buttonRole: DialogButtonBox.ResetRole
         }
 
     }

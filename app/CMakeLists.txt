@@ -121,6 +121,7 @@ qt_add_qml_module(appposfe
     qml/pages/vendors/AddVendorDialog.qml
     qml/pages/vendors/CustomVendorBillListView.qml
     qml/pages/vendors/VendorsPage.qml
+    qml/pages/vendors/VendorForm.qml
     qml/Nav.qml
     qml/AppMainScreen.qml
     qml/common/ButtonPopup.qml
@@ -147,7 +148,8 @@ qt_add_qml_module(appposfe
     qml/common/Form.qml
     qml/common/GridContainer.qml
     qml/common/CFormView.qml
-    qml/actions/ChangeLanguageAction.qml
+    qml/common/AppFormView.qml
+    qml/common/AppFormDialog.qml
     qml/main.qml
     qml/screens/LoginScreen.qml
     qml/screens/utils.js

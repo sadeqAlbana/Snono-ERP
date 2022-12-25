@@ -34,7 +34,11 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: dialog.open()
+                    onTriggered: {
+                        form.method="POST"
+                        form.initialValues={}
+                        form.open();
+                    }
                 },
                 CAction {
                     text: qsTr("Delete")
@@ -49,6 +53,12 @@ AppPage {
                 id: dialog
                 onAddVendor: model.addVendor(name, email, address, phone)
             }
+
+
+            VendorForm{
+                id: form
+            }
+
 
             function removeVendor() {
                 if (tableView.selectedRow > -1) {

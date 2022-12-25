@@ -193,7 +193,8 @@ void Api::returnBill(const int billId, const QJsonArray &items)
 void Api::generateImages()
 {
 //    return;
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",2100}})->subcribe(
+    qDebug()<<"called";
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",2232}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;
@@ -272,6 +273,15 @@ void Api::generateImages()
             painter.end();
             qDebug()<<image.save(QString("%1/products/%2.jpg").arg(desktop).arg(i));
         }
+    });
+}
+
+void Api::addVendor(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->post("/vendors/add",data )
+            ->subcribe([this](NetworkResponse *res){
+
+        emit vendorAddReply(res->json().toObject());
     });
 }
 

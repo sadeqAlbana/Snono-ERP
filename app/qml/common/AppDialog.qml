@@ -13,6 +13,7 @@ Popup {
     rightInset: 0
     topInset: 0
 
+
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"

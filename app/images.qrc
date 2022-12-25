@@ -12,10 +12,7 @@
         <file>icons/SS_Logo_Color-cropped.svg</file>
     </qresource>
     <qresource prefix="/">
-        <file>qml/common/ExternalDeliveryStatusDelegate.qml</file>
-        <file>qml/common/LoadingImage.qml</file>
-        <file>qml/common/Form.qml</file>
-        <file>qml/common/GridContainer.qml</file>
-        <file>qml/common/CFormView.qml</file>
+        <file>qml/common/AppFormDialog.qml</file>
+        <file>qml/pages/vendors/VendorForm.qml</file>
     </qresource>
 </RCC>

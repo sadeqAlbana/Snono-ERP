@@ -29,6 +29,8 @@ public:
 
     Q_INVOKABLE void generateImages();
 
+    Q_INVOKABLE void addVendor(const QJsonObject &data);
+
 signals:
     void processCustomBillResponse(QJsonObject reply);
     void updateProductReply(QJsonObject reply);
@@ -41,6 +43,7 @@ signals:
     void adjustStockReply(const QJsonObject &reply);
     void bulckStockAdjustmentReply(const QJsonObject &reply);
     void billReturnReply(const QJsonObject &reply);
+    void vendorAddReply(QJsonObject reply);
 
 private:
     static Api *m_api;

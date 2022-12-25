@@ -25,7 +25,7 @@ AppPage{
 
 
 
-        CTextField{
+        CIconTextField{
             id: search
             Layout.preferredHeight: 50
             Layout.preferredWidth: 300
