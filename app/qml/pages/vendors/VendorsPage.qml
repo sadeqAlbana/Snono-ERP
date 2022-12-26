@@ -10,7 +10,7 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
-
+import CoreUI
 import PosFe
 
 AppPage {
@@ -35,9 +35,10 @@ AppPage {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
                     onTriggered: {
-                        form.method="POST"
-                        form.initialValues={}
-                        form.open();
+                        Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml")
+//                        form.method="POST"
+//                        form.initialValues={}
+//                        form.open();
                     }
                 },
                 CAction {
@@ -49,15 +50,12 @@ AppPage {
 
 
 
-            AddVendorDialog {
-                id: dialog
-                onAddVendor: model.addVendor(name, email, address, phone)
-            }
+//            AddVendorDialog {
+//                id: dialog
+//                onAddVendor: model.addVendor(name, email, address, phone)
+//            }
 
 
-            VendorForm{
-                id: form
-            }
 
 
             function removeVendor() {

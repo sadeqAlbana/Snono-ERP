@@ -16,7 +16,6 @@ import CoreUI.Palettes
 CApplicationWindow {
     title: qsTr("POS")
     visible: true
-
     property real activityCount: 0
     property bool mobileLayout: height > width
     onActivityCountChanged: {
@@ -32,12 +31,29 @@ CApplicationWindow {
         id: metrics
     }
 
+
+
+
+    Connections{
+        target: Router
+
+        function onPathChanged(){
+            console.log("path changed: "  + Router.path)
+        }
+    }
+
+
+
     Component.onCompleted: {
+
         if (Settings.jwt != "") {
             AuthManager.testAuth()
         } else {
             rootLoader.setSource("pages/LoginPage.qml")
         }
+
+        TestService.test="t"
+        console.log(TestService.test)
     }
     Connections {
         target: AuthManager

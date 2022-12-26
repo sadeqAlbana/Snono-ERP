@@ -4,9 +4,17 @@ import CoreUI.Forms
 import CoreUI.Base
 import QtQuick.Layouts
 
-AppFormDialog {
+CFormView {
+    id: control
+    padding: 10
     title: qsTr("Add Vendor")
+
+    rowSpacing: 30
+    method: control.method
+    url: control.url
+    initialValues: control.initialValues
     applyHandler: Api.addVendor
+    columns: 4
     CLabel {
         text: qsTr("Name")
     }
@@ -41,4 +49,6 @@ AppFormDialog {
         objectName: "address"
         Layout.fillWidth: true
     }
+
+
 }

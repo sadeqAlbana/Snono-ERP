@@ -151,6 +151,7 @@ qt_add_qml_module(appposfe
     qml/common/AppFormView.qml
     qml/common/AppFormDialog.qml
     qml/main.qml
+    qml/TestService.qml
     qml/screens/LoginScreen.qml
     qml/screens/utils.js
     qml/nav.js

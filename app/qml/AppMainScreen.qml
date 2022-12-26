@@ -20,4 +20,7 @@ MainScreen{
     iconWidth: 177
     iconHeight: 43
 
+
+    Component.onCompleted: console.log("router: " + Router.path)
+
 }

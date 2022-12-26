@@ -20,6 +20,7 @@ Card{
     property string method: "POST";
     property string url;
     required property var applyHandler;
+    header.visible: false
 
 
     GridLayout {
