@@ -35,9 +35,10 @@ CTableViewDelegate {
 
                 layer.enabled: control.enabled
                 layer.effect:  DropShadow{
-                    radius: 32
+                    radius: 3
                     verticalOffset: 1
-                    spread: 0.1
+                    spread: 0
+                    samples: 7
                     color: "silver"
                     cached: true
                     transparentBorder: true
