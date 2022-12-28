@@ -16,8 +16,10 @@ import PosFe
 AppPage {
     title: qsTr("Vendors")
     padding: 10
+    id: page
+
     ColumnLayout {
-        id: page
+        id: layout
         anchors.fill: parent
         anchors.margins: 20
 
@@ -34,12 +36,8 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: {
-                        Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml")
-//                        form.method="POST"
-//                        form.initialValues={}
-//                        form.open();
-                    }
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml")
+
                 },
                 CAction {
                     text: qsTr("Delete")
@@ -94,4 +92,5 @@ AppPage {
     }
 
     //Component.onCompleted: newBillDlg.open();
+
 }

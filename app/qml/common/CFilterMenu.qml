@@ -43,9 +43,7 @@ CMenu {
                     defaultEntry: modelData.options["defaultEntry"]
                     values: modelData.options["values"]?? null;
                     filter: modelData.options["filter"]
-                    //checkable: modelData.options.checkable?? false
                     width: ListView.view.width
-                    //Component.onCompleted: console.log("ttt: "+ JSON.stringify(modelData))
                 }
             }
             DelegateChoice {roleValue: "date"; CDateInput {width: ListView.view.width}}
@@ -119,7 +117,6 @@ CMenu {
 
 
                 }//for loop
-                console.log(JSON.stringify(filter));
 
                 control.clicked(filter);
 

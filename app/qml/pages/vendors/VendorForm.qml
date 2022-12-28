@@ -12,9 +12,8 @@ CFormView {
     rowSpacing: 30
     method: control.method
     url: control.url
-    initialValues: control.initialValues
     applyHandler: Api.addVendor
-    columns: 4
+    columns: 2
     CLabel {
         text: qsTr("Name")
     }
@@ -44,6 +43,7 @@ CFormView {
     CLabel {
         text: qsTr("Address")
     }
+
     CIconTextField {
         leftIcon.name: "cil-location-pin"
         objectName: "address"

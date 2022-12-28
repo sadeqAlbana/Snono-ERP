@@ -25,7 +25,6 @@ Card{
 
     GridLayout {
         id: grid
-        anchors.fill: parent
         columns: 2
     }
 

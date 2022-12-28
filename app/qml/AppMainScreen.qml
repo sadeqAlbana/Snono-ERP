@@ -1,6 +1,6 @@
-import QtQuick;
+import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Basic;
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import QtQml.Models
@@ -10,17 +10,12 @@ import CoreUI.Base
 import CoreUI.Impl
 import CoreUI.Menus
 import QtQuick.Controls.impl as Impl
-import "qrc:/PosFe/qml/nav.js" as NavJSS;
+import "qrc:/PosFe/qml/nav.js" as NavJSS
 
-MainScreen{
-    navBar: NavJSS.navBar();
+MainScreen {
+    navBar: NavJSS.navBar()
     permissionProvider: AuthManager.hasPermission
     icon: "qrc:/images/icons/SS_Logo_Color-cropped.svg"
-
     iconWidth: 177
     iconHeight: 43
-
-
-    Component.onCompleted: console.log("router: " + Router.path)
-
 }

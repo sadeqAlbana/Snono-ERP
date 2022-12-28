@@ -19,7 +19,6 @@ CApplicationWindow {
     property real activityCount: 0
     property bool mobileLayout: height > width
     onActivityCountChanged: {
-        //console.log(activityCount)
         if (activityCount > 0) {
             busySpinner.open()
         } else {
@@ -34,13 +33,7 @@ CApplicationWindow {
 
 
 
-    Connections{
-        target: Router
 
-        function onPathChanged(){
-            console.log("path changed: "  + Router.path)
-        }
-    }
 
 
 
@@ -52,8 +45,7 @@ CApplicationWindow {
             rootLoader.setSource("pages/LoginPage.qml")
         }
 
-        TestService.test="t"
-        console.log(TestService.test)
+
     }
     Connections {
         target: AuthManager
