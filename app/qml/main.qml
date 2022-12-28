@@ -62,6 +62,10 @@ CApplicationWindow {
                 errorDlg.open()
             }
         }
+
+        function onUserChanged(){
+            CoreUI.userIcon=AuthManager.user.avatar
+        }
     }
 
     Connections {

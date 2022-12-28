@@ -26,6 +26,8 @@ Pane {
     Connections{
         target: AuthManager
 
+
+
         function onInvalidCredentails(){
             passwordTF.helpBlockText= qsTr("Invalid Credentials")
 

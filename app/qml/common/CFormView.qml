@@ -23,6 +23,11 @@ Card{
     header.visible: false
 
 
+    Connections{
+        target: Api
+    }
+
+
     GridLayout {
         id: grid
         columns: 2
@@ -42,7 +47,7 @@ Card{
         position: DialogButtonBox.Footer
         spacing: 15
         onReset: form.setInitialValues();
-        onAccepted: form.apply();
+        onApplied: form.apply();
 
         background: RoundedRect{
             radius: CoreUI.borderRadius
@@ -55,7 +60,7 @@ Card{
         CButton{
             text: qsTr("Apply")
             palette: BrandSuccess{}
-            DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+            DialogButtonBox.buttonRole: DialogButtonBox.ApplyRole
 
 
         }
