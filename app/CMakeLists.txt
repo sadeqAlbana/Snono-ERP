@@ -29,43 +29,40 @@ qt_add_executable(appposfe
     ${app_icon_resource_windows}
 )
 
+set(TARGET_SOURCES
+    models/appnetworkedjsonmodel.cpp models/appnetworkedjsonmodel.h
+    models/accountsmodel.cpp models/accountsmodel.h
+    models/barqlocationsmodel.cpp models/barqlocationsmodel.h
+    models/cashiermodel.cpp models/cashiermodel.h
+    models/categoriesmodel.cpp models/categoriesmodel.h
+    models/customersmodel.cpp models/customersmodel.h
+    models/customvendorcartmodel.cpp models/customvendorcartmodel.h
+    models/journalentriesmodel.cpp models/journalentriesmodel.h
+    models/journalentriesitemsmodel.cpp models/journalentriesitemsmodel.h
+    models/ordersmodel.cpp models/ordersmodel.h
+    models/orderitemsmodel.cpp models/orderitemsmodel.h
+    models/orderreturnitemsmodel.cpp models/orderreturnitemsmodel.h
+    models/ordersreturnsmodel.cpp models/ordersreturnsmodel.h
+    models/possessionsmodel.cpp models/possessionsmodel.h
+    models/productsalesreportmodel.cpp models/productsalesreportmodel.h
+    models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
+    models/productsmodel.cpp models/productsmodel.h
+    models/receiptmodel.cpp models/receiptmodel.h
+    models/returnordermodel.cpp models/returnordermodel.h
+    models/stockreportmodel.cpp models/stockreportmodel.h
+    models/taxescheckablemodel.cpp models/taxescheckablemodel.h
+    models/taxesmodel.cpp models/taxesmodel.h
+    models/usersmodel.cpp models/usersmodel.h
+    models/vendorcartmodel.cpp models/vendorcartmodel.h
+    models/vendorsbillsmodel.cpp models/vendorsbillsmodel.h
+    models/vendorsmodel.cpp models/vendorsmodel.h
+    models/charts/saleschartmodel.cpp models/charts/saleschartmodel.h
+    models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
+    models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
+)
 
 
-qt_add_qml_module(appposfe
-    URI "PosFe"
-    VERSION 1.0
-    SOURCES
-        models/appnetworkedjsonmodel.cpp models/appnetworkedjsonmodel.h
-        models/accountsmodel.cpp models/accountsmodel.h
-        models/barqlocationsmodel.cpp models/barqlocationsmodel.h
-        models/cashiermodel.cpp models/cashiermodel.h
-        models/categoriesmodel.cpp models/categoriesmodel.h
-        models/customersmodel.cpp models/customersmodel.h
-        models/customvendorcartmodel.cpp models/customvendorcartmodel.h
-        models/journalentriesmodel.cpp models/journalentriesmodel.h
-        models/journalentriesitemsmodel.cpp models/journalentriesitemsmodel.h
-        models/ordersmodel.cpp models/ordersmodel.h
-        models/orderitemsmodel.cpp models/orderitemsmodel.h
-        models/orderreturnitemsmodel.cpp models/orderreturnitemsmodel.h
-        models/ordersreturnsmodel.cpp models/ordersreturnsmodel.h
-        models/possessionsmodel.cpp models/possessionsmodel.h
-        models/productsalesreportmodel.cpp models/productsalesreportmodel.h
-        models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
-        models/productsmodel.cpp models/productsmodel.h
-        models/receiptmodel.cpp models/receiptmodel.h
-        models/returnordermodel.cpp models/returnordermodel.h
-        models/stockreportmodel.cpp models/stockreportmodel.h
-        models/taxescheckablemodel.cpp models/taxescheckablemodel.h
-        models/taxesmodel.cpp models/taxesmodel.h
-        models/usersmodel.cpp models/usersmodel.h
-        models/vendorcartmodel.cpp models/vendorcartmodel.h
-        models/vendorsbillsmodel.cpp models/vendorsbillsmodel.h
-        models/vendorsmodel.cpp models/vendorsmodel.h
-        models/charts/saleschartmodel.cpp models/charts/saleschartmodel.h
-        models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
-        models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
-
-    QML_FILES
+set(TARGET_QML_SOURCES
     qml/pages/pos/session/SessionsPage.qml
     qml/pages/pos/session/SessionCard.qml
     qml/pages/taxes/TaxTypeDelegate.qml
@@ -127,7 +124,6 @@ qt_add_qml_module(appposfe
     qml/common/ButtonPopup.qml
     qml/common/BusySpinner.qml
     qml/common/CurrencyDelegate.qml
-    qml/common/ReceiptDialog.qml
     qml/common/AppDialog.qml
     qml/common/Spinner.qml
     qml/common/AppToolBar.qml
@@ -155,6 +151,26 @@ qt_add_qml_module(appposfe
     qml/screens/LoginScreen.qml
     qml/screens/utils.js
     qml/nav.js
+)
+
+if(ANDROID)
+    list(APPEND TARGET_QML_SOURCES
+        qml/common/+android/ReceiptDialog.qml)
+else()
+    list(APPEND TARGET_QML_SOURCES
+    qml/common/ReceiptDialog.qml
+)
+
+endif()
+
+qt_add_qml_module(appposfe
+    URI "PosFe"
+    VERSION 1.0
+    SOURCES
+        ${TARGET_SOURCES}
+
+    QML_FILES
+        ${TARGET_QML_SOURCES}
 
 
 )
