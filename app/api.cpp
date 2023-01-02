@@ -194,7 +194,7 @@ void Api::generateImages()
 {
 //    return;
     qDebug()<<"called";
-    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",2232}})->subcribe(
+    PosNetworkManager::instance()->post("/reports/catalogue",QJsonObject{{"start_id",2292}})->subcribe(
                 [this](NetworkResponse *res){
         NetworkManager mgr;
         QList<QImage> images;

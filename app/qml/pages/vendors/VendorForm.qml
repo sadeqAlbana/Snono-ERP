@@ -1,4 +1,6 @@
 import QtQuick
+import QtQuick.Controls
+import QtQuick.Controls.Basic
 import PosFe
 import CoreUI.Forms
 import CoreUI.Base
@@ -8,7 +10,6 @@ CFormView {
     id: control
     padding: 10
     title: qsTr("Add Vendor")
-
     rowSpacing: 30
     method: control.method
     url: control.url
