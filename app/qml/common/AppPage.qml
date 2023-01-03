@@ -6,6 +6,6 @@ import CoreUI.Impl
 
 Card {
     header.visible: false
-    padding: 15
+    padding: 10
     LayoutMirroring.childrenInherit: true
 }

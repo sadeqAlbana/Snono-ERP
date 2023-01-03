@@ -12,10 +12,10 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
+import CoreUI
 
 AppPage{
     title: qsTr("Orders")
-    padding: 10
 //    background: Rectangle{color:"red";}
     ColumnLayout{
         id: page
@@ -99,9 +99,8 @@ AppPage{
 
             actions: [
                 CAction{enabled:tableView.selectedRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
-                        var dialog=Utils.createObject("qrc:/PosFe/qml/pages/orders/OrderDetails.qml",
-                                                      tableView,{order: model.jsonObject(tableView.selectedRow)});
-                        dialog.open();
+                        Router.navigate("qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml",
+                                                      {order: model.jsonObject(tableView.selectedRow)});
                     } },
 
                 CAction{enabled:tableView.selectedRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {

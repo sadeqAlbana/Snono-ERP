@@ -15,7 +15,6 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 AppPage{
     title: qsTr("Products")
-    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;

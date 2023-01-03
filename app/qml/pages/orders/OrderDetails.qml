@@ -50,35 +50,6 @@ Popup {
         height: 500
         title: qsTr("Order Details")
 
-        function test(a) {}
-        CTableView {
-            rowHeightProvider: function (row) {
-                return 50
-            }
-            anchors.fill: parent
-            delegate: DelegateChooser {
-                role: "delegateType"
-                DelegateChoice {
-                    roleValue: "text"
-                    CTableViewDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "currency"
-                    CurrencyDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "percentage"
-                    SuffixDelegate {
-                        suffix: "%"
-                    }
-                }
-            }
 
-            model: OrderItemsModel {
-                Component.onCompleted: {
-                    setRecords(order.pos_order_items)
-                }
-            }
-        }
     }
 }

@@ -84,6 +84,7 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrderDetails.qml
     qml/pages/orders/OrdersReturnsPage.qml
     qml/pages/orders/OrderStatusDelegate.qml
+    qml/pages/orders/OrderDetailsPage.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml

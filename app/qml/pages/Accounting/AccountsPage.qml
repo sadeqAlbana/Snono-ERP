@@ -18,7 +18,6 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 AppPage{
     title: qsTr("Accounts")
-    padding: 10
     Connections{
         target: Api
         function onDepositCashResponseReceived(reply) {

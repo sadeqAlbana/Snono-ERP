@@ -13,7 +13,6 @@ import PosFe
 
 AppPage{
     title: qsTr("Categories")
-    padding: 10
 
     Connections{
         target: Api

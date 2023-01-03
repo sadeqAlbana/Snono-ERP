@@ -15,7 +15,6 @@ import Qt5Compat.GraphicalEffects
 import PosFe
 AppPage{
     title: qsTr("Customers")
-    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;

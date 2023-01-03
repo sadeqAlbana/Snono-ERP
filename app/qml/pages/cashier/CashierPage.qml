@@ -20,7 +20,6 @@ AppPage{
     //    palette.window: "transparent"
     background: Rectangle{color: "transparent"}
     LayoutMirroring.enabled: false
-    padding: 10
     property bool pay: false
     property int sessionId : -1
 

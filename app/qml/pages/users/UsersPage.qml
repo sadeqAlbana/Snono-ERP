@@ -16,7 +16,6 @@ import PosFe
 AppPage{
 
     title: qsTr("Users")
-    padding: 15
     ColumnLayout{
         id: page
         anchors.fill: parent;

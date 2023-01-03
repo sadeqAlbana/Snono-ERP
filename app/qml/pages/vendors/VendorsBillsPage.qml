@@ -19,7 +19,6 @@ AppPage{
     ColumnLayout{
         id: page
         anchors.fill: parent;
-        anchors.margins: 20
         AppToolBar{
             id: toolBar
             tableView: tableView

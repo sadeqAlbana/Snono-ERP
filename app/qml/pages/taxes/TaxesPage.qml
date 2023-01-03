@@ -15,7 +15,6 @@ import PosFe
 AppPage{
 
     title: qsTr("Taxes")
-    padding: 15
     ColumnLayout{
         id: page
         anchors.fill: parent;

@@ -18,7 +18,6 @@ import  PosFe
 AppPage{
 
     title: qsTr("Journal Entries Items")
-    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;

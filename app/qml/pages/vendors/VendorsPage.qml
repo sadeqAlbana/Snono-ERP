@@ -15,13 +15,11 @@ import PosFe
 
 AppPage {
     title: qsTr("Vendors")
-    padding: 10
     id: page
 
     ColumnLayout {
         id: layout
         anchors.fill: parent
-        anchors.margins: 20
 
         AppToolBar {
             id: toolBar
@@ -45,15 +43,6 @@ AppPage {
                     onTriggered: tableView.removeVendor()
                 }
             ]
-
-
-
-//            AddVendorDialog {
-//                id: dialog
-//                onAddVendor: model.addVendor(name, email, address, phone)
-//            }
-
-
 
 
             function removeVendor() {
@@ -90,7 +79,4 @@ AppPage {
             } //model end
         }
     }
-
-    //Component.onCompleted: newBillDlg.open();
-
 }

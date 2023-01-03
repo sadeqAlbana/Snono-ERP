@@ -16,7 +16,6 @@ import CoreUI.Palettes
 import PosFe
 AppPage{
     title: qsTr("Products")
-    padding: 10
     ColumnLayout{
         id: page
         anchors.fill: parent;

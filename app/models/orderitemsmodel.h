@@ -1,10 +1,10 @@
 #ifndef ORDERITEMSMODEL_H
 #define ORDERITEMSMODEL_H
 
-#include "jsonmodel.h"
+#include "qmljsonmodel.h"
 #include <QQmlEngine>
 
-class OrderItemsModel : public JsonModel
+class OrderItemsModel : public QmlJsonModel
 {
     Q_OBJECT
     QML_ELEMENT
