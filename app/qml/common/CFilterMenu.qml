@@ -15,14 +15,14 @@ CMenu {
     signal clicked(var filter);
     implicitWidth: 300
     contentItem: ListView {
-        implicitHeight: count? contentHeight : 0
-        model: control.model
+        implicitHeight: contentHeight
+        model: control.contentModel
         interactive: Window.window
                      ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height
                      : false
         clip: false
 
-        section.property: "label"
+        section.property: "objectName"
         section.delegate: CLabel{
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
@@ -32,26 +32,7 @@ CMenu {
         }
 
 
-        delegate: DelegateChooser{
-            role: "type"
-            DelegateChoice {roleValue: "text"; CTextField {width: ListView.view.width}}
-            DelegateChoice {roleValue: "combo"; CFilterComboBox {
-                    dataUrl: modelData.options["dataUrl"]?? ""
-                    editable: modelData.options["editable"];
-                    valueRole: modelData.options["valueRole"]
-                    textRole: modelData.options["textRole"]
-                    defaultEntry: modelData.options["defaultEntry"]
-                    values: modelData.options["values"]?? null;
-                    filter: modelData.options["filter"]
-                    width: ListView.view.width
-                }
-            }
-            DelegateChoice {roleValue: "date"; CDateInput {width: ListView.view.width}}
 
-            DelegateChoice {roleValue: "check"; CheckBox {width: ListView.view.width;
-                    text: modelData.inner_label ;checked: false;}}
-
-        }
 
         currentIndex: control.currentIndex
 
@@ -64,23 +45,23 @@ CMenu {
             function apply(){
                 let filter={};
                 for(var i=0; i<ListView.view.count; i++){
-                    let data =ListView.view.model[i]
+                    let data =control.model[i]
                     let item=ListView.view.itemAtIndex(i)
                     let value=null;
 
-                    if(data.type==="text"){
+                    if(item instanceof TextInput){
                         if(item.text.length){
                             value=item.text
                         }
                     }
 
-                    if(data.type==="date"){
+                    if(item instanceof CDateInput){
                         if(item.acceptableInput)
                             value=item.text
                     }
 
                     //use different delegate for checkable combo?
-                    if(data.type==="combo"){
+                    if(item instanceof ComboBox){
 
                         {
                             if(data.checkable){
@@ -96,7 +77,7 @@ CMenu {
 
                     }
 
-                    if(data.type==="check"){
+                    if(item instanceof CheckBox){
                         value=item.checked
                     }
 
@@ -124,23 +105,22 @@ CMenu {
 
             function reset(){
                 for(var i=0; i<ListView.view.count; i++){
-                    let data =ListView.view.model[i]
                     let item=ListView.view.itemAtIndex(i)
-                    if(data.type==="text"){
+                    if(item instanceof TextInput){
                         item.clear();
                     }
 
-                    if(data.type==="date"){
+                    if(item instanceof CDateInput){
                         if(item.acceptableInput)
                             item.clearDate();
                     }
 
 
-                    if(data.type==="combo"){
+                    if(item instanceof ComboBox){
                         item.currentIndex=0;
                     }
 
-                    if(data.type==="check"){
+                    if(item instanceof CheckBox){
                         item.checked=false;
                     }
                 }
@@ -169,5 +149,32 @@ CMenu {
             }
         }
 
+    }//contentItem
+
+    Repeater{
+        model: control.model;
+
+        delegate: DelegateChooser{
+            role: "type"
+            DelegateChoice {roleValue: "text"; CTextField {
+                    width: control.contentItem.width; objectName: modelData.label;}}
+            DelegateChoice {roleValue: "combo"; CFilterComboBox {
+                    dataUrl: modelData.options["dataUrl"]?? ""
+                    editable: modelData.options["editable"];
+                    valueRole: modelData.options["valueRole"]
+                    textRole: modelData.options["textRole"]
+                    defaultEntry: modelData.options["defaultEntry"]
+                    values: modelData.options["values"]?? null;
+                    filter: modelData.options["filter"]
+                    width: control.contentItem.width
+                    objectName: modelData.label;
+                }
+            }
+            DelegateChoice {roleValue: "date"; CDateInput {width: control.contentItem.width;objectName: modelData.label;}}
+
+            DelegateChoice {roleValue: "check"; CheckBox {width: control.contentItem.width;objectName: modelData.label;
+                    text: modelData.inner_label ;checked: false;}}
+
+        }
     }
 }

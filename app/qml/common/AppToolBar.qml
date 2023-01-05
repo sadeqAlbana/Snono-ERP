@@ -28,8 +28,8 @@ CToolBar {
     Layout.alignment: Qt.AlignVCenter
     Layout.preferredHeight: 60
     palette.button: "transparent"
-    leftPadding: 10
-    rightPadding: 10
+//    leftPadding: 10
+//    rightPadding: 10
     RowLayout{
         spacing: 15
         anchors.fill: parent;
