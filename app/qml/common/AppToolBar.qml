@@ -14,6 +14,8 @@ import Qt.labs.qmlmodels 1.0
 import QtQuick.Layouts
 import CoreUI.Palettes
 import CoreUI.Menus
+import CoreUI
+
 CToolBar {
     id: control
     signal search(var searchString);
@@ -33,8 +35,8 @@ CToolBar {
         anchors.fill: parent;
         CMenuBar{
 
-            spacing: -5
-            Layout.preferredHeight: 50
+            spacing: 0
+//            Layout.preferredHeight: 40
             Layout.alignment: Qt.AlignVCenter
             CActionsMenu{
                 title: qsTr("Actions");
@@ -44,14 +46,14 @@ CToolBar {
             }//Menu
 
             CMenu{
-                title: qsTr("columns");
+                title: qsTr("Columns");
                 icon:"cil-list"
                 Repeater{
                     model: tableView.columns
                     CMenuItem{
                         checkable: true
                         text: tableView.model.headerData(modelData,Qt.Horizontal)
-                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
+//                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
                         checked: true
                         onCheckedChanged: {
                             if(checked)
@@ -63,8 +65,6 @@ CToolBar {
                     }
                 }
             }//Menu
-
-
 
             CFilterMenu{
                 padding: 20
@@ -79,8 +79,6 @@ CToolBar {
                 //it's better to implement a custom content item
                 model: control.advancedFilter
             }
-
-
 
             //now delegate choice for filter
         }//MenuBar

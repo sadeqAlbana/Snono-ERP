@@ -15,7 +15,7 @@ CMenu {
     signal clicked(var filter);
     implicitWidth: 300
     contentItem: ListView {
-        implicitHeight: contentHeight
+        implicitHeight: count? contentHeight : 0
         model: control.model
         interactive: Window.window
                      ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height

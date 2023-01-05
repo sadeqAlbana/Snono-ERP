@@ -61,7 +61,7 @@ void StockReportModel::print()
 
     QTextDocument doc;
     doc.setHtml(text);
-    QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+    QPrinter printer(QPrinterInfo::defaultPrinter());
     printer.setPageSize(QPageSize::A4);
     doc.print(&printer);
 

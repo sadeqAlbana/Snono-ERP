@@ -14,7 +14,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 import PosFe
 AppPage{
-    title: qsTr("Products")
+    title: qsTr("Stock Report")
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -35,7 +35,7 @@ AppPage{
 //            delegate: AppDelegateChooser{}
 
             actions: [
-                Action{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
+                CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
             model: StockReportModel{
                 id: model
