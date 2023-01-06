@@ -38,8 +38,8 @@ AppPage{
             tableView: tableView
 
             advancedFilter:  [
-                {"type": "date","label": "from","key": "from"},
-                {"type": "date","label": "to","key": "to"}
+                {"type": "date","label": qsTr("from"),"key": "from"},
+                {"type": "date","label": qsTr("to"),"key": "to"}
 
             ]
             onSearch:(searchString)=> {

@@ -37,8 +37,8 @@ AppPage{
 
             advancedFilter:  [
                 {"type": "text","label": qsTr("Barcode"),"key": "barcode","dynamic": false, "category": null,"options":{"placeholderText":"All..."}},
-                {"type": "combo","label": "Category","key": "category_id","dynamic": false, "category": null,
-                    "options":{"editable":true,"defaultEntry":{"name":"All Categories","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/categories",
+                {"type": "combo","label": qsTr("Category"),"key": "category_id","dynamic": false, "category": null,
+                    "options":{"editable":true,"defaultEntry":{"name":qsTr("All Categories"),"id":null},"textRole": "name", "valueRole": "id","dataUrl": "/categories",
                     }},
 
                 {"type": "check","label":"","inner_label": qsTr("Only Variants"),"key": "only_variants" ,"dynamic": false, "category" :null},

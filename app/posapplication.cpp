@@ -147,7 +147,7 @@ void PosApplication::updateAppLanguage()
     if(translator){
         QCoreApplication::installTranslator(translator);
         if(language()==QLocale::Arabic){
-            AppSettings::instance()->setFont("STV");
+            AppSettings::instance()->setFont("Hacen Liner Screen");
             this->updateAppFont();
         }
     }

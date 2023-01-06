@@ -21,20 +21,25 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("com");
     QCoreApplication::setOrganizationDomain("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
+    qputenv("QML_DISABLE_DISTANCEFIELD", "1"); //this fixes the artifacts in arabic fonts
+
+    //qputenv("QT_ENABLE_HIGHDPI_SCALING",0);
 #ifndef Q_OS_ANDROID
-    qputenv("QT_FONT_DPI","96");
+   // qputenv("QT_FONT_DPI","96");
+    qputenv("QT_ENABLE_HIGHDPI_SCALING","0");
+
+    //QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
 
 
-#ifndef Q_OS_ANDROID
-    QApplication::setAttribute(Qt::AA_Use96Dpi);
-#endif
 
 
 
     PosApplication a(argc, argv);
     QFont font=QApplication::font();
-    //font.setFamily("Segoe UI");
+    //font.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
+
+   // font.setFamily("Segoe UI");
     font.setFamilies({
                      "Segoe UI"
                      "Helvetica Neue",
@@ -49,11 +54,7 @@ int main(int argc, char *argv[])
     font.setWeight(QFont::Weight::Normal);
     font.setPixelSize(16);
     QApplication::setFont(font);
-//    QDirIterator it(":/", QStringList{{"main.qml"}}, QDir::Files, QDirIterator::Subdirectories);
-//    while (it.hasNext()){
-//        QString next= it.next();
-//        qDebug().noquote()<<QString("PosFe/%1").arg(it.filePath());
-//    }
+
 
 
     return a.exec();

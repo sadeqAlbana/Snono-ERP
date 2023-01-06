@@ -40,15 +40,15 @@ AppPage{
             id: toolBar
             tableView: tableView
             advancedFilter:  [
-                {"type": "text","label": "Customer Name","key": "customer_name","options":{"placeholderText":"All..."}},
-                {"type": "text","label": "Customer Phone","key": "customer_phone","options":{"placeholderText":"All..."}},
-                {"type": "text","label": "Customer Address","key": "customer_address","options":{"placeholderText":"All..."}},
+                {"type": "text","label": qsTr("Customer Name"),"key": "customer_name","options":{"placeholderText":qsTr("All...")}},
+                {"type": "text","label": qsTr("Customer Phone"),"key": "customer_phone","options":{"placeholderText":qsTr("All...")}},
+                {"type": "text","label": qsTr("Customer Address"),"key": "customer_address","options":{"placeholderText":qsTr("All...")}},
 
-                {"type": "combo","label": "product","key": "products",
-                    "options":{"checkable": true,"editable":true,"defaultEntry":{"name":"All Products","id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
+                {"type": "combo","label": qsTr("product"),"key": "products",
+                    "options":{"checkable": true,"editable":true,"defaultEntry":{"name":qsTr("All Products"),"id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
                         "filter":{"onlyVariants":true}}},
-                {"type": "date","label": "from","key": "from"},
-                {"type": "date","label": "to","key": "to"}
+                {"type": "date","label": qsTr("from"),"key": "from"},
+                {"type": "date","label": qsTr("to"),"key": "to"}
 
             ]
             onSearch:(searchString)=> {

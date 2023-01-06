@@ -166,7 +166,7 @@ Page{
                 }
 
                 NewDashboardWidget{
-                    title: "Stock Sale"
+                    title: qsTr("Stock Sale")
                     palette.window : "#4f5d73"
                     icon: "qrc:/icons/CoreUI/free/cil-bar-chart.svg"
                     DashboardWidgetTable{
