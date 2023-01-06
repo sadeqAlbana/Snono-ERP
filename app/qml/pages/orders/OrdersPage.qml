@@ -17,6 +17,8 @@ import CoreUI
 AppPage{
     title: qsTr("Orders")
 //    background: Rectangle{color:"red";}
+
+    StackView.onActivated: model.refresh();
     ColumnLayout{
         id: page
         //tableView.actions
@@ -76,18 +78,6 @@ AppPage{
                         model.requestData();
                     }
                 }
-                onReturnOrderResponse:(reply)=> {
-                    if(reply.status===200){
-                        model.requestData();
-                    }
-                }
-
-                onReturnableItemsResponse:(reply)=> {
-                    var dialog=Utils.createObject("qrc:/PosFe/qml/pages/orders/OrderReturnDialog.qml",
-                                                  tableView,{order: reply.order});
-                    dialog.accepted.connect(function(orderId, items){model.returnOrder(orderId,items)});
-                    dialog.open();
-                }
             }
 
 
@@ -107,8 +97,9 @@ AppPage{
                         deliveryStatusDialog.open();
                     } },
                 CAction{enabled:tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-action-undo"; onTriggered: {
-                        var order =model.jsonObject(tableView.selectedRow);
-                        model.returnableItems(order.id);
+                        let order =model.jsonObject(tableView.selectedRow);
+                        Router.navigate("qrc:/PosFe/qml/pages/orders/ReturnOrderPage.qml",{"order": order})
+
                     }},
                 CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
                 CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {

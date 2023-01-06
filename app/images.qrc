@@ -16,5 +16,6 @@
         <file>qml/pages/vendors/VendorForm.qml</file>
         <file>qml/TestService.qml</file>
         <file>qml/pages/orders/OrderDetailsPage.qml</file>
+        <file>qml/pages/orders/ReturnOrderPage.qml</file>
     </qresource>
 </RCC>

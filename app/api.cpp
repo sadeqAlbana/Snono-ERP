@@ -293,3 +293,26 @@ Api *Api::instance()
 
     return m_api;
 }
+
+
+void Api::returnOrder(const int &orderId, const QJsonArray items)
+{
+    QJsonObject params;
+    params["order_id"]=orderId;
+    params["items"]=items;
+    PosNetworkManager::instance()->post("/orders/return",params)->subcribe([this](NetworkResponse *res){
+
+        emit returnOrderResponse(res->json().toObject());
+    });
+}
+
+
+void Api::returnableItems(const int &orderId)
+{
+    QJsonObject params;
+    params["order_id"]=orderId;
+    PosNetworkManager::instance()->post("/order/returnableItems",params)->subcribe([this](NetworkResponse *res){
+
+        emit returnableItemsResponse(res->json().toObject());
+    });
+}

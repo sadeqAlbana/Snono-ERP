@@ -16,7 +16,7 @@ OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   },
                                                                   parent)
 {
-    requestData();
+    //requestData();
 }
 
 void OrdersModel::updateDeliveryStatus(const int &orderId, const QString &status)

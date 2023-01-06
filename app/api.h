@@ -30,6 +30,8 @@ public:
     Q_INVOKABLE void generateImages();
 
     Q_INVOKABLE void addVendor(const QJsonObject &data);
+    Q_INVOKABLE void returnableItems(const int &orderId);
+    Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
 
 signals:
     void processCustomBillResponse(QJsonObject reply);
@@ -44,6 +46,8 @@ signals:
     void bulckStockAdjustmentReply(const QJsonObject &reply);
     void billReturnReply(const QJsonObject &reply);
     void vendorAddReply(QJsonObject reply);
+    void returnOrderResponse(QJsonObject reply);
+    void returnableItemsResponse(QJsonObject reply);
 
 private:
     static Api *m_api;
