@@ -316,3 +316,22 @@ void Api::returnableItems(const int &orderId)
         emit returnableItemsResponse(res->json().toObject());
     });
 }
+
+
+void Api::addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address)
+{
+    addCustomer(QJsonObject{{"name",name},
+                            {"first_name",firstName},
+                            {"last_name",lastName},
+                            {"email",email},
+                            {"phone",phone},
+                            {"address",address}});
+}
+
+void Api::addCustomer(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->post("/customers/add",data)->subcribe(
+                [this](NetworkResponse *res){
+        emit addCustomerReply(res->json().toObject());
+    });
+}

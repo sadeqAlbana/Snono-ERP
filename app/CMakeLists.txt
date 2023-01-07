@@ -105,6 +105,7 @@ set(TARGET_QML_SOURCES
     qml/pages/dashboard/DashboardRowItem.qml
     qml/pages/dashboard/DashboardWidgetTable.qml
     qml/pages/customers/AddCustomerDialog.qml
+    qml/pages/customers/AddCustomerPage.qml
     qml/pages/customers/CustomersPage.qml
     qml/pages/customers/CustomersBillsPage.qml
     qml/pages/categories/CategoriesPage.qml

@@ -17,7 +17,6 @@ CApplicationWindow {
     title: qsTr("POS")
     visible: true
     property real activityCount: 0
-    property bool mobileLayout: height > width
     onActivityCountChanged: {
         if (activityCount > 0) {
             busySpinner.open()

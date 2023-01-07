@@ -22,7 +22,6 @@ Card{
     required property var applyHandler;
     header.visible: false
 
-
     Connections{
         target: Api
     }
@@ -49,6 +48,7 @@ Card{
         onReset: form.setInitialValues();
         onApplied: form.apply();
 
+
         background: RoundedRect{
             radius: CoreUI.borderRadius
             border.color: palette.shadow
@@ -68,7 +68,8 @@ Card{
         CButton{
             text: qsTr("Cancel")
             palette: BrandDanger{}
-            DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole
+            DialogButtonBox.buttonRole: DialogButtonBox.Cancel
+            onClicked: Router.back();
         }
 
         CButton{

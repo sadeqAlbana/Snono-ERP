@@ -32,6 +32,10 @@ public:
     Q_INVOKABLE void addVendor(const QJsonObject &data);
     Q_INVOKABLE void returnableItems(const int &orderId);
     Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
+     void addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address);
+    Q_INVOKABLE void addCustomer(const QJsonObject &data);
+
+
 
 signals:
     void processCustomBillResponse(QJsonObject reply);
@@ -48,6 +52,7 @@ signals:
     void vendorAddReply(QJsonObject reply);
     void returnOrderResponse(QJsonObject reply);
     void returnableItemsResponse(QJsonObject reply);
+    void addCustomerReply(QJsonObject reply);
 
 private:
     static Api *m_api;
