@@ -184,6 +184,7 @@ Page{
                     target: Api;
                     function onDashboardReply(reply){
                         dashboard=reply;
+                        console.log(JSON.stringify(reply));
                         if(dashboard.sales_chart.data.length<2)
                             return
                         salesChartModel.setRecords(dashboard.sales_chart.data);
