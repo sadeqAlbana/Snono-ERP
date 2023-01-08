@@ -139,8 +139,8 @@ CApplicationWindow {
                     text: qsTr("Logout")
                     Layout.margins: 15
                     onClicked: {
-                        close()
                         AuthManager.logout()
+                        errorDlg.close();
                     }
                 }
             }

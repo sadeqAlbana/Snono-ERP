@@ -153,7 +153,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
     while(!line.isNull()){
         QStringList columns=line.split(',');
         //qDebug()<<"columns size: "<<columns.size();
-            qDebug()<<"Stock: " <<columns.value(1) << " Actual: " << columns.value(3);
+            qDebug()<<"Stock: " <<columns.value(1) << " Actual: " << columns.value(2);
             QString name=columns.value(0);
             int stock=columns.value(1).toInt();
             bool ok=false;
@@ -161,7 +161,12 @@ bool Api::bulckStockAdjustment(const QUrl &url)
             if(ok){
 
                 int difference=actual-stock;
-                array << QJsonObject{{"name",name},{"difference",difference}};
+                if(difference!=0){
+                    array << QJsonObject{{"name",name},{"difference",difference}};
+
+                }
+
+
             }
 
 
