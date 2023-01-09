@@ -101,10 +101,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Sales Today"), value: dashboard? dashboard["sales_day"] : ""},
-                            {label:qsTr("Sales This Month"), value: dashboard? dashboard["sales_month"] : ""},
-                            {label: qsTr("Sales Returns Today"), value: dashboard? dashboard["sales_returns_month"] : ""},
-                            {label: qsTr("Sales Returns This Month"), value: dashboard? dashboard["sales_day"] : ""}
+                            {label: qsTr("Sales Today"), value: dashboard? Utils.formatCurrency(dashboard["sales_day"]) : ""},
+                            {label:qsTr("Sales This Month"), value: dashboard? Utils.formatCurrency(dashboard["sales_month"]) : ""},
+                            {label: qsTr("Sales Returns Today"), value: dashboard? Utils.formatCurrency(dashboard["sales_returns_month"]) : ""},
+                            {label: qsTr("Sales Returns This Month"), value: dashboard? Utils.formatCurrency(dashboard["sales_day"]) : ""}
                         ]
                     }
                 }
@@ -158,9 +158,9 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Daily Sales Profits"), value: dashboard? dashboard["daily_sales_profits"] : ""},
-                            {label:qsTr("Monthly Sales Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""},
-                            {label:qsTr("All Time Profits"), value: dashboard? dashboard["monthly_sales_profits"] : ""}
+                            {label: qsTr("Daily Sales Profits"), value: dashboard? Utils.formatCurrency(dashboard["daily_sales_profits"]) : ""},
+                            {label:qsTr("Monthly Sales Profits"), value: dashboard? Utils.formatCurrency(dashboard["monthly_sales_profits"]) : ""},
+                            {label:qsTr("All Time Profits"), value: dashboard? Utils.formatCurrency(dashboard["monthly_sales_profits"]) : ""}
                         ]
                     }
                 }
