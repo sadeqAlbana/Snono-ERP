@@ -16,6 +16,7 @@ import PosFe
 AppPage {
     title: qsTr("Vendors")
     id: page
+    StackView.onActivated: model.refresh();
 
     ColumnLayout {
         id: layout
@@ -34,7 +35,21 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml")
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml",{"applyHandler": Api.addVendor,
+                                                     "title": qsTr("Add Vendor")
+                                                 })
+
+                },
+                CAction {
+                    text: qsTr("Edit")
+                    icon.name: "cil-pen"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml",
+                                                 {"applyHandler": Api.updateVendor,
+                                                     "title": qsTr("Edit Vendor"),
+
+                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 })
+                    enabled:tableView.validRow; permission: "prm_edit_vendors";
 
                 },
                 CAction {
@@ -55,16 +70,7 @@ AppPage {
             model: VendorsModel {
                 id: model
 
-                onVendorAddReply: {
-                    if (reply.status === 200) {
-                        toastrService.push("Success", reply.message,
-                                           "success", 2000)
-                        model.requestData()
-                    } else {
-                        toastrService.push("Error", reply.message,
-                                           "error", 2000)
-                    }
-                } //slot end
+
 
                 onVendorRemoveReply: {
                     if (reply.status === 200) {

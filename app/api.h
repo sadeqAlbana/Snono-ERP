@@ -35,6 +35,7 @@ public:
      void addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address);
     Q_INVOKABLE void addCustomer(const QJsonObject &data);
 
+     Q_INVOKABLE void updateVendor(const QJsonObject &data);
 
 
 signals:
@@ -53,6 +54,7 @@ signals:
     void returnOrderResponse(QJsonObject reply);
     void returnableItemsResponse(QJsonObject reply);
     void addCustomerReply(QJsonObject reply);
+    void updateVendorReply(QJsonObject reply);
 
 private:
     static Api *m_api;

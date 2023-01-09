@@ -5,15 +5,29 @@ import PosFe
 import CoreUI.Forms
 import CoreUI.Base
 import QtQuick.Layouts
-
+import CoreUI
 CFormView {
     id: control
     padding: 10
-    title: qsTr("Add Vendor")
     rowSpacing: 30
     method: control.method
     url: control.url
-    applyHandler: Api.addVendor
+
+    Connections{
+        target: Api
+        function onUpdateVendorReply(reply){
+            if(reply.status===200){
+                Router.back();
+            }
+        }
+
+        function vendorAddReply(reply){
+            if(reply.status===200){
+                Router.back();
+            }
+        }
+    }
+
     columns: 2
     CLabel {
         text: qsTr("Name")
@@ -50,6 +64,4 @@ CFormView {
         objectName: "address"
         Layout.fillWidth: true
     }
-
-
 }

@@ -155,7 +155,7 @@ AppPage{
                 purchaseDialog.open();
 
             }
-            function openEditDialog(){
+            function                openEditDialog(){
                 editDlg.product=model.jsonObject(tableView.selectedRow);
                 editDlg.open();
 

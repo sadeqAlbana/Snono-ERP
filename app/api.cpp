@@ -340,3 +340,11 @@ void Api::addCustomer(const QJsonObject &data)
         emit addCustomerReply(res->json().toObject());
     });
 }
+
+void Api::updateVendor(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->put("/vendors",data)->subcribe(
+                [this](NetworkResponse *res){
+        emit updateVendorReply(res->json().toObject());
+    });
+}

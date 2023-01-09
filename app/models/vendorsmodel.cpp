@@ -1,7 +1,6 @@
 #include "vendorsmodel.h"
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
-#include "authmanager.h"
 VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
                                                                     {"id",tr("ID")} ,
                                                                     {"name",tr("Name")} ,
@@ -10,9 +9,7 @@ VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
                                                                     {"phone",tr("Phone")} ,
                                                                     {"account_id",tr("Account ID")}},parent)
 {
-    if(AuthManager::instance()->hasPermission("prm_view_vendors")){
-        requestData();
-    }
+
 }
 
 void VendorsModel::addVendor(const QString &name, const QString &email, const QString &address, const QString &phone)
