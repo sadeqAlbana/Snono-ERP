@@ -69,6 +69,7 @@ set(TARGET_QML_SOURCES
     qml/pages/taxes/TaxesPage.qml
     qml/pages/taxes/AddTaxPage.qml
     qml/pages/users/UsersPage.qml
+    qml/pages/users/PermissionsPage.qml
     qml/pages/LoginPage.qml
     qml/pages/ReceiptPage.qml
     qml/pages/Accounting/DepositMoneyDialog.qml

@@ -18,5 +18,6 @@
         <file>qml/pages/orders/OrderDetailsPage.qml</file>
         <file>qml/pages/orders/ReturnOrderPage.qml</file>
         <file>qml/pages/customers/AddCustomerPage.qml</file>
+        <file>qml/pages/users/PermissionsPage.qml</file>
     </qresource>
 </RCC>
