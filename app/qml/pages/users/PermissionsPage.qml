@@ -21,57 +21,58 @@ AppPage{
         id: page
         anchors.fill: parent;
 
-        Rectangle {
-            id: root
-            Layout.preferredWidth: 300
-            Layout.preferredHeight: 300
-            width: 300; height: 400
-
-
-
-
 
 
             ListView {
                 id: view
-
+                Layout.preferredWidth: 300
+                Layout.preferredHeight: 300
                 Rectangle{
                     parent: view
                     border.color: "black"
                     color: "transparent";
                     z: -1
                     anchors.fill: parent;
+
                 }
 
-                anchors { fill: parent; margins: 2 }
 
-                model: petsModel
+                model:     ListModel {
+                    id: petsModel
+                    ListElement {
+                        name: "Polly"
+                        type: "Parrot"
+                        age: 12
+                        size: "Small"
+                    }
+                    ListElement {
+                        name: "Penny"
+                        type: "Turtle"
+                        age: 4
+                        size: "Small"
+                    }
+                }
+
                 delegate: ItemDelegate{
+                    text: model.name
+
+                    MouseArea{
+                        anchors.fill: parent
+                        drag.target: parent
+                        Drag.keys: [ "red" ]
+
+
+                    }
 
                 }
 
                 spacing: 4
                 cacheBuffer: 50
             }
-        }
+
 
     }//ColumnLayout end
 
-    ListModel {
-        id: petsModel
-        ListElement {
-            name: "Polly"
-            type: "Parrot"
-            age: 12
-            size: "Small"
-        }
-        ListElement {
-            name: "Penny"
-            type: "Turtle"
-            age: 4
-            size: "Small"
-        }
-    }
 
 
 
