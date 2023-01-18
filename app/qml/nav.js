@@ -130,13 +130,13 @@ function navBar(){
                     "path":"qrc:/PosFe/qml/pages/users/UsersPage.qml",
                     "permission": "prm_view_users"
                 },
-                {
-                    "title":qsTr("Permissions"),
-                    "category":qsTr("MAIN"),
-                    "image":"cil-user",
-                    "path":"qrc:/PosFe/qml/pages/users/PermissionsPage.qml",
-                    "permission": "prm_view_users"
-                },
+//                {
+//                    "title":qsTr("Permissions"),
+//                    "category":qsTr("MAIN"),
+//                    "image":"cil-user",
+//                    "path":"qrc:/PosFe/qml/pages/users/PermissionsPage.qml",
+//                    "permission": "prm_view_users"
+//                },
                 {
                     "title":qsTr("Reports"),
                     "category":qsTr("MAIN"),
