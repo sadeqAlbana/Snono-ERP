@@ -28,6 +28,7 @@
 #include <QResource>
 #include "utils.h"
 #include <QStandardPaths>
+#include <networkresponse.h>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
     m_engine(new QQmlApplicationEngine(this))
 {
@@ -44,7 +45,9 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
 
     m_engine->rootContext()->setContextProperty("App",this);
     m_engine->rootContext()->setContextProperty("AuthManager",AuthManager::instance());
-    m_engine->rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
+//    m_engine->rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
+    qmlRegisterSingletonInstance("PosFe",1,0,"NetworkManager",PosNetworkManager::instance());
+
     m_engine->rootContext()->setContextProperty("NumberEditor",nb);
     m_engine->rootContext()->setContextProperty("ReceiptGenerator",gen);
     m_engine->rootContext()->setContextProperty("Api",Api::instance());
@@ -180,7 +183,7 @@ QStringList PosApplication::availablePrinters()
 void PosApplication::downloadVersion(const int version)
 {
 
-    QNetworkRequest request = PosNetworkManager::instance()->createRequest(QString("/misc/systemupdate/download/%1").arg(version));
+    QNetworkRequest request = PosNetworkManager::instance()->createNetworkRequest(QString("/misc/systemupdate/download/%1").arg(version));
     request.setTransferTimeout(60*60*1000); // 1 hour
 
     PosNetworkManager::instance()->get(request)

@@ -1,5 +1,7 @@
 #include "possessionsmodel.h"
 #include "../posnetworkmanager.h"
+#include <networkresponse.h>
+
 PosSessionsModel::PosSessionsModel(QObject *parent) :  AppNetworkedJsonModel ("/posssession/opened",
                                                                               JsonModelColumnList{}
 //                                                                              {"id","ID"} ,
@@ -14,14 +16,14 @@ PosSessionsModel::PosSessionsModel(QObject *parent) :  AppNetworkedJsonModel ("/
 
 void PosSessionsModel::newSession()
 {
-    PosNetworkManager::instance()->get("/posssession/request")->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->get(QUrl("/posssession/request"))->subcribe([this](NetworkResponse *res){
         emit newSessionResponse(res->json().toObject());
     });
 }
 
 void PosSessionsModel::closeSession(const int &sessionId)
 {
-    PosNetworkManager::instance()->post("/posssession/close",
+    PosNetworkManager::instance()->post(QUrl("/posssession/close"),
                                         QJsonObject{{"id",sessionId}})->subcribe([this](NetworkResponse *res){
         emit closeSessionResponse(res->json().toObject());
     });
@@ -29,7 +31,7 @@ void PosSessionsModel::closeSession(const int &sessionId)
 
 void PosSessionsModel::currentSession()
 {
-    PosNetworkManager::instance()->get("/posssession/current")->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->get(QUrl("/posssession/current"))->subcribe([this](NetworkResponse *res){
         emit currentSessionResponse(res->json().toObject());
     });
 }

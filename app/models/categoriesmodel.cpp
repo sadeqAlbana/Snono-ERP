@@ -1,6 +1,7 @@
 #include "categoriesmodel.h"
 #include "../posnetworkmanager.h"
 
+#include <networkresponse.h>
 
 CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/categories",{
                                                                           {"id",tr("ID")},

@@ -1,5 +1,7 @@
 #include "customersmodel.h"
 #include "../posnetworkmanager.h"
+#include <networkresponse.h>
+
 CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/customers",{
                                                                          {"id",tr("ID")} ,
                                                                          {"name",tr("Name")} ,
@@ -13,7 +15,7 @@ CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/custo
 
 void CustomersModel::addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address)
 {
-    PosNetworkManager::instance()->post("/customers/add",QJsonObject{{"name",name},
+    PosNetworkManager::instance()->post(QUrl("/customers/add"),QJsonObject{{"name",name},
                                                                                   {"first_name",firstName},
                                                                                   {"last_name",lastName},
                                                                                   {"email",email},

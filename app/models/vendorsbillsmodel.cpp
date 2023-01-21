@@ -1,6 +1,8 @@
 #include "vendorsbillsmodel.h"
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
+#include "networkresponse.h"
+
 VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
                                                                                              {"id",tr("ID")} ,
                                                                                              {"name",tr("Name")} ,
@@ -19,7 +21,7 @@ VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/
 
 void VendorsBillsModel::payBill(const int &vendorBillId)
 {
-    PosNetworkManager::instance()->post("/vendors/bills/pay",QJsonObject{{"billId",vendorBillId}})
+    PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}})
 
             ->subcribe([this](NetworkResponse *res){
 
@@ -33,7 +35,7 @@ void VendorsBillsModel::createBill(const int &vendorId, const QJsonArray &produc
     params["products"]=products;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post("/products/purchaseProduct",params)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subcribe(
                 [this](NetworkResponse *res){
         emit createBillReply(res->json().toObject());
     });

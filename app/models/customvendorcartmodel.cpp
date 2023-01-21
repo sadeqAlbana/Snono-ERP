@@ -1,4 +1,6 @@
 #include "customvendorcartmodel.h"
+#include <networkresponse.h>
+
 CustomVendorCartModel::CustomVendorCartModel(QObject *parent) : JsonModel(QJsonArray(),{
                                                               {"name",tr("Name")},
                                                               {"cost",tr("Cost")},

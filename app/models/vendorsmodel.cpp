@@ -1,6 +1,8 @@
 #include "vendorsmodel.h"
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
+#include <networkresponse.h>
+
 VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
                                                                     {"id",tr("ID")} ,
                                                                     {"name",tr("Name")} ,
@@ -14,7 +16,7 @@ VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
 
 void VendorsModel::addVendor(const QString &name, const QString &email, const QString &address, const QString &phone)
 {
-    PosNetworkManager::instance()->post("/vendors/add",QJsonObject{{"name",name},
+    PosNetworkManager::instance()->post(QUrl("/vendors/add"),QJsonObject{{"name",name},
                                                                    {"email",email},
                                                                    {"address",address},
                                                                    {"phone",phone}
@@ -27,7 +29,7 @@ void VendorsModel::addVendor(const QString &name, const QString &email, const QS
 
 void VendorsModel::removeVendor(const int &vendorId)
 {
-    PosNetworkManager::instance()->post("/vendors/remove",QJsonObject{{"id",vendorId}
+    PosNetworkManager::instance()->post(QUrl("/vendors/remove"),QJsonObject{{"id",vendorId}
 
                                         })
             ->subcribe([this](NetworkResponse *res){

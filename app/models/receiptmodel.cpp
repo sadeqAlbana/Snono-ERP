@@ -1,5 +1,7 @@
 #include "receiptmodel.h"
 #include "../posnetworkmanager.h"
+#include <networkresponse.h>
+
 ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
                                                                      {"name",tr("Description"),"products"} ,
                                                                      {"unit_price",tr("Price"),QString(),"currency"} ,

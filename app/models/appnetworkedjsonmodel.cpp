@@ -2,6 +2,8 @@
 #include "../posnetworkmanager.h"
 #include <QJsonDocument>
 #include <QFile>
+#include <networkresponse.h>
+
 AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const JsonModelColumnList &columns, QObject *parent, bool usePagination) :
     NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(usePagination)
 {
@@ -37,7 +39,7 @@ void AppNetworkedJsonModel::requestData()
     params["search"]=_query;
 
 
-    PosNetworkManager::instance()->post(url(),params)->subcribe(this,&AppNetworkedJsonModel::onTableRecieved);
+    PosNetworkManager::instance()->post(QUrl(url()),params)->subcribe(this,&AppNetworkedJsonModel::onTableRecieved);
 }
 
 void AppNetworkedJsonModel::setSearchQuery(const QString _query)

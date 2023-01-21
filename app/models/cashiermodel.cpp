@@ -7,6 +7,8 @@
 #include <QTextDocument>
 #include <QFile>
 #include "../posnetworkmanager.h"
+#include <networkresponse.h>
+
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
                          {"name", tr("Name")} ,
@@ -61,7 +63,7 @@ bool CashierModel::setData(const QModelIndex &index, const QVariant &value, int 
 
     product["index"]=index.row();
     product["reference"]=_cartData["reference"];
-    PosNetworkManager::instance()->post("/pos/cart/updateProduct",product)->subcribe(this,&CashierModel::onDataChange);
+    PosNetworkManager::instance()->post(QUrl("/pos/cart/updateProduct"),product)->subcribe(this,&CashierModel::onDataChange);
 
     return true;
 }
@@ -127,7 +129,7 @@ void CashierModel::setReference(const QString &reference)
 
 void CashierModel::updateCustomer(const int &customerId)
 {
-    PosNetworkManager::instance()->post("/pos/cart/updateCartCustomer",
+    PosNetworkManager::instance()->post(QUrl("/pos/cart/updateCartCustomer"),
                                         QJsonObject{{"reference"  ,reference()},
                                                     {"customer_id",customerId}})->subcribe(this,&CashierModel::onUpadteCustomerReply);
 }
@@ -139,7 +141,7 @@ int CashierModel::customerId() const
 
 void CashierModel::addProduct(const QJsonValue &id, bool findByBarcode)
 {
-    PosNetworkManager::instance()->post("/pos/cart/addProduct",QJsonObject{{"reference",reference()},
+    PosNetworkManager::instance()->post(QUrl("/pos/cart/addProduct"),QJsonObject{{"reference",reference()},
                                                                            {"id",id},
                                                                            {"find_by_barcode",findByBarcode}})->subcribe(this,&CashierModel::onAddProductReply);
 }
@@ -155,7 +157,7 @@ void CashierModel::onAddProductReply(NetworkResponse *res)
 
 void CashierModel::removeProduct(const int &index)
 {
-    PosNetworkManager::instance()->post("/pos/cart/removeProduct",QJsonObject{{"reference",reference()},
+    PosNetworkManager::instance()->post(QUrl("/pos/cart/removeProduct"),QJsonObject{{"reference",reference()},
                                                                               {"index",index}})->subcribe(this,&CashierModel::onRemoveProductReply);
 }
 
@@ -176,7 +178,7 @@ void CashierModel::processCart(const double paid, const double change, const QSt
                      {"note",note},
                      {"cart",cartData()},
                      {"delivery_info",deliveryInfo}};
-    PosNetworkManager::instance()->post("/pos/purchase",data)->subcribe(this,&CashierModel::onProcessCartRespnse);
+    PosNetworkManager::instance()->post(QUrl("/pos/purchase"),data)->subcribe(this,&CashierModel::onProcessCartRespnse);
 }
 
 void CashierModel::onProcessCartRespnse(NetworkResponse *res)
@@ -186,7 +188,7 @@ void CashierModel::onProcessCartRespnse(NetworkResponse *res)
 
 void CashierModel::requestCart()
 {
-    PosNetworkManager::instance()->get("/pos/cart/request")->subcribe(this,&CashierModel::onRequestCartResponse);
+    PosNetworkManager::instance()->get(QUrl("/pos/cart/request"))->subcribe(this,&CashierModel::onRequestCartResponse);
 }
 
 void CashierModel::onRequestCartResponse(NetworkResponse *res)

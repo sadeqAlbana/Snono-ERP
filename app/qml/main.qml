@@ -69,34 +69,44 @@ CApplicationWindow {
 
     Connections {
         target: NetworkManager
-        function onNetworkActivity(url) {
-            if (url.pathname !== "/pos/cart/updateProduct"
-                    && url.pathname !== "/pos/cart/getCart") {
 
-                busySpinner.open()
-            }
-        }
-        function onFinishedNetworkActivity(url) {
-            if (activityCount > 0)
-                activityCount--
+//        function onMonitoredRequestCountChanged(){
 
-            if (activityCount <= 0) {
-                busySpinner.close()
-            }
-        }
+//            if(monitoredRequestCount){
+//                busySpinner.open();
+//            }else{
+//                busySpinner.close();
+//            }
+//        }
 
-        function onNetworkReply(status, message) {
-            if (status === 200) {
-                toastrService.push("Success", message, "success", 2000)
-            } else {
-                toastrService.push("Error", message, "error", 2000)
-            }
-        }
+//        function onNetworkActivity(url) {
+//            if (url.pathname !== "/pos/cart/updateProduct"
+//                    && url.pathname !== "/pos/cart/getCart") {
 
-        function onNetworkError(title, text) {
-            console.log(title + " " + text)
-            toastrService.push(title, text, "error", 3000)
-        }
+//                busySpinner.open()
+//            }
+//        }
+//        function onFinishedNetworkActivity(url) {
+//            if (activityCount > 0)
+//                activityCount--
+
+//            if (activityCount <= 0) {
+//                busySpinner.close()
+//            }
+//        }
+
+//        function onNetworkReply(status, message) {
+//            if (status === 200) {
+//                toastrService.push("Success", message, "success", 2000)
+//            } else {
+//                toastrService.push("Error", message, "error", 2000)
+//            }
+//        }
+
+//        function onNetworkError(title, text) {
+//            console.log(title + " " + text)
+//            toastrService.push(title, text, "error", 3000)
+//        }
     }
 
     ToastrService {

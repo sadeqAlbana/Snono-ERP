@@ -5,6 +5,7 @@
 #include <QJsonObject>
 #include "appsettings.h"
 #include <QJsonArray>
+#include <networkresponse.h>
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
@@ -13,11 +14,13 @@ AuthManager::AuthManager(QObject *parent) : QObject(parent)
 
 void AuthManager::authenticate(QString username, QString password, bool remember)
 {
-    PosNetworkManager::instance()->post("/auth/login",QJsonObject{{"username",username},
+    PosNetworkManager::instance()->post(QUrl("/auth/login"),QJsonObject{{"username",username},
                                                                   {"password",password},
                                                                   {"hw_id",AppSettings::hwID()}
 
                                         })->subcribe([this,remember](NetworkResponse *res){
+        qDebug()<<res->json();
+        qDebug()<<res->errorString();
         if(res->json("status").toInt()==200){
 
             if(remember){
@@ -55,7 +58,7 @@ void AuthManager::testAuth()
 {
 
     PosNetworkManager::instance()->setJWT(AppSettings::instance()->jwt());
-    PosNetworkManager::instance()->post("/auth/test",QJsonObject{}
+    PosNetworkManager::instance()->post(QUrl("/auth/test"),QJsonObject{}
 
                                         )->subcribe([this](NetworkResponse *res){
 
