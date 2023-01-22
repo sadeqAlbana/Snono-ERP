@@ -186,8 +186,8 @@ Page{
                         dashboard=reply;
                         if(dashboard.sales_chart.data.length<2)
                             return
-                        salesChartModel.setRecords(dashboard.sales_chart.data);
-                        salesProfitsChartModel.setRecords(dashboard.sales_profits_chart.data);
+//                        salesChartModel.setRecords(dashboard.sales_chart.data);
+//                        salesProfitsChartModel.setRecords(dashboard.sales_profits_chart.data);
 
                     }
                 }

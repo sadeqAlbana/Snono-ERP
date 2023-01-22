@@ -10,6 +10,7 @@ AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
     connect(this,&AuthManager::userChanged,this,&AuthManager::reloadPermissions);
+
 }
 
 void AuthManager::authenticate(QString username, QString password, bool remember)
@@ -19,7 +20,7 @@ void AuthManager::authenticate(QString username, QString password, bool remember
                                                                   {"hw_id",AppSettings::hwID()}
 
                                         })->subcribe([this,remember](NetworkResponse *res){
-        qDebug()<<res->json();
+        qDebug()<<"login res: " <<res->json();
         qDebug()<<res->errorString();
         if(res->json("status").toInt()==200){
 

@@ -45,8 +45,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
 
     m_engine->rootContext()->setContextProperty("App",this);
     m_engine->rootContext()->setContextProperty("AuthManager",AuthManager::instance());
-//    m_engine->rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
-    qmlRegisterSingletonInstance("PosFe",1,0,"NetworkManager",PosNetworkManager::instance());
+    m_engine->rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
+    //qmlRegisterSingletonInstance("PosFe",1,0,"NetworkManager",PosNetworkManager::instance());
 
     m_engine->rootContext()->setContextProperty("NumberEditor",nb);
     m_engine->rootContext()->setContextProperty("ReceiptGenerator",gen);

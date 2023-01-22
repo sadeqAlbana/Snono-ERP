@@ -16,14 +16,7 @@ import CoreUI.Palettes
 CApplicationWindow {
     title: qsTr("POS")
     visible: true
-    property real activityCount: 0
-    onActivityCountChanged: {
-        if (activityCount > 0) {
-            busySpinner.open()
-        } else {
-            busySpinner.close()
-        }
-    }
+
 
     FontMetrics {
         id: metrics
@@ -70,30 +63,16 @@ CApplicationWindow {
     Connections {
         target: NetworkManager
 
-//        function onMonitoredRequestCountChanged(){
+        function onMonitoredRequestCountChanged(){
 
-//            if(monitoredRequestCount){
-//                busySpinner.open();
-//            }else{
-//                busySpinner.close();
-//            }
-//        }
+            console.log("monitored: " + NetworkManager.monitoredRequestCount)
+            if(NetworkManager.monitoredRequestCount){
+                busySpinner.open();
+            }else{
+                busySpinner.close();
+            }
+        }
 
-//        function onNetworkActivity(url) {
-//            if (url.pathname !== "/pos/cart/updateProduct"
-//                    && url.pathname !== "/pos/cart/getCart") {
-
-//                busySpinner.open()
-//            }
-//        }
-//        function onFinishedNetworkActivity(url) {
-//            if (activityCount > 0)
-//                activityCount--
-
-//            if (activityCount <= 0) {
-//                busySpinner.close()
-//            }
-//        }
 
 //        function onNetworkReply(status, message) {
 //            if (status === 200) {

@@ -14,6 +14,7 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     reloadBaseUrl();
 //    setRawHeader("Connection","close");
     setTransferTimeout(QNetworkRequest::DefaultTransferTimeoutConstant);
+    setIgnoredSslErrors(QList<QSslError>());
     //setTransferTimeout(10*1000);
 
     if(!jwt().isNull())
@@ -24,6 +25,7 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     QString cachePath = QStandardPaths::displayName(QStandardPaths::CacheLocation);
     cache->setCacheDirectory(cachePath);
     setCache(cache);
+    setRequestAttribute(static_cast<QNetworkRequest::Attribute>(RequstAttribute::NotifyActivity),true);
 }
 
 void PosNetworkManager::routeReply(NetworkResponse *response)
