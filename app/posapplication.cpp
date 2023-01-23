@@ -70,6 +70,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->load(url);
     if (m_engine->rootObjects().isEmpty())
         this->exit(-1);
+
+    connect(this,&QApplication::aboutToQuit,m_engine,&QObject::deleteLater);
 }
 
 PosApplication::~PosApplication()

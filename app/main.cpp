@@ -14,6 +14,7 @@
 #include <QFileSelector>
 
 #include <QtQml/qqmlextensionplugin.h>
+#include <iostream>
 Q_IMPORT_QML_PLUGIN(CoreUIPlugin)
 
 int main(int argc, char *argv[])
@@ -58,4 +59,6 @@ int main(int argc, char *argv[])
 
 
     return a.exec();
+
+    qDebug()<<"Quitted";
 }
