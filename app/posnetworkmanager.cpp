@@ -26,43 +26,30 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     cache->setCacheDirectory(cachePath);
     setCache(cache);
     setRequestAttribute(static_cast<QNetworkRequest::Attribute>(RequstAttribute::NotifyActivity),true);
+
+    connect(this,&NetworkAccessManager::networkError,this,[this](NetworkResponse *response){
+        emit internalNetworkError("Netowork Error",
+                          response->networkReply()->errorString());
+
+
+    });
 }
 
 void PosNetworkManager::routeReply(NetworkResponse *response)
 {
-
     NetworkAccessManager::routeReply(response);
-//    //emit finishedNetworkActivity(reply->url().toString());
-//    //qDebug()<<response->json();
-//    QNetworkReply::NetworkError error=response->error();
-//    if(error!=QNetworkReply::NoError)
-//    {
-//        qDebug()<<response->url() << " " <<response->error();
+    if(response->json().toObject().contains("status")){
 
-//        if(error==QNetworkReply::InternalServerError || error==QNetworkReply::ProtocolInvalidOperationError){
-//            emit networkError("Internal Server Error",
-//                                     QString("path: '%1'\nMessage: %2").arg(response->url().path(),
-//                                     response->json("message").toString()));
-//        }else{
-//            emit networkError("Netowork Error",response->errorString());
-//        }
-
-//        if(response->url().toString().contains("/auth/test")){
-//            m_router.route(response);
-//        }
-
-//    }
-//    else{
-//        m_router.route(response);
-
-//        if(response->json().toObject().contains("message")){
-//            emit networkReply(response->json("status").toInt(),response->json("message").toString());
-//        }
-//    }
-
-//    reply->deleteLater();
-//    delete response;
-
+        int status = response->json("status").toInt();
+        QString message=response->json("message").toString();
+        if(!message.isEmpty()){
+        if(status==200){
+            emit networkReply(response->json("status").toInt(),message);
+        }else{
+            emit apiError("Error",message);
+        }
+        }
+    }
 }
 
 PosNetworkManager *PosNetworkManager::instance()

@@ -16,8 +16,8 @@ public:
 
 signals:
     void networkReply(const int &status, const QString &message); //used for toastr service
-//    void networkError(const QString &title, const QString &text);
-
+    void apiError(const QString &title, const QString &text);
+    void internalNetworkError(const QString &title, const QString &text);
 private:
     static QByteArray _jwt;
     void setJWT(const QByteArray jwt);

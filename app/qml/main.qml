@@ -65,7 +65,7 @@ CApplicationWindow {
 
         function onMonitoredRequestCountChanged(){
 
-            console.log("monitored: " + NetworkManager.monitoredRequestCount)
+            //console.log("monitored: " + NetworkManager.monitoredRequestCount)
             if(NetworkManager.monitoredRequestCount){
                 busySpinner.open();
             }else{
@@ -73,19 +73,26 @@ CApplicationWindow {
             }
         }
 
+        function onApiError(status, message){
+            if (status === 200) {
+                toastrService.push("Success", message, "success", 2000)
+            } else {
+                toastrService.push("Error", message, "error", 2000)
+            }
+        }
 
-//        function onNetworkReply(status, message) {
-//            if (status === 200) {
-//                toastrService.push("Success", message, "success", 2000)
-//            } else {
-//                toastrService.push("Error", message, "error", 2000)
-//            }
-//        }
+        function onNetworkReply(status, message) {
+            if (status === 200) {
+                toastrService.push("Success", message, "success", 2000)
+            } else {
+                toastrService.push("Error", message, "error", 2000)
+            }
+        }
 
-//        function onNetworkError(title, text) {
-//            console.log(title + " " + text)
-//            toastrService.push(title, text, "error", 3000)
-//        }
+        function onInternalNetworkError(title, text) {
+            console.log(title + " " + text)
+            toastrService.push(title, text, "error", 3000)
+        }
     }
 
     ToastrService {
