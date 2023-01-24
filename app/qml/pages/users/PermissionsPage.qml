@@ -82,7 +82,7 @@ AppPage {
 
                     states: [
                         State {
-                            when: dragArea.Drag.active
+                            when: dragArea.drag.active
 //                            ParentChange {
 //                                target: dragRect
 //                                parent: root
@@ -92,6 +92,13 @@ AppPage {
                                 target: dragDelegate
                                 anchors.horizontalCenter: undefined
                                 anchors.verticalCenter: undefined
+                            }
+                            PropertyChanges {
+                                target: dragDelegate
+                                x: 0
+                                y: 0
+                                restoreEntryValues: true
+
                             }
                         }
                     ]
@@ -119,7 +126,7 @@ AppPage {
                         drag.onActiveChanged: {
                             if (dragArea.drag.active) {
                                 view.dragItemIndex = index;
-                                view.model.remove(view.dragItemIndex)
+                                //view.model.remove(view.dragItemIndex)
 
                             }
                             dragDelegate.Drag.drop();
