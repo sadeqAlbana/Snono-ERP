@@ -46,8 +46,10 @@ AppPage {
                     anchors.fill: parent
 
                     onDropped: drop => {
-                                   view.model.append(view.model.get(view.dragItemIndex))
-                                   view.dragItemIndex = -1;
+                                   petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
+                                   //view.dragItemIndex = -1;
+                                   console.log("mimeData: " + drop.getDataAsString("application/json"))
+                                   drop.acceptProposedAction()
                                }
 
                     onEntered: {
@@ -75,18 +77,28 @@ AppPage {
                     id: dragDelegate
                     text: model.name
                     Drag.active: dragArea.drag.active
-                    Drag.keys: ["blue"]
 
                     Drag.hotSpot.x: dragDelegate.width / 2
                     Drag.hotSpot.y: dragDelegate.height / 2
 
+                    Drag.dragType: Drag.Automatic
+                    Drag.supportedActions: Qt.MoveAction
+                    Drag.proposedAction: Qt.MoveAction
+                    Drag.mimeData: {
+                        "text/plain": "Copied text",
+                        "application/json": JSON.stringify(petsModel.get(index))
+                    }
+
+                    Drag.onDragFinished: action=> {
+                                             if(action===Qt.MoveAction){
+                                                 petsModel.remove(index)
+                                             }
+
+                    }
+
                     states: [
                         State {
                             when: dragArea.drag.active
-//                            ParentChange {
-//                                target: dragRect
-//                                parent: root
-//                            }
 
                             AnchorChanges {
                                 target: dragDelegate
@@ -107,21 +119,6 @@ AppPage {
                         id: dragArea
                         anchors.fill: parent
                         drag.target: parent
-                        Drag.keys: ["red"]
-
-//                        Drag.onDragFinished: {
-//                            console.log("drag finished")
-//                        }
-
-//                        onReleased: {
-//                            console.log("released !")
-//                            //petsModel.remove(index,1);
-//                            dragDelegate.Drag.drop()
-//                            if (dragDelegate.Drag.target !== null) {
-//                                //                            dragDelegate.parent=dragDelegate.Drag.target
-//                                console.log("parent changed !")
-//                            }
-//                        }
 
                         drag.onActiveChanged: {
                             if (dragArea.drag.active) {
