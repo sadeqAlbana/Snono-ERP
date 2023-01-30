@@ -44,17 +44,20 @@ AppPage {
                     id: dropArea
                     parent: view
                     anchors.fill: parent
-
+                    keys: ["application/json"]
                     onDropped: drop => {
-                                   petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
-                                   //view.dragItemIndex = -1;
-                                   console.log("mimeData: " + drop.getDataAsString("application/json"))
-                                   drop.acceptProposedAction()
+                                   if(drop.source!==view){
+                                       petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
+                                       drop.acceptProposedAction();
+                                   }else{
+                                       drop.accept(Qt.IgnoreAction)
+                                   }
+
+
+
                                }
 
-                    onEntered: {
-                        console.log("entered !")
-                    }
+
                 }
 
                 model: ListModel {
@@ -84,9 +87,11 @@ AppPage {
                     Drag.dragType: Drag.Automatic
                     Drag.supportedActions: Qt.MoveAction
                     Drag.proposedAction: Qt.MoveAction
+                    Drag.source: view
                     Drag.mimeData: {
                         "text/plain": "Copied text",
-                        "application/json": JSON.stringify(petsModel.get(index))
+                        "application/json": JSON.stringify(petsModel.get(index)),
+
                     }
 
                     Drag.onDragFinished: action=> {
@@ -119,6 +124,7 @@ AppPage {
                         id: dragArea
                         anchors.fill: parent
                         drag.target: parent
+                        Drag.keys: ["permission"]
 
                         drag.onActiveChanged: {
                             if (dragArea.drag.active) {
