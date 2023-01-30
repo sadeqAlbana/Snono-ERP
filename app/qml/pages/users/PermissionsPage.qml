@@ -52,9 +52,6 @@ AppPage {
                                    }else{
                                        drop.accept(Qt.IgnoreAction)
                                    }
-
-
-
                                }
 
 
@@ -85,11 +82,10 @@ AppPage {
                     Drag.hotSpot.y: dragDelegate.height / 2
 
                     Drag.dragType: Drag.Automatic
-                    Drag.supportedActions: Qt.MoveAction
+                    Drag.supportedActions: Qt.MoveAction | Qt.IgnoreAction
                     Drag.proposedAction: Qt.MoveAction
                     Drag.source: view
                     Drag.mimeData: {
-                        "text/plain": "Copied text",
                         "application/json": JSON.stringify(petsModel.get(index)),
 
                     }
@@ -125,15 +121,6 @@ AppPage {
                         anchors.fill: parent
                         drag.target: parent
                         Drag.keys: ["permission"]
-
-                        drag.onActiveChanged: {
-                            if (dragArea.drag.active) {
-                                view.dragItemIndex = index;
-                                //view.model.remove(view.dragItemIndex)
-
-                            }
-                            dragDelegate.Drag.drop();
-                        }
 
 
 
