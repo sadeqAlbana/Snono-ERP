@@ -59,6 +59,7 @@ set(TARGET_SOURCES
     models/charts/saleschartmodel.cpp models/charts/saleschartmodel.h
     models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
     models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
+    models/aclitemsmodel.h models/aclitemsmodel.cpp
 )
 
 

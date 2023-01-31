@@ -11,7 +11,7 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
+import JsonModels
 //https://doc.qt.io/qt-6/qtquick-tutorials-dynamicview-dynamicview2-example.html
 
 //https://raymii.org/s/tutorials/Qml_Drag_and_Drop_example_including_reordering_the_Cpp_Model.html
@@ -45,37 +45,25 @@ AppPage {
                     parent: view
                     anchors.fill: parent
                     keys: ["application/json"]
-                    onDropped: drop => {
-                                   if(drop.source!==view){
-                                       petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
-                                       drop.acceptProposedAction();
-                                   }else{
-                                       drop.accept(Qt.IgnoreAction)
-                                   }
-                               }
+//                    onDropped: drop => {
+//                                   if(drop.source!==view){
+//                                       petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
+//                                       drop.acceptProposedAction();
+//                                   }else{
+//                                       drop.accept(Qt.IgnoreAction)
+//                                   }
+//                               }
 
 
                 }
 
-                model: ListModel {
-                    id: petsModel
-                    ListElement {
-                        name: "Polly"
-                        type: "Parrot"
-                        age: 12
-                        size: "Small"
-                    }
-                    ListElement {
-                        name: "Penny"
-                        type: "Turtle"
-                        age: 4
-                        size: "Small"
-                    }
+                model: AclItemsModel{
+
                 }
 
                 delegate: ItemDelegate {
                     id: dragDelegate
-                    text: model.name
+                    text: model.permission
                     Drag.active: dragArea.drag.active
 
                     Drag.hotSpot.x: dragDelegate.width / 2
@@ -85,17 +73,17 @@ AppPage {
                     Drag.supportedActions: Qt.MoveAction | Qt.IgnoreAction
                     Drag.proposedAction: Qt.MoveAction
                     Drag.source: view
-                    Drag.mimeData: {
-                        "application/json": JSON.stringify(petsModel.get(index)),
+//                    Drag.mimeData: {
+//                        "application/json": JSON.stringify(petsModel.get(index)),
 
-                    }
+//                    }
 
-                    Drag.onDragFinished: action=> {
-                                             if(action===Qt.MoveAction){
-                                                 petsModel.remove(index)
-                                             }
+//                    Drag.onDragFinished: action=> {
+//                                             if(action===Qt.MoveAction){
+//                                                 petsModel.remove(index)
+//                                             }
 
-                    }
+//                    }
 
                     states: [
                         State {
