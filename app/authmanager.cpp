@@ -59,7 +59,9 @@ void AuthManager::testAuth()
 {
 
     PosNetworkManager::instance()->setJWT(AppSettings::instance()->jwt());
-    PosNetworkManager::instance()->post(QUrl("/auth/test"),QJsonObject{}
+    QNetworkRequest request=PosNetworkManager::instance()->createNetworkRequest(QUrl("/auth/test"),QJsonObject{});
+    request.setAttribute(static_cast<QNetworkRequest::Attribute>(NetworkAccessManager::RequstAttribute::OverrideErrorHandling),true);
+    PosNetworkManager::instance()->post(request,QJsonObject{}
 
                                         )->subcribe([this](NetworkResponse *res){
 

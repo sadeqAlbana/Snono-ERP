@@ -101,7 +101,7 @@ ListView {
             Layout.topMargin: 10
             Layout.leftMargin: 10
             Layout.fillWidth: true
-            textRole: "sku"
+            textRole: "name"
             valueRole: "id"
             currentIndex: 0
             model: productsModel
@@ -112,41 +112,41 @@ ListView {
                 cartModel.replaceData(index,product);
             }
 
-            contentItem: RowLayout{
-                Image{
-                    source: model.thumb
-                    sourceSize.height: parent.height*0.8
-                cache: true
+//            contentItem: RowLayout{
+//                Image{
+//                    source: model.thumb?? ""
+//                    sourceSize.height: parent.height*0.8
+//                cache: true
 
-                    fillMode: Image.PreserveAspectFit
-                    Layout.minimumWidth: 40
+//                    fillMode: Image.PreserveAspectFit
+//                    Layout.minimumWidth: 40
 
-                }
+//                }
 
-                Text{
-                    Layout.fillWidth: true
-                    clip: true
-                    text: cb.currentText
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
-                    leftPadding: 10
-                    rightPadding: 10
-                }
+//                Text{
+//                    Layout.fillWidth: true
+//                    clip: true
+//                    text: cb.currentText
+//                    horizontalAlignment: Text.AlignLeft
+//                    verticalAlignment: Text.AlignVCenter
+//                    leftPadding: 10
+//                    rightPadding: 10
+//                }
 
 
-            }
+//            }
 
-            delegate: ItemDelegate{
-                text: model.sku
-                implicitWidth: cb.width
-                icon.source: model.thumb
-                icon.color: "transparent"
-                highlighted: cb.highlightedIndex === index
-                font.bold: cb.currentIndex === index
-                icon.height: 100
-                icon.width: 60
-                height: 100
-            }
+//            delegate: ItemDelegate{
+//                text: model[cb.textRole]
+//                implicitWidth: cb.width
+//                icon.source: model.thumb?? ""
+//                icon.color: "transparent"
+//                highlighted: cb.highlightedIndex === index
+//                font.bold: cb.currentIndex === index
+//                icon.height: 100
+//                icon.width: 60
+////                height: (icon.source || icon.name) ? 100 :  50
+//            }
 
         }
 

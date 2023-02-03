@@ -37,6 +37,14 @@ public:
 
      Q_INVOKABLE void updateVendor(const QJsonObject &data);
 
+     Q_INVOKABLE void payBill(const int &vendorBillId);
+     Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
+
+
+
+
+
+
 
 signals:
     void processCustomBillResponse(QJsonObject reply);
@@ -55,6 +63,8 @@ signals:
     void returnableItemsResponse(QJsonObject reply);
     void addCustomerReply(QJsonObject reply);
     void updateVendorReply(QJsonObject reply);
+    void payBillReply(QJsonObject reply);
+    void createBillReply(QJsonObject reply);
 
 private:
     static Api *m_api;

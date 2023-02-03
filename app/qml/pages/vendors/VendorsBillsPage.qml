@@ -12,6 +12,8 @@ import Qt5Compat.GraphicalEffects
 
 import Qt.labs.qmlmodels 1.0
 import PosFe
+import CoreUI
+import PosFe
 AppPage{
 
     title: qsTr("Vendors Bills")
@@ -34,12 +36,7 @@ AppPage{
             }
         }
 
-        PurchaseStockDialog{
-            id: newBillDlg
-            onAccepted: {
-                model.createBill(vendorId,products);
-            }
-        }
+
 
         AddCustomBillDialog{
             id: customBillDlg;
@@ -56,7 +53,7 @@ AppPage{
 //                Action{enabled: tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-task"; onTriggered: {
 //                        Api.returnBill(model.jsonObject(tableView.selectedRow).id)
 //                       }},
-                CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: newBillDlg.open();},
+                CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/AddVendorBillPage.qml");},
                 CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();}
 
             ]

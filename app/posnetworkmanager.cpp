@@ -33,6 +33,8 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
 
 
     });
+
+
 }
 
 void PosNetworkManager::routeReply(NetworkResponse *response)
