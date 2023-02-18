@@ -24,7 +24,7 @@ Api::Api(QObject *parent) : QObject(parent)
 void Api::depositCash(const double &amount)
 {
     QJsonObject data{{"amount",amount}};
-    PosNetworkManager::instance()->post(QUrl("/accounts/depositCash"),data)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/accounts/depositCash"),data)->subscribe([this](NetworkResponse *res){
         emit depositCashResponseReceived(res->json().toObject());
     });
 }
@@ -36,7 +36,7 @@ void Api::processCustomBill(const QString &name, const int &vendorId, const QJso
     params["items"]=items;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/vendors/bills/add"),params)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/vendors/bills/add"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit processCustomBillResponse(res->json().toObject());
     });
@@ -44,7 +44,7 @@ void Api::processCustomBill(const QString &name, const int &vendorId, const QJso
 
 void Api::updateProduct(const QJsonObject &product)
 {
-    PosNetworkManager::instance()->post(QUrl("/products/update"),product)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/update"),product)->subscribe(
                 [this](NetworkResponse *res){
         emit updateProductReply(res->json().toObject());
     });
@@ -63,7 +63,7 @@ void Api::updateProduct(const int &productId, const QString &name, const double 
         {"taxes",taxes}
     };
 
-    PosNetworkManager::instance()->post(QUrl("/products/update"),params)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/update"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit updateProductReply(res->json().toObject());
     });
@@ -71,7 +71,7 @@ void Api::updateProduct(const int &productId, const QString &name, const double 
 
 void Api::requestDashboard()
 {
-    PosNetworkManager::instance()->get(QUrl("/dashboard"))->subcribe(
+    PosNetworkManager::instance()->get(QUrl("/dashboard"))->subscribe(
                 [this](NetworkResponse *res){
         emit dashboardReply(res->json("data").toObject());
     });
@@ -79,7 +79,7 @@ void Api::requestDashboard()
 void Api::addCategory(const QString &name, const int &parentId)
 {
     PosNetworkManager::instance()->post(QUrl("/categories/add"),QJsonObject{{"name",name},{"parent_id",parentId}})
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
         emit categoryAddReply(res->json().toObject());
     });
 }
@@ -87,7 +87,7 @@ void Api::addCategory(const QString &name, const int &parentId)
 void Api::removeCategory(const int &categoryId)
 {
     PosNetworkManager::instance()->post(QUrl("/categories/remove"),QJsonObject{{"id",categoryId}})
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
         emit categoryRemoveReply(res->json().toObject());
     });
 }
@@ -96,7 +96,7 @@ void Api::barqReceipt(const int orderId)
 {
 #ifndef QT_NO_PDF
     PosNetworkManager::instance()->post(QUrl("/barq/receipt"),QJsonObject{{"pos_order_id",orderId}})
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
         QByteArray pdf=res->binaryData();
         QBuffer *buffer=new QBuffer(&pdf);
         buffer->open(QIODevice::ReadOnly);
@@ -136,7 +136,7 @@ void Api::adjustStock(const int productId, const int newQty, const QString &reas
 
     };
 
-    PosNetworkManager::instance()->post(QUrl("/products/adjustStock"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/products/adjustStock"),params)->subscribe([this](NetworkResponse *res){
         emit adjustStockReply(res->json().toObject());
     });
 }
@@ -177,7 +177,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 
     QJsonObject payload{{"data",array},{"reason","bulck adjustment"}};
 
-    PosNetworkManager::instance()->post(QUrl("/products/adjustStockBulck"),payload)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/adjustStockBulck"),payload)->subscribe(
                 [this](NetworkResponse *res){
         qDebug()<<res->json();
         emit bulckStockAdjustmentReply(res->json().toObject());
@@ -191,7 +191,7 @@ bool Api::bulckStockAdjustment(const QUrl &url)
 void Api::returnBill(const int billId, const QJsonArray &items)
 {
     PosNetworkManager::instance()->post(QUrl("/vendors/bills/return"),QJsonObject{{"bill_id",billId},
-                                                                            {"items",items}})->subcribe([this](NetworkResponse *res){
+                                                                            {"items",items}})->subscribe([this](NetworkResponse *res){
         emit billReturnReply(res->json().toObject());
     });
 }
@@ -200,7 +200,7 @@ void Api::generateImages()
 {
 //    return;
     qDebug()<<"called";
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2353}})->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2353}})->subscribe(
                 [this](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
@@ -288,7 +288,7 @@ void Api::generateImages()
 void Api::addVendor(const QJsonObject &data)
 {
     PosNetworkManager::instance()->post(QUrl("/vendors/add"),data )
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
 
         emit vendorAddReply(res->json().toObject());
     });
@@ -309,7 +309,7 @@ void Api::returnOrder(const int &orderId, const QJsonArray items)
     QJsonObject params;
     params["order_id"]=orderId;
     params["items"]=items;
-    PosNetworkManager::instance()->post(QUrl("/orders/return"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/orders/return"),params)->subscribe([this](NetworkResponse *res){
 
         emit returnOrderResponse(res->json().toObject());
     });
@@ -320,7 +320,7 @@ void Api::returnableItems(const int &orderId)
 {
     QJsonObject params;
     params["order_id"]=orderId;
-    PosNetworkManager::instance()->post(QUrl("/order/returnableItems"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/order/returnableItems"),params)->subscribe([this](NetworkResponse *res){
 
         emit returnableItemsResponse(res->json().toObject());
     });
@@ -339,7 +339,7 @@ void Api::addCustomer(const QString name, const QString firstName, const QString
 
 void Api::addCustomer(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->post(QUrl("/customers/add"),data)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/customers/add"),data)->subscribe(
                 [this](NetworkResponse *res){
         emit addCustomerReply(res->json().toObject());
     });
@@ -347,7 +347,7 @@ void Api::addCustomer(const QJsonObject &data)
 
 void Api::updateVendor(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->put(QUrl("/vendors"),data)->subcribe(
+    PosNetworkManager::instance()->put(QUrl("/vendors"),data)->subscribe(
                 [this](NetworkResponse *res){
         emit updateVendorReply(res->json().toObject());
     });
@@ -359,7 +359,7 @@ void Api::payBill(const int &vendorBillId)
 {
     PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}})
 
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
 
         emit payBillReply(res->json().toObject());
     });
@@ -371,7 +371,7 @@ void Api::createBill(const int &vendorId, const QJsonArray &products)
     params["products"]=products;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit createBillReply(res->json().toObject());
     });

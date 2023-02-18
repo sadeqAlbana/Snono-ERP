@@ -189,7 +189,7 @@ void PosApplication::downloadVersion(const int version)
     request.setTransferTimeout(60*60*1000); // 1 hour
 
     PosNetworkManager::instance()->get(request)
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
         if(res->error()!=QNetworkReply::NoError){
             qWarning()<<QString("Warning: could not download update due to network error %1").arg(res->errorString());
             emit downloadVersionReply(false);

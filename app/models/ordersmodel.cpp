@@ -26,7 +26,7 @@ void OrdersModel::updateDeliveryStatus(const int &orderId, const QString &status
 {
     PosNetworkManager::instance()->post(QUrl("/order/updateDeliveryStatus"),
                             QJsonObject{{"order_id",orderId},{"status",status}})
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
             emit updateDeliveryStatusResponse(res->json().toObject());
     });
 }
@@ -36,7 +36,7 @@ void OrdersModel::returnOrder(const int &orderId, const QJsonArray items)
     QJsonObject params;
     params["order_id"]=orderId;
     params["items"]=items;
-    PosNetworkManager::instance()->post(QUrl("/orders/return"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/orders/return"),params)->subscribe([this](NetworkResponse *res){
 
         emit returnOrderResponse(res->json().toObject());
     });
@@ -46,7 +46,7 @@ void OrdersModel::returnableItems(const int &orderId)
 {
     QJsonObject params;
     params["order_id"]=orderId;
-    PosNetworkManager::instance()->post(QUrl("/order/returnableItems"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/order/returnableItems"),params)->subscribe([this](NetworkResponse *res){
 
         emit returnableItemsResponse(res->json().toObject());
     });

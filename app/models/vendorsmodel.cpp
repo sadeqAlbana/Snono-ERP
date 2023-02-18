@@ -21,7 +21,7 @@ void VendorsModel::addVendor(const QString &name, const QString &email, const QS
                                                                    {"address",address},
                                                                    {"phone",phone}
                                         })
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
 
         emit vendorAddReply(res->json().toObject());
     });
@@ -32,7 +32,7 @@ void VendorsModel::removeVendor(const int &vendorId)
     PosNetworkManager::instance()->post(QUrl("/vendors/remove"),QJsonObject{{"id",vendorId}
 
                                         })
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
 
         emit vendorRemoveReply(res->json().toObject());
     });

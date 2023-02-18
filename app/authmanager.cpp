@@ -15,11 +15,11 @@ AuthManager::AuthManager(QObject *parent) : QObject(parent)
 
 void AuthManager::authenticate(QString username, QString password, bool remember)
 {
-    PosNetworkManager::instance()->post(QUrl("/auth/login"),QJsonObject{{"username",username},
+    PosNetworkManager::instance()->post(QUrl("auth/login"),QJsonObject{{"username",username},
                                                                   {"password",password},
                                                                   {"hw_id",AppSettings::hwID()}
 
-                                        })->subcribe([this,remember](NetworkResponse *res){
+                                        })->subscribe([this,remember](NetworkResponse *res){
         qDebug()<<"login res: " <<res->json();
         qDebug()<<res->errorString();
         if(res->json("status").toInt()==200){
@@ -59,11 +59,11 @@ void AuthManager::testAuth()
 {
 
     PosNetworkManager::instance()->setJWT(AppSettings::instance()->jwt());
-    QNetworkRequest request=PosNetworkManager::instance()->createNetworkRequest(QUrl("/auth/test"),QJsonObject{});
+    QNetworkRequest request=PosNetworkManager::instance()->createNetworkRequest(QUrl("auth/test"),QJsonObject{});
     request.setAttribute(static_cast<QNetworkRequest::Attribute>(NetworkAccessManager::RequstAttribute::OverrideErrorHandling),true);
     PosNetworkManager::instance()->post(request,QJsonObject{}
 
-                                        )->subcribe([this](NetworkResponse *res){
+                                        )->subscribe([this](NetworkResponse *res){
 
         bool success=res->json("status").toInt()==200;
 

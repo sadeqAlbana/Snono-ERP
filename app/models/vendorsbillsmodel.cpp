@@ -23,7 +23,7 @@ void VendorsBillsModel::payBill(const int &vendorBillId)
 {
     PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}})
 
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
 
         emit payBillReply(res->json().toObject());
     });
@@ -35,7 +35,7 @@ void VendorsBillsModel::createBill(const int &vendorId, const QJsonArray &produc
     params["products"]=products;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subcribe(
+    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit createBillReply(res->json().toObject());
     });

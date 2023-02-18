@@ -29,10 +29,28 @@ AppPage {
             id: scene
             ListView {
                 id: view
+                clip: true
                 property int dragItemIndex: -1
 
                 Layout.preferredWidth: 300
                 Layout.preferredHeight: 300
+
+//                move: Transition {
+//                    NumberAnimation { properties: "x,y"; duration: 1000 }
+//                }
+
+                populate: Transition {
+                    NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 1000 }
+                }
+
+                remove: Transition {
+                    ParallelAnimation {
+                        NumberAnimation { property: "opacity"; to: 0; duration: 1000 }
+                        //NumberAnimation { properties: "x,y"; to: 100; duration: 1000 }
+                    }
+                }
+
+
                 Rectangle {
                     parent: view
                     border.color: "black"
@@ -45,23 +63,23 @@ AppPage {
                     parent: view
                     anchors.fill: parent
                     keys: ["application/json"]
-//                    onDropped: drop => {
-//                                   if(drop.source!==view){
-//                                       petsModel.append(JSON.parse(drop.getDataAsString("application/json")))
-//                                       drop.acceptProposedAction();
-//                                   }else{
-//                                       drop.accept(Qt.IgnoreAction)
-//                                   }
-//                               }
+                    onDropped: drop => {
+                                   if(drop.source!==view){
+                                       aclModel.appendRecord(JSON.parse(drop.getDataAsString("application/json")))
+                                       drop.acceptProposedAction();
+                                   }else{
+                                       drop.accept(Qt.IgnoreAction)
+                                   }
+                               }
 
 
                 }
 
                 model: AclItemsModel{
-
+                    id: aclModel
                 }
 
-                delegate: ItemDelegate {
+                delegate: CItemDelegate {
                     id: dragDelegate
                     text: model.permission
                     Drag.active: dragArea.drag.active
@@ -73,17 +91,17 @@ AppPage {
                     Drag.supportedActions: Qt.MoveAction | Qt.IgnoreAction
                     Drag.proposedAction: Qt.MoveAction
                     Drag.source: view
-//                    Drag.mimeData: {
-//                        "application/json": JSON.stringify(petsModel.get(index)),
+                    Drag.mimeData: {
+                        "application/json": JSON.stringify(aclModel.jsonObject(index))
 
-//                    }
+                    }
 
-//                    Drag.onDragFinished: action=> {
-//                                             if(action===Qt.MoveAction){
-//                                                 petsModel.remove(index)
-//                                             }
+                    Drag.onDragFinished: action=> {
+                                             if(action===Qt.MoveAction){
+                                                 aclModel.removeRecord(index)
+                                             }
 
-//                    }
+                    }
 
                     states: [
                         State {

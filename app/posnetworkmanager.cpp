@@ -64,7 +64,8 @@ PosNetworkManager *PosNetworkManager::instance()
 
 void PosNetworkManager::reloadBaseUrl()
 {
-    setBaseUrl(AppSettings::instance()->serverUrl().toString());
+    qDebug()<<AppSettings::instance()->serverUrl();
+    setBaseUrl(AppSettings::instance()->serverUrl());
 }
 
 

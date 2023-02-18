@@ -15,7 +15,7 @@ ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
 void ReceiptModel::requestData()
 {
     PosNetworkManager::instance()->post(url(),QJsonObject{
-                                            {"order_id",m_orderId}})->subcribe(this,&ReceiptModel::onTableRecieved);
+                                            {"order_id",m_orderId}})->subscribe(this,&ReceiptModel::onTableRecieved);
 }
 
 

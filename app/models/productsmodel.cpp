@@ -40,7 +40,7 @@ void ProductsModel::updateProduct(const int &productId, const QString &name, con
         {"category_id",categoryId},
         {"taxes",taxes}
     };
-    PosNetworkManager::instance()->post(QUrl("/products/update"),params)->subcribe(this,&ProductsModel::onUpdateProductReply);
+    PosNetworkManager::instance()->post(QUrl("/products/update"),params)->subscribe(this,&ProductsModel::onUpdateProductReply);
 
 }
 
@@ -49,7 +49,7 @@ void ProductsModel::updateProduct(const int &productId, const QString &name, con
 
 void ProductsModel::updateProduct(const QJsonObject &product)
 {
-    PosNetworkManager::instance()->post(QUrl("/products/update"),product)->subcribe(this,&ProductsModel::onUpdateProductReply);
+    PosNetworkManager::instance()->post(QUrl("/products/update"),product)->subscribe(this,&ProductsModel::onUpdateProductReply);
 }
 
 void ProductsModel::onUpdateProductReply(NetworkResponse *res)
@@ -67,7 +67,7 @@ void ProductsModel::updateProductQuantity(const int &index, const double &newQua
     QJsonObject params;
     params["product_id"]=product["id"];
     params["new_quantity"]=newQuantity;
-    PosNetworkManager::instance()->post(QUrl("/products/updateQuantity"),params)->subcribe(this,&ProductsModel::onUpdateProductQuantityReply);
+    PosNetworkManager::instance()->post(QUrl("/products/updateQuantity"),params)->subscribe(this,&ProductsModel::onUpdateProductQuantityReply);
 }
 
 void ProductsModel::onUpdateProductQuantityReply(NetworkResponse *res)
@@ -81,7 +81,7 @@ void ProductsModel::purchaseStock(const int &productId, const double &qty, const
     params["products"]=QJsonArray{QJsonObject{{"id",productId},{"qty",qty}}};
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subcribe(this,&ProductsModel::onPurchaseStockReply);
+    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(this,&ProductsModel::onPurchaseStockReply);
 
 }
 
@@ -110,7 +110,7 @@ void ProductsModel::addProduct(const QString &name, const QString &barcode, cons
 
     };
 
-    PosNetworkManager::instance()->post(QUrl("/products/add"),params)->subcribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/products/add"),params)->subscribe([this](NetworkResponse *res){
         emit productAddReply(res->json().toObject());
     });
 }
@@ -118,7 +118,7 @@ void ProductsModel::addProduct(const QString &name, const QString &barcode, cons
 void ProductsModel::removeProduct(const int &productId)
 {
     PosNetworkManager::instance()->post(QUrl("/products/remove"),QJsonObject{{"id",productId}})
-            ->subcribe([this](NetworkResponse *res){
+            ->subscribe([this](NetworkResponse *res){
         emit productRemoveReply(res->json().toObject());
     });
 }
