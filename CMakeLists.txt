@@ -7,11 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
 #set(ALLOW_DUPLICATE_CUSTOM_TARGETS true)
 add_compile_definitions(APP_VERSION=${PROJECT_VERSION})
-if(ANDROID)
-    set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
-        CACHE INTERNAL "")
-    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
-endif()
+
 find_package(Qt6  COMPONENTS Core REQUIRED)
 find_package(Qt6  COMPONENTS Quick REQUIRED)
 find_package(Qt6  COMPONENTS Multimedia REQUIRED)
@@ -34,6 +30,27 @@ add_subdirectory(network-manager)
 
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
+
+if(ANDROID)
+    set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
+        CACHE INTERNAL "")
+
+    set_target_properties(appposfe PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 32)
+    set(android_package_dir "${CMAKE_CURRENT_LIST_DIR}/app/android/")
+    set_target_properties(appposfe PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
+        ${android_package_dir})
+
+
+    add_custom_target(appposfe_android_package
+    SOURCES
+    ${android_package_dir}/AndroidManifest.xml
+    ${android_package_dir}/build.gradle
+#    ${android_package_dir}/settings.gradle
+    ${android_package_dir}/gradle.properties
+#    ${android_package_dir}/google-services.json
+    ${android_package_dir}/res/values/libs.xml)
+    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
+endif()
 
 #list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/src")
 list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/qml" )

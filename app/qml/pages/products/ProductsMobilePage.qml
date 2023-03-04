@@ -78,16 +78,16 @@ AppPage{
 
                     ColumnLayout{
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                        Text{
-                            color: "#000000";
-                            text: control.text
-                            font.pixelSize: metrics.font.pixelSize*1.3
-                            font.weight: Font.Medium
-                            horizontalAlignment: Text.AlignLeft
-                            verticalAlignment: Text.AlignVCenter
-                            Layout.fillWidth: true
+//                        Text{
+//                            color: "#000000";
+//                            text: control.text
+//                            font.pixelSize: metrics.font.pixelSize;
+//                            font.weight: Font.Medium
+//                            horizontalAlignment: Text.AlignLeft
+//                            verticalAlignment: Text.AlignVCenter
+//                            Layout.fillWidth: true
 
-                        }
+//                        }
                         Text{
                             //color: control.palette.mid
                             text: control.name
