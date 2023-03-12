@@ -86,6 +86,7 @@ AppPage {
                 }
 
                 spacing: -1*CoreUI.borderWidth
+                reuseItems: false
                 delegate: CItemDelegate {
                     id: dragDelegate
                     text: model.permission
@@ -101,15 +102,17 @@ AppPage {
                     }
                     Drag.active: dragArea.drag.active
                     Drag.onActiveChanged: {
-                        console.log("drag started")
-                        dragDelegate.grabToImage(function(result){
-                        dragDelegate.Drag.imageSource=result.url
-                        Drag.startDrag();
-                        });
+                        if(Drag.active){
+                            dragDelegate.grabToImage(function(result){
+                            dragDelegate.Drag.imageSource=result.url
+                            Drag.startDrag();
+                            });
+
+                        }
                     }
 
-                    Drag.hotSpot.x: dragDelegate.width / 2
-                    Drag.hotSpot.y: dragDelegate.height / 2
+                    Drag.hotSpot.x: dragDelegate.width / 4
+                    Drag.hotSpot.y: dragDelegate.height / 4
                     Drag.dragType: Drag.None
                     Drag.supportedActions: Qt.MoveAction | Qt.IgnoreAction
                     Drag.proposedAction: Qt.MoveAction
@@ -137,12 +140,12 @@ AppPage {
                             }
                             PropertyChanges {
                                 target: dragDelegate
+                                opacity: 0.5
                                 x: 0
                                 y: 0
-                                z: 100
+//                                z: 100
 //                                parent: view.parent
                                 restoreEntryValues: true
-
                             }
                         }
                     ]
