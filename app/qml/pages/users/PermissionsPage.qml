@@ -4,6 +4,7 @@ import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import Qt.labs.qmlmodels
 import Qt5Compat.GraphicalEffects
+import CoreUI
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
@@ -30,8 +31,10 @@ AppPage {
             ListView {
                 id: view
                 clip: true
+                topMargin: CoreUI.borderRadius
+                bottomMargin: CoreUI.borderRadius
                 property int dragItemIndex: -1
-
+                ScrollBar.vertical: ScrollBar { }
                 Layout.preferredWidth: 300
                 Layout.preferredHeight: 300
 
@@ -39,21 +42,22 @@ AppPage {
 //                    NumberAnimation { properties: "x,y"; duration: 1000 }
 //                }
 
-                populate: Transition {
-                    NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 1000 }
-                }
+//                populate: Transition {
+//                    NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 1000 }
+//                }
 
-                remove: Transition {
-                    ParallelAnimation {
-                        NumberAnimation { property: "opacity"; to: 0; duration: 1000 }
-                        //NumberAnimation { properties: "x,y"; to: 100; duration: 1000 }
-                    }
-                }
+//                remove: Transition {
+//                    ParallelAnimation {
+//                        NumberAnimation { property: "opacity"; to: 0; duration: 1000 }
+//                        //NumberAnimation { properties: "x,y"; to: 100; duration: 1000 }
+//                    }
+//                }
 
 
                 Rectangle {
                     parent: view
-                    border.color: "black"
+                    border.color: view.palette.shadow
+                    radius: CoreUI.borderRadius
                     anchors.fill: parent
                     color: dropArea.containsDrag ? "#0FFF0000" : "transparent"
                 }
@@ -67,6 +71,8 @@ AppPage {
                                    if(drop.source!==view){
                                        aclModel.appendRecord(JSON.parse(drop.getDataAsString("application/json")))
                                        drop.acceptProposedAction();
+                                       view.positionViewAtEnd();
+
                                    }else{
                                        drop.accept(Qt.IgnoreAction)
                                    }
@@ -79,15 +85,32 @@ AppPage {
                     id: aclModel
                 }
 
+                spacing: -1*CoreUI.borderWidth
                 delegate: CItemDelegate {
                     id: dragDelegate
                     text: model.permission
+                    width: ListView.view.width
+                    background: Rectangle{
+
+                        color: dragDelegate.highlighted? dragDelegate.palette.active.highlight :
+                                                      dragDelegate.isCurrentItem? //hovered?
+                                                      dragDelegate.palette.dark
+                        :      dragDelegate.palette.base
+                        //border.color: dragDelegate.palette.shadow
+                        //border.width: CoreUI.borderWidth
+                    }
                     Drag.active: dragArea.drag.active
+                    Drag.onActiveChanged: {
+                        console.log("drag started")
+                        dragDelegate.grabToImage(function(result){
+                        dragDelegate.Drag.imageSource=result.url
+                        Drag.startDrag();
+                        });
+                    }
 
                     Drag.hotSpot.x: dragDelegate.width / 2
                     Drag.hotSpot.y: dragDelegate.height / 2
-
-                    Drag.dragType: Drag.Automatic
+                    Drag.dragType: Drag.None
                     Drag.supportedActions: Qt.MoveAction | Qt.IgnoreAction
                     Drag.proposedAction: Qt.MoveAction
                     Drag.source: view
@@ -116,6 +139,8 @@ AppPage {
                                 target: dragDelegate
                                 x: 0
                                 y: 0
+                                z: 100
+//                                parent: view.parent
                                 restoreEntryValues: true
 
                             }
@@ -125,15 +150,15 @@ AppPage {
                     MouseArea {
                         id: dragArea
                         anchors.fill: parent
-                        drag.target: parent
+                        drag.target: dragDelegate
                         Drag.keys: ["permission"]
+
 
 
 
                     }
                 } //delegate
 
-                spacing: 4
             } //ListView
         } //component
 
