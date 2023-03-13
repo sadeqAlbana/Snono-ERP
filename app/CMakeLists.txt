@@ -143,6 +143,7 @@ set(TARGET_QML_SOURCES
     qml/common/DateDelegate.qml
     qml/common/CFilterMenu.qml
     qml/common/DialogFooter.qml
+    qml/common/DnDListView.qml
     qml/common/AppDialogFooter.qml
     qml/common/CredentailsTextField.qml
     qml/common/ExternalDeliveryStatusDelegate.qml

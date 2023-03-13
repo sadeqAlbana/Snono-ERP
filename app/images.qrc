@@ -20,5 +20,6 @@
         <file>qml/pages/customers/AddCustomerPage.qml</file>
         <file>qml/pages/users/PermissionsPage.qml</file>
         <file>qml/pages/vendors/AddVendorBillPage.qml</file>
+        <file>qml/common/DnDListView.qml</file>
     </qresource>
 </RCC>
