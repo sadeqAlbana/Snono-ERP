@@ -60,6 +60,9 @@ set(TARGET_SOURCES
     models/jsonModel/checkablelistmodel.cpp models/jsonModel/checkablelistmodel.h
     models/jsonModel/treeproxymodel.cpp models/jsonModel/treeproxymodel.h
     models/aclitemsmodel.h models/aclitemsmodel.cpp
+    models/aclgroupsmodel.h models/aclgroupsmodel.cpp
+    models/acldndmodel.h models/acldndmodel.cpp
+
 )
 
 

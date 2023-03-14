@@ -1,7 +1,7 @@
 #include "aclitemsmodel.h"
 
 AclItemsModel::AclItemsModel(QObject *parent)
-    : AppNetworkedJsonModel{"/aclItems",
+    : AppNetworkedJsonModel{"/acl/items",
                             JsonModelColumnList(),
                             parent}
 {

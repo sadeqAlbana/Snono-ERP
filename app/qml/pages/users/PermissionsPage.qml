@@ -25,17 +25,31 @@ AppPage {
     GridLayout {
         id: page
         anchors.fill: parent
-        columns: 2
+        columns: 3
 
-        DnDListView{
-            model: []
+        CListView{
+            title: qsTr("Role")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            model: AclGroupsModel{Component.onCompleted: requestData();}
+
+            delegate: CListViewDelegate{
+                width: ListView.view.width
+                onClicked: {
+                    srcListView.model=model.items
+                }
+            }
+
+
         }
 
-//        DnDListView{
-//            model: AppNetworkedJsonModel{
+        DnDListView{
+            id: srcListView
 
-//            }
-//        }
+        }
+        DnDListView{
+
+        }
 
     } //ColumnLayout end
 } //card end
