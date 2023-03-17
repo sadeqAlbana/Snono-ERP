@@ -24,6 +24,9 @@ ListView {
         text: section
         font.bold: true
     }
+
+
+
     topMargin: CoreUI.borderRadius
     bottomMargin: CoreUI.borderRadius
     property int dragItemIndex: -1
@@ -89,12 +92,12 @@ ListView {
         Drag.proposedAction: Qt.MoveAction
         Drag.source: view
         Drag.mimeData: {
-            "application/json": JSON.stringify(modelData)
+            "application/json": JSON.stringify(view.model.jsonObject(index))
         }
 
         Drag.onDragFinished: action => {
                                  if (action === Qt.MoveAction) {
-                                     model.removeRecord(index)
+                                     view.model.removeRecord(index)
                                  }
                              }
 

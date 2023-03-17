@@ -34,8 +34,8 @@ void AppNetworkedJsonModel::requestData()
         params["page"]=currentPage()+1;
         params["count"]=100;
     }
-    params["sortBy"]="id";
-    params["direction"]=m_direction;
+    params["sortBy"]=sortKey();
+    params["direction"]=direction();
     params["search"]=_query;
 
 
@@ -62,6 +62,32 @@ void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
     emit filterChanged(filter);
 }
 
+const QString &AppNetworkedJsonModel::direction() const
+{
+    return m_direction;
+}
+
+void AppNetworkedJsonModel::setDirection(const QString &newDirection)
+{
+    if (m_direction == newDirection)
+        return;
+    m_direction = newDirection;
+    emit directionChanged();
+}
+
+const QString &AppNetworkedJsonModel::sortKey() const
+{
+    return m_sortKey;
+}
+
+void AppNetworkedJsonModel::setSortKey(const QString &newSortKey)
+{
+    if (m_sortKey == newSortKey)
+        return;
+    m_sortKey = newSortKey;
+    emit sortKeyChanged();
+}
+
 bool AppNetworkedJsonModel::usePagination() const
 {
     return m_usePagination;
@@ -76,15 +102,7 @@ void AppNetworkedJsonModel::setUsePagination(bool newUsePagination)
     emit usePaginationChanged();
 }
 
-const QString &AppNetworkedJsonModel::direction() const
-{
-    return m_direction;
-}
 
-void AppNetworkedJsonModel::setDirection(const QString &newDirection)
-{
-    m_direction = newDirection;
-}
 
 QJsonObject AppNetworkedJsonModel::filter() const
 {

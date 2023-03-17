@@ -16,16 +16,26 @@ public:
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 
     Q_INVOKABLE QJsonObject filter() const;
-    const QString &direction() const;
-    void setDirection(const QString &newDirection);
+//    const QString &direction() const;
+//    void setDirection(const QString &newDirection);
 
     bool usePagination() const;
     void setUsePagination(bool newUsePagination);
+
+    const QString &sortKey() const;
+    void setSortKey(const QString &newSortKey);
+
+    const QString &direction() const;
+    void setDirection(const QString &newDirection);
 
 signals:
     void filterChanged(QJsonObject filter);
 
     void usePaginationChanged();
+
+    void sortKeyChanged();
+
+    void directionChanged();
 
 protected:
     void onTableRecieved(NetworkResponse *reply);
@@ -38,12 +48,17 @@ private:
     QString _query;
     QJsonObject m_filter;
     QJsonObject m_oldFilter;
+
     QString m_direction;
+
     bool m_usePagination;
+    QString m_sortKey=QStringLiteral("id");
 
 
 
 
+    Q_PROPERTY(QString sortKey READ sortKey WRITE setSortKey NOTIFY sortKeyChanged)
+    Q_PROPERTY(QString direction READ direction WRITE setDirection NOTIFY directionChanged)
 };
 
 #endif // APPNETWORKEDJSONMODEL_H

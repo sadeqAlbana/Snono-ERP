@@ -5,5 +5,4 @@ AclItemsModel::AclItemsModel(QObject *parent)
                             JsonModelColumnList(),
                             parent}
 {
-    requestData();
 }

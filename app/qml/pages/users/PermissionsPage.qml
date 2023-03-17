@@ -36,7 +36,7 @@ AppPage {
             delegate: CListViewDelegate{
                 width: ListView.view.width
                 onClicked: {
-                    srcListView.model=model.items
+                    dstModel.setRecords(model.items)
                 }
             }
 
@@ -45,10 +45,21 @@ AppPage {
 
         DnDListView{
             id: srcListView
+            section.labelPositioning: ListView.CurrentLabelAtStart
+            model: AclItemsModel{
+                id: srcModel
+                //filter: {"groupUnused":2}
+                sortKey: "category"
+                direction: "desc"
+                Component.onCompleted: requestData();
+            }
 
         }
         DnDListView{
-
+            id: dstListView
+            model: AclDnDModel{
+                id: dstModel
+            }
         }
 
     } //ColumnLayout end
