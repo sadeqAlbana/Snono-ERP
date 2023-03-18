@@ -48,7 +48,7 @@ AppPage {
             section.labelPositioning: ListView.CurrentLabelAtStart
             model: AclItemsModel{
                 id: srcModel
-                //filter: {"groupUnused":2}
+                filter: {"groupUnused":2}
                 sortKey: "category"
                 direction: "desc"
                 Component.onCompleted: requestData();

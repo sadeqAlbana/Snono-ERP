@@ -57,6 +57,7 @@ ListView {
                                                          "application/json")))
                            drop.acceptProposedAction()
                            view.positionViewAtEnd()
+                           model.sort(section.property)
                        } else {
                            drop.accept(Qt.IgnoreAction)
                        }
