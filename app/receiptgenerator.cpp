@@ -398,7 +398,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     stream.writeStartElement("p");
     //     stream.writeAttribute("class","receipt");
-    stream.writeCharacters(translator.translate("receipt","Please Return each item to it's original bag"));
+    stream.writeCharacters(translator.translate("receipt","opening the bag and measuring is not allowed"));
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");

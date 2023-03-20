@@ -14,9 +14,8 @@ CFormView {
     method: control.method
     url: control.url
     applyHandler: Api.addCustomer
-    columns: 2
-
-
+    columns: 4
+    height: implicitHeight
     Connections{
         target: Api
         function onAddCustomerReply(reply){

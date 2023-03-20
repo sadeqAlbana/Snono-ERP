@@ -96,9 +96,46 @@
 <context>
     <name>AddCustomerDialog</name>
     <message>
-        <location filename="../qml/pages/customers/AddCustomerDialog.qml" line="19"/>
         <source>Add Customer</source>
-        <translation>إضافة زبون</translation>
+        <translation type="vanished">إضافة زبون</translation>
+    </message>
+</context>
+<context>
+    <name>AddCustomerPage</name>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="12"/>
+        <source>Add Customer</source>
+        <translation type="unfinished">إضافة زبون</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="31"/>
+        <source>Name</source>
+        <translation type="unfinished">الاسم</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="40"/>
+        <source>First Name</source>
+        <translation type="unfinished">الاسم الاول</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="48"/>
+        <source>Last Name</source>
+        <translation type="unfinished">الاسم الاخير</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="57"/>
+        <source>Phone</source>
+        <translation type="unfinished">الهاتف</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="65"/>
+        <source>Email</source>
+        <translation type="unfinished">البريد الالكتروني</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/customers/AddCustomerPage.qml" line="74"/>
+        <source>Address</source>
+        <translation type="unfinished">العنوان</translation>
     </message>
 </context>
 <context>
@@ -162,6 +199,24 @@
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="151"/>
         <source>Add</source>
         <translation>إضافة</translation>
+    </message>
+</context>
+<context>
+    <name>AddVendorBillPage</name>
+    <message>
+        <location filename="../qml/pages/vendors/AddVendorBillPage.qml" line="15"/>
+        <source>New Bill</source>
+        <translation type="unfinished">فاتورة جديدة</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/vendors/AddVendorBillPage.qml" line="69"/>
+        <source>Close</source>
+        <translation type="unfinished">غلق</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/vendors/AddVendorBillPage.qml" line="79"/>
+        <source>Purchase</source>
+        <translation type="unfinished">شراء</translation>
     </message>
 </context>
 <context>
@@ -264,12 +319,12 @@
 <context>
     <name>BarqLocationsModel</name>
     <message>
-        <location filename="../models/barqlocationsmodel.cpp" line="4"/>
+        <location filename="../models/barqlocationsmodel.cpp" line="5"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/barqlocationsmodel.cpp" line="4"/>
+        <location filename="../models/barqlocationsmodel.cpp" line="5"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
@@ -311,7 +366,7 @@
         <translation>إلغاء</translation>
     </message>
     <message>
-        <location filename="../qml/common/CFormView.qml" line="75"/>
+        <location filename="../qml/common/CFormView.qml" line="76"/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -319,37 +374,37 @@
 <context>
     <name>CashierModel</name>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="12"/>
+        <location filename="../models/cashiermodel.cpp" line="14"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="13"/>
+        <location filename="../models/cashiermodel.cpp" line="15"/>
         <source>Image</source>
         <translation>الصورة</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="14"/>
+        <location filename="../models/cashiermodel.cpp" line="16"/>
         <source>Price</source>
         <translation>السعر</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="15"/>
+        <location filename="../models/cashiermodel.cpp" line="17"/>
         <source>Qty</source>
         <translation>الكمية</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="16"/>
+        <location filename="../models/cashiermodel.cpp" line="18"/>
         <source>Discount</source>
         <translation>التخفيض</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="17"/>
+        <location filename="../models/cashiermodel.cpp" line="19"/>
         <source>Subtotal</source>
         <translation>الحاصل</translation>
     </message>
     <message>
-        <location filename="../models/cashiermodel.cpp" line="18"/>
+        <location filename="../models/cashiermodel.cpp" line="20"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
@@ -414,17 +469,17 @@
 <context>
     <name>CategoriesModel</name>
     <message>
-        <location filename="../models/categoriesmodel.cpp" line="6"/>
+        <location filename="../models/categoriesmodel.cpp" line="7"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/categoriesmodel.cpp" line="7"/>
+        <location filename="../models/categoriesmodel.cpp" line="8"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/categoriesmodel.cpp" line="8"/>
+        <location filename="../models/categoriesmodel.cpp" line="9"/>
         <source>Parent</source>
         <translation>الأب</translation>
     </message>
@@ -458,22 +513,22 @@
 <context>
     <name>CustomVendorCartModel</name>
     <message>
-        <location filename="../models/customvendorcartmodel.cpp" line="3"/>
+        <location filename="../models/customvendorcartmodel.cpp" line="5"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/customvendorcartmodel.cpp" line="4"/>
+        <location filename="../models/customvendorcartmodel.cpp" line="6"/>
         <source>Cost</source>
         <translation>الكلفة</translation>
     </message>
     <message>
-        <location filename="../models/customvendorcartmodel.cpp" line="5"/>
+        <location filename="../models/customvendorcartmodel.cpp" line="7"/>
         <source>Qty</source>
         <translation>العدد</translation>
     </message>
     <message>
-        <location filename="../models/customvendorcartmodel.cpp" line="6"/>
+        <location filename="../models/customvendorcartmodel.cpp" line="8"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
@@ -494,37 +549,37 @@
 <context>
     <name>CustomersModel</name>
     <message>
-        <location filename="../models/customersmodel.cpp" line="4"/>
+        <location filename="../models/customersmodel.cpp" line="6"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="5"/>
+        <location filename="../models/customersmodel.cpp" line="7"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="6"/>
+        <location filename="../models/customersmodel.cpp" line="8"/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="7"/>
+        <location filename="../models/customersmodel.cpp" line="9"/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="8"/>
+        <location filename="../models/customersmodel.cpp" line="10"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="9"/>
+        <location filename="../models/customersmodel.cpp" line="11"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
-        <location filename="../models/customersmodel.cpp" line="10"/>
+        <location filename="../models/customersmodel.cpp" line="12"/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
@@ -532,17 +587,17 @@
 <context>
     <name>CustomersPage</name>
     <message>
-        <location filename="../qml/pages/customers/CustomersPage.qml" line="17"/>
+        <location filename="../qml/pages/customers/CustomersPage.qml" line="15"/>
         <source>Customers</source>
         <translation>الزبائن</translation>
     </message>
     <message>
-        <location filename="../qml/pages/customers/CustomersPage.qml" line="34"/>
+        <location filename="../qml/pages/customers/CustomersPage.qml" line="29"/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/customers/CustomersPage.qml" line="36"/>
+        <location filename="../qml/pages/customers/CustomersPage.qml" line="31"/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1231,52 +1286,52 @@
 <context>
     <name>OrdersModel</name>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="4"/>
+        <location filename="../models/ordersmodel.cpp" line="7"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="5"/>
+        <location filename="../models/ordersmodel.cpp" line="8"/>
         <source>Reference</source>
         <translation>المرجع</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="6"/>
+        <location filename="../models/ordersmodel.cpp" line="9"/>
         <source>Customer</source>
         <translation>الزبون</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="7"/>
+        <location filename="../models/ordersmodel.cpp" line="10"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="8"/>
+        <location filename="../models/ordersmodel.cpp" line="11"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="9"/>
+        <location filename="../models/ordersmodel.cpp" line="12"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="10"/>
+        <location filename="../models/ordersmodel.cpp" line="13"/>
         <source>Date</source>
         <translation>التاريخ</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="12"/>
+        <location filename="../models/ordersmodel.cpp" line="15"/>
         <source>Status</source>
         <translation>الحالة</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="13"/>
+        <location filename="../models/ordersmodel.cpp" line="16"/>
         <source>Delivery Id</source>
         <translation>رقم التوصيل</translation>
     </message>
     <message>
-        <location filename="../models/ordersmodel.cpp" line="14"/>
+        <location filename="../models/ordersmodel.cpp" line="17"/>
         <source>Delivery Status</source>
         <translation>حالة التوصيل</translation>
     </message>
@@ -1289,69 +1344,69 @@
         <translation>الطلبات</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="43"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="45"/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="43"/>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="44"/>
         <location filename="../qml/pages/orders/OrdersPage.qml" line="45"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="46"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="47"/>
         <source>All...</source>
         <translation>الجميع...</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="44"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="46"/>
         <source>Customer Phone</source>
         <translation>هاتف الزبون</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="45"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="47"/>
         <source>Customer Address</source>
         <translation>عنوان الزبون</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="47"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="49"/>
         <source>product</source>
         <translation>المنتج</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="48"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="50"/>
         <source>All Products</source>
         <translation>جميع المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="50"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="52"/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="51"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="53"/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="101"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="91"/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="106"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="96"/>
         <source>Update Status</source>
         <translation>تحديث الحالة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="109"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="99"/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="113"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="104"/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="114"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="105"/>
         <source>Print Delivery Receipt</source>
         <translation>طباعة وصل التوصيل</translation>
     </message>
@@ -1437,6 +1492,19 @@
         <location filename="../qml/pages/cashier/PayDialog.qml" line="92"/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
+    </message>
+</context>
+<context>
+    <name>PermissionsPage</name>
+    <message>
+        <location filename="../qml/pages/users/PermissionsPage.qml" line="24"/>
+        <source>Permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/users/PermissionsPage.qml" line="31"/>
+        <source>Role</source>
+        <translation type="unfinished">الدور</translation>
     </message>
 </context>
 <context>
@@ -1696,42 +1764,42 @@
 <context>
     <name>ProductsModel</name>
     <message>
-        <location filename="../models/productsmodel.cpp" line="14"/>
+        <location filename="../models/productsmodel.cpp" line="16"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="15"/>
+        <location filename="../models/productsmodel.cpp" line="17"/>
         <source>Image</source>
         <translation>الصورة</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="16"/>
+        <location filename="../models/productsmodel.cpp" line="18"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="17"/>
+        <location filename="../models/productsmodel.cpp" line="19"/>
         <source>SKU</source>
         <translation>وحدة الخزن</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="18"/>
+        <location filename="../models/productsmodel.cpp" line="20"/>
         <source>Size</source>
         <translation>القياس</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="19"/>
+        <location filename="../models/productsmodel.cpp" line="21"/>
         <source>Cost</source>
         <translation>الكلفة</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="21"/>
+        <location filename="../models/productsmodel.cpp" line="23"/>
         <source>Stock</source>
         <translation>الكمية</translation>
     </message>
     <message>
-        <location filename="../models/productsmodel.cpp" line="22"/>
+        <location filename="../models/productsmodel.cpp" line="24"/>
         <source>List Price</source>
         <translation>سعر العرض</translation>
     </message>
@@ -1814,19 +1882,16 @@
         <translation type="vanished">المجموع</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="84"/>
         <source>Close</source>
-        <translation>غلق</translation>
+        <translation type="vanished">غلق</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="94"/>
         <source>Purchase</source>
-        <translation>شراء</translation>
+        <translation type="vanished">شراء</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/PurchaseStockDialog.qml" line="40"/>
         <source>New Bill</source>
-        <translation>فاتورة جديدة</translation>
+        <translation type="vanished">فاتورة جديدة</translation>
     </message>
 </context>
 <context>
@@ -1905,27 +1970,27 @@
 <context>
     <name>ReceiptModel</name>
     <message>
-        <location filename="../models/receiptmodel.cpp" line="4"/>
+        <location filename="../models/receiptmodel.cpp" line="6"/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
-        <location filename="../models/receiptmodel.cpp" line="5"/>
+        <location filename="../models/receiptmodel.cpp" line="7"/>
         <source>Price</source>
         <translation>السعر</translation>
     </message>
     <message>
-        <location filename="../models/receiptmodel.cpp" line="6"/>
+        <location filename="../models/receiptmodel.cpp" line="8"/>
         <source>Qty</source>
         <translation>العدد</translation>
     </message>
     <message>
-        <location filename="../models/receiptmodel.cpp" line="7"/>
+        <location filename="../models/receiptmodel.cpp" line="9"/>
         <source>Subtotal</source>
         <translation>الحاصل</translation>
     </message>
     <message>
-        <location filename="../models/receiptmodel.cpp" line="8"/>
+        <location filename="../models/receiptmodel.cpp" line="10"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
@@ -1964,6 +2029,24 @@
         <location filename="../models/returnordermodel.cpp" line="8"/>
         <source>Total</source>
         <translation>المجموع</translation>
+    </message>
+</context>
+<context>
+    <name>ReturnOrderPage</name>
+    <message>
+        <location filename="../qml/pages/orders/ReturnOrderPage.qml" line="19"/>
+        <source>Return Order</source>
+        <translation type="unfinished">إرجاع الطلب</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/orders/ReturnOrderPage.qml" line="56"/>
+        <source>Close</source>
+        <translation type="unfinished">غلق</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/orders/ReturnOrderPage.qml" line="64"/>
+        <source>Return</source>
+        <translation type="unfinished">إرجاع</translation>
     </message>
 </context>
 <context>
@@ -2251,27 +2334,26 @@
 <context>
     <name>VendorForm</name>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="12"/>
         <source>Add Vendor</source>
-        <translation>إضافة مورد</translation>
+        <translation type="vanished">إضافة مورد</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="19"/>
+        <location filename="../qml/pages/vendors/VendorForm.qml" line="33"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="28"/>
+        <location filename="../qml/pages/vendors/VendorForm.qml" line="42"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="36"/>
+        <location filename="../qml/pages/vendors/VendorForm.qml" line="50"/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="45"/>
+        <location filename="../qml/pages/vendors/VendorForm.qml" line="59"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -2279,42 +2361,42 @@
 <context>
     <name>VendorsBillsModel</name>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="5"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="7"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="6"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="8"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="7"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="9"/>
         <source>Reference</source>
         <translation>المرجع</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="8"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="10"/>
         <source>External Reference</source>
         <translation>المرجع الخارجي</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="9"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="11"/>
         <source>Date</source>
         <translation>التاريخ</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="10"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="12"/>
         <source>Due Date</source>
         <translation>تاريخ الميعاد</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="11"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="13"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
-        <location filename="../models/vendorsbillsmodel.cpp" line="12"/>
+        <location filename="../models/vendorsbillsmodel.cpp" line="14"/>
         <source>Status</source>
         <translation>الحالة</translation>
     </message>
@@ -2322,22 +2404,22 @@
 <context>
     <name>VendorsBillsPage</name>
     <message>
-        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="17"/>
+        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="19"/>
         <source>Vendors Bills</source>
         <translation>فواتير الموردين</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="53"/>
+        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="50"/>
         <source>Pay</source>
         <translation>دفع</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="59"/>
+        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="56"/>
         <source>New Bill</source>
         <translation>فاتورة جديدة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="60"/>
+        <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="57"/>
         <source>New Custom Bill</source>
         <translation>فاتورة خاصة جديدة</translation>
     </message>
@@ -2345,32 +2427,32 @@
 <context>
     <name>VendorsModel</name>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="6"/>
+        <location filename="../models/vendorsmodel.cpp" line="7"/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="7"/>
+        <location filename="../models/vendorsmodel.cpp" line="8"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="8"/>
+        <location filename="../models/vendorsmodel.cpp" line="9"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="9"/>
+        <location filename="../models/vendorsmodel.cpp" line="10"/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="10"/>
+        <location filename="../models/vendorsmodel.cpp" line="11"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
-        <location filename="../models/vendorsmodel.cpp" line="11"/>
+        <location filename="../models/vendorsmodel.cpp" line="12"/>
         <source>Account ID</source>
         <translation>معرف الحساب</translation>
     </message>
@@ -2383,12 +2465,27 @@
         <translation>الموردين</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorsPage.qml" line="35"/>
+        <location filename="../qml/pages/vendors/VendorsPage.qml" line="36"/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorsPage.qml" line="41"/>
+        <location filename="../qml/pages/vendors/VendorsPage.qml" line="39"/>
+        <source>Add Vendor</source>
+        <translation type="unfinished">إضافة مورد</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/vendors/VendorsPage.qml" line="44"/>
+        <source>Edit</source>
+        <translation type="unfinished">تعديل المنتج</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/vendors/VendorsPage.qml" line="48"/>
+        <source>Edit Vendor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/vendors/VendorsPage.qml" line="56"/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -2401,17 +2498,17 @@
         <translation>نقطة البيع</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="126"/>
+        <location filename="../qml/main.qml" line="121"/>
         <source>Error</source>
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="131"/>
+        <location filename="../qml/main.qml" line="126"/>
         <source>Opps... an error occured, would you like to logout and try again?</source>
         <translation>عذراً...حصل خطأ ما, هل ترغب في تسجيل الخروج والمحاولة مجدداً؟</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="140"/>
+        <location filename="../qml/main.qml" line="135"/>
         <source>Logout</source>
         <translation>تسجيل الخروج</translation>
     </message>
@@ -2448,7 +2545,8 @@
         <location filename="../qml/nav.js" line="109"/>
         <location filename="../qml/nav.js" line="128"/>
         <location filename="../qml/nav.js" line="135"/>
-        <location filename="../qml/nav.js" line="155"/>
+        <location filename="../qml/nav.js" line="142"/>
+        <location filename="../qml/nav.js" line="162"/>
         <source>MAIN</source>
         <translation>الرئيسية</translation>
     </message>
@@ -2534,31 +2632,36 @@
     </message>
     <message>
         <location filename="../qml/nav.js" line="134"/>
+        <source>Permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/nav.js" line="141"/>
         <source>Reports</source>
         <translation>التقارير</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="141"/>
+        <location filename="../qml/nav.js" line="148"/>
         <source>Stock</source>
         <translation>المخزون</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="147"/>
+        <location filename="../qml/nav.js" line="154"/>
         <source>Product Sales</source>
         <translation>مبيعات المنتجات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="154"/>
+        <location filename="../qml/nav.js" line="161"/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="161"/>
+        <location filename="../qml/nav.js" line="168"/>
         <source>General Settings</source>
         <translation>الاعدادات العامة</translation>
     </message>
     <message>
-        <location filename="../qml/nav.js" line="166"/>
+        <location filename="../qml/nav.js" line="173"/>
         <source>Printer Settings</source>
         <translation>إعدادات الطابعة</translation>
     </message>
@@ -2629,6 +2732,11 @@
         <translation>العدد</translation>
     </message>
     <message>
+        <location filename="../receiptgenerator.cpp" line="401"/>
+        <source>opening the bag and measuring is not allowed</source>
+        <translation>يمنع الفتح والقياس</translation>
+    </message>
+    <message>
         <source>Disc.</source>
         <translation type="vanished">التخفيض</translation>
     </message>
@@ -2643,9 +2751,8 @@
         <translation>المجموع</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="401"/>
         <source>Please Return each item to it&apos;s original bag</source>
-        <translation>عند القياس يرجى إعادة كل قطعة الى كيسها الأصلي</translation>
+        <translation type="vanished">عند القياس يرجى إعادة كل قطعة الى كيسها الأصلي</translation>
     </message>
     <message>
         <source>Delivery</source>
