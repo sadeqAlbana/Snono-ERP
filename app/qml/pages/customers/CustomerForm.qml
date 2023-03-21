@@ -17,26 +17,44 @@ CFormView {
 
     Connections{
         target: Api
-        function onUpdateVendorReply(reply){
+
+        function onUpdateCustomerReply(reply){
             if(reply.status===200){
                 Router.back();
             }
         }
 
-        function vendorAddReply(reply){
+        function onAddCustomerReply(reply){
             if(reply.status===200){
                 Router.back();
             }
         }
     }
 
-    columns: 2
+    columns: 4
     CLabel {
         text: qsTr("Name")
     }
     CIconTextField {
         leftIcon.name: "cil-user"
         objectName: "name"
+        Layout.fillWidth: true
+    }
+
+    CLabel {
+        text: qsTr("First Name")
+    }
+    CIconTextField {
+        leftIcon.name: "cil-user"
+        objectName: "first_name"
+        Layout.fillWidth: true
+    }
+    CLabel {
+        text: qsTr("Last Name")
+    }
+    CIconTextField {
+        leftIcon.name: "cil-user"
+        objectName: "last_name"
         Layout.fillWidth: true
     }
 

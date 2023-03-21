@@ -13,6 +13,8 @@ import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage{
     title: qsTr("Customers")
+    StackView.onActivated: model.refresh();
+
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -26,9 +28,29 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                CAction{ text: qsTr("Add"); icon.name: "cil-plus.svg"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/AddCustomerPage.qml");},
+                CAction {
+                    text: qsTr("Add")
+                    icon.name: "cil-plus"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",{"applyHandler": Api.addCustomer,
+                                                     "title": qsTr("Add Customer")
+                                                 })
 
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete.svg"; onTriggered: {}}
+                },
+                CAction {
+                    text: qsTr("Edit")
+                    icon.name: "cil-pen"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",
+                                                 {"applyHandler": Api.updateCustomer,
+                                                     "title": qsTr("Edit Customer"),
+
+                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 })
+                    enabled:tableView.validRow; permission: "prm_edit_customers";
+
+                },
+
+
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
             ]//actions
 
             model: CustomersModel{

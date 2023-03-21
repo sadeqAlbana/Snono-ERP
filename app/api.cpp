@@ -345,6 +345,14 @@ void Api::addCustomer(const QJsonObject &data)
     });
 }
 
+void Api::updateCustomer(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->put(QUrl("/customers"),data)->subscribe(
+                [this](NetworkResponse *res){
+        emit updateCustomerReply(res->json().toObject());
+    });
+}
+
 void Api::updateVendor(const QJsonObject &data)
 {
     PosNetworkManager::instance()->put(QUrl("/vendors"),data)->subscribe(
@@ -352,7 +360,6 @@ void Api::updateVendor(const QJsonObject &data)
         emit updateVendorReply(res->json().toObject());
     });
 }
-
 
 
 void Api::payBill(const int &vendorBillId)

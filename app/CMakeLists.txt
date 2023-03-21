@@ -112,6 +112,7 @@ set(TARGET_QML_SOURCES
     qml/pages/customers/AddCustomerPage.qml
     qml/pages/customers/CustomersPage.qml
     qml/pages/customers/CustomersBillsPage.qml
+    qml/pages/customers/CustomerForm.qml
     qml/pages/categories/CategoriesPage.qml
     qml/pages/categories/AddCategoryDialog.qml
     qml/pages/settings/GeneralSettings.qml

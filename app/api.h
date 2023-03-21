@@ -34,6 +34,7 @@ public:
     Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
      void addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address);
     Q_INVOKABLE void addCustomer(const QJsonObject &data);
+    Q_INVOKABLE void updateCustomer(const QJsonObject &data);
 
      Q_INVOKABLE void updateVendor(const QJsonObject &data);
 
@@ -63,6 +64,8 @@ signals:
     void returnableItemsResponse(QJsonObject reply);
     void addCustomerReply(QJsonObject reply);
     void updateVendorReply(QJsonObject reply);
+    void updateCustomerReply(QJsonObject reply);
+
     void payBillReply(QJsonObject reply);
     void createBillReply(QJsonObject reply);
 

@@ -24,10 +24,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("pos_fe");
     qputenv("QML_DISABLE_DISTANCEFIELD", "1"); //this fixes the artifacts in arabic fonts
 
-    //qputenv("QT_ENABLE_HIGHDPI_SCALING",0);
+#ifdef Q_OS_WINDOWS
+    //qputenv("QT_SCALE_FACTOR_ROUNDING_POLICY","PassThrough");
+    //qputenv("QT_ENABLE_HIGHDPI_SCALING","1");
+    //qputenv("QT_SCALE_FACTOR","1.25");
+    qputenv("QT_FONT_DPI","96");
+#endif
 #ifndef Q_OS_ANDROID
-   // qputenv("QT_FONT_DPI","96");
-    qputenv("QT_ENABLE_HIGHDPI_SCALING","0");
+//    qputenv("QT_ENABLE_HIGHDPI_SCALING","0");
 
     //QApplication::setAttribute(Qt::AA_Use96Dpi);
 #endif
