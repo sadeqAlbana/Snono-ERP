@@ -55,6 +55,7 @@ AppPage{
 
             model: CustomersModel{
                 id: model
+
                 Component.onCompleted: {
                     requestData();
                 }

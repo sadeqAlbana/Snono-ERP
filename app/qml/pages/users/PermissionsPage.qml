@@ -45,7 +45,7 @@ AppPage {
 
         DnDListView{
             id: srcListView
-            section.labelPositioning: ListView.CurrentLabelAtStart
+            //section.labelPositioning: ListView.CurrentLabelAtStart
             model: AclItemsModel{
                 id: srcModel
                 filter: {"groupUnused":2}

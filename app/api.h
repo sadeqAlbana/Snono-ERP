@@ -42,6 +42,10 @@ public:
      Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
 
 
+     Q_INVOKABLE void addUser(const QJsonObject &data);
+     Q_INVOKABLE void updateUser(const QJsonObject &data);
+
+
 
 
 

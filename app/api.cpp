@@ -200,7 +200,7 @@ void Api::generateImages()
 {
 //    return;
     qDebug()<<"called";
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2353}})->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2814}})->subscribe(
                 [this](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
@@ -381,6 +381,26 @@ void Api::createBill(const int &vendorId, const QJsonArray &products)
     PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit createBillReply(res->json().toObject());
+    });
+}
+
+void Api::addUser(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->post(QUrl("/users/add"),data)
+
+            ->subscribe([this](NetworkResponse *res){
+
+        emit payBillReply(res->json().toObject());
+    });
+}
+
+void Api::updateUser(const QJsonObject &data)
+{
+    PosNetworkManager::instance()->put(QUrl("/users"),data)
+
+            ->subscribe([this](NetworkResponse *res){
+
+        emit payBillReply(res->json().toObject());
     });
 }
 
