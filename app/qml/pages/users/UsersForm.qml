@@ -15,21 +15,7 @@ CFormView {
 
     header.visible: true
 
-    Connections{
-        target: Api
 
-//        function onUpdateCustomerReply(reply){
-//            if(reply.status===200){
-//                Router.back();
-//            }
-//        }
-
-//        function onAddCustomerReply(reply){
-//            if(reply.status===200){
-//                Router.back();
-//            }
-//        }
-    }
 
     columns: 4
     CLabel {

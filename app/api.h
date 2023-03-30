@@ -30,12 +30,12 @@ public:
 
     Q_INVOKABLE void generateImages();
 
-    Q_INVOKABLE void addVendor(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse * addVendor(const QJsonObject &data);
     Q_INVOKABLE void returnableItems(const int &orderId);
     Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
      void addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address);
-    Q_INVOKABLE void addCustomer(const QJsonObject &data);
-    Q_INVOKABLE void updateCustomer(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse *  addCustomer(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse * updateCustomer(const QJsonObject &data);
 
 
     Q_INVOKABLE NetworkResponse * updateVendor(const QJsonObject &data);
@@ -44,8 +44,8 @@ public:
     Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
 
 
-    Q_INVOKABLE void addUser(const QJsonObject &data);
-    Q_INVOKABLE void updateUser(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse * addUser(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse * updateUser(const QJsonObject &data);
 
 
 
@@ -65,12 +65,9 @@ signals:
     void adjustStockReply(const QJsonObject &reply);
     void bulckStockAdjustmentReply(const QJsonObject &reply);
     void billReturnReply(const QJsonObject &reply);
-    void vendorAddReply(QJsonObject reply);
     void returnOrderResponse(QJsonObject reply);
     void returnableItemsResponse(QJsonObject reply);
     void addCustomerReply(QJsonObject reply);
-    void updateVendorReply(QJsonObject reply);
-    void updateCustomerReply(QJsonObject reply);
 
     void payBillReply(QJsonObject reply);
     void createBillReply(QJsonObject reply);

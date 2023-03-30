@@ -16,15 +16,7 @@ CFormView {
     applyHandler: Api.addCustomer
     columns: 4
     height: implicitHeight
-    Connections{
-        target: Api
-        function onAddCustomerReply(reply){
-            if(reply.status===200){
-                //toastrService.push("Success",reply.message,"success",2000)
-                Router.back();
-            }
-        }
-    }
+
 
     CLabel {
         text: qsTr("Name")

@@ -285,13 +285,9 @@ void Api::generateImages()
     });
 }
 
-void Api::addVendor(const QJsonObject &data)
+NetworkResponse * Api::addVendor(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->post(QUrl("/vendors/add"),data )
-            ->subscribe([this](NetworkResponse *res){
-
-        emit vendorAddReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/vendors/add"),data);
 }
 
 
@@ -337,20 +333,14 @@ void Api::addCustomer(const QString name, const QString firstName, const QString
                             {"address",address}});
 }
 
-void Api::addCustomer(const QJsonObject &data)
+NetworkResponse *  Api::addCustomer(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->post(QUrl("/customers/add"),data)->subscribe(
-                [this](NetworkResponse *res){
-        emit addCustomerReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/customers/add"),data);
 }
 
-void Api::updateCustomer(const QJsonObject &data)
+NetworkResponse * Api::updateCustomer(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->put(QUrl("/customers"),data)->subscribe(
-                [this](NetworkResponse *res){
-        emit updateCustomerReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->put(QUrl("/customers"),data);
 }
 
 NetworkResponse * Api::updateVendor(const QJsonObject &data)
@@ -381,23 +371,13 @@ void Api::createBill(const int &vendorId, const QJsonArray &products)
     });
 }
 
-void Api::addUser(const QJsonObject &data)
+NetworkResponse * Api::addUser(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->post(QUrl("/users/add"),data)
-
-            ->subscribe([this](NetworkResponse *res){
-
-        emit payBillReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/users/add"),data);
 }
 
-void Api::updateUser(const QJsonObject &data)
+NetworkResponse * Api::updateUser(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->put(QUrl("/users"),data)
-
-            ->subscribe([this](NetworkResponse *res){
-
-        emit payBillReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->put(QUrl("/users"),data);
 }
 

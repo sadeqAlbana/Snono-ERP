@@ -58,7 +58,7 @@ Card{
         spacing: 15
         onReset: form.setInitialValues();
 
-        onApplied: form.applyHandler(form.data()).subscribe(function(reply){
+        onApplied: form.applyHandler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
             if(reply.status()===200){
                 Router.back();
             }
