@@ -19,8 +19,8 @@ Q_IMPORT_QML_PLUGIN(CoreUIPlugin)
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationName("com");
-    QCoreApplication::setOrganizationDomain("sadeqTech");
+    QCoreApplication::setOrganizationDomain("com");
+    QCoreApplication::setOrganizationName("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
     qputenv("QML_DISABLE_DISTANCEFIELD", "1"); //this fixes the artifacts in arabic fonts
 

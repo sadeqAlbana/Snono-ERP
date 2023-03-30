@@ -24,8 +24,10 @@ find_package(Qt6  COMPONENTS Pdf REQUIRED)
 find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
 endif()
 
+set(ENABLE_QML ON)
 
 add_subdirectory(network-manager)
+
 #add_subdirectory(json-model)
 
 add_subdirectory(libs/CoreUI-QML)

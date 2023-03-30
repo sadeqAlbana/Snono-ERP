@@ -57,7 +57,12 @@ Card{
         position: DialogButtonBox.Footer
         spacing: 15
         onReset: form.setInitialValues();
-        onApplied: form.apply();
+
+        onApplied: form.applyHandler(form.data()).subscribe(function(reply){
+            if(reply.status()===200){
+                Router.back();
+            }
+        });
 
 
         background: RoundedRect{

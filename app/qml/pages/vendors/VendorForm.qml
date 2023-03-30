@@ -17,11 +17,6 @@ CFormView {
 
     Connections{
         target: Api
-        function onUpdateVendorReply(reply){
-            if(reply.status===200){
-                Router.back();
-            }
-        }
 
         function vendorAddReply(reply){
             if(reply.status===200){

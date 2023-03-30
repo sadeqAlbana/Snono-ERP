@@ -200,7 +200,7 @@ void Api::generateImages()
 {
 //    return;
     qDebug()<<"called";
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2814}})->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2823}})->subscribe(
                 [this](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
@@ -353,12 +353,9 @@ void Api::updateCustomer(const QJsonObject &data)
     });
 }
 
-void Api::updateVendor(const QJsonObject &data)
+NetworkResponse * Api::updateVendor(const QJsonObject &data)
 {
-    PosNetworkManager::instance()->put(QUrl("/vendors"),data)->subscribe(
-                [this](NetworkResponse *res){
-        emit updateVendorReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->put(QUrl("/vendors"),data);
 }
 
 

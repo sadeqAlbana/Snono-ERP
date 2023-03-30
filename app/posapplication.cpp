@@ -16,7 +16,7 @@
 #include <QIcon>
 #include "appsettings.h"
 
-
+#include <networkresponse.h>
 #include "appqmlnetworkaccessmanagerfactory.h"
 #include <QClipboard>
 #include <QDir>
@@ -53,7 +53,6 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("Api",Api::instance());
     m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance());
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
-
 
 
 

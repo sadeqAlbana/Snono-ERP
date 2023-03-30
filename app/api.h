@@ -1,6 +1,7 @@
 #ifndef API_H
 #define API_H
 
+#include "networkresponse.h"
 #include <QObject>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -36,14 +37,15 @@ public:
     Q_INVOKABLE void addCustomer(const QJsonObject &data);
     Q_INVOKABLE void updateCustomer(const QJsonObject &data);
 
-     Q_INVOKABLE void updateVendor(const QJsonObject &data);
 
-     Q_INVOKABLE void payBill(const int &vendorBillId);
-     Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
+    Q_INVOKABLE NetworkResponse * updateVendor(const QJsonObject &data);
+
+    Q_INVOKABLE void payBill(const int &vendorBillId);
+    Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
 
 
-     Q_INVOKABLE void addUser(const QJsonObject &data);
-     Q_INVOKABLE void updateUser(const QJsonObject &data);
+    Q_INVOKABLE void addUser(const QJsonObject &data);
+    Q_INVOKABLE void updateUser(const QJsonObject &data);
 
 
 

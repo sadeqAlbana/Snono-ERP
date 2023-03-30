@@ -37,6 +37,10 @@ CApplicationWindow {
             rootLoader.setSource("pages/LoginPage.qml")
         }
 
+//        NetworkManager.get("/dashboard").subscribe(function (res){
+//            console.log(JSON.stringify(res.json()))
+//        });
+
 
     }
     Connections {
