@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QStandardPaths>
 #include <networkresponse.h>
+#include <QUrlQuery>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -379,5 +380,25 @@ NetworkResponse * Api::addUser(const QJsonObject &data)
 NetworkResponse * Api::updateUser(const QJsonObject &data)
 {
     return PosNetworkManager::instance()->put(QUrl("/users"),data);
+}
+
+NetworkResponse *Api::addTax(const QJsonObject &data)
+{
+    return PosNetworkManager::instance()->post(QUrl("/taxes/add"),data);
+}
+
+NetworkResponse *Api::updateTax(const QJsonObject &data)
+{
+    return PosNetworkManager::instance()->put(QUrl("/taxes"),data);
+
+}
+
+NetworkResponse *Api::removeTax(const int taxId)
+{
+    QUrl url("/taxes");
+    url.setQuery(QUrlQuery{{"id",QString::number(taxId)}});
+
+    qDebug()<<"taxId:" << taxId;
+    return PosNetworkManager::instance()->deleteResource(url);
 }
 

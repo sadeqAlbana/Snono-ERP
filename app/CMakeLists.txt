@@ -72,6 +72,7 @@ set(TARGET_QML_SOURCES
     qml/pages/taxes/TaxTypeDelegate.qml
     qml/pages/taxes/TaxesPage.qml
     qml/pages/taxes/AddTaxPage.qml
+    qml/pages/taxes/TaxForm.qml
     qml/pages/users/UsersPage.qml
     qml/pages/users/UsersForm.qml
     qml/pages/users/PermissionsPage.qml

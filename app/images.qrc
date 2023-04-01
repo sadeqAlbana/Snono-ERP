@@ -11,17 +11,4 @@
         <file>icons/barq_logo.png</file>
         <file>icons/SS_Logo_Color-cropped.svg</file>
     </qresource>
-    <qresource prefix="/">
-        <file>qml/common/AppFormDialog.qml</file>
-        <file>qml/pages/vendors/VendorForm.qml</file>
-        <file>qml/TestService.qml</file>
-        <file>qml/pages/orders/OrderDetailsPage.qml</file>
-        <file>qml/pages/orders/ReturnOrderPage.qml</file>
-        <file>qml/pages/customers/AddCustomerPage.qml</file>
-        <file>qml/pages/users/PermissionsPage.qml</file>
-        <file>qml/pages/vendors/AddVendorBillPage.qml</file>
-        <file>qml/common/DnDListView.qml</file>
-        <file>qml/pages/customers/CustomerForm.qml</file>
-        <file>qml/pages/users/UsersForm.qml</file>
-    </qresource>
 </RCC>
