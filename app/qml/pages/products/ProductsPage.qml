@@ -138,7 +138,7 @@ AppPage{
             Layout.fillWidth: true
 
             delegate: AppDelegateChooser{}
-            permissionProvider: AuthManager.hasPermission
+            permissionProvider: function(permission){return AuthManager.hasPermission(permission);}
             actions: [
                 CAction{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog(); permission: "prm_add_products";},
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}

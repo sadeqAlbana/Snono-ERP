@@ -2,11 +2,12 @@
 
 AclGroupsModel::AclGroupsModel(QObject *parent)
     : AppNetworkedJsonModel{"/acl/groups",
-                            JsonModelColumnList{
-//                                {"id",tr("id")},
-//                                {"name",tr("name")}
+                            {
+                                {"id",tr("ID")},
+                                {"name",tr("Name")}
                             },
                             parent}
 {
+    requestData();
 }
 

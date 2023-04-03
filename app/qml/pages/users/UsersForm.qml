@@ -72,4 +72,28 @@ CFormView {
         objectName: "address"
         Layout.fillWidth: true
     }
+
+    CLabel {
+        text: qsTr("Role")
+    }
+
+    IconComboBox {
+        id: cb
+        leftIcon.name: "cil-badge"
+        objectName: "acl_group_id"
+        valueRole: "id"
+        textRole: "name"
+        Layout.fillWidth: true
+        model: AclGroupsModel{
+//            Component.onCompleted: requestData();
+            onDataRecevied: {
+                console.log("indexofvalue: " + cb.indexOfValue(0))
+                cb.currentIndex=cb.indexOfValue(0);
+
+                console.log("setted current index")
+                cb.modelChanged()
+
+            }
+        }
+    }
 }

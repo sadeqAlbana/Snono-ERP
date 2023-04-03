@@ -58,11 +58,14 @@ Card{
         spacing: 15
         onReset: form.setInitialValues();
 
-        onApplied: form.applyHandler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
-            if(reply.status()===200){
-                Router.back();
-            }
-        });
+        onApplied: {
+            let handler=form.applyHandler;
+            handler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
+                        if(reply.status()===200){
+                            Router.back();
+                        }
+                    });
+        }
 
 
         background: RoundedRect{

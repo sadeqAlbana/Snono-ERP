@@ -40,14 +40,14 @@ CToolBar {
             Layout.alignment: Qt.AlignVCenter
             CActionsMenu{
                 title: qsTr("Actions");
-                icon:"cil-settings"
+                icon.name:"cil-settings"
                 actions: tableView.actions
                 permissionProvider: tableView.permissionProvider
             }//Menu
 
             CMenu{
                 title: qsTr("Columns");
-                icon:"cil-list"
+                icon.name:"cil-list"
                 Repeater{
                     model: tableView.columns
                     CMenuItem{
@@ -70,7 +70,7 @@ CToolBar {
                 padding: 20
                 spacing: 1
                 title: qsTr("Filter");
-                icon: "cil-filter"
+                icon.name: "cil-filter"
                 onClicked: (filter)=> {
                                control.filterClicked(filter);
                            }

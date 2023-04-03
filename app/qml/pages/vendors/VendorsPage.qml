@@ -55,7 +55,7 @@ AppPage {
                 CAction {
                     text: qsTr("Delete")
                     icon.name: "cil-delete"
-                    onTriggered: tableView.removeVendor()
+                    onTriggered: tableView.removeVendor();
                 }
             ]
 

@@ -15,6 +15,8 @@ import PosFe
 AppPage{
 
     title: qsTr("Taxes")
+    StackView.onActivated: model.refresh();
+
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -59,7 +61,14 @@ AppPage{
                     enabled:tableView.validRow; permission: "prm_edit_taxes";
 
                 },
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: Api.removeTax(model.data(tableView.selectedRow,"id"))}
+                CAction{ text: qsTr("Delete");
+                    icon.name: "cil-delete";
+                    onTriggered: Api.removeTax(model.data(tableView.selectedRow,"id"))
+                    .subscribe(function(response){
+                                            if(response.json("status")===200){
+                                                model.refresh();
+                                            }
+                                        })}
             ]
 
 

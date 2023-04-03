@@ -88,15 +88,15 @@ Item {
     }
 
     function hide(){
-        this.visible=false;
+        visible=false;
     }
 
     function show(){
-        this.visible=true;
+        visible=true;
     }
 
     onLoggedIn: {
-        this.hide();
+        hide();
         rootLoader.setSource("qrc:/screens/MainScreen.qml");
     }
 
