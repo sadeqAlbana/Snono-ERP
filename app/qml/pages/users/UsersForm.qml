@@ -6,6 +6,8 @@ import CoreUI.Forms
 import CoreUI.Base
 import QtQuick.Layouts
 import CoreUI
+import CoreUI.Buttons
+import CoreUI.Palettes
 CFormView {
     id: control
     padding: 10
@@ -74,6 +76,21 @@ CFormView {
     }
 
     CLabel {
+        text: qsTr("Password")
+    }
+
+    CIconTextField {
+        id: tf
+        leftIcon.name: "cil-lock-locked"
+        objectName: "password"
+        Layout.fillWidth: true
+        echoMode: TextInput.Password
+        passwordToggleMask: true
+
+    }
+
+
+    CLabel {
         text: qsTr("Role")
     }
 
@@ -84,15 +101,16 @@ CFormView {
         valueRole: "id"
         textRole: "name"
         Layout.fillWidth: true
+
+
         model: AclGroupsModel{
-//            Component.onCompleted: requestData();
+            id: jsonModel
             onDataRecevied: {
-                console.log("indexofvalue: " + cb.indexOfValue(0))
-                cb.currentIndex=cb.indexOfValue(0);
+                cb.model=jsonModel.toJsonArray();
+                if(initialValues){
+                    cb.currentIndex=cb.indexOfValue(initialValues[cb.objectName])
 
-                console.log("setted current index")
-                cb.modelChanged()
-
+                }
             }
         }
     }
