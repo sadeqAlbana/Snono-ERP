@@ -38,6 +38,7 @@ CFormView {
         leftIcon.name: "cil-user"
         objectName: "first_name"
         Layout.fillWidth: true
+
     }
     CLabel {
         text: qsTr("Last Name")
@@ -55,6 +56,10 @@ CFormView {
         leftIcon.name: "cil-phone"
         objectName: "phone"
         Layout.fillWidth: true
+        helpBlock.text: qsTr("Invalid Phone Number")
+        validator: RegularExpressionValidator{
+            regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+        }
     }
     CLabel {
         text: qsTr("Email")
@@ -63,6 +68,7 @@ CFormView {
         leftIcon.name: "cib-mail-ru"
         objectName: "email"
         Layout.fillWidth: true
+
     }
 
     CLabel {

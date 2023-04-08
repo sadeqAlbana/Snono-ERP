@@ -61,14 +61,11 @@ Pane {
         Card{
             id: card
             padding: 20
-            //Layout.fillWidth: true
             Layout.fillWidth: true
             Layout.maximumWidth: 620
             Layout.preferredHeight: implicitHeight
             Layout.alignment: Qt.AlignCenter
-            //Layout.minimumWidth: implicitWidth
-            //anchors.verticalCenterOffset: -1*parent.height/8
-            //anchors.verticalCenterOffset: logo.height/2
+
             ColumnLayout{
                 id: layout
                 //             anchors.margins: 20
@@ -98,24 +95,20 @@ Pane {
                 CIconTextField{
                     id: usernameTF
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 71
                     font.pixelSize: 21
-                    //                echoMode: TextInput.Password
-                    property string helpBlockText : " "
-                    //onTextChanged: card.enableButtons(true);
-                    //leftRectVisible: true
+                    property string helpBlockText : ""
 
                     placeholderText : qsTr("username...")
                     leftIcon.name: "cil-user"
                     helpBlock.text: usernameTF.helpBlockText;
-                    helpBlock.color: "red"
+                    Layout.bottomMargin: 10
+
 
                 }
 
                 CIconTextField{
                     id: passwordTF
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 71
                     font.pixelSize: 21
                     echoMode: TextInput.Password
                     property string helpBlockText : " "

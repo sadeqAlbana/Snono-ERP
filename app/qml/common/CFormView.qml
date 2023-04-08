@@ -59,6 +59,10 @@ Card{
         onReset: form.setInitialValues();
 
         onApplied: {
+            if(!form.validate()){
+                return;
+            }
+
             let handler=form.applyHandler;
             handler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
                         if(reply.status()===200){
