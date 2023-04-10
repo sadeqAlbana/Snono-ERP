@@ -50,7 +50,14 @@ AppPage{
                 },
 
 
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
+                CAction{ text: qsTr("Delete");
+                    icon.name: "cil-delete";
+                    onTriggered: Api.deleteUser(model.data(tableView.selectedRow,"id"))
+                    .subscribe(function(response){
+                                            if(response.json("status")===200){
+                                                model.refresh();
+                                            }
+                                        })}
             ]//actions
 
             model: UsersModel{

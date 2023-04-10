@@ -46,6 +46,7 @@ public:
 
     Q_INVOKABLE NetworkResponse * addUser(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * updateUser(const QJsonObject &data);
+    Q_INVOKABLE NetworkResponse * deleteUser(const int userId);
 
     Q_INVOKABLE NetworkResponse * addTax(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * updateTax(const QJsonObject &data);

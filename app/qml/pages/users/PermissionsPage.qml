@@ -26,17 +26,33 @@ AppPage {
         id: page
         anchors.fill: parent
         columns: 3
+        rows:2
 
-        CListView{
-            title: qsTr("Role")
+//        header: CIconTextField{
+//            width: view.width
+//            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+//            font.pixelSize: 18
+//            placeholderText: qsTr("Search...")
+//            rightIcon.name: "cil-search"
+//            //onEntered: control.search(_search.text)
+//        }//search
+
+
+        DnDListView{
+            id: tableView
+//            title: qsTr("Role")
             Layout.fillHeight: true
-            Layout.fillWidth: true
+            Layout.column: 0
+            Layout.row: 1
+            Layout.rowSpan: 2
             model: AclGroupsModel{Component.onCompleted: requestData();}
 
             delegate: CListViewDelegate{
                 width: ListView.view.width
                 onClicked: {
+
                     dstModel.setRecords(model.items)
+                    srcModel.groupId=model.id
                 }
             }
 
@@ -46,9 +62,13 @@ AppPage {
         DnDListView{
             id: srcListView
             //section.labelPositioning: ListView.CurrentLabelAtStart
+            Layout.rowSpan: 2
+
             model: AclItemsModel{
                 id: srcModel
-                filter: {"groupUnused":2}
+                property int groupId: 0;
+                onGroupIdChanged: requestData();
+                filter: {"groupUnused":groupId}
                 sortKey: "category"
                 direction: "desc"
                 Component.onCompleted: requestData();
@@ -56,6 +76,8 @@ AppPage {
 
         }
         DnDListView{
+            Layout.rowSpan: 2
+
             id: dstListView
             model: AclDnDModel{
                 id: dstModel

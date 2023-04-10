@@ -16,6 +16,7 @@ import JsonModels
 import PosFe
 ListView {
     id: view
+    property list<Action> actions
     clip: true
     Layout.fillHeight: true
     section.property: "category"
@@ -24,6 +25,8 @@ ListView {
         text: section
         font.bold: true
     }
+
+
 
 
 
@@ -49,12 +52,12 @@ ListView {
         id: dropArea
         parent: view
         anchors.fill: parent
-        keys: ["application/json"]
+        keys: ["text/json"]
         onDropped: drop => {
                        if (drop.source !== view) {
                            model.appendRecord(JSON.parse(
                                                      drop.getDataAsString(
-                                                         "application/json")))
+                                                         "text/json")))
                            drop.acceptProposedAction()
                            view.positionViewAtEnd()
                            model.sort(section.property)
@@ -93,7 +96,7 @@ ListView {
         Drag.proposedAction: Qt.MoveAction
         Drag.source: view
         Drag.mimeData: {
-            "application/json": JSON.stringify(view.model.jsonObject(index))
+            "text/json": JSON.stringify(view.model.jsonObject(index))
         }
 
         Drag.onDragFinished: action => {

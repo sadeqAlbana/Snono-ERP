@@ -382,6 +382,14 @@ NetworkResponse * Api::updateUser(const QJsonObject &data)
     return PosNetworkManager::instance()->put(QUrl("/users"),data);
 }
 
+NetworkResponse *Api::deleteUser(const int userId)
+{
+    QUrl url("/users");
+    url.setQuery(QUrlQuery{{"id",QString::number(userId)}});
+
+    return PosNetworkManager::instance()->deleteResource(url);
+}
+
 NetworkResponse *Api::addTax(const QJsonObject &data)
 {
     return PosNetworkManager::instance()->post(QUrl("/taxes/add"),data);
