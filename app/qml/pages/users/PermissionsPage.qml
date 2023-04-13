@@ -22,7 +22,7 @@ import PosFe
 AppPage {
 
     title: qsTr("Permissions")
-    GridLayout {
+    ColumnLayout {
         id: page
         anchors.fill: parent
 
@@ -31,10 +31,34 @@ AppPage {
             model: AclGroupsModel{Component.onCompleted: requestData();}
             valueRole: "id"
             textRole: "name"
+            currentIndex: 0
         }
 
-        CListView{
-            model: AclItemsModel{}
+        CheckableListView{
+            implicitHeight: 400
+            implicitWidth: 200
+            section.property: "category"
+            section.delegate: Label {
+                padding: 10
+                text: section
+                font.bold: true
+            }
+
+            delegate: CheckableListView.CListViewCheckDelegate{
+            text: model.permission
+
+            }
+
+            model: AclItemsModel{
+            checkable: true
+//            filter: {"groupUnused":groupId}
+            sortKey: "category"
+            direction: "desc"
+
+            Component.onCompleted: requestData();
+
+            }
+
         }
 
     }
