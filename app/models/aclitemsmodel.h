@@ -9,6 +9,7 @@ class AclItemsModel : public AppNetworkedJsonModel
     QML_ELEMENT
 public:
     Q_INVOKABLE explicit AclItemsModel(QObject *parent = nullptr);
+
 };
 
 #endif // ACLITEMSMODEL_H

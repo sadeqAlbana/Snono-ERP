@@ -62,6 +62,7 @@ set(TARGET_SOURCES
     models/aclitemsmodel.h models/aclitemsmodel.cpp
     models/aclgroupsmodel.h models/aclgroupsmodel.cpp
     models/acldndmodel.h models/acldndmodel.cpp
+    models/checkableaclitemsmodel.h models/checkableaclitemsmodel.cpp
 
 )
 

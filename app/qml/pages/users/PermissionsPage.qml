@@ -26,17 +26,39 @@ AppPage {
         id: page
         anchors.fill: parent
 
-        CComboBox{
+        AppToolBar{
+            tableView: listView
+        }
+
+
+        CComboBox {
             id: roleCB
-            model: AclGroupsModel{Component.onCompleted: requestData();}
+            implicitWidth: 300
+            Layout.fillWidth: true
+
+            model: AclGroupsModel {
+                id: aclGroupsModel
+
+                Component.onCompleted: requestData()
+            }
             valueRole: "id"
             textRole: "name"
             currentIndex: 0
+
+            onCurrentIndexChanged: {
+                let aclItems = aclGroupsModel.data(currentIndex, "items")
+                aclItemsModel.uncheckAll()
+                aclItemsModel.matchChecked(aclItems, "permission", "permission")
+            }
         }
 
-        CheckableListView{
+        CheckableListView {
+            id: listView
             implicitHeight: 400
-            implicitWidth: 200
+            implicitWidth: 300
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
             section.property: "category"
             section.delegate: Label {
                 padding: 10
@@ -44,23 +66,20 @@ AppPage {
                 font.bold: true
             }
 
-            delegate: CheckableListView.CListViewCheckDelegate{
-            text: model.permission
-
+            delegate: CheckableListView.CListViewCheckDelegate {
+                text: model.permission
             }
 
-            model: AclItemsModel{
-            checkable: true
-//            filter: {"groupUnused":groupId}
-            sortKey: "category"
-            direction: "desc"
+            model: AclItemsModel {
+                id: aclItemsModel
+                checkable: true
+                //            filter: {"groupUnused":groupId}
+                sortKey: "category"
+                direction: "desc"
 
-            Component.onCompleted: requestData();
-
+                Component.onCompleted: requestData()
             }
-
         }
 
     }
-
 } //card end
