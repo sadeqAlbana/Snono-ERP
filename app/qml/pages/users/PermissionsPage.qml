@@ -11,6 +11,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
+import CoreUI.Palettes
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import JsonModels
 //https://doc.qt.io/qt-6/qtquick-tutorials-dynamicview-dynamicview2-example.html
@@ -20,15 +21,23 @@ import JsonModels
 import PosFe
 
 AppPage {
+    id: page
 
+
+
+    function updateChecked(){
+        let aclItems = aclGroupsModel.data(roleCB.currentIndex, "items")
+        aclItemsModel.uncheckAll()
+        aclItemsModel.matchChecked(aclItems, "permission", "permission")
+    }
     title: qsTr("Permissions")
     ColumnLayout {
-        id: page
         anchors.fill: parent
 
         AppToolBar{
             tableView: listView
         }
+
 
 
         CComboBox {
@@ -38,6 +47,7 @@ AppPage {
 
             model: AclGroupsModel {
                 id: aclGroupsModel
+                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
 
                 Component.onCompleted: requestData()
             }
@@ -45,11 +55,9 @@ AppPage {
             textRole: "name"
             currentIndex: 0
 
-            onCurrentIndexChanged: {
-                let aclItems = aclGroupsModel.data(currentIndex, "items")
-                aclItemsModel.uncheckAll()
-                aclItemsModel.matchChecked(aclItems, "permission", "permission")
-            }
+            onCurrentIndexChanged: page.updateChecked();
+
+
         }
 
         CheckableListView {
@@ -70,15 +78,71 @@ AppPage {
                 text: model.permission
             }
 
+
             model: AclItemsModel {
                 id: aclItemsModel
                 checkable: true
                 //            filter: {"groupUnused":groupId}
+
+
+                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
                 sortKey: "category"
                 direction: "desc"
 
                 Component.onCompleted: requestData()
             }
+        }
+
+
+    }//layout
+
+    footer: CDialogButtonBox{
+        alignment: Qt.AlignRight | Qt.AlignVCenter
+        position: DialogButtonBox.Footer
+        spacing: 15
+        onReset: form.setInitialValues();
+
+//        onApplied: {
+//            if(!form.validate()){
+//                return;
+//            }
+
+//            let handler=form.applyHandler;
+//            handler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
+//                        if(reply.status()===200){
+//                            Router.back();
+//                        }
+//                    });
+//        }
+
+
+        background: RoundedRect{
+            radius: CoreUI.borderRadius
+            border.color: palette.shadow
+            topLeft: false
+            topRight: false
+            color: CoreUI.color(CoreUI.CardHeader)
+            border.width: 1
+        }
+        CButton{
+            text: qsTr("Apply")
+            palette: BrandSuccess{}
+            DialogButtonBox.buttonRole: DialogButtonBox.ApplyRole
+
+
+        }
+
+        CButton{
+            text: qsTr("Cancel")
+            palette: BrandDanger{}
+            DialogButtonBox.buttonRole: DialogButtonBox.Cancel
+            onClicked: Router.back();
+        }
+
+        CButton{
+            text: qsTr("Reset")
+            palette: BrandWarning{}
+            DialogButtonBox.buttonRole: DialogButtonBox.ResetRole
         }
 
     }
