@@ -82,9 +82,6 @@ AppPage {
             model: AclItemsModel {
                 id: aclItemsModel
                 checkable: true
-                //            filter: {"groupUnused":groupId}
-
-
                 onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
                 sortKey: "category"
                 direction: "desc"
@@ -100,7 +97,9 @@ AppPage {
         alignment: Qt.AlignRight | Qt.AlignVCenter
         position: DialogButtonBox.Footer
         spacing: 15
-        onReset: form.setInitialValues();
+
+
+        onReset: aclItemsModel.requestData();
 
 //        onApplied: {
 //            if(!form.validate()){
