@@ -101,18 +101,10 @@ AppPage {
 
         onReset: aclItemsModel.requestData();
 
-//        onApplied: {
-//            if(!form.validate()){
-//                return;
-//            }
+        onApplied: {
 
-//            let handler=form.applyHandler;
-//            handler(form.data()).subscribe(function(reply){ //this stays like that until it becomes part of CoreUIQml
-//                        if(reply.status()===200){
-//                            Router.back();
-//                        }
-//                    });
-//        }
+
+        }
 
 
         background: RoundedRect{
@@ -127,8 +119,6 @@ AppPage {
             text: qsTr("Apply")
             palette: BrandSuccess{}
             DialogButtonBox.buttonRole: DialogButtonBox.ApplyRole
-
-
         }
 
         CButton{
