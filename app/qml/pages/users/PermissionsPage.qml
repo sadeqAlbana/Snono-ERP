@@ -103,6 +103,15 @@ AppPage {
 
         onApplied: {
 
+            let groupId=roleCB.currentValue
+            let items=aclItemsModel.toJsonArray(Qt.Checked)
+
+            console.log("items: "  + JSON.stringify(items))
+            let response=Api.updateGroupItems(groupId,items).subscribe(function(response){
+                if(response.json("status")===200){
+                    aclGroupsModel.refresh();
+                }
+            });
 
         }
 

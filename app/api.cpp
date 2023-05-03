@@ -410,3 +410,8 @@ NetworkResponse *Api::removeTax(const int taxId)
     return PosNetworkManager::instance()->deleteResource(url);
 }
 
+NetworkResponse *Api::updateGroupItems(const int groupId, const QJsonArray &items)
+{
+    return PosNetworkManager::instance()->post(QUrl("/acl/updateGroupItems"),QJsonObject{{"acl_group_id",groupId},{"items",items}});
+}
+

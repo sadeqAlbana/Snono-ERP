@@ -52,6 +52,7 @@ public:
     Q_INVOKABLE NetworkResponse * updateTax(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * removeTax(const int taxId);
 
+    Q_INVOKABLE NetworkResponse * updateGroupItems(const int groupId, const QJsonArray &items);
 
 
 
