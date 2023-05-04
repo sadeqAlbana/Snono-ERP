@@ -22,7 +22,7 @@ AppPage{
 
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
 
             onSearch: {
                 var filter=model.filter;

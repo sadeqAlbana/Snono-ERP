@@ -21,7 +21,7 @@ CToolBar {
     signal search(var searchString);
     signal filterClicked(var filter);
     property var advancedFilter : null;
-    required property var tableView
+    required property var view
     property bool searchVisible: true
     background: Rectangle{color: "transparent"}
     Layout.fillWidth: true
@@ -41,25 +41,25 @@ CToolBar {
             CActionsMenu{
                 title: qsTr("Actions");
                 icon.name:"cil-settings"
-                actions: tableView.actions
-                permissionProvider: tableView.permissionProvider
+                actions: view.actions
+                permissionProvider: view.permissionProvider
             }//Menu
 
             CMenu{
                 title: qsTr("Columns");
                 icon.name:"cil-list"
                 Repeater{
-                    model: tableView.columns
+                    model: view.columns
                     CMenuItem{
                         checkable: true
-                        text: tableView.model.headerData(modelData,Qt.Horizontal)
+                        text: view.model.headerData(modelData,Qt.Horizontal)
 //                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
                         checked: true
                         onCheckedChanged: {
                             if(checked)
-                                tableView.showColumn(modelData);
+                                view.showColumn(modelData);
                             else{
-                                tableView.hideColumn(modelData)
+                                view.hideColumn(modelData)
                             }
                         }
                     }

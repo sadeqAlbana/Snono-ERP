@@ -40,7 +40,7 @@ AppPage{
 
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
             advancedFilter:  [
                 {"type": "text","label": qsTr("Customer Name"),"key": "customer_name","options":{"placeholderText":qsTr("All...")}},
                 {"type": "text","label": qsTr("Customer Phone"),"key": "customer_phone","options":{"placeholderText":qsTr("All...")}},

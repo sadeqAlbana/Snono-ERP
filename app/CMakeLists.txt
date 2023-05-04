@@ -77,6 +77,8 @@ set(TARGET_QML_SOURCES
     qml/pages/users/UsersPage.qml
     qml/pages/users/UsersForm.qml
     qml/pages/users/PermissionsPage.qml
+    qml/pages/users/AclGroupForm.qml
+    qml/pages/users/AclGroupsPage.qml
     qml/pages/LoginPage.qml
     qml/pages/ReceiptPage.qml
     qml/pages/Accounting/DepositMoneyDialog.qml

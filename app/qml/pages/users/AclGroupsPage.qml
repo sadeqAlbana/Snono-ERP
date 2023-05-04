@@ -31,20 +31,20 @@ AppPage{
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",{"applyHandler": Api.addUser,
-                                                     "title": qsTr("Add User")
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",{"applyHandler": Api.addUser,
+                                                     "title": qsTr("Add Group")
                                                  })
                 },
                 CAction {
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",
                                                  {"applyHandler": Api.updateUser,
-                                                     "title": qsTr("Edit User"),
+                                                     "title": qsTr("Edit Group"),
 
                                                  "initialValues":model.jsonObject(tableView.selectedRow)
                                                  })
-                    enabled:tableView.validRow; permission: "prm_edit_users";
+                    enabled:tableView.validRow; permission: "prm_edit_acl_groups";
 
                 },
 

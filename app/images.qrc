@@ -11,4 +11,8 @@
         <file>icons/barq_logo.png</file>
         <file>icons/SS_Logo_Color-cropped.svg</file>
     </qresource>
+    <qresource prefix="/">
+        <file>qml/pages/users/AclGroupForm.qml</file>
+        <file>qml/pages/users/AclGroupsPage.qml</file>
+    </qresource>
 </RCC>

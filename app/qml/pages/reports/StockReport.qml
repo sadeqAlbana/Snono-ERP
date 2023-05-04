@@ -22,7 +22,7 @@ AppPage{
         spacing: 10
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
             searchVisible: false
 
         }

@@ -30,7 +30,7 @@ AppPage{
         anchors.fill: parent;
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
 
         }
 

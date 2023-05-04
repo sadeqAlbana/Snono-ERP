@@ -22,9 +22,6 @@ import PosFe
 
 AppPage {
     id: page
-
-
-
     function updateChecked(){
         let aclItems = aclGroupsModel.data(roleCB.currentIndex, "items")
         aclItemsModel.uncheckAll()
@@ -35,7 +32,7 @@ AppPage {
         anchors.fill: parent
 
         AppToolBar{
-            tableView: listView
+            view: view
         }
 
 
@@ -60,30 +57,51 @@ AppPage {
 
         }
 
-        CheckableListView {
-            id: listView
+        CTableView {
+            id: view
             implicitHeight: 400
             implicitWidth: 300
             Layout.fillWidth: true
             Layout.fillHeight: true
+            actions: [
+                CAction {
+                    text: qsTr("Add")
+                    icon.name: "cil-plus"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",{"applyHandler": Api.addUser,
+                                                     "title": qsTr("Add Group")
+                                                 })
+                },
+                CAction {
+                    text: qsTr("Edit")
+                    icon.name: "cil-pen"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",
+                                                 {"applyHandler": Api.updateUser,
+                                                     "title": qsTr("Edit Group"),
 
-            section.property: "category"
-            section.delegate: Label {
-                padding: 10
-                text: section
-                font.bold: true
-            }
+                                                 "initialValues":model.jsonObject(view.selectedRow)
+                                                 })
+                    enabled:view.validRow; permission: "prm_edit_acl_groups";
 
-            delegate: CheckableListView.CListViewCheckDelegate {
-                text: model.permission
-            }
+                },
 
 
-            model: AclItemsModel {
+                CAction{ text: qsTr("Delete");
+                    icon.name: "cil-delete";
+                    onTriggered: Api.deleteUser(model.data(view.selectedRow,"id"))
+                    .subscribe(function(response){
+                                            if(response.json("status")===200){
+                                                model.refresh();
+                                            }
+                                        })}
+            ]//actions
+
+
+
+            model: AclGroupsModel {
                 id: aclItemsModel
                 checkable: true
-                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
-                sortKey: "category"
+//                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
+                sortKey: "id"
                 direction: "desc"
 
                 Component.onCompleted: requestData()

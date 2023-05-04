@@ -23,7 +23,7 @@ AppPage{
 
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
         }
 
 

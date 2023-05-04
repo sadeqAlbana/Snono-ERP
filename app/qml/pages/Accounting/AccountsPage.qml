@@ -35,7 +35,7 @@ AppPage{
         anchors.fill: parent;
         AppToolBar{
             id: toolBar
-            tableView: tableView
+            view: tableView
 
             advancedFilter:  [
                 {"type": "date","label": qsTr("from"),"key": "from"},

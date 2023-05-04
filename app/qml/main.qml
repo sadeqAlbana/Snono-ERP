@@ -22,13 +22,6 @@ CApplicationWindow {
         id: metrics
     }
 
-
-
-
-
-
-
-
     Component.onCompleted: {
 
         if (Settings.jwt != "") {
