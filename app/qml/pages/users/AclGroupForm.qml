@@ -41,7 +41,7 @@ CFormView {
     }
     CheckableListView {
         id: view
-        objectName: "acl_group_items"
+        objectName: "acl_items"
         implicitHeight: 400
         implicitWidth: 300
         Layout.fillWidth: true

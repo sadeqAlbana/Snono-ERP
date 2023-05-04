@@ -122,7 +122,7 @@ void AuthManager::resetPermissions()
 
 void AuthManager::reloadPermissions()
 {
-    QJsonArray items=m_user["acl_group"].toObject()["items"].toArray();
+    QJsonArray items=m_user["acl_group"].toObject()["acl_items"].toArray();
     QStringList permissions;
     for(const QJsonValue &item : items){
         permissions << item["permission"].toString();

@@ -23,9 +23,9 @@ import PosFe
 AppPage {
     id: page
     function updateChecked(){
-        let aclItems = aclGroupsModel.data(roleCB.currentIndex, "items")
-        aclItemsModel.uncheckAll()
-        aclItemsModel.matchChecked(aclItems, "permission", "permission")
+        let aclItems = aclGroupsModel.data(roleCB.currentIndex, "acl_items")
+        model.uncheckAll()
+        model.matchChecked(aclItems, "permission", "permission")
     }
     title: qsTr("Permissions")
     ColumnLayout {
@@ -98,7 +98,7 @@ AppPage {
 
 
             model: AclGroupsModel {
-                id: aclItemsModel
+                id: model
                 checkable: true
 //                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
                 sortKey: "id"
@@ -117,7 +117,7 @@ AppPage {
         spacing: 15
 
 
-        onReset: aclItemsModel.requestData();
+        onReset: model.requestData();
 
         onApplied: {
 
