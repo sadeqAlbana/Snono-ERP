@@ -229,7 +229,7 @@ target_link_libraries(appposfe PRIVATE Qt6::Quick
     coreuiplugin
 )
 
-if(NOT ANDROID)
+if((NOT ANDROID) AND (NOT IOS))
     target_link_libraries(appposfe PRIVATE Qt6::Pdf Qt6::SerialPort)
 endif()
 
