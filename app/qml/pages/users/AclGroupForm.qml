@@ -42,6 +42,7 @@ CFormView {
     CheckableListView {
         id: view
         objectName: "acl_items"
+        matchKey: "permission"
         implicitHeight: 400
         implicitWidth: 300
         Layout.fillWidth: true

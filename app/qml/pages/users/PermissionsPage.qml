@@ -22,39 +22,16 @@ import PosFe
 
 AppPage {
     id: page
-    function updateChecked(){
-        let aclItems = aclGroupsModel.data(roleCB.currentIndex, "acl_items")
-        model.uncheckAll()
-        model.matchChecked(aclItems, "permission", "permission")
-    }
+
+    StackView.onActivated: model.refresh();
+
+
     title: qsTr("Permissions")
     ColumnLayout {
         anchors.fill: parent
 
         AppToolBar{
             view: view
-        }
-
-
-
-        CComboBox {
-            id: roleCB
-            implicitWidth: 300
-            Layout.fillWidth: true
-
-            model: AclGroupsModel {
-                id: aclGroupsModel
-                onDataRecevied: page.updateChecked() //method has a flow if model is received before cb model
-
-                Component.onCompleted: requestData()
-            }
-            valueRole: "id"
-            textRole: "name"
-            currentIndex: 0
-
-            onCurrentIndexChanged: page.updateChecked();
-
-
         }
 
         CTableView {
@@ -67,7 +44,7 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",{"applyHandler": Api.addUser,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",{"applyHandler": Api.addAclGroup,
                                                      "title": qsTr("Add Group")
                                                  })
                 },
@@ -75,7 +52,7 @@ AppPage {
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",
-                                                 {"applyHandler": Api.updateUser,
+                                                 {"applyHandler": Api.updateAclGroup,
                                                      "title": qsTr("Edit Group"),
 
                                                  "initialValues":model.jsonObject(view.selectedRow)
@@ -87,7 +64,7 @@ AppPage {
 
                 CAction{ text: qsTr("Delete");
                     icon.name: "cil-delete";
-                    onTriggered: Api.deleteUser(model.data(view.selectedRow,"id"))
+                    onTriggered: Api.deleteAclGroup(model.data(view.selectedRow,"id"))
                     .subscribe(function(response){
                                             if(response.json("status")===200){
                                                 model.refresh();

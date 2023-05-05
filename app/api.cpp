@@ -410,8 +410,25 @@ NetworkResponse *Api::removeTax(const int taxId)
     return PosNetworkManager::instance()->deleteResource(url);
 }
 
-NetworkResponse *Api::updateGroupItems(const int groupId, const QJsonArray &items)
+NetworkResponse *Api::addAclGroup(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->post(QUrl("/acl/updateGroupItems"),QJsonObject{{"acl_group_id",groupId},{"items",items}});
+    return PosNetworkManager::instance()->post(QUrl("/acl/groups/add"),data);
+
 }
+
+NetworkResponse *Api::updateAclGroup(const QJsonObject &data)
+{
+    return PosNetworkManager::instance()->put(QUrl("/acl/groups"),data);
+
+}
+
+NetworkResponse *Api::deleteAclGroup(const int id)
+{
+
+    QUrl url("/acl/groups");
+    url.setQuery(QUrlQuery{{"id",QString::number(id)}});
+
+    return PosNetworkManager::instance()->deleteResource(url);
+}
+
 
