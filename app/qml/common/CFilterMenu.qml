@@ -9,6 +9,8 @@ import CoreUI.Buttons
 import CoreUI.Palettes
 import CoreUI.Menus
 import CoreUI.Base
+import QtQuick.Templates as T
+
 CMenu {
     id: control
     property var model;
@@ -61,7 +63,7 @@ CMenu {
                     }
 
                     //use different delegate for checkable combo?
-                    if(item instanceof ComboBox){
+                    if(item instanceof T.ComboBox){
 
                         {
                             if(data.checkable){
@@ -99,6 +101,7 @@ CMenu {
 
                 }//for loop
 
+                console.log("cfilter menu filter: " + JSON.stringify(filter))
                 control.clicked(filter);
 
             }//apply
@@ -116,7 +119,7 @@ CMenu {
                     }
 
 
-                    if(item instanceof ComboBox){
+                    if(item instanceof T.ComboBox){
                         item.currentIndex=0;
                     }
 

@@ -48,6 +48,7 @@ AppPage{
 
 
             onFilterClicked: (filter) => {
+                                 console.log("filter: " + JSON.stringify(filter))
                                  model.filter=filter
                                  model.requestData();
                              }
