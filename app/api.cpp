@@ -8,7 +8,9 @@
 #include <QPrinter>
 #include <QPrinterInfo>
 #include <QPainter>
+#ifndef Q_OS_IOS
 #include <QPrintDialog>
+#endif
 #include <QJsonArray>
 #include <QDebug>
 #include <QFontMetrics>

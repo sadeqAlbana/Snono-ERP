@@ -176,9 +176,14 @@ void PosApplication::updateAppFont()
 
 QStringList PosApplication::availablePrinters()
 {
+#ifndef Q_OS_IOS
+
     QStringList printers = QPrinterInfo::availablePrinterNames();
     printers.prepend("Default Printer");
     return printers;
+#else
+return QStringList();
+#endif
 }
 
 void PosApplication::downloadVersion(const int version)

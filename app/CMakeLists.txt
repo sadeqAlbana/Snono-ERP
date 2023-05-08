@@ -1,5 +1,5 @@
 
-if(ANDROID)
+if(ANDROID OR IOS)
     add_compile_definitions(QT_NO_PDF TRUE)
 endif()
 

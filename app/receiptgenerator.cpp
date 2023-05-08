@@ -9,7 +9,9 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QRectF>
+#ifndef Q_OS_IOS
 #include <QPrintDialog>
+#endif
 #include <QPrinter>
 #include <QPrinterInfo>
 #include "code128item.h"
@@ -110,11 +112,16 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
+#ifndef Q_OS_IOS
     item.setPos(0,0);
+#endif
     item.setWidth( barcodeImg.width() );
     item.setHeight( barcodeImg.height() );
     item.setText(QString::number(orderId));
+
+#ifndef Q_OS_IOS
     item.update();
+#endif
     item.paint(&imgPainter,nullptr,nullptr);
     imgPainter.end();
 
@@ -460,6 +467,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     //     printer.setPageSize(QPageSize(QPageSize::A5));
     //     doc.print(&printer);
 
+#ifndef Q_OS_IOS
+
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
     QString random=QString::number(QRandomGenerator::global()->generate());
@@ -477,6 +486,11 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
     return pdfPrinter.outputFileName();
+
+#else
+    return QString();
+
+#endif
 }
 
 

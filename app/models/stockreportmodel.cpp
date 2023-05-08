@@ -61,11 +61,14 @@ void StockReportModel::print()
 
     QTextDocument doc;
     doc.setHtml(text);
+
+#ifndef Q_OS_IOS
     QPrinter printer(QPrinterInfo::defaultPrinter());
     printer.setPageSize(QPageSize::A4);
     doc.print(&printer);
 
     printCSV();
+#endif
 
 }
 

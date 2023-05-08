@@ -94,13 +94,18 @@ QByteArray FileUtils::fileChecksum(const QString fileName, const QCryptographicH
 
 QString SystemUtils::executeCommand(QString command, const QStringList args)
 {
-
+#ifndef Q_OS_IOS
     QProcess process;
     if(!args.isEmpty())
         process.start(command,args);
     process.waitForFinished(-1);
     QString result=process.readAllStandardOutput();
     return result;
+#else
+
+return QString();
+
+#endif
 
 
 }
