@@ -15,6 +15,7 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import PosFe
+import CoreUI
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 
@@ -141,9 +142,28 @@ AppPage{
             delegate: AppDelegateChooser{}
             permissionProvider: function(permission){return AuthManager.hasPermission(permission);}
             actions: [
-                CAction{ text: qsTr("New"); icon.name: "cil-plus"; onTriggered: tableView.openAddDialog(); permission: "prm_add_products";},
+
+                CAction {
+                    text: qsTr("Add")
+                    icon.name: "cil-plus"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductForm.qml",{"applyHandler": Api.addUser,
+                                                     "title": qsTr("Add",)
+                                                 })
+                    permission: "prm_add_products"
+                },
+                CAction {
+                    text: qsTr("Edit")
+                    icon.name: "cil-pen"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductForm.qml",
+                                                 {"applyHandler": Api.updateUser,
+                                                     "title": qsTr("Edit"),
+
+                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 })
+                    enabled:tableView.validRow; permission: "prm_edit_products";
+
+                },
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
-                CAction{ text: qsTr("Edit"); icon.name: "cil-pen"; onTriggered: tableView.openEditDialog(); enabled:tableView.validRow; permission: "prm_edit_products";},
                 CAction{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow; permission: "prm_purchase_stock";},
                 CAction{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow; permission: "prm_adjust_stock";},
                 CAction{ text: qsTr("Generate Catalogue"); icon.name: "cil-image"; onTriggered: Api.generateImages();},
