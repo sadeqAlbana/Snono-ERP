@@ -15,5 +15,6 @@
         <file>qml/pages/users/AclGroupForm.qml</file>
         <file>qml/pages/users/AclGroupsPage.qml</file>
         <file>qml/pages/products/ProductForm.qml</file>
+        <file>qml/common/CTabFormView.qml</file>
     </qresource>
 </RCC>
