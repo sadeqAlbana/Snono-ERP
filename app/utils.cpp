@@ -106,8 +106,6 @@ QString SystemUtils::executeCommand(QString command, const QStringList args)
 return QString();
 
 #endif
-
-
 }
 
 void SystemUtils::rebootDevice()

@@ -252,8 +252,8 @@ void PosApplication::downloadVersion(const int version)
 #endif
             if(QFile(scriptPath).exists()){
                 QFile(scriptPath).setPermissions(QFileDevice::ExeOther);
-#ifdef Q_OS_LINUX
-                qDebug()<<"script exec: " << SystemUtils::executeCommand("/bin/bash",QStringList{scriptPath});
+#if  defined(Q_OS_LINUX) || defined(Q_OS_MAC)
+                qDebug()<<"script exec: " << SystemUtils::executeCommand("/bin/bash",QStringList{"-c", scriptPath});
 #elif defined Q_OS_WINDOWS
                 qDebug()<<"script exec: " << SystemUtils::executeCommand("cmd.exe",QStringList{"/C",scriptPath});
 #endif
