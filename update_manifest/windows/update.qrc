@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/update">
+        <file>files/pos-fe.exe</file>
+        <file>files/sha256sums.txt</file>
+        <file>files/install_data/install.bat</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/update">
+        <file>files/appposfe</file>
+        <file>files/sha256sums.txt</file>
+        <file>files/install_data/install.sh</file>
+    </qresource>
+</RCC>

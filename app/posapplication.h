@@ -26,6 +26,8 @@ public:
 
     void downloadVersion(const int version);
 
+    static int version();
+
 signals:
     void languageChanged();
     void downloadVersionReply(bool success);

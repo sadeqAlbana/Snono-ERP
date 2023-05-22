@@ -271,7 +271,12 @@ void PosApplication::downloadVersion(const int version)
         qDebug()<<"setting permission: "<<QFile(binaryPath).setPermissions(QFileDevice::ExeOther);
 
         qDebug()<<"update success: " << success;
-        SystemUtils::rebootDevice();
+        //SystemUtils::rebootDevice();
     });
 
+}
+
+int PosApplication::version()
+{
+    return APP_VERSION;
 }
