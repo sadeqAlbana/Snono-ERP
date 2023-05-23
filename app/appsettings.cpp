@@ -95,6 +95,11 @@ void AppSettings::setExternalDelivery(bool newExternalDelivery)
     emit externalDeliveryChanged();
 }
 
+QString AppSettings::platform()
+{
+#ifdef Q_OS_WINDOWS && Q_
+}
+
 QUrl AppSettings::serverUrl()
 {
     return value("http_server_url").toUrl();

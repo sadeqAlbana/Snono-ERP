@@ -29,6 +29,7 @@
 #include "utils.h"
 #include <QStandardPaths>
 #include <networkresponse.h>
+#include <QUrlQuery>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
     m_engine(new QQmlApplicationEngine(this))
 {
@@ -188,8 +189,14 @@ return QStringList();
 
 void PosApplication::downloadVersion(const int version)
 {
+    QUrlQuery query;
+    query.addQueryItem("platform",QSysInfo::buildAbi());
+    query.addQueryItem("version",QString::number(version));
+    QUrl url("/misc/systemupdate/download");
+    url.setQuery(query);
+    QNetworkRequest request = PosNetworkManager::instance()->createNetworkRequest(url);
 
-    QNetworkRequest request = PosNetworkManager::instance()->createNetworkRequest(QString("/misc/systemupdate/download/%1").arg(version));
+
     request.setTransferTimeout(60*60*1000); // 1 hour
 
     PosNetworkManager::instance()->get(request)

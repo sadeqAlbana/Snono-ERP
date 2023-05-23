@@ -42,6 +42,8 @@ public:
     bool externalDelivery() const;
     void setExternalDelivery(bool newExternalDelivery);
 
+    static QString platform();
+
 signals:
     void serverUrlChanged(QUrl url);
 
