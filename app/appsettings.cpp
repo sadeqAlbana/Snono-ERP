@@ -97,8 +97,10 @@ void AppSettings::setExternalDelivery(bool newExternalDelivery)
 
 QString AppSettings::platform()
 {
-#ifdef Q_OS_WINDOWS && Q_
+    return QSysInfo::kernelType();
 }
+
+
 
 QUrl AppSettings::serverUrl()
 {

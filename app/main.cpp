@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
 
 
     qputenv("QML_DISABLE_DISTANCEFIELD", "1"); //this fixes the artifacts in arabic fonts
-
+    QString platform=QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
+    qDebug()<<platform;
 #ifdef Q_OS_WINDOWS
     //qputenv("QT_SCALE_FACTOR_ROUNDING_POLICY","PassThrough");
     //qputenv("QT_ENABLE_HIGHDPI_SCALING","1");

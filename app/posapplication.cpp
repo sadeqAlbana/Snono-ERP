@@ -190,7 +190,9 @@ return QStringList();
 void PosApplication::downloadVersion(const int version)
 {
     QUrlQuery query;
-    query.addQueryItem("platform",QSysInfo::buildAbi());
+
+    QString platform=QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
+    query.addQueryItem("platform",platform);
     query.addQueryItem("version",QString::number(version));
     QUrl url("/misc/systemupdate/download");
     url.setQuery(query);

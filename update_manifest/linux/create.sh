@@ -15,3 +15,4 @@ cd ../;
 rcc -binary update.qrc -o update_$VERSION.rcc
 #
 # scp -P 1982 update_$VERSION.rcc sadeq@ganjan.snono.systems:/tmp
+cp update_$VERSION.rcc /home/sadeq/projects/pos/build-pos-be-base-Desktop_Qt_6_4_2_GCC_64bit-MinSizeRel/app/storage/updates/fe/linux-x86_64
