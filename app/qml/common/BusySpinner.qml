@@ -18,8 +18,10 @@ Popup {
     property string headerText : ""
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
-        color: "#C0000000"
+        color: "transparent"
     }
 
-    contentItem: Spinner{}
+     Spinner{
+        anchors.centerIn: parent
+     }
 }
