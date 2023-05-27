@@ -4,10 +4,10 @@ import QtQuick.Controls
 
 BusyIndicator {
        id: control
-       implicitHeight: 150
-       implicitWidth: 150
-       width: 150
-       height: 150
+       implicitHeight: 75
+       implicitWidth: 75
+       width: 75
+       height: 75
 //       property int circleSize: 64
 //       contentItem: Item {
 //           implicitWidth: 64
