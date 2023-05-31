@@ -8,25 +8,18 @@ import QtQuick.Layouts
 import CoreUI
 import CoreUI.Buttons
 import CoreUI.Palettes
+import CoreUI.Views
+CTabView{
+    id: tabView
+    property var initialValues: null
 
-//CFormView {
-//    id: control
-//    padding: 10
-//    rowSpacing: 30
-//    method: control.method
-//    url: control.url
-
-//    header.visible: true
-
-
-//}
-CTabFormView{
-
-
-    GridLayout{
-
-            columns: 4
-            rowSpacing: 5
+    CFormView{
+        title: qsTr("Data")
+        padding: 10
+        rowSpacing: 30
+        header.visible: false
+        applyHandler: null
+        initialValues: tabView.initialValues
             CLabel {
                 text: qsTr("Name")
             }
@@ -74,6 +67,7 @@ CTabFormView{
 
 
     }
+
 
 
 }
