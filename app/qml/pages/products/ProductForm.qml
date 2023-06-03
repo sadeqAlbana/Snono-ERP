@@ -9,17 +9,23 @@ import CoreUI
 import CoreUI.Buttons
 import CoreUI.Palettes
 import CoreUI.Views
+import Qt.labs.qmlmodels
+
+Card{
+    id: page
+    property var initialValues: null
+    property var applyHandler;
+    Component.onCompleted: console.log(JSON.stringify(initialValues))
 CTabView{
     id: tabView
-    property var initialValues: null
-
+    anchors.fill: parent
     CFormView{
-        title: qsTr("Data")
+        title: qsTr("General")
         padding: 10
         rowSpacing: 30
         header.visible: false
-        applyHandler: null
-        initialValues: tabView.initialValues
+        applyHandler: function(){}
+        initialValues: page.initialValues
             CLabel {
                 text: qsTr("Name")
             }
@@ -69,5 +75,24 @@ CTabView{
     }
 
 
+    CFormView{
+        title: qsTr("Attributes")
+        padding: 10
+        rowSpacing: 30
+        header.visible: false
+        applyHandler: function(){}
+        initialValues: page.initialValues
+
+        Repeater{
+            model: initialValues.attributes
+
+            delegate: CTextField{text: modelData.value ;placeholderText: modelData.attribute_id}
+        }
+
+
+    }
+
+
+}
 
 }
