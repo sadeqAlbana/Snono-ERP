@@ -10,22 +10,23 @@ import CoreUI.Buttons
 import CoreUI.Palettes
 import CoreUI.Views
 import Qt.labs.qmlmodels
+import JsonModels
 
-Card{
+Card {
     id: page
     property var initialValues: null
-    property var applyHandler;
+    property var applyHandler
     Component.onCompleted: console.log(JSON.stringify(initialValues))
-CTabView{
-    id: tabView
-    anchors.fill: parent
-    CFormView{
-        title: qsTr("General")
-        padding: 10
-        rowSpacing: 30
-        header.visible: false
-        applyHandler: function(){}
-        initialValues: page.initialValues
+    CTabView {
+        id: tabView
+        anchors.fill: parent
+        CFormView {
+            title: qsTr("General")
+            padding: 10
+            rowSpacing: 30
+            header.visible: false
+            applyHandler: function () {}
+            initialValues: page.initialValues
             CLabel {
                 text: qsTr("Name")
             }
@@ -42,7 +43,6 @@ CTabView{
                 leftIcon.name: "cil-description"
                 objectName: "description"
                 Layout.fillWidth: true
-
             }
             CLabel {
                 text: qsTr("Barcode")
@@ -68,31 +68,63 @@ CTabView{
                 leftIcon.name: "cil-money"
                 objectName: "cost"
                 Layout.fillWidth: true
+            }
+        }
 
+        CFormView {
+            title: qsTr("Attributes")
+
+            //        AppNetworkedJsonModel{
+            //            id: attributesModel;
+            //            url: "/products/attributes"
+            //            Component.onCompleted: requestData();
+            //        }
+            padding: 10
+            rowSpacing: 30
+            header.visible: false
+            applyHandler: function () {}
+            initialValues: page.initialValues
+
+            JsonModel {
+                id: attributesModel
+                records: initialValues.attributes
             }
 
+            Repeater {
+                model: attributesModel
+                CLabel {
+                    text: model.attribute_id
+                    Layout.column: 0
+                    Layout.row: index
+                }
+            }
 
-    }
+            Repeater {
+                model: attributesModel
 
+                delegate: DelegateChooser {
+                    role: "type"
+                    DelegateChoice {
+                        roleValue: "TEXT"
+                        delegate: CTextField {
+                            objectName: model.attribute_id
+                            Layout.column: 1
+                            placeholderText: model.attribute_id
+                            Layout.row: index
+                            Layout.fillWidth: true
 
-    CFormView{
-        title: qsTr("Attributes")
-        padding: 10
-        rowSpacing: 30
-        header.visible: false
-        applyHandler: function(){}
-        initialValues: page.initialValues
+                        }
+                    }
+                }
+            }
 
-        Repeater{
-            model: initialValues.attributes
+            CButton{
+                text: "+";
+                palette: BrandInfo{}
 
-            delegate: CTextField{text: modelData.value ;placeholderText: modelData.attribute_id}
+            }
         }
 
 
     }
-
-
-}
-
 }

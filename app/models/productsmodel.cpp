@@ -168,17 +168,23 @@ void ProductsModel::exportJson()
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
     QStringList wanted{"thumb","size","sku","external_sku","color","color_ar","color_en","goods_id","external_id","name_en","name_ar"};
+
+    QStringList attributesAttributesWanted{"type"};
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
         QJsonArray attributes=product["attributes"].toArray();
 
         for(int j=0; j<attributes.size(); j++){
             QJsonObject attribute=attributes.at(j).toObject();
+            attribute["type"]=attribute["attributes_attribute"].toObject()["type"];
             QString attributeId=attribute["attribute_id"].toString();
+            attributes.replace(j,attribute);
             if(wanted.contains(attributeId)){
                 product[attributeId]=attribute["value"];
             }
         }
+        product["attributes"]=attributes;
+
         data.replace(i,product);
     }
     return data;
