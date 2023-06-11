@@ -26,14 +26,14 @@ AppPage{
         UpdateDeliveryStatusDialog{
             id: deliveryStatusDialog;
             onAccepted: {
-                model.updateDeliveryStatus(model.jsonObject(tableView.selectedRow).id,status);
+                model.updateDeliveryStatus(model.jsonObject(tableView.currentRow).id,status);
             }
         }
         ReceiptDialog{
             id: receiptDialog
 
             function openDialog(){
-                receiptData=model.jsonObject(tableView.selectedRow)
+                receiptData=model.jsonObject(tableView.currentRow)
                 open();
             }
         }
@@ -88,22 +88,22 @@ AppPage{
             }
 
             actions: [
-                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
                         Router.navigate("qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml",
-                                                      {order: model.jsonObject(tableView.selectedRow)});
+                                                      {order: model.jsonObject(tableView.currentRow)});
                     } },
 
-                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {
                         deliveryStatusDialog.open();
                     } },
-                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-action-undo"; onTriggered: {
-                        let order =model.jsonObject(tableView.selectedRow);
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Return"); icon.name: "cil-action-undo"; onTriggered: {
+                        let order =model.jsonObject(tableView.currentRow);
                         Router.navigate("qrc:/PosFe/qml/pages/orders/ReturnOrderPage.qml",{"order": order})
 
                     }},
-                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
-                CAction{enabled:tableView.selectedRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
-                    let reference=model.data(tableView.selectedRow,"id")
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
+                    let reference=model.data(tableView.currentRow,"id")
                         Api.barqReceipt(reference);
                     }}
 

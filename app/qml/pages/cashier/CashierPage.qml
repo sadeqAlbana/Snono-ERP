@@ -109,7 +109,7 @@ AppPage{
 
             Numpad{
                 id: numpad
-                enabled: tableView.selectedRow>=0
+                enabled: tableView.currentRow>=0
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.alignment: Qt.AlignCenter
@@ -131,7 +131,7 @@ AppPage{
                     }
                 }
                 function digitClicked(digit){
-                    var row=tableView.selectedRow;
+                    var row=tableView.currentRow;
 
                     var modelValue=null;
                     var key;
@@ -142,7 +142,7 @@ AppPage{
 
                     default: break;
                     }
-                    modelValue=cashierModel.data(tableView.selectedRow,cashierModel.indexOf(key));
+                    modelValue=cashierModel.data(tableView.currentRow,cashierModel.indexOf(key));
 
                     var newValue=NumberEditor.appendDigit(parseFloat(modelValue),digit,waitingForDecimal);
                     cashierModel.setData(row,key,newValue);
@@ -158,7 +158,7 @@ AppPage{
                 }
 
                 function backSpaceClicked(command){
-                    var row=tableView.selectedRow;
+                    var row=tableView.currentRow;
                     var key;
                     switch(activeButton.text){
                     case qsTr("Qty"): key="qty"; break;
@@ -167,7 +167,7 @@ AppPage{
 
                     default: break;
                     }
-                    var modelValue=cashierModel.data(tableView.selectedRow,cashierModel.indexOf(key));
+                    var modelValue=cashierModel.data(tableView.currentRow,cashierModel.indexOf(key));
                     if(modelValue===0 && activeButton.text===qsTr("Qty")){
                         clearClicked();
                     }else{
@@ -177,7 +177,7 @@ AppPage{
                     }
                 }
                 function clearClicked(){
-                    cashierModel.removeProduct(tableView.selectedRow);
+                    cashierModel.removeProduct(tableView.currentRow);
                 }
             }
             CComboBox{

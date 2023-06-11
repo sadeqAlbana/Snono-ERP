@@ -43,9 +43,9 @@ AppPage{
                                                  {"applyHandler": Api.updateCustomer,
                                                      "title": qsTr("Edit Customer"),
 
-                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 "initialValues":model.jsonObject(tableView.currentRow)
                                                  })
-                    enabled:tableView.validRow; permission: "prm_edit_customers";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_customers";
 
                 },
 

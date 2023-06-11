@@ -30,7 +30,7 @@ AppPage{
             id: dialog;
 
             onAccepted: {
-                var billId= model.data(tableView.selectedRow,"id");
+                var billId= model.data(tableView.currentRow,"id");
 
                 model.payBill(billId);
             }
@@ -47,11 +47,11 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
-                CAction{enabled: tableView.selectedRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
-                        dialog.amount=model.jsonObject(tableView.selectedRow).total;
+                CAction{enabled: tableView.currentRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
+                        dialog.amount=model.jsonObject(tableView.currentRow).total;
                         dialog.open();}},
-//                Action{enabled: tableView.selectedRow>=0; text: qsTr("Return"); icon.name: "cil-task"; onTriggered: {
-//                        Api.returnBill(model.jsonObject(tableView.selectedRow).id)
+//                Action{enabled: tableView.currentRow>=0; text: qsTr("Return"); icon.name: "cil-task"; onTriggered: {
+//                        Api.returnBill(model.jsonObject(tableView.currentRow).id)
 //                       }},
                 CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/AddVendorBillPage.qml");},
                 CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();}

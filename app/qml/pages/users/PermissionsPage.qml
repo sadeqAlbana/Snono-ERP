@@ -55,16 +55,16 @@ AppPage {
                                                  {"applyHandler": Api.updateAclGroup,
                                                      "title": qsTr("Edit Group"),
 
-                                                 "initialValues":model.jsonObject(view.selectedRow)
+                                                 "initialValues":model.jsonObject(view.currentRow)
                                                  })
-                    enabled:view.validRow; permission: "prm_edit_acl_groups";
+                    enabled:view.currentRow>=0; permission: "prm_edit_acl_groups";
 
                 },
 
 
                 CAction{ text: qsTr("Delete");
                     icon.name: "cil-delete";
-                    onTriggered: Api.deleteAclGroup(model.data(view.selectedRow,"id"))
+                    onTriggered: Api.deleteAclGroup(model.data(view.currentRow,"id"))
                     .subscribe(function(response){
                                             if(response.json("status")===200){
                                                 model.refresh();

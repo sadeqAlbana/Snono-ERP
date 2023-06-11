@@ -126,5 +126,66 @@ Card {
         }
 
 
-    }
+        Card {
+            title: qsTr("2Attributes2")
+
+
+
+            header.visible: false
+
+
+            RowLayout{
+                anchors.fill: parent
+                CTableView{
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 400
+                    model: ProductAttributesProxyModel{
+
+                        sourceModel : attributesModel
+
+
+                    }
+
+                    selectionModel: ItemSelectionModel{}
+
+                    alternatingRows : true
+                    animate: true
+
+
+
+//                    delegate: DelegateChooser{
+//                        role: "delegateType"
+//                        DelegateChoice{
+//                            roleValue: "text"
+
+//                            delegate: CTableViewDelegate{}
+//                        }
+//                        DelegateChoice{
+//                            roleValue: "action"
+//                            delegate: CButton{text:"x"; palette:BrandDanger{}}
+//                        }
+//                    }
+
+
+
+
+                    delegate: DelegateChooser{
+                        role: "delegateType"
+                        DelegateChoice{
+                            roleValue: "text"
+
+                            delegate: CTableViewDelegate{}
+                        }
+                        DelegateChoice{
+                            roleValue: "action"
+                            delegate: CButton{text:"x"; palette:BrandDanger{}}
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+    }//tabview
 }

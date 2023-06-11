@@ -42,16 +42,16 @@ AppPage{
                                                  {"applyHandler": Api.updateUser,
                                                      "title": qsTr("Edit User"),
 
-                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 "initialValues":model.jsonObject(tableView.currentRow)
                                                  })
-                    enabled:tableView.validRow; permission: "prm_edit_users";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_users";
 
                 },
 
 
                 CAction{ text: qsTr("Delete");
                     icon.name: "cil-delete";
-                    onTriggered: Api.deleteUser(model.data(tableView.selectedRow,"id"))
+                    onTriggered: Api.deleteUser(model.data(tableView.currentRow,"id"))
                     .subscribe(function(response){
                                             if(response.json("status")===200){
                                                 model.refresh();

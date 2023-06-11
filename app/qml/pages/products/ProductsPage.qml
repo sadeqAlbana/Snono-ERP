@@ -158,33 +158,33 @@ AppPage{
                                                  {"applyHandler": Api.updateUser,
                                                      "title": qsTr("Edit"),
 
-                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 "initialValues":model.jsonObject(tableView.currentRow)
                                                  })
-                    enabled:tableView.validRow; permission: "prm_edit_products";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_products";
 
                 },
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
-                CAction{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.validRow; permission: "prm_purchase_stock";},
-                CAction{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.validRow; permission: "prm_adjust_stock";},
+                CAction{ text: qsTr("Purchase Stock"); icon.name: "cil-cart"; onTriggered: tableView.openPurchaseDialog();enabled:tableView.currentRow>=0; permission: "prm_purchase_stock";},
+                CAction{ text: qsTr("Adjust Stock"); icon.name: "cil-cart"; onTriggered: tableView.openAdjustStockDialog(); enabled:tableView.currentRow>=0; permission: "prm_adjust_stock";},
                 CAction{ text: qsTr("Generate Catalogue"); icon.name: "cil-image"; onTriggered: Api.generateImages();},
                 CAction{ text: qsTr("Bulck Stock Adjustment"); icon.name: "cil-cart";     onTriggered: fileDialog.open();permission: "prm_adjust_stock";}
             ]
 
 
             function openPurchaseDialog(){
-                purchaseDialog.product=model.jsonObject(tableView.selectedRow);
+                purchaseDialog.product=model.jsonObject(tableView.currentRow);
                 purchaseDialog.open();
 
             }
             function                openEditDialog(){
-                editDlg.product=model.jsonObject(tableView.selectedRow);
+                editDlg.product=model.jsonObject(tableView.currentRow);
                 editDlg.open();
 
             }
 
             function openAdjustStockDialog(){
-                adjustStockDlg.productId=model.data(tableView.selectedRow,"id");
-                adjustStockDlg.originalQty=model.data(tableView.selectedRow,"products_stocks.qty")
+                adjustStockDlg.productId=model.data(tableView.currentRow,"id");
+                adjustStockDlg.originalQty=model.data(tableView.currentRow,"products_stocks.qty")
                 adjustStockDlg.open();
             }
 
@@ -197,7 +197,7 @@ AppPage{
                 id: purchaseDialog
 
                 onAccepted: {
-                    var productId=model.data(tableView.selectedRow,"id");
+                    var productId=model.data(tableView.currentRow,"id");
                     model.purchaseStock(productId,quantity,vendorId);
                     purchaseDialog.close();
                 }
@@ -231,7 +231,7 @@ AppPage{
             }//model
 
             function removeProduct(){
-                var productId= model.data(tableView.selectedRow,"id");
+                var productId= model.data(tableView.currentRow,"id");
                 model.removeProduct(productId);
             }
         }

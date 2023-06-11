@@ -47,9 +47,9 @@ AppPage {
                                                  {"applyHandler": Api.updateVendor,
                                                      "title": qsTr("Edit Vendor"),
 
-                                                 "initialValues":model.jsonObject(tableView.selectedRow)
+                                                 "initialValues":model.jsonObject(tableView.currentRow)
                                                  })
-                    enabled:tableView.validRow; permission: "prm_edit_vendors";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_vendors";
 
                 },
                 CAction {
@@ -61,8 +61,8 @@ AppPage {
 
 
             function removeVendor() {
-                if (tableView.selectedRow > -1) {
-                    var vendorId = model.data(tableView.selectedRow, "id")
+                if (tableView.currentRow > -1) {
+                    var vendorId = model.data(tableView.currentRow, "id")
                     model.removeVendor(vendorId)
                 }
             }

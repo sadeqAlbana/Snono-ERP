@@ -63,7 +63,7 @@ set(TARGET_SOURCES
     models/aclgroupsmodel.h models/aclgroupsmodel.cpp
     models/acldndmodel.h models/acldndmodel.cpp
     models/checkableaclitemsmodel.h models/checkableaclitemsmodel.cpp
-
+    models/productattributesproxymodel.h models/productattributesproxymodel.cpp
 )
 
 
