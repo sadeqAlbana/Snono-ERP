@@ -80,6 +80,18 @@ CToolBar {
                 model: control.advancedFilter
             }
 
+            CMenuBarItem{
+                icon.name: "cil-sync"
+                display: AbstractButton.IconOnly
+                spacing: 0
+                checkable : false
+                onClicked: view.model.refresh();
+                palette: BrandInfo{}
+
+            }
+
+
+
             //now delegate choice for filter
         }//MenuBar
 
