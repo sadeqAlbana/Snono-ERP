@@ -65,7 +65,7 @@ AppPage{
                 property real listPrice: model.list_price
 
                 contentItem: RowLayout{
-                    spacing: 30
+                    spacing: 10
                     LoadingImage{
                         Layout.fillHeight: true
                         Layout.fillWidth: false
@@ -73,10 +73,11 @@ AppPage{
                         antialiasing: true
                         fillMode: Image.PreserveAspectFit
                         source: model.thumb
-                        Layout.preferredWidth: 80
+                        Layout.preferredWidth: 70
                     }
 
                     ColumnLayout{
+                        spacing: 4
                         Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 //                        Text{
 //                            color: "#000000";
@@ -102,9 +103,9 @@ AppPage{
                         }
                         Text{
                             //color: "#A0A0A0"
-                            text: control.stock
+                            text: qsTr("Stock: ")+"<b>"+control.stock+"</b>"
+                            textFormat: Text.RichText
                             font.pixelSize: metrics.font.pixelSize*1.3
-
                             font.weight: Font.DemiBold
                             horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignVCenter
@@ -122,6 +123,23 @@ AppPage{
                             verticalAlignment: Text.AlignVCenter
                             Layout.fillWidth: true
 
+                        }
+
+
+                        Text{
+                            //color: "#A0A0A0"
+                            font.pixelSize: metrics.font.pixelSize*1.1
+
+                            text: model.sku
+                            font.weight: Font.Medium
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+                        }
+
+                        MenuSeparator{
+                            Layout.fillWidth: true
                         }
 
                     }

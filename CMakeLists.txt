@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(pos-fe VERSION 2 LANGUAGES CXX)
+project(appposfe VERSION 2 LANGUAGES CXX)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
@@ -24,6 +24,7 @@ find_package(Qt6  COMPONENTS Pdf REQUIRED)
 find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
 endif()
 
+
 set(ENABLE_QML ON)
 
 add_subdirectory(network-manager)
@@ -33,26 +34,6 @@ add_subdirectory(network-manager)
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
 
-if(ANDROID)
-    set(ANDROID_PACKAGE_SOURCE_DIR "app/android"
-        CACHE INTERNAL "")
-
-    set_target_properties(appposfe PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 32)
-    set(android_package_dir "${CMAKE_CURRENT_LIST_DIR}/app/android/")
-    set_target_properties(appposfe PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
-        ${android_package_dir})
-
-
-    add_custom_target(appposfe_android_package
-    SOURCES
-    ${android_package_dir}/AndroidManifest.xml
-    ${android_package_dir}/build.gradle
-#    ${android_package_dir}/settings.gradle
-    ${android_package_dir}/gradle.properties
-#    ${android_package_dir}/google-services.json
-    ${android_package_dir}/res/values/libs.xml)
-    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
-endif()
 
 #list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/src")
 list(APPEND QML_DIRS "${CMAKE_CURRENT_BINARY_DIR}/qml" )
@@ -65,4 +46,4 @@ set(QML_IMPORT_PATH ${QML_DIRS}
 
 
 
-
+message(WARNING "HELLO WORLD ${SSL_ROOT_PATH})")

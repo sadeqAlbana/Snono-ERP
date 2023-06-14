@@ -29,6 +29,28 @@ qt_add_executable(appposfe
     ${app_icon_resource_windows}
 )
 
+if(ANDROID)
+    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/android"
+        CACHE INTERNAL "")
+
+    set_target_properties(appposfe PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
+    set(android_package_dir "${CMAKE_CURRENT_LIST_DIR}/android/")
+    set_target_properties(appposfe PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
+        ${android_package_dir})
+
+
+    add_custom_target(appposfe_android_package
+    SOURCES
+    ${android_package_dir}/AndroidManifest.xml
+    ${android_package_dir}/build.gradle
+#    ${android_package_dir}/settings.gradle
+    ${android_package_dir}/gradle.properties
+#    ${android_package_dir}/google-services.json
+    ${android_package_dir}/res/values/libs.xml)
+    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
+endif()
+
+
 set(TARGET_SOURCES
     models/appnetworkedjsonmodel.cpp models/appnetworkedjsonmodel.h
     models/accountsmodel.cpp models/accountsmodel.h
@@ -190,6 +212,7 @@ qt_add_qml_module(appposfe
         ${TARGET_QML_SOURCES}
 
 
+
 )
 set(INCLUDE_DIR
     models
@@ -240,3 +263,10 @@ list(APPEND QML_DIRS  "${CMAKE_CURRENT_BINARY_DIR}/qml")
 
 target_compile_definitions(appposfe
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+
+
+install(TARGETS appposfe
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
