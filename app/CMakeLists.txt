@@ -185,6 +185,8 @@ set(TARGET_QML_SOURCES
     qml/common/AppFormView.qml
     qml/common/AppFormDialog.qml
     qml/common/CTabFormView.qml
+    qml/common/ActionsDelegate.qml
+
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml

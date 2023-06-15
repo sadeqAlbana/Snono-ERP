@@ -137,8 +137,19 @@ Card {
             RowLayout{
                 anchors.fill: parent
                 CTableView{
+                    id: tableView
                     Layout.fillWidth: true
                     Layout.preferredHeight: 400
+
+
+//                    columnWidthProvider: function(column){
+//                        if(column==2){
+//                            return 100
+//                        }else{
+//                            return tableView.widthProvider(column)
+//                        }
+//                    }
+
                     model: ProductAttributesProxyModel{
 
                         sourceModel : attributesModel
@@ -178,7 +189,16 @@ Card {
                         }
                         DelegateChoice{
                             roleValue: "action"
-                            delegate: CButton{text:"x"; palette:BrandDanger{}}
+                            delegate: ActionsDelegate{
+
+                                CButton {
+                                    text: "x"
+                                    palette: BrandDanger {}
+
+                                    Layout.alignment: Qt.AlignCenter
+                                    //                                    anchors.centerIn: parent
+                                }
+                            }
                         }
                     }
                 }
