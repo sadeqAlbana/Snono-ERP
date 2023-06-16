@@ -71,125 +71,46 @@ Card {
             }
         }
 
-        CFormView {
-            title: qsTr("Attributes")
-
-            //        AppNetworkedJsonModel{
-            //            id: attributesModel;
-            //            url: "/products/attributes"
-            //            Component.onCompleted: requestData();
-            //        }
-            padding: 10
-            rowSpacing: 30
-            header.visible: false
-            applyHandler: function () {}
-            initialValues: page.initialValues
-
-            JsonModel {
-                id: attributesModel
-                records: initialValues.attributes
-            }
-
-            Repeater {
-                model: attributesModel
-                CLabel {
-                    text: model.attribute_id
-                    Layout.column: 0
-                    Layout.row: index
-                }
-            }
-
-            Repeater {
-                model: attributesModel
-
-                delegate: DelegateChooser {
-                    role: "type"
-                    DelegateChoice {
-                        roleValue: "TEXT"
-                        delegate: CTextField {
-                            objectName: model.attribute_id
-                            Layout.column: 1
-                            placeholderText: model.attribute_id
-                            Layout.row: index
-                            Layout.fillWidth: true
-
-                        }
-                    }
-                }
-            }
-
-            CButton{
-                text: "+";
-                palette: BrandInfo{}
-
-            }
+        JsonModel {
+            id: attributesModel
+            records: initialValues.attributes
         }
 
-
         Card {
-            title: qsTr("2Attributes2")
-
-
+            title: qsTr("Attributes")
 
             header.visible: false
 
-
-            RowLayout{
+            ColumnLayout {
                 anchors.fill: parent
-                CTableView{
+                CTableView {
                     id: tableView
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 400
+                    Layout.fillHeight: true
+                    Layout.alignment: Qt.AlignTop
 
+                    selectionBehavior: TableView.SelectCells
 
-//                    columnWidthProvider: function(column){
-//                        if(column==2){
-//                            return 100
-//                        }else{
-//                            return tableView.widthProvider(column)
-//                        }
-//                    }
+                    model: ProductAttributesProxyModel {
 
-                    model: ProductAttributesProxyModel{
-
-                        sourceModel : attributesModel
-
-
+                        sourceModel: attributesModel
                     }
 
-                    selectionModel: ItemSelectionModel{}
+                    selectionModel: ItemSelectionModel {}
 
-                    alternatingRows : true
+                    alternatingRows: true
                     animate: true
 
-
-
-//                    delegate: DelegateChooser{
-//                        role: "delegateType"
-//                        DelegateChoice{
-//                            roleValue: "text"
-
-//                            delegate: CTableViewDelegate{}
-//                        }
-//                        DelegateChoice{
-//                            roleValue: "action"
-//                            delegate: CButton{text:"x"; palette:BrandDanger{}}
-//                        }
-//                    }
-
-
-
-
-                    delegate: DelegateChooser{
+                    delegate: DelegateChooser {
                         role: "delegateType"
-                        DelegateChoice{
+                        DelegateChoice {
                             roleValue: "text"
 
-                            delegate: CTableViewDelegate{}
+                            delegate: CTableViewDelegate {}
                         }
-                        DelegateChoice{
+                        DelegateChoice {
                             roleValue: "action"
-                            delegate: ActionsDelegate{
+                            delegate: ActionsDelegate {
 
                                 CButton {
                                     text: "x"
@@ -201,11 +122,30 @@ Card {
                             }
                         }
                     }
+                }//TableView
+
+                RowLayout{
+                    CButton{
+                        text: "+"
+                        palette: BrandInfo{}
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    }
+                    CButton{
+                        text: qsTr("Save")
+                        palette: BrandSuccess{}
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    }
+
+                    CButton{
+                        text: qsTr("Reset")
+                        palette: BrandDanger{}
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    }
+
                 }
+
+//                VerticalSpacer{}
             }
-
-
         }
-
-    }//tabview
+    } //tabview
 }

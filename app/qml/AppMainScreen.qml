@@ -18,6 +18,6 @@ MainScreen {
     icon: "qrc:/images/icons/SS_Logo_Color-cropped.svg"
     iconWidth: 177
     iconHeight: 43
-//    initialIndex: 7
+    initialIndex: 7
 
 }
