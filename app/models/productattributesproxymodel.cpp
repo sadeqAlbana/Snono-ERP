@@ -20,7 +20,9 @@ QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation or
     switch(section){
         case 0: return QStringLiteral("Attribute");
         case 1: return QStringLiteral("Value");
-        case 2: return QStringLiteral("Action");
+        case 2: return QStringLiteral("Type");
+
+        case 3: return QStringLiteral("Action");
 
         default: return QVariant();
 
@@ -53,7 +55,7 @@ int ProductAttributesProxyModel::columnCount(const QModelIndex &parent) const
     if (parent.isValid() || !sourceModel())
         return 0;
 
-    return 3;
+    return 4;
 }
 
 bool ProductAttributesProxyModel::hasChildren(const QModelIndex &parent) const
@@ -74,7 +76,8 @@ QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) c
         switch (index.column()) {
         case 0:
         case 1: return QStringLiteral("text");
-        case 2: return QStringLiteral("action");
+        case 2: return QStringLiteral("combo");
+        case 3: return QStringLiteral("action");
         default:
             break;
         }
@@ -109,6 +112,8 @@ QModelIndex ProductAttributesProxyModel::mapToSource(const QModelIndex &proxyInd
     switch(proxyIndex.column()){
         case 0: return sourceModel()->index(proxyIndex.row(),m_keyColumn);
         case 1: return sourceModel()->index(proxyIndex.row(),m_valueColumn);
+        case 2: return sourceModel()->index(proxyIndex.row(),2);
+
         default: return QModelIndex();
 
     }
@@ -123,6 +128,10 @@ QModelIndex ProductAttributesProxyModel::mapFromSource(const QModelIndex &source
 
     if(sourceIndex.column()==m_valueColumn){
          return index(sourceIndex.row(),1);
+    }
+
+    if(sourceIndex.column()==2){
+         return index(sourceIndex.row(),2);
     }
 
     return QModelIndex();

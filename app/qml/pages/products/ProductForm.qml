@@ -78,7 +78,9 @@ Card {
             columnList: [
 
                 JsonModelColumn{ displayName: qsTr("Attribute");key: "attribute_id";},
-                JsonModelColumn{ displayName: qsTr("Value");key: "value";}
+                JsonModelColumn{ displayName: qsTr("Value");key: "value";},
+                JsonModelColumn{ displayName: qsTr("Type");key: "type";}
+
 
             ]
         }
@@ -127,6 +129,17 @@ Card {
 
                                     Layout.alignment: Qt.AlignCenter
                                     onClicked: attributesModel.removeRecord(row)
+                                }
+                            }
+                        }
+
+                        DelegateChoice {
+                            roleValue: "combo"
+                            delegate: CTableViewDelegate {
+                                TableView.editDelegate: CComboBox{
+                                    width: parent.width
+                                    height: parent.height
+                                    model:["text","image"]
                                 }
                             }
                         }
