@@ -73,7 +73,14 @@ Card {
 
         JsonModel {
             id: attributesModel
-            records: initialValues.attributes
+            records: initialValues?.attributes?? []
+
+            columnList: [
+
+                JsonModelColumn{ displayName: qsTr("Attribute");key: "attribute_id";},
+                JsonModelColumn{ displayName: qsTr("Value");key: "value";}
+
+            ]
         }
 
         Card {
@@ -96,6 +103,8 @@ Card {
                         sourceModel: attributesModel
                     }
 
+                    reuseItems: false
+
                     selectionModel: ItemSelectionModel {}
 
                     alternatingRows: true
@@ -117,7 +126,7 @@ Card {
                                     palette: BrandDanger {}
 
                                     Layout.alignment: Qt.AlignCenter
-                                    //                                    anchors.centerIn: parent
+                                    onClicked: attributesModel.removeRecord(row)
                                 }
                             }
                         }
@@ -129,6 +138,7 @@ Card {
                         text: "+"
                         palette: BrandInfo{}
                         Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                        onClicked: attributesModel.appendRecord(attributesModel.record)
                     }
                     CButton{
                         text: qsTr("Save")

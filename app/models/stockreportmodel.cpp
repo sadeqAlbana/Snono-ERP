@@ -43,7 +43,7 @@ void StockReportModel::print()
             stream.writeAttribute("style","background-color:#F0F0F0;");
 
         for(int j=i; j<i+5; j++){
-        QJsonObject record=this->record(j);
+        QJsonObject record=this->recordAt(j);
         stream.writeTextElement("td",record["name"].toString());
         stream.writeTextElement("td",QString::number(record["stock"].toDouble()));
         }
@@ -81,7 +81,7 @@ void StockReportModel::printCSV()
     out << "item" << "," <<"qty" << Qt::endl;
 
     for(int i=0; i<rowCount(); i++){
-        QJsonObject record=this->record(i);
+        QJsonObject record=this->recordAt(i);
 
         out << record["name"].toString() << "," <<QString::number(record["stock"].toDouble()) << Qt::endl;
 

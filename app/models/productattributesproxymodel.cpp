@@ -5,6 +5,9 @@
 ProductAttributesProxyModel::ProductAttributesProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
 {
+
+    connect(this,&QAbstractProxyModel::sourceModelChanged,this,[this](){qDebug()<<"source model changed";});
+
 }
 
 QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -28,9 +31,10 @@ QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation or
 
 QModelIndex ProductAttributesProxyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    if(!sourceModel()){
+    if(!sourceModel() || parent.isValid()){
         return QModelIndex();
     }
+
     return createIndex(row,column);
 }
 
@@ -81,15 +85,13 @@ QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) c
 
 bool ProductAttributesProxyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-
-    qDebug()<<"Set data called: " << value;
-    return QAbstractProxyModel::setData(index,value,role);
-//    if (data(index, role) != value) {
-//        // FIXME: Implement me!
-//        emit dataChanged(index, index, {role});
-//        return true;
-//    }
-//    return false;
+    if (data(index, role) != value) {
+        if(QAbstractProxyModel::setData(index,value,role)){
+            emit dataChanged(index, index, {role});
+            return true;
+        }
+    }
+    return false;
 }
 
 Qt::ItemFlags ProductAttributesProxyModel::flags(const QModelIndex &index) const
@@ -100,22 +102,7 @@ Qt::ItemFlags ProductAttributesProxyModel::flags(const QModelIndex &index) const
     return QAbstractProxyModel::flags(index) | Qt::ItemIsEditable; // FIXME: Implement me!
 }
 
-bool ProductAttributesProxyModel::insertRows(int row, int count, const QModelIndex &parent)
-{
-    beginInsertRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
-    endInsertRows();
-    return true;
-}
 
-
-bool ProductAttributesProxyModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    beginRemoveRows(parent, row, row + count - 1);
-    // FIXME: Implement me!
-    endRemoveRows();
-    return true;
-}
 
 QModelIndex ProductAttributesProxyModel::mapToSource(const QModelIndex &proxyIndex) const
 {
@@ -143,19 +130,24 @@ QModelIndex ProductAttributesProxyModel::mapFromSource(const QModelIndex &source
 
 void ProductAttributesProxyModel::setSourceModel(QAbstractItemModel *sourceModel)
 {
-    if(sourceModel){
-        for(int i=0; i<sourceModel->columnCount(); i++){
-            QString header=sourceModel->headerData(i,Qt::Horizontal,Qt::EditRole).toString();
-            if(header=="attribute_id"){
-                m_keyColumn=i;
-            }
-            if(header=="value"){
-                m_valueColumn=i;
-            }
-        }
+    if(!sourceModel){
+         return;
     }
 
+
+
     QAbstractProxyModel::setSourceModel(sourceModel);
+
+    connect(sourceModel,&QAbstractItemModel::rowsAboutToBeInserted,this,&ProductAttributesProxyModel::beginInsertRows);
+    connect(sourceModel,&QAbstractItemModel::rowsInserted,this,&ProductAttributesProxyModel::endInsertRows);
+
+    connect(sourceModel,&QAbstractItemModel::rowsInserted,this,&ProductAttributesProxyModel::rowsInserted);
+
+    connect(sourceModel,&QAbstractItemModel::rowsAboutToBeRemoved,this,&ProductAttributesProxyModel::beginRemoveRows);
+    connect(sourceModel,&QAbstractItemModel::rowsRemoved,this,&ProductAttributesProxyModel::endRemoveRows);
+
+
+
 }
 
 QModelIndex ProductAttributesProxyModel::parent(const QModelIndex &child) const

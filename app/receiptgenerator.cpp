@@ -471,6 +471,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+    pdfPrinter.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
     QString random=QString::number(QRandomGenerator::global()->generate());
     pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
     qDebug()<<"path: " <<pdfPrinter.outputFileName();
@@ -478,6 +479,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     if(print){
         QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+
+        printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
+
         printer.setCopyCount(AppSettings::instance()->receiptCopies());
         printer.setPageSize(QPageSize::A5);
         doc.print(&printer);

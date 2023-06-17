@@ -5,6 +5,7 @@
 #include <QAbstractProxyModel>
 #include <QQmlEngine>
 
+//https://stackoverflow.com/questions/17562181/qt-signal-forwarding-inheriting-qabstractproxymodel
 
 class ProductAttributesProxyModel : public QAbstractProxyModel
 {
@@ -31,17 +32,11 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-//    // Editable:
+    // Editable:
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
     Qt::ItemFlags flags(const QModelIndex& index) const override;
-
-    // Add data:
-    bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-
-    // Remove data:
-    bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
 
 private:
 
@@ -53,8 +48,8 @@ public:
     QModelIndex mapFromSource(const QModelIndex &sourceIndex) const override;
 
     // QAbstractProxyModel interface
-    int m_keyColumn;
-    int m_valueColumn;
+    int m_keyColumn=0;
+    int m_valueColumn=1;
 public:
     void setSourceModel(QAbstractItemModel *sourceModel) override;
 
