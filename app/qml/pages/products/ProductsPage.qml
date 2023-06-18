@@ -24,7 +24,6 @@ AppPage{
     ColumnLayout{
         id: page
         anchors.fill: parent;
-
         spacing: 10
         AppToolBar{
             id: toolBar

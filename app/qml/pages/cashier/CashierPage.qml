@@ -23,6 +23,7 @@ AppPage{
     property bool pay: false
     property int sessionId : -1
 
+
     ReceiptDialog{
         id: receiptDialog
     }//receiptDialog
@@ -216,7 +217,7 @@ AppPage{
                     text=""
                 }
                 placeholderText: qsTr("Barcode...")
-                implicitHeight: 60
+                implicitHeight: 50
 
             }
         }
@@ -232,7 +233,7 @@ AppPage{
                 property bool isValid: currentText===editText
                 id: customerCB;
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 model: CustomersModel{
                     id: customersModel
                     usePagination: false
@@ -281,7 +282,7 @@ AppPage{
 
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 placeholderText: qsTr("Phone...")
                 leftIcon.name: "cil-phone"
             }
@@ -290,7 +291,7 @@ AppPage{
                 enabled: !customerCB.isValid
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 placeholderText: qsTr("Address...")
                 leftIcon.name: "cil-location-pin"
             }
@@ -299,7 +300,7 @@ AppPage{
                 id: notesLE
                 //id: customerPhone
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 placeholderText: qsTr("Note...")
                 leftIcon.name: "cil-notes"
 
@@ -310,7 +311,7 @@ AppPage{
 
                 property bool isValid: currentText===editText
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
@@ -339,7 +340,7 @@ AppPage{
                 enabled: deliverySwitch.checked
                 property bool isValid: currentText===editText
                 Layout.fillWidth: true;
-                implicitHeight: 60
+                implicitHeight: 50
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
@@ -378,7 +379,7 @@ AppPage{
                 text: Utils.formatNumber(cashierModel.total) + " IQD";
                 Layout.fillWidth: true
                 font.pixelSize: 20
-                implicitHeight: 60
+                implicitHeight: 50
 
             }
             CButton{
@@ -386,7 +387,7 @@ AppPage{
                 palette.button: "#2eb85c"
                 palette.buttonText: "#ffffff"
                 Layout.fillWidth: true
-                implicitHeight: 60
+                implicitHeight: 50
                 onClicked: parent.confirmPayment();
                 enabled: {
                     if(deliverySwitch.enabled){

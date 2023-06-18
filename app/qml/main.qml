@@ -14,6 +14,7 @@ import QtQml
 import CoreUI.Palettes
 
 CApplicationWindow {
+    id: window
     title: qsTr("POS")
     visible: true
 
