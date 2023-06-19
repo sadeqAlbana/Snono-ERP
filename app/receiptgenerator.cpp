@@ -326,7 +326,21 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
             stream.writeStartElement("td");
-            stream.writeCharacters(tableRow[column["key"].toString()].toString());
+            if(column["key"].toString()=="qty"){
+                if(tableRow[column["key"].toString()].toString().toInt()>1){
+                    stream.writeStartElement("b");
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                    stream.writeEndElement();
+
+                }
+                else{
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                }
+            }else{
+                stream.writeCharacters(tableRow[column["key"].toString()].toString());
+
+            }
+
 
 
             stream.writeEndElement();
@@ -456,8 +470,22 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndElement(); //html
     stream.writeEndDocument(); //doc
 
+//    qDebug()<<"doc font: " << doc.defaultFont();
+//    qDebug()<<"doc font point size: " << doc.defaultFont().pointSize();
+
+    QFont font("Arial");
+    font.setPixelSize(9);
+    doc.setDefaultFont(font);
 
     doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
+
+//    qDebug()<<"page size: " << QPageSize(QPageSize::A5);
+//    qDebug()<<"page sizePoints: " << QPageSize(QPageSize::A5).sizePoints();
+//    qDebug()<<"page sizeI: " << QPageSize(QPageSize::A5).size(QPageSize::Inch);
+//    qDebug()<<"page sizePixels: " << QPageSize(QPageSize::A5).sizePixels(300);
+//    qDebug()<<"page sizemm: " << QPageSize(QPageSize::A5).size(QPageSize::Millimeter);
+
+//    doc.setPageSize(QSizeF(417.6,597.6));
 
     doc.setHtml(text);
 
