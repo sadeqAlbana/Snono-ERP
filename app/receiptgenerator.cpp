@@ -326,7 +326,21 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
             stream.writeStartElement("td");
-            stream.writeCharacters(tableRow[column["key"].toString()].toString());
+            if(column["key"].toString()=="qty"){
+                if(tableRow[column["key"].toString()].toString().toInt()>1){
+                    stream.writeStartElement("b");
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                    stream.writeEndElement();
+
+                }
+                else{
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                }
+            }else{
+                stream.writeCharacters(tableRow[column["key"].toString()].toString());
+
+            }
+
 
 
             stream.writeEndElement();
@@ -457,7 +471,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndDocument(); //doc
 
 
-    doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
+//    doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
+    doc.setPageSize(QPageSize(QPageSize::A5).sizePixels(120));
 
     doc.setHtml(text);
 
