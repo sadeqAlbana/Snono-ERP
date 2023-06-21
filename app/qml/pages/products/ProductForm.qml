@@ -157,6 +157,17 @@ Card {
                         text: qsTr("Save")
                         palette: BrandSuccess{}
                         Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+
+                        onClicked: Api.
+                        setProductAttributes(initialValues.id,
+                                                            attributesModel.toJsonArray()).subscribe(function(response){
+                            console.log(response.status())
+                            console.log("RESPONSE RECEIVED")
+                        console.log(JSON.stringify(response.json()))
+
+                        })
+
+
                     }
 
                     CButton{

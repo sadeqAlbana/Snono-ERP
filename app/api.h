@@ -56,6 +56,7 @@ public:
     Q_INVOKABLE NetworkResponse * addAclGroup(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * updateAclGroup(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * deleteAclGroup(const int id);
+    Q_INVOKABLE NetworkResponse * setProductAttributes(const int &productId, const QJsonArray &attributes);
 
 
 
