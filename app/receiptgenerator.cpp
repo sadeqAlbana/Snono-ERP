@@ -473,9 +473,10 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 //    qDebug()<<"doc font: " << doc.defaultFont();
 //    qDebug()<<"doc font point size: " << doc.defaultFont().pointSize();
 
-    QFont font("Arial");
-    font.setPixelSize(9);
-    doc.setDefaultFont(font);
+//    QFont font("Arial");
+////    font.setPixelSize(9);
+//    font.setPointSize(5);
+//    doc.setDefaultFont(font);
 
     doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
 

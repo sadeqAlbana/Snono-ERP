@@ -20,7 +20,7 @@ Popup {
 //    padding: 0
 //    closePolicy: Popup.NoAutoClose
 //    width: parent.width*0.3
-    width: 620
+    width: pdf.sourceSize.width
     height: parent.height*0.8
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
