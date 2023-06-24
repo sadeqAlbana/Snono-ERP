@@ -139,7 +139,11 @@ Card {
                                 TableView.editDelegate: CComboBox{
                                     width: parent.width
                                     height: parent.height
-                                    model:["text","image"]
+                                    TableView.onCommit: {
+                                        display = currentText
+                                    }
+                                    model:["TEXT","IMAGE"]
+
                                 }
                             }
                         }
@@ -160,11 +164,10 @@ Card {
 
                         onClicked: Api.
                         setProductAttributes(initialValues.id,
-                                                            attributesModel.toJsonArray()).subscribe(function(response){
-                            console.log(response.status())
-                            console.log("RESPONSE RECEIVED")
-                        console.log(JSON.stringify(response.json()))
-
+                                                            attributesModel.toJsonArray()).subscribe(function(res){
+                            if(res.json('status')===200){
+                                Router.back();
+                            }
                         })
 
 
