@@ -17,7 +17,7 @@ Page{
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
     property var dashboard;
-    padding: 15
+    padding: window.mobileLayout? 0 : 15
     Flickable {
         id: flickable;
         anchors.fill: parent;
@@ -208,8 +208,8 @@ Page{
                 dropShadowEnabled: true
                 animationOptions: ChartView.AllAnimations
 
-                    margins.left: 5
-                    margins.right:5
+                    margins.left: window.mobileLayout? 0 : 5
+                    margins.right: window.mobileLayout? 0 : 5
                     margins.top:0
                     margins.bottom:5
 
