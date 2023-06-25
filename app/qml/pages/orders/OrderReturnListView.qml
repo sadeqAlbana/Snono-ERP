@@ -32,9 +32,35 @@ ListView {
 
     model: ReturnOrderModel {
         id: returnModel
+
+
     }
 
     spacing: 5
+
+    header: RowLayout{
+        CheckBox{
+            id: checkCB;
+            checkState: Qt.Unchecked;
+
+            Connections{
+                target: returnModel
+
+                function onDataChanged(topLeft,bottomRight,roles){
+                    checkCB.checkState=returnModel.checkState();
+                }
+            }
+
+
+            onClicked: {
+                if(checkState==Qt.Unchecked){
+                    returnModel.uncheckAll()
+                }else if(checkState==Qt.Checked || checkState==Qt.PartiallyChecked){
+                    returnModel.checkAll()
+                }
+            }
+        }
+    }
 
     //clip: true
     delegate: RowLayout {
