@@ -25,7 +25,7 @@ Card {
             padding: 10
             rowSpacing: 30
             header.visible: false
-            applyHandler: function () {}
+            applyHandler: page.applyHandler;
             initialValues: page.initialValues
             CLabel {
                 text: qsTr("Name")
@@ -56,20 +56,74 @@ Card {
             CLabel {
                 text: qsTr("List Price")
             }
-            CIconTextField {
-                leftIcon.name: "cil-money"
+            SpinBox {
+                //leftIcon.name: "cil-money"
                 objectName: "list_price"
                 Layout.fillWidth: true
+                editable: true
+                to: 100000000
+
             }
             CLabel {
                 text: qsTr("Cost")
             }
-            CIconTextField {
-                leftIcon.name: "cil-money"
+            SpinBox {
+                //leftIcon.name: "cil-money"
                 objectName: "cost"
                 Layout.fillWidth: true
+                editable: true
+                to: 100000000
+
             }
-        }
+
+            CLabel{
+                text: qsTr("Type")
+            }
+
+            IconComboBox{
+                objectName: "type"
+                Layout.fillWidth: true
+                currentIndex: 0
+                textRole: "text"
+                valueRole: "value"
+                model:ListModel {
+                    ListElement { text: qsTr("Storable Product");   value: 1;}
+                    ListElement { text: qsTr("Consumable Product"); value: 2;}
+                    ListElement { text: qsTr("Service Product");    value: 3;}
+                }
+            }
+
+            CLabel{
+                text: qsTr("Category")
+            }
+
+            IconComboBox{
+                Layout.fillWidth: true
+                objectName: "category_id"
+                textRole: "category"
+                valueRole: "id"
+                currentIndex: 0;
+                model: CategoriesModel{}
+            } //end categoryCB
+
+
+            CLabel{
+                text: qsTr("Taxes")
+            }
+
+            CCheckableComboBox{
+                Layout.fillWidth: true
+                //           Layout.maximumWidth: parent.width/2
+                model: TaxesCheckableModel{
+                    id: taxesModel;
+                }
+                textRole: "name";
+                valueRole: "id"
+                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
+
+            }
+
+        } //General
 
         JsonModel {
             id: attributesModel

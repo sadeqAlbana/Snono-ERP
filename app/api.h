@@ -59,7 +59,7 @@ public:
     Q_INVOKABLE NetworkResponse * setProductAttributes(const int &productId, const QJsonArray &attributes);
 
 
-
+    Q_INVOKABLE NetworkResponse * addProduct(const QJsonObject &product);
 
 
 signals:

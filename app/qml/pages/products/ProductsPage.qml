@@ -147,7 +147,7 @@ AppPage{
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductForm.qml",{"applyHandler": Api.addUser,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductForm.qml",{"applyHandler": Api.addProduct,
                                                      "title": qsTr("Add",)
                                                  })
                     permission: "prm_add_products"
@@ -156,7 +156,7 @@ AppPage{
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductForm.qml",
-                                                 {"applyHandler": Api.updateUser,
+                                                 {"applyHandler": Api.updateProduct,
                                                      "title": qsTr("Edit"),
 
                                                  "initialValues":model.jsonObject(tableView.currentRow)

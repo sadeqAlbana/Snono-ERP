@@ -441,4 +441,9 @@ NetworkResponse *Api::setProductAttributes(const int &productId, const QJsonArra
 
 }
 
+NetworkResponse *Api::addProduct(const QJsonObject &product)
+{
+    return PosNetworkManager::instance()->post(QUrl("/products/add"),product);
+}
+
 
