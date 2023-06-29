@@ -45,16 +45,13 @@ void Api::processCustomBill(const QString &name, const int &vendorId, const QJso
     });
 }
 
-void Api::updateProduct(const QJsonObject &product)
+NetworkResponse * Api::updateProduct(const QJsonObject &product)
 {
-    PosNetworkManager::instance()->post(QUrl("/products/update"),product)->subscribe(
-                [this](NetworkResponse *res){
-        emit updateProductReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/products/update"),product);
 }
 
 
-void Api::updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
+NetworkResponse * Api::updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes)
 {
     QJsonObject params{
         {"id",productId},
@@ -66,10 +63,7 @@ void Api::updateProduct(const int &productId, const QString &name, const double 
         {"taxes",taxes}
     };
 
-    PosNetworkManager::instance()->post(QUrl("/products/update"),params)->subscribe(
-                [this](NetworkResponse *res){
-        emit updateProductReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/products/update"),params);
 }
 
 void Api::requestDashboard()

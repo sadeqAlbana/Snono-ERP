@@ -227,3 +227,13 @@ QJsonArray CashierModel::filterData(QJsonArray data)
     return data;
 }
 
+Qt::ItemFlags CashierModel::flags(const QModelIndex &index) const
+{
+    switch(index.column()){
+    case 2:
+    case 3:
+    case 4: return Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
+    default: return NetworkedJsonModel::flags(index);
+    }
+}
+

@@ -16,7 +16,6 @@ Card {
     id: page
     property var initialValues: null
     property var applyHandler
-    Component.onCompleted: console.log(JSON.stringify(initialValues))
     CTabView {
         id: tabView
         anchors.fill: parent
@@ -86,6 +85,7 @@ Card {
                 currentIndex: 0
                 textRole: "text"
                 valueRole: "value"
+                enabled: !initialValues
                 model:ListModel {
                     ListElement { text: qsTr("Storable Product");   value: 1;}
                     ListElement { text: qsTr("Consumable Product"); value: 2;}

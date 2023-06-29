@@ -6,8 +6,6 @@ ProductAttributesProxyModel::ProductAttributesProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
 {
 
-    connect(this,&QAbstractProxyModel::sourceModelChanged,this,[this](){qDebug()<<"source model changed";});
-
 }
 
 QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation orientation, int role) const

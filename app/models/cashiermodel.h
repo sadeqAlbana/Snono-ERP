@@ -43,6 +43,8 @@ public:
     void onRequestCartResponse(NetworkResponse *res);
     void onUpadteCustomerReply(NetworkResponse *res);
     virtual QJsonArray filterData(QJsonArray data) override;
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+
 
 signals:
     void purchaseResponseReceived(QJsonObject res);
