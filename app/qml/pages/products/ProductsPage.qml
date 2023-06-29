@@ -270,7 +270,6 @@ AppPage {
                     }
                 }
 
-                Component.onCompleted: requestData()
 
                 //                onDataRecevied: {
                 //                    model.exportJson();

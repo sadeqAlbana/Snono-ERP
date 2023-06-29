@@ -9,7 +9,7 @@ CategoriesModel::CategoriesModel(QObject *parent) : AppNetworkedJsonModel("/cate
                                                                           {"parent_id",tr("Parent")}},
                                                                           parent)
 {
-    requestData();
+   
 }
 
 

@@ -14,5 +14,5 @@ JournalEntriesItemsModel::JournalEntriesItemsModel(QObject *parent) : AppNetwork
 //Column{"created_at","Date"}
 ,parent)
 {
-    requestData();
+   
 }

@@ -7,7 +7,8 @@ DelegateChooser{
     role: "delegateType"
     DelegateChoice{ roleValue: "text";       CTableViewDelegate{}}
     DelegateChoice{ roleValue: "currency";   CurrencyDelegate{}}
-    DelegateChoice{ roleValue: "percentage"; SuffixDelegate{suffix: "%"}}
+    DelegateChoice{ roleValue: "number";     NumberDelegate{}}
+    DelegateChoice{ roleValue: "percentage"; PercentageDelegate{}}
     DelegateChoice{ roleValue: "image"; ImageDelegate{}}
     DelegateChoice{ roleValue: "date"; DateDelegate{}}
     DelegateChoice{ roleValue: "datetime"; DateTimeDelegate{}}

@@ -4,6 +4,12 @@
 #include <QFile>
 #include <networkresponse.h>
 
+
+AppNetworkedJsonModel::AppNetworkedJsonModel(QObject *parent) : NetworkedJsonModel(QString(),JsonModelColumnList(),parent)
+{
+
+}
+
 AppNetworkedJsonModel::AppNetworkedJsonModel(QString Url, const JsonModelColumnList &columns, QObject *parent, bool usePagination) :
     NetworkedJsonModel(Url,columns,parent),m_direction("desc"),m_usePagination(usePagination)
 {
@@ -75,6 +81,17 @@ void AppNetworkedJsonModel::setDirection(const QString &newDirection)
     emit directionChanged();
 }
 
+void AppNetworkedJsonModel::classBegin()
+{
+
+}
+
+void AppNetworkedJsonModel::componentComplete()
+{
+//    qDebug()<<"parent object: " << QObject::parent();
+    requestData();
+}
+
 const QString &AppNetworkedJsonModel::sortKey() const
 {
     return m_sortKey;
@@ -121,6 +138,8 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
         }
     }
 
+//    QObject *pr=QObject::parent();;
+//    qDebug()<<"parent: " << pr;
     QJsonArray data=filterData(reply->json("data").toArray());
 //    qDebug()<<"data size: " << reply->json("data").toArray().size();
     if(m_usePagination){

@@ -14,7 +14,7 @@ VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                                              {"status",tr("Status"),QString(),"status"}}
                                                                                                                ,parent)
 {
-    requestData();
+
 }
 
 

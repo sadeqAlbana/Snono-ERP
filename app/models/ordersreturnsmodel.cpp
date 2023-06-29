@@ -9,5 +9,5 @@ OrdersReturnsModel::OrdersReturnsModel(QObject *parent) : AppNetworkedJsonModel(
                                                                                 },
                                                                                 parent)
 {
-   requestData();
+  
 }

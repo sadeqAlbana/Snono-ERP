@@ -39,7 +39,6 @@ Card{
             valueRole: "id"
             currentIndex: 0
             model: VendorsModel{
-                Component.onCompleted: requestData();
             }
         }
 

@@ -10,5 +10,5 @@ JournalEntriesModel::JournalEntriesModel(QObject *parent) : AppNetworkedJsonMode
                                                                                   {"amount_total",tr("Total"),QString(),"currency"}},
                                                                                   parent)
 {
-    requestData();
+   
 }

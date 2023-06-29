@@ -159,7 +159,6 @@ AppPage{
             model: ProductsModel{
                 id: model
                 filter: {"only_variants":true}
-                Component.onCompleted: requestData();
             }//model
 
         }//listView

@@ -81,7 +81,6 @@ AppPage {
                 sortKey: "id"
                 direction: "desc"
 
-                Component.onCompleted: requestData()
             }
         }
 

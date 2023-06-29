@@ -10,7 +10,7 @@ AccountsModel::AccountsModel(QObject *parent) :
                            {"balance",tr("Balance"),QString(),"currency"}},parent)
 {
     setDirection("asc");
-    requestData();
+
 
 }
 

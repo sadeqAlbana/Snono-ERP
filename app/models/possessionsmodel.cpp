@@ -11,7 +11,7 @@ PosSessionsModel::PosSessionsModel(QObject *parent) :  AppNetworkedJsonModel ("/
 //                                                                              {"total","Total","orders"}}
                                                                                   ,parent)
 {
-    requestData();
+   
 }
 
 void PosSessionsModel::newSession()

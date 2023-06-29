@@ -17,5 +17,7 @@
         <file>qml/pages/products/ProductForm.qml</file>
         <file>qml/common/CTabFormView.qml</file>
         <file>qml/common/ActionsDelegate.qml</file>
+        <file>qml/common/PercentageDelegate.qml</file>
+        <file>qml/common/NumberDelegate.qml</file>
     </qresource>
 </RCC>

@@ -186,6 +186,8 @@ set(TARGET_QML_SOURCES
     qml/common/AppFormDialog.qml
     qml/common/CTabFormView.qml
     qml/common/ActionsDelegate.qml
+    qml/common/PercentageDelegate.qml
+    qml/common/NumberDelegate.qml
 
     qml/main.qml
     qml/TestService.qml

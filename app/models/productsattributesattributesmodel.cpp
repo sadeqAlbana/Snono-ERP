@@ -5,5 +5,5 @@ ProductsAttributesAttributesModel::ProductsAttributesAttributesModel(QObject *pa
                              {"id",tr("ID")} ,
                              {"name",tr("Name")}},parent)
 {
-    requestData();
+
 }

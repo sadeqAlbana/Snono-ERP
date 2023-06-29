@@ -1,8 +1,6 @@
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Controls.Basic
-import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
+import QtQuick.Controls
 Popup {
     id: dialog
     modal: true
@@ -13,15 +11,31 @@ Popup {
     closePolicy: Popup.NoAutoClose
     width: parent.width
     height: parent.height
-
     property string text: ""
     property string headerText : ""
-    background: Rectangle{color: "transparent"}
+
+    onOpened: showTimer.start();
+    Timer{
+        id: showTimer;
+        interval: 250;
+        repeat: false
+    }
+
+
+    background: Rectangle{
+        color: "transparent"
+    }
     Overlay.modal: Rectangle {
         color: "transparent"
     }
 
-     Spinner{
+
+    BusyIndicator {
+        id: control
+        implicitHeight: 100
+        implicitWidth: 100
         anchors.centerIn: parent
-     }
+        visible: showTimer.running? false : true
+        running: visible
+    }
 }

@@ -62,7 +62,7 @@ CApplicationWindow {
         function onMonitoredRequestCountChanged(){
 
             //console.log("monitored: " + NetworkManager.monitoredRequestCount)
-            if(NetworkManager.monitoredRequestCount){
+            if(NetworkManager.monitoredRequestCount && !busySpinner.opened){
                 busySpinner.open();
             }else{
                 busySpinner.close();

@@ -8,7 +8,7 @@ UsersModel::UsersModel(QObject *parent)  : AppNetworkedJsonModel ("/users",{
                                                                   {"phone",tr("Phone")} ,
                                                                   {"name",tr("Role"),"acl_group"}},parent)
 {
-    requestData();
+   
 }
 
 

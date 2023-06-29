@@ -8,5 +8,5 @@ TaxesModel::TaxesModel(QObject *parent) : AppNetworkedJsonModel ("/taxes",{
                                                                  {"account_id",tr("Account ID")}
                                                                  },parent)
 {
-    requestData();
+   
 }

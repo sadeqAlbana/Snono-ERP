@@ -3,15 +3,17 @@
 
 #include <networkedjsonmodel.h>
 #include <QQmlEngine>
-class AppNetworkedJsonModel : public NetworkedJsonModel
+class AppNetworkedJsonModel : public NetworkedJsonModel, public QQmlParserStatus
 {
     Q_OBJECT
     QML_ELEMENT
+    Q_INTERFACES(QQmlParserStatus)
     Q_PROPERTY(bool usePagination READ usePagination WRITE setUsePagination NOTIFY usePaginationChanged)
 
 public:
-    Q_INVOKABLE AppNetworkedJsonModel(QString url, const JsonModelColumnList &columns=JsonModelColumnList(), QObject *parent = nullptr, bool usePagination=true);
-    Q_INVOKABLE AppNetworkedJsonModel(const JsonModelColumnList &columns=JsonModelColumnList(),QObject *parent = nullptr);
+    Q_INVOKABLE explicit AppNetworkedJsonModel(QObject *parent = nullptr);
+    AppNetworkedJsonModel(QString url, const JsonModelColumnList &columns=JsonModelColumnList(), QObject *parent = nullptr, bool usePagination=true);
+    AppNetworkedJsonModel(const JsonModelColumnList &columns, QObject *parent = nullptr);
 
     Q_PROPERTY(QJsonObject filter READ filter WRITE setFilter NOTIFY filterChanged)
 
@@ -27,6 +29,9 @@ public:
 
     const QString &direction() const;
     void setDirection(const QString &newDirection);
+
+    void classBegin() override;
+    void componentComplete() override;
 
 signals:
     void filterChanged(QJsonObject filter);

@@ -199,7 +199,6 @@ AppPage{
                 model: AppNetworkedJsonModel{
                     url: "/products/list"
                     filter: {"only_variants":true}
-                    Component.onCompleted: requestData();
                     onDataRecevied: {
                         productsCB.dataReceived=true;
                     }
@@ -244,7 +243,7 @@ AppPage{
                     }
                     Component.onCompleted: {
                         usePagination=false;
-                        requestData();
+
                     }
                 }
                 textRole: "name"
@@ -320,7 +319,6 @@ AppPage{
 
                 model: BarqLocationsModel{
                     id: cityModel
-                    Component.onCompleted: requestData();
                     //                    onDataRecevied: {
                     //                        townModel.requestData();
                     //                    }

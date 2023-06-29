@@ -39,7 +39,6 @@ AppPage{
             ]
             model: StockReportModel{
                 id: model
-                Component.onCompleted: requestData();
 
             }//model
 

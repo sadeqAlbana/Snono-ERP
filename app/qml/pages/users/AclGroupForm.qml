@@ -67,7 +67,6 @@ CFormView {
             sortKey: "category"
             direction: "desc"
 
-            Component.onCompleted: requestData()
         }
     }
 

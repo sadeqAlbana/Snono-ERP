@@ -8,6 +8,6 @@ AclGroupsModel::AclGroupsModel(QObject *parent)
                             },
                             parent}
 {
-    requestData();
+   
 }
 

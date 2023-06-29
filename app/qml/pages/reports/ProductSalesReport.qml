@@ -51,7 +51,6 @@ AppPage{
             model: ProductSalesReportModel{
                 id: model
 
-                Component.onCompleted: requestData();
 
             }//model
 
