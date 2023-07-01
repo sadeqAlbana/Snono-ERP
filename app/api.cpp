@@ -440,4 +440,17 @@ NetworkResponse *Api::addProduct(const QJsonObject &product)
     return PosNetworkManager::instance()->post(QUrl("/products/add"),product);
 }
 
+NetworkResponse *Api::nextVersion()
+{
+    int version=AppSettings::version();
+    QString software="posfe";
+    QString platform=AppSettings::platform();
+
+    QUrl url("/updates/next");
+    url.setQuery(QUrlQuery{{"version",QString::number(version)},{"software",software},{"platform",platform}});
+
+    return PosNetworkManager::instance()->get(url);
+
+}
+
 

@@ -60,6 +60,7 @@ public:
 
 
     Q_INVOKABLE NetworkResponse * addProduct(const QJsonObject &product);
+    Q_INVOKABLE NetworkResponse * nextVersion();
 
 
 signals:

@@ -188,7 +188,7 @@ set(TARGET_QML_SOURCES
     qml/common/ActionsDelegate.qml
     qml/common/PercentageDelegate.qml
     qml/common/NumberDelegate.qml
-
+    qml/pages/settings/UpdatesPage.qml
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml

@@ -43,7 +43,7 @@ public:
     void setExternalDelivery(bool newExternalDelivery);
 
     static QString platform();
-
+    Q_INVOKABLE static int version();
 signals:
     void serverUrlChanged(QUrl url);
 

@@ -135,6 +135,17 @@ CApplicationWindow {
                         errorDlg.close();
                     }
                 }
+
+                CButton {
+                    palette: BrandInfo {}
+                    text: qsTr("Retry")
+                    Layout.margins: 15
+                    onClicked: {
+                        AuthManager.testAuth();
+                        errorDlg.close();
+                    }
+
+                }
             }
         } //card
     }

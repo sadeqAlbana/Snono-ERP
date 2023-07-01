@@ -26,7 +26,7 @@ public:
 
     void downloadVersion(const int version);
 
-    static int version();
+    Q_INVOKABLE static int version();
 
 signals:
     void languageChanged();

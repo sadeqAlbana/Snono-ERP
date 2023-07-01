@@ -11,13 +11,4 @@
         <file>icons/barq_logo.png</file>
         <file>icons/SS_Logo_Color-cropped.svg</file>
     </qresource>
-    <qresource prefix="/">
-        <file>qml/pages/users/AclGroupForm.qml</file>
-        <file>qml/pages/users/AclGroupsPage.qml</file>
-        <file>qml/pages/products/ProductForm.qml</file>
-        <file>qml/common/CTabFormView.qml</file>
-        <file>qml/common/ActionsDelegate.qml</file>
-        <file>qml/common/PercentageDelegate.qml</file>
-        <file>qml/common/NumberDelegate.qml</file>
-    </qresource>
 </RCC>

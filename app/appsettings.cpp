@@ -100,6 +100,11 @@ QString AppSettings::platform()
     return QSysInfo::kernelType();
 }
 
+int AppSettings::version()
+{
+    return APP_VERSION;
+}
+
 
 
 QUrl AppSettings::serverUrl()

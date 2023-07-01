@@ -14,7 +14,7 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
-
+import CoreUI.Palettes
 AppPage{
     title: "General Settings"
     GridLayout{
@@ -22,6 +22,20 @@ AppPage{
         rowSpacing: 20
         LayoutMirroring.childrenInherit: true
         anchors.left: parent.left
+
+        Label{
+            text: qsTr("Version: ")+ App.version();
+        }
+
+        CButton{
+            palette: BrandInfo{}
+            text: qsTr("check for updates")
+
+            onClicked: Api.nextVersion().subscribe(function(response){
+                console.log(JSON.stringify(response.json()))
+
+            });
+        }
 
         Label{
             text: qsTr("Language");
