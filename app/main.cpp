@@ -45,6 +45,9 @@ int main(int argc, char *argv[])
 
 
     PosApplication a(argc, argv);
+
+#ifndef Q_OS_ANDROID
+
     QFont font=QApplication::font();
     //font.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
 
@@ -63,7 +66,7 @@ int main(int argc, char *argv[])
     font.setWeight(QFont::Weight::Normal);
     font.setPixelSize(16);
     QApplication::setFont(font);
-
+#endif
 
 
     return a.exec();
