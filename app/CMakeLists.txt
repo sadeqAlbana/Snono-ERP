@@ -48,27 +48,20 @@ if(ANDROID)
 #    ${android_package_dir}/google-services.json
     ${android_package_dir}/res/values/libs.xml
     ${android_package_dir}/res/values/ic_launcher_background.xml
-
     ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher.png
     ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher_round.png
-
     ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher.png
     ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher_round.png
-
     ${android_package_dir}/res/mipmap-xhdpi/ic_launcher.png
     ${android_package_dir}/res/mipmap-xhdpi/ic_launcher_round.png
-
+    ${android_package_dir}/res/mipmap-hdpi/ic_launcher.png
+    ${android_package_dir}/res/mipmap-hdpi/ic_launcher_round.png
     ${android_package_dir}/res/mipmap-mdpi/ic_launcher.png
     ${android_package_dir}/res/mipmap-mdpi/ic_launcher_round.png
-
     ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher.xml
     ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher_round.xml
-
-    ${android_package_dir}/res/drawable/ic_launcher.xml
-    ${android_package_dir}/res/drawable/ic_launcher_round.xml
-
-
-)
+    ${android_package_dir}/res/drawable/ic_launcher_foreground.xml
+    ${android_package_dir}/res/drawable/ic_launcher_background.xml)
     include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
 endif()
 
