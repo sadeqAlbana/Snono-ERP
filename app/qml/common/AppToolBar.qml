@@ -38,13 +38,11 @@ CToolBar {
         columnSpacing: 5
         columns: window.mobileLayout? 1 : 2
         rows: window.mobileLayout? 2 : 1
-
-         anchors.fill: parent
+        anchors.fill: parent
 
 
         CMenuBar{
             spacing: 0
-
 //            Layout.preferredHeight: 40
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             CActionsMenu{

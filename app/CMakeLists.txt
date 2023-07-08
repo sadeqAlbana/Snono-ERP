@@ -1,5 +1,5 @@
 
-if(ANDROID OR IOS)
+if(ANDROID OR IOS OR EMSCRIPTEN)
     add_compile_definitions(QT_NO_PDF TRUE)
 endif()
 
@@ -273,7 +273,7 @@ target_link_libraries(appposfe PRIVATE Qt6::Quick
     coreuiplugin
 )
 
-if((NOT ANDROID) AND (NOT IOS))
+if((NOT ANDROID) AND (NOT IOS) AND (NOT EMSCRIPTEN))
     target_link_libraries(appposfe PRIVATE Qt6::Pdf Qt6::SerialPort)
 endif()
 

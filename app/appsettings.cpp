@@ -34,13 +34,14 @@ void AppSettings::setJwt(const QByteArray &newJwt)
 
 QString AppSettings::macAddress()
 {
-
+#ifndef Q_OS_WASM
         for(QNetworkInterface netInterface: QNetworkInterface::allInterfaces())
         {
             // Return only the first non-loopback MAC Address
             if (!(netInterface.flags() & QNetworkInterface::IsLoopBack))
                 return netInterface.hardwareAddress();
         }
+#endif
         return QString();
 
 }

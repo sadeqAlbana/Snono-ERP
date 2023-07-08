@@ -14,7 +14,9 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     reloadBaseUrl();
 //    setRawHeader("Connection","close");
     setTransferTimeout(QNetworkRequest::DefaultTransferTimeoutConstant);
+#ifndef Q_OS_WASM
     setIgnoredSslErrors(QList<QSslError>());
+#endif
     //setTransferTimeout(10*1000);
 
     if(!jwt().isNull())

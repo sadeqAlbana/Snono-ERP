@@ -19,7 +19,7 @@ find_package(Qt6  COMPONENTS Core5Compat REQUIRED)
 find_package(Qt6  COMPONENTS Widgets REQUIRED)
 find_package(Qt6  COMPONENTS PrintSupport REQUIRED)
 find_package(Qt6  COMPONENTS LinguistTools)
-if((NOT ANDROID) AND (NOT IOS))
+if((NOT ANDROID) AND (NOT IOS) AND (NOT EMSCRIPTEN))
 find_package(Qt6  COMPONENTS Pdf REQUIRED)
 find_package(Qt6  COMPONENTS SerialPort  REQUIRED)
 endif()
@@ -46,4 +46,3 @@ set(QML_IMPORT_PATH ${QML_DIRS}
 
 
 
-message(WARNING "HELLO WORLD ${SSL_ROOT_PATH})")

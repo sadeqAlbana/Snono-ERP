@@ -189,6 +189,7 @@ return QStringList();
 
 void PosApplication::downloadVersion(const int version)
 {
+#ifndef Q_OS_WASM
     QUrlQuery query;
 
     QString platform=QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
@@ -282,7 +283,7 @@ void PosApplication::downloadVersion(const int version)
         qDebug()<<"update success: " << success;
         //SystemUtils::rebootDevice();
     });
-
+#endif
 }
 
 int PosApplication::version()
