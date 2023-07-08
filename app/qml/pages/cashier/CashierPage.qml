@@ -55,8 +55,8 @@ AppPage{
 
     GridLayout{ //main   grid
         anchors.fill: parent;
-        rows: 2
-        columns: 2
+        rows: window.moibleLayout? 1 : 2
+        columns: window.moibleLayout? 4 : 2
         flow: GridLayout.LeftToRight
         CTableView{
             id: tableView
@@ -104,12 +104,13 @@ AppPage{
         }//tableView
 
         ColumnLayout{
-            Layout.column: 1
-            Layout.row: 0
+            Layout.column: window.mobileLayout? 0: 1
+            Layout.row: window.mobileLayout? 1 :0
             Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
 
             Numpad{
                 id: numpad
+                visible: !window.mobileLayout
                 enabled: tableView.currentRow>=0
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -182,7 +183,7 @@ AppPage{
                 }
             }
             CComboBox{
-                Layout.maximumWidth: numpad.width
+                Layout.maximumWidth: window.mobileLayout? -1 :  numpad.width
 
                 id: productsCB
                 Layout.fillWidth: true
@@ -209,7 +210,7 @@ AppPage{
                 id: numpadInput
                 //                Layout.fillHeight: true
                 Layout.fillWidth: true
-                Layout.maximumWidth: numpad.width
+                Layout.maximumWidth: window.mobileLayout? -1 :  numpad.width
 
                 onAccepted:{
                     cashierModel.addProduct(text,true);
@@ -224,10 +225,10 @@ AppPage{
 
         GridLayout{ //customer grid
             Layout.alignment: Qt.AlignCenter
-            Layout.row: 1
+            Layout.row: window.mobileLayout? 2 : 1
             columnSpacing: 15
             Layout.column: 0
-            columns: 2
+            columns: window.mobileLayout? 1 : 2
             IconComboBox{
                 property bool isValid: currentText===editText
                 id: customerCB;
@@ -365,9 +366,9 @@ AppPage{
 
         ColumnLayout{ //total and pay layout
             Layout.alignment: Qt.AlignCenter
-            Layout.maximumWidth: numpad.width
-            Layout.row: 1
-            Layout.column: 1
+            Layout.maximumWidth: window.mobileLayout? -1 :  numpad.width
+            Layout.row: window.mobileLayout? 3: 1
+            Layout.column: window.mobileLayout? 0 : 1
 
 
 
