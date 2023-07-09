@@ -63,6 +63,8 @@ AppPage{
             Layout.row: 0
             Layout.column: 0
             Layout.fillHeight: true
+            selectionBehavior: TableView.SelectCells
+
             delegate: AppDelegateChooser{}
             Layout.fillWidth: true
             implicitHeight: 300
@@ -115,69 +117,7 @@ AppPage{
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.alignment: Qt.AlignCenter
-                  property bool waitingForDecimal: false
-                property var decimalBtn;
 
-                Component.onCompleted: {
-                    decimalBtn=numpad.button(".");
-                    decimalBtn.enabled=Qt.binding(function(){return !waitingForDecimal})
-                    decimalBtn.clicked.connect(function(){waitingForDecimal=true})
-                }
-
-                onButtonClicked:(button)=> {
-                    switch(button.type){
-                    case "DIGIT": digitClicked(parseInt(button.text)); break;
-                    case "COMMAND": commandClicked(button.text); break;
-                    case "SPECIAL":  numpad.activeButton=button ;break;
-                    default: break;
-                    }
-                }
-                function digitClicked(digit){
-                    var row=tableView.currentRow;
-
-                    var modelValue=null;
-                    var key;
-                    switch(numpad.activeButton.text){
-                    case qsTr("Qty"): key="qty"; break;
-                    case qsTr("Price"): key="unit_price"; break;
-                    case qsTr("Disc"): key="discount"; break;
-
-                    default: break;
-                    }
-                    modelValue=cashierModel.data(tableView.currentRow,cashierModel.indexOf(key));
-
-                    var newValue=NumberEditor.appendDigit(parseFloat(modelValue),digit,waitingForDecimal);
-                    cashierModel.setData(row,key,newValue);
-                    //                        waitingForDecimal=false
-                }
-                function commandClicked(command){
-
-                    switch (command){
-                    case "<" : backSpaceClicked(command); break;
-                    case "C" : numpadInput.text="0"; break;
-                    default: break;
-                    }
-                }
-
-                function backSpaceClicked(command){
-                    var row=tableView.currentRow;
-                    var key;
-                    switch(activeButton.text){
-                    case qsTr("Qty"): key="qty"; break;
-                    case qsTr("Price"): key="unit_price"; break;
-                    case qsTr("Disc"): key="discount"; break;
-
-                    default: break;
-                    }
-                    var modelValue=cashierModel.data(tableView.currentRow,cashierModel.indexOf(key));
-                    if(modelValue===0 && activeButton.text===qsTr("Qty")){
-                        clearClicked();
-                    }else{
-                        var newValue=NumberEditor.removeDigit(modelValue);
-                        cashierModel.setData(row,key,newValue);
-
-                    }
-                }
                 function clearClicked(){
                     cashierModel.removeProduct(tableView.currentRow);
                 }
@@ -208,7 +148,6 @@ AppPage{
 
             CTextField{
                 id: numpadInput
-                //                Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.maximumWidth: window.mobileLayout? -1 :  numpad.width
 

@@ -1,21 +1,32 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
-
 import QtQuick.Layouts
+import CoreUI.Palettes
 Button {
     id: control
+
+    property int key: 0
+    property var macro;
+    palette: BrandInfo{}
+    enum Type{
+        Normal,
+        Macro
+    }
+    required property int type
+    display: AbstractButton.TextBesideIcon
     Layout.fillWidth:true
     Layout.fillHeight: true
-    Layout.minimumWidth: 40
-    Layout.minimumHeight: 40
+    Layout.minimumWidth: 20
+    Layout.minimumHeight: 20
     Layout.maximumWidth: 100
     Layout.maximumHeight: 100
     Layout.alignment: Qt.AlignCenter
-    implicitWidth: 50
+    implicitWidth: 40
     implicitHeight: implicitWidth
-    width: 75
-    height: width
-    property string type
+    width: 40
+    height: 40
+    text: key
+        focusPolicy: Qt.NoFocus
     font.family: "Open Sans Regular"
     onPressed: beep.play();
 }

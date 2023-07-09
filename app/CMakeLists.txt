@@ -101,6 +101,7 @@ set(TARGET_SOURCES
     models/acldndmodel.h models/acldndmodel.cpp
     models/checkableaclitemsmodel.h models/checkableaclitemsmodel.cpp
     models/productattributesproxymodel.h models/productattributesproxymodel.cpp
+    keyemitter.h keyemitter.cpp
 )
 
 
