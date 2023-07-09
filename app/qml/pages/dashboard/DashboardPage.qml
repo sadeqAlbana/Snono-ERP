@@ -14,6 +14,7 @@ import Qt.labs.qmlmodels
 import QtCharts
 import PosFe
 Page{
+    id: page
     title: qsTr("Dashboard")
     background: Rectangle{color:"transparent";}
     property var dashboard;
@@ -101,10 +102,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Sales Today"), value: dashboard? Utils.formatCurrency(dashboard["sales_day"]) : ""},
-                            {label:qsTr("Sales This Month"), value: dashboard? Utils.formatCurrency(dashboard["sales_month"]) : ""},
-                            {label: qsTr("Sales Returns Today"), value: dashboard? Utils.formatCurrency(dashboard["sales_returns_month"]) : ""},
-                            {label: qsTr("Sales Returns This Month"), value: dashboard? Utils.formatCurrency(dashboard["sales_day"]) : ""}
+                            {label: qsTr("Sales Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
+                            {label:qsTr("Sales This Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month"]) : ""},
+                            {label: qsTr("Sales Returns Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
+                            {label: qsTr("Sales Returns This Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""}
                         ]
                     }
                 }
@@ -116,10 +117,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Pending"), value: dashboard? dashboard["orders_pending"] : ""},
-                            {label:qsTr("Processing"), value: dashboard? dashboard["orders_processing"] : ""},
-                            {label: qsTr("Returned"), value: dashboard? dashboard["orders_returned"] : ""},
-                            {label: qsTr("Partial Return"), value: dashboard? dashboard["orders_partial_return"] : ""}
+                            {label: qsTr("Pending"), value: page.dashboard? page.dashboard["orders_pending"] : ""},
+                            {label:qsTr("Processing"), value: page.dashboard? page.dashboard["orders_processing"] : ""},
+                            {label: qsTr("Returned"), value: page.dashboard? page.dashboard["orders_returned"] : ""},
+                            {label: qsTr("Partial Return"), value: page.dashboard? page.dashboard["orders_partial_return"] : ""}
                         ]
                     }
                 }
@@ -130,10 +131,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Orders Today"), value: dashboard? dashboard["orders_day"] : ""},
-                            {label:qsTr("Orders this Month"), value: dashboard? dashboard["orders_month"] : ""},
-                            {label: qsTr("Returns Today"), value: dashboard? dashboard["returns_day"] : ""},
-                            {label: qsTr("Returns this Month"), value: dashboard? dashboard["returns_month"] : ""}
+                            {label: qsTr("Orders Today"), value: page.dashboard? page.dashboard["orders_day"] : ""},
+                            {label:qsTr("Orders this Month"), value: page.dashboard? page.dashboard["orders_month"] : ""},
+                            {label: qsTr("Returns Today"), value: page.dashboard? page.dashboard["returns_day"] : ""},
+                            {label: qsTr("Returns this Month"), value: page.dashboard? page.dashboard["returns_month"] : ""}
                         ]
                     }
                 }
@@ -144,10 +145,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Orders Total"), value: dashboard? dashboard["orders_total"] : ""},
-                            {label:qsTr("Returns Total"), value: dashboard? dashboard["returns_total"] : ""},
-                            {label: qsTr("Available Stock"), value: dashboard? dashboard["stock_total"] : ""},
-                            {label: qsTr("Sold Stock"), value: dashboard? dashboard["sold_stock_total"] : ""}
+                            {label: qsTr("Orders Total"), value: page.dashboard? page.dashboard["orders_total"] : ""},
+                            {label:qsTr("Returns Total"), value: page.dashboard? page.dashboard["returns_total"] : ""},
+                            {label: qsTr("Available Stock"), value: page.dashboard? page.dashboard["stock_total"] : ""},
+                            {label: qsTr("Sold Stock"), value: page.dashboard? page.dashboard["sold_stock_total"] : ""}
                         ]
                     }
                 }
@@ -158,9 +159,9 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Daily Sales Profits"), value: dashboard? Utils.formatCurrency(dashboard["daily_sales_profits"]) : ""},
-                            {label:qsTr("Monthly Sales Profits"), value: dashboard? Utils.formatCurrency(dashboard["monthly_sales_profits"]) : ""},
-                            {label:qsTr("All Time Profits"), value: dashboard? Utils.formatCurrency(dashboard["monthly_sales_profits"]) : ""}
+                            {label: qsTr("Daily Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
+                            {label:qsTr("Monthly Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""},
+                            {label:qsTr("All Time Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""}
                         ]
                     }
                 }
@@ -171,10 +172,10 @@ Page{
                     icon: "qrc:/icons/CoreUI/free/cil-bar-chart.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Sold Stock This Month"), value: dashboard? dashboard["sold_stock_month"] : ""},
-                            {label:qsTr("returned Stock This Month"), value: dashboard? dashboard["returned_stock_month"] : ""},
-                            {label: qsTr("Net Sold Stock This Month"), value: dashboard? dashboard["net_sold_stock_month"] : ""},
-                            {label: qsTr("Stock Return Percentage"), value: dashboard? dashboard["stock_return_percentage"] : ""}
+                            {label: qsTr("Sold Stock This Month"), value: page.dashboard? page.dashboard["sold_stock_month"] : ""},
+                            {label:qsTr("returned Stock This Month"), value: page.dashboard? page.dashboard["returned_stock_month"] : ""},
+                            {label: qsTr("Net Sold Stock This Month"), value: page.dashboard? page.dashboard["net_sold_stock_month"] : ""},
+                            {label: qsTr("Stock Return Percentage"), value: page.dashboard? page.dashboard["stock_return_percentage"] : ""}
 
                         ]
                     }
