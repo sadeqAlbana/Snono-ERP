@@ -47,15 +47,15 @@ GridLayout {
         columns: 3
         columnSpacing: 10
         rowSpacing: 10
-        NumpadButton { text: "7"; key: Qt.Key_7 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this); }
-        NumpadButton { text: "8"; key: Qt.Key_8 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
-        NumpadButton { text: "9" ; key: Qt.Key_9 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
-        NumpadButton { text: "4" ;key: Qt.Key_4 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
-        NumpadButton { text: "5";key: Qt.Key_5 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
-        NumpadButton { text: "6"; key: Qt.Key_6 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
         NumpadButton { text: "1" ; key: Qt.Key_1 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
         NumpadButton { text: "2";  key: Qt.Key_2 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
         NumpadButton { text: "3";  key: Qt.Key_3 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
+        NumpadButton { text: "4" ;key: Qt.Key_4 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
+        NumpadButton { text: "5";key: Qt.Key_5 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
+        NumpadButton { text: "6"; key: Qt.Key_6 ; type: NumpadButton.Type.Normal;  onPressed: buttonClicked(this);}
+        NumpadButton { text: "7"; key: Qt.Key_7 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this); }
+        NumpadButton { text: "8"; key: Qt.Key_8 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
+        NumpadButton { text: "9" ; key: Qt.Key_9 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
         NumpadButton { text: "."; key: Qt.Key_Period ; type: NumpadButton.Type.Normal; palette.button: "#636f83"; palette.buttonText: "white";  onPressed: buttonClicked(this); }
         NumpadButton { text: "0"; key: Qt.Key_0 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this); }
         NumpadButton { text: "<"; key: Qt.Key_Backspace; type: NumpadButton.Type.Normal; palette: BrandDanger{}  onPressed: buttonClicked(this);}
