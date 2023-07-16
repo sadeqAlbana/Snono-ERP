@@ -18,6 +18,8 @@
 #include <QStandardPaths>
 #include <networkresponse.h>
 #include <QUrlQuery>
+#include <QFile>
+#include <QJsonDocument>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -451,6 +453,19 @@ NetworkResponse *Api::nextVersion()
 
     return PosNetworkManager::instance()->get(url);
 
+}
+
+NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
+{
+
+    qDebug()<<fileUrl.toLocalFile();
+    QFile file(fileUrl.toLocalFile());
+
+    qDebug()<<"File open: " << file.open(QIODevice::ReadOnly);
+
+    QJsonDocument doc=QJsonDocument::fromJson(file.readAll());
+    file.close();
+    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }
 
 

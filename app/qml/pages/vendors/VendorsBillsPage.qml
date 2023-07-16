@@ -1,19 +1,21 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
+import Qt.labs.qmlmodels
+import QtQuick.Dialogs
+import QtCore
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import Qt5Compat.GraphicalEffects
-
-import Qt.labs.qmlmodels 1.0
 import PosFe
 import CoreUI
-import PosFe
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
+
 AppPage{
 
     title: qsTr("Vendors Bills")
@@ -36,7 +38,17 @@ AppPage{
             }
         }
 
-
+        FileDialog {
+            id: sheinDialog
+            currentFolder: StandardPaths.writableLocation(
+                               StandardPaths.DocumentsLocation)
+            nameFilters: ["Json files (*.json)", "All files (*)"]
+            onAccepted: {
+                Api.addSheinOrder(selectedFile).subscribe(function(response){
+                    console.log(JSON.stringify(response.json()));
+                });
+            }
+        }
 
         AddCustomBillDialog{
             id: customBillDlg;
@@ -54,7 +66,13 @@ AppPage{
 //                        Api.returnBill(model.jsonObject(tableView.currentRow).id)
 //                       }},
                 CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/AddVendorBillPage.qml");},
-                CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();}
+                CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();},
+                CAction {
+                    text: qsTr("Add Shein Order")
+                    icon.name: "cil-cart"
+                    onTriggered: sheinDialog.open()
+                    permission: "prm_adjust_stock"
+                }
 
             ]
 
