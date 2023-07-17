@@ -28,6 +28,8 @@ public:
 
     Q_INVOKABLE static int version();
 
+    Q_INVOKABLE  void setMouseBusy(const bool busy);
+
 signals:
     void languageChanged();
     void downloadVersionReply(bool success);

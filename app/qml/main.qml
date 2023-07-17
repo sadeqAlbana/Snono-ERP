@@ -23,6 +23,13 @@ CApplicationWindow {
         id: metrics
     }
 
+//    HoverHandler  {
+//        id: mouse
+//                acceptedDevices: PointerDevice.Mouse
+//        cursorShape: Qt.WaitCursor
+//        target: window.contentItem
+//    }
+
     Component.onCompleted: {
 
         if (Settings.jwt != "") {
@@ -64,8 +71,11 @@ CApplicationWindow {
             //console.log("monitored: " + NetworkManager.monitoredRequestCount)
             if(NetworkManager.monitoredRequestCount && !busySpinner.opened){
                 busySpinner.open();
+                App.setMouseBusy(true);
             }else{
                 busySpinner.close();
+                App.setMouseBusy(false);
+
             }
         }
 

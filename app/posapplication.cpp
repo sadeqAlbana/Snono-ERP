@@ -290,3 +290,12 @@ int PosApplication::version()
 {
     return APP_VERSION;
 }
+
+void PosApplication::setMouseBusy(const bool busy)
+{
+    if(busy){
+        setOverrideCursor(Qt::WaitCursor);
+    }else{
+        restoreOverrideCursor();
+    }
+}
