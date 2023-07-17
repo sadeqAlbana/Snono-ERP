@@ -465,6 +465,8 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
 
     QJsonDocument doc=QJsonDocument::fromJson(file.readAll());
     file.close();
+    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()}});
+
     return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }
 
