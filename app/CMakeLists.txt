@@ -161,6 +161,7 @@ set(TARGET_QML_SOURCES
     qml/pages/categories/AddCategoryDialog.qml
     qml/pages/settings/GeneralSettings.qml
     qml/pages/settings/PrinterSettings.qml
+    qml/pages/settings/BarqDeliverySettings.qml
     qml/pages/vendors/VendorBillListView.qml
     qml/pages/vendors/PurchaseStockDialog.qml
     qml/pages/vendors/PayBillDialog.qml

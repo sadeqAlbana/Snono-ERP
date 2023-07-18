@@ -173,6 +173,11 @@ function navBar(){
                             "title": qsTr("Printer Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/PrinterSettings.qml",
                             "permission": ""
+                        },
+                        {
+                            "title": qsTr("Barq Delivery"),
+                            "path":"qrc:/PosFe/qml/pages/settings/BarqDeliverySettings.qml",
+                            "permission": "prm_admin"
                         }
 //                        {
 //                            "title": qsTr("Server Settings"),

@@ -92,7 +92,6 @@ CFormView {
         Layout.fillWidth: true
         echoMode: TextInput.Password
         passwordToggleMask: true
-
     }
 
 
