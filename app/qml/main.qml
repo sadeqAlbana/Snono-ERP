@@ -71,10 +71,8 @@ CApplicationWindow {
             //console.log("monitored: " + NetworkManager.monitoredRequestCount)
             if(NetworkManager.monitoredRequestCount && !busySpinner.opened){
                 busySpinner.open();
-                App.setMouseBusy(true);
             }else{
                 busySpinner.close();
-                App.setMouseBusy(false);
 
             }
         }

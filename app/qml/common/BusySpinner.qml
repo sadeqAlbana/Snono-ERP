@@ -19,6 +19,11 @@ Popup {
         id: showTimer;
         interval: 250;
         repeat: false
+
+        onRunningChanged: {
+            App.setMouseBusy(running);
+
+        }
     }
 
 
