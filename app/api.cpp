@@ -470,4 +470,15 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
     return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }
 
+NetworkResponse *Api::get(const QUrl &url)
+{
+    return PosNetworkManager::instance()->get(url);
+}
+
+NetworkResponse *Api::post(const QUrl &url, const QJsonObject data)
+{
+    return PosNetworkManager::instance()->post(url,data);
+
+}
+
 

@@ -64,6 +64,10 @@ public:
     Q_INVOKABLE NetworkResponse * addSheinOrder(const QUrl &fileUrl);
 
 
+    Q_INVOKABLE NetworkResponse * get(const QUrl &url);
+    Q_INVOKABLE NetworkResponse * post(const QUrl &url, const QJsonObject data);
+
+
 signals:
     void processCustomBillResponse(QJsonObject reply);
     void updateProductReply(QJsonObject reply);

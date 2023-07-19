@@ -17,16 +17,17 @@ import CoreUI.Palettes
 
 AppPage{
     title: "Barq Settings"
-
-    CFormView{
+    AppFormView{
+        id: form
+        url: "/barq/config"
         anchors.fill: parent
-    applyHandler: function(){}
+//    applyHandler: function(){}
         CLabel {
             text: qsTr("Agent Phone")
         }
         CIconTextField {
             leftIcon.name: "cil-phone"
-            objectName: "barq_phone"
+            objectName: "phone"
             Layout.fillWidth: true
             helpBlock.text: qsTr("Invalid Phone Number")
             validator: RegularExpressionValidator{
@@ -41,13 +42,14 @@ AppPage{
         CIconTextField {
             id: tf
             leftIcon.name: "cil-lock-locked"
-            objectName: "barq_password"
+            objectName: "password"
             Layout.fillWidth: true
             echoMode: TextInput.Password
             passwordToggleMask: true
         }
-
-
+        Component.onCompleted: NetworkManager.get('/barq/config').subscribe(function(res){
+            form.initialValues=res.json('data');
+        })
     }
 
 //    footer: AppDialogFooter{
