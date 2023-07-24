@@ -35,6 +35,8 @@ QString  executeCommand(QString command,const QStringList args);
 void rebootDevice();
 
 
+bool printJson(const QMap<QString,QString> headers, const QJsonArray &data);
+
 }
 
 #endif // UTILS_H
