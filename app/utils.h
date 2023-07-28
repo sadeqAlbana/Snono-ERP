@@ -34,8 +34,10 @@ namespace SystemUtils{
 QString  executeCommand(QString command,const QStringList args);
 void rebootDevice();
 
+}
 
-bool printJson(const QMap<QString,QString> headers, const QJsonArray &data);
+namespace Json{
+bool printJson(const QString &title, const QJsonArray &data, QList<QPair<QString, QString> > headers={});
 
 }
 

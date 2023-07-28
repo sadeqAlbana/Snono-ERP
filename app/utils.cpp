@@ -8,6 +8,12 @@
 #include <QProcess>
 #include <QXmlStreamWriter>
 #include <QXmlAttributes>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QPrinterInfo>
 QString Currency::formatString(const QVariant &value)
 {
     QString text;
@@ -120,40 +126,60 @@ void SystemUtils::rebootDevice()
 
 }
 
-bool SystemUtils::printJson(const QMap<QString, QString> headers, const QJsonArray &data)
+bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<QString, QString> > headers)
 {
+
+    if(!data.size())
+        return false;
 
         QString text;
         QXmlStreamWriter stream(&text);
-        QDateTime dt=QDateTime::currentDateTime();
-//        QStringList headers{"Item","Stock","Item","Stock","Item","Stock","Item","Stock","Item","Stock"};
+        QJsonObject record=data.first().toObject();
+//        QStringList headers=record.keys();
         stream.setAutoFormatting(true);
         stream.writeStartDocument();
         stream.writeStartElement("html");
 
         stream.writeTextElement("style","table, th,td,tr,h2 {border:1px solid black; text-align: center; width:100%; border-collapse: collapse;}");
 
-        stream.writeTextElement("h2",QString("Stock Report for %1").arg(dt.toString()));
+        stream.writeTextElement("h2",title);
 
 
         stream.writeStartElement("table");
         stream.writeAttribute("style", "width:100%;");
         stream.writeStartElement("tr");
+
+
+        if(headers.isEmpty()){
+            for(auto header : record.keys()){
+                headers << QPair<QString,QString>{header,header};
+            }
+        }
         for(auto header: headers){
-            stream.writeTextElement("th",header);
+            stream.writeTextElement("th",header.second);
         }
         stream.writeEndElement();//tr
 
-        for(int i=0; i<data.size(); i+=5){
+        for(int i=0; i<data.size(); i++){
             stream.writeStartElement("tr");
             if(i%2==0)
                 stream.writeAttribute("style","background-color:#F0F0F0;");
 
-            for(int j=i; j<i+5; j++){
-                QJsonObject record=this->recordAt(j);
-                stream.writeTextElement("td",record["name"].toString());
-                stream.writeTextElement("td",QString::number(record["stock"].toDouble()));
+                QJsonObject record=data.at(i).toObject();
+                for(auto header : headers){
+
+                QJsonValue value=record[header.second];
+
+                QString toWrite;
+                switch(value.type()){
+                case QJsonValue::Double: toWrite=QString::number(value.toDouble()); break;
+                case QJsonValue::String: toWrite=value.toString(); break;
+                default: toWrite="Invalid"; break;
+                }
+
+                stream.writeTextElement("td",toWrite);
             }
+
 
 
 
@@ -165,7 +191,11 @@ bool SystemUtils::printJson(const QMap<QString, QString> headers, const QJsonArr
         stream.writeEndElement(); //table
         stream.writeEndElement(); //html
         stream.writeEndDocument();
-
+        QFile f("t.html");
+        f.open(QIODevice::WriteOnly);
+        f.write(text.toUtf8());
+        f.close();
+        qDebug()<<"stream has error: "<<stream.hasError();
         QTextDocument doc;
         doc.setHtml(text);
 
@@ -173,9 +203,8 @@ bool SystemUtils::printJson(const QMap<QString, QString> headers, const QJsonArr
         QPrinter printer(QPrinterInfo::defaultPrinter());
         printer.setPageSize(QPageSize::A4);
         doc.print(&printer);
-
-        printCSV();
 #endif
 
+        return true;
 
 }

@@ -46,10 +46,11 @@ AppPage{
             delegate: AppDelegateChooser{}
 
             actions: [
-                Action{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
+                CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
             model: ProductSalesReportModel{
                 id: model
+
 
 
             }//model

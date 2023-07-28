@@ -15,6 +15,7 @@ public:
 
     const QDate &to() const;
     void setTo(const QDate &newTo);
+    Q_INVOKABLE bool print();
 
 signals:
     void fromChanged();

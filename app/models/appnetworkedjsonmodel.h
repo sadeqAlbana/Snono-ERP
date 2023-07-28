@@ -48,10 +48,10 @@ protected:
     Q_INVOKABLE void setSearchQuery(const QString _query);
     Q_INVOKABLE void search();
     Q_INVOKABLE void setFilter(const QJsonObject &filter);
+    QJsonObject m_filter;
 
 private:
     QString _query;
-    QJsonObject m_filter;
     QJsonObject m_oldFilter;
 
     QString m_direction;
