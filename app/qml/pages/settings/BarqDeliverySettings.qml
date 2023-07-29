@@ -51,13 +51,4 @@ AppPage{
             form.initialValues=res.json('data');
         })
     }
-
-//    footer: AppDialogFooter{
-//        acceptText: qsTr("Apply")
-//        cancelText: qsTr("Reset")
-
-//        onAccept: {
-
-//        }
-//    }
 }

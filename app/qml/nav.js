@@ -170,6 +170,11 @@ function navBar(){
                             "permission": ""
                         },
                         {
+                            "title": qsTr("Identity Settings"),
+                            "path":"qrc:/PosFe/qml/pages/settings/IdentitySettings.qml",
+                            "permission": "prm_admin"
+                        },
+                        {
                             "title": qsTr("Printer Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/PrinterSettings.qml",
                             "permission": ""

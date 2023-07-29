@@ -133,9 +133,13 @@ property var navBarData: [
                         "path":"qrc:/PosFe/qml/pages/settings/GeneralSettings.qml"
                     },
                     {
+                        "title": qsTr("Identity"),
+                        "path":"qrc:/PosFe/qml/pages/settings/IdentitySettings.qml"
+                    },
+                    {
                         "title": qsTr("Printer Settings"),
                         "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml"
-                },
+                    },
                     {
                         "title": qsTr("Server Settings"),
                         "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml"
