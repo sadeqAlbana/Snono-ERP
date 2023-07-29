@@ -35,6 +35,14 @@ AppPage{
             text: qsTr("Logo")
         }
 
+        Image{
+            id: logo
+            Layout.rowSpan: 4
+            Layout.preferredWidth: 320
+            Layout.preferredHeight: 320
+
+        }
+
 
 //        Component.onCompleted: NetworkManager.get('/barq/config').subscribe(function(res){
 //            form.initialValues=res.json('data');
