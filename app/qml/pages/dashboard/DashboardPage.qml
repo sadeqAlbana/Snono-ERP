@@ -161,7 +161,6 @@ Page{
                         modelRows: [
                             {label: qsTr("Daily Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
                             {label:qsTr("Monthly Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""},
-                            {label:qsTr("All Time Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""}
                         ]
                     }
                 }
