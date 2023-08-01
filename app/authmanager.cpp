@@ -6,6 +6,9 @@
 #include "appsettings.h"
 #include <QJsonArray>
 #include <networkresponse.h>
+#include <QHttpMultiPart>
+#include <QJsonDocument>
+#include <QFile>
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
@@ -30,7 +33,6 @@ void AuthManager::authenticate(QString username, QString password, bool remember
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
             setUser(res->json("user").toObject());
             emit loggedIn();
-
         }
         else {
             emit invalidCredentails();
@@ -70,6 +72,30 @@ void AuthManager::testAuth()
         if(success){
             setUser(AppSettings::instance()->user());
         }
+
+
+        QHttpMultiPart *multiPart=new QHttpMultiPart(QHttpMultiPart::FormDataType);
+        QHttpPart jsonPart;
+        jsonPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
+        jsonPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"json\""));
+        jsonPart.setBody(QJsonDocument(QJsonObject{{"test","hello"}}).toJson());
+
+        QHttpPart imagePart;
+        imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/jpeg"));
+        imagePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"image\""));
+        QFile *file = new QFile("/home/sadeq/identity_logo.png");
+        file->open(QIODevice::ReadOnly);
+        imagePart.setBodyDevice(file);
+        file->setParent(multiPart); // we cannot delete the file now, so delete it with the multiPart
+        multiPart->append(jsonPart);
+        multiPart->append(imagePart);
+
+        PosNetworkManager::instance()->post(QUrl("/test"),multiPart)->subscribe([](NetworkResponse *res){
+
+            qDebug()<<"Received successfully";
+
+        });
+
 
         emit testAuthResponse(success);
 
