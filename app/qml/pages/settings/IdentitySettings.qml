@@ -36,7 +36,8 @@ AppPage{
             text: qsTr("Logo")
         }
 
-        FileInput{objectName: "identity_logo";      Layout.fillWidth: true; }
+        FileInput{objectName: "identity_logo";      Layout.fillWidth: true;
+        }
 
 
 //        Image{

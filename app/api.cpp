@@ -486,6 +486,14 @@ NetworkResponse *Api::postIdentity(QJsonObject data)
     //we will modify image inside data
     qDebug()<<"data: " << data;
 
+    QUrl logoFile=data["identity_logo"].toString();
+
+    QFile file(logoFile.toLocalFile());
+    file.open(QIODevice::ReadOnly);
+
+    QByteArray fileData=file.readAll();
+    file.close();
+    data["identity_logo"]=QString(fileData.toBase64());
 
     return PosNetworkManager::instance()->post(QUrl("/identity"),data);
 
