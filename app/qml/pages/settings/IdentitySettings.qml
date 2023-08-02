@@ -20,14 +20,15 @@ AppPage{
     AppFormView{
         id: form
         url: "/identity"
+        applyHandler: Api.postIdentity
         anchors.fill: parent
 //    applyHandler: function(){}
         CLabel {
             text: qsTr("Entity Name")
         }
         CIconTextField {
+            objectName: "identity_name"
             leftIcon.name: "cil-phone"
-            objectName: "name"
             Layout.fillWidth: true
         }
 
@@ -35,7 +36,7 @@ AppPage{
             text: qsTr("Logo")
         }
 
-        FileInput{objectName: "file";      Layout.fillWidth: true; }
+        FileInput{objectName: "identity_logo";      Layout.fillWidth: true; }
 
 
 //        Image{
@@ -47,8 +48,9 @@ AppPage{
 //        }
 
 
-//        Component.onCompleted: NetworkManager.get('/barq/config').subscribe(function(res){
-//            form.initialValues=res.json('data');
-//        })
+        Component.onCompleted: NetworkManager.get(form.url).subscribe(function(res){
+            console.log(JSON.stringify(res.json("data")))
+            form.initialValues=res.json("data");
+        })
     }
 }

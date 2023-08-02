@@ -481,4 +481,14 @@ NetworkResponse *Api::post(const QUrl &url, const QJsonObject data)
 
 }
 
+NetworkResponse *Api::postIdentity(QJsonObject data)
+{
+    //we will modify image inside data
+    qDebug()<<"data: " << data;
+
+
+    return PosNetworkManager::instance()->post(QUrl("/identity"),data);
+
+}
+
 
