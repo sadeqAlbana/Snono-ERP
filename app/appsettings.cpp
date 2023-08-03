@@ -5,6 +5,7 @@
 #include <QJsonDocument>
 #include <QNetworkInterface>
 #include <QUuid>
+#include <QStandardPaths>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
@@ -60,6 +61,11 @@ QByteArray AppSettings::deviceUuid()
 int AppSettings::receiptCopies() const
 {
     return value("receipt_copies",1).toInt();
+}
+
+QString AppSettings::storagePath()
+{
+    return QStandardPaths::standardLocations(QStandardPaths::AppDataLocation).value(0);
 }
 
 void AppSettings::setReceiptCopies(int newReceiptCopies)

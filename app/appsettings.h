@@ -23,6 +23,7 @@ public:
     void setUser(const QJsonObject &user);
 
     void setServerUrl(const QString &host, const uint port, const bool useSSL);
+    static QString storagePath();
 
     static QString hwID();
 

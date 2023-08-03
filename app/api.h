@@ -66,7 +66,13 @@ public:
 
     Q_INVOKABLE NetworkResponse * get(const QUrl &url);
     Q_INVOKABLE NetworkResponse * post(const QUrl &url, const QJsonObject data);
+    Q_INVOKABLE NetworkResponse * identity();
+
     Q_INVOKABLE NetworkResponse * postIdentity(QJsonObject data);
+
+
+    Q_INVOKABLE NetworkResponse * postReceipt(QJsonObject data);
+    Q_INVOKABLE NetworkResponse * receipt();
 
 
 signals:

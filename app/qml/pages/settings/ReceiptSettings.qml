@@ -16,36 +16,32 @@ import PosFe
 import CoreUI.Palettes
 
 AppPage{
-    title: "Identity Settings"
+    title: "Receipt Settings"
     AppFormView{
         id: form
-        url: "/identity"
+        url: "/receipt"
         applyHandler: Api.postIdentity
         anchors.fill: parent
         CLabel {
-            text: qsTr("Entity Name")
+            text: qsTr("Phone Number")
         }
         CIconTextField {
-            objectName: "identity_name"
+            objectName: "receipt_phone"
             leftIcon.name: "cil-phone"
             Layout.fillWidth: true
         }
 
         CLabel {
-            text: qsTr("Logo")
-        }
-
-        FileInput{objectName: "identity_logo";      Layout.fillWidth: true;
+            text: qsTr("Bottom Note")
         }
 
 
-//        Image{
-//            id: logo
-//            Layout.rowSpan: 4
-//            Layout.preferredWidth: 320
-//            Layout.preferredHeight: 320
+        CIconTextField {
+            objectName: "receipt_bottom_note"
+            leftIcon.name: "cil-list"
+            Layout.fillWidth: true
+        }
 
-//        }
 
 
         Component.onCompleted: NetworkManager.get(form.url).subscribe(function(res){

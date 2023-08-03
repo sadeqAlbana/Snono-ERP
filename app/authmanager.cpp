@@ -74,27 +74,6 @@ void AuthManager::testAuth()
         }
 
 
-//        QHttpMultiPart *multiPart=new QHttpMultiPart(QHttpMultiPart::FormDataType);
-//        QHttpPart jsonPart;
-//        jsonPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
-//        jsonPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"json\""));
-//        jsonPart.setBody(QJsonDocument(QJsonObject{{"test","hello"}}).toJson());
-
-//        QHttpPart imagePart;
-//        imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/jpeg"));
-//        imagePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"image\""));
-//        QFile *file = new QFile("/home/sadeq/identity_logo.png");
-//        file->open(QIODevice::ReadOnly);
-//        imagePart.setBodyDevice(file);
-//        file->setParent(multiPart); // we cannot delete the file now, so delete it with the multiPart
-//        multiPart->append(jsonPart);
-//        multiPart->append(imagePart);
-
-//        PosNetworkManager::instance()->post(QUrl("/test"),multiPart)->subscribe([](NetworkResponse *res){
-
-//            qDebug()<<"Received successfully";
-
-//        });
 
 
         emit testAuthResponse(success);

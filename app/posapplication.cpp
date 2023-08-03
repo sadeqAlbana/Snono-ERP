@@ -55,6 +55,21 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance());
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
+    connect(AuthManager::instance(),&AuthManager::loggedIn,this,[this]{
+
+
+        Api::instance()->identity()->subscribe([this](NetworkResponse *res){
+            if(res->status()==200){
+                QByteArray imageData=QByteArray::fromBase64(res->json("data")["identity_logo"].toString().toUtf8());
+                if(imageData.size()){
+                    QDir().mkpath(AppSettings::storagePath()+"/assets");
+                    QImage image=QImage::fromData(imageData);
+                    image.save(AppSettings::storagePath()+"/assets/"+"identity_logo.png");
+                }
+
+            }
+        });
+    });
 
 
 

@@ -481,6 +481,11 @@ NetworkResponse *Api::post(const QUrl &url, const QJsonObject data)
 
 }
 
+NetworkResponse *Api::identity()
+{
+    return PosNetworkManager::instance()->get(QUrl("/identity"));
+}
+
 NetworkResponse *Api::postIdentity(QJsonObject data)
 {
     //we will modify image inside data
@@ -496,6 +501,16 @@ NetworkResponse *Api::postIdentity(QJsonObject data)
     data["identity_logo"]=QString(fileData.toBase64());
 
     return PosNetworkManager::instance()->post(QUrl("/identity"),data);
+
+}
+
+NetworkResponse *Api::postReceipt(QJsonObject data)
+{
+
+}
+
+NetworkResponse *Api::receipt()
+{
 
 }
 

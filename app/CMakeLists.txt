@@ -166,6 +166,7 @@ set(TARGET_QML_SOURCES
     qml/pages/settings/IdentitySettings.qml
     qml/pages/settings/PrinterSettings.qml
     qml/pages/settings/BarqDeliverySettings.qml
+    qml/pages/settings/ReceiptSettings.qml
     qml/pages/vendors/VendorBillListView.qml
     qml/pages/vendors/PurchaseStockDialog.qml
     qml/pages/vendors/PayBillDialog.qml
@@ -235,9 +236,6 @@ qt_add_qml_module(appposfe
 
     QML_FILES
         ${TARGET_QML_SOURCES}
-
-
-
 )
 set(INCLUDE_DIR
     models

@@ -42,7 +42,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
 
-    QImage logo(":/images/icons/SheinIQ-circule.png");
+    QImage logo(AppSettings::storagePath()+"/assets/identity_logo.png");
 
 
     int orderId=receiptData["id"].toInt();

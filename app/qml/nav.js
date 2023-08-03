@@ -175,6 +175,11 @@ function navBar(){
                             "permission": "prm_admin"
                         },
                         {
+                            "title": qsTr("Receipt Settings"),
+                            "path":"qrc:/PosFe/qml/pages/settings/ReceiptSettings.qml",
+                            "permission": "prm_admin"
+                        },
+                        {
                             "title": qsTr("Printer Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/PrinterSettings.qml",
                             "permission": ""
