@@ -43,6 +43,18 @@ public:
     bool externalDelivery() const;
     void setExternalDelivery(bool newExternalDelivery);
 
+
+    void setReceiptCompanyName(const QString &name);
+    void setReceiptPhoneNumber(const QString &phoneNumber);
+    void setReceiptBottomNote(const QString &bottomNote);
+
+    QString receiptCompanyName() const;
+    QString receiptPhoneNumber() const;
+    QString receiptBottomNote() const;
+
+
+
+
     static QString platform();
     Q_INVOKABLE static int version();
 signals:

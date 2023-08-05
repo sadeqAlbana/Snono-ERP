@@ -489,7 +489,6 @@ NetworkResponse *Api::identity()
 NetworkResponse *Api::postIdentity(QJsonObject data)
 {
     //we will modify image inside data
-    qDebug()<<"data: " << data;
 
     QUrl logoFile=data["identity_logo"].toString();
 
@@ -507,11 +506,22 @@ NetworkResponse *Api::postIdentity(QJsonObject data)
 NetworkResponse *Api::postReceipt(QJsonObject data)
 {
 
+    QUrl logoFile=data["receipt_logo"].toString();
+
+    QFile file(logoFile.toLocalFile());
+    file.open(QIODevice::ReadOnly);
+
+    QByteArray fileData=file.readAll();
+    file.close();
+    data["receipt_logo"]=QString(fileData.toBase64());
+
+    return PosNetworkManager::instance()->post(QUrl("/receipt"),data);
+
 }
 
 NetworkResponse *Api::receipt()
 {
-
+    return PosNetworkManager::instance()->get(QUrl("/receipt"));
 }
 
 

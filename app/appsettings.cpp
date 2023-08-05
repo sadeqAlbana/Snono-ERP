@@ -102,6 +102,40 @@ void AppSettings::setExternalDelivery(bool newExternalDelivery)
     emit externalDeliveryChanged();
 }
 
+void AppSettings::setReceiptCompanyName(const QString &name)
+{
+    setValue("receipt/receipt_company_name",name);
+}
+
+void AppSettings::setReceiptPhoneNumber(const QString &phoneNumber)
+{
+    setValue("receipt/receipt_phone",phoneNumber);
+}
+
+void AppSettings::setReceiptBottomNote(const QString &bottomNote)
+{
+    setValue("receipt/receipt_bottom_note",bottomNote);
+}
+
+QString AppSettings::receiptCompanyName() const
+{
+    return value("receipt/receipt_company_name").toString();
+}
+
+QString AppSettings::receiptPhoneNumber() const
+{
+    return value("receipt/receipt_phone").toString();
+
+}
+
+QString AppSettings::receiptBottomNote() const
+{
+    return value("receipt/receipt_bottom_note").toString();
+
+}
+
+
+
 QString AppSettings::platform()
 {
     return QSysInfo::kernelType();

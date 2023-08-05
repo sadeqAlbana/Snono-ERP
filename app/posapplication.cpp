@@ -58,14 +58,19 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     connect(AuthManager::instance(),&AuthManager::loggedIn,this,[this]{
 
 
-        Api::instance()->identity()->subscribe([this](NetworkResponse *res){
+        Api::instance()->receipt()->subscribe([this](NetworkResponse *res){
             if(res->status()==200){
-                QByteArray imageData=QByteArray::fromBase64(res->json("data")["identity_logo"].toString().toUtf8());
+                QByteArray imageData=QByteArray::fromBase64(res->json("data")["receipt_logo"].toString().toUtf8());
                 if(imageData.size()){
                     QDir().mkpath(AppSettings::storagePath()+"/assets");
                     QImage image=QImage::fromData(imageData);
-                    image.save(AppSettings::storagePath()+"/assets/"+"identity_logo.png");
+                    image.save(AppSettings::storagePath()+"/assets/"+"receipt_logo.png");
                 }
+
+                QJsonObject data=res->json("data").toObject();
+                AppSettings::instance()->setReceiptCompanyName(data["receipt_company_name"].toString());
+                AppSettings::instance()->setReceiptPhoneNumber(data["receipt_phone"].toString());
+                AppSettings::instance()->setReceiptBottomNote(data["receipt_bottom_note"].toString());
 
             }
         });

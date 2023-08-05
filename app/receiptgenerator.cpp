@@ -42,7 +42,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 {
     QJsonArray items=receiptData["pos_order_items"].toArray();
 
-    QImage logo(AppSettings::storagePath()+"/assets/identity_logo.png");
+    QImage logo(AppSettings::storagePath()+"/assets/receipt_logo.png");
+
 
 
     int orderId=receiptData["id"].toInt();
@@ -419,13 +420,13 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     stream.writeStartElement("p");
     //     stream.writeAttribute("class","receipt");
-    stream.writeCharacters(translator.translate("receipt","opening the bag and measuring is not allowed"));
+    stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
 
     //     stream.writeAttribute("class","receipt");
-    stream.writeCharacters("0783 666 5444");
+    stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 
 

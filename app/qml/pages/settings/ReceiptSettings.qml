@@ -20,8 +20,27 @@ AppPage{
     AppFormView{
         id: form
         url: "/receipt"
-        applyHandler: Api.postIdentity
+        applyHandler: Api.postReceipt
         anchors.fill: parent
+
+
+        CLabel {
+            text: qsTr("Company Name")
+        }
+        CIconTextField {
+            objectName: "receipt_company_name"
+            leftIcon.name: "cil-user"
+            Layout.fillWidth: true
+        }
+
+        CLabel {
+            text: qsTr("Logo")
+        }
+
+        FileInput{objectName: "receipt_logo";      Layout.fillWidth: true;
+        }
+
+
         CLabel {
             text: qsTr("Phone Number")
         }
