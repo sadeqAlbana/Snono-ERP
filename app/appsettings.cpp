@@ -146,6 +146,87 @@ int AppSettings::version()
     return APP_VERSION;
 }
 
+QString AppSettings::receiptPrinter() const
+{
+    return value("receipt_printer","Default Printer").toString();
+}
+
+void AppSettings::setReceiptPrinter(const QString &newReceiptPrinter)
+{
+    if (receiptPrinter() == newReceiptPrinter)
+        return;
+    setValue("receipt_printer",newReceiptPrinter);
+    emit receiptPrinterChanged();
+}
+
+QString AppSettings::reportsPrinter() const
+{
+    return value("reports_printer","Default Printer").toString();
+}
+
+void AppSettings::setReportsPrinter(const QString &newReportsPrinter)
+{
+    if (reportsPrinter() == newReportsPrinter)
+        return;
+    setValue("reports_printer",newReportsPrinter);
+    emit reportsPrinterChanged();
+}
+
+QString AppSettings::receiptPaperSize() const
+{
+    return value("receipt_paper_size","A4").toString();
+}
+
+void AppSettings::setReceiptPaperSize(const QString &newReceiptPaperSize)
+{
+    if (receiptPaperSize() == newReceiptPaperSize)
+        return;
+    setValue("receipt_paper_size",newReceiptPaperSize);
+    emit receiptPaperSizeChanged();
+}
+
+QString AppSettings::reportsPaperSize() const
+{
+    return value("reports_paper_size","A4").toString();
+}
+
+void AppSettings::setReportsPaperSize(const QString &newReportsPaperSize)
+{
+    if (reportsPaperSize() == newReportsPaperSize)
+        return;
+    setValue("reports_paper_size",newReportsPaperSize);
+    emit reportsPaperSizeChanged();
+}
+
+QPageSize AppSettings::pageSizeFromString(const QString &pageSize)
+{
+    if(pageSize=="A0")
+        return QPageSize::A0;
+
+    if(pageSize=="A1")
+        return QPageSize::A1;
+
+    if(pageSize=="A2")
+        return QPageSize::A2;
+
+    if(pageSize=="A3")
+        return QPageSize::A3;
+
+    if(pageSize=="A4")
+        return QPageSize::A4;
+
+    if(pageSize=="A5")
+        return QPageSize::A5;
+
+    if(pageSize=="A6")
+        return QPageSize::A6;
+
+    if(pageSize=="A7")
+        return QPageSize::A7;
+
+    return QPageSize::Custom;
+}
+
 
 
 QUrl AppSettings::serverUrl()

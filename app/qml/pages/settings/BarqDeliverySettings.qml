@@ -16,7 +16,7 @@ import PosFe
 import CoreUI.Palettes
 
 AppPage{
-    title: "Barq Settings"
+    title: qsTr("Barq Settings")
     AppFormView{
         id: form
         url: "/barq/config"

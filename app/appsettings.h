@@ -4,11 +4,16 @@
 #include <QUrl>
 #include <QLocale>
 #include <QJsonObject>
+#include <QPageSize>
 class AppSettings : public QSettings
 {
     Q_OBJECT
     Q_PROPERTY(QUrl serverUrl READ serverUrl NOTIFY serverUrlChanged)
+    Q_PROPERTY(QString receiptPrinter READ receiptPrinter WRITE setReceiptPrinter NOTIFY receiptPrinterChanged )
+    Q_PROPERTY(QString reportsPrinter READ reportsPrinter WRITE setReportsPrinter NOTIFY reportsPrinterChanged )
 
+    Q_PROPERTY(QString receiptPaperSize READ receiptPaperSize WRITE setReceiptPaperSize NOTIFY receiptPaperSizeChanged )
+    Q_PROPERTY(QString reportsPaperSize READ reportsPaperSize WRITE setReportsPaperSize NOTIFY reportsPaperSizeChanged )
     explicit AppSettings(QObject *parent=nullptr);
     static AppSettings *m_instance;
 public:
@@ -54,9 +59,23 @@ public:
 
 
 
-
     static QString platform();
     Q_INVOKABLE static int version();
+    QString receiptPrinter() const;
+    void setReceiptPrinter(const QString &newReceiptPrinter);
+
+    QString reportsPrinter() const;
+    void setReportsPrinter(const QString &newReportsPrinter);
+
+    QString receiptPaperSize() const;
+    void setReceiptPaperSize(const QString &newReceiptPaperSize);
+
+    QString reportsPaperSize() const;
+    void setReportsPaperSize(const QString &newReportsPaperSize);
+
+
+    static QPageSize pageSizeFromString(const QString &pageSize);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -67,6 +86,14 @@ signals:
     void externalReceiptCopiesChanged();
 
     void externalDeliveryChanged();
+
+    void receiptPrinterChanged();
+
+    void reportsPrinterChanged();
+
+    void receiptPaperSizeChanged();
+
+    void reportsPaperSizeChanged();
 
 private:
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)

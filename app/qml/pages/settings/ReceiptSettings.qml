@@ -16,7 +16,7 @@ import PosFe
 import CoreUI.Palettes
 
 AppPage{
-    title: "Receipt Settings"
+    title: qsTr("Receipt Settings")
     AppFormView{
         id: form
         url: "/receipt"

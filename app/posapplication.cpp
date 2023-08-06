@@ -45,6 +45,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     ReceiptGenerator *gen=new ReceiptGenerator(this);
 
     m_engine->rootContext()->setContextProperty("App",this);
+    m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance()); //this is probably causing a problem
+
     m_engine->rootContext()->setContextProperty("AuthManager",AuthManager::instance());
     m_engine->rootContext()->setContextProperty("NetworkManager",PosNetworkManager::instance());
     //qmlRegisterSingletonInstance("PosFe",1,0,"NetworkManager",PosNetworkManager::instance());
@@ -52,7 +54,6 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("NumberEditor",nb);
     m_engine->rootContext()->setContextProperty("ReceiptGenerator",gen);
     m_engine->rootContext()->setContextProperty("Api",Api::instance());
-    m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance());
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
     connect(AuthManager::instance(),&AuthManager::loggedIn,this,[this]{

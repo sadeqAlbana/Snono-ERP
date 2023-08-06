@@ -16,7 +16,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 import CoreUI.Palettes
 AppPage{
-    title: "General Settings"
+    title: qsTr("General Settings")
     GridLayout{
         columns: 2
         rowSpacing: 20

@@ -102,14 +102,14 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
     QSvgRenderer svg(QByteArray::fromStdString(svgString));
-    QPixmap qrPixmap(750,750);
+    QPixmap qrPixmap(1500,1500);
     QPainter qrPainter(&qrPixmap);
     svg.render(&qrPainter);
     qrPainter.end();
 
     doc.addResource(QTextDocument::ImageResource,QUrl("qr_code"),qrPixmap);
 
-    QImage barcodeImg(200,80,QImage::Format_RGB32);
+    QImage barcodeImg(400,160,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
@@ -156,8 +156,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
     stream.writeStartElement("img");
-    stream.writeAttribute("width","50");
-    stream.writeAttribute("height","50");
+    stream.writeAttribute("width","100");
+    stream.writeAttribute("height","100");
     stream.writeAttribute("src", "qr_code");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
@@ -165,8 +165,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeStartElement("th");
     stream.writeAttribute("width","36%");
     stream.writeStartElement("img");
-    stream.writeAttribute("width","75");
-    stream.writeAttribute("height","75");
+    stream.writeAttribute("width","150");
+    stream.writeAttribute("height","150");
     stream.writeAttribute("src", "logo_image");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
@@ -175,8 +175,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
     stream.writeStartElement("img");
-    stream.writeAttribute("width","75");
-    stream.writeAttribute("height","30");
+    stream.writeAttribute("width","150");
+    stream.writeAttribute("height","60");
     stream.writeAttribute("src", "barcode_img");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
@@ -429,73 +429,22 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 
-
-    //     stream.writeStartElement("table");
-    //     stream.writeAttribute("width","100%");
-    //         stream.writeStartElement("tr");
-
-    //             stream.writeStartElement("th");
-    //             stream.writeAttribute("width","32%");
-    //             stream.writeAttribute("style","vertical-align: middle;");
-    //                     stream.writeStartElement("img");
-    //                     stream.writeAttribute("width","50");
-    //                     stream.writeAttribute("height","50");
-    //                     stream.writeAttribute("src", "qr_code");
-    //                     stream.writeEndElement(); //img
-    //             stream.writeEndElement(); //th
-
-    //             stream.writeStartElement("th");
-    //             stream.writeAttribute("width","36%");
-
-    //             stream.writeEndElement(); //th
-
-    //             stream.writeStartElement("th");
-    //             stream.writeAttribute("width","32%");
-    //             stream.writeAttribute("style","vertical-align: middle;");
-    //                     stream.writeStartElement("img");
-    //                     stream.writeAttribute("width","75");
-    //                     stream.writeAttribute("height","30");
-    //                     stream.writeAttribute("src", "barcode_img");
-    //                     stream.writeEndElement(); //img
-    //             stream.writeEndElement(); //th
-
-    //         stream.writeEndElement(); //tr
-
-    //     stream.writeEndElement(); //table
-
-
-
     stream.writeEndElement(); //footer
 
     stream.writeEndElement(); //body
     stream.writeEndElement(); //html
     stream.writeEndDocument(); //doc
 
-//    qDebug()<<"doc font: " << doc.defaultFont();
-//    qDebug()<<"doc font point size: " << doc.defaultFont().pointSize();
 
-//    QFont font("Arial");
-////    font.setPixelSize(9);
-//    font.setPointSize(5);
-//    doc.setDefaultFont(font);
+    QSizeF pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize())).sizePoints();
+    pageSize=pageSize*2;
 
-    doc.setPageSize(QPageSize(QPageSize::A5).sizePoints());
+    doc.setPageSize(pageSize);
 
-//    qDebug()<<"page size: " << QPageSize(QPageSize::A5);
-//    qDebug()<<"page sizePoints: " << QPageSize(QPageSize::A5).sizePoints();
-//    qDebug()<<"page sizeI: " << QPageSize(QPageSize::A5).size(QPageSize::Inch);
-//    qDebug()<<"page sizePixels: " << QPageSize(QPageSize::A5).sizePixels(300);
-//    qDebug()<<"page sizemm: " << QPageSize(QPageSize::A5).size(QPageSize::Millimeter);
 
-//    doc.setPageSize(QSizeF(417.6,597.6));
 
     doc.setHtml(text);
 
-    //     QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
-    ////     printer.setPageMargins(QMarginsF(0,0,0,0));
-    ////     printer.setFullPage(true);
-    //     printer.setPageSize(QPageSize(QPageSize::A5));
-    //     doc.print(&printer);
 
 #ifndef Q_OS_IOS
 
@@ -508,12 +457,13 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     doc.print(&pdfPrinter);
 
     if(print){
-        QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+        QPrinter printer;
+        printer.setPrinterName(AppSettings::instance()->receiptPrinter());
 
         printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
 
         printer.setCopyCount(AppSettings::instance()->receiptCopies());
-        printer.setPageSize(QPageSize::A5);
+        printer.setPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
         doc.print(&printer);
     }
 
@@ -526,11 +476,6 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 #endif
 }
-
-
-
-
-
 
 
 QString ReceiptGenerator::sampleData()

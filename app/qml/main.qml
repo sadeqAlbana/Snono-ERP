@@ -31,7 +31,6 @@ CApplicationWindow {
 //    }
 
     Component.onCompleted: {
-
         if (Settings.jwt != "") {
             AuthManager.testAuth()
         } else {

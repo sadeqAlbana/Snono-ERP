@@ -16,7 +16,7 @@ import PosFe
 import CoreUI.Palettes
 
 AppPage{
-    title: "Identity Settings"
+    title: qsTr("Identity Settings")
     AppFormView{
         id: form
         url: "/identity"

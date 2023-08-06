@@ -1,22 +1,16 @@
 import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels
-import QtQuick.Dialogs
-import QtCore
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
 import PosFe
 
 AppPage {
-    title: "General Settings"
+    title: qsTr("General Settings")
     GridLayout {
         columns: 4
         rowSpacing: 20
@@ -27,17 +21,25 @@ AppPage {
             text: qsTr("Receipt Printer")
         }
         IconComboBox {
-            id: receiptPrinter
+            id: receiptPrinterCB
             leftIcon.name: "cil-printer"
             model: App.availablePrinters()
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.receiptPrinter)
         }
 
         Label {
             text: qsTr("Paper Size")
         }
         IconComboBox {
-            leftIcon.name: "cil-page"
+            id: receiptPaperSizeCB
+
             model: ['A4', 'A5', 'A6']
+            leftIcon.name: "cil-page"
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.receiptPaperSize)
         }
 
         Label {
@@ -45,16 +47,24 @@ AppPage {
         }
 
         IconComboBox {
+            id: reportsPrinterCB
             model: App.availablePrinters()
             leftIcon.name: "cil-printer"
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.reportsPrinter)
         }
 
         Label {
             text: qsTr("Paper Size")
         }
         IconComboBox {
-            leftIcon.name: "cil-page"
+            id: reportsPaperSizeCB
             model: ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']
+            leftIcon.name: "cil-page"
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.reportsPaperSize)
         }
 
         Label {
@@ -87,12 +97,18 @@ AppPage {
         onAccept: {
             Settings.receiptCopies = receiptCopies.currentValue
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
+            Settings.reportsPrinter=reportsPrinterCB.currentValue
+            Settings.receiptPrinter=receiptPrinterCB.currentValue
+            Settings.receiptPaperSize=receiptPaperSizeCB.currentValue
+            Settings.reportsPaperSize=reportsPaperSizeCB.currentValue
+
         }
 
         onCancel: {
-            receiptCopies.currentIndex = receiptCopies.indexOfValue(Settings.receiptCopies)
-            externalReceiptCopies.currentIndex = externalReceiptCopies.indexOfValue(Settings.externalReceiptCopies)
-
+            receiptCopies.currentIndex = receiptCopies.indexOfValue(
+                        Settings.receiptCopies)
+            externalReceiptCopies.currentIndex = externalReceiptCopies.indexOfValue(
+                        Settings.externalReceiptCopies)
         }
     }
 }

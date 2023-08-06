@@ -18,6 +18,14 @@ MainScreen {
     icon: "qrc:/images/icons/SS_Logo_Color-cropped.svg"
     iconWidth: 177
     iconHeight: 43
+
+    menuActions: [
+        CAction {
+            text: qsTr("Logout")
+            icon.name: "cil-account-logout";
+            onTriggered: AuthManager.logout()
+        }
+    ]
    // initialIndex: 7
 
 }
