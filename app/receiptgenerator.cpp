@@ -436,10 +436,10 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndDocument(); //doc
 
 
-    QSizeF pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize())).sizePoints();
-    pageSize=pageSize*2;
+    QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+//    pageSize=pageSize*2;
 
-    doc.setPageSize(pageSize);
+    doc.setPageSize(pageSize.sizePoints());
 
 
 
@@ -463,7 +463,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
 
         printer.setCopyCount(AppSettings::instance()->receiptCopies());
-        printer.setPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+        printer.setPageSize(pageSize);
         doc.print(&printer);
     }
 
