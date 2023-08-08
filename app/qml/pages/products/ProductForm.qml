@@ -194,7 +194,7 @@ Card {
                                     width: parent.width
                                     height: parent.height
                                     TableView.onCommit: {
-                                        display = currentText
+                                        edit = currentText
                                     }
                                     model:["TEXT","IMAGE"]
 

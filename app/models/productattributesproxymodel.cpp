@@ -88,7 +88,7 @@ bool ProductAttributesProxyModel::setData(const QModelIndex &index, const QVaria
 {
     if (data(index, role) != value) {
         if(QAbstractProxyModel::setData(index,value,role)){
-            emit dataChanged(index, index, {role});
+            emit dataChanged(index, index);
             return true;
         }
     }
@@ -152,8 +152,8 @@ void ProductAttributesProxyModel::setSourceModel(QAbstractItemModel *sourceModel
 
     connect(sourceModel,&QAbstractItemModel::rowsAboutToBeRemoved,this,&ProductAttributesProxyModel::beginRemoveRows);
     connect(sourceModel,&QAbstractItemModel::rowsRemoved,this,&ProductAttributesProxyModel::endRemoveRows);
-
-
+    connect(sourceModel,&QAbstractItemModel::modelAboutToBeReset,this,&ProductAttributesProxyModel::modelAboutToBeReset);
+    connect(sourceModel,&QAbstractItemModel::modelReset,this,&ProductAttributesProxyModel::modelReset);
 
 }
 

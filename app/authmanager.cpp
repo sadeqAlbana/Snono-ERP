@@ -67,6 +67,9 @@ void AuthManager::testAuth()
 
                                         )->subscribe([this](NetworkResponse *res){
 
+
+
+
         bool success=res->json("status").toInt()==200;
 
         if(success){
