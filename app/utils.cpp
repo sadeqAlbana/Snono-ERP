@@ -14,6 +14,10 @@
 #include <QTextDocument>
 #include <QPrinter>
 #include <QPrinterInfo>
+#include "appsettings.h"
+#include <QImage>
+#include <QRandomGenerator>
+#include <QStandardPaths>
 QString Currency::formatString(const QVariant &value)
 {
     QString text;
@@ -132,6 +136,9 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
     if(!data.size())
         return false;
 
+
+        QImage logo(AppSettings::storagePath()+"/assets/receipt_logo.png");
+
         QString text;
         QXmlStreamWriter stream(&text);
         QJsonObject record=data.first().toObject();
@@ -141,6 +148,26 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
         stream.writeStartElement("html");
 
         stream.writeTextElement("style","table, th,td,tr,h2 {border:1px solid black; text-align: center; width:100%; border-collapse: collapse;}");
+
+
+        stream.writeStartElement("table");
+        stream.writeAttribute("width","100%");
+        stream.writeStartElement("tr");
+
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","100%");
+        stream.writeStartElement("img");
+        stream.writeAttribute("width","150");
+        stream.writeAttribute("height","150");
+        stream.writeAttribute("src", "logo_image");
+        stream.writeEndElement(); //img
+        stream.writeEndElement(); //th
+
+
+
+        stream.writeEndElement(); //tr
+
+        stream.writeEndElement(); //table
 
         stream.writeTextElement("h2",title);
 
@@ -197,11 +224,23 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
         f.close();
         qDebug()<<"stream has error: "<<stream.hasError();
         QTextDocument doc;
+        QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->reportsPaperSize()));
+
+        doc.setPageSize(pageSize.sizePoints());
+        doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
+
         doc.setHtml(text);
 
 #ifndef Q_OS_IOS
-        QPrinter printer(QPrinterInfo::defaultPrinter());
-        printer.setPageSize(QPageSize::A4);
+        QPrinter printer;
+        printer.setPrinterName(AppSettings::instance()->reportsPrinter());
+        printer.setPageSize(pageSize);
+//        printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+        printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
+
+        QString random=QString::number(QRandomGenerator::global()->generate());
+        printer.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
+        qDebug()<<"path: " <<printer.outputFileName();
         doc.print(&printer);
 #endif
 
