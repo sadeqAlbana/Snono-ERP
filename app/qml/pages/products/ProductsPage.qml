@@ -256,13 +256,13 @@ AppPage {
                 //                filter: {"only_variants":true}
                 //                filter: {}
                 //onFilterChanged: console.log(JSON.stringify(filter))
-                onProductRemoveReply: {
+                onProductRemoveReply: (reply) => {
                     if (reply.status === 200) {
                         model.requestData()
                     }
                 } //slot end
 
-                onStockPurchasedReply: {
+                onStockPurchasedReply: (reply) => {
                     if (reply.status === 200) {
                         model.requestData()
                     }
