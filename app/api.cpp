@@ -198,7 +198,7 @@ void Api::returnBill(const int billId, const QJsonArray &items)
 void Api::generateImages()
 {
 //    return;
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",3798}})->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",2087}})->subscribe(
                 [this](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
@@ -445,12 +445,14 @@ NetworkResponse *Api::addProduct(const QJsonObject &product)
 NetworkResponse *Api::nextVersion()
 {
     int version=AppSettings::version();
-    QString software="posfe";
+    QString software="pos-fe";
     QString platform=AppSettings::platform();
 
-    QUrl url("/updates/next");
-    url.setQuery(QUrlQuery{{"version",QString::number(version)},{"software",software},{"platform",platform}});
+    QUrl url("https://software.sadeq.shop/next");
 
+
+    url.setQuery(QUrlQuery{{"version",QString::number(version)},{"software",software},{"platform",platform}});
+    qDebug()<<url;
     return PosNetworkManager::instance()->get(url);
 
 }

@@ -24,7 +24,7 @@ public:
     void updateAppFont();
     Q_INVOKABLE QStringList availablePrinters();
 
-    void downloadVersion(const int version);
+    Q_INVOKABLE void downloadVersion(const int version);
 
     Q_INVOKABLE static int version();
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 VERSION=$1
 
-cp ~/projects/pos/build-pos-fe-base-Desktop_Qt_6_5_0_GCC_64bit-MinSizeRel/app/appposfe files/appposfe
+cp ~/projects/pos/build-pos-fe-base-Desktop_Qt_6_5_2_GCC_64bit-MinSizeRel/app/appposfe files/appposfe
 if test -f "update_$VERSION.rcc"; then
     rm update_$VERSION.rcc
 fi
@@ -15,4 +15,4 @@ cd ../;
 rcc -binary update.qrc -o update_$VERSION.rcc
 #
 # scp -P 1982 update_$VERSION.rcc sadeq@ganjan.snono.systems:/tmp
-cp update_$VERSION.rcc /home/sadeq/projects/pos/build-pos-be-base-Desktop_Qt_6_4_2_GCC_64bit-MinSizeRel/app/storage/updates/fe/linux-x86_64
+cp update_$VERSION.rcc /home/sadeq/projects/pos/build-pos-be-base-Desktop_Qt_6_5_2_GCC_64bit-MinSizeRel/app/storage/updates/fe/linux-x86_64

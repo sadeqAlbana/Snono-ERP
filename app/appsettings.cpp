@@ -138,7 +138,7 @@ QString AppSettings::receiptBottomNote() const
 
 QString AppSettings::platform()
 {
-    return QSysInfo::kernelType();
+    return QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
 }
 
 int AppSettings::version()

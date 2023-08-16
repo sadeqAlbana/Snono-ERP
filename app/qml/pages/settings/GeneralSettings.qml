@@ -17,6 +17,10 @@ import PosFe
 import CoreUI.Palettes
 AppPage{
     title: qsTr("General Settings")
+
+
+
+
     GridLayout{
         columns: 2
         rowSpacing: 20
@@ -32,7 +36,14 @@ AppPage{
             text: qsTr("check for updates")
 
             onClicked: Api.nextVersion().subscribe(function(response){
-                console.log(JSON.stringify(response.json()))
+
+
+                if(response.status()===404){
+                    toastrService.push(qsTr("Software Update"), qsTr("No updates found"), "warning", 2000)
+                }else if(response.json('status')===200){
+                    let nextVersion=response.json('nextVersion');
+                    App.downloadVersion(nextVersion);
+                }
 
             });
         }

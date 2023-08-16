@@ -16,18 +16,30 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <iostream>
 #include <QSysInfo>
+#include "appsettings.h"
 Q_IMPORT_QML_PLUGIN(CoreUIPlugin)
 
 int main(int argc, char *argv[])
 {
+
+
+    if(argc>1){
+        for(int i=0; i<argc; i++){
+            QString arg= argv[i];
+            if(arg=="--version"){
+                qInfo()<<"Application version: " <<AppSettings::version();
+                return 0;
+            }
+        }
+    }
+
     QCoreApplication::setOrganizationDomain("com");
     QCoreApplication::setOrganizationName("sadeqTech");
     QCoreApplication::setApplicationName("pos_fe");
 
 
     qputenv("QML_DISABLE_DISTANCEFIELD", "1"); //this fixes the artifacts in arabic fonts
-    QString platform=QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
-    qDebug()<<platform;
+
 #ifdef Q_OS_WINDOWS
     //qputenv("QT_SCALE_FACTOR_ROUNDING_POLICY","PassThrough");
     //qputenv("QT_ENABLE_HIGHDPI_SCALING","1");
@@ -71,5 +83,4 @@ int main(int argc, char *argv[])
 
     return a.exec();
 
-    qDebug()<<"Quitted";
 }

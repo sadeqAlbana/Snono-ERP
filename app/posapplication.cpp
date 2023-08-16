@@ -213,10 +213,11 @@ void PosApplication::downloadVersion(const int version)
 #ifndef Q_OS_WASM
     QUrlQuery query;
 
-    QString platform=QString("%1-%2").arg(QSysInfo::kernelType(),QSysInfo::buildCpuArchitecture());
+    QString platform=AppSettings::platform();
+    query.addQueryItem("software","pos-fe");
     query.addQueryItem("platform",platform);
     query.addQueryItem("version",QString::number(version));
-    QUrl url("/misc/systemupdate/download");
+    QUrl url("https://software.sadeq.shop/download");
     url.setQuery(query);
     QNetworkRequest request = PosNetworkManager::instance()->createNetworkRequest(url);
 
@@ -303,6 +304,7 @@ void PosApplication::downloadVersion(const int version)
 
         qDebug()<<"update success: " << success;
         //SystemUtils::rebootDevice();
+        qApp->quit();
     });
 #endif
 }
