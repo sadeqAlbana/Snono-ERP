@@ -265,8 +265,11 @@ void PosApplication::downloadVersion(const int version)
             QString fileName=pair.value(1);
             qDebug()<<"pair: " << pair;
 
-            if(FileUtils::fileChecksum(QString(":/update/files/%1").arg(fileName),QCryptographicHash::Sha256)!=sha256){
-                qWarning()<<"Warning: Invalid checksum for update file";
+            QString fileChecksum=FileUtils::fileChecksum(QString(":/update/files/%1").arg(fileName),QCryptographicHash::Sha256);
+            if(fileChecksum!=sha256){
+                qWarning()<<QString("Warning: Invalid checksum for update file %1").arg(fileName);
+                qWarning()<<"expected checksum: " << sha256;
+                qWarning()<<"actual checksum: " << fileChecksum;
                 checksum.close();
                 return;
             }
