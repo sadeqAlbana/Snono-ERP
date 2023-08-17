@@ -347,14 +347,9 @@ NetworkResponse * Api::updateVendor(const QJsonObject &data)
 }
 
 
-void Api::payBill(const int &vendorBillId)
+NetworkResponse * Api::payBill(const int &vendorBillId)
 {
-    PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}})
-
-            ->subscribe([this](NetworkResponse *res){
-
-        emit payBillReply(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}});
 }
 
 void Api::createBill(const int &vendorId, const QJsonArray &products)

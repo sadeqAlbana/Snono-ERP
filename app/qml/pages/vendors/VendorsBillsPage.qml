@@ -34,7 +34,11 @@ AppPage{
             onAccepted: {
                 var billId= model.data(tableView.currentRow,"id");
 
-                model.payBill(billId);
+                Api.payBill(billId).subscribe(function(response){
+                    if(response.json('status')===200){
+                        model.refresh();
+                    }
+                });
             }
         }
 
@@ -97,25 +101,6 @@ AppPage{
             model: VendorsBillsModel{
                 id: model;
 
-                onCreateBillReply: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                }
-
-                onPayBillReply: {
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                }
 
 
             } //model end
