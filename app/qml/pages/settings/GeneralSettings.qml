@@ -19,7 +19,54 @@ AppPage{
     title: qsTr("General Settings")
 
 
+    AppDialog {
+        id: newUpdateDialog
+        property int version: -1;
 
+
+        function showVersionNotification(newVersion){
+            version=newVersion;
+            open();
+        }
+
+        Card {
+            anchors.fill: parent
+            header.visible: true
+            title: qsTr("Software Updates")
+            padding: 25
+            ColumnLayout {
+                anchors.fill: parent
+                Label {
+                    text: qsTr("New version found, do you want to download it?")
+                    font.pixelSize: 24
+                }
+            }
+
+            footer: RowLayout {
+                HorizontalSpacer {}
+                CButton {
+                    palette: BrandWarning {}
+                    text: qsTr("Cancel")
+                    Layout.margins: 15
+                    onClicked: {
+                        AuthManager.logout()
+                        errorDlg.close();
+                    }
+                }
+
+                CButton {
+                    palette: BrandInfo {}
+                    text: qsTr("Download")
+                    Layout.margins: 15
+                    onClicked: {
+                        App.downloadVersion(nextVersion);
+
+                    }
+
+                }
+            }
+        } //card
+    }
 
     GridLayout{
         columns: 2
@@ -42,7 +89,7 @@ AppPage{
                     toastrService.push(qsTr("Software Update"), qsTr("No updates found"), "warning", 2000)
                 }else if(response.json('status')===200){
                     let nextVersion=response.json('nextVersion');
-                    App.downloadVersion(nextVersion);
+                    newUpdateDialog.showVersionNotification(nextVersion)
                 }
 
             });

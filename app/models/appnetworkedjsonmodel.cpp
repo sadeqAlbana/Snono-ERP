@@ -24,13 +24,13 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const JsonModelColumnList &columns,
 
 void AppNetworkedJsonModel::requestData()
 {
-    _busy=true;
+    m_busy=true;
 
     if(m_oldFilter!=m_filter){
         m_oldFilter=m_filter;
         if(m_usePagination){
             m_currentPage=0;
-            _lastPage=-1;
+            m_lastPage=-1;
         }
     }
 
@@ -57,7 +57,7 @@ void AppNetworkedJsonModel::search()
 {
     if(m_usePagination){
         m_currentPage=0;
-        _lastPage=-1;
+        m_lastPage=-1;
     }
     requestData();
 }
@@ -133,7 +133,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     if(m_usePagination){
         if(reply->json("current_page").toInt()){
             setCurrentPage(reply->json("current_page").toInt());
-            _lastPage=reply->json("last_page").toInt();
+            m_lastPage=reply->json("last_page").toInt();
             m_hasPagination=true;
         }
     }
@@ -155,7 +155,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 
 
     emit dataRecevied();
-    _busy=false;
+    m_busy=false;
 }
 
 
