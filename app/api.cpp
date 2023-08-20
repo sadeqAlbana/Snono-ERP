@@ -444,7 +444,8 @@ NetworkResponse *Api::nextVersion()
 
 
     url.setQuery(QUrlQuery{{"version",QString::number(version)},{"software",software},{"platform",platform}});
-    qDebug()<<url;
+
+
     return PosNetworkManager::instance()->get(url);
 
 }

@@ -43,6 +43,11 @@ ListView {
         z:2
         height: 80
         spacing: 20
+
+        CLabel{
+            text: qsTr("Bill Name")
+        }
+
         CTextField{
             id: name
             text: billName;

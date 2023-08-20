@@ -67,6 +67,11 @@ AppPage{
 
         }//toolbar
 
+//        AppDialog{
+//            id: newDeliveryManifestDlg
+//        }
+
+
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -101,6 +106,11 @@ AppPage{
                         Router.navigate("qrc:/PosFe/qml/pages/orders/ReturnOrderPage.qml",{"order": order})
 
                     }},
+
+//                CAction{enabled:tableView.currentRow>=0; text: qsTr("Create New Delivery Order"); icon.name: "cil-plus-circle"; onTriggered: {
+//                        let order =model.jsonObject(tableView.currentRow);
+//                    }},
+
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
                     let reference=model.data(tableView.currentRow,"id")

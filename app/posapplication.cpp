@@ -220,7 +220,8 @@ void PosApplication::downloadVersion(const int version)
     QUrl url("https://software.sadeq.shop/download");
     url.setQuery(query);
     QNetworkRequest request = PosNetworkManager::instance()->createNetworkRequest(url);
-
+    request.setAttribute(static_cast<QNetworkRequest::Attribute>(NetworkAccessManager::RequstAttribute::NotifyActivity),false);
+    request.setAttribute(static_cast<QNetworkRequest::Attribute>(NetworkAccessManager::RequstAttribute::MonitorProgressAttribute),true);
 
     request.setTransferTimeout(60*60*1000); // 1 hour
 
@@ -241,6 +242,8 @@ void PosApplication::downloadVersion(const int version)
         }
         resource.write(data);
         resource.close();
+
+        return;
 
         bool registered=QResource::registerResource(resource.fileName());
         if(!registered){
