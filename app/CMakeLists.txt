@@ -178,6 +178,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/VendorsPage.qml
     qml/pages/vendors/VendorForm.qml
     qml/pages/vendors/AddVendorBillPage.qml
+    qml/pages/vendors/AddCustomVendorBillPage.qml
     qml/Nav.qml
     qml/AppMainScreen.qml
     qml/common/ButtonPopup.qml

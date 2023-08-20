@@ -34,17 +34,14 @@ void Api::depositCash(const double &amount)
     });
 }
 
-void Api::processCustomBill(const QString &name, const int &vendorId, const QJsonArray &items)
+NetworkResponse * Api::processCustomBill(const QString &name, const int &vendorId, const QJsonArray &items)
 {
     QJsonObject params;
     params["name"]=name;
     params["items"]=items;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/vendors/bills/add"),params)->subscribe(
-                [this](NetworkResponse *res){
-        emit processCustomBillResponse(res->json().toObject());
-    });
+    return PosNetworkManager::instance()->post(QUrl("/vendors/bills/add"),params);
 }
 
 NetworkResponse * Api::updateProduct(const QJsonObject &product)

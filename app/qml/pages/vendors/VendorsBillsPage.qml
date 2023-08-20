@@ -54,10 +54,6 @@ AppPage{
             }
         }
 
-        AddCustomBillDialog{
-            id: customBillDlg;
-        }
-
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -70,7 +66,7 @@ AppPage{
 //                        Api.returnBill(model.jsonObject(tableView.currentRow).id)
 //                       }},
                 CAction{ text: qsTr("New Bill"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/AddVendorBillPage.qml");},
-                CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: customBillDlg.open();},
+                CAction{ text: qsTr("New Custom Bill"); icon.name: "cil-medical-cross"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml");},
                 CAction {
                     text: qsTr("Add Shein Order")
                     icon.name: "cil-cart"
@@ -84,19 +80,7 @@ AppPage{
                 DelegateChoice{ roleValue: "status"; StatusDelegate{}}
             }
 
-            Connections{
-                target: Api
 
-                function onProcessCustomBillResponse(reply){
-                    if(reply.status===200){
-                        toastrService.push("Success",reply.message,"success",2000)
-                        model.requestData();
-                    }
-                    else{
-                        toastrService.push("Error",reply.message,"error",2000)
-                    }
-                }
-            }
 
             model: VendorsBillsModel{
                 id: model;

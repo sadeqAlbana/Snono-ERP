@@ -14,16 +14,6 @@ Card{
     id: card
     title: qsTr("New Bill")
 
-    Connections{
-        target: Api
-        function onAddCustomerReply(reply){
-            if(reply.status===200){
-                //toastrService.push("Success",reply.message,"success",2000)
-                Router.back();
-            }
-        }
-    }
-
     ColumnLayout{
         anchors.fill: parent;
         anchors.margins: 10

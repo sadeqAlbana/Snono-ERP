@@ -14,7 +14,7 @@ class Api : public QObject
 public:
     Q_INVOKABLE void depositCash(const double &amount);
 
-    Q_INVOKABLE void processCustomBill(const QString &name, const int &vendorId,const QJsonArray &items);
+    Q_INVOKABLE NetworkResponse * processCustomBill(const QString &name, const int &vendorId,const QJsonArray &items);
     Q_INVOKABLE NetworkResponse * updateProduct(const QJsonObject &product);
 
     Q_INVOKABLE NetworkResponse *  updateProduct(const int &productId, const QString &name, const double &listPrice, const double &cost, const QString &description, const int &categoryId, const QJsonArray &taxes);
