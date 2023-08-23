@@ -24,6 +24,14 @@ AppPage{
         AppToolBar{
             id: toolBar
             view: tableView
+
+            onSearch:(searchString)=> {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
+            }
+
         }
 
 

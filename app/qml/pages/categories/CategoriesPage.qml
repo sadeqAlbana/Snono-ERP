@@ -32,6 +32,13 @@ AppPage{
             id: toolBar
             view: tableView
 
+            onSearch:(searchString)=> {
+                var filter=model.filter;
+                filter['query']=searchString
+                model.filter=filter;
+                model.requestData();
+            }
+
         }
 
         CTableView{
@@ -44,11 +51,11 @@ AppPage{
                 CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
 
             model: CategoriesModel{
-                id: categoriesModel;
+                id: model;
             } //model end
 
             function removeCategory(){
-                var categoryId = categoriesModel.data(tableView.currentIndex,"id");
+                var categoryId = model.data(tableView.currentIndex,"id");
                 Api.removeCategory(categoryId);
             }
         }//listView
