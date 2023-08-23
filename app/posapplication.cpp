@@ -242,9 +242,6 @@ void PosApplication::downloadVersion(const int version)
         }
         resource.write(data);
         resource.close();
-
-        return;
-
         bool registered=QResource::registerResource(resource.fileName());
         if(!registered){
             qWarning()<<"Warning: could not register update resource file";

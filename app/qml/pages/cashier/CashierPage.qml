@@ -158,6 +158,7 @@ AppPage{
                 placeholderText: qsTr("Barcode...")
                 implicitHeight: 50
 
+
             }
         }
 

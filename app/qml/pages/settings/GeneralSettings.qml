@@ -20,6 +20,7 @@ AppPage {
     title: qsTr("General Settings")
 
     AppDialog {
+        closePolicy: Popup.NoAutoClose
         id: progressDialog
         Card {
             anchors.fill: parent
@@ -51,26 +52,17 @@ AppPage {
                 }
             }
 
-            footer: RowLayout {
-                HorizontalSpacer {}
-                CButton {
-                    palette: BrandWarning {}
-                    text: qsTr("Cancel")
-                    Layout.margins: 15
-                    onClicked: {
-
-                    }
-                }
-
-                CButton {
-                    palette: BrandInfo {}
-                    text: qsTr("install")
-                    Layout.margins: 15
-                    onClicked: {
-
-                    }
-                }
-            }
+//            footer: RowLayout {
+//                HorizontalSpacer {}
+//                CButton {
+//                    palette: BrandWarning {}
+//                    text: qsTr("Cancel")
+//                    Layout.margins: 15
+//                    onClicked: {
+//                        NetworkManager.abortAllRequests(); //causes a crash
+//                    }
+//                }
+//            }
         }
     }
 
