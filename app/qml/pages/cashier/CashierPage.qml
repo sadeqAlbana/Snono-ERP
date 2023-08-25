@@ -1,4 +1,4 @@
-import QtQuick;
+    import QtQuick;
 import QtQuick.Layouts
 
 import QtQuick.Controls.Basic;
@@ -28,6 +28,21 @@ AppPage{
         id: receiptDialog
     }//receiptDialog
 
+
+    Keys.enabled: true
+
+    Keys.onPressed:(event)=> {
+                       console.log("back pressed !")
+
+                       if (event.key != Qt.Key_Backspace)
+                       return;
+
+
+        if(TableView.currentRow<0){
+            return
+        }
+        cashierModel.removeProduct(tableView.currentRow);
+    }
 
     function processCart(){
         let deliveryInfo={}
@@ -118,9 +133,6 @@ AppPage{
                 Layout.fillHeight: true
                 Layout.alignment: Qt.AlignCenter
 
-                function clearClicked(){
-                    cashierModel.removeProduct(tableView.currentRow);
-                }
             }
             CComboBox{
                 Layout.maximumWidth: window.mobileLayout? -1 :  numpad.width
