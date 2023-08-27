@@ -30,6 +30,8 @@
 #include <QStandardPaths>
 #include <networkresponse.h>
 #include <QUrlQuery>
+#include <QProcess>
+#include <QRandomGenerator>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
     m_engine(new QQmlApplicationEngine(this))
 {
@@ -296,8 +298,9 @@ void PosApplication::downloadVersion(const int version)
         }
 
         qDebug()<<"binary path: " << binaryPath;
+        QString random=QString::number(QRandomGenerator::global()->generate());
 
-        bool renamed=QFile::rename(binaryPath,tmp+"/"+binaryName+".old");
+        bool renamed=QFile::rename(binaryPath,tmp+"/"+random+".old");
         if(!renamed){
             qWarning()<<"Warning: could not move original binary file";
             return;
@@ -307,7 +310,10 @@ void PosApplication::downloadVersion(const int version)
 
         qDebug()<<"update success: " << success;
         //SystemUtils::rebootDevice();
-        qApp->quit();
+        QCoreApplication::quit();
+
+        // Restart the application
+        QProcess::startDetached(QCoreApplication::applicationFilePath(), QCoreApplication::arguments());
     });
 #endif
 }
