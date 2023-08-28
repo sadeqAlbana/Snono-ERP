@@ -10,7 +10,8 @@ Button {
     palette: BrandInfo{}
     enum Type{
         Normal,
-        Macro
+        Macro,
+        Special
     }
     required property int type
     display: AbstractButton.TextBesideIcon

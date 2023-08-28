@@ -26,7 +26,6 @@ GridLayout {
         else if(button.type===NumpadButton.Type.Macro){
             button.macro.forEach(key =>{
                 emitter.pressKey(key)
-
             });
         }
     }
@@ -58,7 +57,7 @@ GridLayout {
         NumpadButton { text: "9" ; key: Qt.Key_9 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this);}
         NumpadButton { text: "."; key: Qt.Key_Period ; type: NumpadButton.Type.Normal; palette.button: "#636f83"; palette.buttonText: "white";  onPressed: buttonClicked(this); }
         NumpadButton { text: "0"; key: Qt.Key_0 ; type: NumpadButton.Type.Normal; onPressed: buttonClicked(this); }
-        NumpadButton { text: "<"; key: Qt.Key_Backspace; type: NumpadButton.Type.Normal; palette: BrandDanger{}  onPressed: buttonClicked(this);}
+        NumpadButton { text: "<"; key: Qt.Key_Backspace; type: NumpadButton.Type.Special; palette: BrandDanger{}  onPressed: buttonClicked(this);}
 
     //} //end grid
 }
