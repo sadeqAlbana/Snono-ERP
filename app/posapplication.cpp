@@ -306,14 +306,18 @@ void PosApplication::downloadVersion(const int version)
             return;
         }
         bool success=QFile::copy(QString(":/update/files/%1").arg(binaryName),binaryPath);
-        qDebug()<<"setting permission: "<<QFile(binaryPath).setPermissions(QFileDevice::ExeOther);
+        qDebug()<<"setting permission: "<<QFile(binaryPath).setPermissions(QFileDevice::ReadUser | QFileDevice::ReadGroup | QFileDevice::ReadOther |
+                                                                               QFileDevice::WriteUser | QFileDevice::WriteGroup | QFileDevice::WriteOther |
+                                                                               QFileDevice::ExeUser | QFileDevice::ExeGroup | QFileDevice::ExeOther);
 
         qDebug()<<"update success: " << success;
-        //SystemUtils::rebootDevice();
-        QCoreApplication::quit();
 
-        // Restart the application
-        QProcess::startDetached(QCoreApplication::applicationFilePath(), QCoreApplication::arguments());
+        if(success){
+            QCoreApplication::quit();
+            QProcess::startDetached(QCoreApplication::applicationFilePath(), QCoreApplication::arguments());
+        }
+
+//        QCoreApplication::processEvents();
     });
 #endif
 }
