@@ -50,7 +50,10 @@ AppPage{
                     "options":{"checkable": true,"editable":true,"defaultEntry":{"name":qsTr("All Products"),"id":null},"textRole": "name", "valueRole": "id","dataUrl": "/products/list",
                         "filter":{"onlyVariants":true}}},
                 {"type": "date","label": qsTr("from"),"key": "from"},
-                {"type": "date","label": qsTr("to"),"key": "to"}
+                {"type": "date","label": qsTr("to"),"key": "to"},
+                {"type": "combo","label": qsTr("status"),"key": "status",
+                    "options":{"checkable": true,"editable":true,"defaultEntry":{"name":qsTr("All"),"value":null},"textRole": "name", "valueRole": "value","dataUrl": "/orders/status/list",
+                       }}
 
             ]
             onSearch:(searchString)=> {
@@ -115,7 +118,8 @@ AppPage{
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
                     let reference=model.data(tableView.currentRow,"id")
                         Api.barqReceipt(reference);
-                    }}
+                    }},
+                CAction{text: qsTr("Print Report"); icon.name: "cil-print"; onTriggered: model.print();}
 
             ]
         }

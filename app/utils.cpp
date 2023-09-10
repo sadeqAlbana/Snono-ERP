@@ -195,7 +195,7 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
                 QJsonObject record=data.at(i).toObject();
                 for(auto header : headers){
 
-                QJsonValue value=record[header.second];
+                QJsonValue value=record[header.first];
 
                 QString toWrite;
                 switch(value.type()){

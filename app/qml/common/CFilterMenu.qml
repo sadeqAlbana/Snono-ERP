@@ -67,7 +67,9 @@ CMenu {
 
                         {
                             if(data.checkable){
-
+                                if(item.currentValue){  //wrong
+                                    value=[item.currentValue];
+                                }
                             }
                             else{
                                 if(item.currentValue){

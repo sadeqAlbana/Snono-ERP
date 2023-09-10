@@ -2,7 +2,7 @@
 #include "../posnetworkmanager.h"
 #include "networkresponse.h"
 #include <networkresponse.h>
-
+#include "utils.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   {"id",tr("ID")} ,
                                                                   {"reference",tr("Reference")} ,
@@ -70,5 +70,52 @@ QJsonArray OrdersModel::filterData(QJsonArray data)
         data.replace(i,product);
     }
     return data;
+}
+
+void OrdersModel::print()
+{
+    QJsonArray data=this->m_records;
+    int total=0;
+    for(int i=0; i<data.size(); i++){
+        QJsonObject product=data.at(i).toObject();
+        product.remove("phone");
+        product.remove("created_at");
+        product.remove("updated_at");
+        product.remove("deleted_at");
+        product.remove("created_at");
+        product["customer"]=product["customers"].toObject()["name"];
+        product["address"]=product["customers"].toObject()["address"];
+        total+=product["total"].toInt();
+        data.replace(i,product);
+    }
+
+    data.append(QJsonObject{{"reference","total"},
+        {"customer",""},
+        {"address",""},
+        {"date",""},
+                            {"total",QString::number(total)}
+
+    });
+
+    QString range=QStringLiteral("All time");
+    QString from;
+    QString to;
+    if(m_filter.contains("from")){
+        from=m_filter.value("from").toString();
+    }
+    if(m_filter.contains("to")){
+        to=m_filter.value("to").toString();
+    }
+
+
+    range=QString("%1 - %2").arg(from,to);
+
+    Json::printJson(QString("Orders Report for period %1").arg(range),data,{{"reference","Reference"},
+                                            {"customer","Customer"},
+                                            {"address","Address"},
+                                            {"date","Date"},
+                                            {"total","Total"}
+
+                                           });
 }
 
