@@ -131,6 +131,12 @@ function navBar(){
                     "permission": "prm_view_users"
                 },
                 {
+                   "title":qsTr("Wharehouses"),
+                   "category":qsTr("MAIN"),
+                   "image":"cil-home",
+                   "path":"qrc:/PosFe/qml/pages/wharehouses/WharehousesPage.qml"
+                },
+                {
                     "title":qsTr("Permissions"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",

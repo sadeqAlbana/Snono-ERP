@@ -19,6 +19,8 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage {
     title: qsTr("Products")
     StackView.onActivated: model.refresh()
+    Component.onCompleted: console.log("completed")
+    Component.onDestruction: console.log("destructed")
 
     ColumnLayout {
         id: page

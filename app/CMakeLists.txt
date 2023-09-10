@@ -102,6 +102,7 @@ set(TARGET_SOURCES
     models/checkableaclitemsmodel.h models/checkableaclitemsmodel.cpp
     models/productattributesproxymodel.h models/productattributesproxymodel.cpp
     models/customjournalentrymodel.h models/customjournalentrymodel.cpp
+    models/stocklocationmodel.h models/stocklocationmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -179,6 +180,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/VendorForm.qml
     qml/pages/vendors/AddVendorBillPage.qml
     qml/pages/vendors/AddCustomVendorBillPage.qml
+    qml/pages/wharehouses/WharehousesPage.qml
     qml/Nav.qml
     qml/AppMainScreen.qml
     qml/common/ButtonPopup.qml
