@@ -163,7 +163,21 @@ CMenu {
             role: "type"
             DelegateChoice {roleValue: "text"; CTextField {
                     width: control.contentItem.width; objectName: modelData.label;}}
-            DelegateChoice {roleValue: "combo"; CFilterComboBox {
+            DelegateChoice {roleValue: "combo";
+                CFilterComboBox {
+                    dataUrl: modelData.options["dataUrl"]?? ""
+                    editable: modelData.options["editable"];
+                    valueRole: modelData.options["valueRole"]
+                    textRole: modelData.options["textRole"]
+                    defaultEntry: modelData.options["defaultEntry"]
+                    values: modelData.options["values"]?? null;
+                    filter: modelData.options["filter"]
+                    width: control.contentItem.width
+                    objectName: modelData.label;
+                }
+            }
+            DelegateChoice {roleValue: "checkableCombo";
+                CCheckableFilterComboBox {
                     dataUrl: modelData.options["dataUrl"]?? ""
                     editable: modelData.options["editable"];
                     valueRole: modelData.options["valueRole"]

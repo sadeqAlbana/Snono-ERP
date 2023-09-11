@@ -5,12 +5,13 @@ import CoreUI
 import PosFe
 import CoreUI.Forms
 import CoreUI.Views
-CComboBox {
+CCheckableComboBox {
     id: control
     property string dataUrl;
     property var values: null;
     property var filter: null
     property var defaultEntry;
+    property bool checkable: false  //use different delegate for checkable combo?
 
     currentIndex: 0
     //editable: true
@@ -20,7 +21,7 @@ CComboBox {
         checkable: control.checkable
         filter: control.filter?? {}
 
-        Component.onCompleted: {            
+        Component.onCompleted: {
             if(control.values){
                 let emptyRecord=jsonModel.record;
                 Object.keys(defaultEntry).forEach(key =>{
