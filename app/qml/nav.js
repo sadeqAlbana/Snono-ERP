@@ -131,10 +131,27 @@ function navBar(){
                     "permission": "prm_view_users"
                 },
                 {
-                   "title":qsTr("Wharehouses"),
+                   "title":qsTr("Warehouses"),
                    "category":qsTr("MAIN"),
                    "image":"cil-home",
-                   "path":"qrc:/PosFe/qml/pages/wharehouses/WharehousesPage.qml"
+                    "childItems":[
+                        {
+                            "title":qsTr("List"),
+                            "path":"qrc:/PosFe/qml/pages/warehouses/WarehousesPage.qml",
+                            "permission": "prm_view_warehouse"
+
+                        },
+                        {
+                            "title":qsTr("Stock Moves"),
+                            "path":"qrc:/PosFe/qml/pages/warehouses/StockMovesPage.qml",
+                            "permission": "prm_view_stock_moves"
+                        },
+                        {
+                            "title":qsTr("Stock Valuation"),
+                            "path":"qrc:/PosFe/qml/pages/warehouses/StockValuationPage.qml",
+                            "permission": "prm_view_stock_valuation"
+                        }
+                    ]
                 },
                 {
                     "title":qsTr("Permissions"),
@@ -147,7 +164,7 @@ function navBar(){
                     "title":qsTr("Reports"),
                     "category":qsTr("MAIN"),
                     "image":"cil-chart",
-                    "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml",
+                    "path":"",
                     "permission": "prm_view_reports",
                     "childItems":[
                         {

@@ -103,7 +103,8 @@ set(TARGET_SOURCES
     models/productattributesproxymodel.h models/productattributesproxymodel.cpp
     models/customjournalentrymodel.h models/customjournalentrymodel.cpp
     models/stocklocationmodel.h models/stocklocationmodel.cpp
-
+    models/stockmovesmodel.h models/stockmovesmodel.cpp
+    models/stockvaluationmodel.h models/stockvaluationmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
@@ -180,7 +181,9 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/VendorForm.qml
     qml/pages/vendors/AddVendorBillPage.qml
     qml/pages/vendors/AddCustomVendorBillPage.qml
-    qml/pages/wharehouses/WharehousesPage.qml
+    qml/pages/warehouses/WarehousesPage.qml
+    qml/pages/warehouses/StockMovesPage.qml
+    qml/pages/warehouses/StockValuationPage.qml
     qml/common/CCheckableFilterComboBox.qml
     qml/Nav.qml
     qml/AppMainScreen.qml
