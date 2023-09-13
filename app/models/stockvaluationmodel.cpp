@@ -9,7 +9,7 @@ StockValuationModel::StockValuationModel(QObject *parent)
                                                 {"total",tr("Total")},
                                                 {"date",tr("Date")},
                                                  {"journal_entry_id",tr("Journal Entry")},
-                                                 {"order_id",tr("Order ")},
+                                                 {"order_id",tr("Order"),QString(),"link"},
                                                  {"inventory_adjustment_id",tr("Adjustment ID")}
 
 

@@ -12,4 +12,6 @@ DelegateChooser{
     DelegateChoice{ roleValue: "image"; ImageDelegate{}}
     DelegateChoice{ roleValue: "date"; DateDelegate{}}
     DelegateChoice{ roleValue: "datetime"; DateTimeDelegate{}}
+    DelegateChoice{ roleValue: "link"; LinkDelegate{}}
+
 }

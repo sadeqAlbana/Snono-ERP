@@ -38,6 +38,7 @@ AppPage{
 //            title: "categories"
 
 
+            delegate: AppDelegateChooser{}
             model: StockValuationModel{
                 id: model;
             } //model end
