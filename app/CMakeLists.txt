@@ -216,10 +216,13 @@ set(TARGET_QML_SOURCES
     qml/common/CTabFormView.qml
     qml/common/ActionsDelegate.qml
     qml/common/PercentageDelegate.qml
+    qml/common/LinkDelegate.qml
     qml/common/NumberDelegate.qml
     qml/common/AppProgressBar.qml
     qml/common/DownloadProgressBar.qml
     qml/pages/settings/UpdatesPage.qml
+    qml/common/CLinkDelegate.qml
+
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
