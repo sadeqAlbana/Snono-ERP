@@ -2,7 +2,7 @@
 #include "../posnetworkmanager.h"
 #include <networkresponse.h>
 
-ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{
+ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{ //not used for now, moved to get instead of post in backend
                                                                      {"name",tr("Description"),"products"} ,
                                                                      {"unit_price",tr("Price"),QString(),"currency"} ,
                                                                      {"qty",tr("Qty")} ,

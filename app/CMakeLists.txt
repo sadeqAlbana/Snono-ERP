@@ -220,6 +220,8 @@ set(TARGET_QML_SOURCES
     qml/common/NumberDelegate.qml
     qml/common/AppProgressBar.qml
     qml/common/DownloadProgressBar.qml
+    qml/common/AppDataPage.qml
+
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
 

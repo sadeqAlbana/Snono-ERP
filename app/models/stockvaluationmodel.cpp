@@ -20,3 +20,18 @@ StockValuationModel::StockValuationModel(QObject *parent)
 {
 
 }
+
+QVariant StockValuationModel::data(const QModelIndex &index, int role) const
+{
+
+    if(!(index.isValid() && index.column()<columnCount() && index.row()<rowCount())){
+        return QVariant();
+    }
+
+    JsonModelColumn column=m_columns.value(index.column());
+
+    if(column.m_type=="link"){
+
+    }
+
+}

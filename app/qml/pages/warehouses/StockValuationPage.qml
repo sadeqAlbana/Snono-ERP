@@ -2,6 +2,7 @@ import QtQuick;
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
+import Qt.labs.qmlmodels
 
 import CoreUI.Base
 import CoreUI.Forms
@@ -38,7 +39,11 @@ AppPage{
 //            title: "categories"
 
 
-            delegate: AppDelegateChooser{}
+            delegate: AppDelegateChooser{
+
+
+
+            }
             model: StockValuationModel{
                 id: model;
             } //model end

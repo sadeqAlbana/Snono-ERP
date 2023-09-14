@@ -14,30 +14,29 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 import JsonModels
 
-AppPage {
+AppDataPage {
     id: page
     title: qsTr("Orders Details")
-    property var order
 
     ColumnLayout {
         anchors.fill: parent
         GridLayout{
             columns: 6
             CLabel{text: qsTr("ID");}
-            CTextField{readOnly: true; text: order.id}
+            CTextField{readOnly: true; text: page.dataRecord?.id?? ""}
             CLabel{text: qsTr("Reference");}
-            CTextField{readOnly: true; text: order.reference}
+            CTextField{readOnly: true; text: page.dataRecord?.reference?? ""}
             CLabel{text: qsTr("Customer");}
-            CTextField{readOnly: true; text: order.customers.name}
+            CTextField{readOnly: true; text: page.dataRecord?.customers?.name?? ""}
 
             CLabel{text: qsTr("Total");}
-            CTextField{readOnly: true; text: order.total}
+            CTextField{readOnly: true; text: page.dataRecord?.total?? ""}
 
             CLabel{text: qsTr("Phone");}
-            CTextField{readOnly: true; text: order.customers.phone}
+            CTextField{readOnly: true; text: page.dataRecord?.customers?.phone?? ""}
 
             CLabel{text: qsTr("Address");}
-            CTextField{readOnly: true; text: order.customers.address}
+            CTextField{readOnly: true; text: page.dataRecord?.customers?.address?? ""}
 
         }
 
@@ -66,7 +65,7 @@ AppPage {
             }
 
             model: JsonModel {
-                records: page.order.pos_order_items
+                records: page.dataRecord?.pos_order_items?? []
                 columnList: [
                     JsonModelColumn {
                         displayName: qsTr("Product")
