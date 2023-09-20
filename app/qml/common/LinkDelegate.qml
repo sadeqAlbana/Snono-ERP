@@ -12,12 +12,14 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 CTableViewDelegate {
     id: control
-     required property url link;
+     property url link;
      property var linkData;
 
     MouseArea{
         anchors.fill: parent
-        onClicked: Router.navigate(model._data_link,model._data_data);
+        onClicked: Router.navigate(model.__link,{
+                                       "keyName": model.__linkKey,
+                                       "keyValue":model[model.__linkKey]});
 
     }
 

@@ -17,7 +17,7 @@ import JsonModels
 AppDataPage {
     id: page
     title: qsTr("Orders Details")
-
+    link: "/order"
     ColumnLayout {
         anchors.fill: parent
         GridLayout{

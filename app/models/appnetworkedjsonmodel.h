@@ -3,6 +3,13 @@
 
 #include <networkedjsonmodel.h>
 #include <QQmlEngine>
+
+enum AppItemDataRole{
+    LinkRole = 1001,
+    LinkKeyRole = 1002
+};
+
+
 class AppNetworkedJsonModel : public NetworkedJsonModel, public QQmlParserStatus
 {
     Q_OBJECT
@@ -32,6 +39,8 @@ public:
 
     void classBegin() override;
     void componentComplete() override;
+    virtual QHash<int, QByteArray> roleNames() const override;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 signals:
     void filterChanged(QJsonObject filter);

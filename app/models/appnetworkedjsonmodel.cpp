@@ -22,6 +22,7 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const JsonModelColumnList &columns,
 }
 
 
+
 void AppNetworkedJsonModel::requestData()
 {
     m_busy=true;
@@ -51,6 +52,29 @@ void AppNetworkedJsonModel::requestData()
 void AppNetworkedJsonModel::setSearchQuery(const QString _query)
 {
     this->_query=_query;
+}
+
+QVariant AppNetworkedJsonModel::data(const QModelIndex &index, int role) const
+{
+
+    if(!(index.isValid() && index.column()<columnCount() && index.row()<rowCount())){
+        return QVariant();
+    }
+
+    JsonModelColumn column=m_columns.value(index.column());
+
+
+    if(column.m_type=="link" && role==AppItemDataRole::LinkRole){
+        QUrl link=column.m_metadata["link"].toUrl();
+        return link;
+    }
+    if(column.m_type=="link" && role==AppItemDataRole::LinkKeyRole){
+        QString key=column.m_metadata["linkKey"].toString();
+        return key;
+    }
+
+    return NetworkedJsonModel::data(index,role);
+
 }
 
 void AppNetworkedJsonModel::search()
@@ -90,6 +114,15 @@ void AppNetworkedJsonModel::componentComplete()
 {
 //    qDebug()<<"parent object: " << QObject::parent();
     requestData();
+}
+
+QHash<int, QByteArray> AppNetworkedJsonModel::roleNames() const
+{
+    auto names=NetworkedJsonModel::roleNames();
+    names.insert(AppItemDataRole::LinkRole,"__link");
+    names.insert(AppItemDataRole::LinkKeyRole,"__linkKey");
+
+    return names;
 }
 
 const QString &AppNetworkedJsonModel::sortKey() const

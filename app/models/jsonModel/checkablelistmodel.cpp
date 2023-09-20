@@ -83,7 +83,7 @@ QString CheckableListModel::selectedItems() const
 {
     QStringList items;
     for(int row : m_selected){
-        items << AppNetworkedJsonModel::data(row,displayColumn).toString();
+        items << JsonModel::data(row,displayColumn).toString();
     }
     return items.join(", ");
 }

@@ -98,7 +98,7 @@ AppPage{
             actions: [
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Details"); icon.name: "cil-notes"; onTriggered: {
                         Router.navigate("qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml",
-                                                      {order: model.jsonObject(tableView.currentRow)});
+                                                      {keyValue: model.jsonObject(tableView.currentRow).id});
                     } },
 
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Update Status"); icon.name: "cil-reload"; onTriggered: {

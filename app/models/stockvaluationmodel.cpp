@@ -9,7 +9,9 @@ StockValuationModel::StockValuationModel(QObject *parent)
                                                 {"total",tr("Total")},
                                                 {"date",tr("Date")},
                                                  {"journal_entry_id",tr("Journal Entry")},
-                                                 {"order_id",tr("Order"),QString(),"link"},
+                                                 {"order_id",tr("Order"),QString(),"link",
+                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml"},
+                                                 {"linkKey","order_id"}}},
                                                  {"inventory_adjustment_id",tr("Adjustment ID")}
 
 
@@ -18,20 +20,5 @@ StockValuationModel::StockValuationModel(QObject *parent)
 
                             parent}
 {
-
-}
-
-QVariant StockValuationModel::data(const QModelIndex &index, int role) const
-{
-
-    if(!(index.isValid() && index.column()<columnCount() && index.row()<rowCount())){
-        return QVariant();
-    }
-
-    JsonModelColumn column=m_columns.value(index.column());
-
-    if(column.m_type=="link"){
-
-    }
 
 }

@@ -10,7 +10,6 @@ class StockValuationModel : public AppNetworkedJsonModel
     QML_ELEMENT
 public:
     Q_INVOKABLE explicit StockValuationModel(QObject *parent = nullptr);
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 };
 

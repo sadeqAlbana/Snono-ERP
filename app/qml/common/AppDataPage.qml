@@ -5,13 +5,13 @@ AppPage {
 
     required property url link;
     property var keyValue //key value
-    property var dataKey; //query param key or json object key
+    property string dataKey: "id"; //query param key or json object key, default is id
     property string method: "GET";
     property var dataRecord;
     Component.onCompleted: {
 
         if(page.method==="GET"){
-            NetworkManager.get(link+'?'+key+'='+keyValue).subscribe(function(response){
+            NetworkManager.get(link+'?'+dataKey+'='+keyValue).subscribe(function(response){
             page.dataRecord=response.json('data');
         });
 

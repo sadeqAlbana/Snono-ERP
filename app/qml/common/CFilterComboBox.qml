@@ -17,7 +17,7 @@ CComboBox {
     model: AppNetworkedJsonModel{
         id: jsonModel
         url: control.dataUrl
-        checkable: control.checkable
+        checkable: control.checkable?? false
         filter: control.filter?? {}
 
         Component.onCompleted: {            
