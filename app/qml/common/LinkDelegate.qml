@@ -15,11 +15,15 @@ CTableViewDelegate {
      property url link;
      property var linkData;
 
+
     MouseArea{
         anchors.fill: parent
-        onClicked: Router.navigate(model.__link,{
-                                       "keyName": model.__linkKey,
-                                       "keyValue":model[model.__linkKey]});
+        onClicked: {
+            console.log(model.edit);
+            Router.navigate(model.__link,{
+                                                   "keyName": model.__linkKey,
+                                                   "keyValue":model[model.__linkKey]});
+        }
 
     }
 

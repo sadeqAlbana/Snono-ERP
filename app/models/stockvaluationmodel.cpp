@@ -7,7 +7,7 @@ StockValuationModel::StockValuationModel(QObject *parent)
                                                 {"qty",tr("Qty")},
                                                  {"cost",tr("Value")},
                                                 {"total",tr("Total")},
-                                                {"date",tr("Date")},
+                                                {"created_at",tr("Date")},
                                                  {"journal_entry_id",tr("Journal Entry")},
                                                  {"order_id",tr("Order"),QString(),"link",
                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml"},
