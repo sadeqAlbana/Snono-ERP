@@ -9,7 +9,7 @@ import CoreUI.Buttons
 import CoreUI.Palettes
 import CoreUI.Base
 import CoreUI
-Card{
+AppPage{
     id: control
     default property alias content: grid.data
     property alias columns: grid.columns;
@@ -19,14 +19,14 @@ Card{
     property alias initialValues: form.initialValues
     property bool fillWidth: true
     property bool fillHeight: false
-    property string method: "POST";
-    property string url;
-    required property var applyHandler;
+    property alias method : form.method
+    property alias url : form.url
+    property alias keyValue : form.keyValue
+    property alias dataKey: form.dataKey; //query param key or json object key, default is id
+    property alias applyHandler: form.applyHandler
     header.visible: false
 
-    Connections{
-        target: Api
-    }
+
 
 
     GridLayout {
@@ -46,9 +46,6 @@ Card{
     CForm {
         id: form
         items: grid.children
-        url: control.url
-        applyHandler: control.applyHandler
-        method: control.method
 
     }
 

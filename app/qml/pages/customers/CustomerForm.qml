@@ -10,8 +10,9 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    method: control.method
-    url: control.url
+    title: qsTr("Customer")
+//    method: control.method
+    url: "/customers"
 
     header.visible: true
 

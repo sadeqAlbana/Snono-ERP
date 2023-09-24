@@ -73,6 +73,12 @@ QVariant AppNetworkedJsonModel::data(const QModelIndex &index, int role) const
         return key;
     }
 
+    if(column.m_type=="link" && role==AppItemDataRole::LinkKeyDataRole){
+        QString key=column.m_metadata["linkKey"].toString();
+
+        return m_records.at(index.row())[key];
+    }
+
     return NetworkedJsonModel::data(index,role);
 
 }
@@ -121,6 +127,7 @@ QHash<int, QByteArray> AppNetworkedJsonModel::roleNames() const
     auto names=NetworkedJsonModel::roleNames();
     names.insert(AppItemDataRole::LinkRole,"__link");
     names.insert(AppItemDataRole::LinkKeyRole,"__linkKey");
+    names.insert(AppItemDataRole::LinkKeyDataRole,"__linkKeyData");
 
     return names;
 }

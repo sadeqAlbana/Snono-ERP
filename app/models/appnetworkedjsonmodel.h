@@ -6,7 +6,8 @@
 
 enum AppItemDataRole{
     LinkRole = 1001,
-    LinkKeyRole = 1002
+    LinkKeyRole = 1002,
+    LinkKeyDataRole = 1003
 };
 
 
