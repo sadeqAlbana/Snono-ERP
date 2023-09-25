@@ -24,6 +24,7 @@ AppPage{
     property alias keyValue : form.keyValue
     property alias dataKey: form.dataKey; //query param key or json object key, default is id
     property alias applyHandler: form.applyHandler
+    property alias readOnly: form.readOnly
     header.visible: false
 
 
@@ -50,6 +51,7 @@ AppPage{
     }
 
     footer: CDialogButtonBox{
+        visible: !control.readOnly
         alignment: Qt.AlignRight | Qt.AlignVCenter
         position: DialogButtonBox.Footer
         spacing: 15
