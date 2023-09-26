@@ -19,7 +19,7 @@ CTableViewDelegate {
     MouseArea{
         anchors.fill: parent
         onClicked: {
-            Router.navigate(model.__link,{
+            Router.navigate(model.__link,{          "readOnly" : true,
 //                                                   "dataKey": model.__linkKey,
                                                    "keyValue":__linkKeyData});
         }
