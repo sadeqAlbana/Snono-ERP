@@ -6,7 +6,12 @@
 VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
                                                                                              {"id",tr("ID")} ,
                                                                                              {"name",tr("Name")} ,
-                                                                                             {"reference",tr("Reference")} ,
+                                                                                             {"reference",tr("Reference"),QString(),
+
+                                                 "link",
+                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/vendors/VendorForm.qml"},
+                                                             {"linkKey","vendor_id"}}
+                                                                                       } ,
                                                                                              {"external_reference",tr("External Reference")} ,
                                                                                              {"date",tr("Date"),QString(),"datetime"} ,
                                                                                              {"due_date",tr("Due Date"),QString(),"datetime"} ,
