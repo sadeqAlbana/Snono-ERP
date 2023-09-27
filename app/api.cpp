@@ -363,17 +363,17 @@ void Api::createBill(const int &vendorId, const QJsonArray &products)
 
 NetworkResponse * Api::addUser(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->post(QUrl("/users/add"),data);
+    return PosNetworkManager::instance()->post(QUrl("/user"),data);
 }
 
 NetworkResponse * Api::updateUser(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->put(QUrl("/users"),data);
+    return PosNetworkManager::instance()->put(QUrl("/user"),data);
 }
 
 NetworkResponse *Api::deleteUser(const int userId)
 {
-    QUrl url("/users");
+    QUrl url("/user");
     url.setQuery(QUrlQuery{{"id",QString::number(userId)}});
 
     return PosNetworkManager::instance()->deleteResource(url);
@@ -381,18 +381,18 @@ NetworkResponse *Api::deleteUser(const int userId)
 
 NetworkResponse *Api::addTax(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->post(QUrl("/taxes/add"),data);
+    return PosNetworkManager::instance()->post(QUrl("/tax"),data);
 }
 
 NetworkResponse *Api::updateTax(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->put(QUrl("/taxes"),data);
+    return PosNetworkManager::instance()->put(QUrl("/tax"),data);
 
 }
 
 NetworkResponse *Api::removeTax(const int taxId)
 {
-    QUrl url("/taxes");
+    QUrl url("/tax");
     url.setQuery(QUrlQuery{{"id",QString::number(taxId)}});
 
     qDebug()<<"taxId:" << taxId;

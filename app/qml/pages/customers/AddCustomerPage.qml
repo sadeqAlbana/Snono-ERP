@@ -11,8 +11,6 @@ CFormView {
     padding: 10
     title: qsTr("Add Customer")
     rowSpacing: 30
-    method: control.method
-    url: control.url
     applyHandler: Api.addCustomer
     columns: 4
     height: implicitHeight

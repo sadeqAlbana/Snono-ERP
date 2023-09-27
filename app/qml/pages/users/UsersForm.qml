@@ -12,8 +12,6 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    method: control.method
-    url: control.url
 
     header.visible: true
 

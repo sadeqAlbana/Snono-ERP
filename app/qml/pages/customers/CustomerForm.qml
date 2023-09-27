@@ -11,11 +11,7 @@ CFormView {
     padding: 10
     rowSpacing: 30
     title: qsTr("Customer")
-//    method: control.method
     url: "/customers"
-
-    header.visible: true
-
 
 
     columns: 4

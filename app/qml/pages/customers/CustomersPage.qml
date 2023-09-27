@@ -50,8 +50,8 @@ AppPage{
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",
                                                  {"applyHandler": Api.updateCustomer,
                                                      "title": qsTr("Edit Customer"),
+                                                "keyValue": model.jsonObject(tableView.currentRow).id
 
-                                                 "initialValues":model.jsonObject(tableView.currentRow)
                                                  })
                     enabled:tableView.currentRow>=0; permission: "prm_edit_customers";
 
