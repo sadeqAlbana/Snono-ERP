@@ -50,7 +50,7 @@ AppPage{
                                                  {"applyHandler": Api.updateUser,
                                                      "title": qsTr("Edit User"),
 
-                                                 "initialValues":model.jsonObject(tableView.currentRow)
+                                                 "keyValue": model.jsonObject(tableView.currentRow).id
                                                  })
                     enabled:tableView.currentRow>=0; permission: "prm_edit_users";
 

@@ -164,6 +164,7 @@ set(TARGET_QML_SOURCES
     qml/pages/customers/CustomerForm.qml
     qml/pages/categories/CategoriesPage.qml
     qml/pages/categories/AddCategoryDialog.qml
+    qml/pages/categories/ProductCategoryForm.qml
     qml/pages/settings/GeneralSettings.qml
     qml/pages/settings/IdentitySettings.qml
     qml/pages/settings/PrinterSettings.qml

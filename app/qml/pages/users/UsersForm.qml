@@ -14,7 +14,7 @@ CFormView {
     rowSpacing: 30
 
     header.visible: true
-
+    url: "/user"
 
 
     columns: 4
