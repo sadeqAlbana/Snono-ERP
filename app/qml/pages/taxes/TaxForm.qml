@@ -10,9 +10,8 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-
     header.visible: true
-
+    url: "/tax"
     columns: 2
     CLabel {
         text: qsTr("Name")

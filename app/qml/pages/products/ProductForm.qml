@@ -14,18 +14,20 @@ import JsonModels
 
 Card {
     id: page
-    property var initialValues: null
-    property var applyHandler
+    property alias initialValues: general.initialValues
+//    property var applyHandler
+    property var keyValue: null
     CTabView {
         id: tabView
         anchors.fill: parent
         CFormView {
+            id: general
             title: qsTr("General")
             padding: 10
             rowSpacing: 30
             header.visible: false
-            applyHandler: page.applyHandler;
-            initialValues: page.initialValues
+            keyValue: page.keyValue
+            url: "/product"
             CLabel {
                 text: qsTr("Name")
             }

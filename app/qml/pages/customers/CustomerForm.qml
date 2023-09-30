@@ -11,7 +11,7 @@ CFormView {
     padding: 10
     rowSpacing: 30
     title: qsTr("Customer")
-    url: "/customers"
+    url: "/customer"
 
 
     columns: 4

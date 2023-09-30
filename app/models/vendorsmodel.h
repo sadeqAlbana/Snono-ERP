@@ -10,13 +10,9 @@ class VendorsModel : public AppNetworkedJsonModel
 public:
     Q_INVOKABLE explicit VendorsModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addVendor(const QString &name, const QString &email, const QString &address, const QString &phone);
-    Q_INVOKABLE void removeVendor(const int &vendorId);
 
 
 signals:
-    void vendorAddReply(QJsonObject reply);
-    void vendorRemoveReply(QJsonObject reply);
 
 };
 

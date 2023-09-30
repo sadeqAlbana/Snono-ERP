@@ -14,26 +14,4 @@ VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
 
 }
 
-void VendorsModel::addVendor(const QString &name, const QString &email, const QString &address, const QString &phone)
-{
-    PosNetworkManager::instance()->post(QUrl("/vendors/add"),QJsonObject{{"name",name},
-                                                                   {"email",email},
-                                                                   {"address",address},
-                                                                   {"phone",phone}
-                                        })
-            ->subscribe([this](NetworkResponse *res){
 
-        emit vendorAddReply(res->json().toObject());
-    });
-}
-
-void VendorsModel::removeVendor(const int &vendorId)
-{
-    PosNetworkManager::instance()->post(QUrl("/vendors/remove"),QJsonObject{{"id",vendorId}
-
-                                        })
-            ->subscribe([this](NetworkResponse *res){
-
-        emit vendorRemoveReply(res->json().toObject());
-    });
-}

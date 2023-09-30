@@ -3,7 +3,7 @@
 #include <QJsonObject>
 #include "networkresponse.h"
 
-VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendors/bills",{
+VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendorBills",{
                                                                                              {"id",tr("ID")} ,
                                                                                              {"name",tr("Name")} ,
                                                                                              {"reference",tr("Reference"),QString(),

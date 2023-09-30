@@ -39,7 +39,7 @@ AppPage{
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",{"applyHandler": Api.addCustomer,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",{
                                                      "title": qsTr("Add Customer")
                                                  })
 
@@ -48,7 +48,7 @@ AppPage{
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",
-                                                 {"applyHandler": Api.updateCustomer,
+                                                 {
                                                      "title": qsTr("Edit Customer"),
                                                 "keyValue": model.jsonObject(tableView.currentRow).id
 

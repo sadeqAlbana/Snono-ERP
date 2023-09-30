@@ -14,18 +14,8 @@ import CoreUI
 
 AppPage{
     title: qsTr("Categories")
+    StackView.onActivated: model.refresh()
 
-    Connections{
-        target: Api
-        function onCategoryRemoveReply(reply) {
-            if(reply.status===200){
-                categoriesModel.requestData();
-            }
-        } //slot end
-    }//connections
-    AddCategoryDialog{
-        id: dialog;
-    }
     ColumnLayout{
         id: page
         anchors.fill: parent;

@@ -330,17 +330,17 @@ void Api::addCustomer(const QString name, const QString firstName, const QString
 
 NetworkResponse *  Api::addCustomer(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->post(QUrl("/customers/add"),data);
+    return PosNetworkManager::instance()->post(QUrl("customer"),data);
 }
 
 NetworkResponse * Api::updateCustomer(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->put(QUrl("/customers"),data);
+    return PosNetworkManager::instance()->put(QUrl("/customer"),data);
 }
 
 NetworkResponse * Api::updateVendor(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->put(QUrl("/vendors"),data);
+    return PosNetworkManager::instance()->put(QUrl("/vendor"),data);
 }
 
 
@@ -431,7 +431,7 @@ NetworkResponse *Api::setProductAttributes(const int &productId, const QJsonArra
 
 NetworkResponse *Api::addProduct(const QJsonObject &product)
 {
-    return PosNetworkManager::instance()->post(QUrl("/products/add"),product);
+    return PosNetworkManager::instance()->post(QUrl("/product"),product);
 }
 
 NetworkResponse *Api::nextVersion()

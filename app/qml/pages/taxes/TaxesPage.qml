@@ -52,7 +52,7 @@ AppPage{
 
             actions: [
                 CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/taxes/TaxForm.qml",
-                                                                                                {"applyHandler": Api.addTax,
+                                                                                                {
                                                                                                                         "title": qsTr("Add Tax")
                                                                                                                     })},
 
@@ -60,10 +60,10 @@ AppPage{
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/taxes/TaxForm.qml",
-                                                 {"applyHandler": Api.updateTax,
+                                                 {
                                                      "title": qsTr("Edit Tax"),
 
-                                                 "initialValues":model.jsonObject(tableView.currentRow)
+                                                 "keyValue": model.jsonObject(tableView.currentRow).id
                                                  })
                     enabled:tableView.currentRow>=0; permission: "prm_edit_taxes";
 

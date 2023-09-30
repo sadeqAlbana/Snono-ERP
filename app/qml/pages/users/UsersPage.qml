@@ -47,7 +47,7 @@ AppPage{
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",
-                                                 {"applyHandler": Api.updateUser,
+                                                 {
                                                      "title": qsTr("Edit User"),
 
                                                  "keyValue": model.jsonObject(tableView.currentRow).id

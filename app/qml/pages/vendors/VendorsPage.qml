@@ -43,7 +43,7 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml",{"applyHandler": Api.addVendor,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml",{
                                                      "title": qsTr("Add Vendor")
                                                  })
 
@@ -52,10 +52,10 @@ AppPage {
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/vendors/VendorForm.qml",
-                                                 {"applyHandler": Api.updateVendor,
+                                                 {
                                                      "title": qsTr("Edit Vendor"),
 
-                                                 "initialValues":model.jsonObject(tableView.currentRow)
+                                                     "keyValue": model.jsonObject(tableView.currentRow).id
                                                  })
                     enabled:tableView.currentRow>=0; permission: "prm_edit_vendors";
 
@@ -71,7 +71,7 @@ AppPage {
             function removeVendor() {
                 if (tableView.currentRow > -1) {
                     var vendorId = model.data(tableView.currentRow, "id")
-                    model.removeVendor(vendorId)
+//                    model.removeVendor(vendorId)
                 }
             }
 
@@ -80,16 +80,16 @@ AppPage {
 
 
 
-                onVendorRemoveReply: {
-                    if (reply.status === 200) {
-                        toastrService.push("Success", reply.message,
-                                           "success", 2000)
-                        model.requestData()
-                    } else {
-                        toastrService.push("Error", reply.message,
-                                           "error", 2000)
-                    }
-                } //slot end
+//                onVendorRemoveReply: {
+//                    if (reply.status === 200) {
+//                        toastrService.push("Success", reply.message,
+//                                           "success", 2000)
+//                        model.requestData()
+//                    } else {
+//                        toastrService.push("Error", reply.message,
+//                                           "error", 2000)
+//                    }
+//                } //slot end
             } //model end
         }
     }

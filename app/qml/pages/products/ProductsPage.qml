@@ -19,8 +19,6 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage {
     title: qsTr("Products")
     StackView.onActivated: model.refresh()
-    Component.onCompleted: console.log("completed")
-    Component.onDestruction: console.log("destructed")
 
     ColumnLayout {
         id: page
@@ -181,7 +179,7 @@ AppPage {
                     onTriggered: Router.navigate(
                                      "qrc:/PosFe/qml/pages/products/ProductForm.qml",
                                      {
-                                         "applyHandler": Api.addProduct,
+
                                          "title": qsTr("Add")
                                      })
                     permission: "prm_add_products"
@@ -192,10 +190,10 @@ AppPage {
                     onTriggered: Router.navigate(
                                      "qrc:/PosFe/qml/pages/products/ProductForm.qml",
                                      {
-                                         "applyHandler": Api.updateProduct,
+
                                          "title": qsTr("Edit"),
-                                         "initialValues": model.jsonObject(
-                                                              tableView.currentRow)
+                                         "keyValue": model.jsonObject(
+                                                              tableView.currentRow).id
                                      })
                     enabled: tableView.currentRow >= 0
                     permission: "prm_edit_products"
