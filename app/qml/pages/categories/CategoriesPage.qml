@@ -10,6 +10,7 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import PosFe
+import CoreUI
 
 AppPage{
     title: qsTr("Categories")
@@ -47,8 +48,31 @@ AppPage{
             Layout.fillWidth: true
 //            title: "categories"
             actions: [
-                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: dialog.open()},
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeCategory()}]
+                CAction {
+                    text: qsTr("Add")
+                    icon.name: "cil-plus"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/categories/ProductCategoryForm.qml",
+                                                 {
+                                                     "title": qsTr("Add Category")
+                                                 })
+
+                },
+                CAction {
+                    text: qsTr("Edit")
+                    icon.name: "cil-pen"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/categories/ProductCategoryForm.qml",
+                                                 {
+                                                     "title": qsTr("Edit Category"),
+                                                "keyValue": model.jsonObject(tableView.currentRow).id
+
+                                                 })
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_categories";
+
+                },
+
+
+                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
+            ]//actions
 
             model: CategoriesModel{
                 id: model;
