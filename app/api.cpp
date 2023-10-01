@@ -422,7 +422,7 @@ NetworkResponse *Api::deleteAclGroup(const int id)
 
 NetworkResponse *Api::setProductAttributes(const int &productId, const QJsonArray &attributes)
 {
-    return PosNetworkManager::instance()->put(QUrl("products/attributes"),QJsonObject{
+    return PosNetworkManager::instance()->put(QUrl("product/attributes"),QJsonObject{
                                                                           {"product_id",productId},
                                                                           {"attributes",attributes}
                                                               });

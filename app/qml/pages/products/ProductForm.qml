@@ -129,7 +129,7 @@ Card {
 
         JsonModel {
             id: attributesModel
-            records: initialValues?.attributes?? []
+            records: general.initialValues?.attributes?? []
 
             columnList: [
 
@@ -219,8 +219,9 @@ Card {
                         Layout.alignment: Qt.AlignLeft | Qt.AlignTop
 
                         onClicked: Api.
-                        setProductAttributes(initialValues.id,
+                        setProductAttributes(general.initialValues.id,
                                                             attributesModel.toJsonArray()).subscribe(function(res){
+                            console.log(JSON.stringify(res.json()))
                             if(res.json('status')===200){
                                 Router.back();
                             }
