@@ -1,7 +1,7 @@
 #include "aclgroupsmodel.h"
 
 AclGroupsModel::AclGroupsModel(QObject *parent)
-    : AppNetworkedJsonModel{"/acl/groups",
+    : AppNetworkedJsonModel{"/aclGroups",
                             {
                                 {"id",tr("ID")},
                                 {"name",tr("Name")}

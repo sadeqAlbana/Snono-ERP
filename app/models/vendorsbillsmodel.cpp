@@ -6,7 +6,9 @@
 VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendorBills",{
                                                                                              {"id",tr("ID")} ,
                                                                                              {"name",tr("Name")} ,
-                                                                                             {"reference",tr("Reference"),QString(),
+                                             {"reference",tr("Reference")},
+
+                                                                                             {"name",tr("Vendor"),"vendor",
 
                                                  "link",
                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/vendors/VendorForm.qml"},

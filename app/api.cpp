@@ -401,20 +401,20 @@ NetworkResponse *Api::removeTax(const int taxId)
 
 NetworkResponse *Api::addAclGroup(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->post(QUrl("/acl/groups/add"),data);
+    return PosNetworkManager::instance()->post(QUrl("/aclGroup"),data);
 
 }
 
 NetworkResponse *Api::updateAclGroup(const QJsonObject &data)
 {
-    return PosNetworkManager::instance()->put(QUrl("/acl/groups"),data);
+    return PosNetworkManager::instance()->put(QUrl("/aclGroup"),data);
 
 }
 
 NetworkResponse *Api::deleteAclGroup(const int id)
 {
 
-    QUrl url("/acl/groups");
+    QUrl url("/aclGroup");
     url.setQuery(QUrlQuery{{"id",QString::number(id)}});
 
     return PosNetworkManager::instance()->deleteResource(url);
