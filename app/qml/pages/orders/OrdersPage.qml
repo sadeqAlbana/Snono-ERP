@@ -112,6 +112,9 @@ AppPage{
 
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Create Delivery Order"); icon.name: "cil-plus-circle"; onTriggered: {
                         let order =model.jsonObject(tableView.currentRow);
+                        Router.navigate("qrc:/PosFe/qml/pages/orders/DeliveryOrderForm.qml",
+                                        {keyValue: model.jsonObject(tableView.currentRow).id});
+
                     }},
 
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},

@@ -1,5 +1,6 @@
 .pragma library
 
+const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
 
 function formatNumber(num) {
     if(num===null){
