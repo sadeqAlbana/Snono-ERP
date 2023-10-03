@@ -6,6 +6,7 @@ import CoreUI.Forms
 import CoreUI.Base
 import QtQuick.Layouts
 import CoreUI
+
 CFormView {
     id: control
     padding: 10
@@ -67,4 +68,7 @@ CFormView {
         objectName: "address"
         Layout.fillWidth: true
     }
+
+
+
 }

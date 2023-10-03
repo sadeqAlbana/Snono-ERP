@@ -139,6 +139,7 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrderStatusDelegate.qml
     qml/pages/orders/OrderDetailsPage.qml
     qml/pages/orders/ReturnOrderPage.qml
+    qml/pages/orders/DeliveryOrderForm.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
@@ -287,6 +288,8 @@ target_link_libraries(appposfe PRIVATE Qt6::Quick
     Qt6::Core5Compat
     Qt6::Widgets
     Qt6::PrintSupport
+    Qt6::Location
+    Qt6::Positioning
     SNetworkManager
     jsonmodel
     coreuiplugin

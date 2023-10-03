@@ -110,9 +110,9 @@ AppPage{
 
                     }},
 
-//                CAction{enabled:tableView.currentRow>=0; text: qsTr("Create New Delivery Order"); icon.name: "cil-plus-circle"; onTriggered: {
-//                        let order =model.jsonObject(tableView.currentRow);
-//                    }},
+                CAction{enabled:tableView.currentRow>=0; text: qsTr("Create Delivery Order"); icon.name: "cil-plus-circle"; onTriggered: {
+                        let order =model.jsonObject(tableView.currentRow);
+                    }},
 
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print"); icon.name: "cil-print"; onTriggered: receiptDialog.openDialog()},
                 CAction{enabled:tableView.currentRow>=0; text: qsTr("Print Delivery Receipt"); icon.name: "cil-print"; onTriggered: {
