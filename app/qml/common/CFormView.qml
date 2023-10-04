@@ -21,16 +21,12 @@ AppPage{
     property bool fillHeight: false
     property alias method : form.method
     property alias url : form.url
+    property alias fetchUrl : form.fetchUrl
     property alias keyValue : form.keyValue
     property alias dataKey: form.dataKey; //query param key or json object key, default is id
     property alias applyHandler: form.applyHandler
     property alias readOnly: form.readOnly
     header.visible: false
-
-
-
-
-
     GridLayout {
         id: grid
         columns: 2

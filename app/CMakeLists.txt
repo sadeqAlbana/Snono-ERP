@@ -134,7 +134,6 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrderReturnListView.qml
     qml/pages/orders/OrdersPage.qml
     qml/pages/orders/UpdateDeliveryStatusDialog.qml
-    qml/pages/orders/OrderDetails.qml
     qml/pages/orders/OrdersReturnsPage.qml
     qml/pages/orders/OrderStatusDelegate.qml
     qml/pages/orders/OrderDetailsPage.qml

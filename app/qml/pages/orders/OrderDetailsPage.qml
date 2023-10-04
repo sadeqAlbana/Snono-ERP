@@ -38,7 +38,7 @@ AppDataPage {
             CLabel{text: qsTr("Address");}
             CTextField{readOnly: true; text: page.dataRecord?.customers?.address?? ""}
 
-        }
+        }//GridLayout
 
         CTableView {
             Layout.fillWidth: true
@@ -93,6 +93,6 @@ AppDataPage {
                     }
                 ]
             }
-        }
-    }
+        }//TableView
+    }//ColumnLayout
 }

@@ -178,7 +178,7 @@ void CashierModel::processCart(const double paid, const double change, const QSt
                      {"note",note},
                      {"cart",cartData()},
                      {"delivery_info",deliveryInfo}};
-    PosNetworkManager::instance()->post(QUrl("/pos/purchase"),data)->subscribe(this,&CashierModel::onProcessCartRespnse);
+    PosNetworkManager::instance()->post(QUrl("/pos/cart/purchase"),data)->subscribe(this,&CashierModel::onProcessCartRespnse);
 }
 
 void CashierModel::onProcessCartRespnse(NetworkResponse *res)

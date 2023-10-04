@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Controls
-
+import CoreUI.Forms
 QtObject {
     id: form
 

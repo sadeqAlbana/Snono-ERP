@@ -43,7 +43,6 @@ void PosNetworkManager::routeReply(NetworkResponse *response)
 {
     NetworkAccessManager::routeReply(response);
     if(response->json().toObject().contains("status")){
-
         int status = response->json("status").toInt();
         QString message=response->json("message").toString();
         if(!message.isEmpty()){
@@ -53,6 +52,11 @@ void PosNetworkManager::routeReply(NetworkResponse *response)
             emit apiError("Error",message);
         }
         }
+    }
+
+    if(response->status()!=200){
+        qDebug()<<response->status();
+        emit networkError(response);
     }
 }
 
