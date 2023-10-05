@@ -76,8 +76,8 @@ CApplicationWindow {
             }
         }
 
-        function onApiError(status, message){
-            console.log("API ERROR ")
+        function onApiError(status, message){ //doesn't makes sense, make it api reply
+//            console.log("API ERROR ")
 
             if (status === 200) {
                 toastrService.push("Success", message, "success", 2000)

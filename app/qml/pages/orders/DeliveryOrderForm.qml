@@ -34,7 +34,7 @@ ColumnLayout {
         CNumberInput {
             objectName: "order_id"
             text: page.keyValue;
-            visible: true
+            visible: false
         }
 
         IconComboBox {
