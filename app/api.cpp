@@ -195,7 +195,7 @@ void Api::returnBill(const int billId, const QJsonArray &items)
 void Api::generateImages()
 {
 //    return;
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",4447}})->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",4669}})->subscribe(
                 [this](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
