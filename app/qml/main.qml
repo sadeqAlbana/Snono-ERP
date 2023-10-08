@@ -76,9 +76,7 @@ CApplicationWindow {
             }
         }
 
-        function onApiError(status, message){ //doesn't makes sense, make it api reply
-//            console.log("API ERROR ")
-
+        function onApiReply(status, message){
             if (status === 200) {
                 toastrService.push("Success", message, "success", 2000)
             } else {
@@ -86,20 +84,10 @@ CApplicationWindow {
             }
         }
 
-        function onNetworkReply(status, message) {
-            console.log("NETWORK REPLY ")
-            if (status === 200) {
-                toastrService.push("Success", message, "success", 2000)
-            } else {
-                toastrService.push("Error", message, "error", 2000)
-            }
-        }
+        function onNetworkError(response){
+            console.log("network error !");
+            toastrService.push("Error " + response.status(), response.errorString(), "error", 2000)
 
-        function onInternalNetworkError(title, text) {
-            console.log("INTERNAL NETWORK ERROR ")
-
-            console.log(title + " " + text)
-            toastrService.push(title, text, "error", 3000)
         }
     }
 

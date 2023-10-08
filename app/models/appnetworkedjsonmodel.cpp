@@ -119,7 +119,10 @@ void AppNetworkedJsonModel::classBegin()
 void AppNetworkedJsonModel::componentComplete()
 {
 //    qDebug()<<"parent object: " << QObject::parent();
-    requestData();
+    if(!m_url.isEmpty()){
+        requestData();
+    }
+
 }
 
 QHash<int, QByteArray> AppNetworkedJsonModel::roleNames() const

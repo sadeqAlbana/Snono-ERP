@@ -7,7 +7,7 @@ import CoreUI.Forms
 import CoreUI.Views
 CComboBox {
     id: control
-    property string dataUrl;
+    property url dataUrl;
     property var values: null;
     property var filter: null
     property var defaultEntry;
@@ -20,7 +20,7 @@ CComboBox {
         checkable: control.checkable?? false
         filter: control.filter?? {}
 
-        Component.onCompleted: {            
+        Component.onCompleted: {
             if(control.values){
                 let emptyRecord=jsonModel.record;
                 Object.keys(defaultEntry).forEach(key =>{
@@ -30,9 +30,7 @@ CComboBox {
                 insertRecord(emptyRecord);
                 control.currentIndex=0;
             }
-            if(dataUrl.length){
-                jsonModel.requestData();
-            }
+
 
         }
 

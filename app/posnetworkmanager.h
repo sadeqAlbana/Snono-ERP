@@ -15,9 +15,7 @@ public:
     Q_INVOKABLE void reloadBaseUrl();
 
 signals:
-    void networkReply(const int &status, const QString &message); //used for toastr service
-    void apiError(const QString &title, const QString &text);
-    void internalNetworkError(const QString &title, const QString &text);
+    void apiReply(int status, QString message);;
 private:
     static QByteArray _jwt;
     void setJWT(const QByteArray jwt);

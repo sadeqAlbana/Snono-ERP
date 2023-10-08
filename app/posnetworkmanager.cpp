@@ -29,12 +29,11 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     setCache(cache);
     setRequestAttribute(static_cast<QNetworkRequest::Attribute>(RequstAttribute::NotifyActivity),true);
 
-    connect(this,&NetworkAccessManager::networkError,this,[this](NetworkResponse *response){
-        emit internalNetworkError("Netowork Error",
-                          response->networkReply()->errorString());
+//    connect(this,&NetworkAccessManager::networkError,this,[this](NetworkResponse *response){
+//        emit internalNetworkError("Netowork Error",
+//                          response->networkReply()->errorString());
 
-
-    });
+//    });
 
 
 }
@@ -42,22 +41,20 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
 void PosNetworkManager::routeReply(NetworkResponse *response)
 {
     NetworkAccessManager::routeReply(response);
+
     if(response->json().toObject().contains("status")){
         int status = response->json("status").toInt();
         QString message=response->json("message").toString();
         if(!message.isEmpty()){
-        if(status==200){
-            emit networkReply(response->json("status").toInt(),message);
-        }else{
-            emit apiError("Error",message);
+            emit apiReply(status,message);
         }
-        }
+
     }
 
-    if(response->status()!=200){
-        qDebug()<<response->status();
-        emit networkError(response);
-    }
+//    if(!ignoredErrors().contains(response->status())){
+//        qDebug()<<"res status: " <<response->status();
+//        emit networkError(response);
+//    }
 }
 
 PosNetworkManager *PosNetworkManager::instance()

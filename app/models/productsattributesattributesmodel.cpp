@@ -1,7 +1,7 @@
 #include "productsattributesattributesmodel.h"
 
 ProductsAttributesAttributesModel::ProductsAttributesAttributesModel(QObject *parent)
-    : AppNetworkedJsonModel ("/proucts/attributes",{
+    : AppNetworkedJsonModel ("/productAttributes",{
                              {"id",tr("ID")} ,
                              {"name",tr("Name")}},parent)
 {

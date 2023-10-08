@@ -33,48 +33,6 @@ AppPage {
                           model.requestData()
                       }
 
-            advancedFilter: [{
-                    "type": "text",
-                    "label": qsTr("Barcode"),
-                    "key": "barcode",
-                    "dynamic": false,
-                    "category": null,
-                    "options": {
-                        "placeholderText": "All..."
-                    }
-                }, {
-                    "type": "combo",
-                    "label": qsTr("Category"),
-                    "key": "category_id",
-                    "dynamic": false,
-                    "category": null,
-                    "options": {
-                        "editable": true,
-                        "defaultEntry": {
-                            "name": qsTr("All Categories"),
-                            "id": null
-                        },
-                        "textRole": "name",
-                        "valueRole": "id",
-                        "dataUrl": "/categories"
-                    }
-                },
-                {
-                    "type": "check",
-                    "label": "",
-                    "inner_label": qsTr("Only Variants"),
-                    "key": "only_variants",
-                    "dynamic": false,
-                    "category": null
-                }, {
-                    "type": "check",
-                    "label": "",
-                    "inner_label": qsTr("In stock"),
-                    "key": "in_stock",
-                    "dynamic": false,
-                    "category": null
-                }]
-
             onFilterClicked: filter => {
                                  console.log(
                                      "filter: " + JSON.stringify(filter))
@@ -85,6 +43,49 @@ AppPage {
             ProductsAttributesAttributesModel {
 
                 onDataRecevied: {
+                    let advancedFilter=[{
+                                            "type": "text",
+                                            "label": qsTr("Barcode"),
+                                            "key": "barcode",
+                                            "dynamic": false,
+                                            "category": null,
+                                            "options": {
+                                                "placeholderText": "All..."
+                                            }
+                                        },
+                                        {
+                                            "type": "combo",
+                                            "label": qsTr("Category"),
+                                            "key": "category_id",
+                                            "dynamic": false,
+                                            "category": null,
+                                            "options": {
+                                                "editable": true,
+                                                "defaultEntry": {
+                                                    "name": qsTr("All Categories"),
+                                                    "id": null
+                                                },
+                                                "textRole": "name",
+                                                "valueRole": "id",
+                                                "dataUrl": "/categories"
+                                            }
+                                        },
+                                        {
+                                            "type": "check",
+                                            "label": "",
+                                            "inner_label": qsTr("Only Variants"),
+                                            "key": "only_variants",
+                                            "dynamic": false,
+                                            "category": null
+                                        }, {
+                                            "type": "check",
+                                            "label": "",
+                                            "inner_label": qsTr("In stock"),
+                                            "key": "in_stock",
+                                            "dynamic": false,
+                                            "category": null
+                                        }];
+
                     for (var i = 0; i < rowCount(); i++) {
                         //                        console.log(JSON.stringify(jsonObject(i)));
                         let attribute = jsonObject(i)
@@ -95,7 +96,8 @@ AppPage {
                         let name = attribute['name']
                         let values = attribute['values']
 
-                        toolBar.advancedFilter.push({
+
+                        advancedFilter.push({
                                                         "type": "combo",
                                                         "label": name,
                                                         "key": id,
@@ -114,7 +116,9 @@ AppPage {
                                                         }
                                                     })
                     }
-                    toolBar.advancedFilterChanged()
+                    toolBar.advancedFilter=advancedFilter;
+                    toolBar.advancedFilterChanged();
+
                 }
             }
         }
