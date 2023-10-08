@@ -19,57 +19,6 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage {
     title: qsTr("Products")
     StackView.onActivated: model.refresh()
-
-    AppDialog {
-        id: dialog
-        width: parent.width*0.4
-        height: parent.height*0.5
-        Component.onCompleted: open();
-        Card{
-            title: qsTr("Generate Catalogue")
-            anchors.fill: parent;
-            GridLayout{
-                anchors.fill: parent;
-                anchors.margins: 10
-                columns: 2
-                rows: 2
-
-                CLabel{text: qsTr("Start ID");}
-                CTextField{}
-                CLabel{text: qsTr("Save Path");}
-                FileInput{}
-            }
-
-            footer: RowLayout{
-                HorizontalSpacer{}
-                CButton{
-                    text: qsTr("Cancel")
-                    palette.button: "#e55353"
-                    palette.buttonText: "#ffffff"
-                    implicitHeight: 60
-                    Layout.margins: 10
-                    implicitWidth: 80
-
-                    onClicked: dialog.close();
-
-
-                }
-                CButton{
-                    text: qsTr("Generate")
-                    palette.button: "#2eb85c"
-                    palette.buttonText: "#ffffff"
-                    implicitHeight: 60
-                    Layout.margins: 10
-                    implicitWidth: 80
-
-                    onClicked: dialog.accepted(paid,tendered);
-                }
-            } //footer end
-
-        } //card end
-
-
-    }
     ColumnLayout {
         id: page
         anchors.fill: parent
@@ -266,7 +215,8 @@ AppPage {
                 CAction {
                     text: qsTr("Generate Catalogue")
                     icon.name: "cil-image"
-                    onTriggered: Api.generateImages()
+                    onTriggered: Router.navigate(
+                                     "qrc:/PosFe/qml/pages/products/GenerateCataloguePage.qml")
                 },
                 CAction {
                     text: qsTr("Bulck Stock Adjustment")

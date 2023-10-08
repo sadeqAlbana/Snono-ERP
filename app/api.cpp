@@ -20,6 +20,7 @@
 #include <QUrlQuery>
 #include <QFile>
 #include <QJsonDocument>
+#include <QDir>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -192,14 +193,18 @@ void Api::returnBill(const int billId, const QJsonArray &items)
     });
 }
 
-void Api::generateImages()
+void Api::generateImages(const QJsonObject &data)
 {
 //    return;
-    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),QJsonObject{{"start_id",4669}})->subscribe(
-                [this](NetworkResponse *res){
+    QString savePath=data["save_path"].toString();
+    QUrl url=savePath;
+    savePath=url.toLocalFile();
+    QDir().mkpath(savePath+"/products/single");
+    PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),data)->subscribe(
+                [this,savePath](NetworkResponse *res){
         NetworkAccessManager mgr;
         QList<QImage> images;
-        QString desktop=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
+        //QString desktop=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
         QJsonArray products=res->json("data").toArray();
         for(QJsonValue product : products){
 
@@ -256,7 +261,7 @@ void Api::generateImages()
                     painter.drawText(rect,productPrice,textOption);
                     painter.end();
                     images << image;
-                    qDebug()<<image.save(QString("%1/products/single/%2.jpg").arg(desktop).arg(productName));
+                    qDebug()<<image.save(QString("%1/products/single/%2.jpg").arg(savePath).arg(productName));
                     //return;
 
 
@@ -275,7 +280,7 @@ void Api::generateImages()
                 row++;
             }
             painter.end();
-            qDebug()<<image.save(QString("%1/products/%2.jpg").arg(desktop).arg(i));
+            qDebug()<<image.save(QString("%1/products/%2.jpg").arg(savePath).arg(i));
         }
     });
 }

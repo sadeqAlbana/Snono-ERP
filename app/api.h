@@ -28,7 +28,7 @@ public:
     Q_INVOKABLE bool bulckStockAdjustment(const QUrl &url);
     Q_INVOKABLE void returnBill(const int billId, const QJsonArray &items=QJsonArray());
 
-    Q_INVOKABLE void generateImages();
+    Q_INVOKABLE void generateImages(const QJsonObject &data);
 
     Q_INVOKABLE NetworkResponse * addVendor(const QJsonObject &data);
     Q_INVOKABLE void returnableItems(const int &orderId);
