@@ -78,9 +78,9 @@ ListView {
             "type" : 1
         }
 
-        onDataRecevied:()=>{
-            cartModel.addItem();
-        }
+//        onDataRecevied:()=>{
+//            cartModel.addItem();
+//        }
     }
 
 
