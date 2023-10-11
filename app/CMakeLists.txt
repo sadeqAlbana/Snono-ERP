@@ -187,6 +187,7 @@ set(TARGET_QML_SOURCES
     qml/pages/warehouses/StockMovesPage.qml
     qml/pages/warehouses/StockValuationPage.qml
     qml/pages/warehouses/WareHouseForm.qml
+    qml/pages/vendors/VendorBillDetailsPage.qml
     qml/common/CCheckableFilterComboBox.qml
     qml/Nav.qml
     qml/AppMainScreen.qml

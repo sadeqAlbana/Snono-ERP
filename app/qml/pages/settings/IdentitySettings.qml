@@ -19,7 +19,7 @@ AppPage{
     title: qsTr("Identity Settings")
     AppFormView{
         id: form
-        url: "/identity"
+        fetchUrl: "/identity"
         applyHandler: Api.postIdentity
         anchors.fill: parent
         CLabel {
@@ -48,7 +48,7 @@ AppPage{
 //        }
 
 
-        Component.onCompleted: NetworkManager.get(form.url).subscribe(function(res){
+        Component.onCompleted: NetworkManager.get(form.fetchUrl).subscribe(function(res){
             console.log(JSON.stringify(res.json("data")))
             form.initialValues=res.json("data");
         })
