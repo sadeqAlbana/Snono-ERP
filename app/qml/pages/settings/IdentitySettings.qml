@@ -49,7 +49,6 @@ AppPage{
 
 
         Component.onCompleted: NetworkManager.get(form.fetchUrl).subscribe(function(res){
-            console.log(JSON.stringify(res.json("data")))
             form.initialValues=res.json("data");
         })
     }

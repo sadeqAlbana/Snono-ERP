@@ -67,6 +67,19 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             actions: [
+                CAction {
+                    enabled: tableView.currentRow >= 0
+                    text: qsTr("Details")
+                    icon.name: "cil-notes"
+                    onTriggered: {
+                        Router.navigate(
+                                    "qrc:/PosFe/qml/pages/vendors/VendorBillDetailsPage.qml",
+                                    {
+                                        "keyValue": model.jsonObject(
+                                                        tableView.currentRow).id
+                                    })
+                    }
+                },
                 CAction{enabled: tableView.currentRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
                         dialog.amount=model.jsonObject(tableView.currentRow).total;
                         dialog.open();}},

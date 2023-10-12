@@ -21,7 +21,6 @@ AppPage{
         id: form
         url: "/barq/config"
         anchors.fill: parent
-//    applyHandler: function(){}
         CLabel {
             text: qsTr("Agent Phone")
         }
