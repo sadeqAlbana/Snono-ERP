@@ -11,7 +11,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
-
+import CoreUI
 import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
@@ -60,7 +60,17 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
             model: AccountsModel{ id: model;}
-            actions: [CAction{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}]
+            actions: [
+                CAction {
+                    text: qsTr("Add")
+                    icon.name: "cil-plus"
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/Accounting/AccountForm.qml",{
+                                                     "title": qsTr("Add Account")
+                                                 })
+
+                },
+                CAction{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}
+            ]
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
