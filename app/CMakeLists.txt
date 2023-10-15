@@ -131,6 +131,7 @@ set(TARGET_QML_SOURCES
     qml/pages/Accounting/TypeDeleagate.qml
     qml/pages/Accounting/JournalEntryForm.qml
     qml/pages/Accounting/AccountForm.qml
+    qml/pages/Accounting/JournalEntryDetailsPage.qml
     qml/pages/orders/OrderReturnDialog.qml
     qml/pages/orders/OrderReturnListView.qml
     qml/pages/orders/OrdersPage.qml

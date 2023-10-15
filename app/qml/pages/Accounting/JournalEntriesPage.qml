@@ -9,6 +9,7 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
+import CoreUI
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 
@@ -34,7 +35,20 @@ AppPage{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
-
+            actions: [
+                CAction {
+                    enabled: tableView.currentRow >= 0
+                    text: qsTr("Details")
+                    icon.name: "cil-notes"
+                    onTriggered: {
+                        Router.navigate(
+                                    "qrc:/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml",
+                                    {
+                                        "keyValue": model.jsonObject(
+                                                        tableView.currentRow).id
+                                    })
+                    }
+                }]
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
