@@ -43,34 +43,25 @@ AppDataPage {
         CTableView {
             Layout.fillWidth: true
             Layout.fillHeight: true
+
             rowHeightProvider: function (row) {
                 return 50
             }
-            delegate: DelegateChooser {
-                role: "delegateType"
-                DelegateChoice {
-                    roleValue: "text"
-                    CTableViewDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "currency"
-                    CurrencyDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "percentage"
-                    SuffixDelegate {
-                        suffix: "%"
-                    }
-                }
+            delegate: AppDelegateChooser {
             }
 
             model: JsonModel {
-                records: page.dataRecord?.items?? []
                 columnList: [
                     JsonModelColumn {
                         displayName: qsTr("Account")
                         key: "name"
                         parentKey: "account"
+                        type: "link";
+
+                        metadata: {
+                            "link": "qrc:/PosFe/qml/pages/Accounting/AccountForm.qml",
+                            "linkKey": "account_id"
+                        }
                     },
                     JsonModelColumn {
                         displayName: qsTr("Credit")
@@ -82,7 +73,10 @@ AppDataPage {
                         key: "debit"
                         type: "currency"
                     }
+
                 ]
+                records: page.dataRecord?.items?? []
+
             }
         }//TableView
     }//ColumnLayout

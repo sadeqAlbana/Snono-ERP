@@ -13,6 +13,7 @@ CFormView {
     header.visible: true
     url: "/account"
     columns: 2
+    title: qsTr("Account")
     CLabel {
         text: qsTr("Name")
     }

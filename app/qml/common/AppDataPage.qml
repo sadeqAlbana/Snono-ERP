@@ -8,6 +8,7 @@ AppPage {
     property string dataKey: "id"; //query param key or json object key, default is id
     property string method: "GET";
     property var dataRecord;
+    property bool readOnly: true //maybe will remove later
     Component.onCompleted: {
 
         if(page.method==="GET"){
