@@ -132,6 +132,7 @@ set(TARGET_QML_SOURCES
     qml/pages/Accounting/JournalEntryForm.qml
     qml/pages/Accounting/AccountForm.qml
     qml/pages/Accounting/JournalEntryDetailsPage.qml
+    qml/pages/Accounting/NewJournalEntryPage.qml
     qml/pages/orders/OrderReturnDialog.qml
     qml/pages/orders/OrderReturnListView.qml
     qml/pages/orders/OrdersPage.qml
@@ -256,6 +257,7 @@ qt_add_qml_module(appposfe
 
     QML_FILES
         ${TARGET_QML_SOURCES}
+
 )
 set(INCLUDE_DIR
     models

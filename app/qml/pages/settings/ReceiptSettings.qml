@@ -19,7 +19,7 @@ AppPage{
     title: qsTr("Receipt Settings")
     AppFormView{
         id: form
-        url: "/receipt"
+        fetchUrl: "/receipt"
         applyHandler: Api.postReceipt
         anchors.fill: parent
 
@@ -63,8 +63,7 @@ AppPage{
 
 
 
-        Component.onCompleted: NetworkManager.get(form.url).subscribe(function(res){
-            console.log(JSON.stringify(res.json("data")))
+        Component.onCompleted: NetworkManager.get(form.fetchUrl).subscribe(function(res){
             form.initialValues=res.json("data");
         })
     }

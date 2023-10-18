@@ -14,14 +14,15 @@ Popup {
     id: dialog
     modal: true
     anchors.centerIn: parent;
+    closePolicy: Popup.NoAutoClose
     parent: Overlay.overlay
     property var receiptData;
 //    margins: 0
 //    padding: 0
 //    closePolicy: Popup.NoAutoClose
 //    width: parent.width*0.3
-    width: pdf.sourceSize.width
-    height: parent.height*0.8
+    width: 700
+    height: 900
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"
@@ -41,27 +42,31 @@ Popup {
         title: qsTr("Receipt")
         anchors.fill: parent;
 
+        // Flickable{
+        //     clip: true
+        //     anchors.fill: parent;
 
-        Flickable{
-            clip: true
-            anchors.fill: parent;
+        //     contentWidth: pdf.width;
+        //     contentHeight: pdf.height
+        //     ScrollBar.vertical: ScrollBar { }
+        //     ScrollBar.horizontal: ScrollBar { }
 
-            contentWidth: pdf.width; contentHeight: pdf.height
-
-            PdfPageView{
+            PdfMultiPageView{
                 id: pdf
-//                anchors.fill: parent
-                width: sourceSize.width
-                height: sourceSize.height
+                clip: true
+                anchors.fill: parent
+                // width: sourceSize.width
+                // height: sourceSize.height
                 document: PdfDocument{source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""}
+
             }
-        }
+       // }
 
 
 
 
         footer: RowLayout{
-
+            clip: true
             Rectangle{
                 color: "transparent"
                 Layout.fillWidth: true
@@ -93,6 +98,7 @@ Popup {
 
             CComboBox{
                 id: externalDelivery
+                Layout.rightMargin: 10
                 Layout.fillWidth: true
                 textRole: "name"
                 valueRole: "value"
