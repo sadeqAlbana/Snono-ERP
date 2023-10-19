@@ -6,6 +6,7 @@
 #include <QNetworkInterface>
 #include <QUuid>
 #include <QStandardPaths>
+#include <QSizeF>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
@@ -224,7 +225,36 @@ QPageSize AppSettings::pageSizeFromString(const QString &pageSize)
     if(pageSize=="A7")
         return QPageSize::A7;
 
+    if(pageSize=="57mm"){
+        return QPageSize(QSizeF(57,210),QPageSize::Millimeter,"57mm");
+    }
+    if(pageSize=="58mm"){
+        return QPageSize(QSizeF(58,210),QPageSize::Millimeter,"58mm");
+
+    }
+    if(pageSize=="78mm"){
+        return QPageSize(QSizeF(78,210),QPageSize::Millimeter,"78mm");
+
+    }
+    if(pageSize=="80mm"){
+        return QPageSize(QSizeF(80,210),QPageSize::Millimeter,"80mm");
+
+    }
+
     return QPageSize::Custom;
+}
+
+bool AppSettings::receiptLinePrinter() const
+{
+    return value("receipt_line_printer",true).toBool();
+}
+
+void AppSettings::setReceiptLinePrinter(bool newReceiptLinePrinter)
+{
+    if (receiptLinePrinter() == newReceiptLinePrinter)
+        return;
+    setValue("receipt_line_printer",newReceiptLinePrinter);
+    emit receiptLinePrinterChanged();
 }
 
 

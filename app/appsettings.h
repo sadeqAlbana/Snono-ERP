@@ -76,6 +76,9 @@ public:
 
     static QPageSize pageSizeFromString(const QString &pageSize);
 
+    bool receiptLinePrinter() const;
+    void setReceiptLinePrinter(bool newReceiptLinePrinter);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -95,12 +98,16 @@ signals:
 
     void reportsPaperSizeChanged();
 
+    void receiptLinePrinterChanged();
+
 private:
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
     Q_PROPERTY(int externalReceiptCopies READ externalReceiptCopies WRITE setExternalReceiptCopies NOTIFY externalReceiptCopiesChanged)
 
     Q_PROPERTY(bool externalDelivery READ externalDelivery WRITE setExternalDelivery NOTIFY externalDeliveryChanged)
+
+    Q_PROPERTY(bool receiptLinePrinter READ receiptLinePrinter WRITE setReceiptLinePrinter NOTIFY receiptLinePrinterChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

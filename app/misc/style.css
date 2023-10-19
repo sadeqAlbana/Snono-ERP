@@ -3,6 +3,7 @@
             margin: 0;
             padding: 0;
             font-family: 'PT Sans', sans-serif;
+            font-size: 8px
         }
 
 /*@page {
@@ -36,9 +37,9 @@
 
 
 
-        .receipt {
+/*        .receipt {
             font-size: large;
-        }
+        }*/
 
         .items .heading {
             text-transform: uppercase;

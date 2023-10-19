@@ -131,7 +131,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
 
-
+    bool linePrinter=AppSettings::instance()->receiptLinePrinter();
 
 
     QString text;
@@ -152,6 +152,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width","100%");
     stream.writeStartElement("tr");
 
+    if(!linePrinter){
+
     stream.writeStartElement("th");
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
@@ -161,16 +163,21 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("src", "qr_code");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
+    }
 
     stream.writeStartElement("th");
-    stream.writeAttribute("width","36%");
+    int logoWidth=linePrinter? 100 : 36;
+    stream.writeAttribute("width",QString::number(logoWidth)+"%");
+
     stream.writeStartElement("img");
-    stream.writeAttribute("width","150");
-    stream.writeAttribute("height","150");
+    int logoSize=linePrinter? 50 : 150;
+    stream.writeAttribute("width",QString::number(logoSize));
+    stream.writeAttribute("height",QString::number(logoSize));
     stream.writeAttribute("src", "logo_image");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
 
+    if(!linePrinter){
     stream.writeStartElement("th");
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
@@ -180,6 +187,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("src", "barcode_img");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
+}
 
     stream.writeEndElement(); //tr
 
@@ -268,7 +276,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndElement(); //tbody
     stream.writeEndElement(); //table
 
-    stream.writeStartElement("h2");
+
+    stream.writeStartElement(linePrinter? "h5" : "h3");
     stream.writeAttribute("align","center");
     stream.writeCharacters(translator.translate("receipt","Original Receipt"));
     stream.writeEndElement(); //h2
@@ -415,17 +424,24 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndElement(); //section
 
     stream.writeStartElement("footer");
-    stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
+    if(linePrinter){
+        stream.writeAttribute("style","text-align:center; font-size: small; font-weight: bold;");
+
+    }else{
+        stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
+
+    }
+    // stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
 
 
     stream.writeStartElement("p");
-    //     stream.writeAttribute("class","receipt");
+         stream.writeAttribute("class","receipt");
     stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
 
-    //     stream.writeAttribute("class","receipt");
+         stream.writeAttribute("class","receipt");
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 

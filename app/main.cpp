@@ -58,6 +58,12 @@ int main(int argc, char *argv[])
 
     PosApplication a(argc, argv);
 
+    auto printers = QPrinterInfo::availablePrinters();
+
+    for(auto printer : printers){
+        qDebug()<<printer.printerName() << ": " << printer.defaultPageSize() << printer.supportedDuplexModes();
+    }
+
 #ifndef Q_OS_ANDROID
 
     QFont font=QApplication::font();

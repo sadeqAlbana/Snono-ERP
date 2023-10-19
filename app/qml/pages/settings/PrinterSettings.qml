@@ -32,14 +32,24 @@ AppPage {
         Label {
             text: qsTr("Paper Size")
         }
+
+        RowLayout{
         IconComboBox {
             id: receiptPaperSizeCB
 
-            model: ['A4', 'A5', 'A6']
+            model: receiptLinePrinterCheck.checked? ['57mm','80mm'] :['A4', 'A5', 'A6']
             leftIcon.name: "cil-page"
 
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.receiptPaperSize)
+        }
+        CCheckBox{
+            id: receiptLinePrinterCheck
+            text: "Line Printer"
+            checked: Settings.receiptLinePrinter
+            onCheckedChanged: Settings.receiptLinePrinter=checked
+
+        }
         }
 
         Label {
@@ -54,18 +64,25 @@ AppPage {
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.reportsPrinter)
         }
-
         Label {
             text: qsTr("Paper Size")
         }
-        IconComboBox {
-            id: reportsPaperSizeCB
-            model: ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']
-            leftIcon.name: "cil-page"
 
-            Component.onCompleted: currentIndex = indexOfValue(
-                                       Settings.reportsPaperSize)
-        }
+
+
+
+            IconComboBox {
+                id: reportsPaperSizeCB
+                model: ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']
+                leftIcon.name: "cil-page"
+
+                Component.onCompleted: currentIndex = indexOfValue(
+                                           Settings.reportsPaperSize)
+            }
+
+
+
+
 
         Label {
             text: qsTr("Receipt copies")
