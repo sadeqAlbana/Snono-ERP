@@ -40,6 +40,8 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 
 QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 {
+    bool linePrinter=AppSettings::instance()->receiptLinePrinter();
+
     QJsonArray items=receiptData["pos_order_items"].toArray();
 
     QImage logo(AppSettings::storagePath()+"/assets/receipt_logo.png");
@@ -88,11 +90,17 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
     QTextDocument doc;
+    //consider using QTextOption to change text direction !
 
     QFile file(":/receipt/style.css");
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
-    QByteArray css=file.readAll();
+    QString css=file.readAll();
     file.close();
+    QString bodyFontSize=linePrinter? "6px" : "12px";
+    QString bodyMargin = linePrinter? "10" : 0;
+    css.replace("{{body_font_size}}",bodyFontSize);
+    css.replace("{{body_margin}}",bodyMargin);
+
     //doc.setDefaultStyleSheet(css);
 
     doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
@@ -131,7 +139,6 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
 
 
-    bool linePrinter=AppSettings::instance()->receiptLinePrinter();
 
 
     QString text;
@@ -170,7 +177,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width",QString::number(logoWidth)+"%");
 
     stream.writeStartElement("img");
-    int logoSize=linePrinter? 50 : 150;
+    int logoSize=linePrinter? 50 : 120;
     stream.writeAttribute("width",QString::number(logoSize));
     stream.writeAttribute("height",QString::number(logoSize));
     stream.writeAttribute("src", "logo_image");
@@ -277,7 +284,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeEndElement(); //table
 
 
-    stream.writeStartElement(linePrinter? "h5" : "h3");
+    stream.writeStartElement(linePrinter? "h6" : "h3");
     stream.writeAttribute("align","center");
     stream.writeCharacters(translator.translate("receipt","Original Receipt"));
     stream.writeEndElement(); //h2
@@ -466,7 +473,9 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
-    pdfPrinter.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
+    pdfPrinter.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
+    pdfPrinter.setPageSize(pageSize);
+
     QString random=QString::number(QRandomGenerator::global()->generate());
     pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
     qDebug()<<"path: " <<pdfPrinter.outputFileName();
@@ -476,7 +485,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
         QPrinter printer;
         printer.setPrinterName(AppSettings::instance()->receiptPrinter());
 
-        printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
+        printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
 
         printer.setCopyCount(AppSettings::instance()->receiptCopies());
         printer.setPageSize(pageSize);

@@ -14,7 +14,6 @@ Popup {
     id: dialog
     modal: true
     anchors.centerIn: parent;
-    closePolicy: Popup.NoAutoClose
     parent: Overlay.overlay
     property var receiptData;
 //    margins: 0
@@ -57,7 +56,19 @@ Popup {
                 anchors.fill: parent
                 // width: sourceSize.width
                 // height: sourceSize.height
-                document: PdfDocument{source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""}
+                document: PdfDocument{
+                    source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""
+
+                    onStatusChanged: {
+                        if(status==PdfDocument.Ready){
+                            if(Settings.receiptLinePrinter){
+                                pdf.renderScale=2
+
+                            }
+
+                        }
+                    }
+                }
 
             }
        // }
