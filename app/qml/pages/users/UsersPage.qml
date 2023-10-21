@@ -39,7 +39,7 @@ AppPage{
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",{"applyHandler": Api.addUser,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",{
                                                      "title": qsTr("Add User")
                                                  })
                 },
