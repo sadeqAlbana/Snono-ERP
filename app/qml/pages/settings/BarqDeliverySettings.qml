@@ -51,13 +51,25 @@ AppPage{
             text: qsTr("Store");
         }
         CComboBox {
+            id: cb
             objectName: "store_id";
 
             textRole: "name"
             valueRole: "id"
 
+
+
             model: AppNetworkedJsonModel{
+                id: jsonModel
                 url: "barq/stores"
+
+                onDataRecevied: {
+                    cb.model=jsonModel.toJsonArray();
+                    if(form.initialValues){
+                        cb.currentIndex=cb.indexOfValue(form.initialValues[cb.objectName])
+
+                    }
+                }
             }
 
         }
