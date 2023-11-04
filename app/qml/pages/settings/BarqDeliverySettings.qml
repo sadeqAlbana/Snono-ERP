@@ -46,7 +46,24 @@ AppPage{
             echoMode: TextInput.Password
             passwordToggleMask: true
         }
-        Component.onCompleted: NetworkManager.get('/barq/config').subscribe(function(res){
+
+        CLabel {
+            text: qsTr("Store");
+        }
+        CComboBox {
+            objectName: "store_id";
+
+            textRole: "name"
+            valueRole: "id"
+
+            model: AppNetworkedJsonModel{
+                url: "barq/stores"
+            }
+
+        }
+
+        Component.onCompleted: NetworkManager.get('barq/config').subscribe(function(res){
+            console.log(JSON.stringify(res.json()))
             form.initialValues=res.json('data');
         })
     }
