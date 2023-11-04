@@ -1,7 +1,7 @@
 #!/bin/bash
 VERSION=$1
 
-cp ~/projects/pos/build-pos-fe-base-Desktop_Qt_6_5_2_GCC_64bit-MinSizeRel/app/appposfe files/appposfe
+cp ~/projects/pos/build-pos-fe-base-Desktop_Qt_6_5_3_GCC_64bit-MinSizeRel/app/appposfe files/appposfe
 if test -f "update_$VERSION.rcc"; then
     rm update_$VERSION.rcc
 fi

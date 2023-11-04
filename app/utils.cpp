@@ -173,7 +173,7 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
 
 
         stream.writeStartElement("table");
-        stream.writeAttribute("style", "width:100%;");
+        stream.writeAttribute("style", "width:100%; font-size:8px;");
         stream.writeStartElement("tr");
 
 

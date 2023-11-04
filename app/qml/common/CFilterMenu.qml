@@ -1,6 +1,6 @@
-import QtQuick;
+import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Basic;
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import Qt.labs.qmlmodels
 import CoreUI.Forms
@@ -13,19 +13,18 @@ import QtQuick.Templates as T
 
 CMenu {
     id: control
-    property var model;
-    signal clicked(var filter);
+    property var model
+    signal clicked(var filter)
     implicitWidth: 300
     contentItem: ListView {
         implicitHeight: contentHeight
         model: control.contentModel
-        interactive: Window.window
-                     ? contentHeight + control.topPadding + control.bottomPadding > Window.window.height
-                     : false
+        interactive: Window.window ? contentHeight + control.topPadding
+                                     + control.bottomPadding > Window.window.height : false
         clip: false
 
         section.property: "objectName"
-        section.delegate: CLabel{
+        section.delegate: CLabel {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             text: section
@@ -33,167 +32,187 @@ CMenu {
             bottomPadding: 8
         }
 
-
-
-
         currentIndex: control.currentIndex
 
         ScrollIndicator.vertical: ScrollIndicator {}
 
-        footer: RowLayout{
+        footer: RowLayout {
             visible: ListView.view.count
-            width: ListView.view? ListView.view.width: 200
+            width: ListView.view ? ListView.view.width : 200
 
-            function apply(){
-                let filter={};
-                for(var i=0; i<ListView.view.count; i++){
-                    let data =control.model[i]
-                    let item=ListView.view.itemAtIndex(i)
-                    let value=null;
+            function apply() {
+                let filter = {}
+                for (var i = 0; i < ListView.view.count; i++) {
+                    let data = control.model[i]
+                    let item = ListView.view.itemAtIndex(i)
+                    let value = null
 
-                    if(item instanceof TextInput){
-                        if(item.text.length){
-                            value=item.text
+                    if (item instanceof TextInput) {
+                        if (item.text.length) {
+                            value = item.text
                         }
                     }
 
-                    if(item instanceof CDateInput){
-                        if(item.acceptableInput)
-                            value=item.text
+                    if (item instanceof CDateInput) {
+                        if (item.acceptableInput)
+                            value = item.text
                     }
 
                     //use different delegate for checkable combo?
-                    if(item instanceof T.ComboBox){
+                    if (item instanceof T.ComboBox) {
+                        console.log("data is ComboBox")
 
-                        {
-                            if(data.checkable){
-                                if(item.currentValue){  //wrong
-                                    value=[item.currentValue];
+                        if (data.options.checkable) {
+                            console.log("data is checkable")
+                            console.log(item.model)
+                            let selected = []
+                            for (i = 0; i < item.count; i++) {
+
+
+                                if (item.model.data(item.model.index(i,0),Qt.CheckStateRole
+                                            ) === Qt.Checked) {
+                                    selected.push(item.model.data(
+                                                      i, data.options.valueRole))
+
                                 }
                             }
-                            else{
-                                if(item.currentValue){
-                                    value=[item.currentValue];
-                                }
+
+                            value = selected
+                            console.log("selected "  + JSON.stringify(selected))
+                        } else {
+                            if (item.currentValue) {
+                                value = [item.currentValue]
                             }
                         }
-
-
                     }
 
-                    if(item instanceof CheckBox){
-                        value=item.checked
+                    if (item instanceof CheckBox) {
+                        value = item.checked
                     }
 
-                    if(value){
-                        if(data.category){
-                            if(!filter.hasOwnProperty(data.category)){
-                                filter[data.category]=Array()
-
+                    if (value) {
+                        if (data.category) {
+                            if (!filter.hasOwnProperty(data.category)) {
+                                filter[data.category] = Array()
                             }
-                            let obj={"key": data.key, "value" : value};
+                            let obj = {
+                                "key": data.key,
+                                "value": value
+                            }
                             filter[data.category].push(obj)
+                        } else {
+                            filter[data.key] = value
                         }
-                        else{
-                            filter[data.key]=value;
-                        }
-
-                    }//end if value
-
-
-                }//for loop
+                    } //end if value
+                } //for loop
 
                 console.log("cfilter menu filter: " + JSON.stringify(filter))
-                control.clicked(filter);
+                control.clicked(filter)
+            } //apply
 
-            }//apply
-
-            function reset(){
-                for(var i=0; i<ListView.view.count; i++){
-                    let item=ListView.view.itemAtIndex(i)
-                    if(item instanceof TextInput){
-                        item.clear();
+            function reset() {
+                for (var i = 0; i < ListView.view.count; i++) {
+                    let item = ListView.view.itemAtIndex(i)
+                    if (item instanceof TextInput) {
+                        item.clear()
                     }
 
-                    if(item instanceof CDateInput){
-                        if(item.acceptableInput)
-                            item.clearDate();
+                    if (item instanceof CDateInput) {
+                        if (item.acceptableInput)
+                            item.clearDate()
                     }
 
-
-                    if(item instanceof T.ComboBox){
-                        item.currentIndex=0;
+                    if (item instanceof T.ComboBox) {
+                        item.currentIndex = 0
                     }
 
-                    if(item instanceof CheckBox){
-                        item.checked=false;
+                    if (item instanceof CheckBox) {
+                        item.checked = false
                     }
                 }
 
-                control.clicked({});
-            }//clicked
+                control.clicked({})
+            } //clicked
 
-            CButton{
+            CButton {
                 Layout.topMargin: 15
-                text: qsTr("Apply");
-                palette: BrandSuccess{}
+                text: qsTr("Apply")
+                palette: BrandSuccess {}
                 Layout.fillWidth: true
                 implicitHeight: 40
 
-                onClicked: apply();
+                onClicked: apply()
             }
 
-            CButton{
+            CButton {
                 Layout.topMargin: 15
-                text: qsTr("Reset");
-                palette: BrandDanger{}
+                text: qsTr("Reset")
+                palette: BrandDanger {}
                 Layout.fillWidth: true
                 implicitHeight: 40
 
-                onClicked: reset();
+                onClicked: reset()
             }
         }
+    } //contentItem
 
-    }//contentItem
+    Repeater {
+        model: control.model
 
-    Repeater{
-        model: control.model;
-
-        delegate: DelegateChooser{
+        delegate: DelegateChooser {
             role: "type"
-            DelegateChoice {roleValue: "text"; CTextField {
-                    width: control.contentItem.width; objectName: modelData.label;}}
-            DelegateChoice {roleValue: "combo";
+            DelegateChoice {
+                roleValue: "text"
+                CTextField {
+                    width: control.contentItem.width
+                    objectName: modelData.label
+                }
+            }
+            DelegateChoice {
+                roleValue: "combo"
                 CFilterComboBox {
-                    dataUrl: modelData.options["dataUrl"]?? ""
-                    editable: modelData.options["editable"];
+                    dataUrl: modelData.options["dataUrl"] ?? ""
+                    editable: modelData.options["editable"]
                     valueRole: modelData.options["valueRole"]
                     textRole: modelData.options["textRole"]
                     defaultEntry: modelData.options["defaultEntry"]
-                    values: modelData.options["values"]?? null;
+                    values: modelData.options["values"] ?? null
                     filter: modelData.options["filter"]
                     width: control.contentItem.width
-                    objectName: modelData.label;
+                    objectName: modelData.label
                 }
             }
-            DelegateChoice {roleValue: "checkableCombo";
+            DelegateChoice {
+                roleValue: "checkableCombo"
                 CCheckableFilterComboBox {
-                    dataUrl: modelData.options["dataUrl"]?? ""
-                    editable: modelData.options["editable"];
+                    dataUrl: modelData.options["dataUrl"] ?? ""
+                    editable: modelData.options["editable"]
                     valueRole: modelData.options["valueRole"]
                     textRole: modelData.options["textRole"]
                     defaultEntry: modelData.options["defaultEntry"]
-                    values: modelData.options["values"]?? null;
+                    values: modelData.options["values"] ?? null
                     filter: modelData.options["filter"]
                     width: control.contentItem.width
-                    objectName: modelData.label;
+                    objectName: modelData.label
                 }
             }
-            DelegateChoice {roleValue: "date"; CDateInput {width: control.contentItem.width;objectName: modelData.label;}}
+            DelegateChoice {
+                roleValue: "date"
+                CDateInput {
+                    width: control.contentItem.width
+                    objectName: modelData.label
+                }
+            }
 
-            DelegateChoice {roleValue: "check"; CheckBox {width: control.contentItem.width;objectName: modelData.label;
-                    text: modelData.inner_label ;checked: false;}}
-
+            DelegateChoice {
+                roleValue: "check"
+                CheckBox {
+                    width: control.contentItem.width
+                    objectName: modelData.label
+                    text: modelData.inner_label
+                    checked: false
+                }
+            }
         }
     }
 }

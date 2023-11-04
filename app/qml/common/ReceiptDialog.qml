@@ -117,8 +117,7 @@ Popup {
                 model: ListModel{
                     ListElement{name: "No Delivery"; value: 0}
                     ListElement{name: "Baghdad";     value: 5000}
-                    ListElement{name: "Provinces 8,000 ";  value: 8000}
-                    ListElement{name: "Provinces 10,000";  value: 10000}
+                    ListElement{name: "Provinces 7,000";  value: 7000}
 
                 }
             }

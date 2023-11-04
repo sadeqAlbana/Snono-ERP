@@ -11,8 +11,7 @@ CCheckableComboBox {
     property var values: null;
     property var filter: null
     property var defaultEntry;
-    property bool checkable: false  //use different delegate for checkable combo?
-
+    property bool checkable: true  //use different delegate for checkable combo?
     currentIndex: 0
     //editable: true
     model: AppNetworkedJsonModel{

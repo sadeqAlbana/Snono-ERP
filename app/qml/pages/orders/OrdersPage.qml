@@ -117,7 +117,7 @@ AppPage {
                     "label": qsTr("product"),
                     "key": "products",
                     "options": {
-                        "checkable": true,
+                        "checkable": false,
                         "editable": true,
                         "defaultEntry": {
                             "name": qsTr("All Products"),
@@ -139,7 +139,7 @@ AppPage {
                     "label": qsTr("to"),
                     "key": "to"
                 }, {
-                    "type": "combo",
+                    "type": "checkableCombo",
                     "label": qsTr("status"),
                     "key": "status",
                     "options": {
