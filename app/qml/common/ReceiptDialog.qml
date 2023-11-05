@@ -20,8 +20,8 @@ Popup {
 //    padding: 0
 //    closePolicy: Popup.NoAutoClose
 //    width: parent.width*0.3
-    width: 700
-    height: 900
+    width: Screen.height>=1080? 600 : 400
+    height: Screen.height>=1080? 900 : 600
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {
         color: "#C0000000"

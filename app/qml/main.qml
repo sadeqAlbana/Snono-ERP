@@ -86,6 +86,8 @@ CApplicationWindow {
 
         function onNetworkError(response){
             console.log("network error !");
+            console.log("Error " + response.status() +  response.errorString() + response.data())
+
             toastrService.push("Error " + response.status(), response.errorString(), "error", 2000)
 
         }
