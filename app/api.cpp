@@ -42,12 +42,12 @@ NetworkResponse * Api::processCustomBill(const QString &name, const int &vendorI
     params["items"]=items;
     params["vendor_id"]=vendorId;
 
-    return PosNetworkManager::instance()->post(QUrl("/vendors/bills/add"),params);
+    return PosNetworkManager::instance()->post(QUrl("/vendorBill"),params);
 }
 
 NetworkResponse * Api::updateProduct(const QJsonObject &product)
 {
-    return PosNetworkManager::instance()->post(QUrl("/products/update"),product);
+    return PosNetworkManager::instance()->put(QUrl("/product"),product);
 }
 
 
@@ -63,7 +63,7 @@ NetworkResponse * Api::updateProduct(const int &productId, const QString &name, 
         {"taxes",taxes}
     };
 
-    return PosNetworkManager::instance()->post(QUrl("/products/update"),params);
+    return PosNetworkManager::instance()->put(QUrl("/product"),params);
 }
 
 void Api::requestDashboard()
@@ -105,7 +105,9 @@ void Api::barqReceipt(const int orderId)
 
             QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
 
-            printer.setPageSize(QPageSize::A5);
+            QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+
+            printer.setPageSize(pageSize);
             printer.setPageMargins(QMarginsF(0,0,0,0));
             printer.setCopyCount(AppSettings::instance()->externalReceiptCopies());
 
@@ -360,7 +362,7 @@ void Api::createBill(const int &vendorId, const QJsonArray &products)
     params["products"]=products;
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/product/purchaseProduct"),params)->subscribe(
                 [this](NetworkResponse *res){
         emit createBillReply(res->json().toObject());
     });

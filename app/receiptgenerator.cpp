@@ -165,8 +165,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
     stream.writeStartElement("img");
-    stream.writeAttribute("width","100");
-    stream.writeAttribute("height","100");
+    stream.writeAttribute("width","80");
+    stream.writeAttribute("height","80");
     stream.writeAttribute("src", "qr_code");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th
@@ -177,7 +177,7 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width",QString::number(logoWidth)+"%");
 
     stream.writeStartElement("img");
-    int logoSize=linePrinter? 50 : 120;
+    int logoSize=linePrinter? 50 : 100;
     stream.writeAttribute("width",QString::number(logoSize));
     stream.writeAttribute("height",QString::number(logoSize));
     stream.writeAttribute("src", "logo_image");
@@ -189,8 +189,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
     stream.writeAttribute("width","32%");
     stream.writeAttribute("style","vertical-align: middle;");
     stream.writeStartElement("img");
-    stream.writeAttribute("width","150");
-    stream.writeAttribute("height","60");
+    stream.writeAttribute("width","120");
+    stream.writeAttribute("height","48");
     stream.writeAttribute("src", "barcode_img");
     stream.writeEndElement(); //img
     stream.writeEndElement(); //th

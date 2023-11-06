@@ -81,7 +81,7 @@ void ProductsModel::purchaseStock(const int &productId, const double &qty, const
     params["products"]=QJsonArray{QJsonObject{{"id",productId},{"qty",qty}}};
     params["vendor_id"]=vendorId;
 
-    PosNetworkManager::instance()->post(QUrl("/products/purchaseProduct"),params)->subscribe(this,&ProductsModel::onPurchaseStockReply);
+    PosNetworkManager::instance()->post(QUrl("/vendorBill"),params)->subscribe(this,&ProductsModel::onPurchaseStockReply);
 
 }
 
