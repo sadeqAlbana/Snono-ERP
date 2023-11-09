@@ -2,6 +2,74 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ar_IQ">
 <context>
+    <name>AccountForm</name>
+    <message>
+        <location filename="../qml/pages/Accounting/AccountForm.qml" line="+16"/>
+        <source>Account</source>
+        <translation>الحساب</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Type</source>
+        <translation>النوع</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Receivable</source>
+        <translation>مدين</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Payable</source>
+        <translation>دائن</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Liquidity</source>
+        <translation>سيولة</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Other</source>
+        <translation>اخرى</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Internal Type</source>
+        <translation>النوع الداخلي</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Asset</source>
+        <translation>أصل</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Liability</source>
+        <translation>إلتزام</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Income</source>
+        <translation>وارد</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Expense</source>
+        <translation>مصاريف</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Code</source>
+        <translation>الرقم</translation>
+    </message>
+</context>
+<context>
     <name>AccountsModel</name>
     <message>
         <location filename="../models/accountsmodel.cpp" line="+5"/>
@@ -55,7 +123,17 @@
         <translation>الى</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+23"/>
+        <source>Add</source>
+        <translation>إضافة</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Add Account</source>
+        <translation>إضافة حساب</translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <location/>
         <source>Deposit Money</source>
         <translation>إيداع نقود</translation>
@@ -64,17 +142,20 @@
 <context>
     <name>AclGroupForm</name>
     <message>
-        <location filename="../qml/pages/users/AclGroupForm.qml" line="+20"/>
+        <location filename="../qml/pages/users/AclGroupForm.qml" line="+18"/>
+        <location/>
         <source>Group Name</source>
         <translation>اسم المجموعة</translation>
     </message>
     <message>
         <location line="+11"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
@@ -96,31 +177,37 @@
     <name>AclGroupsPage</name>
     <message>
         <location filename="../qml/pages/users/AclGroupsPage.qml" line="+15"/>
+        <location/>
         <source>Users</source>
         <translation>المستخدمين</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+26"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
+        <location/>
         <source>Add Group</source>
         <translation>إضافة مجموعة</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit Group</source>
         <translation>تعديل المجموعة</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -143,20 +230,32 @@
 <context>
     <name>AddCustomBillDialog</name>
     <message>
-        <location filename="../qml/pages/vendors/AddCustomBillDialog.qml" line="+47"/>
-        <location/>
         <source>New Bill</source>
         <translation>فاتورة جديدة</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <location/>
+        <source>Close</source>
+        <translation>غلق</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>خلق</translation>
+    </message>
+</context>
+<context>
+    <name>AddCustomVendorBillPage</name>
+    <message>
+        <location filename="../qml/pages/vendors/AddCustomVendorBillPage.qml" line="+15"/>
+        <source>New CustomBill</source>
+        <translation>انشاء فاتورة خاصة</translation>
+    </message>
+    <message>
+        <location line="+40"/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location/>
         <source>Create</source>
         <translation>خلق</translation>
     </message>
@@ -177,7 +276,7 @@
         <translation>إضافة زبون</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+8"/>
         <location/>
         <source>Name</source>
         <translation>الإسم</translation>
@@ -297,7 +396,7 @@
         <translation>فاتورة جديدة</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+43"/>
         <location/>
         <source>Close</source>
         <translation>غلق</translation>
@@ -381,8 +480,9 @@
 <context>
     <name>AppMainScreen</name>
     <message>
+        <location filename="../qml/AppMainScreen.qml" line="+24"/>
         <source>Logout</source>
-        <translation type="vanished">تسجيل الخروج</translation>
+        <translation>تسجيل الخروج</translation>
     </message>
     <message>
         <source>General Settings</source>
@@ -423,19 +523,32 @@
 <context>
     <name>BarqDeliverySettings</name>
     <message>
-        <location filename="../qml/pages/settings/BarqDeliverySettings.qml" line="+26"/>
+        <location filename="../qml/pages/settings/BarqDeliverySettings.qml" line="+19"/>
+        <source>Barq Settings</source>
+        <translation>إعدادات البرق</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location/>
         <source>Agent Phone</source>
         <translation>هاتف العميل</translation>
     </message>
     <message>
         <location line="+6"/>
+        <location/>
         <source>Invalid Phone Number</source>
         <translation>رقم هاتف خاطئ</translation>
     </message>
     <message>
         <location line="+7"/>
+        <location/>
         <source>Agent Password</source>
         <translation>كلمة مرور العميل</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Store</source>
+        <translation>المتجر</translation>
     </message>
 </context>
 <context>
@@ -465,7 +578,7 @@
 <context>
     <name>CFilterMenu</name>
     <message>
-        <location filename="../qml/common/CFilterMenu.qml" line="+136"/>
+        <location filename="../qml/common/CFilterMenu.qml" line="+139"/>
         <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
@@ -480,7 +593,7 @@
 <context>
     <name>CFormView</name>
     <message>
-        <location filename="../qml/common/CFormView.qml" line="+86"/>
+        <location filename="../qml/common/CFormView.qml" line="+75"/>
         <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
@@ -502,16 +615,19 @@
     <name>CTabFormView</name>
     <message>
         <location filename="../qml/common/CTabFormView.qml" line="+82"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -557,7 +673,7 @@
 <context>
     <name>CashierPage</name>
     <message>
-        <location filename="../qml/pages/cashier/CashierPage.qml" line="+19"/>
+        <location filename="../qml/pages/cashier/CashierPage.qml" line="+18"/>
         <location/>
         <source>Cashier</source>
         <translation>الكاشير</translation>
@@ -575,13 +691,13 @@
         <translation>التخفيض</translation>
     </message>
     <message>
-        <location line="+139"/>
+        <location line="+153"/>
         <location/>
         <source>Barcode...</source>
         <translation>الباركود...</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+69"/>
         <location/>
         <source>Phone...</source>
         <translation>الهاتف...</translation>
@@ -599,7 +715,7 @@
         <translation>الملاحظات...</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+78"/>
         <location/>
         <source>Pay</source>
         <translation>دفع</translation>
@@ -632,19 +748,34 @@
 <context>
     <name>CategoriesPage</name>
     <message>
-        <location filename="../qml/pages/categories/CategoriesPage.qml" line="+15"/>
+        <location filename="../qml/pages/categories/CategoriesPage.qml" line="+16"/>
         <location/>
         <source>Categories</source>
         <translation>الفئات</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+26"/>
         <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+4"/>
+        <source>Add Category</source>
+        <translation>اضافة فئة</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Edit</source>
+        <translation>تعديل</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Category</source>
+        <translation>تعديل الفئة</translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <location/>
         <source>Delete</source>
         <translation>حذف</translation>
@@ -653,7 +784,12 @@
 <context>
     <name>CustomVendorBillListView</name>
     <message>
-        <location filename="../qml/pages/vendors/CustomVendorBillListView.qml" line="+83"/>
+        <location filename="../qml/pages/vendors/CustomVendorBillListView.qml" line="+48"/>
+        <source>Bill Name</source>
+        <translation>اسم الفاتورة</translation>
+    </message>
+    <message>
+        <location line="+40"/>
         <location/>
         <source>item...</source>
         <translation>العنصر...</translation>
@@ -685,32 +821,43 @@
 <context>
     <name>CustomerForm</name>
     <message>
-        <location filename="../qml/pages/customers/CustomerForm.qml" line="+22"/>
+        <location filename="../qml/pages/customers/CustomerForm.qml" line="+14"/>
+        <source>Customer</source>
+        <translation>الزبون</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -777,23 +924,26 @@
         <translation>الزبائن</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+25"/>
         <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
+        <location/>
         <source>Add Customer</source>
         <translation>إضافة زبون</translation>
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل المنتج</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit Customer</source>
         <translation>تعديل الزبون</translation>
     </message>
@@ -998,6 +1148,14 @@
     </message>
 </context>
 <context>
+    <name>DeliveryOrderForm</name>
+    <message>
+        <location filename="../qml/pages/orders/DeliveryOrderForm.qml" line="+19"/>
+        <source>Create Delivery Manifest</source>
+        <translation>إنشاء وصل توصيل</translation>
+    </message>
+</context>
+<context>
     <name>DepositMoneyDialog</name>
     <message>
         <location filename="../qml/pages/Accounting/DepositMoneyDialog.qml" line="+22"/>
@@ -1015,17 +1173,60 @@
 <context>
     <name>GeneralSettings</name>
     <message>
-        <location filename="../qml/pages/settings/GeneralSettings.qml" line="+27"/>
+        <location filename="../qml/pages/settings/GeneralSettings.qml" line="+20"/>
+        <source>General Settings</source>
+        <translation>الاعدادات العامة</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <location line="+53"/>
+        <source>Software Updates</source>
+        <translation>تحديثات البرنامج</translation>
+    </message>
+    <message>
+        <location line="-47"/>
+        <source>Downloading Update...</source>
+        <translation>جاري التحميل...</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>New version found, do you want to download it?</source>
+        <translation>يوجد تحديث جديد, هل تغرب في تحميله؟</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Cancel</source>
+        <translation>إلغاء</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Download</source>
+        <translation>تحميل</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <location/>
         <source>Version: </source>
         <translation>الإصدار</translation>
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>check for updates</source>
         <translation>التحقق من التحديثات</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+5"/>
+        <source>Software Update</source>
+        <translation>التحديثات</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>No updates found</source>
+        <translation>لم يتم العثور على تحديثات جديدة</translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <location/>
         <source>Language</source>
         <translation>اللغة</translation>
@@ -1056,14 +1257,34 @@
     </message>
 </context>
 <context>
+    <name>GenerateCataloguePage</name>
+    <message>
+        <location filename="../qml/pages/products/GenerateCataloguePage.qml" line="+18"/>
+        <source>Start ID</source>
+        <translation>معرف البدء</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Save Path</source>
+        <translation>مسار الحفظ</translation>
+    </message>
+</context>
+<context>
     <name>IdentitySettings</name>
     <message>
-        <location filename="../qml/pages/settings/IdentitySettings.qml" line="+26"/>
+        <location filename="../qml/pages/settings/IdentitySettings.qml" line="+19"/>
+        <source>Identity Settings</source>
+        <translation>إعدادات الكيان</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location/>
         <source>Entity Name</source>
         <translation>إسم الكيان</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Logo</source>
         <translation>الشعار</translation>
     </message>
@@ -1114,7 +1335,7 @@
         <translation>معرف القيد</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Account Name</source>
         <translation>اسم الحساب</translation>
     </message>
@@ -1193,16 +1414,55 @@
 <context>
     <name>JournalEntriesPage</name>
     <message>
-        <location filename="../qml/pages/Accounting/JournalEntriesPage.qml" line="+17"/>
+        <location filename="../qml/pages/Accounting/JournalEntriesPage.qml" line="+18"/>
         <location/>
         <source>Journal Entries</source>
         <translation>القيود</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Details</source>
+        <translation>التفاصيل</translation>
+    </message>
+</context>
+<context>
+    <name>JournalEntryDetailsPage</name>
+    <message>
+        <location filename="../qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+19"/>
+        <source>Journal Entry Details</source>
+        <translation>تفاصيل القيود</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>ID</source>
+        <translation>المعرف</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reference</source>
+        <translation>المرجع</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Account</source>
+        <translation>الحساب</translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Credit</source>
+        <translation>الدائن</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Debit</source>
+        <translation>المدين</translation>
     </message>
 </context>
 <context>
     <name>JournalEntryForm</name>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntryForm.qml" line="+23"/>
+        <location/>
         <source>Items</source>
         <translation>القيود</translation>
     </message>
@@ -1425,6 +1685,7 @@
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Identity</source>
         <translation>الكيان</translation>
     </message>
@@ -1465,8 +1726,6 @@
 <context>
     <name>OrderDetails</name>
     <message>
-        <location filename="../qml/pages/orders/OrderDetails.qml" line="+51"/>
-        <location/>
         <source>Order Details</source>
         <translation>تفاصيل الطلب</translation>
     </message>
@@ -1480,7 +1739,7 @@
         <translation>تفاصيل الطلب</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <location/>
         <source>ID</source>
         <translation>المعرف</translation>
@@ -1636,7 +1895,7 @@
         <translation>الزبون</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
@@ -1674,90 +1933,130 @@
 <context>
     <name>OrdersPage</name>
     <message>
-        <location filename="../qml/pages/orders/OrdersPage.qml" line="+18"/>
+        <location filename="../qml/pages/orders/OrdersPage.qml" line="+19"/>
         <location/>
         <source>Orders</source>
         <translation>الطلبات</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+18"/>
+        <source>Warning</source>
+        <translation>تحذير</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Order already have delivery manifest, do you want to overrite it?</source>
+        <translation>الطلبية تحوي على وصل توصيل بالفعل, هل تريد استبداله بآخر جديد؟</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Cancel</source>
+        <translation>إلغاء</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Ok</source>
+        <translation>نعم</translation>
+    </message>
+    <message>
+        <location line="+37"/>
         <location/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
     <message>
-        <location line="+0"/>
-        <location line="+1"/>
-        <location line="+1"/>
+        <location line="+3"/>
+        <location line="+7"/>
+        <location line="+7"/>
         <location/>
         <source>All...</source>
         <translation>الجميع...</translation>
     </message>
     <message>
-        <location line="-1"/>
+        <location line="-10"/>
         <location/>
         <source>Customer Phone</source>
         <translation>هاتف الزبون</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+7"/>
         <location/>
         <source>Customer Address</source>
         <translation>عنوان الزبون</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+8"/>
         <location/>
         <source>product</source>
         <translation>المنتج</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+6"/>
         <location/>
         <source>All Products</source>
         <translation>جميع المنتجات</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+12"/>
         <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+4"/>
         <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+4"/>
+        <source>status</source>
+        <translation>الحالة</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>All</source>
+        <translation>الكل</translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+14"/>
         <location/>
         <source>Update Status</source>
         <translation>تحديث الحالة</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+8"/>
         <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+14"/>
+        <source>Create Delivery Order</source>
+        <translation>إنشاء وصل توصيل</translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+6"/>
         <location/>
         <source>Print Delivery Receipt</source>
         <translation>طباعة وصل التوصيل</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Print Report</source>
+        <translation>طباعة التقرير</translation>
     </message>
 </context>
 <context>
@@ -1768,7 +2067,7 @@
         <translation>مرجع الطلب</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+5"/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
@@ -1857,46 +2156,55 @@
     <name>PermissionsPage</name>
     <message>
         <location filename="../qml/pages/users/PermissionsPage.qml" line="+29"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+24"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
+        <location/>
         <source>Add Group</source>
         <translation>إضافة مجموعة</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit Group</source>
         <translation>تعديل المجموعة</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
     <message>
         <location line="+57"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+6"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -1908,26 +2216,31 @@
 <context>
     <name>PrinterSettings</name>
     <message>
-        <location filename="../qml/pages/settings/PrinterSettings.qml" line="+27"/>
+        <location filename="../qml/pages/settings/PrinterSettings.qml" line="+13"/>
+        <source>General Settings</source>
+        <translation>الاعدادات العامة</translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <location/>
         <source>Receipt Printer</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+17"/>
+        <location line="+12"/>
+        <location line="+35"/>
         <location/>
         <source>Paper Size</source>
         <translation></translation>
     </message>
     <message>
-        <location line="-9"/>
+        <location line="-12"/>
         <location/>
         <source>Reports Printer</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+32"/>
         <location/>
         <source>Receipt copies</source>
         <translation>نسخ الوصل</translation>
@@ -2027,6 +2340,24 @@
     </message>
 </context>
 <context>
+    <name>ProductCategoryForm</name>
+    <message>
+        <location filename="../qml/pages/categories/ProductCategoryForm.qml" line="+13"/>
+        <source>Category</source>
+        <translation>الفئة</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Parent Category</source>
+        <translation>الفئة العليا</translation>
+    </message>
+</context>
+<context>
     <name>ProductEditDialog</name>
     <message>
         <location filename="../qml/pages/products/ProductEditDialog.qml" line="+44"/>
@@ -2086,93 +2417,111 @@
 <context>
     <name>ProductForm</name>
     <message>
-        <location filename="../qml/pages/products/ProductForm.qml" line="+23"/>
+        <location filename="../qml/pages/products/ProductForm.qml" line="+25"/>
+        <location/>
         <source>General</source>
         <translation>عامة</translation>
     </message>
     <message>
         <location line="+7"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>List Price</source>
         <translation>سعر العرض</translation>
     </message>
     <message>
         <location line="+11"/>
+        <location/>
         <source>Cost</source>
         <translation>الكلفة</translation>
     </message>
     <message>
         <location line="+12"/>
         <location line="+57"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="-46"/>
+        <location/>
         <source>Storable Product</source>
         <translation>مخزون</translation>
     </message>
     <message>
         <location line="+1"/>
+        <location/>
         <source>Consumable Product</source>
         <translation>استهلاكي</translation>
     </message>
     <message>
         <location line="+1"/>
+        <location/>
         <source>Service Product</source>
         <translation>خدمة</translation>
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Category</source>
         <translation>الفئة</translation>
     </message>
     <message>
         <location line="+14"/>
+        <location/>
         <source>Taxes</source>
         <translation>الضرائب</translation>
     </message>
     <message>
         <location line="+11"/>
+        <location/>
         <source>select Taxes...</source>
         <translation>الضرائب...</translation>
     </message>
     <message>
         <location line="+12"/>
+        <location/>
         <source>Attribute</source>
         <translation>الصفة</translation>
     </message>
     <message>
         <location line="+1"/>
+        <location/>
         <source>Value</source>
         <translation>القيمة</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Attributes</source>
         <translation>الصفات</translation>
     </message>
     <message>
         <location line="+72"/>
+        <location/>
         <source>Save</source>
         <translation>حفظ</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -2293,6 +2642,7 @@
     </message>
     <message>
         <location line="+71"/>
+        <location/>
         <source>Stock: </source>
         <translation>المخزون</translation>
     </message>
@@ -2349,13 +2699,13 @@
         <translation>المنتجات</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+28"/>
         <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <location/>
         <source>Category</source>
         <translation>الفئة</translation>
@@ -2379,8 +2729,9 @@
         <translation>متوفر</translation>
     </message>
     <message>
-        <location line="+104"/>
+        <location line="+97"/>
         <location line="+6"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
@@ -2414,7 +2765,7 @@
         <translation>توليد الدليل</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <location/>
         <source>Bulck Stock Adjustment</source>
         <translation>تعديل مخزون بالجملة</translation>
@@ -2456,7 +2807,7 @@
         <translation>الوصل</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+47"/>
         <location/>
         <source>Close</source>
         <translation>غلق</translation>
@@ -2563,22 +2914,31 @@
 <context>
     <name>ReceiptSettings</name>
     <message>
-        <location filename="../qml/pages/settings/ReceiptSettings.qml" line="+28"/>
+        <location filename="../qml/pages/settings/ReceiptSettings.qml" line="+19"/>
+        <source>Receipt Settings</source>
+        <translation>إعدادات الوصل</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location/>
         <source>Company Name</source>
         <translation>اسم الشركة</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Logo</source>
         <translation>الشعار</translation>
     </message>
     <message>
         <location line="+8"/>
+        <location/>
         <source>Phone Number</source>
         <translation>رقم الهاتف</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Bottom Note</source>
         <translation>الملاحظة في الاسفل</translation>
     </message>
@@ -2693,6 +3053,55 @@
     </message>
 </context>
 <context>
+    <name>StockLocationModel</name>
+    <message>
+        <location filename="../models/stocklocationmodel.cpp" line="+5"/>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+</context>
+<context>
+    <name>StockMovesModel</name>
+    <message>
+        <location filename="../models/stockmovesmodel.cpp" line="+7"/>
+        <source>Description</source>
+        <translation>الوصف</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Product</source>
+        <translation>المنتج</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Origin</source>
+        <translation>المصدر</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Destination</source>
+        <translation>الوجهة</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Qty</source>
+        <translation>الكمية</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Date</source>
+        <translation>التاريخ</translation>
+    </message>
+</context>
+<context>
+    <name>StockMovesPage</name>
+    <message>
+        <location filename="../qml/pages/warehouses/StockMovesPage.qml" line="+15"/>
+        <source>Stock Moves</source>
+        <translation>الحركات المخزنية</translation>
+    </message>
+</context>
+<context>
     <name>StockReport</name>
     <message>
         <source>Products</source>
@@ -2709,6 +3118,62 @@
         <location/>
         <source>Print</source>
         <translation>طباعة</translation>
+    </message>
+</context>
+<context>
+    <name>StockValuationModel</name>
+    <message>
+        <location filename="../models/stockvaluationmodel.cpp" line="+5"/>
+        <source>Description</source>
+        <translation>الوصف</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Product</source>
+        <translation>المنتج</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Qty</source>
+        <translation>الكمية</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Value</source>
+        <translation>القيمة</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Total</source>
+        <translation>المجموع</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Date</source>
+        <translation>التاريخ</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Journal Entry</source>
+        <translation>القيد الحسابي</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Order</source>
+        <translation>الطلب</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Adjustment ID</source>
+        <translation>معرف التعديل</translation>
+    </message>
+</context>
+<context>
+    <name>StockValuationPage</name>
+    <message>
+        <location filename="../qml/pages/warehouses/StockValuationPage.qml" line="+16"/>
+        <source>Stock Valuation</source>
+        <translation>تقدير المخزون</translation>
     </message>
 </context>
 <context>
@@ -2729,32 +3194,38 @@
 <context>
     <name>TaxForm</name>
     <message>
-        <location filename="../qml/pages/taxes/TaxForm.qml" line="+20"/>
+        <location filename="../qml/pages/taxes/TaxForm.qml" line="+17"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="+6"/>
+        <location/>
         <source>Percentage</source>
         <translation>نسبة</translation>
     </message>
     <message>
         <location line="+0"/>
+        <location/>
         <source>Fixed</source>
         <translation>ثابتة</translation>
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Value</source>
         <translation>القيمة</translation>
     </message>
     <message>
         <location line="+12"/>
+        <location/>
         <source>Account ID</source>
         <translation>معرف الحساب</translation>
     </message>
@@ -2811,23 +3282,26 @@
         <translation>الضرائب</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+37"/>
         <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+2"/>
+        <location/>
         <source>Add Tax</source>
         <translation>إضافة ضريبة</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit Tax</source>
         <translation>تعديل</translation>
     </message>
@@ -2911,49 +3385,66 @@
     </message>
 </context>
 <context>
+    <name>UpdatesPage</name>
+    <message>
+        <location filename="../qml/pages/settings/UpdatesPage.qml" line="+19"/>
+        <source>Updates Settings</source>
+        <translation>إعدادات التحديث</translation>
+    </message>
+</context>
+<context>
     <name>UsersForm</name>
     <message>
-        <location filename="../qml/pages/users/UsersForm.qml" line="+24"/>
+        <location filename="../qml/pages/users/UsersForm.qml" line="+22"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+11"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+6"/>
+        <location/>
         <source>Invalid Phone Number</source>
         <translation>رقم هاتف خاطئ</translation>
     </message>
     <message>
         <location line="+6"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+10"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
         <location line="+10"/>
+        <location/>
         <source>Password</source>
         <translation>كلمة المرور</translation>
     </message>
     <message>
         <location line="+14"/>
+        <location/>
         <source>Role</source>
         <translation>الدور</translation>
     </message>
@@ -3001,29 +3492,62 @@
         <translation>المستخدمين</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+25"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
+        <location/>
         <source>Add User</source>
         <translation>إضافة مستخدم</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit User</source>
         <translation>تعديل المستخدم</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
+    </message>
+</context>
+<context>
+    <name>VendorBillDetailsPage</name>
+    <message>
+        <location filename="../qml/pages/vendors/VendorBillDetailsPage.qml" line="+19"/>
+        <source>Bill Details</source>
+        <translation>تفاصيل الفاتورة</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Product</source>
+        <translation>المنتج</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Quantity</source>
+        <translation>الكمية</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Unit Price</source>
+        <translation>سعر الوحدة</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Total</source>
+        <translation>المجموع</translation>
     </message>
 </context>
 <context>
@@ -3071,7 +3595,12 @@
         <translation type="vanished">إضافة مورد</translation>
     </message>
     <message>
-        <location filename="../qml/pages/vendors/VendorForm.qml" line="+20"/>
+        <location filename="../qml/pages/vendors/VendorForm.qml" line="+14"/>
+        <source>Vendor</source>
+        <translation>المورد</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <location/>
         <source>Name</source>
         <translation>الاسم</translation>
@@ -3113,7 +3642,12 @@
         <translation>المرجع</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
+        <source>Vendor</source>
+        <translation>المورد</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>External Reference</source>
         <translation>المرجع الخارجي</translation>
     </message>
@@ -3147,7 +3681,12 @@
         <translation>فواتير الموردين</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+51"/>
+        <source>Details</source>
+        <translation>التفاصيل</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <location/>
         <source>Pay</source>
         <translation>دفع</translation>
@@ -3166,6 +3705,7 @@
     </message>
     <message>
         <location line="+2"/>
+        <location/>
         <source>Add Shein Order</source>
         <translation>إضافة طلبية شي إن</translation>
     </message>
@@ -3212,7 +3752,7 @@
         <translation>الموردين</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+27"/>
         <location/>
         <source>Add</source>
         <translation>إضافة</translation>
@@ -3231,12 +3771,56 @@
     </message>
     <message>
         <location line="+4"/>
+        <location/>
         <source>Edit Vendor</source>
         <translation>تعديل المورد</translation>
     </message>
     <message>
         <location line="+8"/>
         <location/>
+        <source>Delete</source>
+        <translation>حذف</translation>
+    </message>
+</context>
+<context>
+    <name>WareHouseForm</name>
+    <message>
+        <location filename="../qml/pages/warehouses/WareHouseForm.qml" line="+14"/>
+        <source>Vendor</source>
+        <translation>المورد</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Name</source>
+        <translation>الاسم</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Address</source>
+        <translation>العنوان</translation>
+    </message>
+</context>
+<context>
+    <name>WarehousesPage</name>
+    <message>
+        <location filename="../qml/pages/warehouses/WarehousesPage.qml" line="+15"/>
+        <source>Warehouses</source>
+        <translation>المخازن</translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <location line="+3"/>
+        <source>Add</source>
+        <translation>إضافة</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+4"/>
+        <source>Edit</source>
+        <translation>تعديل</translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -3250,7 +3834,7 @@
         <translation>نقطة البيع</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+101"/>
         <location/>
         <source>Error</source>
         <translation>خطأ</translation>
@@ -3269,6 +3853,7 @@
     </message>
     <message>
         <location line="+10"/>
+        <location/>
         <source>Retry</source>
         <translation>إعادة المحاولة</translation>
     </message>
@@ -3308,6 +3893,7 @@
         <location line="+7"/>
         <location line="+19"/>
         <location line="+7"/>
+        <location line="+23"/>
         <location line="+7"/>
         <location line="+20"/>
         <location/>
@@ -3315,7 +3901,7 @@
         <translation>الرئيسية</translation>
     </message>
     <message>
-        <location line="-135"/>
+        <location line="-158"/>
         <location/>
         <source>Accounts</source>
         <translation>الحسابات</translation>
@@ -3412,6 +3998,27 @@
     </message>
     <message>
         <location line="+7"/>
+        <source>Warehouses</source>
+        <translation>المخازن</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>List</source>
+        <translation>عرض</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Stock Moves</source>
+        <translation>الحركات المخزنية</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Stock Valuation</source>
+        <translation>تقييم المخزون</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
@@ -3447,11 +4054,13 @@
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Identity Settings</source>
         <translation>إعدادات الكيان</translation>
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Receipt Settings</source>
         <translation>إعدادات الوصل</translation>
     </message>
@@ -3463,6 +4072,7 @@
     </message>
     <message>
         <location line="+5"/>
+        <location/>
         <source>Barq Delivery</source>
         <translation>توصيل البرق</translation>
     </message>
@@ -3478,7 +4088,7 @@
 <context>
     <name>receipt</name>
     <message>
-        <location filename="../receiptgenerator.cpp" line="+190"/>
+        <location filename="../receiptgenerator.cpp" line="+205"/>
         <source>No.</source>
         <translation>رقم الوصل</translation>
     </message>
@@ -3513,7 +4123,7 @@
         <translation>الملاحظات</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>Original Receipt</source>
         <translation>التفاصيل</translation>
     </message>

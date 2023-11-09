@@ -125,6 +125,21 @@ Card {
 
             }
 
+            CLabel{
+                text: qsTr("Parent Product")
+            }
+
+            CFilterComboBox{
+                Layout.fillWidth: true
+                objectName: "parent_id"
+                defaultEntry: {"id:":-1, "name": "None"}
+                filter: {"parent_id":null}
+                currentIndex: 0
+                dataUrl: "/products/list"
+                valueRole: "id";
+                textRole: "name"
+            }
+
         } //General
 
         JsonModel {

@@ -148,8 +148,6 @@ set(TARGET_QML_SOURCES
     qml/pages/products/ProductsPage.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
-    qml/pages/products/ProductEditDialog.qml
-    qml/pages/products/ProductAddDialog.qml
     qml/pages/products/AdjustStockDialog.qml
     qml/pages/products/ProductForm.qml
     qml/pages/products/GenerateCataloguePage.qml
@@ -167,7 +165,6 @@ set(TARGET_QML_SOURCES
     qml/pages/customers/CustomersBillsPage.qml
     qml/pages/customers/CustomerForm.qml
     qml/pages/categories/CategoriesPage.qml
-    qml/pages/categories/AddCategoryDialog.qml
     qml/pages/categories/ProductCategoryForm.qml
     qml/pages/settings/GeneralSettings.qml
     qml/pages/settings/IdentitySettings.qml
@@ -178,9 +175,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/PurchaseStockDialog.qml
     qml/pages/vendors/PayBillDialog.qml
     qml/pages/vendors/StatusDelegate.qml
-    qml/pages/vendors/AddCustomBillDialog.qml
     qml/pages/vendors/VendorsBillsPage.qml
-    qml/pages/vendors/AddVendorDialog.qml
     qml/pages/vendors/CustomVendorBillListView.qml
     qml/pages/vendors/VendorsPage.qml
     qml/pages/vendors/VendorForm.qml
