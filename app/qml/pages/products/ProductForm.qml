@@ -83,11 +83,10 @@ Card {
 
             IconComboBox{
                 objectName: "type"
+                enabled: !keyValue
                 Layout.fillWidth: true
-                currentIndex: 0
                 textRole: "text"
                 valueRole: "value"
-                enabled: !initialValues
                 model:ListModel {
                     ListElement { text: qsTr("Storable Product");   value: 1;}
                     ListElement { text: qsTr("Consumable Product"); value: 2;}
@@ -99,13 +98,12 @@ Card {
                 text: qsTr("Category")
             }
 
-            IconComboBox{
+            CFilterComboBox{
                 Layout.fillWidth: true
                 objectName: "category_id"
-                textRole: "category"
+                textRole: "name"
                 valueRole: "id"
-                currentIndex: 0;
-                model: CategoriesModel{}
+                dataUrl: "/categories"
             } //end categoryCB
 
 
@@ -130,11 +128,11 @@ Card {
             }
 
             CFilterComboBox{
+                id: cb
                 Layout.fillWidth: true
                 objectName: "parent_id"
-                defaultEntry: {"id:":-1, "name": "None"}
+//                defaultEntry: {"id:":-1, "name": "None"}
                 filter: {"parent_id":null}
-                currentIndex: 0
                 dataUrl: "/products/list"
                 valueRole: "id";
                 textRole: "name"
@@ -145,12 +143,16 @@ Card {
         JsonModel {
             id: attributesModel
             records: general.initialValues?.attributes?? []
+            onRecordChanged: {
+                console.log(JSON.stringify(general.initialValues?.attributes))
+            }
 
             columnList: [
 
                 JsonModelColumn{ displayName: qsTr("Attribute");key: "attribute_id";},
                 JsonModelColumn{ displayName: qsTr("Value");key: "value";},
                 JsonModelColumn{ displayName: qsTr("Type");key: "type";}
+//                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
 
 
             ]
@@ -207,6 +209,7 @@ Card {
                         DelegateChoice {
                             roleValue: "combo"
                             delegate: CTableViewDelegate {
+                                id: del
                                 TableView.editDelegate: CComboBox{
                                     width: parent.width
                                     height: parent.height
@@ -214,6 +217,9 @@ Card {
                                         edit = currentText
                                     }
                                     model:["TEXT","IMAGE"]
+                                    Component.onCompleted: {
+                                        console.log("iov:  " + indexOfValue(edit))
+                                    }
 
                                 }
                             }

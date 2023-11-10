@@ -112,7 +112,6 @@ CFormView {
                 cb.model=jsonModel.toJsonArray();
                 if(initialValues){
                     cb.currentIndex=cb.indexOfValue(initialValues[cb.objectName])
-
                 }
             }
         }

@@ -28,19 +28,19 @@ CComboBox {
                 });
                 setRecords(control.values)
                 insertRecord(emptyRecord);
-                control.currentIndex=0;
             }
 
 
         }
 
         onDataRecevied: {
-            let emptyRecord=jsonModel.record;
-            Object.keys(defaultEntry).forEach(key=>{
-                emptyRecord[key]=defaultEntry[key]
-            });
-            jsonModel.insertRecord(emptyRecord);
-            control.currentIndex=0;
+            if(defaultEntry){
+                let emptyRecord=jsonModel.record;
+                Object.keys(defaultEntry).forEach(key=>{
+                    emptyRecord[key]=defaultEntry[key]
+                });
+                jsonModel.insertRecord(emptyRecord);
+            }
         }
     }
 }

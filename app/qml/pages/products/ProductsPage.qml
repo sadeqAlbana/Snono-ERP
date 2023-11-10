@@ -201,6 +201,22 @@ AppPage {
                     enabled: tableView.currentRow >= 0
                     permission: "prm_edit_products"
                 },
+
+                CAction {
+                    text: qsTr("Copy")
+                    icon.name: "cil-copy"
+                    onTriggered: Router.navigate(
+                                     "qrc:/PosFe/qml/pages/products/ProductForm.qml",
+                                     {
+
+                                         "title": qsTr("Copy"),
+                                         "initialValues": model.jsonObject(
+                                                              tableView.currentRow)
+                                     })
+                    enabled: tableView.currentRow >= 0
+                    permission: "prm_edit_products"
+                },
+
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
                 CAction {
                     text: qsTr("Purchase Stock")
