@@ -54,17 +54,13 @@ AppPage {
                                             }
                                         },
                                         {
-                                            "type": "combo",
+                                            "type": "checkableCombo",
                                             "label": qsTr("Category"),
                                             "key": "category_id",
                                             "dynamic": false,
                                             "category": null,
                                             "options": {
                                                 "editable": true,
-                                                "defaultEntry": {
-                                                    "name": qsTr("All Categories"),
-                                                    "id": null
-                                                },
                                                 "textRole": "name",
                                                 "valueRole": "id",
                                                 "dataUrl": "/categories"
@@ -98,7 +94,7 @@ AppPage {
 
 
                         advancedFilter.push({
-                                                        "type": "combo",
+                                                        "type": "checkableCombo",
                                                         "label": name,
                                                         "key": id,
                                                         "dynamic": true,
@@ -106,10 +102,6 @@ AppPage {
                                                         "options": {
                                                             "checkable": true,
                                                             "editable": true,
-                                                            "defaultEntry": {
-                                                                "value": "All",
-                                                                "id": null
-                                                            },
                                                             "textRole": "value",
                                                             "valueRole": "id",
                                                             "values": values

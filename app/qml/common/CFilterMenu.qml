@@ -66,18 +66,22 @@ CMenu {
                             console.log("data is checkable")
                             console.log(item.model)
                             let selected = []
-                            for (i = 0; i < item.count; i++) {
+                            for (var j = 0; j < item.count; j++) {
 
 
-                                if (item.model.data(item.model.index(i,0),Qt.CheckStateRole
+                                if (item.model.data(item.model.index(j,0),Qt.CheckStateRole
                                             ) === Qt.Checked) {
                                     selected.push(item.model.data(
-                                                      i, data.options.valueRole))
+                                                      j, data.options.valueRole))
 
                                 }
                             }
 
-                            value = selected
+                            if(selected.length){
+                                value = selected
+
+                            }
+
                             console.log("selected "  + JSON.stringify(selected))
                         } else {
                             if (item.currentValue) {
@@ -189,7 +193,6 @@ CMenu {
                     editable: modelData.options["editable"]
                     valueRole: modelData.options["valueRole"]
                     textRole: modelData.options["textRole"]
-                    defaultEntry: modelData.options["defaultEntry"]
                     values: modelData.options["values"] ?? null
                     filter: modelData.options["filter"]
                     width: control.contentItem.width

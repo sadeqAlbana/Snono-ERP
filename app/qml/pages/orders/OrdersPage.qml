@@ -145,10 +145,6 @@ AppPage {
                     "options": {
                         "checkable": true,
                         "editable": true,
-                        "defaultEntry": {
-                            "name": qsTr("All"),
-                            "value": null
-                        },
                         "textRole": "name",
                         "valueRole": "value",
                         "dataUrl": "/orders/status/list"
