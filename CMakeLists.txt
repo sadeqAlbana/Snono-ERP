@@ -31,10 +31,7 @@ endif()
 
 set(ENABLE_QML ON)
 
-add_subdirectory(network-manager)
-
-#add_subdirectory(json-model)
-
+add_subdirectory(libs/network-manager)
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(app)
 

@@ -1,5 +1,5 @@
 [submodule "network-manager"]
-	path = network-manager
+	path = libs/network-manager
 	url = http://git.lan:9080/sadeq/network-manager.git
 [submodule "app/CoreUI-QML"]
 	path = libs/CoreUI-QML
