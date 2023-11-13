@@ -167,7 +167,6 @@ void ProductsModel::exportJson()
 
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
-    QStringList wanted{"thumb","size","sku","external_sku","color","color_ar","color_en","goods_id","external_id","name_en","name_ar"};
 
     QStringList attributesAttributesWanted{"type"};
     for(int i=0; i<data.size(); i++){
@@ -179,7 +178,7 @@ QJsonArray ProductsModel::filterData(QJsonArray data)
             attribute["type"]=attribute["attributes_attribute"].toObject()["type"];
             QString attributeId=attribute["attribute_id"].toString();
             attributes.replace(j,attribute);
-            if(wanted.contains(attributeId)){
+            if(m_wantedColumns["id"].toString()==attributeId){
                 product[attributeId]=attribute["value"];
             }
         }
@@ -188,4 +187,10 @@ QJsonArray ProductsModel::filterData(QJsonArray data)
         data.replace(i,product);
     }
     return data;
+}
+
+void ProductsModel::onTableRecieved(NetworkResponse *reply)
+{
+    this->m_wantedColumns=reply->json("attributes").toArray();
+    AppNetworkedJsonModel::onTableRecieved(reply);
 }

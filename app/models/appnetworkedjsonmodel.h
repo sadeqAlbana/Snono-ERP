@@ -45,7 +45,7 @@ signals:
     void directionChanged();
 
 protected:
-    void onTableRecieved(NetworkResponse *reply);
+    virtual void onTableRecieved(NetworkResponse *reply);
     void requestData() override;
     Q_INVOKABLE void setSearchQuery(const QString _query);
     Q_INVOKABLE void search();

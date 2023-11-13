@@ -44,7 +44,8 @@ signals:
     void productAddReply(QJsonObject reply);
     void productRemoveReply(QJsonObject reply);
 
-
+protected:
+    void onTableRecieved(NetworkResponse *reply) override;
 private:
     QJsonArray m_wantedColumns;
 
