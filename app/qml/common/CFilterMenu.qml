@@ -133,9 +133,13 @@ CMenu {
                     if (item instanceof CheckBox) {
                         item.checked = false
                     }
+
+                    if (item instanceof CCheckableFilterComboBox) {
+                        item.clearSelection();
+                    }
                 }
 
-                control.clicked({})
+                control.clicked({}); //emit emptry filter
             } //clicked
 
             CButton {

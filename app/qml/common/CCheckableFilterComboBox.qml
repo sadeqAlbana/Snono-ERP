@@ -13,6 +13,11 @@ CCheckableComboBox {
     property bool checkable: true  //use different delegate for checkable combo?
     currentIndex: 0
     //editable: true
+
+    function clearSelection(){
+        model.uncheckAll();
+    }
+
     model: AppNetworkedJsonModel{
         id: jsonModel
         url: control.dataUrl
