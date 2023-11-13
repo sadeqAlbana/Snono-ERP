@@ -1,9 +1,6 @@
 [submodule "network-manager"]
 	path = network-manager
 	url = http://git.lan:9080/sadeq/network-manager.git
-[submodule "json-model"]
-	path = json-model
-	url = http://git.lan:9080/sadeq/json-model
 [submodule "app/CoreUI-QML"]
 	path = libs/CoreUI-QML
 	url = http://git.lan:9080/sadeq/CoreUI-QML.git
