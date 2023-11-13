@@ -72,7 +72,7 @@ AppPage{
                         cache: true
                         antialiasing: true
                         fillMode: Image.PreserveAspectFit
-                        source: model.thumb
+                        source: model.thumb?? ""
                         Layout.preferredWidth: 70
                     }
 
@@ -130,7 +130,7 @@ AppPage{
                             //color: "#A0A0A0"
                             font.pixelSize: metrics.font.pixelSize*1.1
 
-                            text: model.sku
+                            text: model.sku?? ""
                             font.weight: Font.Medium
                             horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignVCenter
