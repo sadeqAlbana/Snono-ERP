@@ -35,12 +35,18 @@ public:
     virtual QJsonArray filterData(QJsonArray data) override;
 
 
+
+
 signals:
     void productUpdateReply(QJsonObject reply);
     void productQuantityUpdated(QJsonObject reply);
     void stockPurchasedReply(QJsonObject reply);
     void productAddReply(QJsonObject reply);
     void productRemoveReply(QJsonObject reply);
+
+
+private:
+    QJsonArray m_wantedColumns;
 
 };
 

@@ -65,6 +65,11 @@ function navBar(){
                             "title":qsTr("Categories"),
                             "path":"qrc:/PosFe/qml/pages/categories/CategoriesPage.qml",
                             "permission": "prm_view_categories",
+                        },
+                        {
+                            "title":qsTr("Attributes"),
+                            "path":"qrc:/PosFe/qml/pages/products/ProductAttributesPage.qml",
+                            "permission": "prm_view_product_attributes",
                         }
                     ]
                 },

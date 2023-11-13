@@ -53,3 +53,7 @@ compile_commands.json
 
 *_qmlcache.qrc
 
+/update_manifest/windows/*.rcc
+/update_manifest/linux/*.rcc
+update_manifest/windows/files/*
+update_manifest/linux/files/*

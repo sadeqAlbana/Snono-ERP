@@ -139,7 +139,7 @@ CMenu {
                     }
                 }
 
-                control.clicked({}); //emit emptry filter
+                control.clicked({}); //emit empty filter
             } //clicked
 
             CButton {
