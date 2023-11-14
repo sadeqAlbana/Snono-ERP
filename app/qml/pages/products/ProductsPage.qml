@@ -210,13 +210,7 @@ AppPage {
                 },
 
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
-                CAction {
-                    text: qsTr("Purchase Stock")
-                    icon.name: "cil-cart"
-                    onTriggered: tableView.openPurchaseDialog()
-                    enabled: tableView.currentRow >= 0
-                    permission: "prm_purchase_stock"
-                },
+
                 CAction {
                     text: qsTr("Adjust Stock")
                     icon.name: "cil-cart"
@@ -238,10 +232,6 @@ AppPage {
                 }
             ]
 
-            function openPurchaseDialog() {
-                purchaseDialog.product = model.jsonObject(tableView.currentRow)
-                purchaseDialog.open()
-            }
 
             function openAdjustStockDialog() {
                 adjustStockDlg.productId = model.data(tableView.currentRow,
@@ -251,15 +241,7 @@ AppPage {
                 adjustStockDlg.open()
             }
 
-            ProductPurchaseStockDialog {
-                id: purchaseDialog
 
-                onAccepted: {
-                    var productId = model.data(tableView.currentRow, "id")
-                    model.purchaseStock(productId, quantity, vendorId)
-                    purchaseDialog.close()
-                }
-            }
 
             model: ProductsModel {
                 id: model

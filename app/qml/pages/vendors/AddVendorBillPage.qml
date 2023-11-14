@@ -10,76 +10,131 @@ import CoreUI.Buttons
 import Qt5Compat.GraphicalEffects
 import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-Card{
-    id: card
-    title: qsTr("New Bill")
+// Card{
+//     id: card
+//     title: qsTr("New Bill")
 
-    ColumnLayout{
-        anchors.fill: parent;
-        anchors.margins: 10
+//     ColumnLayout{
+//         anchors.fill: parent;
+//         anchors.margins: 10
 
-    RowLayout{
+//     RowLayout{
+//         Layout.fillWidth: true
+//         Layout.fillHeight: true
+
+
+//         CTextField{
+
+//         }
+
+//         CComboBox{
+//             id: vendorsCB
+//             Layout.fillWidth: true
+//             textRole: "name"
+//             valueRole: "id"
+//             currentIndex: 0
+//             model: VendorsModel{
+//             }
+//         }
+
+//         spacing: 30
+
+//     }
+//         spacing: 10
+
+//         VendorBillListView{
+//             id: cartListView
+//             Layout.fillHeight: true
+//             Layout.fillWidth: true
+
+//         }
+//     }
+
+
+//     footer: RowLayout{
+
+//         Rectangle{
+//             color: "transparent"
+//             Layout.fillWidth: true
+
+//         }
+
+//         CButton{
+//             text: qsTr("Close")
+//             palette.button: "#e55353"
+//             palette.buttonText: "#ffffff"
+//             implicitHeight: 50
+//             Layout.margins: 10
+//             onClicked: dialog.close();
+
+
+//         }
+//         CButton{
+//             text: qsTr("Purchase")
+//             palette.button: "#2eb85c"
+//             palette.buttonText: "#ffffff"
+//             implicitHeight: 50
+//             Layout.margins: 10
+//             onClicked: card.purchaseStock();
+//         }
+
+//     } //footer end
+
+//     function purchaseStock(){
+//         var vendorId=vendorsCB.currentValue;
+//         var products=cartListView.vendorCartModel.toJsonArray();
+//         Api.createBill(vendorId,products);
+
+//     }
+
+// } //card End
+
+
+CFormView {
+    id: control
+    padding: 10
+    rowSpacing: 30
+
+    header.visible: true
+    url: "/vendorBill"
+
+
+    columns: 2
+    CLabel {
+        text: qsTr("Vendor")
+    }
+
+    CFilterComboBox {
+        id: cb
+        objectName: "vendor_id"
+        valueRole: "id"
+        textRole: "name"
         Layout.fillWidth: true
+        dataUrl: "/vendors"
+    }
+
+    CLabel {
+        text: qsTr("Bill Name")
+    }
+    CTextField {
+        objectName: "name"
+        Layout.fillWidth: true
+    }
+
+    CLabel {
+        text: qsTr("External Reference")
+    }
+    CTextField {
+        objectName: "external_reference"
+        Layout.fillWidth: true
+    }
+
+    VendorBillListView{
+        id: cartListView
+        objectName: "items"
+        Layout.columnSpan: 2
         Layout.fillHeight: true
-
-        CComboBox{
-            id: vendorsCB
-            Layout.fillWidth: true
-            textRole: "name"
-            valueRole: "id"
-            currentIndex: 0
-            model: VendorsModel{
-            }
-        }
-
-        spacing: 30
-
+        Layout.fillWidth: true
     }
-        spacing: 10
+}
 
-        VendorBillListView{
-            id: cartListView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-        }
-    }
-
-
-    footer: RowLayout{
-
-        Rectangle{
-            color: "transparent"
-            Layout.fillWidth: true
-
-        }
-
-        CButton{
-            text: qsTr("Close")
-            palette.button: "#e55353"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            onClicked: dialog.close();
-
-
-        }
-        CButton{
-            text: qsTr("Purchase")
-            palette.button: "#2eb85c"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            onClicked: card.purchaseStock();
-        }
-
-    } //footer end
-
-    function purchaseStock(){
-        var vendorId=vendorsCB.currentValue;
-        var products=cartListView.vendorCartModel.toJsonArray();
-        Api.createBill(vendorId,products);
-
-    }
-
-} //card End
