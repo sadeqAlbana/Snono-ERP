@@ -14,10 +14,10 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
 
     JsonModelColumnList list{
     {"id",tr("ID")} ,
-    {"thumb",tr("Image"),QString(),"image"} ,
+//    {"thumb",tr("Image"),QString(),"image"} ,
     {"name",tr("Name")} ,
-    {"sku",tr("SKU")} ,
-    {"size",tr("Size")} ,
+    // {"sku",tr("SKU")} ,
+//    {"size",tr("Size")} ,
     {"cost",tr("Cost"),QString(), "currency"} ,
 //    {"current_cost","Current Cost",QString(), "currency"} ,
     {"qty",tr("Stock"),"products_stocks"} ,
@@ -168,7 +168,11 @@ void ProductsModel::exportJson()
 QJsonArray ProductsModel::filterData(QJsonArray data)
 {
 
-    QStringList attributesAttributesWanted{"type"};
+    QStringList wanted;
+
+    for(const QJsonValue &value: m_wantedColumns){
+        wanted << value["id"].toString();
+    }
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
         QJsonArray attributes=product["attributes"].toArray();
@@ -177,8 +181,9 @@ QJsonArray ProductsModel::filterData(QJsonArray data)
             QJsonObject attribute=attributes.at(j).toObject();
             attribute["type"]=attribute["attributes_attribute"].toObject()["type"];
             QString attributeId=attribute["attribute_id"].toString();
+
             attributes.replace(j,attribute);
-            if(m_wantedColumns["id"].toString()==attributeId){
+            if(wanted.contains(attributeId)){
                 product[attributeId]=attribute["value"];
             }
         }
@@ -191,6 +196,12 @@ QJsonArray ProductsModel::filterData(QJsonArray data)
 
 void ProductsModel::onTableRecieved(NetworkResponse *reply)
 {
-    this->m_wantedColumns=reply->json("attributes").toArray();
+    if(m_wantedColumns.isEmpty()){
+        this->m_wantedColumns=reply->json("attributes").toArray();
+        for(const QJsonValue &value: m_wantedColumns){
+            m_columns.append(JsonModelColumn{value["id"].toString(),value["name"].toString(),QString(),value["type"].toString()});
+        }
+    }
+//    endResetModel();
     AppNetworkedJsonModel::onTableRecieved(reply);
 }
