@@ -47,13 +47,13 @@ AppPage{
                 CAction {
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/taxes/TaxForm.qml",
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductAttributeForm.qml",
                                                  {
-                                                     "title": qsTr("Edit Tax"),
+                                                     "title": qsTr("Edit"),
 
                                                  "keyValue": model.jsonObject(tableView.currentRow).id
                                                  })
-                    enabled:tableView.currentRow>=0; permission: "prm_edit_taxes";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_product_attributes";
 
                 },
                 CAction{ text: qsTr("Delete");

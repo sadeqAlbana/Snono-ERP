@@ -151,6 +151,7 @@ set(TARGET_QML_SOURCES
     qml/pages/products/AdjustStockDialog.qml
     qml/pages/products/ProductForm.qml
     qml/pages/products/GenerateCataloguePage.qml
+    qml/pages/products/ProductAttributeForm.qml
     qml/pages/cashier/CashierPage.qml
     qml/pages/cashier/Numpad.qml
     qml/pages/cashier/NumpadButton.qml
