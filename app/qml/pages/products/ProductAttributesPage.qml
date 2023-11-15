@@ -39,9 +39,9 @@ AppPage{
             Layout.fillWidth: true
 
             actions: [
-                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/taxes/TaxForm.qml",
+                CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: Router.navigate("qrc:/PosFe/qml/pages/products/ProductAttributeForm.qml",
                                                                                                 {
-                                                                                                                        "title": qsTr("Add Tax")
+                                                                                                                        "title": qsTr("Add Attribute")
                                                                                                                     })},
 
                 CAction {
@@ -53,12 +53,12 @@ AppPage{
 
                                                  "keyValue": model.jsonObject(tableView.currentRow).id
                                                  })
-                    enabled:tableView.currentRow>=0; permission: "prm_edit_product_attributes";
+                    enabled:tableView.currentRow>=0; permission: "prm_edit_products_attributes";
 
                 },
                 CAction{ text: qsTr("Delete");
                     icon.name: "cil-delete";
-                    onTriggered: Api.removeTax(model.data(tableView.currentRow,"id"))
+                    onTriggered: Api.removeAttribute(model.data(tableView.currentRow,"id"))
                     .subscribe(function(response){
                                             if(response.json("status")===200){
                                                 model.refresh();

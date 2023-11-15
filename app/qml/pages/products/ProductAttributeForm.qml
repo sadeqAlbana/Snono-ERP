@@ -33,7 +33,6 @@ CFormView {
         text: qsTr("Type")
     }
     CComboBox {
-        id: typeCB
         objectName: "type"
         Layout.fillWidth: true
         model: [{"label":qsTr("Text"), "value": "text"},{"label":qsTr("Image"), "value": "image"}]

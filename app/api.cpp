@@ -402,7 +402,6 @@ NetworkResponse *Api::removeTax(const int taxId)
     QUrl url("/tax");
     url.setQuery(QUrlQuery{{"id",QString::number(taxId)}});
 
-    qDebug()<<"taxId:" << taxId;
     return PosNetworkManager::instance()->deleteResource(url);
 }
 
@@ -524,6 +523,14 @@ NetworkResponse *Api::postReceipt(QJsonObject data)
 NetworkResponse *Api::receipt()
 {
     return PosNetworkManager::instance()->get(QUrl("/receipt"));
+}
+
+NetworkResponse *Api::removeAttribute(const QString &id)
+{
+    QUrl url("/productAttribute");
+    url.setQuery(QUrlQuery{{"id",id}});
+
+    return PosNetworkManager::instance()->deleteResource(url);
 }
 
 

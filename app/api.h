@@ -73,6 +73,7 @@ public:
 
     Q_INVOKABLE NetworkResponse * postReceipt(QJsonObject data);
     Q_INVOKABLE NetworkResponse * receipt();
+    Q_INVOKABLE NetworkResponse * removeAttribute(const QString &id);
 
 
 signals:
