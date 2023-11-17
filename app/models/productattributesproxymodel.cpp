@@ -18,7 +18,7 @@ QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation or
     switch(section){
         case 0: return QStringLiteral("Attribute");
         case 1: return QStringLiteral("Value");
-        case 2: return QStringLiteral("Type");
+//        case 2: return QStringLiteral("Type");
 
         case 3: return QStringLiteral("Action");
 
@@ -53,7 +53,7 @@ int ProductAttributesProxyModel::columnCount(const QModelIndex &parent) const
     if (parent.isValid() || !sourceModel())
         return 0;
 
-    return 4;
+    return 3;
 }
 
 bool ProductAttributesProxyModel::hasChildren(const QModelIndex &parent) const
@@ -74,8 +74,8 @@ QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) c
         switch (index.column()) {
         case 0:
         case 1: return QStringLiteral("text");
-        case 2: return QStringLiteral("combo");
-        case 3: return QStringLiteral("action");
+//        case 2: return QStringLiteral("combo");
+        case 2: return QStringLiteral("action");
         default:
             break;
         }

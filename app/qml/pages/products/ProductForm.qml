@@ -150,8 +150,8 @@ Card {
             columnList: [
 
                 JsonModelColumn{ displayName: qsTr("Attribute");key: "attribute_id";},
-                JsonModelColumn{ displayName: qsTr("Value");key: "value";},
-                JsonModelColumn{ displayName: qsTr("Type");key: "type";}
+                JsonModelColumn{ displayName: qsTr("Value");key: "value";}
+//                JsonModelColumn{ displayName: qsTr("Type");key: "type";parentKey: "attributes_attribute";}
 //                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
 
 
@@ -216,7 +216,7 @@ Card {
                                     TableView.onCommit: {
                                         edit = currentText
                                     }
-                                    model:["TEXT","IMAGE"]
+                                    model:["text","image"]
                                     Component.onCompleted: {
                                         console.log("iov:  " + indexOfValue(edit))
                                     }
