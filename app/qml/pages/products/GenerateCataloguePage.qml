@@ -19,6 +19,17 @@ CFormView {
     CNumberInput{objectName: "start_id"; text: "0";}
     CLabel{text: qsTr("Save Path");}
     FolderInput{objectName:"save_path"}
+    CLabel{
+        text: qsTr("Category")
+    }
 
+    CFilterComboBox{
+        Layout.fillWidth: true
+        objectName: "category_id"
+        textRole: "name"
+        valueRole: "id"
+        dataUrl: "/categories"
+        defaultEntry: {"id":-1,"name": qsTr("All")}
+    } //
     applyHandler: Api.generateImages
 }
