@@ -59,7 +59,7 @@ Popup {
                 document: PdfDocument{
                     source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""
 
-                    onStatusChanged: {
+                    onStatusChanged:(status)=> {
                         if(status==PdfDocument.Ready){
                             if(Settings.receiptLinePrinter){
                                 pdf.renderScale=2

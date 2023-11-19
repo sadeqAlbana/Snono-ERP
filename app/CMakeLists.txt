@@ -105,6 +105,8 @@ set(TARGET_SOURCES
     models/stocklocationmodel.h models/stocklocationmodel.cpp
     models/stockmovesmodel.h models/stockmovesmodel.cpp
     models/stockvaluationmodel.h models/stockvaluationmodel.cpp
+    models/draftordersmodel.h models/draftordersmodel.cpp
+
     keyemitter.h keyemitter.cpp
 )
 
@@ -142,6 +144,8 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrderDetailsPage.qml
     qml/pages/orders/ReturnOrderPage.qml
     qml/pages/orders/DeliveryOrderForm.qml
+    qml/pages/orders/DraftOrdersPage.qml
+    qml/pages/orders/DraftOrderForm.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
@@ -255,7 +259,6 @@ qt_add_qml_module(appposfe
 
     QML_FILES
         ${TARGET_QML_SOURCES}
-
 )
 set(INCLUDE_DIR
     models

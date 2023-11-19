@@ -96,7 +96,7 @@ CFormView {
     rowSpacing: 30
 
     header.visible: true
-    url: "/vendorBill"
+    url: "/product/purchaseProduct"
 
 
     columns: 2
@@ -131,7 +131,7 @@ CFormView {
 
     VendorBillListView{
         id: cartListView
-        objectName: "items"
+        objectName: "products"
         Layout.columnSpan: 2
         Layout.fillHeight: true
         Layout.fillWidth: true

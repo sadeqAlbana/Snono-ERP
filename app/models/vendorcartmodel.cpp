@@ -5,8 +5,8 @@ VendorCartModel::VendorCartModel(QObject *parent) : JsonModel(QJsonArray(),{
                                                               {"cost",tr("Cost")},
                                                               {"name",tr("Name")},
                                                               {"qty",tr("Qty")},
-                                                              {"sku",tr("SKU")},
-                                                              {"thumb",tr("Thumb")},
+                                                              // {"sku",tr("SKU")},
+                                                              // {"thumb",tr("Thumb")},
                                                               {"total",tr("Total")}
 
                                                               }

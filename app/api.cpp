@@ -103,7 +103,8 @@ void Api::barqReceipt(const int orderId)
                 return;
 
 
-            QPrinter printer(QPrinterInfo::defaultPrinter(),QPrinter::HighResolution);
+            QPrinter printer;
+            printer.setPrinterName(AppSettings::instance()->receiptPrinter());
 
             QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
 

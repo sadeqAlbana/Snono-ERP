@@ -15,6 +15,8 @@ import JsonModels
 Card {
     id: page
     property alias initialValues: general.initialValues
+
+    onInitialValuesChanged: console.log(JSON.stringify(general.initialValues))
 //    property var applyHandler
     property var keyValue: null
     CTabView {
@@ -135,7 +137,8 @@ Card {
                 filter: {"parent_id":null}
                 dataUrl: "/products/list"
                 valueRole: "id";
-                textRole: "name"
+                textRole: "name";
+                defaultEntry: {"id": 0, "name": qsTr("None")}
             }
 
         } //General
@@ -143,9 +146,7 @@ Card {
         JsonModel {
             id: attributesModel
             records: general.initialValues?.attributes?? []
-            onRecordChanged: {
-                console.log(JSON.stringify(general.initialValues?.attributes))
-            }
+
 
             columnList: [
 

@@ -70,11 +70,6 @@ function navBar(){
                             "title":qsTr("Attributes"),
                             "path":"qrc:/PosFe/qml/pages/products/ProductAttributesPage.qml",
                             "permission": "prm_view_product_attributes",
-                        },
-                        {
-                            "title":qsTr("Drafts"),
-                            "path":"qrc:/PosFe/qml/pages/products/OrderDraftsPage.qml",
-                            "permission": "prm_view_draft_orders",
                         }
                     ]
                 },
@@ -96,6 +91,11 @@ function navBar(){
                             "path":"qrc:/PosFe/qml/pages/orders/OrdersReturnsPage.qml",
                             "permission": ""
 
+                        },
+                        {
+                            "title":qsTr("Drafts"),
+                            "path":"qrc:/PosFe/qml/pages/orders/DraftOrdersPage.qml",
+                            "permission": "prm_view_draft_orders",
                         }
                     ]
                 },

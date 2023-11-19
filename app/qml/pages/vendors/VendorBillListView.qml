@@ -39,8 +39,6 @@ ListView {
                 "name": product.name,
                 "qty": 1,
                 "cost": product.cost,
-                "sku": product.sku,
-                "thumb": product.thumb,
                 "total": product.cost
             }
             cartModel.appendRecord(record)
@@ -50,8 +48,6 @@ ListView {
             cartModel.setData(index, "id", product.id)
             cartModel.setData(index, "name", product.name)
             cartModel.setData(index, "cost", product.cost)
-            cartModel.setData(index, "sku", "", product.sku)
-            cartModel.setData(index, "thumb", product.thumb)
         }
     }
     spacing: 5
