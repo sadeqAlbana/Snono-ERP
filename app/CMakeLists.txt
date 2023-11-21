@@ -106,6 +106,7 @@ set(TARGET_SOURCES
     models/stockmovesmodel.h models/stockmovesmodel.cpp
     models/stockvaluationmodel.h models/stockvaluationmodel.cpp
     models/draftordersmodel.h models/draftordersmodel.cpp
+    models/draftorderformmodel.h models/draftorderformmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )

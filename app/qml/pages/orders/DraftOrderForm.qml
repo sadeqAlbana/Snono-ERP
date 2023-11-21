@@ -13,10 +13,34 @@ import Qt.labs.qmlmodels
 import JsonModels
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 CFormView {
+    url: "/draftOrder"
+
+    CLabel {
+        text: qsTr("Name")
+    }
+    CTextField {
+        objectName: "name"
+        Layout.fillWidth: true
+    }
+
+    CLabel {
+        text: qsTr("Customer")
+    }
+
+    CComboBox {
+        objectName: "customer_id"
+        Layout.fillWidth: true
+        textRole: "name"
+        valueRole: "id"
+        currentIndex: 0
+        model: CustomersModel {}
+    }
+
 
 
     CTableView {
         id: tableView
+        objectName: "items"
         Layout.fillWidth: true
         Layout.fillHeight: true
         Layout.columnSpan: 2
@@ -26,23 +50,18 @@ CFormView {
         selectionBehavior: TableView.SelectCells
 
 
-        model: JsonModel{
+        model: DraftOrderFormModel{
             id: draftModel
-            columnList: [
-            JsonModelColumn{key: "name"; displayName: "Name";},
-            JsonModelColumn{key: "description"; displayName: "Description";},
-            JsonModelColumn{key: "price"; displayName: "Price";},
-            JsonModelColumn{key: "qty"; displayName: "Qty.";},
-            JsonModelColumn{key: "total"; displayName: "Total";}
-            ]
+
+
 
             function addEmptyRecord(){
                 let record=draftModel.record;
                 record["name"]=""
                 record["description"]=""
-                record["price"]=0;
-                record["qty"]=1;
-                record["total"]=0;
+                record["unit_price"]="1000";
+                record["qty"]="1";
+                record["total"]="1000";
 
                 draftModel.appendRecord(record)
             }

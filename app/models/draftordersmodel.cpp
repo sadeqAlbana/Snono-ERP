@@ -5,13 +5,13 @@ DraftOrdersModel::DraftOrdersModel(QObject *parent)
                                              {"id",tr("ID")} ,
                                              {"name",tr("Name")} ,
 
-                                             {"name",tr("Customer"),"customer",
+                                             {"name",tr("Customer"),"customer",false,
 
                                                  "link",
                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                              {"linkKey","customer_id"}}
                                              } ,
-                                             {"created_at",tr("Date"),QString(),"datetime"} ,
-                                             {"total",tr("Total"),QString(),"currency"} }
+                                             {"created_at",tr("Date"),QString(),false,"datetime"} ,
+                                             {"total",tr("Total"),QString(),false,"currency"} }
                             ,parent)
 {}

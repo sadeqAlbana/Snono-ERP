@@ -8,17 +8,17 @@ VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                                              {"name",tr("Name")} ,
                                              {"reference",tr("Reference")},
 
-                                                                                             {"name",tr("Vendor"),"vendor",
+                                                                                             {"name",tr("Vendor"),"vendor",false,
 
                                                  "link",
                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/vendors/VendorForm.qml"},
                                                              {"linkKey","vendor_id"}}
                                                                                        } ,
                                                                                              {"external_reference",tr("External Reference")} ,
-                                                                                             {"date",tr("Date"),QString(),"datetime"} ,
-                                                                                             {"due_date",tr("Due Date"),QString(),"datetime"} ,
-                                                                                             {"total",tr("Total"),QString(),"currency"} ,
-                                                                                             {"status",tr("Status"),QString(),"status"}}
+                                                                                             {"date",tr("Date"),QString(),false,"datetime"} ,
+                                                                                             {"due_date",tr("Due Date"),QString(),false,"datetime"} ,
+                                                                                             {"total",tr("Total"),QString(),false,"currency"} ,
+                                                                                             {"status",tr("Status"),QString(),false,"status"}}
                                                                                                                ,parent)
 {
 

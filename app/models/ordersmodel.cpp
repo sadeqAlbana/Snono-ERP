@@ -6,17 +6,17 @@
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   {"id",tr("ID")} ,
                                                                   {"reference",tr("Reference")} ,
-                                                                  {"name",tr("Customer"),"customers","link",
+                                                                  {"name",tr("Customer"),"customers",false,"link",
                                             QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                     {"linkKey","customer_id"}}},
                                                                   {"phone",tr("Phone"),"customers"} ,
                                                                   {"address",tr("Address"),"customers"} ,
-                                                                  {"total",tr("Total"),QString(),"currency"} ,
-                                                                  {"date",tr("Date"),QString(),"datetime"} ,
+                                                                  {"total",tr("Total"),QString(),false,"currency"} ,
+                                                                  {"date",tr("Date"),QString(),false,"datetime"} ,
                                                                   //{"tax_amount",tr("Tax Amount"),QString(),"currency"},
-                                                                  {"delivery_status",tr("Status"),QString(),"OrderStatus"} ,
+                                                                  {"delivery_status",tr("Status"),QString(),false,"OrderStatus"} ,
                                                                   {"external_delivery_id",tr("Delivery Id"),QString()} ,
-                                                                  {"external_delivery_status",tr("Delivery Status"),QString(),"externalDeliveryStatus"} ,
+                                                                  {"external_delivery_status",tr("Delivery Status"),QString(),false,"externalDeliveryStatus"} ,
 
                                                                   },
                                                                   parent)
