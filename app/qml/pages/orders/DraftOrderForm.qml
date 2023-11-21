@@ -59,9 +59,9 @@ CFormView {
                 let record=draftModel.record;
                 record["name"]=""
                 record["description"]=""
-                record["unit_price"]="1000";
-                record["qty"]="1";
-                record["total"]="1000";
+                record["unit_price"]=1000;
+                record["qty"]=1;
+                record["total"]=1000;
 
                 draftModel.appendRecord(record)
             }

@@ -5,9 +5,9 @@ AccountsModel::AccountsModel(QObject *parent) :
                            {"id",tr("ID")} ,
                            {"code",tr("Code")} ,
                            {"name",tr("Name")} ,
-                           {"internal_type",tr("Internal Type"),QString(),"internal_type"} ,
-                           {"type",tr("Type"),QString(),"type"} ,
-                           {"balance",tr("Balance"),QString(),"currency"}},parent)
+                           {"internal_type",tr("Internal Type"),QString(),false,"internal_type"} ,
+                           {"type",tr("Type"),QString(),false,"type"} ,
+                           {"balance",tr("Balance"),QString(),false,"currency"}},parent)
 {
     setDirection("asc");
 

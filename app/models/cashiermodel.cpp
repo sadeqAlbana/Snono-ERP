@@ -12,12 +12,12 @@
 CashierModel::CashierModel(QObject *parent)
     : NetworkedJsonModel("/pos/cart/getCart",{
                          {"name", tr("Name")} ,
-                         {"thumb", tr("Image"),QString(),"image"} ,
-                         {"unit_price", tr("Price"),QString(),"currency"} ,
-                         {"qty", tr("Qty"),QString(),"number"} ,
-                         {"discount", tr("Discount"),QString(),"percentage"} ,
-                         {"subtotal", tr("Subtotal"),QString(),"currency"} ,
-                         {"total", tr("Total"),QString(),"currency"}},parent)
+                         {"thumb", tr("Image"),QString(),false,"image"} ,
+                         {"unit_price", tr("Price"),QString(),false,"currency"} ,
+                         {"qty", tr("Qty"),QString(),false,"number"} ,
+                         {"discount", tr("Discount"),QString(),false,"percentage"} ,
+                         {"subtotal", tr("Subtotal"),QString(),false,"currency"} ,
+                         {"total", tr("Total"),QString(),false,"currency"}},parent)
 {
     //setReference("{ef624717-4436-4555-ab41-7a0b3ba4b16e}");
     requestCart();

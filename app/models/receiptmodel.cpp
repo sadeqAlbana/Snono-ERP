@@ -4,10 +4,10 @@
 
 ReceiptModel::ReceiptModel(QObject *parent) : AppNetworkedJsonModel ("/order",{ //not used for now, moved to get instead of post in backend
                                                                      {"name",tr("Description"),"products"} ,
-                                                                     {"unit_price",tr("Price"),QString(),"currency"} ,
+                                                                     {"unit_price",tr("Price"),QString(),false,"currency"} ,
                                                                      {"qty",tr("Qty")} ,
-                                                                     {"subtotal",tr("Subtotal"),QString(),"currency"},
-                                                                     {"total",tr("Total"),QString(),"currency"}
+                                                                     {"subtotal",tr("Subtotal"),QString(),false,"currency"},
+                                                                     {"total",tr("Total"),QString(),false,"currency"}
                                                                      },parent),m_orderId(2)
 {
 

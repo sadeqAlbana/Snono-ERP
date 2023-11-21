@@ -3,9 +3,9 @@
 ReturnOrderModel::ReturnOrderModel(QObject *parent) : JsonModel(QJsonArray(),{
                                                                                         {"name",tr("Product"),"products"} ,
                                                                                         {"qty",tr("Quantity")} ,
-                                                                                        {"unit_price",tr("Unit Price"),QString(),"currency"} ,
-                                                                                        {"subtotal",tr("Subtotal"),QString(),"currency"} ,
-                                                                                        {"total",tr("Total"),QString(),"currency"}},parent)
+                                                                                        {"unit_price",tr("Unit Price"),QString(),false,"currency"} ,
+                                                                                        {"subtotal",tr("Subtotal"),QString(),false,"currency"} ,
+                                                                                        {"total",tr("Total"),QString(),false,"currency"}},parent)
 {
     setCheckable(true);
 }

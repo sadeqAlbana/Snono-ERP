@@ -18,10 +18,10 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
     {"name",tr("Name")} ,
     // {"sku",tr("SKU")} ,
 //    {"size",tr("Size")} ,
-    {"cost",tr("Cost"),QString(), "currency"} ,
+    {"cost",tr("Cost"),QString(),false,"currency"} ,
 //    {"current_cost","Current Cost",QString(), "currency"} ,
     {"qty",tr("Stock"),"products_stocks"} ,
-    {"list_price",tr("List Price"),QString(), "currency"}};
+    {"list_price",tr("List Price"),QString(),false,"currency"}};
     if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
         list.removeAt(5);
     }

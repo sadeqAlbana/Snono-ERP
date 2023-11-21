@@ -2,10 +2,10 @@
 #include "utils.h"
 ProductSalesReportModel::ProductSalesReportModel(QObject *parent)
     : AppNetworkedJsonModel{"/reports/productSales",{
-                            {"thumb",tr("Thumb"),QString(),"image"} ,
+                            {"thumb",tr("Thumb"),QString(),false,"image"} ,
                             {"name",tr("Name")} ,
                             {"qty",tr("Quantity")} ,
-                            {"total",tr("Total"),QString(),"currency"}
+                            {"total",tr("Total"),QString(),false,"currency"}
                             }
                             ,parent}
 {

@@ -5,9 +5,9 @@ JournalEntriesModel::JournalEntriesModel(QObject *parent) : AppNetworkedJsonMode
                                                                                   {"name",tr("Name")},
                                                                                   {"reference",tr("Reference")},
                                                                                   {"posted",tr("Posted")},
-                                                                                  {"posted_date",tr("Posted Date"),QString(),"datetime"},
-                                                                                  {"date",tr("Date"),QString(),"datetime"} ,
-                                                                                  {"amount_total",tr("Total"),QString(),"currency"}},
+                                                                                  {"posted_date",tr("Posted Date"),QString(),false,"datetime"},
+                                                                                  {"date",tr("Date"),QString(),false,"datetime"} ,
+                                                                                  {"amount_total",tr("Total"),QString(),false,"currency"}},
                                                                                   parent)
 {
    
