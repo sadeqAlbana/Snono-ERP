@@ -19,6 +19,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage{
 
     title: qsTr("Draft Orders")
+    StackView.onActivated: model.refresh();
 
     ColumnLayout{
         id: page

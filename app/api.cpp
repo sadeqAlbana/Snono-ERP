@@ -420,7 +420,6 @@ NetworkResponse *Api::updateAclGroup(const QJsonObject &data)
 
 NetworkResponse *Api::deleteAclGroup(const int id)
 {
-
     QUrl url("/aclGroup");
     url.setQuery(QUrlQuery{{"id",QString::number(id)}});
 
@@ -530,6 +529,14 @@ NetworkResponse *Api::removeAttribute(const QString &id)
 {
     QUrl url("/productAttribute");
     url.setQuery(QUrlQuery{{"id",id}});
+
+    return PosNetworkManager::instance()->deleteResource(url);
+}
+
+NetworkResponse *Api::removeDraftOrder(const int id)
+{
+    QUrl url("/draftOrder");
+    url.setQuery(QUrlQuery{{"id",QString::number(id)}});
 
     return PosNetworkManager::instance()->deleteResource(url);
 }

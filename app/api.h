@@ -75,6 +75,8 @@ public:
     Q_INVOKABLE NetworkResponse * receipt();
     Q_INVOKABLE NetworkResponse * removeAttribute(const QString &id);
 
+    Q_INVOKABLE NetworkResponse * removeDraftOrder(const int id);
+
 
 signals:
     void processCustomBillResponse(QJsonObject reply);
