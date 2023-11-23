@@ -270,6 +270,16 @@ void AppSettings::setServerUrl(const QUrl &url)
     emit serverUrlChanged(url);
 }
 
+QStringList AppSettings::servers()
+{
+    return value("servers").toStringList();
+}
+
+void AppSettings::setServers(const QStringList &newServers)
+{
+    setValue("servers",newServers);
+}
+
 QLocale::Language AppSettings::language()
 {
     return static_cast<QLocale::Language>(value("app_language",QLocale::English).toUInt());

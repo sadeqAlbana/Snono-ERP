@@ -20,6 +20,9 @@ public:
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
+    Q_INVOKABLE QStringList servers();
+    Q_INVOKABLE void setServers(const QStringList &newServers);
+
     Q_INVOKABLE QLocale::Language language();
     Q_INVOKABLE void setLanguage(const QLocale::Language language);
     Q_INVOKABLE void setFont(const QString &font);
