@@ -129,24 +129,38 @@ CFormView {
         Layout.fillWidth: true
     }
 
-    CLabel {
-        text: qsTr("Buy on credit")
-    }
-    CCheckBox{
-
-    }
 
     CLabel {
         text: qsTr("payment type")
     }
 
     CComboBox{
+        id: paymentTypeCB
+        Layout.fillWidth: true
+        textRole: "name";
+        valueRole: "value"
         model:ListModel{
             ListElement{name: qsTr("Buy on Credit"); value: 0}
             ListElement{name: qsTr("Initial Inventory Purchase"); value: 1}
             ListElement{name: qsTr("Pay with a Liquidity Account"); value: 2}
 
         }
+    }
+
+    CLabel {
+        text: qsTr("select account")
+        visible: paymentTypeCB.currentValue===2
+    }
+
+    CFilterComboBox{
+        Layout.fillWidth: true
+
+        dataUrl: "/accounts"
+        filter:{"type":"liquidity"}
+        textRole: "name";
+        valueRole: "id"
+        visible: paymentTypeCB.currentValue===2
+
     }
 
     VendorBillListView{
