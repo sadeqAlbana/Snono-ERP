@@ -129,6 +129,26 @@ CFormView {
         Layout.fillWidth: true
     }
 
+    CLabel {
+        text: qsTr("Buy on credit")
+    }
+    CCheckBox{
+
+    }
+
+    CLabel {
+        text: qsTr("payment type")
+    }
+
+    CComboBox{
+        model:ListModel{
+            ListElement{name: qsTr("Buy on Credit"); value: 0}
+            ListElement{name: qsTr("Initial Inventory Purchase"); value: 1}
+            ListElement{name: qsTr("Pay with a Liquidity Account"); value: 2}
+
+        }
+    }
+
     VendorBillListView{
         id: cartListView
         objectName: "products"
