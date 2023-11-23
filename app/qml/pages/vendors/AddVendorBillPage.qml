@@ -135,6 +135,7 @@ CFormView {
     }
 
     CComboBox{
+        objectName: "payment_type"
         id: paymentTypeCB
         Layout.fillWidth: true
         textRole: "name";
@@ -153,8 +154,9 @@ CFormView {
     }
 
     CFilterComboBox{
-        Layout.fillWidth: true
+        objectName: "account_id";
 
+        Layout.fillWidth: true
         dataUrl: "/accounts"
         filter:{"type":"liquidity"}
         textRole: "name";
