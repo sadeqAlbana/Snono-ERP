@@ -141,16 +141,15 @@ CFormView {
         textRole: "name";
         valueRole: "value"
         model:ListModel{
-            ListElement{name: qsTr("Buy on Credit"); value: 0}
-            ListElement{name: qsTr("Initial Inventory Purchase"); value: 1}
-            ListElement{name: qsTr("Pay with a Liquidity Account"); value: 2}
-
+            ListElement{name: qsTr("Buy on Credit"); value: "credit"}
+            ListElement{name: qsTr("Initial Inventory Purchase"); value: "capital"}
+            ListElement{name: qsTr("Pay with a Liquidity Account"); value: "liquidity"}
         }
     }
 
     CLabel {
         text: qsTr("select account")
-        visible: paymentTypeCB.currentValue===2
+        visible: paymentTypeCB.currentValue==="liquidity"
     }
 
     CFilterComboBox{
@@ -161,7 +160,7 @@ CFormView {
         filter:{"type":"liquidity"}
         textRole: "name";
         valueRole: "id"
-        visible: paymentTypeCB.currentValue===2
+        visible: paymentTypeCB.currentValue==="liquidity"
 
     }
 
