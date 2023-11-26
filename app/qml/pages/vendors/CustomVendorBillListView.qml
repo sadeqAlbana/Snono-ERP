@@ -10,16 +10,25 @@ import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
-
 import QtQml 2.15
 import QtQuick.Controls.impl as Impl
-
+import CoreUI
 ListView {
     id :listView
-    clip: false
-    property string billName
+    clip: true
     spacing: 5
     //clip: true
+    implicitWidth: contentWidth;
+    implicitHeight: contentHeight
+
+
+    Rectangle{
+        parent: listView
+        color: "transparent"
+        border.color: palette.shadow
+        radius: CoreUI.borderRadius
+        anchors.fill: parent
+    }
 
     function addItem(){
         //var product=productsModel.jsonObject(0);
@@ -44,25 +53,6 @@ ListView {
         height: 80
         spacing: 20
 
-        CLabel{
-            text: qsTr("Bill Name")
-        }
-
-        CTextField{
-            id: name
-            text: billName;
-            implicitWidth: 250
-            placeholderText: "Bill Name..."
-            Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-
-            Binding{
-                target: listView
-                property: "billName"
-                value: name.text;
-            }
-
-        }
-
         CButton{
             text: "Add Item"
             palette.button: "#3399ff"
@@ -77,11 +67,9 @@ ListView {
     delegate: RowLayout{
         id: delegate
         implicitHeight: 50
-        //        implicitWidth: 200
-        width: listView.width-10
-
+        clip: true
+        width: listView.width - 10
         spacing: 15
-
         CTextField{
             id: itemName;
             Layout.fillWidth: true

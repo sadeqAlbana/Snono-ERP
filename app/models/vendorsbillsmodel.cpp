@@ -18,6 +18,8 @@ VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                                              {"date",tr("Date"),QString(),false,"datetime"} ,
                                                                                              {"due_date",tr("Due Date"),QString(),false,"datetime"} ,
                                                                                              {"total",tr("Total"),QString(),false,"currency"} ,
+                                             {"payment_type",tr("Payment Method")} ,
+
                                                                                              {"status",tr("Status"),QString(),false,"status"}}
                                                                                                                ,parent)
 {

@@ -154,7 +154,6 @@ CFormView {
 
     CFilterComboBox{
         objectName: "account_id";
-
         Layout.fillWidth: true
         dataUrl: "/accounts"
         filter:{"type":"liquidity"}
