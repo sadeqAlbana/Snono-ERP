@@ -7,82 +7,46 @@ import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
+import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
-Popup {
+AppDialog {
     id: dialog
-    modal: true
-    anchors.centerIn: parent;
-    parent: Overlay.overlay
+    title: qsTr("Pay Bill");
+    property var initialValues;
+    CFormView{
+        initialValues: dialog.initialValues
+        showReset: false
+        header.visible: true
+        title: dialog.title;
+        rowSpacing: 10
+        url: "/vendorBill/pay"
+        method: "POST"
 
-    property string amount;
-    signal accepted();
-    onAccepted: close();
-
-
-    width: 450
-    height: parent.height*0.3
-    background: Rectangle{color: "transparent"}
-    Overlay.modal: Rectangle {
-        color: "#C0000000"
-    }
-
-    enter: Transition {
-        NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
-    }
-
-
-    exit: Transition {
-        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
-    }
-
-    Card{
-        title: qsTr("Pay Bill")
-        anchors.fill: parent;
-        ColumnLayout{
-            anchors.fill: parent;
-            anchors.margins: 10
-
-
-
-            CTextFieldGroup{
-                id: amountTF
-                label.text: qsTr("Amount");
-                Layout.fillWidth: true;
-                input.text: Utils.formatCurrency(amount)
-                input.readOnly: true
-            }
+        CLabel{
+            text: qsTr("Pay with");
         }
 
-        footer: RowLayout{
+        CFilterComboBox{
+            Layout.preferredWidth: 400
+            objectName: "account_id";
+            Layout.fillWidth: true
+            dataUrl: "/accounts"
+            filter:{"type":"liquidity"}
+            textRole: "name";
+            valueRole: "id"
 
-            Rectangle{
-                color: "transparent"
-                Layout.fillWidth: true
+        }
 
-            }
+        CLabel{
+            text: qsTr("Amount");
+        }
 
-            CButton{
-                text: qsTr("Cancel")
-                palette.button: "#e55353"
-                palette.buttonText: "#ffffff"
-                implicitHeight: 60
-                Layout.margins: 10
-                onClicked: dialog.close();
-
-
-            }
-            CButton{
-                text: qsTr("Pay")
-                palette.button: "#2eb85c"
-                palette.buttonText: "#ffffff"
-                implicitHeight: 60
-                Layout.margins: 10
-                onClicked: dialog.accepted();
-            }
-        } //footer end
-
-    } //card end
-
-
+        CTextField{
+            objectName: "total"
+            Layout.fillWidth: true;
+            // text: Utils.formatCurrency(amount)
+            readOnly: true
+        }
+    }
 }

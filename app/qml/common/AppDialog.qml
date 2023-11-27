@@ -11,7 +11,7 @@ Popup {
     leftInset: 0
     rightInset: 0
     topInset: 0
-
+    property string title;
 
     background: Rectangle{color: "transparent"}
     Overlay.modal: Rectangle {

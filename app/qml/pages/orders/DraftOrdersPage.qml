@@ -37,19 +37,6 @@ AppPage{
 
         }
 
-        PayBillDialog{
-            id: dialog;
-
-            onAccepted: {
-                var billId= model.data(tableView.currentRow,"id");
-
-                Api.payBill(billId).subscribe(function(response){
-                    if(response.json('status')===200){
-                        model.refresh();
-                    }
-                });
-            }
-        }
 
         FileDialog {
             id: sheinDialog

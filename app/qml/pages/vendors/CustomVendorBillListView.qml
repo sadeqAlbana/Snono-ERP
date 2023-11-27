@@ -14,13 +14,10 @@ import QtQml 2.15
 import QtQuick.Controls.impl as Impl
 import CoreUI
 ListView {
-    id :listView
+    id: listView
     clip: true
-    spacing: 5
-    //clip: true
     implicitWidth: contentWidth;
     implicitHeight: contentHeight
-
 
     Rectangle{
         parent: listView
@@ -59,6 +56,8 @@ ListView {
             palette.buttonText: "#ffffff"
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             onClicked: listView.addItem()
+            Layout.topMargin: 10
+            Layout.leftMargin: 10
         }
     }
 
@@ -67,13 +66,16 @@ ListView {
     delegate: RowLayout{
         id: delegate
         implicitHeight: 50
-        clip: true
         width: listView.width - 10
         spacing: 15
         CTextField{
             id: itemName;
-            Layout.fillWidth: true
             placeholderText: qsTr("item...")
+            Layout.preferredWidth: 500
+            implicitWidth: 500
+            Layout.topMargin: 10
+            Layout.leftMargin: 10
+            Layout.fillWidth: true
         }
 
         CTextField{
@@ -149,8 +151,8 @@ ListView {
         NumberAnimation { properties: "y"; duration: 500 }
     }
 
-    footer: Rectangle{
-        color: "white";
+    footer: RowLayout{
+        // color: "white";
         z:2
         width: listView.width-10
         height: 80
@@ -159,7 +161,8 @@ ListView {
             width: 300
             text: Utils.formatCurrency(model.cartTotal)
             readOnly: true
-            anchors.verticalCenter: parent.verticalCenter
+            Layout.topMargin: 10
+            Layout.leftMargin: 10
         }
 
     }

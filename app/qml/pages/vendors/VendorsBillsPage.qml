@@ -40,15 +40,15 @@ AppPage{
         PayBillDialog{
             id: dialog;
 
-            onAccepted: {
-                var billId= model.data(tableView.currentRow,"id");
+            // onAccepted: {
+            //     var billId= model.data(tableView.currentRow,"id");
 
-                Api.payBill(billId).subscribe(function(response){
-                    if(response.json('status')===200){
-                        model.refresh();
-                    }
-                });
-            }
+            //     Api.payBill(billId).subscribe(function(response){
+            //         if(response.json('status')===200){
+            //             model.refresh();
+            //         }
+            //     });
+            // }
         }
 
         FileDialog {
@@ -82,7 +82,7 @@ AppPage{
                     }
                 },
                 CAction{enabled: tableView.currentRow>=0; text: qsTr("Pay"); icon.name: "cil-task"; onTriggered: {
-                        dialog.amount=model.jsonObject(tableView.currentRow).total;
+                         dialog.initialValues=model.jsonObject(tableView.currentRow);
                         dialog.open();}},
 //                Action{enabled: tableView.currentRow>=0; text: qsTr("Return"); icon.name: "cil-task"; onTriggered: {
 //                        Api.returnBill(model.jsonObject(tableView.currentRow).id)
