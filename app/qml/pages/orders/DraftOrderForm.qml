@@ -37,6 +37,13 @@ CFormView {
     }
 
 
+    CLabel {
+        text: qsTr("Description")
+    }
+    CTextArea {
+        objectName: "description"
+        Layout.fillWidth: true
+    }
 
     CTableView {
         id: tableView
@@ -102,27 +109,13 @@ CFormView {
             Layout.alignment: Qt.AlignLeft | Qt.AlignTop
             onClicked: draftModel.addEmptyRecord();
         }
-        CButton{
-            text: qsTr("Save")
-            palette: BrandSuccess{}
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
 
-            // onClicked: Api.
-            // setProductAttributes(general.initialValues.id,
-            //                                     draftModel.toJsonArray()).subscribe(function(res){
-            //     console.log(JSON.stringify(res.json()))
-            //     if(res.json('status')===200){
-            //         Router.back();
-            //     }
-            // })
-
-
-        }
 
         CButton{
             text: qsTr("Reset")
             palette: BrandDanger{}
             Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+            onClicked: draftModel.records=[];
         }
 
     }
