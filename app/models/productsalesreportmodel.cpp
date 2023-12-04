@@ -2,10 +2,14 @@
 #include "utils.h"
 ProductSalesReportModel::ProductSalesReportModel(QObject *parent)
     : AppNetworkedJsonModel{"/reports/productSales",{
-                            {"thumb",tr("Thumb"),QString(),false,"image"} ,
-                            {"name",tr("Name")} ,
-                            {"qty",tr("Quantity")} ,
-                            {"total",tr("Total"),QString(),false,"currency"}
+                                                      {"name",tr("Name"),QString(),false,
+         "link",
+         QVariantMap{{"link","qrc:/PosFe/qml/pages/products/ProductForm.qml"},
+                                                                                               {"linkKey","id"}}},
+                            {"sales_total_qty",tr("Sales Qty")} ,
+                            {"sales_total_amount",tr("Sales Total"),QString(),false,"currency"},
+                                                      {"returns_total_qty",tr("Returns Qty")} ,
+                                                      {"returns_total_amount",tr("Returns Total"),QString(),false,"currency"}
                             }
                             ,parent}
 {
