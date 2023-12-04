@@ -24,7 +24,7 @@ AppPage{
         AppToolBar{
             id: toolBar
             view: tableView
-            searchVisible: false
+            searchVisible: true
 
             advancedFilter:  [
                 {"type": "date","label": qsTr("from"),"key": "from"},
@@ -36,6 +36,15 @@ AppPage{
                                  model.filter=filter
                                  model.requestData();
                              }
+
+            onSearch: searchString => {
+                          var filter = model.filter
+                          filter['query'] = searchString
+                          model.filter = filter
+                          model.requestData()
+                      }
+
+
         }
 
         CTableView{
