@@ -231,10 +231,10 @@ set(TARGET_QML_SOURCES
     qml/common/AppProgressBar.qml
     qml/common/DownloadProgressBar.qml
     qml/common/AppDataPage.qml
-
+    qml/common/BasicViewPage.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
-
+    qml/common/CrudViewPage.qml
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
