@@ -23,7 +23,7 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
     {"qty",tr("Stock"),"products_stocks"} ,
     {"list_price",tr("List Price"),QString(),false,"currency"}};
     if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
-        list.removeAt(5);
+        list.removeAt(2);
     }
     m_columns=list;
 }
