@@ -194,6 +194,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/VendorBillDetailsPage.qml
     qml/pages/products/AttributesShowPage.qml
     qml/pages/products/ProductAttributesPage.qml
+    qml/pages/settings/AboutPage.qml
     qml/common/CCheckableFilterComboBox.qml
     qml/Nav.qml
     qml/AppMainScreen.qml

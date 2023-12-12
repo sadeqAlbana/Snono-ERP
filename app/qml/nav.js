@@ -221,6 +221,11 @@ function navBar(){
                             "title": qsTr("Barq Delivery"),
                             "path":"qrc:/PosFe/qml/pages/settings/BarqDeliverySettings.qml",
                             "permission": "prm_admin"
+                        },
+                        {
+                            "title": qsTr("About"),
+                            "path":"qrc:/PosFe/qml/pages/settings/AboutPage.qml",
+                            "permission": ""
                         }
 //                        {
 //                            "title": qsTr("Server Settings"),
