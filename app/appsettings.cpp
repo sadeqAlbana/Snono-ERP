@@ -7,6 +7,7 @@
 #include <QUuid>
 #include <QStandardPaths>
 #include <QSizeF>
+#include <QFile>
 AppSettings* AppSettings::m_instance;
 
 AppSettings::AppSettings(QObject *parent) : QSettings(parent)
@@ -255,6 +256,17 @@ void AppSettings::setReceiptLinePrinter(bool newReceiptLinePrinter)
         return;
     setValue("receipt_line_printer",newReceiptLinePrinter);
     emit receiptLinePrinterChanged();
+}
+
+QString AppSettings::about()
+{
+    QFile file(":/About.md");
+
+    file.open(QIODevice::ReadOnly);
+    QString text=file.readAll();
+
+    file.close();
+    return text;
 }
 
 

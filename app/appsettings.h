@@ -17,6 +17,7 @@ class AppSettings : public QSettings
     explicit AppSettings(QObject *parent=nullptr);
     static AppSettings *m_instance;
 public:
+    Q_INVOKABLE  QString about();
 
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
@@ -81,6 +82,7 @@ public:
 
     bool receiptLinePrinter() const;
     void setReceiptLinePrinter(bool newReceiptLinePrinter);
+
 
 signals:
     void serverUrlChanged(QUrl url);
