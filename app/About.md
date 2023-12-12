@@ -11,7 +11,7 @@ This software was built using the following libraries:
 
 ### License
 Snono ERP is licensed under GPL v2. See the ``LICENSE`` file section for more details.
-you can obtain a copy of the source code in my github account.
+you can obtain a copy of the source code in my github account [here](https://github.com/sadeqAlbana/Snono-ERP.git).
 
 Qt is licensed under ``Lesser GNU General Public License Version 3``, See the ``LICENSE`` file section for more details.
 
