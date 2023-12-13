@@ -13,7 +13,7 @@ import PosFe
 
 AppDialog {
     id: dialog
-    width: card.implicitWidth * 2
+    width: Math.min(window.width,card.implicitWidth * 2)
     height: card.implicitHeight * 1.2
     Card {
         id: card

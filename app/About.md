@@ -519,3 +519,7 @@ consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
 
+
+## Copyright
+
+© 2023 Snono Systems. All rights reserved.

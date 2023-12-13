@@ -25,5 +25,7 @@ AppPage{
         textFormat: TextEdit.MarkdownText
         wrapMode: Text.WordWrap
         readOnly: true
+
+        onLinkActivated:(link)=> Qt.openUrlExternally(link)
     }
 }
