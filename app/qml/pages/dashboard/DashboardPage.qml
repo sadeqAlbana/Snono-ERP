@@ -13,6 +13,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels
 import QtCharts
 import PosFe
+import CoreUI
 Page{
     id: page
     title: qsTr("Dashboard")
@@ -31,89 +32,27 @@ Page{
                 clip: true
                 id: gridLayout
                 columnSpacing: 20
-//                property int maxImplicitWidth: 0
-//                Layout.minimumWidth: maxImplicitWidth
-//                onWidthChanged: updateValues()
-//                onImplicitWidthChanged: updateValues();
 
-//                function updateValues()
-//                {
-//                    let maxLength=0;
-//                    let count=0;
-//                    for (var i=0; i<gridLayout.children.length; i++){
-//                        let child=gridLayout.children[i];
-
-//                        if(!child.width<=0){
-//                            if(child.implicitWidth>maxLength){
-//                                maxLength=child.implicitWidth;
-//                            }
-
-//                            count++;
-//                        }
-//                    }
-//                    maxImplicitWidth=maxLength;
-//                    let childCount=count;
-//                    //part 2
-
-//                    let decimalColumnCount=(gridLayout.width-(columnSpacing*childCount))/(maxImplicitWidth);
-
-//                    for (let j=0; j<gridLayout.children.length; j++){
-//                        let c=gridLayout.children[j];
-//                        if(!c.width<=0){
-//                            c.Layout.minimumWidth=maxImplicitWidth;
-//                        }
-//                    }
-
-//                    let columnCount=parseInt(decimalColumnCount,10)
-
-//                    if(columnCount<=0){
-//                        columns=1
-//                        return;
-//                    }
-
-
-//                    if(Number.isNaN(columnCount) || columnCount<=1){
-//                        columns=columnCount;
-//                        return;
-//                    }
-
-//                    if(columnCount>=childCount){
-//                        columns=childCount;
-//                        return;
-//                    }
-
-//                    if(childCount%2===0 && childCount%columnCount!==0){
-//                        while(childCount%columnCount!==0){
-//                            if(columnCount<=1){
-//                                columns=columnCount;
-//                                return;
-//                            }
-//                            columnCount--;
-//                        }
-//                    }
-
-//                    columns=columnCount;
-
-//                }
 
                 NewDashboardWidget{
                     title: qsTr("Sales & Returns")
-                    palette.window : "#2518AD"
+                    palette.window : CoreUI.color(CoreUI.Primary)
                     icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Sales Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
-                            {label:qsTr("Sales This Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month"]) : ""},
-                            {label: qsTr("Sales Returns Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
-                            {label: qsTr("Sales Returns This Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""}
+                            {label: qsTr("Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
+                            {label: qsTr("Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month"]) : ""},
+                            {label: qsTr("Returns (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
+                            {label: qsTr("Returns (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
+                            {label: qsTr("Profits (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
+                            {label: qsTr("Profits (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""}
                         ]
                     }
                 }
 
                 NewDashboardWidget{
                     title: qsTr("Orders Status")
-                    palette.window : "#5FA7EA"
-                    //                    Layout.minimumWidth: gridLayout.maxWidth
+                    palette.window : CoreUI.color(CoreUI.Warning)
                     icon: "qrc:/icons/CoreUI/free/cil-graph.svg"
                     DashboardWidgetTable{
                         modelRows: [
@@ -127,58 +66,38 @@ Page{
 
                 NewDashboardWidget{
                     title: qsTr("Orders Statistics")
-                    palette.window : "#F7A20F"
+                    palette.window : CoreUI.color(CoreUI.Danger)
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Orders Today"), value: page.dashboard? page.dashboard["orders_day"] : ""},
-                            {label:qsTr("Orders this Month"), value: page.dashboard? page.dashboard["orders_month"] : ""},
-                            {label: qsTr("Returns Today"), value: page.dashboard? page.dashboard["returns_day"] : ""},
-                            {label: qsTr("Returns this Month"), value: page.dashboard? page.dashboard["returns_month"] : ""}
+                            {label: qsTr("Orders (Today)"), value: page.dashboard? page.dashboard["orders_day"] : ""},
+                            {label: qsTr("Orders (Month)"), value: page.dashboard? page.dashboard["orders_month"] : ""},
+                            {label: qsTr("Returns (Today)"), value: page.dashboard? page.dashboard["returns_day"] : ""},
+                            {label: qsTr("Returns (Month)"), value: page.dashboard? page.dashboard["returns_month"] : ""},
+                            {label: qsTr("Orders (Total)"), value: page.dashboard? page.dashboard["orders_total"] : ""},
+                            {label: qsTr("Returns (Total)"), value: page.dashboard? page.dashboard["returns_total"] : ""},
                         ]
                     }
                 }
 
                 NewDashboardWidget{
                     title: qsTr("Statistics")
-                    palette.window : "#DE4343"
+                    palette.window : CoreUI.color(CoreUI.Success)
                     icon: "qrc:/icons/CoreUI/free/cil-gauge.svg"
                     DashboardWidgetTable{
                         modelRows: [
-                            {label: qsTr("Orders Total"), value: page.dashboard? page.dashboard["orders_total"] : ""},
-                            {label:qsTr("Returns Total"), value: page.dashboard? page.dashboard["returns_total"] : ""},
+                            {label: qsTr("Sold  (Month)"), value: page.dashboard? page.dashboard["sold_stock_month"] : ""},
+                            {label:qsTr("returned (Month)"), value: page.dashboard? page.dashboard["returned_stock_month"] : ""},
+                            {label: qsTr("Net Sold (Month)"), value: page.dashboard? page.dashboard["net_sold_stock_month"] : ""},
+                            {label: qsTr("Returns %"), value: page.dashboard? page.dashboard["stock_return_percentage"] : ""},
                             {label: qsTr("Available Stock"), value: page.dashboard? page.dashboard["stock_total"] : ""},
-                            {label: qsTr("Sold Stock"), value: page.dashboard? page.dashboard["sold_stock_total"] : ""}
+                            {label: qsTr("Sold (Total)"), value: page.dashboard? page.dashboard["sold_stock_total"] : ""}
                         ]
                     }
                 }
 
-                NewDashboardWidget{
-                    title: qsTr("Profits")
-                    palette.window : "#2eb85c"
-                    icon: "qrc:/icons/CoreUI/free/cil-dollar.svg"
-                    DashboardWidgetTable{
-                        modelRows: [
-                            {label: qsTr("Daily Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
-                            {label:qsTr("Monthly Sales Profits"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""},
-                        ]
-                    }
-                }
 
-                NewDashboardWidget{
-                    title: qsTr("Stock Sale")
-                    palette.window : "#4f5d73"
-                    icon: "qrc:/icons/CoreUI/free/cil-bar-chart.svg"
-                    DashboardWidgetTable{
-                        modelRows: [
-                            {label: qsTr("Sold Stock This Month"), value: page.dashboard? page.dashboard["sold_stock_month"] : ""},
-                            {label:qsTr("returned Stock This Month"), value: page.dashboard? page.dashboard["returned_stock_month"] : ""},
-                            {label: qsTr("Net Sold Stock This Month"), value: page.dashboard? page.dashboard["net_sold_stock_month"] : ""},
-                            {label: qsTr("Stock Return Percentage"), value: page.dashboard? page.dashboard["stock_return_percentage"] : ""}
 
-                        ]
-                    }
-                }
 
                 Connections{
                     target: Api;

@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
 
     QFont font=QApplication::font();
     //font.setHintingPreference(QFont::HintingPreference::PreferNoHinting);
-    qDebug()<<QFontDatabase::families();
    // font.setFamily("Segoe UI");
     font.setFamilies({
                      "Segoe UI"

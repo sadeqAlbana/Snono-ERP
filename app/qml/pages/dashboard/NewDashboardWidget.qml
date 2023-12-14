@@ -3,7 +3,7 @@ import QtQuick.Controls.Basic;
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import QtQuick.Layouts
-
+import CoreUI
 //preferred <minimum/maximum < width/height
 Page {
     id: control
@@ -63,6 +63,15 @@ Page {
 
     background: Rectangle{
         color: palette.window
-        radius: 5
+        radius: CoreUI.borderRadius
+        gradient: Gradient{
+            stops: [
+                GradientStop{position: 1;color: Qt.lighter(control.palette.window,1.15);},
+                GradientStop{position: 0;color: control.palette.window;}
+
+            ]
+
+        }
+
     }
 }
