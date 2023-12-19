@@ -236,6 +236,8 @@ set(TARGET_QML_SOURCES
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
+    qml/pages/cashier/NewOnlineOrderPage.qml
+
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml

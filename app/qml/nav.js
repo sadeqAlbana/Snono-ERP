@@ -10,11 +10,20 @@ function navBar(){
                     "permission": "prm_view_dashboard",
                 },
                 {
-                    "title": qsTr("POS"),
-                    "category":qsTr("MAIN"),
-                    "image":"cil-screen-desktop",
-                    "path":"qrc:/PosFe/qml/pages/pos/session/SessionsPage.qml",
-                    "permission": "prm_purchase_products"
+                   "title": qsTr("Sales"),
+                   "category":qsTr("MAIN"),
+                   "image":"cil-screen-desktop",
+                   "path":"",
+                         "childItems":[
+                            {
+                               "title":qsTr("POS"),
+                               "path":"qrc:/PosFe/qml/pages/pos/session/SessionsPage.qml"
+                            },
+                            {
+                               "title":qsTr("Online"),
+                               "path":"qrc:/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml"
+                            },
+                         ]
                 },
                 {
                     "title":qsTr("Accounting"),
