@@ -237,7 +237,7 @@ set(TARGET_QML_SOURCES
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
     qml/pages/cashier/NewOnlineOrderPage.qml
-
+    qml/pages/cashier/BarqLocationsCB.qml
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml

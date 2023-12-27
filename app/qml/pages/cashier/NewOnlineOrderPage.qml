@@ -113,10 +113,57 @@ AppPage {
             }
         } //tableView
 
-        ColumnLayout {
-            Layout.column: window.mobileLayout ? 0 : 1
-            Layout.row: window.mobileLayout ? 1 : 0
-            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+        GridLayout {
+            //customer grid
+            Layout.alignment: Qt.AlignCenter
+            Layout.row: window.mobileLayout ? 2 : 1
+            columnSpacing: 15
+            Layout.column: 0
+            columns: window.mobileLayout ? 1 : 2
+
+
+            CTextField {
+                id: total
+                readOnly: true
+                text: Utils.formatNumber(cashierModel.total) + " IQD"
+                Layout.fillWidth: true
+                font.pixelSize: 20
+                implicitHeight: 50
+            }
+            CButton {
+                text: qsTr("Pay")
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
+                Layout.fillWidth: true
+                implicitHeight: 50
+                onClicked: parent.confirmPayment()
+                enabled: {
+                    if (deliverySwitch.enabled) {
+                        return cityCB.isValid && townCB.isValid
+                    } else {
+                        return tableView.rows > 0
+                    }
+                }
+            }
+
+            SwitchDelegate {
+                id: deliverySwitch
+                checked: Settings.externalDelivery
+                text: qsTr("Barq Delivery")
+                icon.source: "qrc:/images/icons/barq_logo.png"
+                icon.color: "transparent"
+                icon.height: 50
+                Layout.fillWidth: true
+                onCheckedChanged: {
+                    Settings.externalDelivery = checked
+                }
+            }
+
+            function confirmPayment() {
+                paymentDialog.amount = cashierModel.total
+                paymentDialog.paid = cashierModel.total
+                paymentDialog.open()
+            }
 
             CComboBox {
 
@@ -155,15 +202,7 @@ AppPage {
                 placeholderText: qsTr("Barcode...")
                 implicitHeight: 50
             }
-        }
 
-        GridLayout {
-            //customer grid
-            Layout.alignment: Qt.AlignCenter
-            Layout.row: window.mobileLayout ? 2 : 1
-            columnSpacing: 15
-            Layout.column: 0
-            columns: window.mobileLayout ? 1 : 2
             IconComboBox {
                 property bool isValid: currentText === editText
                 id: customerCB
@@ -242,113 +281,24 @@ AppPage {
                 placeholderText: qsTr("Note...")
                 leftIcon.name: "cil-notes"
             }
-            IconComboBox {
+            BarqLocationsCB {
                 id: cityCB
                 enabled: deliverySwitch.checked
-
-                property bool isValid: currentText === editText
-                Layout.fillWidth: true
-                implicitHeight: 50
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                leftIcon.name: "cil-location-pin"
-
-                model: BarqLocationsModel {
-                    id: cityModel
-                    //                    onDataRecevied: {
-                    //                        townModel.requestData();
-                    //                    }
-                }
                 onCurrentIndexChanged: {
                     if (currentIndex >= 0) {
-                        townModel.filter = {
-                            "parentId": cityModel.data(currentIndex, "id")
-                        }
-                        townCB.currentIndex = 0
-                    } else {
+                        townCB.parentLocationId = cityCB.model.data(currentIndex, "id")
 
+                        townCB.currentIndex = 0
                     }
                 }
             }
 
-            IconComboBox {
+            BarqLocationsCB {
                 id: townCB
                 enabled: deliverySwitch.checked
-                property bool isValid: currentText === editText
-                Layout.fillWidth: true
-                implicitHeight: 50
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                leftIcon.name: "cil-location-pin"
+                parentLocationId: 1
 
-                //                onCurrentIndexChanged:{
-                //                    var city=cityModel.data(cityCB.currentIndex,"name");
-                //                    var town=townModel.data(townCB.currentIndex,"name");
-                //                    addressLE.text=city + " - " + town
-
-                //                }
-                model: BarqLocationsModel {
-                    id: townModel
-                    filter: {
-                        "parentId": 1
-                    }
-                    onFilterChanged: requestData()
-                }
             }
         }
-
-        ColumnLayout {
-            //total and pay layout
-            Layout.alignment: Qt.AlignCenter
-            Layout.row: window.mobileLayout ? 3 : 1
-            Layout.column: window.mobileLayout ? 0 : 1
-
-            CTextField {
-                id: total
-                readOnly: true
-                text: Utils.formatNumber(cashierModel.total) + " IQD"
-                Layout.fillWidth: true
-                font.pixelSize: 20
-                implicitHeight: 50
-            }
-            CButton {
-                text: qsTr("Pay")
-                palette.button: "#2eb85c"
-                palette.buttonText: "#ffffff"
-                Layout.fillWidth: true
-                implicitHeight: 50
-                onClicked: parent.confirmPayment()
-                enabled: {
-                    if (deliverySwitch.enabled) {
-                        return cityCB.isValid && townCB.isValid
-                    } else {
-                        return tableView.rows > 0
-                    }
-                }
-            }
-
-            SwitchDelegate {
-                id: deliverySwitch
-                checked: Settings.externalDelivery
-                text: qsTr("Barq Delivery")
-                icon.source: "qrc:/images/icons/barq_logo.png"
-                icon.color: "transparent"
-                icon.height: 50
-                Layout.fillWidth: true
-                onCheckedChanged: {
-                    Settings.externalDelivery = checked
-                }
-            }
-
-            function confirmPayment() {
-                paymentDialog.amount = cashierModel.total
-                paymentDialog.paid = cashierModel.total
-                paymentDialog.open()
-            }
-        } //ColumnLayout
     } // GridLayout end
 }
