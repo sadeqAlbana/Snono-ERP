@@ -12,6 +12,7 @@ import CoreUI.Impl
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
+import CoreUI
 
 AppPage {
     id: page
@@ -122,183 +123,244 @@ AppPage {
             columns: window.mobileLayout ? 1 : 2
 
 
-            CTextField {
-                id: total
-                readOnly: true
-                text: Utils.formatNumber(cashierModel.total) + " IQD"
+
+
+
+            Card{
+                Layout.fillHeight: true
                 Layout.fillWidth: true
-                font.pixelSize: 20
-                implicitHeight: 50
+                padding: 10
+                palette.base: "transparent"
+                GridLayout{
+                    anchors.fill: parent
+                    columns: 1
+                    IconComboBox {
+                        property bool isValid: currentText === editText
+                        id: customerCB
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        model: CustomersModel {
+                            id: customersModel
+                            usePagination: false
+                            onAddCustomerReply: reply => {
+                                                    if (reply.status === 200) {
+                                                        cashierModel.updateCustomer(
+                                                            reply.customer.id)
+                                                    }
+                                                }
+                            Component.onCompleted: {
+                                usePagination = false
+                            }
+                        }
+                        textRole: "name"
+                        valueRole: "id"
+                        currentIndex: 0
+                        editable: true
+                        leftIcon.name: "cil-user"
+
+                        onCurrentIndexChanged: {
+                            if (currentIndex >= 0) {
+                                var currentCustomer = customersModel.jsonObject(
+                                            customerCB.currentIndex)
+                                phoneLE.text = customersModel.jsonObject(
+                                            customerCB.currentIndex).phone
+                                addressLE.text = customersModel.jsonObject(
+                                            customerCB.currentIndex).address
+                                tableView.model.updateCustomer(currentCustomer.id)
+                            } else {
+                                phoneLE.text = ""
+                                addressLE.text = ""
+                            }
+                        } //onCurrentIndexChanged
+
+                        onActiveFocusChanged: {
+                            var edit = editText
+                            if (!activeFocus && editText != currentText) {
+                                currentIndex = -1
+                            }
+                            editText = edit
+                        } //onActiveFocusChanged
+                    }
+                    CIconTextField {
+                        id: phoneLE
+                        enabled: !customerCB.isValid
+                        validator: RegularExpressionValidator {
+                            regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+                        }
+
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("Phone...")
+                        leftIcon.name: "cil-phone"
+                    }
+                    CIconTextField {
+                        id: addressLE
+                        enabled: !customerCB.isValid
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("Address...")
+                        leftIcon.name: "cil-location-pin"
+                    }
+                    CIconTextField {
+                        Layout.alignment: Qt.AlignTop
+                        id: notesLE
+                        //id: customerPhone
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("Note...")
+                        leftIcon.name: "cil-notes"
+                    }
+
+                }
             }
-            CButton {
-                text: qsTr("Pay")
-                palette.button: "#2eb85c"
-                palette.buttonText: "#ffffff"
+
+
+            Card{
+                Layout.fillHeight: true
                 Layout.fillWidth: true
-                implicitHeight: 50
-                onClicked: parent.confirmPayment()
-                enabled: {
-                    if (deliverySwitch.enabled) {
-                        return cityCB.isValid && townCB.isValid
-                    } else {
-                        return tableView.rows > 0
+                Layout.rowSpan: 2
+                palette.base: "transparent"
+                padding: 10
+                GridLayout{
+                    anchors.fill: parent;
+                    columns: 1
+
+
+
+
+
+                    function confirmPayment() {
+                        paymentDialog.amount = cashierModel.total
+                        paymentDialog.paid = cashierModel.total
+                        paymentDialog.open()
+                    }
+
+                    CComboBox {
+
+                        id: productsCB
+                        Layout.fillWidth: true
+                        textRole: "name"
+                        valueRole: "id"
+                        currentIndex: 0
+                        editable: true
+                        property bool dataReceived: false
+                        onCurrentValueChanged: {
+                            if (currentValue !== undefined && dataReceived)
+                                cashierModel.addProduct(currentValue)
+                        }
+
+                        model: AppNetworkedJsonModel {
+                            url: "/products/list"
+                            filter: {
+                                "only_variants": true
+                            }
+                            onDataRecevied: {
+                                productsCB.dataReceived = true
+                            }
+                        }
+                    }
+
+                    CTextField {
+                        id: numpadInput
+                        Layout.fillWidth: true
+
+
+                        onAccepted: {
+                            cashierModel.addProduct(text, true)
+                            text = ""
+                        }
+                        placeholderText: qsTr("Barcode...")
+                        implicitHeight: 50
+                    }
+
+                    CTextField {
+                        id: total
+                        readOnly: true
+                        text: Utils.formatNumber(cashierModel.total) + " IQD"
+                        Layout.fillWidth: true
+                        font.pixelSize: 20
+                        implicitHeight: 50
+                    }
+
+                    CButton {
+                        text: qsTr("Pay")
+                        palette.button: "#2eb85c"
+                        palette.buttonText: "#ffffff"
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        onClicked: parent.confirmPayment()
+                        enabled: {
+                            if (deliverySwitch.enabled) {
+                                return cityCB.isValid && townCB.isValid
+                            } else {
+                                return tableView.rows > 0
+                            }
+                        }
+                    }
+
+                    VerticalSpacer{
+
                     }
                 }
             }
 
-            SwitchDelegate {
-                id: deliverySwitch
-                checked: Settings.externalDelivery
-                text: qsTr("Barq Delivery")
-                icon.source: "qrc:/images/icons/barq_logo.png"
-                icon.color: "transparent"
-                icon.height: 50
+
+            Card{
+                Layout.fillHeight: true
                 Layout.fillWidth: true
-                onCheckedChanged: {
-                    Settings.externalDelivery = checked
-                }
-            }
-
-            function confirmPayment() {
-                paymentDialog.amount = cashierModel.total
-                paymentDialog.paid = cashierModel.total
-                paymentDialog.open()
-            }
-
-            CComboBox {
-
-                id: productsCB
-                Layout.fillWidth: true
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                property bool dataReceived: false
-                onCurrentValueChanged: {
-                    if (currentValue !== undefined && dataReceived)
-                        cashierModel.addProduct(currentValue)
-                }
-
-                model: AppNetworkedJsonModel {
-                    url: "/products/list"
-                    filter: {
-                        "only_variants": true
+                palette.base: "transparent"
+                padding: 10
+                GridLayout{
+                    id: grid
+                    columns: 2
+                    anchors.fill: parent;
+                    SwitchDelegate {
+                        id: deliverySwitch
+                        Layout.columnSpan: 2
+                        checked: Settings.externalDelivery
+                        text: qsTr("Barq Delivery")
+                        icon.source: "qrc:/images/icons/barq_logo.png"
+                        icon.color: "transparent"
+                        icon.height: 50
+                        Layout.fillWidth: true
+                        onCheckedChanged: {
+                            Settings.externalDelivery = checked
+                        }
                     }
-                    onDataRecevied: {
-                        productsCB.dataReceived = true
+
+                    CLabel{
+                        text: qsTr("City")
                     }
-                }
-            }
 
-            CTextField {
-                id: numpadInput
-                Layout.fillWidth: true
+                    BarqLocationsCB {
+                        id: cityCB
+                        enabled: deliverySwitch.checked
+                        onCurrentIndexChanged: {
+                            if (currentIndex >= 0) {
+                                townCB.parentLocationId = cityCB.model.data(currentIndex, "id")
 
+                                townCB.currentIndex = 0
+                            }
+                        }
+                    }
 
-                onAccepted: {
-                    cashierModel.addProduct(text, true)
-                    text = ""
-                }
-                placeholderText: qsTr("Barcode...")
-                implicitHeight: 50
-            }
+                    CLabel{
+                        text: qsTr("District")
+                    }
 
-            IconComboBox {
-                property bool isValid: currentText === editText
-                id: customerCB
-                Layout.fillWidth: true
-                implicitHeight: 50
-                model: CustomersModel {
-                    id: customersModel
-                    usePagination: false
-                    onAddCustomerReply: reply => {
-                                            if (reply.status === 200) {
-                                                cashierModel.updateCustomer(
-                                                    reply.customer.id)
-                                            }
-                                        }
-                    Component.onCompleted: {
-                        usePagination = false
+                    BarqLocationsCB {
+                        id: townCB
+                        enabled: deliverySwitch.checked
+                        parentLocationId: 1
+
                     }
                 }
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                leftIcon.name: "cil-user"
-
-                onCurrentIndexChanged: {
-                    if (currentIndex >= 0) {
-                        var currentCustomer = customersModel.jsonObject(
-                                    customerCB.currentIndex)
-                        phoneLE.text = customersModel.jsonObject(
-                                    customerCB.currentIndex).phone
-                        addressLE.text = customersModel.jsonObject(
-                                    customerCB.currentIndex).address
-                        tableView.model.updateCustomer(currentCustomer.id)
-                    } else {
-                        phoneLE.text = ""
-                        addressLE.text = ""
-                    }
-                } //onCurrentIndexChanged
-
-                onActiveFocusChanged: {
-                    var edit = editText
-                    if (!activeFocus && editText != currentText) {
-                        currentIndex = -1
-                    }
-                    editText = edit
-                } //onActiveFocusChanged
-            }
-            CIconTextField {
-                id: phoneLE
-                enabled: !customerCB.isValid
-                validator: RegularExpressionValidator {
-                    regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
-                }
-
-                Layout.alignment: Qt.AlignTop
-                Layout.fillWidth: true
-                implicitHeight: 50
-                placeholderText: qsTr("Phone...")
-                leftIcon.name: "cil-phone"
-            }
-            CIconTextField {
-                id: addressLE
-                enabled: !customerCB.isValid
-                Layout.alignment: Qt.AlignTop
-                Layout.fillWidth: true
-                implicitHeight: 50
-                placeholderText: qsTr("Address...")
-                leftIcon.name: "cil-location-pin"
-            }
-            CIconTextField {
-                Layout.alignment: Qt.AlignTop
-                id: notesLE
-                //id: customerPhone
-                Layout.fillWidth: true
-                implicitHeight: 50
-                placeholderText: qsTr("Note...")
-                leftIcon.name: "cil-notes"
-            }
-            BarqLocationsCB {
-                id: cityCB
-                enabled: deliverySwitch.checked
-                onCurrentIndexChanged: {
-                    if (currentIndex >= 0) {
-                        townCB.parentLocationId = cityCB.model.data(currentIndex, "id")
-
-                        townCB.currentIndex = 0
-                    }
-                }
-            }
-
-            BarqLocationsCB {
-                id: townCB
-                enabled: deliverySwitch.checked
-                parentLocationId: 1
-
             }
         }
+
+
+
     } // GridLayout end
 }
