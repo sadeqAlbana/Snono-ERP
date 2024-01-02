@@ -258,6 +258,19 @@ void AppSettings::setReceiptLinePrinter(bool newReceiptLinePrinter)
     emit receiptLinePrinterChanged();
 }
 
+int AppSettings::receiptCopiesWithExternalDelivery() const
+{
+    return value("receipt_copies_with_external_delivery",1).toInt();
+}
+
+void AppSettings::setReceiptCopiesWithExternalDelivery(int newReceiptCopiesWithExternalDelivery)
+{
+    if (receiptCopiesWithExternalDelivery() == newReceiptCopiesWithExternalDelivery)
+        return;
+    setValue("receipt_copies_with_external_delivery", newReceiptCopiesWithExternalDelivery);
+    emit receiptCopiesWithExternalDeliveryChanged();
+}
+
 QString AppSettings::about()
 {
     QFile file(":/About.md");

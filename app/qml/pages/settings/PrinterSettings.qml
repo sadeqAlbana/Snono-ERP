@@ -105,6 +105,17 @@ AppPage {
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.externalReceiptCopies)
         }
+
+        Label {
+            text: qsTr("Receipt copies with External Delivery")
+        }
+        IconComboBox {
+            id: receiptCopiesWithExternalDelivery
+            leftIcon.name: "cil-page"
+            model: [1, 2, 3, 4, 5]
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.receiptCopiesWithExternalDelivery)
+        }
     }
 
     footer: AppDialogFooter {
@@ -113,6 +124,8 @@ AppPage {
 
         onAccept: {
             Settings.receiptCopies = receiptCopies.currentValue
+            Settings.receiptCopiesWithExternalDelivery = receiptCopiesWithExternalDelivery.currentValue
+
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
             Settings.reportsPrinter=reportsPrinterCB.currentValue
             Settings.receiptPrinter=receiptPrinterCB.currentValue
@@ -124,6 +137,8 @@ AppPage {
         onCancel: {
             receiptCopies.currentIndex = receiptCopies.indexOfValue(
                         Settings.receiptCopies)
+            receiptCopiesWithExternalDelivery.currentIndex = receiptCopiesWithExternalDelivery.indexOfValue(
+                        Settings.receiptCopiesWithExternalDelivery)
             externalReceiptCopies.currentIndex = externalReceiptCopies.indexOfValue(
                         Settings.externalReceiptCopies)
         }

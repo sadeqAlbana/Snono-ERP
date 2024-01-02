@@ -83,6 +83,8 @@ public:
     bool receiptLinePrinter() const;
     void setReceiptLinePrinter(bool newReceiptLinePrinter);
 
+    int receiptCopiesWithExternalDelivery() const;
+    void setReceiptCopiesWithExternalDelivery(int newReceiptCopiesWithExternalDelivery);
 
 signals:
     void serverUrlChanged(QUrl url);
@@ -105,6 +107,8 @@ signals:
 
     void receiptLinePrinterChanged();
 
+    void receiptCopiesWithExternalDeliveryChanged();
+
 private:
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
@@ -113,6 +117,7 @@ private:
     Q_PROPERTY(bool externalDelivery READ externalDelivery WRITE setExternalDelivery NOTIFY externalDeliveryChanged)
 
     Q_PROPERTY(bool receiptLinePrinter READ receiptLinePrinter WRITE setReceiptLinePrinter NOTIFY receiptLinePrinterChanged FINAL)
+    Q_PROPERTY(int receiptCopiesWithExternalDelivery READ receiptCopiesWithExternalDelivery WRITE setReceiptCopiesWithExternalDelivery NOTIFY receiptCopiesWithExternalDeliveryChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

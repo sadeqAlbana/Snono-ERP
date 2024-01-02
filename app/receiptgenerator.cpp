@@ -487,7 +487,8 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
         printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
 
-        printer.setCopyCount(AppSettings::instance()->receiptCopies());
+        int copyCount = externalDeliveryId.isEmpty()? AppSettings::instance()->receiptCopies() : AppSettings::instance()->receiptCopiesWithExternalDelivery();
+        printer.setCopyCount(copyCount);
         printer.setPageSize(pageSize);
         doc.print(&printer);
     }
