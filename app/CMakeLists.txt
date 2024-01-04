@@ -107,6 +107,7 @@ set(TARGET_SOURCES
     models/stockvaluationmodel.h models/stockvaluationmodel.cpp
     models/draftordersmodel.h models/draftordersmodel.cpp
     models/draftorderformmodel.h models/draftorderformmodel.cpp
+    models/driversmodel.h models/driversmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -238,6 +239,9 @@ set(TARGET_QML_SOURCES
     qml/common/CrudViewPage.qml
     qml/pages/cashier/NewOnlineOrderPage.qml
     qml/pages/cashier/BarqLocationsCB.qml
+    qml/pages/delivery/DriversPage.qml
+    qml/pages/delivery/DriverForm.qml
+    qml/pages/delivery/ShipmentsPage.qml
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
@@ -263,6 +267,7 @@ qt_add_qml_module(appposfe
 
     QML_FILES
         ${TARGET_QML_SOURCES}
+        RESOURCES
 )
 set(INCLUDE_DIR
     models

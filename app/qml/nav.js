@@ -124,6 +124,21 @@ function navBar(){
                     "permission": "prm_view_customers"
                 },
                 {
+                    "title":qsTr("Delivery"),
+                    "category":qsTr("MAIN"),
+                    "image":"cil-user",
+                    "path":"",
+                    "permission": "prm_view_deliveries",
+                    "childItems":[
+                        {
+                            "title":qsTr("Drivers List"),
+                            "path":"qrc:/PosFe/qml/pages/delivery/DriversPage.qml",
+                            "permission": "prm_view_drivers"
+                        },
+
+                    ]
+                },
+                {
                     "title":qsTr("Vendors"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
