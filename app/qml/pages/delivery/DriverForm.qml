@@ -14,9 +14,18 @@ CFormView {
     rowSpacing: 30
 
     header.visible: true
-    url: "/user"
+    url: "/driver"
 
     columns: 4
+
+    CComboBox{
+        model: AppNetworkedJsonModel{
+            url: "/user/list"
+        }
+
+       valueRole: "id"
+       textRole: "username"
+    }
 
     CLabel{
         Layout.columnSpan: 4
