@@ -76,10 +76,18 @@ AppDataPage {
                         displayName: qsTr("Quantity")
                         key: "qty"
                     },
+
+
                     JsonModelColumn {
                         displayName: qsTr("Unit Price")
                         key: "unit_price"
                         type: "currency"
+                    },
+
+                    JsonModelColumn {
+                        displayName: qsTr("Discount")
+                        key: "discount"
+                        type: "percentage"
                     },
                     JsonModelColumn {
                         displayName: qsTr("Subtotal")

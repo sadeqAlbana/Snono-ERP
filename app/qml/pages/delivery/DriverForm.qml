@@ -18,14 +18,7 @@ CFormView {
 
     columns: 4
 
-    CComboBox{
-        model: AppNetworkedJsonModel{
-            url: "/user/list"
-        }
 
-       valueRole: "id"
-       textRole: "username"
-    }
 
     CLabel{
         Layout.columnSpan: 4
@@ -34,10 +27,30 @@ CFormView {
         color: "red"
     }
 
+    CCheckBox{
+        id: useExistingUser;
+        objectName: "use_existing_user"
+        text: qsTr("use an existing user")
+    }
+
+    CComboBox{
+        objectName: "user_id"
+        enabled: useExistingUser.checked
+        model: AppNetworkedJsonModel{
+            url: "/user/list"
+        }
+
+       valueRole: "id"
+       textRole: "username"
+       Layout.columnSpan: 3
+    }
+
     CLabel {
+
         text: qsTr("Name")
     }
     CIconTextField {
+
         leftIcon.name: "cil-user"
         objectName: "username"
         Layout.fillWidth: true
@@ -46,18 +59,26 @@ CFormView {
     }
 
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("First Name")
     }
     CIconTextField {
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-user"
         objectName: "first_name"
         Layout.fillWidth: true
 
     }
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Last Name")
     }
     CIconTextField {
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-user"
         objectName: "last_name"
         Layout.fillWidth: true
@@ -76,9 +97,13 @@ CFormView {
         }
     }
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Email")
     }
     CIconTextField {
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cib-mail-ru"
         objectName: "email"
         Layout.fillWidth: true
@@ -86,21 +111,29 @@ CFormView {
     }
 
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Address")
     }
 
     CIconTextField {
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-location-pin"
         objectName: "address"
         Layout.fillWidth: true
     }
 
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Password")
     }
 
     CIconTextField {
         id: tf
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-lock-locked"
         objectName: "password"
         Layout.fillWidth: true
@@ -110,11 +143,15 @@ CFormView {
 
 
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Role")
     }
 
     IconComboBox {
         id: cb
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-badge"
         objectName: "acl_group_id"
         valueRole: "id"
