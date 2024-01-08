@@ -46,10 +46,12 @@ CFormView {
     }
 
     CLabel {
+        visible: !useExistingUser.checked
 
         text: qsTr("Name")
     }
     CIconTextField {
+        visible: !useExistingUser.checked
 
         leftIcon.name: "cil-user"
         objectName: "username"
@@ -85,9 +87,13 @@ CFormView {
     }
 
     CLabel {
+        visible: !useExistingUser.checked
+
         text: qsTr("Phone")
     }
     CIconTextField {
+        visible: !useExistingUser.checked
+
         leftIcon.name: "cil-phone"
         objectName: "phone"
         Layout.fillWidth: true
