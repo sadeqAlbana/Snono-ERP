@@ -98,9 +98,9 @@ CFormView {
         objectName: "phone"
         Layout.fillWidth: true
         helpBlock.text: qsTr("Invalid Phone Number")
-        validator: RegularExpressionValidator{
-            regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
-        }
+        // validator: RegularExpressionValidator{
+        //     regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+        // }
     }
     CLabel {
         visible: !useExistingUser.checked

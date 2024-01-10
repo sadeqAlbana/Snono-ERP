@@ -13,8 +13,6 @@ CFormView {
     rowSpacing: 30
     title: qsTr("Customer")
     url: "/customer"
-
-
     columns: 4
     CLabel {
         text: qsTr("Name")
