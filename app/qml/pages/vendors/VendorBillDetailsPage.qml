@@ -46,23 +46,7 @@ AppDataPage {
             rowHeightProvider: function (row) {
                 return 50
             }
-            delegate: DelegateChooser {
-                role: "delegateType"
-                DelegateChoice {
-                    roleValue: "text"
-                    CTableViewDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "currency"
-                    CurrencyDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "percentage"
-                    SuffixDelegate {
-                        suffix: "%"
-                    }
-                }
-            }
+            delegate: AppDelegateChooser{}
 
             model: JsonModel {
                 records: page.dataRecord?.items?? []
@@ -71,6 +55,11 @@ AppDataPage {
                         displayName: qsTr("Product")
                         key: "name"
                         parentKey: "products"
+                        type: "link"
+                        metadata: {
+                        "link": "qrc:/PosFe/qml/pages/products/ProductForm.qml",
+                        "linkKey": "product_id"
+                        }
                     },
                     JsonModelColumn {
                         displayName: qsTr("Quantity")

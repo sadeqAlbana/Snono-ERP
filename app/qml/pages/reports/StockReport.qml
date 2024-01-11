@@ -49,6 +49,8 @@ AppPage{
             actions: [
                 CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
+
+            delegate: AppDelegateChooser{}
             model: StockReportModel{
                 id: model
 

@@ -37,7 +37,7 @@ AppPage{
             Layout.fillWidth: true
 //            title: "categories"
 
-
+            delegate: AppDelegateChooser{}
             model: StockMovesModel{
                 id: model;
             } //model end

@@ -9,7 +9,13 @@
 #include <QStandardPaths>
 #include <QTextStream>
 StockReportModel::StockReportModel(QObject *parent) :
-     AppNetworkedJsonModel("/reports/stock",JsonModelColumnList(),parent,false)
+    AppNetworkedJsonModel("/reports/stock",{{"id",tr("ID")},
+                                                  {"name",tr("Product"),QString(),false,"link",
+                                                   QVariantMap{{"link","qrc:/PosFe/qml/pages/products/ProductForm.qml"},
+                                                          {"linkKey","id"}}},
+                                                   {"stock",tr("Stock")},
+
+                                               },parent,false)
 {
 
 }

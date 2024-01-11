@@ -3,7 +3,9 @@
 StockValuationModel::StockValuationModel(QObject *parent)
     : AppNetworkedJsonModel{"/stock/valuation",{
                                                 {"description",tr("Description")},
-                                                {"name",tr("Product"),"product"},
+                                                 {"name",tr("Product"),"product",false,"link",
+                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/products/ProductForm.qml"},
+                                                              {"linkKey","product_id"}}},
                                                 {"qty",tr("Qty")},
                                                  {"cost",tr("Value")},
                                                 {"total",tr("Total")},
