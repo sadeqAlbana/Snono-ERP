@@ -98,6 +98,22 @@ Card {
             }
 
             CLabel{
+                text: qsTr("Costing Method")
+            }
+
+            IconComboBox{
+                objectName: "costing_method"
+                enabled: !keyValue
+                Layout.fillWidth: true
+                textRole: "text"
+                valueRole: "value"
+                model:ListModel {
+                    ListElement { text: qsTr("FIFO");   value: "FIFO";}
+                    ListElement { text: qsTr("AVCO");    value: "AVCO";}
+                }
+            }
+
+            CLabel{
                 text: qsTr("Category")
             }
 
