@@ -16,11 +16,12 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
     {"id",tr("ID")} ,
 //    {"thumb",tr("Image"),QString(),"image"} ,
     {"name",tr("Name")} ,
+
     // {"sku",tr("SKU")} ,
 //    {"size",tr("Size")} ,
     {"cost",tr("Cost"),QString(),false,"currency"} ,
 //    {"current_cost","Current Cost",QString(), "currency"} ,
-    {"qty",tr("Stock"),"products_stocks"} ,
+        {"stock",tr("Stock"),QString(),false,"product_stock"} ,
     {"list_price",tr("List Price"),QString(),false,"currency"}};
     if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
         list.removeAt(2);

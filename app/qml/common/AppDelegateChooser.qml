@@ -13,4 +13,6 @@ DelegateChooser{
     DelegateChoice{ roleValue: "date"; DateDelegate{}}
     DelegateChoice{ roleValue: "datetime"; DateTimeDelegate{}}
     DelegateChoice{ roleValue: "link"; LinkDelegate{}}
+    DelegateChoice{ roleValue: "product_stock"; ProductStockDelegate{}}
+
 }

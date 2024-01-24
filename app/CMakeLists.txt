@@ -234,6 +234,7 @@ set(TARGET_QML_SOURCES
     qml/common/DownloadProgressBar.qml
     qml/common/AppDataPage.qml
     qml/common/BasicViewPage.qml
+    qml/common/ProductStockDelegate.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
