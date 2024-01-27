@@ -142,12 +142,23 @@ Card {
 
             }
 
+
+
+            CCheckBox{
+                id: haveVariants
+                text: qsTr("Have Variants")
+                Layout.columnSpan: 2
+                objectName: "have_variants"
+            }
+
+
             CLabel{
                 text: qsTr("Parent Product")
             }
 
             CFilterComboBox{
                 id: cb
+                enabled: !haveVariants.checked
                 Layout.fillWidth: true
                 objectName: "parent_id"
 //                defaultEntry: {"id:":-1, "name": "None"}

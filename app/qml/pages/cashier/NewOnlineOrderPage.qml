@@ -194,15 +194,38 @@ AppPage {
                         placeholderText: qsTr("Phone...")
                         leftIcon.name: "cil-phone"
                     }
-                    CIconTextField {
-                        id: addressLE
-                        enabled: !customerCB.isValid
-                        Layout.alignment: Qt.AlignTop
-                        Layout.fillWidth: true
-                        implicitHeight: 50
-                        placeholderText: qsTr("Address...")
-                        leftIcon.name: "cil-location-pin"
+                    RowLayout{
+                        CIconTextField {
+                            enabled: !customerCB.isValid
+                            id: provTF
+                            Layout.alignment: Qt.AlignTop
+                            Layout.fillWidth: true
+                            implicitHeight: 50
+                            placeholderText: qsTr("Province...")
+                            leftIcon.name: "cil-location-pin"
+                        }
+                        CIconTextField {
+                            id: districtTF
+                            enabled: !customerCB.isValid
+                            Layout.alignment: Qt.AlignTop
+                            Layout.fillWidth: true
+                            implicitHeight: 50
+                            placeholderText: qsTr("District...")
+                            leftIcon.name: "cil-location-pin"
+                        }
+
+                        CIconTextField {
+                            id: addressLE
+                            enabled: !customerCB.isValid
+                            Layout.alignment: Qt.AlignTop
+                            Layout.fillWidth: true
+                            implicitHeight: 50
+                            placeholderText: qsTr("Address Details...")
+                            leftIcon.name: "cil-location-pin"
+                        }
+
                     }
+
                     CIconTextField {
                         Layout.alignment: Qt.AlignTop
                         id: notesLE
@@ -314,11 +337,10 @@ AppPage {
                 padding: 10
                 GridLayout{
                     id: grid
-                    columns: 2
+                    columns: 6
                     anchors.fill: parent;
                     SwitchDelegate {
                         id: deliverySwitch
-                        Layout.columnSpan: 2
                         checked: Settings.externalDelivery
                         text: qsTr("Barq Delivery")
                         icon.source: "qrc:/images/icons/barq_logo.png"

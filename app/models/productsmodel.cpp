@@ -14,6 +14,8 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
 
     JsonModelColumnList list{
     {"id",tr("ID")} ,
+        {"parent_id",tr("PID")} ,
+
 //    {"thumb",tr("Image"),QString(),"image"} ,
     {"name",tr("Name")} ,
 

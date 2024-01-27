@@ -4,7 +4,6 @@
 #include <QAbstractProxyModel>
 #include <QQmlEngine>
 
-class CategoriesModel;
 
 class TreeProxyModel : public QAbstractProxyModel
 {
@@ -39,9 +38,8 @@ private:
     int childNumber(int ID) const;
     int GetID(int ParentID, int row) const;
     int  IDColumn=0;
-    int pIDColumn=2;
-    int DataColumn=1;
-    CategoriesModel *mdl;
+    int pIDColumn=1;
+    int DataColumn=2;
 };
 
 #endif // TREEPROXYMODEL_H

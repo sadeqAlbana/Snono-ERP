@@ -1,16 +1,10 @@
 #include "treeproxymodel.h"
-#include "../categoriesmodel.h"
 #include <QTimer>
 #include <QDebug>
 TreeProxyModel::TreeProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
 {
-    mdl = new CategoriesModel();
-//    setSourceModel(mdl);
-    QTimer::singleShot(1000,[this](){
-        qDebug()<<"setting model";
-       this->setSourceModel(this->mdl);
-    });
+
 }
 
 

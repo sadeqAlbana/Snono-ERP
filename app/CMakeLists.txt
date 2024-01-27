@@ -108,7 +108,7 @@ set(TARGET_SOURCES
     models/draftordersmodel.h models/draftordersmodel.cpp
     models/draftorderformmodel.h models/draftorderformmodel.cpp
     models/driversmodel.h models/driversmodel.cpp
-
+    models/productsproxymodel.h models/productsproxymodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
