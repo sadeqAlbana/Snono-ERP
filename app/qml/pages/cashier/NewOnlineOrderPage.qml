@@ -134,66 +134,70 @@ AppPage {
                 GridLayout{
                     anchors.fill: parent
                     columns: 1
-                    IconComboBox {
-                        property bool isValid: currentText === editText
-                        id: customerCB
-                        Layout.fillWidth: true
-                        implicitHeight: 50
-                        model: CustomersModel {
-                            id: customersModel
-                            usePagination: false
-                            onAddCustomerReply: reply => {
-                                                    if (reply.status === 200) {
-                                                        cashierModel.updateCustomer(
-                                                            reply.customer.id)
+
+                    RowLayout{
+                        IconComboBox {
+                            property bool isValid: currentText === editText
+                            id: customerCB
+                            Layout.fillWidth: true
+                            implicitHeight: 50
+                            model: CustomersModel {
+                                id: customersModel
+                                usePagination: false
+                                onAddCustomerReply: reply => {
+                                                        if (reply.status === 200) {
+                                                            cashierModel.updateCustomer(
+                                                                reply.customer.id)
+                                                        }
                                                     }
-                                                }
-                            Component.onCompleted: {
-                                usePagination = false
+                                Component.onCompleted: {
+                                    usePagination = false
+                                }
                             }
+                            textRole: "name"
+                            valueRole: "id"
+                            currentIndex: 0
+                            editable: true
+                            leftIcon.name: "cil-user"
+
+                            onCurrentIndexChanged: {
+                                if (currentIndex >= 0) {
+                                    var currentCustomer = customersModel.jsonObject(
+                                                customerCB.currentIndex)
+                                    phoneLE.text = customersModel.jsonObject(
+                                                customerCB.currentIndex).phone
+                                    addressLE.text = customersModel.jsonObject(
+                                                customerCB.currentIndex).address
+                                    tableView.model.updateCustomer(currentCustomer.id)
+                                } else {
+                                    phoneLE.text = ""
+                                    addressLE.text = ""
+                                }
+                            } //onCurrentIndexChanged
+
+                            onActiveFocusChanged: {
+                                var edit = editText
+                                if (!activeFocus && editText != currentText) {
+                                    currentIndex = -1
+                                }
+                                editText = edit
+                            } //onActiveFocusChanged
                         }
-                        textRole: "name"
-                        valueRole: "id"
-                        currentIndex: 0
-                        editable: true
-                        leftIcon.name: "cil-user"
-
-                        onCurrentIndexChanged: {
-                            if (currentIndex >= 0) {
-                                var currentCustomer = customersModel.jsonObject(
-                                            customerCB.currentIndex)
-                                phoneLE.text = customersModel.jsonObject(
-                                            customerCB.currentIndex).phone
-                                addressLE.text = customersModel.jsonObject(
-                                            customerCB.currentIndex).address
-                                tableView.model.updateCustomer(currentCustomer.id)
-                            } else {
-                                phoneLE.text = ""
-                                addressLE.text = ""
+                        CIconTextField {
+                            id: phoneLE
+                            enabled: !customerCB.isValid
+                            validator: RegularExpressionValidator {
+                                regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
                             }
-                        } //onCurrentIndexChanged
 
-                        onActiveFocusChanged: {
-                            var edit = editText
-                            if (!activeFocus && editText != currentText) {
-                                currentIndex = -1
-                            }
-                            editText = edit
-                        } //onActiveFocusChanged
-                    }
-                    CIconTextField {
-                        id: phoneLE
-                        enabled: !customerCB.isValid
-                        validator: RegularExpressionValidator {
-                            regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+                            Layout.alignment: Qt.AlignTop
+                            Layout.fillWidth: true
+                            implicitHeight: 50
+                            placeholderText: qsTr("Phone...")
+                            leftIcon.name: "cil-phone"
                         }
-
-                        Layout.alignment: Qt.AlignTop
-                        Layout.fillWidth: true
-                        implicitHeight: 50
-                        placeholderText: qsTr("Phone...")
-                        leftIcon.name: "cil-phone"
                     }
+
                     RowLayout{
                         CIconTextField {
                             enabled: !customerCB.isValid
