@@ -4,14 +4,15 @@
 ProductsProxyModel::ProductsProxyModel(QObject *parent)
     : TreeProxyModel{parent}
 {
-    ProductsModel *mdl= new ProductsModel(this);
-
+//    ProductsModel *mdl= new ProductsModel(this);
 //    mdl->refresh();
 
-    QTimer::singleShot(10000,[this,mdl](){
-        setSourceModel(mdl);
+//    connect(mdl,&NetworkedJsonModel::dataRecevied,this,[this,mdl]{
 
+//        this->setSourceModel(mdl);
 
-    });
+//    });
+
+//    QTimer::singleShot(100,this,[this,mdl](){this->setSourceModel(mdl);});
 
 }

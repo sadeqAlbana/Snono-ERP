@@ -62,7 +62,13 @@ QModelIndex TreeProxyModel::index(int row, int column, const QModelIndex &parent
 
 int TreeProxyModel::rowCount(const QModelIndex &parent) const
 {
+    if(!sourceModel()){
+        return 0;
+    }
     int ID=0;
+    if(parent.internalId()==0){
+        return 10;
+    }
     if(parent.isValid())
         ID=parent.internalId();
 
@@ -77,8 +83,24 @@ int TreeProxyModel::rowCount(const QModelIndex &parent) const
 
 int TreeProxyModel::columnCount(const QModelIndex &parent) const
 {
+    if(!sourceModel()){
+        return 0;
+    }
     Q_UNUSED(parent)
     return sourceModel()->columnCount();
+}
+
+QVariant TreeProxyModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if(!sourceModel()){
+        return QVariant();
+    }
+    return sourceModel()->headerData(section,orientation,role);
+}
+
+bool TreeProxyModel::hasChildren(const QModelIndex &parent) const
+{
+    return hasChildren(parent.internalId());
 }
 
 int TreeProxyModel::getParentId(int childId) const
@@ -152,6 +174,9 @@ int TreeProxyModel::level(QModelIndex index)
 
 bool TreeProxyModel::hasChildren(const int ParentID) const
 {
+    if(!sourceModel()){
+        return false;
+    }
     for(int i=0; i<sourceModel()->rowCount() ; i++)
         if(sourceModel()->index(i,pIDColumn).data().toInt()==ParentID)
             return true;

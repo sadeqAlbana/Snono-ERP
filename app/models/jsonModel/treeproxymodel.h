@@ -21,10 +21,10 @@ public:
     virtual int rowCount(const QModelIndex &parent=QModelIndex()) const override;
     virtual int columnCount(const QModelIndex &parent) const override;
 
-    virtual QVariant headerData (int section, Qt::Orientation orientation, int role) const override { return sourceModel()->headerData(section,orientation,role); }
+    virtual QVariant headerData (int section, Qt::Orientation orientation, int role) const override;
     virtual bool setHeaderData(int section, Qt::Orientation orientation, const  QVariant &value, int role) override { return sourceModel()->setHeaderData(section,orientation,value,role); }
 
-    inline virtual bool hasChildren(const QModelIndex &parent) const override{return hasChildren(parent.internalId());} //inline it or not ?
+    virtual bool hasChildren(const QModelIndex &parent) const override;
     virtual bool hasChildren(const int ParentID) const;
     virtual Qt::ItemFlags flags(const QModelIndex &index) const override;
 

@@ -49,6 +49,9 @@ AppPage{
             Layout.fillWidth: true
             Layout.fillHeight: true
             model: ProductsProxyModel{
+                sourceModel: ProductsModel{
+                    id:model
+                }
 
             }
         }
