@@ -76,6 +76,8 @@ public:
     Q_INVOKABLE NetworkResponse * removeAttribute(const QString &id);
 
     Q_INVOKABLE NetworkResponse * removeDraftOrder(const int id);
+    Q_INVOKABLE NetworkResponse * newPosSession();
+    Q_INVOKABLE NetworkResponse * requestNewCart();
 
 
 signals:

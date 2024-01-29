@@ -41,8 +41,8 @@ AppPage {
     function processCart() {
         let deliveryInfo = {}
         if (deliverySwitch.checked) {
-            deliveryInfo["city_id"] = cityModel.data(cityCB.currentIndex, "id")
-            deliveryInfo["town_id"] = townModel.data(townCB.currentIndex, "id")
+            deliveryInfo["city_id"] = cityCB.model.data(cityCB.currentIndex, "id")
+            deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex, "id")
         }
 
         cashierModel.processCart(cashierModel.total, 0, notesLE.text,

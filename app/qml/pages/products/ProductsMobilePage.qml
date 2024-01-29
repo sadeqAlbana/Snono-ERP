@@ -45,16 +45,123 @@ AppPage{
 
 
 
-        CTreeView{
-            Layout.fillWidth: true
+        ListView{
+            id: tableView
             Layout.fillHeight: true
-            model: ProductsProxyModel{
-                sourceModel: ProductsModel{
-                    id:model
-                }
+            Layout.fillWidth: true
+            clip: true
+            delegate: ItemDelegate{
+                id: control
+                icon.source: model.thumb
+                width: ListView.view.width
+                height: 140
+                implicitHeight: 140
+                icon.color: "transparent"
+                icon.cache: true
+                text: model.sku
+                spacing: 10
+                property var stock: model["products_stocks.qty"]? model["products_stocks.qty"]: 0
+                property string name: model.name
+                property real listPrice: model.list_price
 
+                contentItem: RowLayout{
+                    spacing: 10
+                    LoadingImage{
+                        Layout.fillHeight: true
+                        Layout.fillWidth: false
+                        cache: true
+                        antialiasing: true
+                        fillMode: Image.PreserveAspectFit
+                        source: model.thumb?? ""
+                        Layout.preferredWidth: 70
+                    }
+
+                    ColumnLayout{
+                        spacing: 4
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+//                        Text{
+//                            color: "#000000";
+//                            text: control.text
+//                            font.pixelSize: metrics.font.pixelSize;
+//                            font.weight: Font.Medium
+//                            horizontalAlignment: Text.AlignLeft
+//                            verticalAlignment: Text.AlignVCenter
+//                            Layout.fillWidth: true
+
+//                        }
+                        Text{
+                            //color: control.palette.mid
+                            text: control.name
+                            font.weight: Font.DemiBold
+                            font.pixelSize: metrics.font.pixelSize*1.3
+
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+
+                        }
+                        Text{
+                            //color: "#A0A0A0"
+                            text: qsTr("Stock: ")+"<b>"+control.stock+"</b>"
+                            textFormat: Text.RichText
+                            font.pixelSize: metrics.font.pixelSize*1.3
+                            font.weight: Font.DemiBold
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+                        }
+
+                        Text{
+                            //color: "#A0A0A0"
+                            font.pixelSize: metrics.font.pixelSize*1.3
+
+                            text: Utils.formatCurrency(control.listPrice)
+                            font.weight: Font.DemiBold
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+                        }
+
+
+                        Text{
+                            //color: "#A0A0A0"
+                            font.pixelSize: metrics.font.pixelSize*1.1
+
+                            text: model.sku?? ""
+                            font.weight: Font.Medium
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillWidth: true
+
+                        }
+
+                        MenuSeparator{
+                            Layout.fillWidth: true
+                        }
+
+                    }
+
+
+
+                }//contentItem
             }
-        }
+
+            Rectangle{
+                width: parent.width
+                height: 1
+                color: "#000000"
+                opacity: 0.17
+                anchors.bottom: parent.bottom
+            }//delegate
+            model: ProductsModel{
+                id: model
+                filter: {"only_variants":true}
+            }//model
+
+        }//listView
 
 
 

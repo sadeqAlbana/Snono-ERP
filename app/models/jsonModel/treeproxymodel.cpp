@@ -24,11 +24,11 @@ QModelIndex TreeProxyModel::mapFromSource(const QModelIndex &sourceIndex) const
 
 QModelIndex TreeProxyModel::mapToSource(const QModelIndex &proxyIndex) const
 {
-    if(!proxyIndex.isValid())
-        return QModelIndex();
+//    if(!proxyIndex.isValid())
+//        return QModelIndex();
 
     int id = proxyIndex.internalId();
-
+    qDebug()<<"mapToSource:" << id;
     for(int i=0 ; i<sourceModel()->rowCount() ; i++)
         if(sourceModel()->index(i,IDColumn).data().toInt()==id)
             return sourceModel()->index(i, proxyIndex.column());
@@ -66,9 +66,7 @@ int TreeProxyModel::rowCount(const QModelIndex &parent) const
         return 0;
     }
     int ID=0;
-    if(parent.internalId()==0){
-        return 10;
-    }
+
     if(parent.isValid())
         ID=parent.internalId();
 

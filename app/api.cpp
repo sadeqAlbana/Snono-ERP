@@ -541,4 +541,14 @@ NetworkResponse *Api::removeDraftOrder(const int id)
     return PosNetworkManager::instance()->deleteResource(url);
 }
 
+NetworkResponse *Api::newPosSession()
+{
+    return PosNetworkManager::instance()->get(QUrl("/posssession/request"));
+}
+
+NetworkResponse *Api::requestNewCart()
+{
+    return PosNetworkManager::instance()->get(QUrl("/pos/cart/request"));
+}
+
 
