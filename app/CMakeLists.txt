@@ -196,6 +196,8 @@ set(TARGET_QML_SOURCES
     qml/pages/products/AttributesShowPage.qml
     qml/pages/products/ProductAttributesPage.qml
     qml/pages/settings/AboutPage.qml
+    qml/pages/locations/LocationsPage.qml
+    qml/pages/locations/LocationForm.qml
     qml/common/CCheckableFilterComboBox.qml
     qml/Nav.qml
     qml/AppMainScreen.qml
@@ -269,6 +271,7 @@ qt_add_qml_module(appposfe
     QML_FILES
         ${TARGET_QML_SOURCES}
         RESOURCES
+
 )
 set(INCLUDE_DIR
     models

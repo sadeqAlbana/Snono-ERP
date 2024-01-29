@@ -124,6 +124,13 @@ function navBar(){
                     "permission": "prm_view_customers"
                 },
                 {
+                    "title":qsTr("Locations"),
+                    "category":qsTr("MAIN"),
+                    "image":"cil-location-pin",
+                    "path":"qrc:/PosFe/qml/pages/locations/LocationsPage.qml",
+                    "permission": "prm_view_customers"
+                },
+                {
                     "title":qsTr("Delivery"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
