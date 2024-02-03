@@ -46,13 +46,6 @@ BasicViewPage {
         CAction {
             text: qsTr("Delete")
             icon.name: "cil-delete"
-//            onTriggered: Api.removeTax(model.data(page.view.currentRow,
-//                                                  "id")).subscribe(
-//                             function (response) {
-//                                 if (response.json("status") === 200) {
-//                                     model.refresh()
-//                                 }
-//                             })
             permission: page.deletePermission
         }
     ]

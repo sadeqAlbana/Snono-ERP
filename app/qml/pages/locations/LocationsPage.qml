@@ -17,15 +17,12 @@ CrudViewPage {
     id: page
     title: qsTr("Locations")
     delegate: AppDelegateChooser {
-        DelegateChoice {
-            roleValue: "taxType"
-            TaxTypeDelegate {}
-        }
+
     }
-    model: TaxesModel{}
-    basePath: "qrc:/PosFe/qml/pages/taxes";
-    formFile: "TaxForm.qml"
-    addPermission: "prm_add_taxes"
-    editPermission: "prm_edit_taxes"
-    deletePermission: "prm_remove_taxes"
+    model: LocationsModel{}
+    basePath: "qrc:/PosFe/qml/pages/locations";
+    formFile: "LocationForm.qml"
+    addPermission: "prm_add_location"
+    editPermission: "prm_edit_locations"
+    deletePermission: "prm_remove_locations"
 }
