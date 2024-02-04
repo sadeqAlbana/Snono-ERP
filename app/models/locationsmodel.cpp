@@ -13,7 +13,7 @@ LocationsModel::LocationsModel(QObject *parent) : AppNetworkedJsonModel ("/locat
                                            {"floor",tr("Floor")} ,
                                            {"apartment",tr("Apartment")} ,
                                            {"phone",tr("Phone")},
-                                           {"hints",tr("Hints")}
+                                           {"details",tr("Details")}
 
                                           } ,parent)
 {
