@@ -189,9 +189,17 @@ CFormView {
             longitude: 10.7686
         }
 
-
+        map.activeMapType: map.supportedMapTypes[map.supportedMapTypes.length - 1]
         map.plugin: Plugin {
             name: "osm"
+
+            PluginParameter {
+                name: "osm.mapping.custom.host"
+
+                // OSM plugin will auto-append if .png isn't suffix, and that screws up apikey which silently
+                // fails authentication (only Wireshark revealed it)
+                value: "http://tile.thunderforest.com/landscape/%z/%x/%y.png?apikey=2759c68bec6e42dc8317e23919289d24&fake=.png"
+            }
             //specify plugin parameters if necessary
             //PluginParameter {...}
             //PluginParameter {...}
