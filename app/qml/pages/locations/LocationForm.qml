@@ -174,6 +174,17 @@ CFormView {
         Layout.columnSpan: control.columns
     }
 
+    TextField{
+        objectName: "lo"
+        visible: false
+        text: view.map.center.longitude
+    }
+    TextField{
+        objectName: "la"
+        visible: false
+        text: view.map.center.latitude
+    }
+
 
     MapView {
         id: view
@@ -189,22 +200,75 @@ CFormView {
             longitude: 10.7686
         }
 
-        map.activeMapType: map.supportedMapTypes[map.supportedMapTypes.length - 1]
+        // map.activeMapType: map.supportedMapTypes[map.supportedMapTypes.length - 1]
+        // map.plugin: Plugin {
+        //     name: "osm"
+
+        //     PluginParameter {
+        //         name: "osm.mapping.custom.host"
+
+        //         // OSM plugin will auto-append if .png isn't suffix, and that screws up apikey which silently
+        //         // fails authentication (only Wireshark revealed it)
+        //         value: "http://tile.thunderforest.com/landscape/%z/%x/%y.png?apikey=2759c68bec6e42dc8317e23919289d24&fake=.png"
+        //     }
+        //     //specify plugin parameters if necessary
+        //     //PluginParameter {...}
+        //     //PluginParameter {...}
+        //     //...
+        // }
+
+
+
         map.plugin: Plugin {
-            name: "osm"
+            id: googleMaps
+            name: "googlemaps" // "mapboxgl", "esri", ...
+            // specify plugin parameters if necessary
+             // PluginParameter {
+             //     name:"googlemaps.maps.apikey"
+             //     value:"AIzaSyAl4e5Qaf5mYadK_BH3G7721yEcgt_Xcu0"
+             // }
 
-            PluginParameter {
-                name: "osm.mapping.custom.host"
+             PluginParameter { name: "googlemaps.useragent"; value: "mygreatapp" }
 
-                // OSM plugin will auto-append if .png isn't suffix, and that screws up apikey which silently
-                // fails authentication (only Wireshark revealed it)
-                value: "http://tile.thunderforest.com/landscape/%z/%x/%y.png?apikey=2759c68bec6e42dc8317e23919289d24&fake=.png"
-            }
-            //specify plugin parameters if necessary
-            //PluginParameter {...}
-            //PluginParameter {...}
-            //...
+             PluginParameter { name: "googlemaps.cachefolder"; value: "/gmaps_cache" }
+
+             PluginParameter { name: "googlemaps.route.apikey"; value: "bla-bla" }
+
+             PluginParameter { name: "googlemaps.maps.apikey"; value: "bla-bla1" }
+
+             PluginParameter { name: "googlemaps.geocode.apikey"; value: "bla-bla2" }
+
+             PluginParameter { name: "googlemaps.maps.tilesize"; value: "256" }
+             // PluginParameter { name: "googlemaps.maps.mapType"; value: "terrain" }
+
         }
+
+        Button {
+             id: currentLocationButton
+             text: "Current Location"
+             anchors {
+                 bottom: parent.bottom
+                 right: parent.right
+                 margins: 20
+             }
+             onClicked: {
+                 if (view.map.visibleRegion.isValid) {
+                     //view.map.center = view.map.visibleRegion.center
+                     view.map.center=positionSource.position.coordinate
+                     view.map.zoomLevel = 15
+                 }
+             }
+         }
+
+        PositionSource {
+             id: positionSource
+             active: true
+             updateInterval: 1000 // Update interval in milliseconds
+
+             onPositionChanged: {
+                 console.log("Latitude:", position.coordinate.latitude, ", Longitude:", position.coordinate.longitude);
+             }
+         }
     }
 
 }
