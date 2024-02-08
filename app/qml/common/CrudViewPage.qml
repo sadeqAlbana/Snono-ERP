@@ -17,6 +17,16 @@ BasicViewPage {
     id: page
     required property string basePath;
     required property string formFile;
+    property string deletePath; //used in conjunction with deleteCB
+    property var deleteCB: function(){
+
+            NetworkManager.deleteResource(page.deletePath,model.data(tableView.currentRow,"id"))
+            .subscribe(function(response){
+                                    if(response.json("status")===200){
+                                        model.refresh();
+                                    }
+                                });
+    }
     property string addPermission: "";
     property string editPermission: "";
     property string deletePermission: "";
@@ -47,6 +57,7 @@ BasicViewPage {
             text: qsTr("Delete")
             icon.name: "cil-delete"
             permission: page.deletePermission
+            onTriggered: page.deleteCB();
         }
     ]
 }
