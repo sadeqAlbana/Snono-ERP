@@ -16,10 +16,8 @@ Card {
     id: page
     property alias initialValues: general.initialValues
     title: qsTr("Product Form")
-    onInitialValuesChanged: console.log(JSON.stringify(general.initialValues))
-//    property var applyHandler
     property var keyValue: null
-    property bool readOnly: false //useless for now, used to aboid syntax error
+    property bool readOnly: false //useless for now, used to avoid syntax error
     CTabView {
         id: tabView
         anchors.fill: parent
