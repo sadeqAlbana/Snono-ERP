@@ -8,6 +8,7 @@ import QtQuick.Layouts
 import CoreUI
 import CoreUI.Views
 Card{
+    id: page
     title: qsTr("Customer")
     property alias initialValues: general.initialValues
     property var keyValue: null
@@ -75,17 +76,21 @@ Card{
             }
         }
 
-        CFormView{
-            title: qsTr("Addresses")
+        CPage{
+        title: qsTr("Adresses")
+        GridView{
+            clip: true
 
+            anchors.fill: parent
+            model: page.initialValues.adresses
 
-            GridView{
-                model: 4
+            cellWidth: 400
+            cellHeight: 250
+            delegate: AddressDelegate{
 
-                delegate: AddressDelegate{
-
-                }
             }
+
+        }
         }
     }
 

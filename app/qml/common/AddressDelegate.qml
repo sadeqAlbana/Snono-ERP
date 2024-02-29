@@ -1,10 +1,10 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import CoreUI.Base
+import CoreUI
 ItemDelegate {
     id: control
-
-
     //     objectName: "name"
     //     objectName: "country"
     //     objectName: "province"
@@ -33,9 +33,27 @@ ItemDelegate {
     property string lo;
     property string la;
 
+    implicitWidth: 350
+    implicitHeight: 200
+    width: 350
+    height: 200
 
+    background: Rectangle{
+        border.color: control.palette.shadow
+        color: "transparent"
+        radius: CoreUI.borderRadius
+    }
 
     contentItem: GridLayout{
 
+        CLabel{
+            Layout.fillWidth: true
+            text: control.name
+        }
+
+        CLabel{
+            Layout.fillWidth: true
+            text: control.name
+        }
     }
 }
