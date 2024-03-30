@@ -462,13 +462,40 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
     qDebug()<<fileUrl.toLocalFile();
     QFile file(fileUrl.toLocalFile());
 
-    qDebug()<<"File open: " << file.open(QIODevice::ReadOnly);
+    qDebug()<<"File open: " << file.open(QIODevice::ReadOnly | QIODevice::Text);
 
-    QJsonDocument doc=QJsonDocument::fromJson(file.readAll());
+
+    QFileInfo info(fileUrl.toLocalFile());
+
+    QJsonDocument doc;
+    if(info.suffix()=="html"){
+        QTextStream in(&file);
+        QString line;
+        while(!in.atEnd()){
+                line = file.readLine();
+                if(line.contains(R"(order: {"billno")")){
+                    break;
+                }
+        }
+        if(!line.isEmpty()){
+                line.removeLast();
+                line.removeLast();
+
+                int index=line.indexOf(R"(order: {"billno)");
+                line.remove(0,index);
+                line.remove("order: ");
+        }
+
+        doc=QJsonDocument::fromJson(line.toUtf8());
+    }else{
+        doc=QJsonDocument::fromJson(file.readAll());
+
+    }
+
     file.close();
     return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()}});
 
-    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
+//    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }
 
 NetworkResponse *Api::get(const QUrl &url)
