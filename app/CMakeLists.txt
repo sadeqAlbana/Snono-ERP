@@ -239,6 +239,8 @@ set(TARGET_QML_SOURCES
     qml/common/AppDataPage.qml
     qml/common/BasicViewPage.qml
     qml/common/ProductStockDelegate.qml
+    qml/common/AddressDelegate.qml
+
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
