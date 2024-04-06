@@ -82,7 +82,7 @@ Card{
             clip: true
 
             anchors.fill: parent
-            model: page.initialValues.adresses
+            model: page.initialValues?.adresses
 
             cellWidth: 400
             cellHeight: 250

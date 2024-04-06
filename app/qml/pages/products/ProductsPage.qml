@@ -116,12 +116,21 @@ AppPage {
         }
 
         FileDialog {
-            id: fileDialog
+            id: stockAdjustmentFileDialog
             currentFolder: StandardPaths.writableLocation(
                                StandardPaths.DocumentsLocation)
             nameFilters: ["CSV files (*.csv)", "All files (*)"]
             onAccepted: {
                 Api.bulckStockAdjustment(selectedFile)
+            }
+        }
+        FileDialog {
+            id: importProductsFileDialog
+            currentFolder: StandardPaths.writableLocation(
+                               StandardPaths.DocumentsLocation)
+            nameFilters: ["CSV files (*.csv)", "All files (*)"]
+            onAccepted: {
+                Api.importProducts(selectedFile)
             }
         }
 
@@ -227,8 +236,14 @@ AppPage {
                 CAction {
                     text: qsTr("Bulck Stock Adjustment")
                     icon.name: "cil-cart"
-                    onTriggered: fileDialog.open()
+                    onTriggered: stockAdjustmentFileDialog.open()
                     permission: "prm_adjust_stock"
+                },
+                CAction {
+                    text: qsTr("Import from CSV")
+                    icon.name: "cil-plus"
+                    onTriggered: importProductsFileDialog.open()
+                    permission: "prm_add_products"
                 }
             ]
 

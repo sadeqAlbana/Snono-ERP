@@ -60,6 +60,8 @@ public:
 
 
     Q_INVOKABLE NetworkResponse * addProduct(const QJsonObject &product);
+    Q_INVOKABLE bool addProducts(const QUrl &url);
+
     Q_INVOKABLE NetworkResponse * nextVersion();
     Q_INVOKABLE NetworkResponse * addSheinOrder(const QUrl &fileUrl);
 

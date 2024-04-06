@@ -440,6 +440,59 @@ NetworkResponse *Api::addProduct(const QJsonObject &product)
     return PosNetworkManager::instance()->post(QUrl("/product"),product);
 }
 
+bool Api::addProducts(const QUrl &url)
+{
+    QFile file(url.toLocalFile());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        return false;
+    }
+
+    QTextStream in(&file);
+    QString line=in.readLine();
+    QStringList headers=line.split(',');
+    in.readLine();
+
+    //check headers here !
+    QStringList checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
+    if(!headers.contains(checkList)){
+        return false;
+    }
+    //anything else aside from the checklist will be treated as an attribute
+    //processing the file on the front end will reduce traffic on the backend, and waiting time too
+
+    QJsonArray array;
+    while(!line.isNull()){
+        QStringList columns=line.split(',');
+        //qDebug()<<"columns size: "<<columns.size();
+        qDebug()<<"Stock: " <<columns.value(1) << " Actual: " << columns.value(2);
+        QString name=columns.value(headers.indexOf("name"));
+        double listPrice=columns.value(headers.indexOf("list_price")).toDouble();
+        double cost=columns.value(headers.indexOf("cost")).toDouble();
+        QString category=columns.value(headers.indexOf("category"));
+        QString barcode=columns.value(headers.indexOf("barcode"));
+        QString type=columns.value(headers.indexOf("type"));
+        QString parent=columns.value(headers.indexOf("parent"));
+        QString description=columns.value(headers.indexOf("description"));
+        QString costingMethod=columns.value(headers.indexOf("costing_method"));
+
+
+
+        line=in.readLine();
+    }
+
+    QJsonObject payload{{"data",array},{"reason","bulck adjustment"}};
+
+    PosNetworkManager::instance()->post(QUrl("/products/adjustStockBulck"),payload)->subscribe(
+        [this](NetworkResponse *res){
+            qDebug()<<res->json();
+            emit bulckStockAdjustmentReply(res->json().toObject());
+
+        });
+
+    return true;
+
+}
+
 NetworkResponse *Api::nextVersion()
 {
     int version=AppSettings::version();
