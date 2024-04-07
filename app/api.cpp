@@ -450,11 +450,12 @@ bool Api::addProducts(const QUrl &url)
     QTextStream in(&file);
     QString line=in.readLine();
     QStringList headers=line.split(',');
+    QSet<QString> headersSet(headers.begin(),headers.end());
     in.readLine();
 
     //check headers here !
-    QStringList checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
-    if(!headers.contains(checkList)){
+    QSet<QString> checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
+    if(!headersSet.contains(checkList)){
         return false;
     }
     //anything else aside from the checklist will be treated as an attribute
@@ -474,11 +475,9 @@ bool Api::addProducts(const QUrl &url)
         QString parent=columns.value(headers.indexOf("parent"));
         QString description=columns.value(headers.indexOf("description"));
         QString costingMethod=columns.value(headers.indexOf("costing_method"));
-
-
-
         line=in.readLine();
     }
+
 
     QJsonObject payload{{"data",array},{"reason","bulck adjustment"}};
 
