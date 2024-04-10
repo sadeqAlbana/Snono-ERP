@@ -83,6 +83,7 @@ Card {
             }
 
             IconComboBox{
+                id: typeCB
                 objectName: "type"
                 enabled: !keyValue
                 Layout.fillWidth: true
@@ -97,6 +98,7 @@ Card {
 
             CLabel{
                 text: qsTr("Costing Method")
+                visible: typeCB.currentValue===1
             }
 
             IconComboBox{
@@ -105,8 +107,10 @@ Card {
                 Layout.fillWidth: true
                 textRole: "text"
                 valueRole: "value"
+                visible: typeCB.currentValue===1
+
                 model:ListModel {
-                    ListElement { text: qsTr("FIFO");   value: "FIFO";}
+                    ListElement { text: qsTr("FIFO");    value: "FIFO";}
                     ListElement { text: qsTr("AVCO");    value: "AVCO";}
                 }
             }
