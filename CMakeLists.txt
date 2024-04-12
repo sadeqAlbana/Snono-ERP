@@ -45,5 +45,7 @@ set(QML_IMPORT_PATH ${QML_DIRS}
     FORCE
 )
 
-
-
+add_custom_target(dist_files
+SOURCES
+dist/windows/install.nsh
+)
