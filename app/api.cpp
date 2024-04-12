@@ -455,14 +455,22 @@ bool Api::addProducts(const QUrl &url)
 
     //check headers here !
     QSet<QString> checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
+    QStringList types{"storable","service","consumable"};
     if(!headersSet.contains(checkList)){
         return false;
     }
     //anything else aside from the checklist will be treated as an attribute
     //processing the file on the front end will reduce traffic on the backend, and waiting time too
 
+
+    QStringList attributes=headers;
+    for(const QString &str : checkList){
+        attributes.removeAll(str);
+    }
     QJsonArray array;
     while(!line.isNull()){
+
+        QJsonObject product;
         QStringList columns=line.split(',');
         //qDebug()<<"columns size: "<<columns.size();
         qDebug()<<"Stock: " <<columns.value(1) << " Actual: " << columns.value(2);
@@ -472,10 +480,19 @@ bool Api::addProducts(const QUrl &url)
         QString category=columns.value(headers.indexOf("category"));
         QString barcode=columns.value(headers.indexOf("barcode"));
         QString type=columns.value(headers.indexOf("type"));
+        if(!types.contains(type)){
+            return false;
+        }
         QString parent=columns.value(headers.indexOf("parent"));
         QString description=columns.value(headers.indexOf("description"));
         QString costingMethod=columns.value(headers.indexOf("costing_method"));
         line=in.readLine();
+
+        QJsonObject attr;
+        for(auto str : attributes){
+            attr[str]=columns.value(headers.indexOf(str));
+        }
+        product["attributes"]=attr;
     }
 
 
