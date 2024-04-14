@@ -136,7 +136,7 @@ void Api::adjustStock(const int productId, const int newQty, const QString &reas
 
     };
 
-    PosNetworkManager::instance()->post(QUrl("/products/adjustStock"),params)->subscribe([this](NetworkResponse *res){
+    PosNetworkManager::instance()->post(QUrl("/product/adjustStock"),params)->subscribe([this](NetworkResponse *res){
         emit adjustStockReply(res->json().toObject());
     });
 }
@@ -456,6 +456,8 @@ bool Api::addProducts(const QUrl &url)
     //check headers here !
     QSet<QString> checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
     QStringList types{"storable","service","consumable"};
+    QStringList costingMethods{"FIFO","LIFO","AVCO"};
+
     if(!headersSet.contains(checkList)){
         return false;
     }
@@ -474,18 +476,21 @@ bool Api::addProducts(const QUrl &url)
         QStringList columns=line.split(',');
         //qDebug()<<"columns size: "<<columns.size();
         qDebug()<<"Stock: " <<columns.value(1) << " Actual: " << columns.value(2);
-        QString name=columns.value(headers.indexOf("name"));
-        double listPrice=columns.value(headers.indexOf("list_price")).toDouble();
-        double cost=columns.value(headers.indexOf("cost")).toDouble();
-        QString category=columns.value(headers.indexOf("category"));
-        QString barcode=columns.value(headers.indexOf("barcode"));
-        QString type=columns.value(headers.indexOf("type"));
-        if(!types.contains(type)){
+        product["name"]=columns.value(headers.indexOf("name"));
+        product["list_price"]=columns.value(headers.indexOf("list_price")).toDouble();
+        product["cost"]=columns.value(headers.indexOf("cost")).toDouble();
+        product["category"]=columns.value(headers.indexOf("category"));
+        product["barcode"]=columns.value(headers.indexOf("barcode"));
+        product["cost"]=columns.value(headers.indexOf("type"));
+        if(!types.contains(product["type"].toString())){
             return false;
         }
-        QString parent=columns.value(headers.indexOf("parent"));
-        QString description=columns.value(headers.indexOf("description"));
-        QString costingMethod=columns.value(headers.indexOf("costing_method"));
+        product["parent"]=columns.value(headers.indexOf("parent"));
+        product["description"]=columns.value(headers.indexOf("description"));
+        product["costing_method"]=columns.value(headers.indexOf("costing_method"));
+        if(!costingMethods.contains(product["costing_method"].toString())){
+            return false;
+        }
         line=in.readLine();
 
         QJsonObject attr;
@@ -493,12 +498,14 @@ bool Api::addProducts(const QUrl &url)
             attr[str]=columns.value(headers.indexOf(str));
         }
         product["attributes"]=attr;
+
+        array << product;
     }
 
 
     QJsonObject payload{{"data",array},{"reason","bulck adjustment"}};
 
-    PosNetworkManager::instance()->post(QUrl("/products/adjustStockBulck"),payload)->subscribe(
+    PosNetworkManager::instance()->post(QUrl("/product/bulckAdd"),payload)->subscribe(
         [this](NetworkResponse *res){
             qDebug()<<res->json();
             emit bulckStockAdjustmentReply(res->json().toObject());
