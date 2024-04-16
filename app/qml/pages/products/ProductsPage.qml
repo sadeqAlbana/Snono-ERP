@@ -130,7 +130,7 @@ AppPage {
                                StandardPaths.DocumentsLocation)
             nameFilters: ["CSV files (*.csv)", "All files (*)"]
             onAccepted: {
-                Api.importProducts(selectedFile)
+                Api.addProducts(selectedFile)
             }
         }
 
