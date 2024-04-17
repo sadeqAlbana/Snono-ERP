@@ -505,7 +505,6 @@ bool Api::addProducts(const QUrl &url)
             attr << QJsonObject{{"attribute_id",str},{"value",columns.value(headers.indexOf(str))},{"type","text"}};
         }
         product["attributes"]=attr;
-        qDebug()<<"attributes: " << attr;
 
         array << product;
 

@@ -28,12 +28,12 @@ CFormView {
         text: qsTr("Parent Category")
     }
 
-    IconComboBox{
+    CFilterComboBox{
         Layout.fillWidth: true
         objectName: "parent_id"
-        textRole: "category"
+        textRole: "name"
         valueRole: "id"
-        currentIndex: 0;
-        model: CategoriesModel{}
-    } //end categoryCB
+        dataUrl: "/categories"
+        defaultEntry: {"id":0,"name": qsTr("None")}
+    } //
 }
