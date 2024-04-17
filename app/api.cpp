@@ -473,9 +473,9 @@ bool Api::addProducts(const QUrl &url)
         attributes.removeAll(str);
     }
     QJsonArray array;
-    while(!line.isEmpty()){
-        line=in.readLine();
+    line=in.readLine();
 
+    while(!line.isEmpty()){
         QJsonObject product;
         QStringList columns=line.split(',');
         //qDebug()<<"columns size: "<<columns.size();
@@ -499,15 +499,17 @@ bool Api::addProducts(const QUrl &url)
             return false;
         }
 
-        QJsonObject attr;
+        QJsonArray attr;
         for(auto str : attributes){
-            attr[str]=columns.value(headers.indexOf(str));
+
+            attr << QJsonObject{{"attribute_id",str},{"value",columns.value(headers.indexOf(str))},{"type","text"}};
         }
         product["attributes"]=attr;
+        qDebug()<<"attributes: " << attr;
 
         array << product;
 
-
+        line=in.readLine();
     }
 
 
