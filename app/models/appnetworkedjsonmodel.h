@@ -35,6 +35,9 @@ public:
     void classBegin() override;
     void componentComplete() override;
 
+    QJsonObject defaultRecord() const;
+    void setDefaultRecord(const QJsonObject &newDefaultRecord);
+
 signals:
     void filterChanged(QJsonObject filter);
 
@@ -43,6 +46,8 @@ signals:
     void sortKeyChanged();
 
     void directionChanged();
+
+    void defaultRecordChanged();
 
 protected:
     virtual void onTableRecieved(NetworkResponse *reply);
@@ -60,12 +65,13 @@ private:
 
     bool m_usePagination;
     QString m_sortKey=QStringLiteral("id");
-
+    QJsonObject m_defaultRecord;
 
 
 
     Q_PROPERTY(QString sortKey READ sortKey WRITE setSortKey NOTIFY sortKeyChanged)
     Q_PROPERTY(QString direction READ direction WRITE setDirection NOTIFY directionChanged)
+    Q_PROPERTY(QJsonObject defaultRecord READ defaultRecord WRITE setDefaultRecord NOTIFY defaultRecordChanged FINAL)
 };
 
 #endif // APPNETWORKEDJSONMODEL_H

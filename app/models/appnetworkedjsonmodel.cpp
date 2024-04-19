@@ -71,6 +71,19 @@ void AppNetworkedJsonModel::setFilter(const QJsonObject &filter)
     emit filterChanged(filter);
 }
 
+QJsonObject AppNetworkedJsonModel::defaultRecord() const
+{
+    return m_defaultRecord;
+}
+
+void AppNetworkedJsonModel::setDefaultRecord(const QJsonObject &newDefaultRecord)
+{
+    if (m_defaultRecord == newDefaultRecord)
+        return;
+    m_defaultRecord = newDefaultRecord;
+    emit defaultRecordChanged();
+}
+
 const QString &AppNetworkedJsonModel::direction() const
 {
     return m_direction;
@@ -149,6 +162,18 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 //    QObject *pr=QObject::parent();;
 //    qDebug()<<"parent: " << pr;
     QJsonArray data=filterData(reply->json("data").toArray());
+
+    if(!m_defaultRecord.isEmpty()){
+        QJsonObject record=data[0].toObject();
+        for(auto key : record.keys()){
+            record[key]=QJsonValue();
+        }
+        for(auto key : m_defaultRecord.keys()){
+            record[key]=m_defaultRecord[key];
+        }
+
+        data.prepend(record);
+    }
 //    qDebug()<<"data size: " << reply->json("data").toArray().size();
     if(m_usePagination){
         if(m_currentPage<=1){

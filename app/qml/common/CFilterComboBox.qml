@@ -19,7 +19,7 @@ CComboBox {
         url: control.dataUrl
         checkable: control.checkable?? false
         filter: control.filter?? {}
-
+        defaultRecord: defaultEntry?? null;
         Component.onCompleted: {
             if(control.values){
                 let emptyRecord=jsonModel.record;
@@ -27,20 +27,13 @@ CComboBox {
                     emptyRecord[key]=defaultEntry[key]
                 });
                 setRecords(control.values)
-                insertRecord(emptyRecord);
+                if(defaultEntry){
+                    insertRecord(emptyRecord);
+                }
             }
 
 
         }
 
-        onDataRecevied: {
-            if(defaultEntry){
-                let emptyRecord=jsonModel.record;
-                Object.keys(defaultEntry).forEach(key=>{
-                    emptyRecord[key]=defaultEntry[key]
-                });
-                jsonModel.insertRecord(emptyRecord);
-            }
-        }
     }
 }
