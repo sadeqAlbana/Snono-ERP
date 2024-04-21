@@ -19,7 +19,7 @@ CComboBox {
         url: control.dataUrl
         checkable: control.checkable?? false
         filter: control.filter?? {}
-        defaultRecord: defaultEntry?? null;
+        defaultRecord: defaultEntry?? ({});
         Component.onCompleted: {
             if(control.values){
                 let emptyRecord=jsonModel.record;

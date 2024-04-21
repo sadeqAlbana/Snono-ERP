@@ -151,6 +151,7 @@ Card {
                 text: qsTr("Have Variants")
                 Layout.columnSpan: 2
                 objectName: "have_variants"
+                checked: initialValues?.parent_id===0
             }
 
 
@@ -163,7 +164,6 @@ Card {
                 enabled: !haveVariants.checked
                 Layout.fillWidth: true
                 objectName: "parent_id"
-//                defaultEntry: {"id:":-1, "name": "None"}
                 filter: {"parent_id":null}
                 dataUrl: "/products/list"
                 valueRole: "id";
