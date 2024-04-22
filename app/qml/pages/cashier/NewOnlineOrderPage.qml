@@ -114,134 +114,120 @@ AppPage {
             }
         } //tableView
 
-        GridLayout {
-            //customer grid
-            Layout.alignment: Qt.AlignCenter
-            Layout.row: window.mobileLayout ? 2 : 1
-            columnSpacing: 15
-            Layout.column: 0
-            columns: window.mobileLayout ? 1 : 2
+        Card{
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            padding: 5
+            palette.base: "transparent"
 
-
-
-
-
-            Card{
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                padding: 10
-                palette.base: "transparent"
-                GridLayout{
-                    anchors.fill: parent
-                    columns: 1
-
-                    RowLayout{
-                        IconComboBox {
-                            property bool isValid: currentText === editText
-                            id: customerCB
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            model: CustomersModel {
-                                id: customersModel
-                                usePagination: false
-                                onAddCustomerReply: reply => {
-                                                        if (reply.status === 200) {
-                                                            cashierModel.updateCustomer(
-                                                                reply.customer.id)
-                                                        }
+            GridLayout{
+                anchors.fill: parent
+                columns: 1
+                    IconComboBox {
+                        property bool isValid: currentText === editText
+                        id: customerCB
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        model: CustomersModel {
+                            id: customersModel
+                            usePagination: false
+                            onAddCustomerReply: reply => {
+                                                    if (reply.status === 200) {
+                                                        cashierModel.updateCustomer(
+                                                            reply.customer.id)
                                                     }
-                                Component.onCompleted: {
-                                    usePagination = false
-                                }
+                                                }
+                            Component.onCompleted: {
+                                usePagination = false
                             }
-                            textRole: "name"
-                            valueRole: "id"
-                            currentIndex: 0
-                            editable: true
-                            leftIcon.name: "cil-user"
-
-                            onCurrentIndexChanged: {
-                                if (currentIndex >= 0) {
-                                    var currentCustomer = customersModel.jsonObject(
-                                                customerCB.currentIndex)
-                                    phoneLE.text = customersModel.jsonObject(
-                                                customerCB.currentIndex).phone
-                                    addressLE.text = customersModel.jsonObject(
-                                                customerCB.currentIndex).address
-                                    tableView.model.updateCustomer(currentCustomer.id)
-                                } else {
-                                    phoneLE.text = ""
-                                    addressLE.text = ""
-                                }
-                            } //onCurrentIndexChanged
-
-                            onActiveFocusChanged: {
-                                var edit = editText
-                                if (!activeFocus && editText != currentText) {
-                                    currentIndex = -1
-                                }
-                                editText = edit
-                            } //onActiveFocusChanged
                         }
-                        CIconTextField {
-                            id: phoneLE
-                            enabled: !customerCB.isValid
-                            validator: RegularExpressionValidator {
-                                regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+                        textRole: "name"
+                        valueRole: "id"
+                        currentIndex: 0
+                        editable: true
+                        leftIcon.name: "cil-user"
+
+                        onCurrentIndexChanged: {
+                            if (currentIndex >= 0) {
+                                var currentCustomer = customersModel.jsonObject(
+                                            customerCB.currentIndex)
+                                phoneLE.text = customersModel.jsonObject(
+                                            customerCB.currentIndex).phone
+                                addressLE.text = customersModel.jsonObject(
+                                            customerCB.currentIndex).address
+                                tableView.model.updateCustomer(currentCustomer.id)
+                            } else {
+                                phoneLE.text = ""
+                                addressLE.text = ""
                             }
+                        } //onCurrentIndexChanged
 
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            Layout.minimumHeight: 50
-                            placeholderText: qsTr("Phone...")
-                            leftIcon.name: "cil-phone"
+                        onActiveFocusChanged: {
+                            var edit = editText
+                            if (!activeFocus && editText != currentText) {
+                                currentIndex = -1
+                            }
+                            editText = edit
+                        } //onActiveFocusChanged
+                    }
+                    CIconTextField {
+                        id: phoneLE
+                        enabled: !customerCB.isValid
+                        validator: RegularExpressionValidator {
+                            regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
                         }
+
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        Layout.minimumHeight: 50
+                        placeholderText: qsTr("Phone...")
+                        leftIcon.name: "cil-phone"
                     }
 
-                    RowLayout{
-                        CIconTextField {
-                            enabled: !customerCB.isValid
-                            id: provTF
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            placeholderText: qsTr("Province...")
-                            leftIcon.name: "cil-location-pin"
-                        }
-                        CIconTextField {
-                            id: districtTF
-                            enabled: !customerCB.isValid
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            placeholderText: qsTr("District...")
-                            leftIcon.name: "cil-location-pin"
-                        }
 
-                        CIconTextField {
-                            id: addressLE
-                            enabled: !customerCB.isValid
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            placeholderText: qsTr("Address Details...")
-                            leftIcon.name: "cil-location-pin"
-                        }
-
+                    CIconTextField {
+                        enabled: !customerCB.isValid
+                        id: provTF
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("Province...")
+                        leftIcon.name: "cil-location-pin"
+                    }
+                    CIconTextField {
+                        id: districtTF
+                        enabled: !customerCB.isValid
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("District...")
+                        leftIcon.name: "cil-location-pin"
                     }
 
                     CIconTextField {
+                        id: addressLE
+                        enabled: !customerCB.isValid
                         Layout.alignment: Qt.AlignTop
-                        id: notesLE
-                        //id: customerPhone
                         Layout.fillWidth: true
                         implicitHeight: 50
-                        placeholderText: qsTr("Note...")
-                        leftIcon.name: "cil-notes"
+                        placeholderText: qsTr("Address Details...")
+                        leftIcon.name: "cil-location-pin"
                     }
 
+
+
+                CIconTextField {
+                    Layout.alignment: Qt.AlignTop
+                    id: notesLE
+                    //id: customerPhone
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("Note...")
+                    leftIcon.name: "cil-notes"
                 }
+
             }
+        }
 
 
             Card{
@@ -341,7 +327,8 @@ AppPage {
                 padding: 10
                 GridLayout{
                     id: grid
-                    columns: 6
+                    columns: 2
+                    rows: 3
                     anchors.fill: parent;
                     SwitchDelegate {
                         id: deliverySwitch
@@ -351,6 +338,7 @@ AppPage {
                         icon.color: "transparent"
                         icon.height: 50
                         Layout.fillWidth: true
+                        Layout.columnSpan: 2
                         onCheckedChanged: {
                             Settings.externalDelivery = checked
                         }
@@ -384,7 +372,7 @@ AppPage {
                     }
                 }
             }
-        }
+
 
 
 

@@ -15,6 +15,7 @@ import PosFe
 
 AppPage {
     id: page
+    padding: 0
     title: qsTr("Cashier")
     //    palette.window: "transparent"
     background: Rectangle {
