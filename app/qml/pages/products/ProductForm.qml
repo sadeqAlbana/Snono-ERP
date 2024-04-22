@@ -168,7 +168,7 @@ Card {
                 dataUrl: "/products/list"
                 valueRole: "id";
                 textRole: "name";
-                defaultEntry: {"id": 0, "name": qsTr("None")}
+                defaultEntry: {"id": -1, "name": qsTr("None")}
             }
 
         } //General

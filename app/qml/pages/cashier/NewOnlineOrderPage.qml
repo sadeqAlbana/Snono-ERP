@@ -192,7 +192,7 @@ AppPage {
 
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
-                            implicitHeight: 50
+                            Layout.minimumHeight: 50
                             placeholderText: qsTr("Phone...")
                             leftIcon.name: "cil-phone"
                         }
