@@ -182,6 +182,8 @@ AppPage {
                         implicitHeight: 50
                     }
 
+
+
                     CButton {
                         text: qsTr("Pay")
                         palette.button: "#2eb85c"
@@ -191,11 +193,41 @@ AppPage {
                         onClicked: parent.confirmPayment()
                         enabled: {
                             if (deliverySwitch.enabled) {
-                                return cityCB.isValid && townCB.isValid
+                                return provTF.valid && districtTF.valid && provTF.currentText && districtTF.currentText
                             } else {
                                 return tableView.rows > 0
                             }
                         }
+                    }
+
+
+
+                    CComboBox{
+                        valueRole: "code"
+                        textRole: "name"
+                        model:[
+                            {"code": 0, "name": qsTr("Internal"), "method": enableInternalDelivery},
+                            {"code": 1, "name": qsTr("Barq"), "method": enableBarq}
+                        ]
+
+
+                        onCurrentIndexChanged: model[currentIndex].method()
+
+                        function enableInternalDelivery(){
+
+                        }
+                    }
+
+                    CComboBox{
+                        valueRole: "id"
+                        textRole: "name"
+
+                        //need a special model with id name values
+                        model: DriversModel{
+                            Component.onCompleted: requestData();
+
+                        }
+
                     }
 
                     VerticalSpacer{}
@@ -209,6 +241,7 @@ AppPage {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 padding: 5
+                Layout.columnSpan: 2
                 palette.base: "transparent"
                 GridLayout{
                     anchors.fill: parent
@@ -249,12 +282,12 @@ AppPage {
                                                 customerCB.currentIndex)
                                     phoneLE.text = customersModel.jsonObject(
                                                 customerCB.currentIndex).phone
-                                    addressLE.text = customersModel.jsonObject(
-                                                customerCB.currentIndex).address
+                                    // addressLE.text = customersModel.jsonObject(
+                                    //             customerCB.currentIndex).address
                                     tableView.model.updateCustomer(currentCustomer.id)
                                 } else {
-                                    phoneLE.text = ""
-                                    addressLE.text = ""
+                                    //phoneLE.text = ""
+                                    //addressLE.text = ""
                                 }
                             } //onCurrentIndexChanged
 
@@ -268,7 +301,6 @@ AppPage {
                         }
                         CIconTextField {
                             id: phoneLE
-                            enabled: !customerCB.isValid
                             validator: RegularExpressionValidator {
                                 regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
                             }
@@ -281,34 +313,27 @@ AppPage {
                         }
 
 
-                        CIconTextField {
-                            enabled: !customerCB.isValid
+                        IconComboBox {
                             id: provTF
+
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
                             implicitHeight: 50
                             placeholderText: qsTr("Province...")
-                            leftIcon.name: "cil-location-pin"
-                        }
-                        CIconTextField {
-                            id: districtTF
-                            enabled: !customerCB.isValid
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            placeholderText: qsTr("District...")
+                            editable: true
                             leftIcon.name: "cil-location-pin"
                         }
 
-                        CIconTextField {
-                            id: addressLE
-                            enabled: !customerCB.isValid
-                            Layout.alignment: Qt.AlignTop
-                            Layout.fillWidth: true
-                            implicitHeight: 50
-                            placeholderText: qsTr("Address Details...")
-                            leftIcon.name: "cil-location-pin"
-                        }
+
+                        // CIconTextField {
+                        //     id: addressLE
+                        //     enabled: !customerCB.isValid
+                        //     Layout.alignment: Qt.AlignTop
+                        //     Layout.fillWidth: true
+                        //     implicitHeight: 50
+                        //     placeholderText: qsTr("Address Details...")
+                        //     leftIcon.name: "cil-location-pin"
+                        // }
 
 
 
@@ -322,21 +347,6 @@ AppPage {
                         leftIcon.name: "cil-notes"
                     }
 
-                }
-            }
-
-
-
-            Card{ //barq card
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                palette.base: "transparent"
-                padding: 10
-                GridLayout{
-                    id: grid
-                    columns: 2
-                    rows: 3
-                    anchors.fill: parent;
                     SwitchDelegate {
                         id: deliverySwitch
                         checked: Settings.externalDelivery
@@ -344,43 +354,61 @@ AppPage {
                         icon.source: "qrc:/images/icons/barq_logo.png"
                         icon.color: "transparent"
                         icon.height: 50
-                        Layout.fillWidth: true
-                        Layout.columnSpan: 2
                         onCheckedChanged: {
                             Settings.externalDelivery = checked
-                        }
-                    }
-
-                    CLabel{
-                        text: qsTr("City")
-                    }
-
-                    BarqLocationsCB {
-                        id: cityCB
-                        enabled: deliverySwitch.checked
-                        onCurrentIndexChanged: {
-                            if (currentIndex >= 0) {
-                                townCB.parentLocationId = cityCB.model.data(currentIndex, "id")
-
-                                townCB.currentIndex = 0
+                            if(checked){
+                                console.log("setting it to checked")
+                                enableBarq();
                             }
                         }
                     }
 
-                    CLabel{
-                        text: qsTr("District")
+                    IconComboBox {
+                        id: districtTF
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("District...")
+                        editable: true
+                        leftIcon.name: "cil-location-pin"
                     }
-
-                    BarqLocationsCB {
-                        id: townCB
-                        enabled: deliverySwitch.checked
-                        parentLocationId: 1
-
-                    }
-                    VerticalSpacer{}
 
                 }
             }
 
+
+
+
+
     } // GridLayout end
+
+    BarqLocationsModel {
+        id: barqCityModel
+        filter: {"parentId" : 0}
+    }
+    BarqLocationsModel {
+        id: barqTownModel
+        property int parentLocationId: 1;
+        filter: deliverySwitch.enabled? {"parentId" : parentLocationId} : ({})
+        onParentLocationIdChanged: {
+            filter={"parentId":parentLocationId}
+            requestData();
+        }
+    }
+
+
+    function enableBarq(){
+        provTF.valueRole= "id"
+        provTF.textRole="name"
+        districtTF.valueRole= "id"
+        districtTF.textRole="name"
+        provTF.model=barqCityModel
+        districtTF.model=barqTownModel
+        provTF.currentIndexChanged.connect(function(){
+            if (provTF.currentIndex >= 0) {
+                barqTownModel.parentLocationId = provTF.model.data(provTF.currentIndex, "id")
+                districtTF.currentIndex = 0
+            }
+        });
+    }
 }
