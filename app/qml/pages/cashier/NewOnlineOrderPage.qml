@@ -191,13 +191,13 @@ AppPage {
                         Layout.fillWidth: true
                         implicitHeight: 50
                         onClicked: parent.confirmPayment()
-                        enabled: {
-                            if (deliverySwitch.enabled) {
-                                return provTF.valid && districtTF.valid && provTF.currentText && districtTF.currentText
-                            } else {
-                                return tableView.rows > 0
-                            }
-                        }
+                        // enabled: {
+                        //     if (deliverySwitch.enabled) {
+                        //         return provTF.valid && districtTF.valid && provTF.currentText && districtTF.currentText
+                        //     } else {
+                        //         return tableView.rows > 0
+                        //     }
+                        // }
                     }
 
 
@@ -211,7 +211,12 @@ AppPage {
                         ]
 
 
-                        onCurrentIndexChanged: model[currentIndex].method()
+                        onCurrentIndexChanged: {
+                            //Settings.externalDelivery = checked
+
+                            model[currentIndex].method()
+
+                        }
 
                         function enableInternalDelivery(){
 
@@ -223,7 +228,8 @@ AppPage {
                         textRole: "name"
 
                         //need a special model with id name values
-                        model: DriversModel{
+                        model: AppNetworkedJsonModel{
+                            url:"driver/list"
                             Component.onCompleted: requestData();
 
                         }
@@ -347,21 +353,7 @@ AppPage {
                         leftIcon.name: "cil-notes"
                     }
 
-                    SwitchDelegate {
-                        id: deliverySwitch
-                        checked: Settings.externalDelivery
-                        text: qsTr("Barq Delivery")
-                        icon.source: "qrc:/images/icons/barq_logo.png"
-                        icon.color: "transparent"
-                        icon.height: 50
-                        onCheckedChanged: {
-                            Settings.externalDelivery = checked
-                            if(checked){
-                                console.log("setting it to checked")
-                                enableBarq();
-                            }
-                        }
-                    }
+
 
                     IconComboBox {
                         id: districtTF
@@ -389,7 +381,8 @@ AppPage {
     BarqLocationsModel {
         id: barqTownModel
         property int parentLocationId: 1;
-        filter: deliverySwitch.enabled? {"parentId" : parentLocationId} : ({})
+        // filter: deliverySwitch.enabled? {"parentId" : parentLocationId} : ({})
+        filter: {"parentId" : parentLocationId}
         onParentLocationIdChanged: {
             filter={"parentId":parentLocationId}
             requestData();
