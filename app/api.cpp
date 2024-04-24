@@ -573,8 +573,10 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
 
         doc=QJsonDocument::fromJson(line.toUtf8());
     }else{
+        //if it's a json file the extract the order object for now
         doc=QJsonDocument::fromJson(file.readAll());
-
+        QJsonObject order=doc.object()["order"].toObject();
+        doc=QJsonDocument(order);
     }
 
     file.close();
