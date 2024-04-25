@@ -203,8 +203,11 @@ AppPage {
 
 
                     CComboBox{
+                        id: deliveryCB;
                         valueRole: "code"
                         textRole: "name"
+                        Layout.fillWidth: true
+
                         model:[
                             {"code": 0, "name": qsTr("Internal"), "method": enableInternalDelivery},
                             {"code": 1, "name": qsTr("Barq"), "method": enableBarq}
@@ -224,9 +227,10 @@ AppPage {
                     }
 
                     CComboBox{
+                        visible: deliveryCB.currentIndex===0
                         valueRole: "id"
                         textRole: "name"
-
+                        Layout.fillWidth: true
                         //need a special model with id name values
                         model: AppNetworkedJsonModel{
                             url:"driver/list"
