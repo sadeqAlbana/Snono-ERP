@@ -42,6 +42,7 @@ AppPage {
     function processCart() {
         let deliveryInfo = {}
         if (deliverySwitch.checked) {
+            //needs to be adjusted for internal delivery
             deliveryInfo["city_id"] = cityCB.model.data(cityCB.currentIndex, "id")
             deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex, "id")
         }
@@ -193,7 +194,7 @@ AppPage {
                         onClicked: parent.confirmPayment()
                         // enabled: {
                         //     if (deliverySwitch.enabled) {
-                        //         return provTF.valid && districtTF.valid && provTF.currentText && districtTF.currentText
+                        //         return provinceCB.valid && cityCB.valid && provinceCB.currentText && cityCB.currentText
                         //     } else {
                         //         return tableView.rows > 0
                         //     }
@@ -221,13 +222,13 @@ AppPage {
 
                         }
 
-                        function enableInternalDelivery(){
 
-                        }
+
                     }
 
                     CComboBox{
-                        visible: deliveryCB.currentIndex===0
+                        id: driverCB
+                        enabled: deliveryCB.currentIndex===0
                         valueRole: "id"
                         textRole: "name"
                         Layout.fillWidth: true
@@ -235,6 +236,9 @@ AppPage {
                         model: AppNetworkedJsonModel{
                             url:"driver/list"
                             Component.onCompleted: requestData();
+                            onModelReset: {
+                                driverCB.currentIndex=0;
+                            }
 
                         }
 
@@ -324,7 +328,7 @@ AppPage {
 
 
                         IconComboBox {
-                            id: provTF
+                            id: provinceCB
 
                             Layout.alignment: Qt.AlignTop
                             Layout.fillWidth: true
@@ -335,15 +339,7 @@ AppPage {
                         }
 
 
-                        // CIconTextField {
-                        //     id: addressLE
-                        //     enabled: !customerCB.isValid
-                        //     Layout.alignment: Qt.AlignTop
-                        //     Layout.fillWidth: true
-                        //     implicitHeight: 50
-                        //     placeholderText: qsTr("Address Details...")
-                        //     leftIcon.name: "cil-location-pin"
-                        // }
+
 
 
 
@@ -358,9 +354,18 @@ AppPage {
                     }
 
 
+                    CIconTextField {
+                        id: addressDetailsLE
+                        Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        placeholderText: qsTr("Address Details...")
+                        leftIcon.name: "cil-location-pin"
+                    }
+
 
                     IconComboBox {
-                        id: districtTF
+                        id: cityCB
                         Layout.alignment: Qt.AlignTop
                         Layout.fillWidth: true
                         implicitHeight: 50
@@ -379,11 +384,11 @@ AppPage {
     } // GridLayout end
 
     BarqLocationsModel {
-        id: barqCityModel
+        id: barqProvinceModel
         filter: {"parentId" : 0}
     }
     BarqLocationsModel {
-        id: barqTownModel
+        id: barqCityModel
         property int parentLocationId: 1;
         // filter: deliverySwitch.enabled? {"parentId" : parentLocationId} : ({})
         filter: {"parentId" : parentLocationId}
@@ -393,19 +398,47 @@ AppPage {
         }
     }
 
+    LocationsModel{
+        id: internalProvinceModel;
+    }
+
+    LocationsModel{
+        id: internalCityModel;
+        filter: {"province": provinceCB.editText}
+    }
+
+
 
     function enableBarq(){
-        provTF.valueRole= "id"
-        provTF.textRole="name"
-        districtTF.valueRole= "id"
-        districtTF.textRole="name"
-        provTF.model=barqCityModel
-        districtTF.model=barqTownModel
-        provTF.currentIndexChanged.connect(function(){
-            if (provTF.currentIndex >= 0) {
-                barqTownModel.parentLocationId = provTF.model.data(provTF.currentIndex, "id")
-                districtTF.currentIndex = 0
+        provinceCB.valueRole= "id"
+        provinceCB.textRole="name"
+        cityCB.valueRole= "id"
+        cityCB.textRole="name"
+        provinceCB.model=barqProvinceModel
+        cityCB.model=barqCityModel
+        provinceCB.currentIndexChanged.connect(function(){
+            if (provinceCB.currentIndex >= 0) {
+                barqCityModel.parentLocationId = provinceCB.model.data(provinceCB.currentIndex, "id")
+                cityCB.currentIndex = 0
             }
         });
+    }
+    function enableInternalDelivery(){
+
+        provinceCB.textRole="province"
+        provinceCB.valueRole="province"
+        provinceCB.model=internalProvinceModel
+
+        cityCB.valueRole= "city"
+        cityCB.textRole="city"
+        cityCB.model=internalCityModel
+
+        provinceCB.currentIndexChanged.connect(function(){
+            console.log("edit text changed")
+                barqCityModel.requestData();
+                cityCB.currentIndex = 0
+
+        });
+
     }
 }
