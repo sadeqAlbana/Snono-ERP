@@ -85,15 +85,18 @@ void OrdersModel::print()
         product.remove("updated_at");
         product.remove("deleted_at");
         product.remove("created_at");
-        product["customer"]=product["customers"].toObject()["name"];
-        product["address"]=product["customers"].toObject()["address"];
+        product.remove("customer");
+        product.remove("address");
+
+        // product["customer"]=product["customers"].toObject()["name"];
+        // product["address"]=product["customers"].toObject()["address"];
         total+=product["total"].toInt();
         data.replace(i,product);
     }
 
     data.append(QJsonObject{{"reference","total"},
-        {"customer",""},
-        {"address",""},
+        // {"customer",""},
+        // {"address",""},
         {"date",""},
                             {"total",QString::number(total)}
 
@@ -113,8 +116,8 @@ void OrdersModel::print()
     range=QString("%1 - %2").arg(from,to);
 
     Json::printJson(QString("Orders Report for period %1").arg(range),data,{{"reference","Reference"},
-                                            {"customer","Customer"},
-                                            {"address","Address"},
+                                            // {"customer","Customer"},
+//                                            {"address","Address"},
                                             {"date","Date"},
                                             {"total","Total"}
 
