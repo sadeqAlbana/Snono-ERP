@@ -218,6 +218,11 @@ function navBar(){
                             "title":qsTr("Product Sales"),
                             "path":"qrc:/PosFe/qml/pages/reports/ProductSalesReport.qml",
                             "permission": "prm_view_product_sales"
+                        },
+                        {
+                            "title":qsTr("Orders Sales"),
+                            "path":"qrc:/PosFe/qml/pages/reports/OrdersSalesReportPage.qml",
+                            "permission": "prm_view_product_sales"
                         }
                     ]
                 },

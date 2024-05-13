@@ -18,6 +18,8 @@
 #include <QImage>
 #include <QRandomGenerator>
 #include <QStandardPaths>
+#include <QFileDialog>
+#include <QGuiApplication>
 QString Currency::formatString(const QVariant &value)
 {
     QString text;
@@ -235,15 +237,29 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
         QPrinter printer;
         printer.setPrinterName(AppSettings::instance()->reportsPrinter());
         printer.setPageSize(pageSize);
+
+
 //        printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
         printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
 
         QString random=QString::number(QRandomGenerator::global()->generate());
-        printer.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
-        qDebug()<<"path: " <<printer.outputFileName();
+        qDebug()<<"printer: " << printer.printerName();
+        qDebug()<<"printer output format: " << printer.outputFormat();
+        if(printer.outputFormat()==QPrinter::PdfFormat || printer.printerName().contains("pdf",Qt::CaseInsensitive) || printer.printerName().contains("virtual",Qt::CaseInsensitive)){
+            QString filePath = QFileDialog::getSaveFileName(nullptr, "Save PDF", QString(), "PDF Files (*.pdf)");
+
+            if(filePath.isEmpty()){
+                return false;
+            }
+
+            if (!filePath.toLower().endsWith(".pdf"))
+                filePath += ".pdf";
+        printer.setOutputFileName(filePath);
+        }
         doc.print(&printer);
 #endif
 
         return true;
 
 }
+

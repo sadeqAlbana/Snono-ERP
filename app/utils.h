@@ -38,7 +38,8 @@ void rebootDevice();
 
 namespace Json{
 bool printJson(const QString &title, const QJsonArray &data, QList<QPair<QString, QString> > headers={});
-
 }
+
+
 
 #endif // UTILS_H

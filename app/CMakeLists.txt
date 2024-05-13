@@ -110,7 +110,7 @@ set(TARGET_SOURCES
     models/driversmodel.h models/driversmodel.cpp
     models/productsproxymodel.h models/productsproxymodel.cpp
     models/locationsmodel.h models/locationsmodel.cpp
-
+    models/orderssalesreportmodel.h models/orderssalesreportmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
@@ -153,6 +153,7 @@ set(TARGET_QML_SOURCES
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
+    qml/pages/reports/OrdersSalesReportPage.qml
     qml/pages/products/ProductsPage.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
@@ -275,6 +276,7 @@ qt_add_qml_module(appposfe
     QML_FILES
         ${TARGET_QML_SOURCES}
         RESOURCES
+        QML_FILES
 
 )
 set(INCLUDE_DIR
