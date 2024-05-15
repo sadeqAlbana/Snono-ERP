@@ -13,11 +13,27 @@ import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 import CoreUI
-
+import JsonModels
 AppPage {
     id: page
     padding:0
-    title: qsTr("Cashier")
+    Component.onCompleted: {
+        NetworkManager.get("/onlinesales/dashboard").subscribe(function(response){
+            productsCB.model=response.json("products").data;
+            // driversCB.model=response.json("drivers");
+            page.barqLocations=response.json("barq_locations").data;
+            customerCB.model=response.json("customers").data
+
+            barqProvinceModel.setRecords(barqLocations);
+            barqCityModel.parentLocationId = provinceCB.model.data(provinceCB.currentIndex, "id")
+
+            console.log(barqProvinceModel.rowCount())
+
+             // console.log(JSON.stringify(barqLocations))
+        });
+    }
+
+    title: qsTr("Online Sales")
     //    palette.window: "transparent"
     background: Rectangle {
         color: "transparent"
@@ -25,6 +41,7 @@ AppPage {
     LayoutMirroring.enabled: false
     property bool pay: false
     property int sessionId: -1
+    property var barqLocations;
 
     ReceiptDialog {
         id: receiptDialog
@@ -144,21 +161,31 @@ AppPage {
                         valueRole: "id"
                         currentIndex: 0
                         editable: true
-                        property bool dataReceived: false
+                        property bool dataReceived: false;
                         onCurrentValueChanged: {
-                            if (currentValue !== undefined && dataReceived)
+                            if(!dataReceived){
+                                dataReceived=true;
+                                return;
+                            }
+
+                            if (currentValue !== undefined && count)
                                 cashierModel.addProduct(currentValue)
                         }
 
-                        model: AppNetworkedJsonModel {
-                            url: "/products/list"
-                            filter: {
-                                "only_variants": true
-                            }
-                            onDataRecevied: {
-                                productsCB.dataReceived = true
-                            }
+
+                        model: JsonModel{
+
                         }
+
+                        // model: AppNetworkedJsonModel {
+                        //     url: "/products/list"
+                        //     filter: {
+                        //         "only_variants": true
+                        //     }
+                        //     onDataRecevied: {
+                        //         productsCB.dataReceived = true
+                        //     }
+                        // }
                     }
 
                     CTextField {
@@ -263,7 +290,6 @@ AppPage {
                     columns: 3
                         IconComboBox {
 
-
                             property bool isValid: currentText === editText
                             id: customerCB
                             leftIcon.name: "cil-user"
@@ -272,19 +298,19 @@ AppPage {
                             Layout.fillWidth: true
                             Layout.minimumHeight: 50
 
-                            model: CustomersModel {
-                                id: customersModel
-                                usePagination: false
-                                onAddCustomerReply: reply => {
-                                                        if (reply.status === 200) {
-                                                            cashierModel.updateCustomer(
-                                                                reply.customer.id)
-                                                        }
-                                                    }
-                                Component.onCompleted: {
-                                    usePagination = false
-                                }
-                            }
+                            // model: CustomersModel {
+                            //     id: customersModel
+                            //     usePagination: false
+                            //     onAddCustomerReply: reply => {
+                            //                             if (reply.status === 200) {
+                            //                                 cashierModel.updateCustomer(
+                            //                                     reply.customer.id)
+                            //                             }
+                            //                         }
+                            //     Component.onCompleted: {
+                            //         usePagination = false
+                            //     }
+                            // }
                             textRole: "name"
                             valueRole: "id"
                             currentIndex: 0
@@ -292,12 +318,10 @@ AppPage {
 
                             onCurrentIndexChanged: {
                                 if (currentIndex >= 0) {
-                                    var currentCustomer = customersModel.jsonObject(
-                                                customerCB.currentIndex)
-                                    phoneLE.text = customersModel.jsonObject(
-                                                customerCB.currentIndex).phone
-                                    // addressLE.text = customersModel.jsonObject(
-                                    //             customerCB.currentIndex).address
+                                    console.log(JSON.stringify());
+                                    var currentCustomer =customerCB.model[currentIndex]
+                                    phoneLE.text = currentCustomer.phone
+                                    addressLE.text = currentCustomer.address
                                     tableView.model.updateCustomer(currentCustomer.id)
                                 } else {
                                     //phoneLE.text = ""
@@ -383,18 +407,14 @@ AppPage {
 
     } // GridLayout end
 
-    BarqLocationsModel {
+    JsonModel {
         id: barqProvinceModel
-        filter: {"parentId" : 0}
     }
-    BarqLocationsModel {
+    JsonModel {
         id: barqCityModel
-        property int parentLocationId: 1;
-        // filter: deliverySwitch.enabled? {"parentId" : parentLocationId} : ({})
-        filter: {"parentId" : parentLocationId}
+        property int parentLocationId: -1;
         onParentLocationIdChanged: {
-            filter={"parentId":parentLocationId}
-            requestData();
+            records=barqProvinceModel.data(provinceCB.currentIndex,"children");
         }
     }
 
@@ -433,12 +453,12 @@ AppPage {
         cityCB.textRole="city"
         cityCB.model=internalCityModel
 
-        provinceCB.currentIndexChanged.connect(function(){
-            console.log("edit text changed")
-                barqCityModel.requestData();
-                cityCB.currentIndex = 0
+        // provinceCB.currentIndexChanged.connect(function(){
+        //     console.log("edit text changed")
+        //         // barqCityModel.requestData();
+        //         cityCB.currentIndex = 0
 
-        });
+        // });
 
     }
 }
