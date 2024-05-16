@@ -20,16 +20,12 @@ AppPage {
     Component.onCompleted: {
         NetworkManager.get("/onlinesales/dashboard").subscribe(function(response){
             productsCB.model=response.json("products").data;
-            // driversCB.model=response.json("drivers");
+            driverCB.model=response.json("drivers").data;
             page.barqLocations=response.json("barq_locations").data;
             customerCB.model=response.json("customers").data
 
             barqProvinceModel.setRecords(barqLocations);
             barqCityModel.parentLocationId = provinceCB.model.data(provinceCB.currentIndex, "id")
-
-            console.log(barqProvinceModel.rowCount())
-
-             // console.log(JSON.stringify(barqLocations))
         });
     }
 
@@ -442,6 +438,8 @@ AppPage {
                 cityCB.currentIndex = 0
             }
         });
+        barqCityModel.parentLocationId = provinceCB.model.data(provinceCB.currentIndex, "id")
+        cityCB.currentIndex = 0
     }
     function enableInternalDelivery(){
 
