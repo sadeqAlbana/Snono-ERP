@@ -149,6 +149,8 @@ AppPage {
                         paymentDialog.open()
                     }
 
+
+                    CLabel{text: qsTr("Product");}
                     CComboBox {
 
                         id: productsCB
@@ -184,6 +186,8 @@ AppPage {
                         // }
                     }
 
+
+                    CLabel{text: qsTr("Barcode");}
                     CTextField {
                         id: numpadInput
                         Layout.fillWidth: true
@@ -197,6 +201,9 @@ AppPage {
                         implicitHeight: 50
                     }
 
+
+                    CLabel{text: qsTr("Total");}
+
                     CTextField {
                         id: total
                         readOnly: true
@@ -207,23 +214,7 @@ AppPage {
                     }
 
 
-
-                    CButton {
-                        text: qsTr("Pay")
-                        palette.button: "#2eb85c"
-                        palette.buttonText: "#ffffff"
-                        Layout.fillWidth: true
-                        implicitHeight: 50
-                        onClicked: parent.confirmPayment()
-                        // enabled: {
-                        //     if (deliverySwitch.enabled) {
-                        //         return provinceCB.valid && cityCB.valid && provinceCB.currentText && cityCB.currentText
-                        //     } else {
-                        //         return tableView.rows > 0
-                        //     }
-                        // }
-                    }
-
+                    CLabel{text: qsTr("Delivery Carrier");}
 
 
                     CComboBox{
@@ -249,6 +240,8 @@ AppPage {
 
                     }
 
+                    CLabel{text: qsTr("Driver");}
+
                     CComboBox{
                         id: driverCB
                         enabled: deliveryCB.currentIndex===0
@@ -268,6 +261,23 @@ AppPage {
                     }
 
                     VerticalSpacer{}
+
+
+                    CButton {
+                        text: qsTr("Pay")
+                        palette.button: "#2eb85c"
+                        palette.buttonText: "#ffffff"
+                        Layout.fillWidth: true
+                        implicitHeight: 50
+                        onClicked: parent.confirmPayment()
+                        // enabled: {
+                        //     if (deliverySwitch.enabled) {
+                        //         return provinceCB.valid && cityCB.valid && provinceCB.currentText && cityCB.currentText
+                        //     } else {
+                        //         return tableView.rows > 0
+                        //     }
+                        // }
+                    }
 
 
                 }
