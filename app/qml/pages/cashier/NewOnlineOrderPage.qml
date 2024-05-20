@@ -421,6 +421,20 @@ AppPage {
                     placeholderText: qsTr("Note...")
                     leftIcon.name: "cil-notes"
                 }
+
+                CLabel {
+                    text: qsTr("Address Name")
+                }
+
+                IconComboBox {
+                    id: addressNameLE
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("New Address...")
+                    editable: true
+                    leftIcon.name: "cil-location-pin"
+                }
             }
         }
     } // GridLayout end
