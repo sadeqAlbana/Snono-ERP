@@ -130,8 +130,8 @@ AppPage {
                                            scannerBeep.play()
                                            productsCB.currentIndex = -1
                                        } /*else{
-                                                                                                                                             toastrService.push("Warning",res.message,"warning",2000)
-                                                                                                                                                                                                                                                                                                                                      }*/
+                                                                                                                                                                                    toastrService.push("Warning",res.message,"warning",2000)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          }*/
                                    } //onAddProductReply
             }
         } //tableView
@@ -201,8 +201,6 @@ AppPage {
                     placeholderText: qsTr("Barcode...")
                     implicitHeight: 50
                 }
-
-
 
                 CLabel {
                     text: qsTr("Delivery Carrier")
@@ -296,10 +294,13 @@ AppPage {
 
                 flow: GridLayout.TopToBottom
 
+
+
                 CLabel {
-                    text: qsTr("Customer Name")
+                    text: qsTr("Customer Name")+ "<font color='red'> *</font>"
+                    font.bold: true
                 }
-                columns: 3
+                columns: 5
                 rows: 4
                 IconComboBox {
                     property bool isValid: currentText === editText
@@ -333,6 +334,7 @@ AppPage {
                             var currentCustomer = customerCB.model[currentIndex]
                             phoneLE.text = currentCustomer.phone
                             // addressLE.text = currentCustomer.address
+                            updateAddressNameCB(currentCustomer.addresses??[])
                             tableView.model.updateCustomer(currentCustomer.id)
                         } else {
 
@@ -349,8 +351,102 @@ AppPage {
                         editText = edit
                     } //onActiveFocusChanged
                 }
+
+
+
                 CLabel {
-                    text: qsTr("Phone")
+                    text: qsTr("select Address")
+                    font.bold: true
+                }
+
+                IconComboBox {
+                    id: addressNameCB
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("New Address...")
+                    editable: false
+                    leftIcon.name: "cil-address-book"
+                    textRole: "name"
+                    valueRole: "id"
+                    model: [{"id":-1, "name":qsTr("Add New...")}]
+                    onCurrentIndexChanged: {
+                        // if(currentIndex>=0){
+
+                        //     let item=addressNameCB.model[currentIndex];
+                        //     if(item.id===-1){
+                        //         currentIndex=-2;
+
+                        //     }
+                        // }
+                    }
+                }
+
+                MenuSeparator {
+                    padding: 25
+                    topPadding: 0
+                    bottomPadding: 0
+                    Layout.fillHeight: true
+                    Layout.rowSpan: 4
+                    Layout.margins: 0
+
+                    contentItem: Rectangle {
+                        implicitWidth: 1
+                        color: page.palette.shadow
+                    }
+                }
+
+                CLabel {
+                    text: qsTr("Address Name")+ "<font color='red'> *</font>"
+                    font.bold: true
+                }
+
+
+                CIconTextField {
+                    Layout.alignment: Qt.AlignTop
+                    id: addressNameLE
+                    //id: customerPhone
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("Home, work, etc...")
+                    leftIcon.name: "cil-notes"
+                    text: qsTr("Default")
+                }
+
+                CLabel {
+                    text: qsTr("Province")+ "<font color='red'> *</font>";
+                    font.bold: true;
+                }
+
+                IconComboBox {
+                    id: provinceCB
+
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("Province...")
+                    editable: true
+                    leftIcon.name: "cil-map"
+                }
+
+                CLabel {
+                    text: qsTr("District") + "<font color='red'> *</font>";
+                    font.bold: true;
+                }
+
+                IconComboBox {
+                    id: districtCB
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                    placeholderText: qsTr("District...")
+                    editable: true
+                    leftIcon.name: "cil-city"
+                }
+
+                CLabel {
+                    text: qsTr("Phone") + "<font color='red'> *</font>";
+                    font.bold: true;
                 }
 
                 CIconTextField {
@@ -367,36 +463,8 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("Province")
-                }
-
-                IconComboBox {
-                    id: provinceCB
-
-                    Layout.alignment: Qt.AlignTop
-                    Layout.fillWidth: true
-                    implicitHeight: 50
-                    placeholderText: qsTr("Province...")
-                    editable: true
-                    leftIcon.name: "cil-location-pin"
-                }
-
-                CLabel {
-                    text: qsTr("District")
-                }
-
-                IconComboBox {
-                    id: districtCB
-                    Layout.alignment: Qt.AlignTop
-                    Layout.fillWidth: true
-                    implicitHeight: 50
-                    placeholderText: qsTr("District...")
-                    editable: true
-                    leftIcon.name: "cil-location-pin"
-                }
-
-                CLabel {
-                    text: qsTr("Address Details")
+                    text: qsTr("Address Details");
+                    font.bold: true;
                 }
 
                 CIconTextField {
@@ -404,12 +472,15 @@ AppPage {
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
                     implicitHeight: 50
-                    placeholderText: qsTr("Address Details...")
+                    placeholderText: qsTr("Street, Nearest landmark, etc...")
                     leftIcon.name: "cil-location-pin"
                 }
 
+
+
                 CLabel {
-                    text: qsTr("Notes")
+                    text: qsTr("Notes");
+                    font.bold: true
                 }
 
                 CIconTextField {
@@ -420,20 +491,6 @@ AppPage {
                     implicitHeight: 50
                     placeholderText: qsTr("Note...")
                     leftIcon.name: "cil-notes"
-                }
-
-                CLabel {
-                    text: qsTr("Address Name")
-                }
-
-                IconComboBox {
-                    id: addressNameLE
-                    Layout.alignment: Qt.AlignTop
-                    Layout.fillWidth: true
-                    implicitHeight: 50
-                    placeholderText: qsTr("New Address...")
-                    editable: true
-                    leftIcon.name: "cil-location-pin"
                 }
             }
         }
@@ -462,6 +519,12 @@ AppPage {
         }
     }
 
+
+
+    function updateAddressNameCB(customerAddresses){
+        let newModel=customerAddresses.concat([{"id":-1, "name": "<i>"+qsTr("Add New...")+"</i>"}]);
+        addressNameCB.model=newModel;
+    }
     function enableBarq() {
         provinceCB.valueRole = "id"
         provinceCB.textRole = "name"
