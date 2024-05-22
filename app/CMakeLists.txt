@@ -181,6 +181,7 @@ set(TARGET_QML_SOURCES
     qml/pages/settings/PrinterSettings.qml
     qml/pages/settings/BarqDeliverySettings.qml
     qml/pages/settings/ReceiptSettings.qml
+    qml/pages/settings/LicensePage.qml
     qml/pages/vendors/VendorBillListView.qml
     qml/pages/vendors/PurchaseStockDialog.qml
     qml/pages/vendors/PayBillDialog.qml
@@ -202,7 +203,7 @@ set(TARGET_QML_SOURCES
     qml/pages/locations/LocationsPage.qml
     qml/pages/locations/LocationForm.qml
     qml/common/CCheckableFilterComboBox.qml
-    qml/Nav.qml
+
     qml/AppMainScreen.qml
     qml/common/ButtonPopup.qml
     qml/common/BusySpinner.qml

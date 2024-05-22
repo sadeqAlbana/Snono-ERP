@@ -7,7 +7,7 @@ A lightweight yet powerful ERP system
 This software was built using the following libraries:
 
 * Qt: 6.5.3
-* OpenSSL: 6.5.3
+* OpenSSL: 3.0.9
 
 ### License
 Snono ERP is licensed under GPL v2. See the ``LICENSE`` file section for more details.

@@ -259,6 +259,11 @@ function navBar(){
                             "permission": "prm_admin"
                         },
                         {
+                            "title": qsTr("License"),
+                            "path":"qrc:/PosFe/qml/pages/settings/LicensePage.qml",
+                            "permission": "prm_admin"
+                        },
+                        {
                             "title": qsTr("About"),
                             "path":"qrc:/PosFe/qml/pages/settings/AboutPage.qml",
                             "permission": ""
