@@ -361,6 +361,7 @@ AppPage {
 
                 IconComboBox {
                     id: addressNameCB
+                    property bool isNew: addressNameCB.model[currentIndex].id===-1
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
                     implicitHeight: 50
@@ -411,6 +412,8 @@ AppPage {
                     placeholderText: qsTr("Home, work, etc...")
                     leftIcon.name: "cil-notes"
                     text: qsTr("Default")
+                    readOnly: !addressNameCB.isNew
+
                 }
 
                 CLabel {
