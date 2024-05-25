@@ -58,31 +58,53 @@ AppPage {
 
     function processCart() {
         let deliveryInfo = {}
-        if (deliverySwitch.checked) {
-            //needs to be adjusted for internal delivery
-            deliveryInfo["city_id"] = districtCB.model.data(
-                        districtCB.currentIndex, "id")
-            deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex,
-                                                        "id")
+        let address={};
+
+        let addressId=addressCB.currentValue;
+
+        if(addressId===-1){
+            address["id"]=addressId;
+        }else{
+            deliveryInfo["carrier_id"]=deliveryCB.currentValue;
+            address["province"]=provinceCB.currentText;
+            address["district"]=districtCB.currentText;
+            address["phone"]=phoneLE.text;
+            address["name"]=addressNameLE.text;
+            address["details"]=addressDetailsLE.text;
+            deliveryInfo["notes"]=notesLE.text
         }
+
+
+
+
+        // address[""]
+
+
+        // if (deliverySwitch.checked) {
+        //     //needs to be adjusted for internal delivery
+        //     deliveryInfo["city_id"] = districtCB.model.data(
+        //                 districtCB.currentIndex, "id")
+        //     deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex,
+        //                                                 "id")
+        // }
 
         cashierModel.processCart(cashierModel.total, 0, notesLE.text,
                                  deliveryInfo)
     }
 
-    PayDialog {
-        id: paymentDialog
-        onAccepted: {
-            if (customerCB.currentIndex < 0) {
-                //update customer then process cart
-                pay = true
-                customersModel.addCustomer(customerCB.editText, "", "", "",
-                                           phoneLE.text, addressLE.text)
-            } else {
-                page.processCart()
-            }
-        } //accepted
-    } //payDialog
+    // PayDialog {
+    //     id: paymentDialog
+    //     onAccepted: {
+    //         if (customerCB.currentIndex < 0) {
+    //             //update customer then process cart
+    //             pay = true
+    //             customersModel.addCustomer(customerCB.editText, "", "", "",
+    //                                        phoneLE.text, addressLE.text)
+    //         } else {
+    //             page.processCart()
+    //         }
+    //     } //accepted
+    // } //payDialog
 
     GridLayout {
         //main   grid
@@ -117,14 +139,14 @@ AppPage {
                                                     requestCart()
                                                 }
                                             }
-                onUpdateCustomerResponseReceived: res => {
-                                                      if (res.status === 200) {
-                                                          if (pay) {
-                                                              page.processCart()
-                                                              pay = false
-                                                          }
-                                                      }
-                                                  } //onUpdateCustomerResponseReceived
+                // onUpdateCustomerResponseReceived: res => {
+                //                                       if (res.status === 200) {
+                //                                           if (pay) {
+                //                                               page.processCart()
+                //                                               pay = false
+                //                                           }
+                //                                       }
+                //                                   } //onUpdateCustomerResponseReceived
                 onAddProductReply: res => {
                                        if (res.status === 200) {
                                            scannerBeep.play()
@@ -213,11 +235,11 @@ AppPage {
                     Layout.fillWidth: true
 
                     model: [{
-                            "code": 0,
+                            "id": 0,
                             "name": qsTr("Internal"),
                             "method": enableInternalDelivery
                         }, {
-                            "code": 1,
+                            "id": 1,
                             "name": qsTr("Barq"),
                             "method": enableBarq
                         }]
@@ -265,12 +287,15 @@ AppPage {
                 }
 
                 CButton {
-                    text: qsTr("Pay")
+                    text: qsTr("Place Order")
                     palette.button: "#2eb85c"
                     palette.buttonText: "#ffffff"
                     Layout.fillWidth: true
                     implicitHeight: 50
                     onClicked: parent.confirmPayment()
+
+                    enabled: tableView.rows
+
                     // enabled: {
                     //     if (deliverySwitch.enabled) {
                     //         return provinceCB.valid && districtCB.valid && provinceCB.currentText && districtCB.currentText
@@ -334,7 +359,7 @@ AppPage {
                             var currentCustomer = customerCB.model[currentIndex]
                             phoneLE.text = currentCustomer.phone
                             // addressLE.text = currentCustomer.address
-                            updateAddressNameCB(currentCustomer.addresses??[])
+                            updateaddressCB(currentCustomer.addresses??[])
                             tableView.model.updateCustomer(currentCustomer.id)
                         } else {
 
@@ -360,8 +385,8 @@ AppPage {
                 }
 
                 IconComboBox {
-                    id: addressNameCB
-                    property bool isNew: addressNameCB.model[currentIndex].id===-1
+                    id: addressCB
+                    property bool isNew: addressCB.model[currentIndex].id===-1
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
                     implicitHeight: 50
@@ -374,7 +399,7 @@ AppPage {
                     onCurrentIndexChanged: {
                         // if(currentIndex>=0){
 
-                        //     let item=addressNameCB.model[currentIndex];
+                        //     let item=addressCB.model[currentIndex];
                         //     if(item.id===-1){
                         //         currentIndex=-2;
 
@@ -412,7 +437,7 @@ AppPage {
                     placeholderText: qsTr("Home, work, etc...")
                     leftIcon.name: "cil-notes"
                     text: qsTr("Default")
-                    readOnly: !addressNameCB.isNew
+                    readOnly: !addressCB.isNew
 
                 }
 
@@ -524,9 +549,9 @@ AppPage {
 
 
 
-    function updateAddressNameCB(customerAddresses){
-        let newModel=customerAddresses.concat([{"id":-1, "name": "<i>"+qsTr("Add New...")+"</i>"}]);
-        addressNameCB.model=newModel;
+    function updateaddressCB(customerAddresses){
+        let newModel=customerAddresses.concat([{"id":-1, "name":qsTr("Add New...")}]);
+        addressCB.model=newModel;
     }
     function enableBarq() {
         provinceCB.valueRole = "id"
