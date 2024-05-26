@@ -26,6 +26,7 @@ AppPage {
                         page.barqLocations = response.json(
                                     "barq_locations").data
                         customerCB.model = response.json("customers").data
+                        paymentMethodCB.model = response.json("payment_methods").data
 
                         barqProvinceModel.setRecords(barqLocations)
                         barqCityModel.parentLocationId = provinceCB.model.data(
@@ -262,13 +263,21 @@ AppPage {
                     textRole: "name"
                     Layout.fillWidth: true
                     //need a special model with id name values
-                    model: AppNetworkedJsonModel {
-                        url: "driver/list"
-                        Component.onCompleted: requestData()
-                        onModelReset: {
-                            driverCB.currentIndex = 0
-                        }
-                    }
+
+                }
+
+                CLabel {
+                    text: qsTr("Payment Method")
+                }
+
+                CComboBox {
+                    id: paymentMethodCB
+                    enabled: deliveryCB.currentIndex === 0
+                    valueRole: "id"
+                    textRole: "name"
+                    Layout.fillWidth: true
+                    //need a special model with id name values
+
                 }
 
                 VerticalSpacer {}
