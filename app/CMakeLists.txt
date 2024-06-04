@@ -242,7 +242,7 @@ set(TARGET_QML_SOURCES
     qml/common/BasicViewPage.qml
     qml/common/ProductStockDelegate.qml
     qml/common/AddressDelegate.qml
-
+    qml/common/AppConfirmationDialog.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -273,11 +273,8 @@ qt_add_qml_module(appposfe
     VERSION 1.0
     SOURCES
         ${TARGET_SOURCES}
-
     QML_FILES
         ${TARGET_QML_SOURCES}
-        RESOURCES
-        QML_FILES
 
 )
 set(INCLUDE_DIR

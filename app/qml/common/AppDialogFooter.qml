@@ -18,7 +18,7 @@ RowLayout{
     property string cancelText : qsTr("Cancel")
     HorizontalSpacer{}
     CButton{
-        text: qsTr(cancelText)
+        text: cancelText
         palette.button: "#e55353"
         palette.buttonText: "#ffffff"
         implicitHeight: 45
@@ -26,7 +26,7 @@ RowLayout{
         onClicked: cancel();
     }
     CButton{
-        text: qsTr(acceptText)
+        text: acceptText
         palette.button: "#2eb85c"
         palette.buttonText: "#ffffff"
         implicitHeight: 45

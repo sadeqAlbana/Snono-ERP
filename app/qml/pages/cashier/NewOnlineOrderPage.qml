@@ -26,7 +26,8 @@ AppPage {
                         page.barqLocations = response.json(
                                     "barq_locations").data
                         customerCB.model = response.json("customers").data
-                        paymentMethodCB.model = response.json("payment_methods").data
+                        paymentMethodCB.model = response.json(
+                                    "payment_methods").data
 
                         barqProvinceModel.setRecords(barqLocations)
                         barqCityModel.parentLocationId = provinceCB.model.data(
@@ -59,27 +60,23 @@ AppPage {
 
     function processCart() {
         let deliveryInfo = {}
-        let address={};
+        let address = {}
 
-        let addressId=addressCB.currentValue;
+        let addressId = addressCB.currentValue
 
-        if(addressId===-1){
-            address["id"]=addressId;
-        }else{
-            deliveryInfo["carrier_id"]=deliveryCB.currentValue;
-            address["province"]=provinceCB.currentText;
-            address["district"]=districtCB.currentText;
-            address["phone"]=phoneLE.text;
-            address["name"]=addressNameLE.text;
-            address["details"]=addressDetailsLE.text;
-            deliveryInfo["notes"]=notesLE.text
+        if (addressId === -1) {
+            address["id"] = addressId
+        } else {
+            deliveryInfo["carrier_id"] = deliveryCB.currentValue
+            address["province"] = provinceCB.currentText
+            address["district"] = districtCB.currentText
+            address["phone"] = phoneLE.text
+            address["name"] = addressNameLE.text
+            address["details"] = addressDetailsLE.text
+            deliveryInfo["notes"] = notesLE.text
         }
 
-
-
-
         // address[""]
-
 
         // if (deliverySwitch.checked) {
         //     //needs to be adjusted for internal delivery
@@ -88,7 +85,6 @@ AppPage {
         //     deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex,
         //                                                 "id")
         // }
-
         cashierModel.processCart(cashierModel.total, 0, notesLE.text,
                                  deliveryInfo)
     }
@@ -106,7 +102,6 @@ AppPage {
     //         }
     //     } //accepted
     // } //payDialog
-
     GridLayout {
         //main   grid
         anchors.fill: parent
@@ -153,11 +148,21 @@ AppPage {
                                            scannerBeep.play()
                                            productsCB.currentIndex = -1
                                        } /*else{
-                                                                                                                                                                                    toastrService.push("Warning",res.message,"warning",2000)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          }*/
+                                                                                                                                                                                                                           toastrService.push("Warning",res.message,"warning",2000)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }*/
                                    } //onAddProductReply
             }
         } //tableView
+
+        AppConfirmationDialog {
+            id: confirmDlg
+            title: qsTr("Confirm");
+            message: qsTr("Do you want to place order?");
+            Component.onCompleted: open();
+
+            onAccepted: page.processCart();
+            onCanceled: close();
+        }
 
         Card {
             //pay button card
@@ -170,9 +175,7 @@ AppPage {
                 columns: 1
 
                 function confirmPayment() {
-                    paymentDialog.amount = cashierModel.total
-                    paymentDialog.paid = cashierModel.total
-                    paymentDialog.open()
+                    confirmDlg.open()
                 }
 
                 CLabel {
@@ -263,7 +266,6 @@ AppPage {
                     textRole: "name"
                     Layout.fillWidth: true
                     //need a special model with id name values
-
                 }
 
                 CLabel {
@@ -277,7 +279,6 @@ AppPage {
                     textRole: "name"
                     Layout.fillWidth: true
                     //need a special model with id name values
-
                 }
 
                 VerticalSpacer {}
@@ -328,10 +329,8 @@ AppPage {
 
                 flow: GridLayout.TopToBottom
 
-
-
                 CLabel {
-                    text: qsTr("Customer Name")+ "<font color='red'> *</font>"
+                    text: qsTr("Customer Name") + "<font color='red'> *</font>"
                     font.bold: true
                 }
                 columns: 5
@@ -368,7 +367,7 @@ AppPage {
                             var currentCustomer = customerCB.model[currentIndex]
                             phoneLE.text = currentCustomer.phone
                             // addressLE.text = currentCustomer.address
-                            updateaddressCB(currentCustomer.addresses??[])
+                            updateaddressCB(currentCustomer.addresses ?? [])
                             tableView.model.updateCustomer(currentCustomer.id)
                         } else {
 
@@ -386,8 +385,6 @@ AppPage {
                     } //onActiveFocusChanged
                 }
 
-
-
                 CLabel {
                     text: qsTr("select Address")
                     font.bold: true
@@ -395,7 +392,7 @@ AppPage {
 
                 IconComboBox {
                     id: addressCB
-                    property bool isNew: addressCB.model[currentIndex].id===-1
+                    property bool isNew: addressCB.model[currentIndex].id === -1
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
                     implicitHeight: 50
@@ -404,8 +401,12 @@ AppPage {
                     leftIcon.name: "cil-address-book"
                     textRole: "name"
                     valueRole: "id"
-                    model: [{"id":-1, "name":qsTr("Add New...")}]
+                    model: [{
+                            "id": -1,
+                            "name": qsTr("Add New...")
+                        }]
                     onCurrentIndexChanged: {
+
                         // if(currentIndex>=0){
 
                         //     let item=addressCB.model[currentIndex];
@@ -432,10 +433,9 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("Address Name")+ "<font color='red'> *</font>"
+                    text: qsTr("Address Name") + "<font color='red'> *</font>"
                     font.bold: true
                 }
-
 
                 CIconTextField {
                     Layout.alignment: Qt.AlignTop
@@ -447,12 +447,11 @@ AppPage {
                     leftIcon.name: "cil-notes"
                     text: qsTr("Default")
                     readOnly: !addressCB.isNew
-
                 }
 
                 CLabel {
-                    text: qsTr("Province")+ "<font color='red'> *</font>";
-                    font.bold: true;
+                    text: qsTr("Province") + "<font color='red'> *</font>"
+                    font.bold: true
                 }
 
                 IconComboBox {
@@ -467,8 +466,8 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("District") + "<font color='red'> *</font>";
-                    font.bold: true;
+                    text: qsTr("District") + "<font color='red'> *</font>"
+                    font.bold: true
                 }
 
                 IconComboBox {
@@ -482,8 +481,8 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("Phone") + "<font color='red'> *</font>";
-                    font.bold: true;
+                    text: qsTr("Phone") + "<font color='red'> *</font>"
+                    font.bold: true
                 }
 
                 CIconTextField {
@@ -500,8 +499,8 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("Address Details");
-                    font.bold: true;
+                    text: qsTr("Address Details")
+                    font.bold: true
                 }
 
                 CIconTextField {
@@ -513,10 +512,8 @@ AppPage {
                     leftIcon.name: "cil-location-pin"
                 }
 
-
-
                 CLabel {
-                    text: qsTr("Notes");
+                    text: qsTr("Notes")
                     font.bold: true
                 }
 
@@ -556,11 +553,12 @@ AppPage {
         }
     }
 
-
-
-    function updateaddressCB(customerAddresses){
-        let newModel=customerAddresses.concat([{"id":-1, "name":qsTr("Add New...")}]);
-        addressCB.model=newModel;
+    function updateaddressCB(customerAddresses) {
+        let newModel = customerAddresses.concat([{
+                                                     "id": -1,
+                                                     "name": qsTr("Add New...")
+                                                 }])
+        addressCB.model = newModel
     }
     function enableBarq() {
         provinceCB.valueRole = "id"
