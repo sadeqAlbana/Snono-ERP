@@ -108,6 +108,18 @@ AppPage {
 
         NetworkManager.post('/onlinesales/purchase',payload).subscribe(function(response){
 
+            if (response.status === 200) {
+                confirmDlg.close();
+                receiptDialog.receiptData = response.order
+                receiptDialog.open()
+                if (customerCB.currentIndex < 0) {
+                    //update customers here
+                }
+                notesLE.text = ""
+                requestCart()
+            }
+
+
         });
     }
 
@@ -145,18 +157,6 @@ AppPage {
             //Layout.minimumWidth: 1000
             model: CashierModel {
                 id: cashierModel
-                onPurchaseResponseReceived: res => {
-                                                if (res.status === 200) {
-                                                    paymentDialog.close()
-                                                    receiptDialog.receiptData = res.order
-                                                    receiptDialog.open()
-                                                    if (customerCB.currentIndex < 0) {
-                                                        customersModel.refresh()
-                                                    }
-                                                    notesLE.text = ""
-                                                    requestCart()
-                                                }
-                                            }
                 // onUpdateCustomerResponseReceived: res => {
                 //                                       if (res.status === 200) {
                 //                                           if (pay) {
