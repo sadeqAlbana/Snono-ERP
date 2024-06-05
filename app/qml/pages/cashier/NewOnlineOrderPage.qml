@@ -22,7 +22,8 @@ AppPage {
         NetworkManager.get("/onlinesales/dashboard").subscribe(
                     function (response) {
                         productsCB.model = response.json("products").data
-                        driverCB.model = response.json("drivers").data
+                        driverCB.model = response.json("drivers")
+
                         page.barqLocations = response.json(
                                     "barq_locations").data
                         customerCB.model = response.json("customers").data
@@ -59,21 +60,27 @@ AppPage {
                     }
 
     function processCart() {
-        let deliveryInfo = {}
         let address = {}
 
         let addressId = addressCB.currentValue
 
         if (addressId === -1) {
-            address["id"] = addressId
-        } else {
-            deliveryInfo["carrier_id"] = deliveryCB.currentValue
-            address["province"] = provinceCB.currentText
-            address["district"] = districtCB.currentText
+            address["province"] = provinceCB.editText
+            address["district"] = districtCB.editText
             address["phone"] = phoneLE.text
             address["name"] = addressNameLE.text
             address["details"] = addressDetailsLE.text
-            deliveryInfo["notes"] = notesLE.text
+        } else {
+            address["id"] = addressId
+        }
+        let deliveryInfo={
+            "carrier_id": carrierCB.currentValue,
+            "address": address,
+            "notes": notesLE.text
+        }
+
+        if(carrierCB.currentValue===1){
+            deliveryInfo["driver_id"]=driverCB.currentValue
         }
 
         // address[""]
@@ -85,8 +92,23 @@ AppPage {
         //     deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex,
         //                                                 "id")
         // }
-        cashierModel.processCart(cashierModel.total, 0, notesLE.text,
-                                 deliveryInfo)
+        // cashierModel.processCart(cashierModel.total, 0, notesLE.text,
+        //                          deliveryInfo)
+
+
+
+
+        let cartData=cashierModel.cartData();
+
+        let payload={
+        "cart": cashierModel.cartData(),
+        "payment_method_id": paymentMethodCB.currentValue,
+        "shipment_info": deliveryInfo
+        };
+
+        NetworkManager.post('/onlinesales/purchase',payload).subscribe(function(response){
+
+        });
     }
 
     // PayDialog {
@@ -233,17 +255,17 @@ AppPage {
                 }
 
                 CComboBox {
-                    id: deliveryCB
-                    valueRole: "code"
+                    id: carrierCB
+                    valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
 
                     model: [{
-                            "id": 0,
+                            "id": 1,
                             "name": qsTr("Internal"),
                             "method": enableInternalDelivery
                         }, {
-                            "id": 1,
+                            "id": 2,
                             "name": qsTr("Barq"),
                             "method": enableBarq
                         }]
@@ -261,9 +283,9 @@ AppPage {
 
                 CComboBox {
                     id: driverCB
-                    enabled: deliveryCB.currentIndex === 0
+                    enabled: carrierCB.currentIndex === 0
                     valueRole: "id"
-                    textRole: "name"
+                    textRole: "username"
                     Layout.fillWidth: true
                     //need a special model with id name values
                 }
@@ -274,7 +296,7 @@ AppPage {
 
                 CComboBox {
                     id: paymentMethodCB
-                    enabled: deliveryCB.currentIndex === 0
+                    enabled: carrierCB.currentIndex === 0
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true

@@ -22,7 +22,7 @@ public:
     QString totalCurrencyString();
     QString taxAmountCurrencyString();
 
-    QJsonObject cartData() const;
+    Q_INVOKABLE QJsonObject cartData() const;
     void setCartData(const QJsonObject &cartData);
 
     QString reference() const;
