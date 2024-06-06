@@ -100,10 +100,20 @@ AppPage {
 
         let cartData=cashierModel.cartData();
 
+        let customerInfo={};
+        if (customerCB.currentIndex < 0) {
+            //update customers here
+            customerInfo["name"]=customerCB.editText;
+        }else{
+            customerInfo["id"]=customerCB.currentValue;
+        }
+
         let payload={
         "cart": cashierModel.cartData(),
         "payment_method_id": paymentMethodCB.currentValue,
+        "customer_info": customerInfo,
         "shipment_info": deliveryInfo
+
         };
 
         NetworkManager.post('/onlinesales/purchase',payload).subscribe(function(response){
@@ -112,9 +122,7 @@ AppPage {
                 confirmDlg.close();
                 receiptDialog.receiptData = response.order
                 receiptDialog.open()
-                if (customerCB.currentIndex < 0) {
-                    //update customers here
-                }
+
                 notesLE.text = ""
                 requestCart()
             }
