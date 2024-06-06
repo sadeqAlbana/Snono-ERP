@@ -15,10 +15,8 @@ CFormView {
     url: "/reports/ordersSales"
 
     applyHandler: function(url, method, data){
-        console.log("applied");
         NetworkManager.post(url, data).subscribe(function (res) {
-            // console.log(JSON.stringify(res.json()))
-             model.print(res.json("data"));
+             model.print(res.json("data"),from.text,to.text);
         });
     }
 
@@ -33,6 +31,7 @@ CFormView {
     }
 
     CDateInput{
+        id: from
         objectName: "from"
     }
 
@@ -41,6 +40,7 @@ CFormView {
     }
 
     CDateInput{
+        id: to
         objectName: "to"
     }
 
