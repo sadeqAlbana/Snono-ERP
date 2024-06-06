@@ -252,7 +252,7 @@ AppPage {
                 adjustStockDlg.productId = model.data(tableView.currentRow,
                                                       "id")
                 adjustStockDlg.originalQty = model.data(tableView.currentRow,
-                                                        "products_stocks.qty")
+                                                        "stock")
                 adjustStockDlg.open()
             }
 
