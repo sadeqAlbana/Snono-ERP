@@ -296,7 +296,6 @@ AppPage {
 
                 CComboBox {
                     id: paymentMethodCB
-                    enabled: carrierCB.currentIndex === 0
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
