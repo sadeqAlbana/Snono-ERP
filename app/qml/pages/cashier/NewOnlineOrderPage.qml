@@ -188,7 +188,6 @@ AppPage {
             id: confirmDlg
             title: qsTr("Confirm");
             message: qsTr("Do you want to place order?");
-            Component.onCompleted: open();
 
             onAccepted: page.processCart();
             onCanceled: close();
