@@ -111,6 +111,7 @@ set(TARGET_SOURCES
     models/productsproxymodel.h models/productsproxymodel.cpp
     models/locationsmodel.h models/locationsmodel.cpp
     models/orderssalesreportmodel.h models/orderssalesreportmodel.cpp
+    models/shipmentsmodel.h models/shipmentsmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 

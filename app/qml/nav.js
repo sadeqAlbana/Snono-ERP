@@ -142,6 +142,11 @@ function navBar(){
                             "path":"qrc:/PosFe/qml/pages/delivery/DriversPage.qml",
                             "permission": "prm_view_drivers"
                         },
+                        {
+                            "title":qsTr("Shipments"),
+                            "path":"qrc:/PosFe/qml/pages/delivery/ShipmentsPage.qml",
+                            "permission": "prm_view_shipments"
+                        },
 
                     ]
                 },
