@@ -185,6 +185,11 @@ AppPage {
                     OrderStatusDelegate {}
                 }
                 DelegateChoice {
+                    roleValue: "ShipmentStatus"
+                    ShipmentStatusDelegate {}
+                }
+
+                DelegateChoice {
                     roleValue: "externalDeliveryStatus"
                     ExternalDeliveryStatusDelegate {}
                 }

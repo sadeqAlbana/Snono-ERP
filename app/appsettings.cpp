@@ -271,6 +271,16 @@ void AppSettings::setReceiptCopiesWithExternalDelivery(int newReceiptCopiesWithE
     emit receiptCopiesWithExternalDeliveryChanged();
 }
 
+QVariant AppSettings::get(const QString &key, QVariant defaultValue)
+{
+    return value(key,defaultValue);
+}
+
+void AppSettings::set(const QString &key, const QVariant &value)
+{
+    setValue(key,value);
+}
+
 QString AppSettings::about()
 {
     QFile file(":/About.md");

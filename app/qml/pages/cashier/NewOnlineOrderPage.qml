@@ -32,7 +32,10 @@ AppPage {
 
                         barqProvinceModel.setRecords(barqLocations)
                         barqCityModel.parentLocationId = provinceCB.model.data(
-                                    provinceCB.currentIndex, "id")
+                                    provinceCB.currentIndex, "id");
+
+                        paymentMethodCB.currentIndex=Settings.get("OnlineOrdersPage/paymentMethodCBIndex",0)
+
                     })
     }
 
@@ -294,6 +297,7 @@ AppPage {
                     valueRole: "id"
                     textRole: "username"
                     Layout.fillWidth: true
+
                     //need a special model with id name values
                 }
 
@@ -306,6 +310,13 @@ AppPage {
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
+
+
+
+                    onCurrentIndexChanged: {
+                        Settings.set("OnlineOrdersPage/paymentMethodCBIndex",paymentMethodCB.currentIndex)
+                    }
+
                     //need a special model with id name values
                 }
 

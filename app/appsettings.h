@@ -85,6 +85,8 @@ public:
 
     int receiptCopiesWithExternalDelivery() const;
     void setReceiptCopiesWithExternalDelivery(int newReceiptCopiesWithExternalDelivery);
+    Q_INVOKABLE QVariant get(const QString &key,QVariant defaultValue=QVariant());
+    Q_INVOKABLE void set(const QString &key, const QVariant &value);
 
 signals:
     void serverUrlChanged(QUrl url);

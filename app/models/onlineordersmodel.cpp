@@ -14,7 +14,7 @@ OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                   {"total",tr("Total"),QString(),false,"currency"} ,
                                                                   {"date",tr("Date"),QString(),false,"datetime"} ,
                                                                   //{"tax_amount",tr("Tax Amount"),QString(),false,"currency"},
-                                                                  {"delivery_status",tr("Status"),QString(),false,"OrderStatus"} ,
+                                                                  {"status",tr("Status"),"shipment",false,"ShipmentStatus"} ,
                                                                   {"external_delivery_id",tr("Delivery Id"),QString()} ,
                                                                   {"external_delivery_status",tr("Delivery Status"),QString(),false,"externalDeliveryStatus"} ,
 

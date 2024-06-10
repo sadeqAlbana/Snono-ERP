@@ -152,6 +152,7 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/DraftOrdersPage.qml
     qml/pages/orders/DraftOrderForm.qml
     qml/pages/orders/OnlineOrders.qml
+    qml/common/ShipmentStatusDelegate.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
