@@ -96,6 +96,12 @@ function navBar(){
 
                         },
                         {
+                            "title":qsTr("Online Orders"),
+                            "path":"qrc:/PosFe/qml/pages/orders/OnlineOrders.qml",
+                            "permission": ""
+
+                        },
+                        {
                             "title":qsTr("Returns"),
                             "path":"qrc:/PosFe/qml/pages/orders/OrdersReturnsPage.qml",
                             "permission": ""
