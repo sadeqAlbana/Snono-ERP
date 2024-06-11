@@ -21,6 +21,7 @@ Card{
             rowSpacing: 30
             title: qsTr("Info")
             url: "/customer"
+            keyValue: page.keyValue
             columns: 4
             CLabel {
                 text: qsTr("Name")
