@@ -307,6 +307,16 @@ AppPage {
                     textRole: "username"
                     Layout.fillWidth: true
 
+                    onModelChanged: {
+                        initialized=true;
+                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/DriverCBValue",1));
+                    }
+                    onCurrentValueChanged: {
+                        if(initialized){
+                            Settings.set("OnlineOrdersPage/DriverCBValue",currentValue);
+                        }
+                    }
+
                     //need a special model with id name values
                 }
 
@@ -323,11 +333,11 @@ AppPage {
 
                     onModelChanged: {
                         initialized=true;
-                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/paymentMethodCBIndex",2)); //2 is COD
+                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/paymentMethodCBValue",2)); //2 is COD
                     }
                     onCurrentValueChanged: {
                         if(initialized){
-                            Settings.set("OnlineOrdersPage/paymentMethodCBIndex",currentValue);
+                            Settings.set("OnlineOrdersPage/paymentMethodCBValue",currentValue);
                         }
                     }
                 }
