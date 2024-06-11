@@ -78,7 +78,7 @@ AppPage {
         let deliveryInfo={
             "carrier_id": carrierCB.currentValue,
             "address": address,
-            "notes": notesLE.text
+            "notes": deliveryNotesLE.text
         }
 
         if(carrierCB.currentValue===1){
@@ -94,7 +94,7 @@ AppPage {
         //     deliveryInfo["town_id"] = townCB.model.data(townCB.currentIndex,
         //                                                 "id")
         // }
-        // cashierModel.processCart(cashierModel.total, 0, notesLE.text,
+        // cashierModel.processCart(cashierModel.total, 0, deliveryNotesLE.text,
         //                          deliveryInfo)
 
 
@@ -125,7 +125,7 @@ AppPage {
                 receiptDialog.receiptData = response.order
                 receiptDialog.open()
 
-                notesLE.text = ""
+                deliveryNotesLE.text = ""
                 requestCart()
             }
 
@@ -465,7 +465,7 @@ AppPage {
                                 districtCB.currentIndex=0;
                                 phoneLE.clear();
                                 addressDetailsLE.clear();
-                                notesLE.clear();
+                                deliveryNotesLE.clear();
                             }else{
                                 addressNameLE.text=item.name;
                                 phoneLE.text=item.phone
@@ -573,17 +573,17 @@ AppPage {
                 }
 
                 CLabel {
-                    text: qsTr("Notes")
+                    text: qsTr("Delivery Notes")
                     font.bold: true
                 }
 
                 CIconTextField {
                     Layout.alignment: Qt.AlignTop
-                    id: notesLE
+                    id: deliveryNotesLE
                     //id: customerPhone
                     Layout.fillWidth: true
                     implicitHeight: 50
-                    placeholderText: qsTr("Note...")
+                    placeholderText: qsTr("Delivery Note...")
                     leftIcon.name: "cil-notes"
                 }
             }
