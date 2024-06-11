@@ -268,7 +268,6 @@ AppPage {
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
-                    initialized: true
                     model: [{
                             "id": 1,
                             "name": qsTr("Internal"),
@@ -281,11 +280,13 @@ AppPage {
 
                     Component.onCompleted: {
                         currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/CarrierCBValue",1));
+                        initialized= true // we need to initalize here on static models
                     }
                     onCurrentValueChanged: {
                         if(initialized){
                             Settings.set("OnlineOrdersPage/CarrierCBValue",currentValue);
                         }
+
                     }
 
                     onCurrentIndexChanged: {
@@ -376,7 +377,6 @@ AppPage {
             palette.base: "transparent"
             GridLayout {
                 anchors.fill: parent
-
                 flow: GridLayout.TopToBottom
 
                 CLabel {
@@ -415,12 +415,8 @@ AppPage {
                     onCurrentIndexChanged: {
                         if (currentIndex >= 0) {
                             var currentCustomer = customerCB.model[currentIndex]
-                            phoneLE.text = currentCustomer.phone
-                            // addressLE.text = currentCustomer.address
                             updateaddressCB(currentCustomer.addresses ?? [])
-                            tableView.model.updateCustomer(currentCustomer.id)
                         } else {
-
                             //phoneLE.text = ""
                             //addressLE.text = ""
                         }
@@ -454,17 +450,31 @@ AppPage {
                     model: [{
                             "id": -1,
                             "name": qsTr("Add New...")
-                        }]
+                        }];
+
+
                     onCurrentIndexChanged: {
 
-                        // if(currentIndex>=0){
+                        if(currentIndex>=0){
 
-                        //     let item=addressCB.model[currentIndex];
-                        //     if(item.id===-1){
-                        //         currentIndex=-2;
+                            let item=addressCB.model[currentIndex];
+                            if(item.id===-1){
+                                // currentIndex=-2;
+                                addressNameLE.text="Default"; //handle when there is another address with the name "Default"
+                                provinceCB.currentIndex=0;
+                                districtCB.currentIndex=0;
+                                phoneLE.clear();
+                                addressDetailsLE.clear();
+                                notesLE.clear();
+                            }else{
+                                addressNameLE.text=item.name;
+                                phoneLE.text=item.phone
+                                provinceCB.currentIndex=provinceCB.find(item.province);
+                                districtCB.currentIndex=districtCB.find(item.district);
 
-                        //     }
-                        // }
+                                //sara al-khazraji
+                            }
+                        }
                     }
                 }
 
@@ -620,12 +630,12 @@ AppPage {
         provinceCB.currentIndexChanged.connect(function () {
             if (provinceCB.currentIndex >= 0) {
                 barqCityModel.parentLocationId = provinceCB.model.data(
-                            provinceCB.currentIndex, "id")
+                            provinceCB.currentIndex, "id")?? 0
                 districtCB.currentIndex = 0
             }
         })
         barqCityModel.parentLocationId = provinceCB.model.data(
-                    provinceCB.currentIndex, "id")
+                    provinceCB.currentIndex, "id")?? 0
         districtCB.currentIndex = 0
     }
     function enableInternalDelivery() {
@@ -634,8 +644,8 @@ AppPage {
         provinceCB.valueRole = "province"
         provinceCB.model = internalProvinceModel
 
-        districtCB.valueRole = "city"
-        districtCB.textRole = "city"
+        districtCB.valueRole = "district"
+        districtCB.textRole = "district"
         districtCB.model = internalCityModel
 
         // provinceCB.currentIndexChanged.connect(function(){
