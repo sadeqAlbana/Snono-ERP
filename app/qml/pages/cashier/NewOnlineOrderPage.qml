@@ -34,7 +34,6 @@ AppPage {
                         barqCityModel.parentLocationId = provinceCB.model.data(
                                     provinceCB.currentIndex, "id");
 
-                        paymentMethodCB.currentIndex=Settings.get("OnlineOrdersPage/paymentMethodCBIndex",0)
 
                     })
     }
@@ -269,7 +268,7 @@ AppPage {
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
-
+                    initialized: true
                     model: [{
                             "id": 1,
                             "name": qsTr("Internal"),
@@ -279,6 +278,15 @@ AppPage {
                             "name": qsTr("Barq"),
                             "method": enableBarq
                         }]
+
+                    Component.onCompleted: {
+                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/CarrierCBValue",1));
+                    }
+                    onCurrentValueChanged: {
+                        if(initialized){
+                            Settings.set("OnlineOrdersPage/CarrierCBValue",currentValue);
+                        }
+                    }
 
                     onCurrentIndexChanged: {
 
@@ -307,17 +315,20 @@ AppPage {
 
                 CComboBox {
                     id: paymentMethodCB
+
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
 
-
-
-                    onCurrentIndexChanged: {
-                        Settings.set("OnlineOrdersPage/paymentMethodCBIndex",paymentMethodCB.currentIndex)
+                    onModelChanged: {
+                        initialized=true;
+                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/paymentMethodCBIndex",2)); //2 is COD
                     }
-
-                    //need a special model with id name values
+                    onCurrentValueChanged: {
+                        if(initialized){
+                            Settings.set("OnlineOrdersPage/paymentMethodCBIndex",currentValue);
+                        }
+                    }
                 }
 
                 VerticalSpacer {}
