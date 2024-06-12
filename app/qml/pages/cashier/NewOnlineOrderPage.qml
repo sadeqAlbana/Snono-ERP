@@ -71,6 +71,7 @@ AppPage {
             address["district"] = districtCB.editText
             address["phone"] = phoneLE.text
             address["name"] = addressNameLE.text
+            address["first_name"] = customerCB.currentText
             address["details"] = addressDetailsLE.text
         } else {
             address["id"] = addressId

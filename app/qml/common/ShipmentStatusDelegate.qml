@@ -10,12 +10,12 @@ CTableViewDelegate {
     padding: 12
     leftPadding: (width/3)
     rightPadding: leftPadding
-    implicitWidth: 150
+    implicitWidth: 350
     contentItem: Badge{
 
         text: switch(model.display){
               case "manifest_created": return qsTr("Manifest Created");
-              case "in_transit": return qsTr("Paid");
+              case "in_transit": return qsTr("In Transit");
               default: return model.display;
               }
         state: switch(model.display){

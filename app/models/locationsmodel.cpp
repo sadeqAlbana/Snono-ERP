@@ -4,6 +4,8 @@
 LocationsModel::LocationsModel(QObject *parent) : AppNetworkedJsonModel ("/locations",{
                                            {"id",tr("ID")} ,
                                            {"name",tr("Name")} ,
+                                           {"first_name",tr("First Name")} ,
+
                                            {"country",tr("Country")} ,
                                            {"province",tr("Province")} ,
                                            {"city",tr("City")} ,

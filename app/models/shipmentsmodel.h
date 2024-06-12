@@ -8,6 +8,9 @@ class ShipmentsModel : public AppNetworkedJsonModel
     QML_ELEMENT
 public:
     Q_INVOKABLE explicit ShipmentsModel(QObject *parent = nullptr);
+
+    Q_INVOKABLE virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
 };
 
 #endif // SHIPMENTSMODEL_H

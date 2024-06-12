@@ -8,6 +8,8 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import Qt5Compat.GraphicalEffects
+import Qt.labs.qmlmodels 1.0
+
 import CoreUI
 import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
@@ -64,9 +66,24 @@ AppPage{
             model: ShipmentsModel{
                 id: model
                 useNestedParentKeys:true
-
-
             }//model
+
+            delegate: AppDelegateChooser {
+                DelegateChoice {
+                    roleValue: "OrderStatus"
+                    OrderStatusDelegate {}
+                }
+                DelegateChoice {
+                    roleValue: "ShipmentStatus"
+                    ShipmentStatusDelegate {}
+                }
+
+                DelegateChoice {
+                    roleValue: "externalDeliveryStatus"
+                    ExternalDeliveryStatusDelegate {}
+                }
+            }
+
         }//tableview
     }//layout
 }//card

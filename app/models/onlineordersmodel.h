@@ -15,6 +15,7 @@ public:
     Q_INVOKABLE void returnableItems(const int &orderId);
     virtual QJsonArray filterData(QJsonArray data) override;
     Q_INVOKABLE void print();
+    Q_INVOKABLE virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
 
 signals:

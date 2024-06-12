@@ -5,12 +5,11 @@
 #include "utils.h"
 OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders/online",{
                                                                   {"id",tr("ID")} ,
-                                                                  {"reference",tr("Reference")} ,
                                                                   {"name",tr("Customer"),"customers",false,"link",
                                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                                   {"linkKey","customer_id"}}},
-                                                                  {"phone",tr("Phone"),"customers"} ,
-                                                                  {"address",tr("Address"),"customers"} ,
+                                                                  {"phone",tr("Phone"),"shipment.dst_address"} ,
+                                                                  {"district",tr("Address"),"shipment.dst_address"} ,
                                                                   {"total",tr("Total"),QString(),false,"currency"} ,
                                                                   {"date",tr("Date"),QString(),false,"datetime"} ,
                                                                   //{"tax_amount",tr("Tax Amount"),QString(),false,"currency"},
@@ -122,5 +121,16 @@ void OnlineOrdersModel::print()
                                             {"total","Total"}
 
                                            });
+}
+
+QVariant OnlineOrdersModel::data(const QModelIndex &index, int role) const
+{
+    auto key = m_columns.value(index.column());
+    if(key.m_key=="district" && role==Qt::DisplayRole){
+        QJsonObject record=jsonObject(index.row()).value("shipment").toObject().value("dst_address").toObject();
+        return QString("%1 - %2").arg(record.value("province").toString()).arg(record.value("district").toString());
+    }
+
+    return AppNetworkedJsonModel::data(index,role);
 }
 

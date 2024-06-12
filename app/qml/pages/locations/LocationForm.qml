@@ -161,11 +161,41 @@ CFormView {
     }
 
     CLabel {
+        text: qsTr("First Name")
+        Layout.row:4
+        Layout.column: 2
+        Layout.bottomMargin: -control.rowSpacing
+    }
+    CTextField {
+        objectName: "first_name"
+        Layout.fillWidth: true
+        placeholderText: qsTr("First Name...")
+        Layout.row:5
+        Layout.column: 2
+    }
+
+    CLabel {
+        text: qsTr("Last Name")
+        Layout.row:4
+        Layout.column: 3
+        Layout.bottomMargin: -control.rowSpacing
+    }
+    CTextField {
+        objectName: "last_name"
+        Layout.fillWidth: true
+        placeholderText: qsTr("Last Name...")
+        Layout.row:5
+        Layout.column: 3
+    }
+
+
+    CLabel {
         text: qsTr("Details")
         Layout.row: 6
         Layout.column: 0
         Layout.bottomMargin: -control.rowSpacing
     }
+
 
     CTextArea {
         objectName: "details"
