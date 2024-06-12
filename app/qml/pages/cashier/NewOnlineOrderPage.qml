@@ -600,15 +600,18 @@ AppPage {
         }
     }
 
-    LocationsModel {
+    AppNetworkedJsonModel {
         id: internalProvinceModel
+        url: "locations/comboList"
     }
 
-    LocationsModel {
+    AppNetworkedJsonModel {
         id: internalCityModel
+        url: "locations/comboList"
         filter: {
             "province": provinceCB.editText
         }
+        onFilterChanged: requestData();
     }
 
     function updateaddressCB(customerAddresses) {

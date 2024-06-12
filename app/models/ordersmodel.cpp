@@ -5,7 +5,7 @@
 #include "utils.h"
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   {"id",tr("ID")} ,
-                                                                  {"reference",tr("Reference")} ,
+                                                                  // {"reference",tr("Reference")} ,
                                                                   {"name",tr("Customer"),"customers",false,"link",
                                             QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                     {"linkKey","customer_id"}}},
