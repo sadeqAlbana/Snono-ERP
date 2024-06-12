@@ -34,7 +34,6 @@ AppPage {
                         barqCityModel.parentLocationId = provinceCB.model.data(
                                     provinceCB.currentIndex, "id");
 
-
                     })
     }
 
@@ -121,13 +120,11 @@ AppPage {
 
         NetworkManager.post('/onlinesales/purchase',payload).subscribe(function(response){
 
-            if (response.status === 200) {
+            if (response.json('status') === 200) {
                 confirmDlg.close();
-                receiptDialog.receiptData = response.order
-                receiptDialog.open()
-
-                deliveryNotesLE.text = ""
-                requestCart()
+                receiptDialog.receiptData = response.json('order');
+                receiptDialog.open();
+                cashierModel.requestCart();
             }
 
 
@@ -422,14 +419,21 @@ AppPage {
                     valueRole: "id"
                     currentIndex: 0
                     editable: true
+                    onModelChanged: {
+                        if (currentIndex >= 0) {
+                            var currentCustomer = customerCB.model[currentIndex]
+                            updateaddressCB(currentCustomer.addresses ?? [])
+                        } else {
+                            updateaddressCB([])
+                        }
+                    }
 
                     onCurrentIndexChanged: {
                         if (currentIndex >= 0) {
                             var currentCustomer = customerCB.model[currentIndex]
                             updateaddressCB(currentCustomer.addresses ?? [])
                         } else {
-                            //phoneLE.text = ""
-                            //addressLE.text = ""
+                            updateaddressCB([])
                         }
                     } //onCurrentIndexChanged
 
@@ -465,29 +469,12 @@ AppPage {
 
 
                     onCurrentIndexChanged: {
-
-                        if(currentIndex>=0){
-
-                            let item=addressCB.model[currentIndex];
-                            if(item.id===-1){
-                                // currentIndex=-2;
-                                addressNameLE.text="Default"; //handle when there is another address with the name "Default"
-                                provinceCB.currentIndex=0;
-                                districtCB.currentIndex=0;
-                                phoneLE.clear();
-                                addressDetailsLE.clear();
-                                deliveryNotesLE.clear();
-                            }else{
-                                addressNameLE.text=item.name;
-                                phoneLE.text=item.phone
-                                provinceCB.currentIndex=provinceCB.find(item.province);
-                                districtCB.currentIndex=districtCB.find(item.district);
-
-                                //sara al-khazraji
-                            }
-                        }
+                        page.refreshCustomerForm();
                     }
+                    onModelChanged: page.refreshCustomerForm();
                 }
+
+
 
                 MenuSeparator {
                     padding: 25
@@ -665,5 +652,30 @@ AppPage {
         //         districtCB.currentIndex = 0
 
         // });
+    }
+
+    function refreshCustomerForm(){
+
+        if(addressCB.currentIndex>=0){
+
+            let item=addressCB.model[addressCB.currentIndex];
+            if(item.id===-1){
+                // currentIndex=-2;
+                addressNameLE.text="Default"; //handle when there is another address with the name "Default"
+                provinceCB.currentIndex=0;
+                districtCB.currentIndex=0;
+                phoneLE.clear();
+                addressDetailsLE.clear();
+                deliveryNotesLE.clear();
+            }else{
+                addressNameLE.text=item.name;
+                phoneLE.text=item.phone
+                provinceCB.currentIndex=provinceCB.find(item.province);
+                districtCB.currentIndex=districtCB.find(item.district);
+                addressDetailsLE.text=item.details
+
+                //sara al-khazraji
+            }
+        }
     }
 }
