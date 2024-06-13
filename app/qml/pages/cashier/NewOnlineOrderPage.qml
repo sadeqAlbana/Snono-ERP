@@ -21,18 +21,26 @@ AppPage {
     Component.onCompleted: {
         NetworkManager.get("/onlinesales/dashboard").subscribe(
                     function (response) {
-                        productsCB.model = response.json("products").data
+                        paymentMethodCB.model = response.json(
+                                    "payment_methods").data;
+                        productsCB.model = response.json("products").data;
+                        customerCB.model = response.json("customers").data;
                         driverCB.model = response.json("drivers")
-
                         page.barqLocations = response.json(
                                     "barq_locations").data
-                        customerCB.model = response.json("customers").data
-                        paymentMethodCB.model = response.json(
-                                    "payment_methods").data
+                        page.internalLocations = response.json(
+                                    "combo_locations").data;
 
-                        barqProvinceModel.setRecords(barqLocations)
-                        barqCityModel.parentLocationId = provinceCB.model.data(
-                                    provinceCB.currentIndex, "id");
+
+                        carrierCB.model=[{
+                                             "id": 1,
+                                             "name": qsTr("Internal"),
+                                             "method": enableInternalDelivery
+                                         }, {
+                                             "id": 2,
+                                             "name": qsTr("Barq"),
+                                             "method": enableBarq
+                                         }]
 
                     })
     }
@@ -46,6 +54,7 @@ AppPage {
     property bool pay: false
     property int sessionId: -1
     property var barqLocations
+    property var internalLocations
 
     ReceiptDialog {
         id: receiptDialog
@@ -75,14 +84,14 @@ AppPage {
         } else {
             address["id"] = addressId
         }
-        let deliveryInfo={
+        let deliveryInfo = {
             "carrier_id": carrierCB.currentValue,
             "address": address,
             "notes": deliveryNotesLE.text
         }
 
-        if(carrierCB.currentValue===1){
-            deliveryInfo["driver_id"]=driverCB.currentValue
+        if (carrierCB.currentValue === 1) {
+            deliveryInfo["driver_id"] = driverCB.currentValue
         }
 
         // address[""]
@@ -96,39 +105,34 @@ AppPage {
         // }
         // cashierModel.processCart(cashierModel.total, 0, deliveryNotesLE.text,
         //                          deliveryInfo)
+        let cartData = cashierModel.cartData()
 
-
-
-
-        let cartData=cashierModel.cartData();
-
-        let customerInfo={};
+        let customerInfo = {}
         if (customerCB.currentIndex < 0) {
             //update customers here
-            customerInfo["name"]=customerCB.editText;
-        }else{
-            customerInfo["id"]=customerCB.currentValue;
+            customerInfo["name"] = customerCB.editText
+        } else {
+            customerInfo["id"] = customerCB.currentValue
         }
 
-        let payload={
-        "cart": cashierModel.cartData(),
-        "payment_method_id": paymentMethodCB.currentValue,
-        "customer_info": customerInfo,
-        "shipment_info": deliveryInfo
+        let payload = {
+            "cart": cashierModel.cartData(),
+            "payment_method_id": paymentMethodCB.currentValue,
+            "customer_info": customerInfo,
+            "shipment_info": deliveryInfo
+        }
 
-        };
+        NetworkManager.post('/onlinesales/purchase',
+                            payload).subscribe(function (response) {
 
-        NetworkManager.post('/onlinesales/purchase',payload).subscribe(function(response){
-
-            if (response.json('status') === 200) {
-                confirmDlg.close();
-                receiptDialog.receiptData = response.json('order');
-                receiptDialog.open();
-                cashierModel.requestCart();
-            }
-
-
-        });
+                                if (response.json('status') === 200) {
+                                    confirmDlg.close()
+                                    receiptDialog.receiptData = response.json(
+                                                'order')
+                                    receiptDialog.open()
+                                    cashierModel.requestCart()
+                                }
+                            })
     }
 
     // PayDialog {
@@ -178,19 +182,19 @@ AppPage {
                                            scannerBeep.play()
                                            productsCB.currentIndex = -1
                                        } /*else{
-                                                                                                                                                                                                                           toastrService.push("Warning",res.message,"warning",2000)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }*/
+                                                                                                                                                                                                                                                                  toastrService.push("Warning",res.message,"warning",2000)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       }*/
                                    } //onAddProductReply
             }
         } //tableView
 
         AppConfirmationDialog {
             id: confirmDlg
-            title: qsTr("Confirm");
-            message: qsTr("Do you want to place order?");
+            title: qsTr("Confirm")
+            message: qsTr("Do you want to place order?")
 
-            onAccepted: page.processCart();
-            onCanceled: close();
+            onAccepted: page.processCart()
+            onCanceled: close()
         }
 
         Card {
@@ -266,31 +270,26 @@ AppPage {
                     valueRole: "id"
                     textRole: "name"
                     Layout.fillWidth: true
-                    model: [{
-                            "id": 1,
-                            "name": qsTr("Internal"),
-                            "method": enableInternalDelivery
-                        }, {
-                            "id": 2,
-                            "name": qsTr("Barq"),
-                            "method": enableBarq
-                        }]
 
                     Component.onCompleted: {
-                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/CarrierCBValue",1));
-                        initialized= true // we need to initalize here on static models
+                        console.log("current index: " + currentIndex)
+                        currentIndex = indexOfValue(
+                                    Settings.get(
+                                        "OnlineOrdersPage/CarrierCBValue", 1))
+                        initialized = true // we need to initalize here on static models
                     }
                     onCurrentValueChanged: {
-                        if(initialized){
-                            Settings.set("OnlineOrdersPage/CarrierCBValue",currentValue);
+                        if (initialized) {
+                            Settings.set("OnlineOrdersPage/CarrierCBValue",
+                                         currentValue)
                         }
-
                     }
 
                     onCurrentIndexChanged: {
-
                         //Settings.externalDelivery = checked
-                        model[currentIndex].method()
+
+                        //this is the catalyst
+                        model[currentIndex].method();
                     }
                 }
 
@@ -306,12 +305,15 @@ AppPage {
                     Layout.fillWidth: true
 
                     onModelChanged: {
-                        initialized=true;
-                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/DriverCBValue",1));
+                        initialized = true
+                        currentIndex = indexOfValue(
+                                    Settings.get(
+                                        "OnlineOrdersPage/DriverCBValue", 1))
                     }
                     onCurrentValueChanged: {
-                        if(initialized){
-                            Settings.set("OnlineOrdersPage/DriverCBValue",currentValue);
+                        if (initialized) {
+                            Settings.set("OnlineOrdersPage/DriverCBValue",
+                                         currentValue)
                         }
                     }
 
@@ -330,12 +332,16 @@ AppPage {
                     Layout.fillWidth: true
 
                     onModelChanged: {
-                        initialized=true;
-                        currentIndex=indexOfValue(Settings.get("OnlineOrdersPage/paymentMethodCBValue",2)); //2 is COD
+                        initialized = true
+                        currentIndex = indexOfValue(
+                                    Settings.get(
+                                        "OnlineOrdersPage/paymentMethodCBValue",
+                                        2)) //2 is COD
                     }
                     onCurrentValueChanged: {
-                        if(initialized){
-                            Settings.set("OnlineOrdersPage/paymentMethodCBValue",currentValue);
+                        if (initialized) {
+                            Settings.set("OnlineOrdersPage/paymentMethodCBValue",
+                                         currentValue)
                         }
                     }
                 }
@@ -465,16 +471,13 @@ AppPage {
                     model: [{
                             "id": -1,
                             "name": qsTr("Add New...")
-                        }];
-
+                        }]
 
                     onCurrentIndexChanged: {
-                        page.refreshCustomerForm();
+                        page.refreshCustomerForm()
                     }
-                    onModelChanged: page.refreshCustomerForm();
+                    onModelChanged: page.refreshCustomerForm()
                 }
-
-
 
                 MenuSeparator {
                     padding: 25
@@ -521,6 +524,16 @@ AppPage {
                     placeholderText: qsTr("Province...")
                     editable: true
                     leftIcon.name: "cil-map"
+                    textRole: "name"
+                    valueRole: "name"
+                    onCurrentIndexChanged: {
+                        if (provinceCB.currentIndex >= 0) {
+                            districtCB.parentLocationId = provinceCB.model.data(
+                                        provinceCB.currentIndex, "name") ?? null
+                            districtCB.currentIndex = 0
+                        }
+                    }
+                    model: JsonModel {}
                 }
 
                 CLabel {
@@ -534,8 +547,24 @@ AppPage {
                     Layout.fillWidth: true
                     implicitHeight: 50
                     placeholderText: qsTr("District...")
+                    textRole: "name"
+                    valueRole: "name"
                     editable: true
                     leftIcon.name: "cil-city"
+                    property var parentLocationId: null
+                    onParentLocationIdChanged: refresh()
+
+                    function refresh() {
+                        if (parentLocationId === null
+                                || parentLocationId === undefined) {
+                            return
+                        }
+
+                        model.records = provinceCB.model.data(
+                                    provinceCB.currentIndex, "children")
+                    }
+
+                    model: JsonModel {}
                 }
 
                 CLabel {
@@ -588,32 +617,31 @@ AppPage {
         }
     } // GridLayout end
 
-    JsonModel {
-        id: barqProvinceModel
-    }
-    JsonModel {
-        id: barqCityModel
-        property int parentLocationId: -1
-        onParentLocationIdChanged: {
-            records = barqProvinceModel.data(provinceCB.currentIndex,
-                                             "children")
-        }
-    }
+    // JsonModel {
+    //     id: barqProvinceModel
+    // }
+    // JsonModel {
+    //     id: barqCityModel
+    //     property int parentLocationId: -1
+    //     onParentLocationIdChanged: {
+    //         records = barqProvinceModel.data(provinceCB.currentIndex,
+    //                                          "children")
+    //     }
+    // }
 
-    AppNetworkedJsonModel {
-        id: internalProvinceModel
-        url: "locations/comboList"
-    }
+    // AppNetworkedJsonModel {
+    //     id: internalProvinceModel
+    //     url: "locations/comboList"
+    // }
 
-    AppNetworkedJsonModel {
-        id: internalCityModel
-        url: "locations/comboList"
-        filter: {
-            "province": provinceCB.editText
-        }
-        onFilterChanged: requestData();
-    }
-
+    // AppNetworkedJsonModel {
+    //     id: internalCityModel
+    //     url: "locations/comboList"
+    //     filter: {
+    //         "province": provinceCB.editText
+    //     }
+    //     onFilterChanged: requestData();
+    // }
     function updateaddressCB(customerAddresses) {
         let newModel = customerAddresses.concat([{
                                                      "id": -1,
@@ -622,60 +650,40 @@ AppPage {
         addressCB.model = newModel
     }
     function enableBarq() {
-        provinceCB.valueRole = "id"
-        provinceCB.textRole = "name"
-        districtCB.valueRole = "id"
-        districtCB.textRole = "name"
-        provinceCB.model = barqProvinceModel
-        districtCB.model = barqCityModel
-        provinceCB.currentIndexChanged.connect(function () {
-            if (provinceCB.currentIndex >= 0) {
-                barqCityModel.parentLocationId = provinceCB.model.data(
-                            provinceCB.currentIndex, "id")?? 0
-                districtCB.currentIndex = 0
-            }
-        })
-        barqCityModel.parentLocationId = provinceCB.model.data(
-                    provinceCB.currentIndex, "id")?? 0
-        districtCB.currentIndex = 0
+        provinceCB.model.records = page.barqLocations
+        provinceCB.currentIndex = 0
+        districtCB.parentLocationId = provinceCB.model.data(
+                    provinceCB.currentIndex, "name") ?? null
+        districtCB.refresh()
     }
     function enableInternalDelivery() {
-
-        provinceCB.textRole = "province"
-        provinceCB.valueRole = "province"
-        provinceCB.model = internalProvinceModel
-
-        districtCB.valueRole = "district"
-        districtCB.textRole = "district"
-        districtCB.model = internalCityModel
-
-        // provinceCB.currentIndexChanged.connect(function(){
-        //     console.log("edit text changed")
-        //         // barqCityModel.requestData();
-        //         districtCB.currentIndex = 0
-
-        // });
+        provinceCB.model.records = page.internalLocations
+        provinceCB.currentIndex = 0
+        districtCB.parentLocationId = provinceCB.model.data(
+                    provinceCB.currentIndex, "name") ?? null
+        districtCB.refresh()
     }
 
-    function refreshCustomerForm(){
+    function refreshCustomerForm() {
 
-        if(addressCB.currentIndex>=0){
+        if (addressCB.currentIndex >= 0) {
 
-            let item=addressCB.model[addressCB.currentIndex];
-            if(item.id===-1){
+            let item = addressCB.model[addressCB.currentIndex]
+            if (item.id === -1) {
                 // currentIndex=-2;
-                addressNameLE.text="Default"; //handle when there is another address with the name "Default"
-                provinceCB.currentIndex=0;
-                districtCB.currentIndex=0;
-                phoneLE.clear();
-                addressDetailsLE.clear();
-                deliveryNotesLE.clear();
-            }else{
-                addressNameLE.text=item.name;
-                phoneLE.text=item.phone
-                provinceCB.currentIndex=provinceCB.find(item.province);
-                districtCB.currentIndex=districtCB.find(item.district);
-                addressDetailsLE.text=item.details
+                addressNameLE.text
+                        = "Default" //handle when there is another address with the name "Default"
+                provinceCB.currentIndex = 0
+                districtCB.currentIndex = 0
+                phoneLE.clear()
+                addressDetailsLE.clear()
+                deliveryNotesLE.clear()
+            } else {
+                addressNameLE.text = item.name
+                phoneLE.text = item.phone
+                provinceCB.currentIndex = provinceCB.find(item.province)
+                districtCB.currentIndex = districtCB.find(item.district)
+                addressDetailsLE.text = item.details
 
                 //sara al-khazraji
             }
