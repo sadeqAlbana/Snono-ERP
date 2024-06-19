@@ -164,7 +164,7 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     QJsonArray data=filterData(reply->json("data").toArray());
 
     if(!m_defaultRecord.isEmpty()){
-        QJsonObject record=data[0].toObject();
+        QJsonObject record=data.at(0).toObject();
         for(auto key : record.keys()){
             record[key]=QJsonValue();
         }
