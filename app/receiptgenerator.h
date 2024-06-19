@@ -15,7 +15,7 @@ class ReceiptGenerator : public QObject
 public:
     explicit ReceiptGenerator(QObject *parent = nullptr);
 
-    Q_INVOKABLE static QString createNew(QJsonObject receiptData, const bool print=false);
+    Q_INVOKABLE static QString createDeliveryReceipt(QJsonObject receiptData, const bool print=false);
 
     Q_INVOKABLE static QString sampleData();
 signals:

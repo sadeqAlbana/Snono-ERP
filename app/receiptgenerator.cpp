@@ -38,7 +38,7 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 
 
 
-QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
+QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const bool print)
 {
     bool linePrinter=AppSettings::instance()->receiptLinePrinter();
 
@@ -513,7 +513,7 @@ END:VCARD)").arg(customer).arg(phone);
 QString ReceiptGenerator::sampleData()
 {
     QJsonDocument doc=QJsonDocument::fromJson(R"({"cart_id":5,"created_at":"2021-12-19T12:55:24.000","customer_id":1,"customers":{"account_id":1001,"address":"Baghdad, Hay Alkhadraa","created_at":"2021-12-16T10:37:31.000","deleted_at":"","email":"N.A","first_name":"Sadeq","id":1,"last_name":"Albana","name":"Customer","phone":"07823815562","updated_at":""},"date":"2021-12-19T12:55:24.000","deleted_at":"","id":2,"journal_entry_id":55,"paid_amount":19087.5,"pos_order_items":[{"created_at":"2021-12-19T12:55:24.000","deleted_at":"","discount":0,"id":2,"order_id":2,"product_id":42,"products":{"barcode":"sw2106259185997506-l","category_id":1,"cost":10725,"costing_method":"FIFO","created_at":"2021-12-16T10:37:37.000","current_cost":10725,"deleted_at":"","description":"","flags":0,"id":993,"list_price":19087.5,"name":"312 - L","parent_id":0,"type":1,"updated_at":"2021-12-16T10:37:37.000"},"qty":1,"subtotal":19087.5,"total":19087.5,"unit_price":19087.5,"updated_at":"2021-12-19T12:55:24.000"}],"pos_session_id":1,"reference":"3dcc3168-0488-40c0-81dd-a4d1cd11b1d3","returned_amount":0,"tax_amount":0,"total":19087.5,"updated_at":"2021-12-19T12:55:24.000"})");
-    return createNew(doc.object());
+    return createDeliveryReceipt(doc.object());
 
 }
 

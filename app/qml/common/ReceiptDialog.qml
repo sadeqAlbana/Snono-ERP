@@ -57,7 +57,7 @@ Popup {
                 // width: sourceSize.width
                 // height: sourceSize.height
                 document: PdfDocument{
-                    source: receiptData? "file:///"+ReceiptGenerator.createNew(receiptData) : ""
+                    source: receiptData? "file:///"+ReceiptGenerator.createDeliveryReceipt(receiptData) : ""
 
                     onStatusChanged:(status)=> {
                         if(status==PdfDocument.Ready){
@@ -132,7 +132,7 @@ Popup {
                 Api.barqReceipt(orderId); //need to deal with later!
                 receiptData["external_delivery"]=externalDelivery.currentValue;
             }
-            ReceiptGenerator.createNew(receiptData,true);
+            ReceiptGenerator.createDeliveryReceipt(receiptData,true);
         }
 
     } //card end
