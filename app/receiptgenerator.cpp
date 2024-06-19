@@ -70,6 +70,16 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     QString note=receiptData["note"].toString();
     double totalWithDelivery=total;
     double deliveryFee=0;
+    bool haveDiscount=false;
+
+    for(int i=0; i<items.size(); i++){
+        QJsonObject item=items.at(i).toObject();
+
+        if(item["discount"].toInt()>0){
+            haveDiscount=true;
+        }
+
+    }
     if(receiptData.contains("external_delivery")){
         deliveryFee=receiptData["external_delivery"].toDouble();
         totalWithDelivery=total+deliveryFee;
@@ -297,14 +307,29 @@ END:VCARD)").arg(customer).arg(phone);
 
 
 
-    QList<QJsonObject> rtable{
-        QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
-        QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-        QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
-        //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
-        //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-        QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
-    };
+    QList<QJsonObject> rtable;
+
+    if(haveDiscount){
+       rtable= {
+         QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","35%"}},
+         QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
+         QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+
+         QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+         //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+         QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
+         };
+    }else{
+      rtable=  {
+         QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
+         QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
+         QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+
+         //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+         //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+         QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+         };
+    }
 
     if(rtl){
         std::reverse(rtable.begin(),rtable.end());
@@ -330,22 +355,36 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeStartElement("tbody");
 
 
+
+
     for(int i=0; i<items.size(); i++){
         stream.writeStartElement("tr");
         QJsonObject item=items.at(i).toObject();
         QString description=item["products"].toObject()["name"].toString();
         QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
         QString qty=QString::number(item["qty"].toDouble());
-        //QString discount=QString::number(item["discount"].toDouble())+"%";
+        QString discount=QString::number(item["discount"].toDouble())+"%";
         QString subtotal=Currency::formatString(item["subtotal"].toDouble());
         QString total=Currency::formatString(item["total"].toDouble());
 
-        QJsonObject tableRow{{"description",description},
-                             {"unitPrice",unitPrice},
-                             {"qty",qty},
-                             //{"discount",discount},
-                             {"subtotal",subtotal},{"total",total}};
+        QJsonObject tableRow;
 
+        if(haveDiscount){
+            tableRow={{"description",description},
+             {"unitPrice",unitPrice},
+             {"qty",qty},
+             {"discount",discount},
+             // {"subtotal",subtotal},
+                        {"total",total}};
+
+        }else{
+            tableRow={{"description",description},
+                        {"unitPrice",unitPrice},
+                        {"qty",qty},
+                        //{"discount",discount},
+                        // {"subtotal",subtotal},
+                        {"total",total}};
+        }
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
             stream.writeStartElement("td");
