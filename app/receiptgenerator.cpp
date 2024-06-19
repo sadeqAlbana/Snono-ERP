@@ -105,7 +105,13 @@ QString ReceiptGenerator::createNew(QJsonObject receiptData, const bool print)
 
     doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
-    qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(QString::number(orderId).toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
+    QString qrText=QString(R"(BEGIN:VCARD
+VERSION:3.0
+FN:%1
+TEL;TYPE=CELL:%2
+END:VCARD)").arg(customer).arg(phone);
+
+    qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(qrText.toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
     std::string svgString = QrCode::toSvgString(qr0, 0);  // See QrCodeGeneratorDemo
 
 
