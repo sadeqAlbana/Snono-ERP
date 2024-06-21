@@ -894,23 +894,40 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
     stream.writeEndDocument(); //doc
 
 
-    QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+    //QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
     //    pageSize=pageSize*2;
 
-    doc.setPageSize(pageSize.sizePoints());
-
-
-
-    doc.setHtml(text);
 
 
 
 #ifndef Q_OS_IOS
 
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setPrinterName(AppSettings::instance()->receiptPrinter());    \
+    printer.setResolution(96);
+    printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
+    printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
+    printer.setFullPage(true);  // Use full page for printing
+
+    doc.setPageSize(printer.pageLayout().pageSize().sizePoints());
+
+
+
+        doc.setHtml(text);
+//POS-80-Series
+
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
-    // pdfPrinter.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
-    pdfPrinter.setPageSize(pageSize);
+    pdfPrinter.setPrinterName(AppSettings::instance()->receiptPrinter());    \
+    pdfPrinter.setResolution(96);
+    pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
+    pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
+    pdfPrinter.setFullPage(true);  // Use full page for printing
+
+    // auto layout=printer.pageLayout();
+    // layout.setOrientation(QPageLayout::Portrait);
+    // printer.setPageLayout(layout);
+    // doc.setPageSize(QSizeF(printer.pageRect(QPrinter::Millimeter).width(), printer.pageRect(QPrinter::Millimeter).height()));
 
     QString random=QString::number(QRandomGenerator::global()->generate());
     pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
@@ -918,21 +935,11 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
     doc.print(&pdfPrinter);
 
     if(print){
-        QPrinter printer;
-        // printer.setResolution(203);
-        printer.setPrinterName(AppSettings::instance()->receiptPrinter());
+
         if(linePrinter){
-            printer.setResolution(203);
              //printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
 
-            printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
-            printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter); // is it right?
 
-            printer.setFullPage(true);  // Use full page for printing
-            auto layout=printer.pageLayout();
-            layout.setOrientation(QPageLayout::Portrait);
-            printer.setPageLayout(layout);
-            doc.setPageSize(QSizeF(printer.pageRect(QPrinter::Millimeter).width(), printer.pageRect(QPrinter::Millimeter).height()));
 
 
         }else{
