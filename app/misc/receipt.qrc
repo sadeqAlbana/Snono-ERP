@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/receipt">
         <file>style.css</file>
+        <file>PosStyle.css</file>
     </qresource>
 </RCC>

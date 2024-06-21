@@ -112,6 +112,9 @@ set(TARGET_SOURCES
     models/locationsmodel.h models/locationsmodel.cpp
     models/orderssalesreportmodel.h models/orderssalesreportmodel.cpp
     models/shipmentsmodel.h models/shipmentsmodel.cpp
+    models/onlineordersmodel.h models/onlineordersmodel.cpp
+    models/posordersmodel.h models/posordersmodel.cpp
+
     keyemitter.h keyemitter.cpp
 )
 
@@ -151,7 +154,8 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/DeliveryOrderForm.qml
     qml/pages/orders/DraftOrdersPage.qml
     qml/pages/orders/DraftOrderForm.qml
-    qml/pages/orders/OnlineOrders.qml
+    qml/pages/orders/OnlineOrdersPage.qml
+    qml/pages/orders/PosOrdersPage.qml
     qml/common/ShipmentStatusDelegate.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
@@ -246,6 +250,7 @@ set(TARGET_QML_SOURCES
     qml/common/ProductStockDelegate.qml
     qml/common/AddressDelegate.qml
     qml/common/AppConfirmationDialog.qml
+    qml/common/CashierReceiptDialog.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -278,8 +283,8 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-        SOURCES models/onlineordersmodel.cpp
-        SOURCES models/onlineordersmodel.h
+
+
 
 )
 set(INCLUDE_DIR

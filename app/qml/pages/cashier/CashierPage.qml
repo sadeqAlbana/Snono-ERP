@@ -25,7 +25,7 @@ AppPage {
     property bool pay: false
     property int sessionId: -1
 
-    ReceiptDialog {
+    CashierReceiptDialog {
         id: receiptDialog
     } //receiptDialog
 
@@ -39,14 +39,7 @@ AppPage {
                     }
 
     function processCart() {
-        let deliveryInfo = {}
-        if (deliverySwitch.checked) {
-            deliveryInfo["city_id"] = cityModel.data(cityCB.currentIndex, "id")
-            deliveryInfo["town_id"] = townModel.data(townCB.currentIndex, "id")
-        }
-
-        cashierModel.processCart(cashierModel.total, 0, notesLE.text,
-                                 deliveryInfo)
+        cashierModel.processCart(cashierModel.total, 0, notesLE.text)
     }
 
     PayDialog {
@@ -144,11 +137,15 @@ AppPage {
                 currentIndex: 0
                 editable: true
                 property bool dataReceived: false
-                onCurrentValueChanged: {
+
+                function addProduct(){
                     if (currentValue !== undefined && dataReceived)
                         cashierModel.addProduct(currentValue)
                 }
 
+                onCurrentValueChanged: addProduct()
+
+                onActivated: addProduct();
                 model: AppNetworkedJsonModel {
                     url: "/products/list"
                     filter: {
@@ -241,15 +238,7 @@ AppPage {
                 placeholderText: qsTr("Phone...")
                 leftIcon.name: "cil-phone"
             }
-            CIconTextField {
-                id: addressLE
-                enabled: !customerCB.isValid
-                Layout.alignment: Qt.AlignTop
-                Layout.fillWidth: true
-                implicitHeight: 50
-                placeholderText: qsTr("Address...")
-                leftIcon.name: "cil-location-pin"
-            }
+
             CIconTextField {
                 Layout.alignment: Qt.AlignTop
                 id: notesLE
@@ -258,63 +247,6 @@ AppPage {
                 implicitHeight: 50
                 placeholderText: qsTr("Note...")
                 leftIcon.name: "cil-notes"
-            }
-            IconComboBox {
-                id: cityCB
-                enabled: deliverySwitch.checked
-
-                property bool isValid: currentText === editText
-                Layout.fillWidth: true
-                implicitHeight: 50
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                leftIcon.name: "cil-location-pin"
-
-                model: BarqLocationsModel {
-                    id: cityModel
-                    //                    onDataRecevied: {
-                    //                        townModel.requestData();
-                    //                    }
-                }
-                onCurrentIndexChanged: {
-                    if (currentIndex >= 0) {
-                        townModel.filter = {
-                            "parentId": cityModel.data(currentIndex, "id")
-                        }
-                        townCB.currentIndex = 0
-                    } else {
-
-                    }
-                }
-            }
-
-            IconComboBox {
-                id: townCB
-                enabled: deliverySwitch.checked
-                property bool isValid: currentText === editText
-                Layout.fillWidth: true
-                implicitHeight: 50
-                textRole: "name"
-                valueRole: "id"
-                currentIndex: 0
-                editable: true
-                leftIcon.name: "cil-location-pin"
-
-                //                onCurrentIndexChanged:{
-                //                    var city=cityModel.data(cityCB.currentIndex,"name");
-                //                    var town=townModel.data(townCB.currentIndex,"name");
-                //                    addressLE.text=city + " - " + town
-
-                //                }
-                model: BarqLocationsModel {
-                    id: townModel
-                    filter: {
-                        "parentId": 1
-                    }
-                    onFilterChanged: requestData()
-                }
             }
         }
 
@@ -340,27 +272,12 @@ AppPage {
                 Layout.fillWidth: true
                 implicitHeight: 50
                 onClicked: parent.confirmPayment()
-                enabled: {
-                    if (deliverySwitch.enabled) {
-                        return cityCB.isValid && townCB.isValid
-                    } else {
-                        return tableView.rows > 0
-                    }
-                }
+                enabled: tableView.rows > 0
+
+
             }
 
-            SwitchDelegate {
-                id: deliverySwitch
-                checked: Settings.externalDelivery
-                text: qsTr("Barq Delivery")
-                icon.source: "qrc:/images/icons/barq_logo.png"
-                icon.color: "transparent"
-                icon.height: 50
-                Layout.fillWidth: true
-                onCheckedChanged: {
-                    Settings.externalDelivery = checked
-                }
-            }
+
 
             function confirmPayment() {
                 paymentDialog.amount = cashierModel.total

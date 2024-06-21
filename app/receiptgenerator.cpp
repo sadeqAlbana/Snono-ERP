@@ -30,6 +30,7 @@
 
 #include <algorithm>
 #include "appsettings.h"
+#include <QAbstractTextDocumentLayout>
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -548,6 +549,420 @@ END:VCARD)").arg(customer).arg(phone);
 #endif
 }
 
+QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bool print)
+{
+    bool linePrinter=AppSettings::instance()->receiptLinePrinter();
+
+    QJsonArray items=receiptData["pos_order_items"].toArray();
+
+    QImage logo(AppSettings::storagePath()+"/assets/receipt_logo.png");
+
+    int orderId=receiptData["id"].toInt();
+    QString reference=QString("No. %1").arg(orderId);
+
+
+    double taxAmount=receiptData["tax_amount"].toDouble();
+    QString customer=receiptData["customers"].toObject()["name"].toString();
+    QString address=receiptData["customers"].toObject()["address"].toString();
+    double total=receiptData["total"].toDouble();
+    QString phone=receiptData["customers"].toObject()["phone"].toString();
+    QString date=receiptData["date"].toString();
+    QDateTime dt=QDateTime::fromString(date,Qt::ISODate);
+    QString note=receiptData["note"].toString();
+    double deliveryFee=0;
+    bool haveDiscount=false;
+
+    for(int i=0; i<items.size(); i++){
+        QJsonObject item=items.at(i).toObject();
+
+        if(item["discount"].toInt()>0){
+            haveDiscount=true;
+        }
+
+    }
+
+
+
+
+    //painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
+
+    const QString baseName = "pos-fe_" + QLocale("ar-IQ").name();
+    qDebug()<<"Base name: " << baseName;
+    QTranslator translator;
+    qDebug()<<"translator load: "<< translator.load(":/i18n/" + baseName);
+
+    bool rtl=true;
+
+
+
+
+    QTextDocument doc;
+    //consider using QTextOption to change text direction !
+    // doc.setDefaultFont(QFont("Courier New", 10));
+    QFile file(":/receipt/PosStyle.css");
+    qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
+    QString css=file.readAll();
+    file.close();
+    QString bodyFontSize=linePrinter? "8px" : "12px";
+    QString bodyMargin = linePrinter? "0" : 0;
+    css.replace("{{body_font_size}}",bodyFontSize);
+    css.replace("{{body_margin}}",bodyMargin);
+
+    //doc.setDefaultStyleSheet(css);
+doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
+    QString text;
+    QXmlStreamWriter stream(&text);
+    stream.setAutoFormatting(true);
+    stream.writeStartDocument();
+    stream.writeStartElement("html");
+    if(rtl){
+        stream.writeAttribute("dir","rtl");
+    }
+    //    stream.writeAttribute("lang","ar");
+    stream.writeStartElement("head");
+    stream.writeTextElement("style",css);
+    stream.writeEndElement(); //head
+
+    stream.writeStartElement("body");
+    stream.writeStartElement("table");
+    stream.writeAttribute("width","100%");
+    stream.writeStartElement("tr");
+
+    stream.writeStartElement("th");
+    stream.writeAttribute("width","100%");
+
+    stream.writeStartElement("img");
+    int logoSize=50;
+    stream.writeAttribute("width",QString::number(logoSize));
+    stream.writeAttribute("height",QString::number(logoSize));
+    stream.writeAttribute("src", "logo_image");
+    stream.writeEndElement(); //img
+    stream.writeEndElement(); //th
+
+    stream.writeEndElement(); //tr
+
+    stream.writeEndElement(); //table
+
+
+    QList<QJsonObject> hNo{
+        {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
+    };
+
+
+
+    QList<QJsonObject> hDate{
+        {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",dt.date().toString(Qt::ISODate)},{"width","75%"},{"class","boxed"},{"tag","td"}}
+    };
+
+
+    QList<QJsonObject> hName{
+        {{"label",translator.translate("receipt","Name")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",customer},{"width","75%"},{"class","boxed"},{"tag","td"}}
+    };
+
+
+
+
+
+
+
+    QList<QJsonObject> hNotes{
+        {{"label",translator.translate("receipt","Notes")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",note},{"width","75%"},{"class","boxed"},{"tag","td"}}
+    };
+
+    if(rtl){
+        std::reverse(hNo.begin(),hNo.end());
+        std::reverse(hDate.begin(),hDate.end());
+        std::reverse(hName.begin(),hName.end());
+        std::reverse(hNotes.begin(),hNotes.end());
+
+    }
+
+    QList<QList<QJsonObject>> header{hNo,hDate,hName,hNotes};
+    stream.writeStartElement("table");
+    stream.writeAttribute("class","boxed center");
+
+    stream.writeAttribute("style", "width: 100%;");
+    stream.writeStartElement("tbody");
+    stream.writeAttribute("class","boxed");
+
+
+    for(int i=0; i<header.count(); i++){
+        QList<QJsonObject> row=header.at(i);
+        stream.writeStartElement("tr");
+        stream.writeAttribute("class","boxed");
+
+        for(int j=0; j<row.count(); j++){
+            QJsonObject column=row.at(j);
+            stream.writeStartElement(column["tag"].toString()); //th or td
+            stream.writeAttribute("class",column["class"].toString());
+            stream.writeAttribute("width",column["width"].toString());
+            stream.writeCharacters(column["label"].toString());
+            stream.writeEndElement(); //tag
+        }
+
+        stream.writeEndElement(); //tr
+    }
+
+
+
+
+
+    stream.writeEndElement(); //tbody
+    stream.writeEndElement(); //table
+
+
+    stream.writeStartElement(linePrinter? "h6" : "h3");
+    stream.writeAttribute("align","center");
+    stream.writeCharacters(translator.translate("receipt","Original Receipt"));
+    stream.writeEndElement(); //h2
+
+
+
+    QList<QJsonObject> rtable;
+
+    if(haveDiscount){
+        rtable= {
+            QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","50%"}},
+
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  };
+    }else{
+        rtable=  {
+            QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","60%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  };
+    }
+
+    if(rtl){
+        std::reverse(rtable.begin(),rtable.end());
+    }
+
+
+    stream.writeStartElement("table");
+    stream.writeAttribute("style", "width: 100%;");
+    stream.writeAttribute("class", "newItems");
+
+    stream.writeStartElement("thead");
+    stream.writeStartElement("tr");
+    for(int i=0; i<rtable.count(); i++){
+        QJsonObject column=rtable.at(i);
+        stream.writeStartElement("th");
+        stream.writeAttribute("class","newItems");
+        stream.writeAttribute("width",column["width"].toString());
+        stream.writeCharacters(column["label"].toString());
+        stream.writeEndElement(); //th
+    }
+    stream.writeEndElement(); //tr
+    stream.writeEndElement(); //thead
+    stream.writeStartElement("tbody");
+
+
+
+
+    for(int i=0; i<items.size(); i++){
+        stream.writeStartElement("tr");
+        QJsonObject item=items.at(i).toObject();
+        QString description=item["products"].toObject()["name"].toString();
+        QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
+        QString qty=QString::number(item["qty"].toDouble());
+        QString discount=QString::number(item["discount"].toDouble())+"%";
+        QString subtotal=Currency::formatString(item["subtotal"].toDouble());
+        QString total=Currency::formatString(item["total"].toDouble());
+
+        QJsonObject tableRow;
+
+        if(haveDiscount){
+            tableRow={
+                        {"qty",qty},
+                        {"description",description},
+                        {"discount",discount},
+                        {"total",total}};
+
+        }else{
+            tableRow={
+                        {"qty",qty},
+                        {"description",description},
+                        {"total",total}};
+        }
+        for(int i=0;i<rtable.count(); i++){
+            QJsonObject column=rtable.at(i);
+            stream.writeStartElement("td");
+            if(column["key"].toString()=="qty"){
+                if(tableRow[column["key"].toString()].toString().toInt()>1){
+                    stream.writeStartElement("b");
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                    stream.writeEndElement();
+
+                }
+                else{
+                    stream.writeCharacters(tableRow[column["key"].toString()].toString());
+                }
+            }else{
+                stream.writeCharacters(tableRow[column["key"].toString()].toString());
+
+            }
+
+
+
+            stream.writeEndElement();
+
+        }
+        stream.writeEndElement(); //tr
+
+    }
+
+    //receipt totals
+
+
+    stream.writeEndElement(); //tbody
+    stream.writeEndElement(); //table
+
+
+    stream.writeEmptyElement("br");
+    stream.writeEmptyElement("br");
+
+    QList<QJsonObject> totals{
+        {{"label",translator.translate("receipt","Total")},{"width","75%"}},
+        {{"label",Currency::formatString(total)},{"width","75%"}}
+    };
+
+
+
+    if(rtl){
+        std::reverse(totals.begin(),totals.end());
+
+    }
+
+    stream.writeStartElement("table");
+    stream.writeAttribute("width","100%");
+    stream.writeStartElement("tr");
+    for(int i=0;i<totals.count(); i++){
+        QJsonObject item=totals.at(i);
+        stream.writeStartElement("th");
+        stream.writeAttribute("class","left receipt");
+        if(item.contains("width")){
+            stream.writeAttribute("width",item["width"].toString());
+        }
+        stream.writeCharacters(item["label"].toString());
+        stream.writeEndElement(); //th
+    }
+    stream.writeEndElement(); //tr
+
+
+
+    stream.writeEndElement(); //table
+
+
+    stream.writeStartElement("section");
+    stream.writeEmptyElement("br");
+    stream.writeEndElement(); //section
+
+    stream.writeStartElement("footer");
+    if(linePrinter){
+        stream.writeAttribute("style","text-align:center; font-size: small; font-weight: bold;");
+
+    }else{
+        stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
+
+    }
+    // stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
+
+
+    stream.writeStartElement("p");
+    stream.writeAttribute("class","receipt");
+    stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
+    stream.writeEndElement(); //p
+    stream.writeStartElement("p");
+    stream.writeAttribute("dir","ltr");
+
+    stream.writeAttribute("class","receipt");
+    stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
+    stream.writeEndElement(); //p
+
+    stream.writeEndElement(); //footer
+
+    stream.writeEndElement(); //body
+    stream.writeEndElement(); //html
+    stream.writeEndDocument(); //doc
+
+
+    QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+    //    pageSize=pageSize*2;
+
+    doc.setPageSize(pageSize.sizePoints());
+
+
+
+    doc.setHtml(text);
+
+
+
+#ifndef Q_OS_IOS
+
+    QPrinter pdfPrinter(QPrinter::HighResolution);
+    pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+    // pdfPrinter.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
+    pdfPrinter.setPageSize(pageSize);
+
+    QString random=QString::number(QRandomGenerator::global()->generate());
+    pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
+    qDebug()<<"path: " <<pdfPrinter.outputFileName();
+    doc.print(&pdfPrinter);
+
+    if(print){
+        QPrinter printer;
+        // printer.setResolution(203);
+        printer.setPrinterName(AppSettings::instance()->receiptPrinter());
+        if(linePrinter){
+            printer.setResolution(203);
+             //printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
+
+            printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
+            printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter); // is it right?
+
+            printer.setFullPage(true);  // Use full page for printing
+            auto layout=printer.pageLayout();
+            layout.setOrientation(QPageLayout::Portrait);
+            printer.setPageLayout(layout);
+            doc.setPageSize(QSizeF(printer.pageRect(QPrinter::Millimeter).width(), printer.pageRect(QPrinter::Millimeter).height()));
+
+
+        }else{
+            printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
+
+        }
+
+        int copyCount = AppSettings::instance()->receiptCopies();
+        printer.setCopyCount(copyCount);
+        // printer.setPageSize(pageSize);
+         //   QPainter painter(&printer);
+        // doc.drawContents(&painter, QRectF(printer.pageRect(QPrinter::Point).x(), printer.pageRect(QPrinter::Point).y(), printer.pageRect(QPrinter::Point).width(), printer.pageRect(QPrinter::Point).height()));
+            doc.documentLayout()->setPaintDevice(&printer);
+            // just before
+            doc.setPageSize(printer.pageRect(QPrinter::Point).size());
+            // doc.drawContents(&painter);
+            doc.print(&printer);
+
+        // painter.end();
+    }
+
+
+
+    return pdfPrinter.outputFileName();
+
+#else
+    return QString();
+
+#endif
+}
 
 QString ReceiptGenerator::sampleData()
 {

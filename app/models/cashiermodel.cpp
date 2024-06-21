@@ -171,13 +171,13 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
     }
 }
 
-void CashierModel::processCart(const double paid, const double change, const QString &note, const QJsonObject &deliveryInfo)
+void CashierModel::processCart(const double paid, const double change, const QString &note)
 {
     QJsonObject data{{"paid",paid},
                      {"returned",change},
                      {"note",note},
-                     {"cart",cartData()},
-                     {"delivery_info",deliveryInfo}};
+                     {"cart",cartData()}
+                     };
     PosNetworkManager::instance()->post(QUrl("/pos/cart/purchase"),data)->subscribe(this,&CashierModel::onProcessCartRespnse);
 }
 
