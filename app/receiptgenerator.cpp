@@ -653,7 +653,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     QList<QJsonObject> hDate{
         {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",dt.date().toString(Qt::ISODate)},{"width","75%"},{"class","boxed"},{"tag","td"}}
+        {{"label",dt.toString("hh:mm yyyy-MM-dd")},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
