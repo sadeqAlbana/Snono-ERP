@@ -178,15 +178,15 @@ END:VCARD)").arg(customer).arg(phone);
 
     if(!linePrinter){
 
-    stream.writeStartElement("th");
-    stream.writeAttribute("width","32%");
-    stream.writeAttribute("style","vertical-align: middle;");
-    stream.writeStartElement("img");
-    stream.writeAttribute("width","80");
-    stream.writeAttribute("height","80");
-    stream.writeAttribute("src", "qr_code");
-    stream.writeEndElement(); //img
-    stream.writeEndElement(); //th
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","32%");
+        stream.writeAttribute("style","vertical-align: middle;");
+        stream.writeStartElement("img");
+        stream.writeAttribute("width","80");
+        stream.writeAttribute("height","80");
+        stream.writeAttribute("src", "qr_code");
+        stream.writeEndElement(); //img
+        stream.writeEndElement(); //th
     }
 
     stream.writeStartElement("th");
@@ -202,16 +202,16 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //th
 
     if(!linePrinter){
-    stream.writeStartElement("th");
-    stream.writeAttribute("width","32%");
-    stream.writeAttribute("style","vertical-align: middle;");
-    stream.writeStartElement("img");
-    stream.writeAttribute("width","120");
-    stream.writeAttribute("height","48");
-    stream.writeAttribute("src", "barcode_img");
-    stream.writeEndElement(); //img
-    stream.writeEndElement(); //th
-}
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","32%");
+        stream.writeAttribute("style","vertical-align: middle;");
+        stream.writeStartElement("img");
+        stream.writeAttribute("width","120");
+        stream.writeAttribute("height","48");
+        stream.writeAttribute("src", "barcode_img");
+        stream.writeEndElement(); //img
+        stream.writeEndElement(); //th
+    }
 
     stream.writeEndElement(); //tr
 
@@ -311,25 +311,25 @@ END:VCARD)").arg(customer).arg(phone);
     QList<QJsonObject> rtable;
 
     if(haveDiscount){
-       rtable= {
-         QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","35%"}},
-         QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-         QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+        rtable= {
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","35%"}},
+                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
 
-         QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
-         //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-         QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
-         };
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
+                  };
     }else{
-      rtable=  {
-         QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
-         QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-         QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+        rtable=  {
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
+                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
 
-         //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
-         //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-         QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
-         };
+                  //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  };
     }
 
     if(rtl){
@@ -372,10 +372,10 @@ END:VCARD)").arg(customer).arg(phone);
 
         if(haveDiscount){
             tableRow={{"description",description},
-             {"unitPrice",unitPrice},
-             {"qty",qty},
-             {"discount",discount},
-             // {"subtotal",subtotal},
+                        {"unitPrice",unitPrice},
+                        {"qty",qty},
+                        {"discount",discount},
+                        // {"subtotal",subtotal},
                         {"total",total}};
 
         }else{
@@ -488,13 +488,13 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     stream.writeStartElement("p");
-         stream.writeAttribute("class","receipt");
+    stream.writeAttribute("class","receipt");
     stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
 
-         stream.writeAttribute("class","receipt");
+    stream.writeAttribute("class","receipt");
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 
@@ -506,7 +506,7 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
-//    pageSize=pageSize*2;
+    //    pageSize=pageSize*2;
 
     doc.setPageSize(pageSize.sizePoints());
 
@@ -609,7 +609,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     css.replace("{{body_margin}}",bodyMargin);
 
     //doc.setDefaultStyleSheet(css);
-doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
+    doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
     QString text;
     QXmlStreamWriter stream(&text);
     stream.setAutoFormatting(true);
@@ -726,7 +726,7 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
     if(haveDiscount){
         rtable= {
-            QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
                   QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","50%"}},
 
                   QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
@@ -735,7 +735,7 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
                   };
     }else{
         rtable=  {
-            QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
                   QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","60%"}},
                   QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
                   };
@@ -894,8 +894,8 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
     stream.writeEndDocument(); //doc
 
 
-    //QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
-    //    pageSize=pageSize*2;
+//QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+//    pageSize=pageSize*2;
 
 
 
@@ -904,7 +904,7 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setPrinterName(AppSettings::instance()->receiptPrinter());    \
-    printer.setResolution(96);
+        printer.setResolution(96);
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     printer.setFullPage(true);  // Use full page for printing
@@ -913,8 +913,8 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
 
 
-        doc.setHtml(text);
-//POS-80-Series
+    doc.setHtml(text);
+    //POS-80-Series
 
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
@@ -936,28 +936,13 @@ doc.addResource(QTextDocument::ImageResource,QUrl("logo_image"),logo);
 
     if(print){
 
-        if(linePrinter){
-             //printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
 
-
-
-
-        }else{
-            printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
-
-        }
 
         int copyCount = AppSettings::instance()->receiptCopies();
         printer.setCopyCount(copyCount);
-        // printer.setPageSize(pageSize);
-         //   QPainter painter(&printer);
-        // doc.drawContents(&painter, QRectF(printer.pageRect(QPrinter::Point).x(), printer.pageRect(QPrinter::Point).y(), printer.pageRect(QPrinter::Point).width(), printer.pageRect(QPrinter::Point).height()));
-            doc.documentLayout()->setPaintDevice(&printer);
-            // just before
-            doc.setPageSize(printer.pageRect(QPrinter::Point).size());
-            // doc.drawContents(&painter);
-            doc.print(&printer);
-
+        doc.documentLayout()->setPaintDevice(&printer);
+        doc.setPageSize(printer.pageRect(QPrinter::Point).size());
+        doc.print(&printer);
         // painter.end();
     }
 
