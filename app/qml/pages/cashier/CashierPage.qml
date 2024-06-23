@@ -142,10 +142,8 @@ AppPage {
                     if (currentValue !== undefined && dataReceived)
                         cashierModel.addProduct(currentValue)
                 }
-
-                onCurrentValueChanged: addProduct()
-
                 onActivated: addProduct();
+                onAccepted: addProduct();
                 model: AppNetworkedJsonModel {
                     url: "/products/list"
                     filter: {

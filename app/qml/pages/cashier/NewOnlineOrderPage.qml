@@ -220,30 +220,27 @@ AppPage {
                     Layout.fillWidth: true
                     textRole: "name"
                     valueRole: "id"
-                    currentIndex: 0
+                    // currentIndex: 0
                     editable: true
-                    property bool dataReceived: false
-                    onCurrentValueChanged: {
-                        if (!dataReceived) {
-                            dataReceived = true
-                            return
-                        }
 
-                        if (currentValue !== undefined && count)
+                    onPressedChanged:{
+                        console.log("pressed")
+                    }
+
+                    function addProduct(){
+                        console.log("adding product")
+                        if (currentValue !== undefined )
                             cashierModel.addProduct(currentValue)
                     }
 
+                   // onCurrentValueChanged: addProduct()
+
+                    onActivated: addProduct();
+                    onAccepted: addProduct();
+
                     model: JsonModel {}
 
-                    // model: AppNetworkedJsonModel {
-                    //     url: "/products/list"
-                    //     filter: {
-                    //         "only_variants": true
-                    //     }
-                    //     onDataRecevied: {
-                    //         productsCB.dataReceived = true
-                    //     }
-                    // }
+
                 }
 
                 CLabel {
