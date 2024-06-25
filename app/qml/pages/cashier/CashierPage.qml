@@ -59,20 +59,25 @@ AppPage {
     GridLayout {
         //main   grid
         anchors.fill: parent
-        rows: window.moibleLayout ? 1 : 2
-        columns: window.moibleLayout ? 4 : 2
-        flow: GridLayout.LeftToRight
+        rows: window.moibleLayout ? 4 : 2
+        columns: window.moibleLayout ? 1 : 2
+        flow: GridLayout.TopToBottom
         CTableView {
             id: tableView
             Layout.row: 0
             Layout.column: 0
+            Layout.rowSpan: 2
             Layout.fillHeight: true
+            Layout.fillWidth: true
+
             selectionBehavior: TableView.SelectCells
 
             delegate: AppDelegateChooser {}
-            Layout.fillWidth: true
             implicitHeight: 300
-            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+            Layout.minimumHeight: 300
+            Layout.minimumWidth: 300
+
+            Layout.alignment: Qt.AlignCenter
             //Layout.minimumWidth: 1000
             model: CashierModel {
                 id: cashierModel
@@ -107,11 +112,10 @@ AppPage {
             }
         } //tableView
 
-        ColumnLayout {
-            Layout.column: window.mobileLayout ? 0 : 1
-            Layout.row: window.mobileLayout ? 1 : 0
-            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-
+        ColumnLayout { //layout 1
+            Layout.alignment: Qt.AlignCenter
+            Layout.row: window.mobileLayout? 2 : 0
+            Layout.column: window.mobileLayout? 0 : 1
             Numpad {
                 id: numpad
                 visible: !window.mobileLayout
@@ -169,13 +173,15 @@ AppPage {
             }
         }
 
-        GridLayout {
-            //customer grid
+
+
+        ColumnLayout { //Layout2
+            Layout.row: window.mobileLayout? 3 : 1
+            Layout.column: window.mobileLayout? 0 : 1
+
             Layout.alignment: Qt.AlignCenter
-            Layout.row: window.mobileLayout ? 2 : 1
-            columnSpacing: 15
-            Layout.column: 0
-            columns: window.mobileLayout ? 1 : 2
+            Layout.maximumWidth: window.mobileLayout ? -1 : numpad.width
+
             IconComboBox {
                 property bool isValid: currentText === editText
                 id: customerCB
@@ -223,6 +229,7 @@ AppPage {
                     editText = edit
                 } //onActiveFocusChanged
             }
+
             CIconTextField {
                 id: phoneLE
                 enabled: !customerCB.isValid
@@ -246,14 +253,9 @@ AppPage {
                 placeholderText: qsTr("Note...")
                 leftIcon.name: "cil-notes"
             }
-        }
 
-        ColumnLayout {
             //total and pay layout
-            Layout.alignment: Qt.AlignCenter
-            Layout.maximumWidth: window.mobileLayout ? -1 : numpad.width
-            Layout.row: window.mobileLayout ? 3 : 1
-            Layout.column: window.mobileLayout ? 0 : 1
+
 
             CTextField {
                 id: total
