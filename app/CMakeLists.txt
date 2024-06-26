@@ -81,6 +81,7 @@ set(TARGET_SOURCES
     models/orderreturnitemsmodel.cpp models/orderreturnitemsmodel.h
     models/ordersreturnsmodel.cpp models/ordersreturnsmodel.h
     models/possessionsmodel.cpp models/possessionsmodel.h
+    models/openedpossessionsmodel.cpp models/openedpossessionsmodel.h
     models/productsalesreportmodel.cpp models/productsalesreportmodel.h
     models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
     models/productsmodel.cpp models/productsmodel.h
@@ -122,6 +123,7 @@ set(TARGET_SOURCES
 set(TARGET_QML_SOURCES
     qml/pages/pos/session/SessionsPage.qml
     qml/pages/pos/session/SessionCard.qml
+    qml/pages/pos/PosSessionsPage.qml
     qml/pages/taxes/TaxTypeDelegate.qml
     qml/pages/taxes/TaxesPage.qml
     qml/pages/taxes/AddTaxPage.qml
@@ -251,6 +253,8 @@ set(TARGET_QML_SOURCES
     qml/common/AddressDelegate.qml
     qml/common/AppConfirmationDialog.qml
     qml/common/CashierReceiptDialog.qml
+    qml/common/PosSessionStatusDelegate.qml
+
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -283,8 +287,6 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-
-
 
 )
 set(INCLUDE_DIR

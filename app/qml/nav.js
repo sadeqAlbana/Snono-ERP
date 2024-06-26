@@ -23,6 +23,10 @@ function navBar(){
                                "title":qsTr("Online"),
                                "path":"qrc:/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml"
                             },
+                        {
+                           "title":qsTr("POS Sessions"),
+                           "path":"qrc:/PosFe/qml/pages/pos/PosSessionsPage.qml"
+                        },
                          ]
                 },
                 {

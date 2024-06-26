@@ -22,7 +22,7 @@ AppPage{
         width: parent.width
 
 
-        PosSessionsModel{
+        OpenedPosSessionsModel{
             id: sessionsModel
             Component.onCompleted: currentSession();
 
