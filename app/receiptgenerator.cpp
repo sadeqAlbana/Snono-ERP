@@ -62,13 +62,23 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     }
     qDebug()<<receiptData["attributes"];
     double taxAmount=receiptData["tax_amount"].toDouble();
-    QString customer=receiptData["customers"].toObject()["name"].toString();
-    QString address=receiptData["customers"].toObject()["address"].toString();
+    QJsonObject addressObject=receiptData["shipment"].toObject()["dst_address"].toObject();
+
+    QString customer=addressObject["first_name"].toString();
+    // QString address=receiptData["customers"].toObject()["address"].toString();
     double total=receiptData["total"].toDouble();
-    QString phone=receiptData["customers"].toObject()["phone"].toString();
     QString date=receiptData["date"].toString();
     QDateTime dt=QDateTime::fromString(date,Qt::ISODate);
     QString note=receiptData["note"].toString();
+
+    QString phone=addressObject["phone"].toString();
+    QString province=addressObject["province"].toString();
+    QString district=addressObject["district"].toString();
+    QString addressDetails=addressObject["details"].toString();
+    QString addressStr=QString("%1 - %2").arg(province).arg(district);
+    if(addressDetails.size()){
+        addressStr.append(QString(" - %1").arg(addressDetails));
+    }
     double totalWithDelivery=total;
     double deliveryFee=0;
     bool haveDiscount=false;
@@ -241,7 +251,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     QList<QJsonObject> hAddress{
         {{"label",translator.translate("receipt","Address")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",address},{"width","75%"},{"class","boxed"},{"tag","td"}}
+        {{"label",addressStr},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
