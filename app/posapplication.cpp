@@ -95,6 +95,10 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
         this->exit(-1);
 
     connect(this,&QApplication::aboutToQuit,m_engine,&QObject::deleteLater);
+
+
+    ReceiptGenerator::generateLabel("594","124 - S");
+
 }
 
 PosApplication::~PosApplication()

@@ -966,6 +966,54 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 #endif
 }
 
+QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name)
+{
+
+    QImage barcodeImg(250,100,QImage::Format_RGB32);
+    barcodeImg.fill(Qt::white);
+    QPainter imgPainter(&barcodeImg);
+    Code128Item item;
+#ifndef Q_OS_IOS
+    item.setPos(0,0);
+#endif
+    item.setWidth( barcodeImg.width() );
+    item.setHeight( barcodeImg.height() );
+    item.setText(barcode);
+
+#ifndef Q_OS_IOS
+    item.update();
+#endif
+    item.paint(&imgPainter,nullptr,nullptr);
+    imgPainter.end();
+
+
+    // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
+
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setPrinterName("HPRT LPQ80");
+    printer.setPageSize(QPageSize(QSizeF(3.15, 1), QPageSize::Inch));
+    printer.setFullPage(true);
+
+    QPainter painter(&printer);
+
+    // Set font size and style
+    QFont font;
+    font.setPointSize(12);
+    painter.setFont(font);
+
+    // Draw text on the label
+    QRect rect = painter.viewport();
+    painter.drawImage(15,40,barcodeImg);
+
+    painter.drawText(25,25,name);
+
+    // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
+
+    painter.end();
+
+    return QString();
+}
+
 QString ReceiptGenerator::sampleData()
 {
     QJsonDocument doc=QJsonDocument::fromJson(R"({"cart_id":5,"created_at":"2021-12-19T12:55:24.000","customer_id":1,"customers":{"account_id":1001,"address":"Baghdad, Hay Alkhadraa","created_at":"2021-12-16T10:37:31.000","deleted_at":"","email":"N.A","first_name":"Sadeq","id":1,"last_name":"Albana","name":"Customer","phone":"07823815562","updated_at":""},"date":"2021-12-19T12:55:24.000","deleted_at":"","id":2,"journal_entry_id":55,"paid_amount":19087.5,"pos_order_items":[{"created_at":"2021-12-19T12:55:24.000","deleted_at":"","discount":0,"id":2,"order_id":2,"product_id":42,"products":{"barcode":"sw2106259185997506-l","category_id":1,"cost":10725,"costing_method":"FIFO","created_at":"2021-12-16T10:37:37.000","current_cost":10725,"deleted_at":"","description":"","flags":0,"id":993,"list_price":19087.5,"name":"312 - L","parent_id":0,"type":1,"updated_at":"2021-12-16T10:37:37.000"},"qty":1,"subtotal":19087.5,"total":19087.5,"unit_price":19087.5,"updated_at":"2021-12-19T12:55:24.000"}],"pos_session_id":1,"reference":"3dcc3168-0488-40c0-81dd-a4d1cd11b1d3","returned_amount":0,"tax_amount":0,"total":19087.5,"updated_at":"2021-12-19T12:55:24.000"})");
