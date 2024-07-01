@@ -166,6 +166,14 @@ AppPage {
             } //slot end
         }
 
+        function printLabel(){
+            // adjustStockDlg.productId = model.data(tableView.currentRow,
+            //                                       "id")
+            // adjustStockDlg.originalQty = model.data(tableView.currentRow,
+            //                                         "stock")
+            // adjustStockDlg.open()
+        }
+
         CTableView {
             id: tableView
             Layout.fillHeight: true
@@ -244,8 +252,19 @@ AppPage {
                     icon.name: "cil-plus"
                     onTriggered: importProductsFileDialog.open()
                     permission: "prm_add_products"
+                },
+
+                CAction {
+                    text: qsTr("Print Label")
+                    icon.name: "cil-plus"
+                    onTriggered: page.printLabel();
+                    enabled: tableView.currentRow >= 0
+
+                    permission: "prm_print_labels"
                 }
             ]
+
+
 
 
             function openAdjustStockDialog() {

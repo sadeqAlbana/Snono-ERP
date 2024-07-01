@@ -254,6 +254,7 @@ set(TARGET_QML_SOURCES
     qml/common/AppConfirmationDialog.qml
     qml/common/CashierReceiptDialog.qml
     qml/common/PosSessionStatusDelegate.qml
+    qml/common/PrintProductLabelDialog.qml
 
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
