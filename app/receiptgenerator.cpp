@@ -966,7 +966,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 #endif
 }
 
-QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price)
+QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const int copies)
 {
 
     QImage barcodeImg(250,100,QImage::Format_RGB32);
@@ -991,11 +991,13 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
     QPrinter printer(QPrinter::HighResolution);
+    printer.setCopyCount(copies);
     printer.setPrinterName(AppSettings::instance()->get("label_printer").toString());
     float labelWidth=AppSettings::instance()->get("label_printer_label_width").toFloat();
     float labelHeight=AppSettings::instance()->get("label_printer_label_height").toFloat();
+    QPageSize::Unit unit=static_cast<QPageSize::Unit>(AppSettings::instance()->labelPrinterLabelSizeUnit());
 
-    printer.setPageSize(QPageSize(QSizeF(3.15, 1), QPageSize::Inch));
+    printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));
 
     printer.setFullPage(true);
 

@@ -144,6 +144,9 @@ AppPage {
             valueRole: "value";
             textRole: "key";
 
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.labelPrinterLabelSizeUnit)
+
         }
 
         CLabel {
