@@ -5,11 +5,14 @@
 #include <QLocale>
 #include <QJsonObject>
 #include <QPageSize>
+#include <QJsonArray>
 class AppSettings : public QSettings
 {
     Q_OBJECT
     Q_PROPERTY(QUrl serverUrl READ serverUrl NOTIFY serverUrlChanged)
     Q_PROPERTY(QString receiptPrinter READ receiptPrinter WRITE setReceiptPrinter NOTIFY receiptPrinterChanged )
+    Q_PROPERTY(QString labelPrinter READ labelPrinter WRITE setLabelPrinter NOTIFY labelPrinterChanged )
+
     Q_PROPERTY(QString reportsPrinter READ reportsPrinter WRITE setReportsPrinter NOTIFY reportsPrinterChanged )
 
     Q_PROPERTY(QString receiptPaperSize READ receiptPaperSize WRITE setReceiptPaperSize NOTIFY receiptPaperSizeChanged )
@@ -80,6 +83,9 @@ public:
 
     static QPageSize pageSizeFromString(const QString &pageSize);
 
+    static QPageSize::Unit pageSizeUnitFromString(const QString &unit);
+
+    Q_INVOKABLE static QJsonArray qPageSizeUnits();
     bool receiptLinePrinter() const;
     void setReceiptLinePrinter(bool newReceiptLinePrinter);
 
@@ -97,6 +103,9 @@ public:
     int labelPrinterLabelSizeUnit() const;
     void setLabelPrinterLabelSizeUnit(int newLabelPrinterLabelSizeUnit);
 
+    QString labelPrinter() const;
+    void setLabelPrinter(const QString &newLabelPrinter);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -109,6 +118,7 @@ signals:
     void externalDeliveryChanged();
 
     void receiptPrinterChanged();
+    void labelPrinterChanged();
 
     void reportsPrinterChanged();
 
@@ -127,7 +137,6 @@ signals:
     void labelPrinterLabelSizeUnitChanged();
 
 private:
-
 
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)

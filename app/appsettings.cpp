@@ -245,6 +245,42 @@ QPageSize AppSettings::pageSizeFromString(const QString &pageSize)
     return QPageSize::Custom;
 }
 
+QPageSize::Unit AppSettings::pageSizeUnitFromString(const QString &unit)
+{
+    if(unit=="Millimeter")
+        return QPageSize::Unit::Millimeter;
+
+    if(unit=="Point")
+        return QPageSize::Unit::Point;
+
+    if(unit=="Inch")
+        return QPageSize::Unit::Inch;
+
+    if(unit=="Pica")
+        return QPageSize::Unit::Pica;
+
+    if(unit=="Didot")
+        return QPageSize::Unit::Didot;
+
+    if(unit=="Cicero")
+        return QPageSize::Unit::Cicero;
+
+
+    return QPageSize::Unit::Millimeter;
+}
+
+QJsonArray AppSettings::qPageSizeUnits()
+{
+    return QJsonArray{
+        QJsonObject{{"key",tr("Millimeter")},{"value",QPageSize::Unit::Millimeter}},
+        QJsonObject{{"key",tr("Point")},{"value",QPageSize::Unit::Point}},
+        QJsonObject{{"key",tr("Inch")},{"value",QPageSize::Unit::Inch}},
+        QJsonObject{{"key",tr("Pica")},{"value",QPageSize::Unit::Pica}},
+        QJsonObject{{"key",tr("Didot")},{"value",QPageSize::Unit::Didot}},
+        QJsonObject{{"key",tr("Cicero")},{"value",QPageSize::Unit::Cicero}},
+    };
+}
+
 bool AppSettings::receiptLinePrinter() const
 {
     return value("receipt_line_printer",true).toBool();
@@ -279,6 +315,19 @@ QVariant AppSettings::get(const QString &key, QVariant defaultValue)
 void AppSettings::set(const QString &key, const QVariant &value)
 {
     setValue(key,value);
+}
+
+QString AppSettings::labelPrinter() const
+{
+    return value("label_printer","").toString();
+}
+
+void AppSettings::setLabelPrinter(const QString &newLabelPrinter)
+{
+    if (labelPrinter() == newLabelPrinter)
+        return;
+    setValue("label_printer",newLabelPrinter);
+    emit labelPrinterChanged();
 }
 
 float AppSettings::labelPrinterLabelWidth() const

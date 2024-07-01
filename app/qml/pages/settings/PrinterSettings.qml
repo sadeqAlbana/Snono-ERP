@@ -67,10 +67,6 @@ AppPage {
         Label {
             text: qsTr("Paper Size")
         }
-
-
-
-
             IconComboBox {
                 id: reportsPaperSizeCB
                 model: ['A0', 'A1', 'A2', 'A3', 'A4', 'A5']
@@ -116,6 +112,66 @@ AppPage {
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.receiptCopiesWithExternalDelivery)
         }
+
+        HorizontalSpacer{
+            Layout.columnSpan: 2
+        }
+
+
+        Label {
+            text: qsTr("Label Printer")
+        }
+
+        IconComboBox {
+            id: labelPrinterCB
+            model: App.availablePrinters()
+            leftIcon.name: "cil-printer"
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.labelPrinter)
+        }
+
+        CLabel {
+            text: qsTr("Label Size Unit")
+        }
+
+
+        IconComboBox {
+            id: labelSizeUnitCB
+            leftIcon.name: "cil-page"
+            model: Settings.qPageSizeUnits();
+
+            valueRole: "value";
+            textRole: "key";
+
+        }
+
+        CLabel {
+            text: qsTr("Label Width")
+        }
+        CIconTextField{
+            id: labelPrinterLabelWidth
+            leftIcon.name: "cil-resize-width"
+            text: Settings.labelPrinterLabelWidth
+            validator: RegularExpressionValidator {
+                 regularExpression: /^-?\d+(\.\d{1,2})?$/
+             }
+
+        }
+        CLabel {
+            text: qsTr("Label Height")
+        }
+        CIconTextField{
+            id: labelPrinterLabelHeight
+            leftIcon.name: "cil-resize-height"
+            text: Settings.labelPrinterLabelHeight
+
+            validator: RegularExpressionValidator {
+                 regularExpression: /^-?\d+(\.\d{1,2})?$/
+             }
+        }
+
+
     }
 
     footer: AppDialogFooter {
@@ -128,9 +184,15 @@ AppPage {
 
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
             Settings.reportsPrinter=reportsPrinterCB.currentValue
-            Settings.receiptPrinter=receiptPrinterCB.currentValue
+            Settings.labelPrinter=labelPrinterCB.currentValue
+
             Settings.receiptPaperSize=receiptPaperSizeCB.currentValue
             Settings.reportsPaperSize=reportsPaperSizeCB.currentValue
+
+            Settings.labelPrinterLabelWidth=labelPrinterLabelWidth.text
+            Settings.labelPrinterLabelHeight=labelPrinterLabelHeight.text
+            Settings.labelPrinter=labelPrinterCB.currentValue;
+            Settings.labelPrinterLabelSizeUnit=labelSizeUnitCB.currentValue
 
         }
 
@@ -143,4 +205,6 @@ AppPage {
                         Settings.externalReceiptCopies)
         }
     }
+
+
 }
