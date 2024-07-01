@@ -88,6 +88,15 @@ public:
     Q_INVOKABLE QVariant get(const QString &key,QVariant defaultValue=QVariant());
     Q_INVOKABLE void set(const QString &key, const QVariant &value);
 
+    float labelPrinterLabelWidth() const;
+    void setLabelPrinterLabelWidth(float newLabelPrinterLabelWidth);
+
+    float labelPrinterLabelHeight() const;
+    void setLabelPrinterLabelHeight(float newLabelPrinterLabelHeight);
+
+    int labelPrinterLabelSizeUnit() const;
+    void setLabelPrinterLabelSizeUnit(int newLabelPrinterLabelSizeUnit);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -111,7 +120,15 @@ signals:
 
     void receiptCopiesWithExternalDeliveryChanged();
 
+    void labelPrinterLabelWidthChanged();
+
+    void labelPrinterLabelHeightChanged();
+
+    void labelPrinterLabelSizeUnitChanged();
+
 private:
+
+
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
     Q_PROPERTY(int externalReceiptCopies READ externalReceiptCopies WRITE setExternalReceiptCopies NOTIFY externalReceiptCopiesChanged)
@@ -120,6 +137,10 @@ private:
 
     Q_PROPERTY(bool receiptLinePrinter READ receiptLinePrinter WRITE setReceiptLinePrinter NOTIFY receiptLinePrinterChanged FINAL)
     Q_PROPERTY(int receiptCopiesWithExternalDelivery READ receiptCopiesWithExternalDelivery WRITE setReceiptCopiesWithExternalDelivery NOTIFY receiptCopiesWithExternalDeliveryChanged FINAL)
+
+    Q_PROPERTY(float labelPrinterLabelWidth READ labelPrinterLabelWidth WRITE setLabelPrinterLabelWidth NOTIFY labelPrinterLabelWidthChanged FINAL)
+    Q_PROPERTY(float labelPrinterLabelHeight READ labelPrinterLabelHeight WRITE setLabelPrinterLabelHeight NOTIFY labelPrinterLabelHeightChanged FINAL)
+    Q_PROPERTY(int labelPrinterLabelSizeUnit READ labelPrinterLabelSizeUnit WRITE setLabelPrinterLabelSizeUnit NOTIFY labelPrinterLabelSizeUnitChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

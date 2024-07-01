@@ -966,13 +966,14 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 #endif
 }
 
-QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name)
+QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price)
 {
 
     QImage barcodeImg(250,100,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
+    item.setHighDPI(true);
 #ifndef Q_OS_IOS
     item.setPos(0,0);
 #endif
@@ -990,8 +991,12 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
     QPrinter printer(QPrinter::HighResolution);
-    printer.setPrinterName("HPRT LPQ80");
+    printer.setPrinterName(AppSettings::instance()->get("label_printer").toString());
+    float labelWidth=AppSettings::instance()->get("label_printer_label_width").toFloat();
+    float labelHeight=AppSettings::instance()->get("label_printer_label_height").toFloat();
+
     printer.setPageSize(QPageSize(QSizeF(3.15, 1), QPageSize::Inch));
+
     printer.setFullPage(true);
 
     QPainter painter(&printer);
@@ -1003,9 +1008,11 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 
     // Draw text on the label
     QRect rect = painter.viewport();
-    painter.drawImage(15,40,barcodeImg);
+    painter.drawText(50,25,name);
 
-    painter.drawText(25,25,name);
+    painter.drawImage(50,55,barcodeImg);
+    painter.drawText(50,185,price);
+
 
     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
 

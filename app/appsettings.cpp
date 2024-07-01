@@ -281,6 +281,45 @@ void AppSettings::set(const QString &key, const QVariant &value)
     setValue(key,value);
 }
 
+float AppSettings::labelPrinterLabelWidth() const
+{
+    return value("label_printer_label_width",1).toFloat();
+}
+
+void AppSettings::setLabelPrinterLabelWidth(float newLabelPrinterLabelWidth)
+{
+    if (qFuzzyCompare(labelPrinterLabelWidth(), newLabelPrinterLabelWidth))
+        return;
+    setValue("label_printer_label_width",newLabelPrinterLabelWidth);
+    emit labelPrinterLabelWidthChanged();
+}
+
+float AppSettings::labelPrinterLabelHeight() const
+{
+    return value("label_printer_label_height",1).toFloat();
+}
+
+void AppSettings::setLabelPrinterLabelHeight(float newLabelPrinterLabelHeight)
+{
+    if (qFuzzyCompare(labelPrinterLabelHeight(), newLabelPrinterLabelHeight))
+        return;
+    setValue("label_printer_label_height",newLabelPrinterLabelHeight);
+    emit labelPrinterLabelHeightChanged();
+}
+
+int AppSettings::labelPrinterLabelSizeUnit() const
+{
+    return value("label_printer_label_size_unit",QPageSize::Inch).toInt();
+}
+
+void AppSettings::setLabelPrinterLabelSizeUnit(int newLabelPrinterLabelSizeUnit)
+{
+    if (labelPrinterLabelSizeUnit() == newLabelPrinterLabelSizeUnit)
+        return;
+    setValue("label_printer_label_size_unit",newLabelPrinterLabelSizeUnit);
+    emit labelPrinterLabelSizeUnitChanged();
+}
+
 QString AppSettings::about()
 {
     QFile file(":/About.md");

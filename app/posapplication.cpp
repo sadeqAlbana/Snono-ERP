@@ -97,7 +97,7 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     connect(this,&QApplication::aboutToQuit,m_engine,&QObject::deleteLater);
 
 
-    ReceiptGenerator::generateLabel("594","124 - S");
+    ReceiptGenerator::generateLabel("594","124 - S", "10,000 د.ع");
 
 }
 
