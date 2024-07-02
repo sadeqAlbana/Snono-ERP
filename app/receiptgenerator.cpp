@@ -1005,15 +1005,21 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 
     // Set font size and style
     QFont font;
-    font.setPointSize(12);
+    font.setPointSize(14);
     painter.setFont(font);
-
+    font.setWeight(QFont::Bold);
     // Draw text on the label
     QRect rect = painter.viewport();
-    painter.drawText(50,25,name);
+    painter.setFont(font);
 
-    painter.drawImage(50,55,barcodeImg);
-    painter.drawText(50,185,price);
+
+
+    painter.drawImage(50,45,barcodeImg);
+    painter.drawText(50,35,name);
+    font.setWeight(QFont::Normal);
+    font.setPointSize(12);
+    painter.setFont(font);
+    painter.drawText(50,185,tr("Price: ")+ price);
 
 
     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
