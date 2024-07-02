@@ -992,9 +992,9 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 
     QPrinter printer(QPrinter::HighResolution);
     printer.setCopyCount(copies);
-    printer.setPrinterName(AppSettings::instance()->get("label_printer").toString());
-    float labelWidth=AppSettings::instance()->get("label_printer_label_width").toFloat();
-    float labelHeight=AppSettings::instance()->get("label_printer_label_height").toFloat();
+    printer.setPrinterName(AppSettings::instance()->labelPrinter());
+    float labelWidth=AppSettings::instance()->labelPrinterLabelWidth();
+    float labelHeight=AppSettings::instance()->labelPrinterLabelHeight();
     QPageSize::Unit unit=static_cast<QPageSize::Unit>(AppSettings::instance()->labelPrinterLabelSizeUnit());
 
     printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));

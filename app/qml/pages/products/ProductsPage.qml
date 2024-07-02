@@ -142,6 +142,10 @@ AppPage {
                         }
         }
 
+        PrintProductLabelDialog{
+            id: labelPrintDialog
+        }
+
         Connections {
             target: Api
 
@@ -167,11 +171,8 @@ AppPage {
         }
 
         function printLabel(){
-            // adjustStockDlg.productId = model.data(tableView.currentRow,
-            //                                       "id")
-            // adjustStockDlg.originalQty = model.data(tableView.currentRow,
-            //                                         "stock")
-            // adjustStockDlg.open()
+            labelPrintDialog.product=model.jsonObject(tableView.currentRow)
+            labelPrintDialog.open()
         }
 
         CTableView {

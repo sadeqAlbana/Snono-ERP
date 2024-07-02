@@ -5,15 +5,13 @@ import CoreUI.Views
 import CoreUI.Forms
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
-
 import QtQuick.Layouts
-
+import PosFe
 Popup{
     id: dialog
 
-    property int originalQty
-    property int productId;
+    property var product: {"name":"","list_price":0}
+    property int qty;
 
     modal: true
     parent: Overlay.overlay
@@ -21,10 +19,8 @@ Popup{
     padding: 0
     //width: parent.width
     //height: parent.height
-    width: 700
-    height: 500
+    width: 500
     anchors.centerIn: parent;
-    signal accepted(var quantity, var reason);
 
 
     //closePolicy: Popup.NoAutoClose
@@ -39,18 +35,16 @@ Popup{
     }
 
     Card{
-        width: 700
-        height: 500
-        anchors.centerIn: parent;
+        anchors.fill: parent;
         title: qsTr("Print Product Label")
         ColumnLayout{
             anchors.fill: parent;
             anchors.margins: 10
             CLabel{
-                text: qsTr("Name: ") + "";
+                text: qsTr("Name: ") + product?.name
             }
             CLabel{
-                text: qsTr("Price: ") + "";
+                text: qsTr("Price: ") +  Utils.formatCurrency(product.list_price)
             }
 
             CTextFieldGroup{id: quantity; label.text: qsTr("Quantity"); input.text:parseInt(1); input.validator: DoubleValidator{bottom: 0;top:100000}}
@@ -82,12 +76,21 @@ Popup{
                 palette.buttonText: "#ffffff"
                 implicitHeight: 60
                 Layout.margins: 10
-                onClicked: dialog.accepted(productId,parseInt(quantity.input.text));
+                onClicked: {
+
+
+                    ReceiptGenerator.generateLabel(product.barcode, product.name,
+                                                   Utils.formatCurrency(product.list_price),
+                                                   parseInt(quantity.input.text))
+
+                }
             }
 
 
         }
 
     } //card end
+
+
 
 }

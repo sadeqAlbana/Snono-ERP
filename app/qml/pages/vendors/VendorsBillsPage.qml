@@ -94,6 +94,39 @@ AppPage{
                     icon.name: "cil-cart"
                     onTriggered: sheinDialog.open()
                     permission: "prm_adjust_stock"
+                },
+
+                CAction {
+                    text: qsTr("Print Labels")
+                    icon.name: "cil-cart"
+                    enabled: tableView.currentRow >= 0
+
+                    onTriggered: {
+
+                        let recordId=model.jsonObject(tableView.currentRow).id;
+
+                        NetworkManager.get("/vendorBill?id="+recordId).subscribe(function(response){
+                            let record=response.json("data");
+                            record.items.
+                            forEach(item =>{
+                                       if(!item.product_id){
+                                            return;
+                                        }
+                                        let product=item.product;
+
+                                        ReceiptGenerator.generateLabel(product.barcode, product.name,
+                                                                       Utils.formatCurrency(product.list_price),
+                                                                       parseInt(item.qty))
+
+                                                 });
+                        });
+
+
+
+
+
+
+                    }
                 }
 
             ]
