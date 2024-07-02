@@ -54,7 +54,7 @@ AppDataPage {
                     JsonModelColumn {
                         displayName: qsTr("Product")
                         key: "name"
-                        parentKey: "products"
+                        parentKey: "product"
                         type: "link"
                         metadata: {
                         "link": "qrc:/PosFe/qml/pages/products/ProductForm.qml",
