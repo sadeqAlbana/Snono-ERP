@@ -92,7 +92,7 @@ void Api::removeCategory(const int &categoryId)
 void Api::barqReceipt(const int orderId)
 {
 #ifndef QT_NO_PDF
-    PosNetworkManager::instance()->post(QUrl("/barq/receipt"),QJsonObject{{"pos_order_id",orderId}})
+    PosNetworkManager::instance()->post(QUrl("/barq/receipt"),QJsonObject{{"order_id",orderId}})
             ->subscribe([this](NetworkResponse *res){
         QByteArray pdf=res->binaryData();
         QBuffer *buffer=new QBuffer(&pdf);

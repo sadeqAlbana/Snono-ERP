@@ -17,10 +17,13 @@ function navBar(){
                          "childItems":[
                             {
                                "title":qsTr("POS"),
+                               "image":"cil-barcode",
                                "path":"qrc:/PosFe/qml/pages/pos/session/SessionsPage.qml"
                             },
                             {
                                "title":qsTr("Online"),
+                               "image":"cil-globe",
+
                                "path":"qrc:/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml"
                             },
                         {
@@ -94,13 +97,15 @@ function navBar(){
                     "permission": "prm_view_orders",
                     "childItems":[
                         {
-                            "title":qsTr("Orders List"),
+                            "title":qsTr("All Orders"),
+                            "image":"cil-cart-loaded",
                             "path":"qrc:/PosFe/qml/pages/orders/OrdersPage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("POS"),
+                            "image":"cil-barcode",
                             "path":"qrc:/PosFe/qml/pages/orders/PosOrdersPage.qml",
                             "permission": ""
 
@@ -108,17 +113,20 @@ function navBar(){
                         {
                             "title":qsTr("Online Orders"),
                             "path":"qrc:/PosFe/qml/pages/orders/OnlineOrdersPage.qml",
-                            "permission": ""
+                            "permission": "",
+                            "image":"cil-globe",
 
                         },
                         {
                             "title":qsTr("Returns"),
+                            "image":"cil-cart-slash",
                             "path":"qrc:/PosFe/qml/pages/orders/OrdersReturnsPage.qml",
                             "permission": ""
 
                         },
                         {
                             "title":qsTr("Drafts"),
+                            "image":"cil-notes",
                             "path":"qrc:/PosFe/qml/pages/orders/DraftOrdersPage.qml",
                             "permission": "prm_view_draft_orders",
                         }
