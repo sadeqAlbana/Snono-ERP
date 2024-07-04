@@ -17,11 +17,11 @@ Card{
     signal resume();
     clip: true
 
-    title: "POS/0001"
 
     property int ordersCount
     property string totalAmount
     property var session;
+    title: qsTr("POS Session ")+ session?.id
 
     GridLayout{
         anchors.fill: parent;

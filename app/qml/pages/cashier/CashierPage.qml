@@ -212,8 +212,6 @@ AppPage {
                                     customerCB.currentIndex)
                         phoneLE.text = customersModel.jsonObject(
                                     customerCB.currentIndex).phone
-                        addressLE.text = customersModel.jsonObject(
-                                    customerCB.currentIndex).address
                         tableView.model.updateCustomer(currentCustomer.id)
                     } else {
                         phoneLE.text = ""

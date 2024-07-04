@@ -35,7 +35,7 @@ AppPage{
                 if(reply.status===200){ //there is an open session
                     var session=reply.pos_session;
                     sessionCard.totalAmount=reply.pos_session.total;
-                    sessionCard.ordersCount=reply.pos_orders?  reply.pos_orders.length : 0
+                    sessionCard.ordersCount=reply.pos_session.orders_count;
                     sessionCard.session=session;
                     sessionCard.visible=true
 
