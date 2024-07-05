@@ -38,6 +38,17 @@ AppPage {
                         }
                     }
 
+
+    Component.onCompleted: {
+        NetworkManager.get("/pos/dashboard").subscribe(
+                    function (response) {
+                        // paymentMethodCB.model = response.json(
+                        //             "payment_methods").data;
+                        customerCB.model = response.json("customers").data;
+                    })
+    }
+
+
     function processCart() {
         cashierModel.processCart(cashierModel.total, 0, notesLE.text)
     }
@@ -45,14 +56,8 @@ AppPage {
     PayDialog {
         id: paymentDialog
         onAccepted: {
-            if (customerCB.currentIndex < 0) {
-                //update customer then process cart
-                pay = true
-                customersModel.addCustomer(customerCB.editText, "", "", "",
-                                           phoneLE.text, addressLE.text)
-            } else {
-                page.processCart()
-            }
+            page.processCart();
+            pay=true;
         } //accepted
     } //payDialog
 
@@ -185,21 +190,23 @@ AppPage {
             IconComboBox {
                 property bool isValid: currentText === editText
                 id: customerCB
+                visible: false
+                enabled:false
                 Layout.fillWidth: true
                 implicitHeight: 50
-                model: CustomersModel {
-                    id: customersModel
-                    usePagination: false
-                    onAddCustomerReply: reply => {
-                                            if (reply.status === 200) {
-                                                cashierModel.updateCustomer(
-                                                    reply.customer.id)
-                                            }
-                                        }
-                    Component.onCompleted: {
-                        usePagination = false
-                    }
-                }
+                // model: CustomersModel {
+                //     id: customersModel
+                //     usePagination: false
+                //     onAddCustomerReply: reply => {
+                //                             if (reply.status === 200) {
+                //                                 cashierModel.updateCustomer(
+                //                                     reply.customer.id)
+                //                             }
+                //                         }
+                //     Component.onCompleted: {
+                //         usePagination = false
+                //     }
+                // }
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
@@ -208,10 +215,8 @@ AppPage {
 
                 onCurrentIndexChanged: {
                     if (currentIndex >= 0) {
-                        var currentCustomer = customersModel.jsonObject(
-                                    customerCB.currentIndex)
-                        phoneLE.text = customersModel.jsonObject(
-                                    customerCB.currentIndex).phone
+                        var currentCustomer = customerCB.model[customerCB.currentIndex];
+                        phoneLE.text = currentCustomer.phone
                         tableView.model.updateCustomer(currentCustomer.id)
                     } else {
                         phoneLE.text = ""
@@ -231,6 +236,7 @@ AppPage {
             CIconTextField {
                 id: phoneLE
                 enabled: !customerCB.isValid
+                visible:false
                 validator: RegularExpressionValidator {
                     regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
                 }

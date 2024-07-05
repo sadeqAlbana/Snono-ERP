@@ -65,7 +65,7 @@ AppDataPage {
             }
 
             model: JsonModel {
-                records: page.dataRecord?.pos_order_items?? []
+                records: page.dataRecord?.order_items?? []
                 columnList: [
                     JsonModelColumn {
                         displayName: qsTr("Product")

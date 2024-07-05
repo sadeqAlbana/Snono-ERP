@@ -24,7 +24,7 @@ void ReceiptModel::onTableRecieved(NetworkResponse *reply)
 {
     //setCartData(reply->json().toObject()["cart"].toObject());
     m_orderData=reply->json("order").toObject();
-    setRecords(reply->json("order").toObject()["pos_order_items"].toArray());
+    setRecords(reply->json("order").toObject()["order_items"].toArray());
     //qDebug()<<reply->json("order").toObject();
     emit dataReceived();
     emit totalChanged(total());
