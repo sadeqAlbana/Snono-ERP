@@ -62,23 +62,40 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     }
     qDebug()<<receiptData["attributes"];
     double taxAmount=receiptData["tax_amount"].toDouble();
-    QJsonObject addressObject=receiptData["shipment"].toObject()["dst_address"].toObject();
 
-    QString customer=addressObject["first_name"].toString();
+    QString customer;
+    QString phone;
+    QString addressStr;
+
+    bool useLocalCustomerInfo=receiptData["order_type"]=="pos";
+    qDebug()<<"receipt data:" << receiptData;
+
+    if(!useLocalCustomerInfo){
+        QJsonObject addressObject=receiptData["shipment"].toObject()["dst_address"].toObject();
+        customer=addressObject["first_name"].toString();
+        phone=addressObject["phone"].toString();
+        QString province=addressObject["province"].toString();
+        QString district=addressObject["district"].toString();
+        QString addressDetails=addressObject["details"].toString();
+        addressStr=QString("%1 - %2").arg(province).arg(district);
+        if(addressDetails.size()){
+            addressStr.append(QString(" - %1").arg(addressDetails));
+        }
+    }else{
+        QString customer=receiptData["customers"].toObject()["name"].toString();
+        phone=receiptData["customers"].toObject()["phone"].toString();
+        addressStr=receiptData["customers"].toObject()["address"].toString();
+
+    }
+
     // QString address=receiptData["customers"].toObject()["address"].toString();
     double total=receiptData["total"].toDouble();
     QString date=receiptData["date"].toString();
     QDateTime dt=QDateTime::fromString(date,Qt::ISODate);
     QString note=receiptData["note"].toString();
 
-    QString phone=addressObject["phone"].toString();
-    QString province=addressObject["province"].toString();
-    QString district=addressObject["district"].toString();
-    QString addressDetails=addressObject["details"].toString();
-    QString addressStr=QString("%1 - %2").arg(province).arg(district);
-    if(addressDetails.size()){
-        addressStr.append(QString(" - %1").arg(addressDetails));
-    }
+
+
     double totalWithDelivery=total;
     double deliveryFee=0;
     bool haveDiscount=false;

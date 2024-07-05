@@ -20,6 +20,7 @@ public:
     Q_INVOKABLE static QString generateLabel(const QString &barcode, const QString &name, const QString &price, const int copies=1);
 
     Q_INVOKABLE static QString sampleData();
+
 signals:
 
 private:
