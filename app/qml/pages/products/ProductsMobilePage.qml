@@ -60,7 +60,7 @@ AppPage{
                 icon.cache: true
                 text: model.sku
                 spacing: 10
-                property var stock: model["products_stocks.qty"]? model["products_stocks.qty"]: 0
+                property var stock: model.stock?? 0
                 property string name: model.name
                 property real listPrice: model.list_price
 
