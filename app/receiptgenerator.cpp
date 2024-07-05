@@ -499,7 +499,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     stream.writeStartElement("p");
     stream.writeAttribute("class","receipt");
-    stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
+    // stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
