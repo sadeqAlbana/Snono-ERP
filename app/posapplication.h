@@ -15,6 +15,8 @@ public:
     ~PosApplication();
 
     Q_INVOKABLE QVariantList languages() const;
+    Q_INVOKABLE static QJsonArray countries();
+
     Q_INVOKABLE QList<QLocale> locales() const;
 
     QLocale::Language language() const;

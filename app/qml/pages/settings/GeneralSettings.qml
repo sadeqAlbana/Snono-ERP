@@ -164,15 +164,6 @@ AppPage {
             valueRole: "value"
             textRole: "key"
         }
-
-        Label {
-            text: qsTr("Country")
-        }
-        IconComboBox {
-            model: ["Iraq"]
-            editable: true
-            leftIcon.name: "cil-globe"
-        }
     }
 
     footer: AppDialogFooter {

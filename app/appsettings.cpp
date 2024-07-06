@@ -424,6 +424,7 @@ QString AppSettings::font()
     return value("app_font","Arial").toString();
 }
 
+
 QJsonObject AppSettings::user() const
 {
     QJsonDocument doc=QJsonDocument::fromJson(this->value("user").toByteArray());

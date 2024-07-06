@@ -105,6 +105,27 @@ PosApplication::~PosApplication()
 {
 
 }
+QJsonArray PosApplication::countries()
+{
+    QList<QLocale> allLocales = QLocale::matchingLocales(QLocale::AnyLanguage,
+                                                         QLocale::AnyScript,
+                                                         QLocale::AnyCountry);
+
+    QJsonArray countries;
+    QStringList codes;
+    for (int i = 1; i < allLocales. count()-1; ++i) {
+        QLocale locale=allLocales.at(i);
+        QString code=QLocale::territoryToCode(locale.territory());
+        if(codes.contains(code)){
+            continue;
+        }
+        codes << code;
+        countries << QJsonObject{{"native_name",locale.nativeCountryName()},
+                                 {"code",QLocale::territoryToCode(locale.territory())},
+                                 {"name",QLocale::territoryToString(locale.territory())}};
+    }
+    return countries;
+}
 
 QVariantList PosApplication::languages() const
 {

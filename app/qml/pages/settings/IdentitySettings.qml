@@ -12,8 +12,8 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import PosFe
 import CoreUI.Palettes
+import PosFe
 
 AppPage{
     title: qsTr("Identity Settings")
@@ -36,6 +36,17 @@ AppPage{
         }
 
         FileInput{objectName: "identity_logo";      Layout.fillWidth: true;
+        }
+
+        Label {
+            text: qsTr("Country")
+        }
+        IconComboBox {
+            objectName: "identity_country"
+            model: App.countries();
+            leftIcon.name: "cil-globe"
+            textRole: "name"
+            valueRole: "code"
         }
 
 
