@@ -94,6 +94,10 @@ void Api::barqReceipt(const int orderId)
 #ifndef QT_NO_PDF
     PosNetworkManager::instance()->post(QUrl("/barq/receipt"),QJsonObject{{"order_id",orderId}})
             ->subscribe([this](NetworkResponse *res){
+
+
+        qDebug()<<"res status:" << res->status();
+
         QByteArray pdf=res->binaryData();
         QBuffer *buffer=new QBuffer(&pdf);
         buffer->open(QIODevice::ReadOnly);
@@ -102,6 +106,7 @@ void Api::barqReceipt(const int orderId)
             if(status!=QPdfDocument::Status::Ready)
                 return;
 
+            qDebug()<<"pdf document ready";
 
             QPrinter printer;
             printer.setPrinterName(AppSettings::instance()->receiptPrinter());

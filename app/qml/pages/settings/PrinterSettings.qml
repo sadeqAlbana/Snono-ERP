@@ -184,7 +184,7 @@ AppPage {
         onAccept: {
             Settings.receiptCopies = receiptCopies.currentValue
             Settings.receiptCopiesWithExternalDelivery = receiptCopiesWithExternalDelivery.currentValue
-
+            Settings.receiptPrinter=receiptPrinterCB.currentValue
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
             Settings.reportsPrinter=reportsPrinterCB.currentValue
             Settings.labelPrinter=labelPrinterCB.currentValue
