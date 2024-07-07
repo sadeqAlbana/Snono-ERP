@@ -106,6 +106,9 @@ public:
     QString labelPrinter() const;
     void setLabelPrinter(const QString &newLabelPrinter);
 
+    bool testEnv() const;
+    void setTestEnv(bool newTestEnv);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -136,8 +139,10 @@ signals:
 
     void labelPrinterLabelSizeUnitChanged();
 
-private:
+    void testEnvChanged();
 
+private:
+    bool m_testEnv;
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
     Q_PROPERTY(int externalReceiptCopies READ externalReceiptCopies WRITE setExternalReceiptCopies NOTIFY externalReceiptCopiesChanged)
@@ -150,6 +155,7 @@ private:
     Q_PROPERTY(float labelPrinterLabelWidth READ labelPrinterLabelWidth WRITE setLabelPrinterLabelWidth NOTIFY labelPrinterLabelWidthChanged FINAL)
     Q_PROPERTY(float labelPrinterLabelHeight READ labelPrinterLabelHeight WRITE setLabelPrinterLabelHeight NOTIFY labelPrinterLabelHeightChanged FINAL)
     Q_PROPERTY(int labelPrinterLabelSizeUnit READ labelPrinterLabelSizeUnit WRITE setLabelPrinterLabelSizeUnit NOTIFY labelPrinterLabelSizeUnitChanged FINAL)
+    Q_PROPERTY(bool testEnv READ testEnv WRITE setTestEnv NOTIFY testEnvChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

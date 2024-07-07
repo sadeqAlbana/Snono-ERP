@@ -330,6 +330,19 @@ void AppSettings::setLabelPrinter(const QString &newLabelPrinter)
     emit labelPrinterChanged();
 }
 
+bool AppSettings::testEnv() const
+{
+    return m_testEnv;
+}
+
+void AppSettings::setTestEnv(bool newTestEnv)
+{
+    if (m_testEnv == newTestEnv)
+        return;
+    m_testEnv = newTestEnv;
+    emit testEnvChanged();
+}
+
 float AppSettings::labelPrinterLabelWidth() const
 {
     return value("label_printer_label_width",1).toFloat();

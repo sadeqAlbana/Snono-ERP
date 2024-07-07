@@ -32,6 +32,8 @@ void AuthManager::authenticate(QString username, QString password, bool remember
             }
             PosNetworkManager::instance()->setJWT(res->json("token").toString().toUtf8());
             setUser(res->json("user").toObject());
+            bool test=res->json("test_env").toBool();
+            AppSettings::instance()->setTestEnv(test);
             emit loggedIn();
         }
         else {
@@ -74,6 +76,8 @@ void AuthManager::testAuth()
 
         if(success){
             setUser(AppSettings::instance()->user());
+            bool test=res->json("test_env").toBool();
+            AppSettings::instance()->setTestEnv(test);
         }
 
 

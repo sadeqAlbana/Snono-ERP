@@ -19,6 +19,17 @@ CApplicationWindow {
     visible: true
 
 
+    Text{
+        id: testFlag
+        anchors.centerIn: parent
+        visible: Settings.testEnv;
+        opacity: 0.3
+        rotation: -45
+        text: qsTr("Test")
+        font.pixelSize: 200
+        smooth: true
+    }
+
     FontMetrics {
         id: metrics
     }
