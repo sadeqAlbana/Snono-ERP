@@ -56,7 +56,7 @@ AppPage {
     property var barqLocations
     property var internalLocations
 
-    ReceiptDialog {
+    NewReceiptDialog {
         id: receiptDialog
     } //receiptDialog
 

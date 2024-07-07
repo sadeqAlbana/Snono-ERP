@@ -69,9 +69,11 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
 
     bool useLocalCustomerInfo=receiptData["order_type"]=="pos";
     qDebug()<<"receipt data:" << receiptData;
-
+    QJsonObject shipment;
     if(!useLocalCustomerInfo){
-        QJsonObject addressObject=receiptData["shipment"].toObject()["dst_address"].toObject();
+
+        shipment=receiptData["shipment"].toObject();
+        QJsonObject addressObject=shipment["dst_address"].toObject();
         customer=addressObject["first_name"].toString();
         phone=addressObject["phone"].toString();
         QString province=addressObject["province"].toString();
@@ -110,10 +112,12 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     }
     if(receiptData.contains("external_delivery")){
         deliveryFee=receiptData["external_delivery"].toDouble();
-        totalWithDelivery=total+deliveryFee;
+    }else{
+        deliveryFee=shipment["fee"].toDouble();
     }
 
 
+    totalWithDelivery=total+deliveryFee;
 
     //painter.drawPixmap(QRect(20,20,180,180),qrPixmap);
 

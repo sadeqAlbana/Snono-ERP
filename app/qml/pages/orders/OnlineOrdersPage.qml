@@ -78,7 +78,7 @@ AppPage {
                                                tableView.currentRow).id, status)
             }
         }
-        ReceiptDialog {
+        NewReceiptDialog {
             id: receiptDialog
 
             function openDialog() {
