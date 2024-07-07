@@ -52,7 +52,6 @@ AppPage {
     }
     LayoutMirroring.enabled: false
     property bool pay: false
-    property int sessionId: -1
     property var barqLocations
     property var internalLocations
 
@@ -77,7 +76,7 @@ AppPage {
         if (addressId === -1) {
             address["province"] = provinceCB.editText
             address["district"] = districtCB.editText
-            address["phone"] = phoneLE.text
+            address["phone"] = phoneTF.text
             address["name"] = addressNameLE.text
             address["first_name"] = customerCB.currentText
             address["details"] = addressDetailsLE.text
@@ -119,7 +118,9 @@ AppPage {
             "cart": cashierModel.cartData(),
             "payment_method_id": paymentMethodCB.currentValue,
             "customer_info": customerInfo,
-            "shipment_info": deliveryInfo
+            "shipment_info": deliveryInfo,
+            "note": orderNotesLE.text
+
         }
 
         NetworkManager.post('/onlinesales/purchase',
@@ -142,7 +143,7 @@ AppPage {
     //             //update customer then process cart
     //             pay = true
     //             customersModel.addCustomer(customerCB.editText, "", "", "",
-    //                                        phoneLE.text, addressLE.text)
+    //                                        phoneTF.text, addressLE.text)
     //         } else {
     //             page.processCart()
     //         }
@@ -343,6 +344,18 @@ AppPage {
                     }
                 }
 
+
+                CLabel {
+                    text: qsTr("Order Notes")
+                }
+                CTextField {
+                    id: orderNotesLE
+                    placeholderText: qsTr("Order Notes...")
+                    Layout.fillWidth: true
+                    implicitHeight: 50
+                }
+
+
                 VerticalSpacer {}
 
                 CLabel {
@@ -508,6 +521,25 @@ AppPage {
                 }
 
                 CLabel {
+                    text: qsTr("Phone") + "<font color='red'> *</font>"
+                    font.bold: true
+                }
+
+                CIconTextField {
+                    id: phoneTF
+                    validator: RegularExpressionValidator {
+                        regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
+                    }
+
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    Layout.minimumHeight: 50
+                    placeholderText: qsTr("Phone...")
+                    leftIcon.name: "cil-phone"
+                }
+
+
+                CLabel {
                     text: qsTr("Province") + "<font color='red'> *</font>"
                     font.bold: true
                 }
@@ -564,23 +596,6 @@ AppPage {
                     model: JsonModel {}
                 }
 
-                CLabel {
-                    text: qsTr("Phone") + "<font color='red'> *</font>"
-                    font.bold: true
-                }
-
-                CIconTextField {
-                    id: phoneLE
-                    validator: RegularExpressionValidator {
-                        regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
-                    }
-
-                    Layout.alignment: Qt.AlignTop
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: 50
-                    placeholderText: qsTr("Phone...")
-                    leftIcon.name: "cil-phone"
-                }
 
                 CLabel {
                     text: qsTr("Address Details")
@@ -672,12 +687,12 @@ AppPage {
                         = "Default" //handle when there is another address with the name "Default"
                 provinceCB.currentIndex = 0
                 districtCB.currentIndex = 0
-                phoneLE.clear()
+                phoneTF.clear()
                 addressDetailsLE.clear()
                 deliveryNotesLE.clear()
             } else {
                 addressNameLE.text = item.name
-                phoneLE.text = item.phone
+                phoneTF.text = item.phone
                 provinceCB.currentIndex = provinceCB.find(item.province)
                 districtCB.currentIndex = districtCB.find(item.district)
                 addressDetailsLE.text = item.details
