@@ -26,7 +26,7 @@ AppNetworkedJsonModel::AppNetworkedJsonModel(const JsonModelColumnList &columns,
 void AppNetworkedJsonModel::requestData()
 {
     m_busy=true;
-
+    activateCanFetchMoreLimiter();
     if(m_oldFilter!=m_filter){
         m_oldFilter=m_filter;
         if(m_usePagination){
@@ -83,6 +83,8 @@ void AppNetworkedJsonModel::setDefaultRecord(const QJsonObject &newDefaultRecord
     m_defaultRecord = newDefaultRecord;
     emit defaultRecordChanged();
 }
+
+
 
 const QString &AppNetworkedJsonModel::direction() const
 {
@@ -150,7 +152,6 @@ QJsonObject AppNetworkedJsonModel::filter() const
 
 void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
 {
-
     if(m_usePagination){
         if(reply->json("current_page").toInt()){
             setCurrentPage(reply->json("current_page").toInt());
@@ -185,7 +186,6 @@ void AppNetworkedJsonModel::onTableRecieved(NetworkResponse *reply)
     }else{
         setRecords(data);
     }
-
 
     emit dataRecevied();
     m_busy=false;

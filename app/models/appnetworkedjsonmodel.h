@@ -3,7 +3,7 @@
 
 #include <networkedjsonmodel.h>
 #include <QQmlEngine>
-
+#include <QTimer>
 
 class AppNetworkedJsonModel : public NetworkedJsonModel, public QQmlParserStatus
 {
@@ -38,6 +38,7 @@ public:
     QJsonObject defaultRecord() const;
     void setDefaultRecord(const QJsonObject &newDefaultRecord);
 
+
 signals:
     void filterChanged(QJsonObject filter);
 
@@ -56,7 +57,6 @@ protected:
     Q_INVOKABLE void search();
     Q_INVOKABLE void setFilter(const QJsonObject &filter);
     QJsonObject m_filter;
-
 private:
     QString _query;
     QJsonObject m_oldFilter;
@@ -66,7 +66,6 @@ private:
     bool m_usePagination;
     QString m_sortKey=QStringLiteral("id");
     QJsonObject m_defaultRecord;
-
 
 
     Q_PROPERTY(QString sortKey READ sortKey WRITE setSortKey NOTIFY sortKeyChanged)
