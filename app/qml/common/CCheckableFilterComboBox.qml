@@ -29,9 +29,6 @@ CCheckableComboBox {
                 setRecords(control.values)
                 control.currentIndex=0;
             }
-            if(dataUrl.length){
-                jsonModel.requestData();
-            }
         }
 
 
