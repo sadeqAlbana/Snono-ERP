@@ -19,7 +19,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage{
 
     title: qsTr("Vendors Bills")
-    StackView.onActivated: model.refresh()
+    
 
     ColumnLayout{
         id: page

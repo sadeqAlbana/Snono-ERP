@@ -14,7 +14,7 @@ import CoreUI
 
 AppPage{
     title: qsTr("Categories")
-    StackView.onActivated: model.refresh()
+    
 
     ColumnLayout{
         id: page

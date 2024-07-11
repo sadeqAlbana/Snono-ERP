@@ -15,7 +15,7 @@ import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 AppPage{
     title: qsTr("Shipments")
-    StackView.onActivated: model.refresh();
+    ;
 
     ColumnLayout{
         id: page

@@ -23,7 +23,7 @@ import PosFe
 AppPage {
     id: page
 
-    StackView.onActivated: model.refresh();
+    ;
 
 
     title: qsTr("Permissions")

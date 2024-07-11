@@ -15,7 +15,7 @@ import PosFe
 AppPage{
 
     title: qsTr("Product Attributes")
-    StackView.onActivated: model.refresh();
+    ;
 
     ColumnLayout{
         id: page

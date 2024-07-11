@@ -14,7 +14,7 @@ import Qt.labs.qmlmodels 1.0
 import PosFe
 AppPage{
     id: page
-    StackView.onActivated: model.refresh();
+    ;
     property var model;
     property var delegate;
     property list<CAction> actions;

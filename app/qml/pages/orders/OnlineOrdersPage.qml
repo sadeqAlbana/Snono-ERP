@@ -19,7 +19,7 @@ AppPage {
     title: qsTr("Online Orders")
 
     //    background: Rectangle{color:"red";}
-    StackView.onActivated: model.refresh()
+    
 
     function createDeliveryManifest(orderId) {
         Router.navigate("qrc:/PosFe/qml/pages/orders/DeliveryOrderForm.qml", {

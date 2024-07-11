@@ -17,7 +17,7 @@ import Qt.labs.qmlmodels 1.0
 AppPage {
     title: qsTr("POS Sessions")
     id: page
-    StackView.onActivated: model.refresh();
+    ;
 
     ColumnLayout {
         id: layout

@@ -16,7 +16,7 @@ import PosFe
 AppPage {
     title: qsTr("Vendors")
     id: page
-    StackView.onActivated: model.refresh();
+    ;
 
     ColumnLayout {
         id: layout

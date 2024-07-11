@@ -18,7 +18,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 AppPage {
     title: qsTr("Products")
-    StackView.onActivated: model.refresh()
+    
     ColumnLayout {
         id: page
         anchors.fill: parent
