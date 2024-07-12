@@ -66,6 +66,10 @@ AppPage{
 
             model: StockLocationModel{
                 id: model;
+
+                onModelReset: {
+                    console.log(JSON.stringify(model.records))
+                }
             } //model end
 
 
