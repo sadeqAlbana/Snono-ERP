@@ -9,6 +9,8 @@ ShipmentsModel::ShipmentsModel(QObject *parent)
                              {"phone",tr("Phone"),"dst_address"} ,
                              {"district",tr("Address"),"dst_address"} ,
                              {"status",tr("Status"),QString(),false,"ShipmentStatus"},
+                             {"third_party_carrier_shipment_status",tr("3rd Party Status"),QString(),
+                              false,"externalDeliveryStatus"} ,
                             {"notes",tr("Notes")}
 
                             },

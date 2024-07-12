@@ -14,6 +14,9 @@ OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                   {"date",tr("Date"),QString(),false,"datetime"} ,
                                                                   {"status",tr("Status"),"shipment",false,"ShipmentStatus"} ,
                                                                   {"id",tr("Delivery Id"),"shipment"} ,
+                                                                 {"third_party_carrier_shipment_status",tr("3rd Party Status"),"shipment",
+false,"externalDeliveryStatus"} ,
+
                                                                   },
                                                                   parent)
 {
