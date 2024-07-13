@@ -167,6 +167,8 @@ AppPage {
             Layout.minimumHeight: window.height * 0.5
             Layout.minimumWidth: page.width * 0.7
             Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+
+
             //Layout.minimumWidth: 1000
             model: CashierModel {
                 id: cashierModel
@@ -229,9 +231,9 @@ AppPage {
                     }
 
                     function addProduct(){
-                        console.log("adding product")
-                        if (currentValue !== undefined )
+                        if (currentValue !== undefined ){
                             cashierModel.addProduct(currentValue)
+                        }
                     }
 
                    // onCurrentValueChanged: addProduct()

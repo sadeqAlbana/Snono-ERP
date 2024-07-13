@@ -148,8 +148,9 @@ AppPage {
                 property bool dataReceived: false
 
                 function addProduct(){
-                    if (currentValue !== undefined && dataReceived)
+                    if (currentValue !== undefined && dataReceived){
                         cashierModel.addProduct(currentValue)
+                    }
                 }
                 onActivated: addProduct();
                 onAccepted: addProduct();
