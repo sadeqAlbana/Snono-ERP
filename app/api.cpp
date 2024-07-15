@@ -106,8 +106,6 @@ void Api::barqReceipt(const int orderId)
             if(status!=QPdfDocument::Status::Ready)
                 return;
 
-            qDebug()<<"pdf document ready";
-
             QPrinter printer;
             printer.setPrinterName(AppSettings::instance()->receiptPrinter());
 
@@ -117,16 +115,18 @@ void Api::barqReceipt(const int orderId)
             printer.setPageMargins(QMarginsF(0,0,0,0));
             printer.setCopyCount(AppSettings::instance()->externalReceiptCopies());
 
+
 #if QT_VERSION < QT_VERSION_CHECK(6,4,1)
-                QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
+            QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
 #else
             QImage image=doc->render(0,doc->pagePointSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
 #endif
-                QPainter painter(&printer);
-                painter.drawImage(QPoint(0,0),image);
-                painter.end();
+            QPainter painter(&printer);
+            painter.drawImage(QPoint(0,0),image);
+            painter.end();
 
         });
+
         doc->load(buffer);
     });
 #endif
