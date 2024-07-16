@@ -57,3 +57,5 @@ compile_commands.json
 /update_manifest/linux/*.rcc
 update_manifest/windows/files/*
 update_manifest/linux/files/*
+build/*
+/dist/windows/snono_erp/*.exe
