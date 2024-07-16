@@ -271,13 +271,13 @@ AppPage {
                     textRole: "name"
                     Layout.fillWidth: true
 
-                    Component.onCompleted: {
-                        console.log("current index: " + currentIndex)
+                    onModelChanged: {
                         currentIndex = indexOfValue(
                                     Settings.get(
                                         "OnlineOrdersPage/CarrierCBValue", 1))
                         initialized = true // we need to initalize here on static models
                     }
+
                     onCurrentValueChanged: {
                         if (initialized) {
                             Settings.set("OnlineOrdersPage/CarrierCBValue",
