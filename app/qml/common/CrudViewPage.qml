@@ -57,6 +57,7 @@ BasicViewPage {
             text: qsTr("Delete")
             icon.name: "cil-delete"
             permission: page.deletePermission
+            enabled: page.view.currentRow >= 0
             onTriggered: page.deleteCB();
         }
     ]

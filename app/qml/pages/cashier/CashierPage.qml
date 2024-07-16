@@ -84,6 +84,14 @@ AppPage {
 
             Layout.alignment: Qt.AlignCenter
             //Layout.minimumWidth: 1000
+            actions:[
+                CAction {
+                    text: qsTr("Delete")
+                    icon.name: "cil-delete"
+                    enabled: tableView.currentRow >= 0
+                    onTriggered: cashierModel.removeProduct(tableView.currentRow)
+                }
+            ]
             model: CashierModel {
                 id: cashierModel
                 onPurchaseResponseReceived: res => {
