@@ -19,7 +19,7 @@ CTableViewDelegate {
               default: return model.display;
               }
         state: switch(model.display){
-               case "manifest_created": return "Invalid";
+               case "manifest_created": return "info";
                case "in_transit": return "success";
                default: return "Invalid";
                }

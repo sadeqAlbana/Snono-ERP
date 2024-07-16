@@ -12,10 +12,12 @@ OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/
                                                                   {"district",tr("Address"),"shipment.dst_address"} ,
                                                                   {"total",tr("Total"),QString(),false,"currency"} ,
                                                                   {"date",tr("Date"),QString(),false,"datetime"} ,
-                                                                  {"status",tr("Status"),"shipment",false,"ShipmentStatus"} ,
-                                                                  {"id",tr("Delivery Id"),"shipment"} ,
+                                                                  {"status",tr("Status"),QString(),false,"OrderStatus"} ,
+                                                                  {"status",tr("Delivery Status"),"shipment",false,"ShipmentStatus"} ,
                                                                  {"third_party_carrier_shipment_status",tr("3rd Party Status"),"shipment",
 false,"externalDeliveryStatus"} ,
+                                                  {"id",tr("Delivery Id"),"shipment"} ,
+
 
                                                                   },
                                                                   parent)

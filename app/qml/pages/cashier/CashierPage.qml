@@ -32,7 +32,7 @@ AppPage {
     Keys.enabled: true
 
     Keys.onPressed: event => {
-                        if (event.key === Qt.Key_Backspace
+                        if (event.key === Qt.Key_Backspace || event.key === Qt.Key_Delete
                             && tableView.currentRow >= 0) {
                             cashierModel.removeProduct(tableView.currentRow)
                         }

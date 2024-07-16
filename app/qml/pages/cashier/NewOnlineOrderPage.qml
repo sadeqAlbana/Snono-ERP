@@ -62,7 +62,7 @@ AppPage {
     Keys.enabled: true
 
     Keys.onPressed: event => {
-                        if (event.key === Qt.Key_Backspace
+                        if (event.key === Qt.Key_Backspace || event.key === Qt.Key_Delete
                             && tableView.currentRow >= 0) {
                             cashierModel.removeProduct(tableView.currentRow)
                         }
@@ -78,7 +78,7 @@ AppPage {
             address["district"] = districtCB.editText
             address["phone"] = phoneTF.text
             address["name"] = addressNameLE.text
-            address["first_name"] = customerCB.currentText
+            address["first_name"] = customerCB.editText
             address["details"] = addressDetailsLE.text
         } else {
             address["id"] = addressId
