@@ -20,7 +20,8 @@ void AuthManager::authenticate(QString username, QString password, bool remember
 {
     PosNetworkManager::instance()->post(QUrl("auth/login"),QJsonObject{{"username",username},
                                                                   {"password",password},
-                                                                  {"hw_id",AppSettings::hwID()}
+                                                                  {"hw_id",AppSettings::hwID()},
+                                                                  {"version",QString::number(AppSettings::version())}
 
                                         })->subscribe([this,remember](NetworkResponse *res){
         qDebug()<<"login res: " <<res->json();
