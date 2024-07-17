@@ -18,7 +18,9 @@ import JsonModels
 AppPage {
     id: page
     padding: 0
-    Component.onCompleted: {
+    Component.onCompleted: init();
+
+    function init(){
         NetworkManager.get("/onlinesales/dashboard").subscribe(
                     function (response) {
                         paymentMethodCB.model = response.json(
@@ -132,6 +134,7 @@ AppPage {
                                                 'order')
                                     receiptDialog.open()
                                     cashierModel.requestCart()
+                                    page.init();
                                 }
                             })
     }
@@ -179,14 +182,6 @@ AppPage {
             //Layout.minimumWidth: 1000
             model: CashierModel {
                 id: cashierModel
-                // onUpdateCustomerResponseReceived: res => {
-                //                                       if (res.status === 200) {
-                //                                           if (pay) {
-                //                                               page.processCart()
-                //                                               pay = false
-                //                                           }
-                //                                       }
-                //                                   } //onUpdateCustomerResponseReceived
                 onAddProductReply: res => {
                                        if (res.status === 200) {
                                            scannerBeep.play()
@@ -527,6 +522,8 @@ AppPage {
                     leftIcon.name: "cil-notes"
                     text: qsTr("Default")
                     readOnly: !addressCB.isNew
+                    enabled: addressCB.isNew
+
                 }
 
                 CLabel {
@@ -545,6 +542,8 @@ AppPage {
                     Layout.minimumHeight: 50
                     placeholderText: qsTr("Phone...")
                     leftIcon.name: "cil-phone"
+                    enabled: addressCB.isNew
+
                 }
 
 
@@ -572,6 +571,7 @@ AppPage {
                         }
                     }
                     model: JsonModel {}
+                    enabled: addressCB.isNew
                 }
 
                 CLabel {
@@ -591,6 +591,7 @@ AppPage {
                     leftIcon.name: "cil-city"
                     property var parentLocationId: null
                     onParentLocationIdChanged: refresh()
+                    enabled: addressCB.isNew
 
                     function refresh() {
                         if (parentLocationId === null
@@ -618,6 +619,8 @@ AppPage {
                     implicitHeight: 50
                     placeholderText: qsTr("Street, Nearest landmark, etc...")
                     leftIcon.name: "cil-location-pin"
+                    enabled: addressCB.isNew
+
                 }
 
                 CLabel {
@@ -675,7 +678,9 @@ AppPage {
         provinceCB.currentIndex = 0
         districtCB.parentLocationId = provinceCB.model.data(
                     provinceCB.currentIndex, "name") ?? null
-        districtCB.refresh()
+        districtCB.refresh();
+
+        //we should create a method to detect if the address is valid and match it !
     }
     function enableInternalDelivery() {
         provinceCB.model.records = page.internalLocations
