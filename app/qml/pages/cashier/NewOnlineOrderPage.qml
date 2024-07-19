@@ -37,11 +37,15 @@ AppPage {
                         carrierCB.model=[{
                                              "id": 1,
                                              "name": qsTr("Internal"),
-                                             "method": enableInternalDelivery
+                                             "method": enableInternalDelivery,
+                                             "requiresValidData": false,
+                                             "dataMethod": function(){return page.internalLocations}
                                          }, {
                                              "id": 2,
                                              "name": qsTr("Barq"),
-                                             "method": enableBarq
+                                             "method": enableBarq,
+                                             "requiresValidData": true,
+                                             "dataMethod": function(){return page.barqLocations}
                                          }]
 
                     })
@@ -69,6 +73,18 @@ AppPage {
                             cashierModel.removeProduct(tableView.currentRow)
                         }
                     }
+
+    /*
+    this method checks wether the carrier requires a valid location
+    if requires, it will compare if the current text of the CBs is a valid index
+    */
+    function validateLocations(){
+        let carrier=carrierCB.model[carrierCB.currentIndex]
+        if(carrier.requiresValidData){
+            return (provinceCB.valid && districtCB.valid)
+        }
+        return true;
+    }
 
     function processCart() {
         let address = {}
@@ -198,9 +214,15 @@ AppPage {
             title: qsTr("Confirm")
             message: qsTr("Do you want to place order?")
 
-            onAccepted: page.processCart()
+            onAccepted: {
+                page.processCart();
+
+            }
+
             onCanceled: close()
         }
+
+
 
         Card {
             //pay button card
@@ -213,6 +235,15 @@ AppPage {
                 columns: 1
 
                 function confirmPayment() {
+
+                    if(!page.validateLocations()){
+                        toastrService.push(qsTr("Warning"),
+                                           qsTr("This Carrier requires valid locations"),
+                                           "warning", 4000);
+                        return;
+                    }
+
+
                     confirmDlg.open()
                 }
 
