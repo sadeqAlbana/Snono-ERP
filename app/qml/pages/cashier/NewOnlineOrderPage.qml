@@ -322,23 +322,7 @@ AppPage {
                         //Settings.externalDelivery = checked
 
                         //this is the catalyst
-
-                        if(addressCB.currentIndex>=0){
-                            let province=provinceCB.currentText;
-                            let district=districtCB.currentText;
-                            model[currentIndex].method();
-
-
-                            console.log("index of value: " + province + " " + provinceCB.indexOfValue(province))
-                            provinceCB.currentIndex=5
-                            districtCB.currentIndex=districtCB.indexOfValue(district);
-
-                        }else{
-                            model[currentIndex].method();
-
-                        }
-
-
+                        model[currentIndex].method();
                     }
                 }
 
@@ -722,7 +706,19 @@ AppPage {
     }
     function enableBarq() {
         provinceCB.model.records = page.barqLocations
-        provinceCB.currentIndex = 0
+
+        if(addressCB.currentIndex>=0){
+            let province=provinceCB.currentText;
+            let district=districtCB.currentText;
+
+            console.log("provinceCB.find: " + province + " " + provinceCB.find(province))
+            provinceCB.currentIndex=provinceCB.find(province);
+            // districtCB.currentIndex=districtCB.indexOfValue(district);
+
+        }else{
+            provinceCB.currentIndex = 0;
+        }
+
         districtCB.parentLocationId = provinceCB.model.data(
                     provinceCB.currentIndex, "name") ?? null
         districtCB.refresh();
