@@ -322,7 +322,23 @@ AppPage {
                         //Settings.externalDelivery = checked
 
                         //this is the catalyst
-                        model[currentIndex].method();
+
+                        if(addressCB.currentIndex>=0){
+                            let province=provinceCB.currentText;
+                            let district=districtCB.currentText;
+                            model[currentIndex].method();
+
+
+                            console.log("index of value: " + province + " " + provinceCB.indexOfValue(province))
+                            provinceCB.currentIndex=5
+                            districtCB.currentIndex=districtCB.indexOfValue(district);
+
+                        }else{
+                            model[currentIndex].method();
+
+                        }
+
+
                     }
                 }
 
