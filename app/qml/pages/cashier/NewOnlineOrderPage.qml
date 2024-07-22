@@ -323,6 +323,8 @@ AppPage {
 
                         //this is the catalyst
                         model[currentIndex].method();
+                        page.refreshCustomerForm();
+
                     }
                 }
 
