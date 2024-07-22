@@ -706,19 +706,7 @@ AppPage {
     }
     function enableBarq() {
         provinceCB.model.records = page.barqLocations
-
-        if(addressCB.currentIndex>=0){
-            let province=provinceCB.currentText;
-            let district=districtCB.currentText;
-
-            console.log("provinceCB.find: " + province + " " + provinceCB.find(province))
-            provinceCB.currentIndex=provinceCB.find(province);
-            // districtCB.currentIndex=districtCB.indexOfValue(district);
-
-        }else{
-            provinceCB.currentIndex = 0;
-        }
-
+        provinceCB.currentIndex = 0
         districtCB.parentLocationId = provinceCB.model.data(
                     provinceCB.currentIndex, "name") ?? null
         districtCB.refresh();
