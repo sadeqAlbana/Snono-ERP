@@ -191,6 +191,8 @@ set(TARGET_QML_SOURCES
     qml/pages/settings/BarqDeliverySettings.qml
     qml/pages/settings/ReceiptSettings.qml
     qml/pages/settings/LicensePage.qml
+    qml/pages/settings/PosMachines.qml
+    qml/pages/settings/PosMachinesPage.qml
     qml/pages/vendors/VendorBillListView.qml
     qml/pages/vendors/PurchaseStockDialog.qml
     qml/pages/vendors/PayBillDialog.qml
@@ -289,6 +291,7 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+
 
 )
 set(INCLUDE_DIR
