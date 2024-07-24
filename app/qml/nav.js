@@ -268,6 +268,11 @@ function navBar(){
                             "permission": ""
                         },
                         {
+                            "title": qsTr("Devices"),
+                            "path":"qrc:/PosFe/qml/pages/settings/PosMachinesPage.qml",
+                            "permission": ""
+                        },
+                        {
                             "title": qsTr("Identity Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/IdentitySettings.qml",
                             "permission": "prm_admin"

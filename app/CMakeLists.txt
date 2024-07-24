@@ -115,6 +115,7 @@ set(TARGET_SOURCES
     models/shipmentsmodel.h models/shipmentsmodel.cpp
     models/onlineordersmodel.h models/onlineordersmodel.cpp
     models/posordersmodel.h models/posordersmodel.cpp
+    models/posmachinesmodel.h models/posmachinesmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
