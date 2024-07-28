@@ -47,5 +47,5 @@ set(QML_IMPORT_PATH ${QML_DIRS}
 
 add_custom_target(dist_files
 SOURCES
-dist/windows/install.nis
+dist/windows/install.nsi
 )
