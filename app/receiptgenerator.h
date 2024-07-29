@@ -17,7 +17,7 @@ public:
 
     Q_INVOKABLE static QString createDeliveryReceipt(QJsonObject receiptData, const bool print=false);
     Q_INVOKABLE static QString createCashierReceipt(QJsonObject receiptData, const bool print=false);
-    Q_INVOKABLE static QString generateLabel(const QString &barcode, const QString &name, const QString &price, const int copies=1);
+    Q_INVOKABLE static QString generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku=QString(), const int copies=1);
 
     Q_INVOKABLE static QString sampleData();
 

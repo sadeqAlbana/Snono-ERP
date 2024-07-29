@@ -79,8 +79,20 @@ Popup{
                 onClicked: {
 
 
+                    console.log(JSON.stringify(product))
+
+                    let sku="";
+                    let attributes=product.attributes;
+
+                    attributes.forEach(attribute =>{
+                                       if(attribute.attribute_id==="sku"){
+                                               sku=attribute.value;
+                                               return;
+                                           }
+                                       });
+
                     ReceiptGenerator.generateLabel(product.barcode, product.name,
-                                                   Utils.formatCurrency(product.list_price),
+                                                   Utils.formatCurrency(product.list_price),sku,
                                                    parseInt(quantity.input.text))
 
                 }
