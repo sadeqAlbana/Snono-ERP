@@ -990,7 +990,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const int copies)
 {
 
-    QImage barcodeImg(250,100,QImage::Format_RGB32);
+    QImage barcodeImg(300,200,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
@@ -1000,7 +1000,7 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 #endif
     item.setWidth( barcodeImg.width() );
     item.setHeight( barcodeImg.height() );
-    item.setText(barcode);
+     item.setText(barcode);
 
 #ifndef Q_OS_IOS
     item.update();
@@ -1008,44 +1008,37 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     item.paint(&imgPainter,nullptr,nullptr);
     imgPainter.end();
 
+    barcodeImg.save(R"(C:\Users\Sadeq\OneDrive\Desktop\EXTRACT2\test.png)");
 
-    // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
+    QTextDocument doc;
+    doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
-    QPrinter printer(QPrinter::HighResolution);
+    QFile file(":/label.html");
+    qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
+    QString html=file.readAll();
+    file.close();
+
+    html.replace("{{product_name}}",name);
+    html.replace("{{sku}}","");
+    html.replace("{{price}}",tr("Price: ")+ price);
+
+
+    QPrinter printer;
+//     printer.setOutputFormat(QPrinter::PdfFormat);
+     // printer.setOutputFileName(R"(C:\users\sadeq\OneDrive\Desktop\EXTRACT2\printer.pdf)");
     printer.setCopyCount(copies);
-    printer.setPrinterName(AppSettings::instance()->labelPrinter());
+    // printer.setResolution(203);
+     //printer.setPrinterName(AppSettings::instance()->labelPrinter());
     float labelWidth=AppSettings::instance()->labelPrinterLabelWidth();
     float labelHeight=AppSettings::instance()->labelPrinterLabelHeight();
     QPageSize::Unit unit=static_cast<QPageSize::Unit>(AppSettings::instance()->labelPrinterLabelSizeUnit());
 
-    printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));
-
+    doc.setPageSize(QSizeF(labelWidth*72,labelHeight*72));
+     printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));
     printer.setFullPage(true);
 
-    QPainter painter(&printer);
-
-    // Set font size and style
-    QFont font;
-    font.setPointSize(14);
-    painter.setFont(font);
-    font.setWeight(QFont::Bold);
-    // Draw text on the label
-    QRect rect = painter.viewport();
-    painter.setFont(font);
-
-
-
-    painter.drawImage(50,45,barcodeImg);
-    painter.drawText(50,35,name);
-    font.setWeight(QFont::Normal);
-    font.setPointSize(12);
-    painter.setFont(font);
-    painter.drawText(50,185,tr("Price: ")+ price);
-
-
-    // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
-
-    painter.end();
+    doc.setHtml(html);
+    doc.print(&printer);
 
     return QString();
 }

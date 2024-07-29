@@ -3,5 +3,6 @@
         <file>cashier_regiser_beep.wav</file>
         <file>numpad_beep.wav</file>
         <file>About.md</file>
+        <file>label.html</file>
     </qresource>
 </RCC>

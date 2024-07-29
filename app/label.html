@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .label {
+            width: 2in;
+            height: 1in;
+            font-size: 6px;
+            overflow: hidden;
+        }
+        .product-name {
+            font-weight: bold;
+            text-align: center;
+        }
+        .barcode {
+            display: block;
+            margin: 0 auto;
+<!--            width: 100%; /* Adjust the width as needed */
+            height: auto;-->
+        }
+        .sku, .price {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="label">
+        <div class="product-name">{{product_name}}</div>
+        <div align=center class="barcode-container">
+            <img class="barcode" src="barcode_img" alt="Barcode" width=75 height=50 >
+        </div>
+        <div class="sku">SKU: {{sku}}</div>
+        <div class="price">{{price}}</div>
+    </div>
+</body>
+</html>
