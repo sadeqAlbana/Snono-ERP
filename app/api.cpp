@@ -411,25 +411,8 @@ NetworkResponse *Api::removeTax(const int taxId)
     return PosNetworkManager::instance()->deleteResource(url);
 }
 
-NetworkResponse *Api::addAclGroup(const QJsonObject &data)
-{
-    return PosNetworkManager::instance()->post(QUrl("/aclGroup"),data);
 
-}
 
-NetworkResponse *Api::updateAclGroup(const QJsonObject &data)
-{
-    return PosNetworkManager::instance()->put(QUrl("/aclGroup"),data);
-
-}
-
-NetworkResponse *Api::deleteAclGroup(const int id)
-{
-    QUrl url("/aclGroup");
-    url.setQuery(QUrlQuery{{"id",QString::number(id)}});
-
-    return PosNetworkManager::instance()->deleteResource(url);
-}
 
 NetworkResponse *Api::setProductAttributes(const int &productId, const QJsonArray &attributes)
 {

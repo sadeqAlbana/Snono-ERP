@@ -21,9 +21,7 @@ import JsonModels
 import PosFe
 
 AppPage {
-    id: page
-
-    ;
+    id: page;
 
 
     title: qsTr("Permissions")
@@ -52,7 +50,8 @@ AppPage {
                 CAction {
                     text: qsTr("Add")
                     icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",{"applyHandler": Api.addAclGroup,
+                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",
+                                                 {
                                                      "title": qsTr("Add Group")
                                                  })
                 },
@@ -60,10 +59,9 @@ AppPage {
                     text: qsTr("Edit")
                     icon.name: "cil-pen"
                     onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/AclGroupForm.qml",
-                                                 {"applyHandler": Api.updateAclGroup,
+                                                 {
                                                      "title": qsTr("Edit Group"),
-
-                                                 "initialValues":model.jsonObject(view.currentRow)
+                                                     "keyValue": model.jsonObject(view.currentRow).id
                                                  })
                     enabled:view.currentRow>=0; permission: "prm_edit_acl_groups";
 

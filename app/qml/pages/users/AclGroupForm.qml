@@ -14,6 +14,7 @@ CFormView {
     rowSpacing: 30
     header.visible: true
     columns: 1
+    url: "/aclGroup"
     CLabel {
         text: qsTr("Group Name")
     }
