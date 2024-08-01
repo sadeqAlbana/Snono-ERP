@@ -277,7 +277,10 @@ set(TARGET_QML_SOURCES
 
 if(ANDROID)
     list(APPEND TARGET_QML_SOURCES
-        qml/common/+android/ReceiptDialog.qml)
+        qml/common/+android/ReceiptDialog.qml
+        qml/common/+android/NewReceiptDialog.qml
+
+    )
 else()
     list(APPEND TARGET_QML_SOURCES
     qml/common/ReceiptDialog.qml
