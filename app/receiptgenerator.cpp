@@ -571,7 +571,6 @@ END:VCARD)").arg(customer).arg(phone);
     }
 
 
-
     return pdfPrinter.outputFileName();
 
 #else
@@ -1052,6 +1051,17 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     painter.end();
 
     return QString();
+}
+
+QImage ReceiptGenerator::renderToImage(QTextDocument &doc, const int scaleFactor)
+{
+    QImage image((doc.pageSize().toSize()*scaleFactor), QImage::Format_ARGB32);
+    image.fill(Qt::white);
+    QPainter painter(&image);
+    painter.scale(scaleFactor,scaleFactor);
+    doc.drawContents(&painter,image.rect());
+
+    return image;
 }
 
 QString ReceiptGenerator::sampleData()
