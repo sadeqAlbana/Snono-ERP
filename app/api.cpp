@@ -117,9 +117,7 @@ void Api::barqReceipt(const int orderId)
 #if QT_VERSION < QT_VERSION_CHECK(6,4,1)
             QImage image=doc->render(0,doc->pageSize(0).toSize().scaled(printer.width(),printer.width()*2,Qt::KeepAspectRatio));
 #else
-            QPdfDocumentRenderOptions options;
-            options.setRenderFlags(QPdfDocumentRenderOptions::RenderFlag::OptimizedForLcd);
-            QImage image=doc->render(0,pageSize.sizePixels(600),options);
+            QImage image=doc->render(0,pageSize.sizePixels(600));
 #endif
 
 
@@ -128,10 +126,8 @@ void Api::barqReceipt(const int orderId)
             pt.fillRect(white.rect(),Qt::white);
             pt.drawImage(QPoint(0,0),image);
             pt.end();
-            qDebug()<<"save: "<<white.save(R"(C:\Users\Sadeq\OneDrive\Desktop\zz.png)");
             QPainter painter(&printer);
-
-            painter.drawImage(QPoint(0,0),image);
+            painter.drawImage(QRect(0,0,printer.width(),printer.height()),image);
             painter.end();
 
         });
