@@ -116,6 +116,7 @@ set(TARGET_SOURCES
     models/onlineordersmodel.h models/onlineordersmodel.cpp
     models/posordersmodel.h models/posordersmodel.cpp
     models/posmachinesmodel.h models/posmachinesmodel.cpp
+    models/sheinordermanifestmodel.h models/sheinordermanifestmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -203,6 +204,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/VendorForm.qml
     qml/pages/vendors/AddVendorBillPage.qml
     qml/pages/vendors/AddCustomVendorBillPage.qml
+    qml/pages/vendors/AddSheinOrderPage.qml
     qml/pages/warehouses/WarehousesPage.qml
     qml/pages/warehouses/StockMovesPage.qml
     qml/pages/warehouses/StockValuationPage.qml

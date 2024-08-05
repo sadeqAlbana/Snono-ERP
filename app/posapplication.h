@@ -32,6 +32,10 @@ public:
 
     Q_INVOKABLE  void setMouseBusy(const bool busy);
 
+
+    Q_INVOKABLE  static QJsonObject extractSheinJsonFromHtml(const QUrl &path);
+
+
 signals:
     void languageChanged();
     void downloadVersionReply(bool success);

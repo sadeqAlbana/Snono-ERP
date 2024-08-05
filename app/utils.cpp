@@ -20,6 +20,7 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QGuiApplication>
+#include <QJsonDocument>
 QString Currency::formatString(const QVariant &value)
 {
     QString text;
@@ -263,3 +264,45 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
 
 }
 
+
+QJsonObject Shein::extractJsonFromHtml(const QUrl &path)
+{
+    QFile file(path.toLocalFile());
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning("Could not open file");
+        return QJsonObject();
+    }
+
+    QTextStream in(&file);
+    QString line;
+    QString jsonString;
+
+    while (!in.atEnd()) {
+        line = in.readLine();
+        if (line.contains("_allOrderGoodsList")) {
+            jsonString = line;
+            break;
+        }
+    }
+
+    file.close();
+
+    if (jsonString.isEmpty()) {
+
+        qWarning(QString("No matching line found in %1").arg(file.fileName()).toStdString().c_str());
+        return QJsonObject();
+        //return -1;
+    }
+
+    jsonString=line.trimmed();
+    jsonString.remove("var gbRawData = ");
+    // Parse the JSON object
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonString.toUtf8());
+    if (jsonDoc.isNull() || !jsonDoc.isObject()) {
+        qWarning("Failed to parse JSON");
+        return jsonDoc.object();
+    }
+
+
+    return QJsonObject();
+}

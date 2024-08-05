@@ -57,9 +57,15 @@ AppPage{
                                StandardPaths.DocumentsLocation)
             nameFilters: ["Shein order files (*.json *.html)", "All files (*)"]
             onAccepted: {
-                Api.addSheinOrder(selectedFile).subscribe(function(response){
-                    console.log(JSON.stringify(response.json()));
-                });
+
+
+                let orderManifestJson=App.extractSheinJsonFromHtml(selectedFile);
+                Router.navigate("qrc:/PosFe/qml/pages/vendors/AddSheinOrderPage.qml",{
+                                                 "orderManifest": orderManifestJson
+                                             })
+                // Api.addSheinOrder(selectedFile).subscribe(function(response){
+                //     console.log(JSON.stringify(response.json()));
+                // });
             }
         }
 

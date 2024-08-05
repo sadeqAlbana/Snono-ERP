@@ -359,3 +359,8 @@ void PosApplication::setMouseBusy(const bool busy)
         restoreOverrideCursor();
     }
 }
+
+QJsonObject PosApplication::extractSheinJsonFromHtml(const QUrl &path)
+{
+    return Shein::extractJsonFromHtml(path);
+}

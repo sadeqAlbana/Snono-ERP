@@ -40,6 +40,9 @@ namespace Json{
 bool printJson(const QString &title, const QJsonArray &data, QList<QPair<QString, QString> > headers={});
 }
 
+namespace Shein{
+QJsonObject extractJsonFromHtml(const QUrl &path);
+}
 
 
 #endif // UTILS_H
