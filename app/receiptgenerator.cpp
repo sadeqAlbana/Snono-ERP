@@ -570,6 +570,11 @@ END:VCARD)").arg(customer).arg(phone);
         doc.print(&printer);
     }
 
+#ifndef QT_NO_PDF
+
+    QImage image=renderToImage(doc,3);
+    image.save(pdfPrinter.outputFileName().replace(".pdf",".png"));
+#endif
 
     return pdfPrinter.outputFileName();
 
