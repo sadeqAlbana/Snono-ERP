@@ -257,8 +257,6 @@ set(TARGET_QML_SOURCES
     qml/common/CashierReceiptDialog.qml
     qml/common/PosSessionStatusDelegate.qml
     qml/common/PrintProductLabelDialog.qml
-    qml/common/NewReceiptDialog.qml
-
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -276,13 +274,12 @@ set(TARGET_QML_SOURCES
 
 if(ANDROID)
     list(APPEND TARGET_QML_SOURCES
-        qml/common/+android/ReceiptDialog.qml
         qml/common/+android/NewReceiptDialog.qml
 
     )
 else()
     list(APPEND TARGET_QML_SOURCES
-    qml/common/ReceiptDialog.qml
+    qml/common/NewReceiptDialog.qml
 )
 
 endif()

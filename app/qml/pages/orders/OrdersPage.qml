@@ -78,8 +78,17 @@ AppPage {
                                                tableView.currentRow).id, status)
             }
         }
-        ReceiptDialog {
-            id: receiptDialog
+        NewReceiptDialog {
+            id: onlineOrdersReceiptDialog
+
+            function openDialog() {
+                receiptData = model.jsonObject(tableView.currentRow)
+                open()
+            }
+        }
+
+        CashierReceiptDialog{
+            id: cashierReceiptDialog
 
             function openDialog() {
                 receiptData = model.jsonObject(tableView.currentRow)
@@ -246,7 +255,18 @@ AppPage {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Print")
                     icon.name: "cil-print"
-                    onTriggered: receiptDialog.openDialog()
+                    onTriggered: {
+
+                        let type=model.jsonObject(tableView.currentRow).order_type;
+
+                        switch(type){
+                        case "pos": cashierReceiptDialog.openDialog(); break;
+                        case "online": onlineOrdersReceiptDialog.openDialog(); break;
+                        default: console.warn("invlid order type"); break;
+
+                        }
+
+                    }
                 },
                 CAction {
                     enabled: tableView.currentRow >= 0
