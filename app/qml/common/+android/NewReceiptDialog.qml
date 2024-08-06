@@ -40,18 +40,26 @@ Popup {
         title: qsTr("Receipt")
         anchors.fill: parent;
 
-        // Flickable{
-        //     clip: true
-        //     anchors.fill: parent;
+        Flickable{
+            id: flickable
+            clip: true
+            anchors.fill: parent;
 
-        //     contentWidth: pdf.width;
-        //     contentHeight: pdf.height
-        //     ScrollBar.vertical: ScrollBar { }
-        //     ScrollBar.horizontal: ScrollBar { }
+            // contentWidth: pdf.sourceSize.width;
+            //contentHeight: pdf.sourceSize.height
+            ScrollBar.vertical: ScrollBar { }
+            ScrollBar.horizontal: ScrollBar { }
 
+            Image{
+                id: pdf
+                anchors.fill: parent
+                sourceSize.width: flickable.width
+                source: receiptData? "file:///"+ReceiptGenerator.createDeliveryReceipt(receiptData)+".png" : ""
+                fillMode: Image.PreserveAspectFit
 
-       // }
+                }
 
+            }
 
 
 

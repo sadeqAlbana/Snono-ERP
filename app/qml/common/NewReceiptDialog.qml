@@ -57,7 +57,7 @@ Popup {
                 // width: sourceSize.width
                 // height: sourceSize.height
                 document: PdfDocument{
-                    source: receiptData? "file:///"+ReceiptGenerator.createDeliveryReceipt(receiptData) : ""
+                    source: receiptData? "file:///"+ReceiptGenerator.createDeliveryReceipt(receiptData)+".pdf" : ""
 
                     onStatusChanged:(status)=> {
                         if(status==PdfDocument.Ready){

@@ -544,8 +544,11 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     doc.setHtml(text);
-
-
+    QString random=QString::number(QRandomGenerator::global()->generate());
+    QString filePathAndNameNoExtension=QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1").arg(random);
+//below needs to be corrected
+//qt print support is available on all but ios
+//qt pdf is not available on ios and android
 #ifndef Q_OS_IOS
 
     QPrinter pdfPrinter(QPrinter::HighResolution);
@@ -553,8 +556,8 @@ END:VCARD)").arg(customer).arg(phone);
     pdfPrinter.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
     pdfPrinter.setPageSize(pageSize);
 
-    QString random=QString::number(QRandomGenerator::global()->generate());
-    pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
+
+    pdfPrinter.setOutputFileName(filePathAndNameNoExtension+".pdf");
     qDebug()<<"path: " <<pdfPrinter.outputFileName();
     doc.print(&pdfPrinter);
 
@@ -569,19 +572,15 @@ END:VCARD)").arg(customer).arg(phone);
         printer.setPageSize(pageSize);
         doc.print(&printer);
     }
+#endif
 
 #ifdef QT_NO_PDF
-
     QImage image=renderToImage(doc,3);
-    image.save(pdfPrinter.outputFileName().replace(".pdf",".png"));
+    qDebug()<<"image: " << filePathAndNameNoExtension+".png";
+    qDebug()<<"image save: " <<image.save(filePathAndNameNoExtension+".png");
 #endif
 
-    return pdfPrinter.outputFileName();
-
-#else
-    return QString();
-
-#endif
+    return filePathAndNameNoExtension;
 }
 
 QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bool print)

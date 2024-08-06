@@ -289,7 +289,7 @@ QJsonObject Shein::extractJsonFromHtml(const QUrl &path)
 
     if (jsonString.isEmpty()) {
 
-        qWarning(QString("No matching line found in %1").arg(file.fileName()).toStdString().c_str());
+        qWarning("%s", QString("No matching line found in %1").arg(file.fileName()).toStdString().c_str());
         return QJsonObject();
         //return -1;
     }
