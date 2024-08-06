@@ -932,13 +932,14 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 //    pageSize=pageSize*2;
 
 
-
+    QString random=QString::number(QRandomGenerator::global()->generate());
+    QString filePathAndNameNoExtension=QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1").arg(random);
 
 #ifndef Q_OS_IOS
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setPrinterName(AppSettings::instance()->receiptPrinter());    \
-        printer.setResolution(96);
+    printer.setResolution(96);
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     printer.setFullPage(true);  // Use full page for printing
@@ -963,7 +964,6 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     // printer.setPageLayout(layout);
     // doc.setPageSize(QSizeF(printer.pageRect(QPrinter::Millimeter).width(), printer.pageRect(QPrinter::Millimeter).height()));
 
-    QString random=QString::number(QRandomGenerator::global()->generate());
     pdfPrinter.setOutputFileName(QStandardPaths::standardLocations(QStandardPaths::TempLocation).value(0)+QString("/%1.pdf").arg(random));
     qDebug()<<"path: " <<pdfPrinter.outputFileName();
     doc.print(&pdfPrinter);
