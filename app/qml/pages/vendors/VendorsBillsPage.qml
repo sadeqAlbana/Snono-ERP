@@ -60,6 +60,7 @@ AppPage{
 
 
                 let orderManifestJson=App.extractSheinJsonFromHtml(selectedFile);
+
                 Router.navigate("qrc:/PosFe/qml/pages/vendors/AddSheinOrderPage.qml",{
                                                  "orderManifest": orderManifestJson
                                              })

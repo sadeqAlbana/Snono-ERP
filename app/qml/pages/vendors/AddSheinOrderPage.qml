@@ -20,6 +20,14 @@ CFormView {
     title: qsTr("Add Shein Order")
     columns: 2
     required property var orderManifest;
+
+    Component.onCompleted: {
+        NetworkManager.post("/shein/preview",{"data": orderManifest}).subscribe(
+                    function(res){
+                    sheinModel.records=res.json('data');
+                    })
+    }
+
     CLabel {
         text: qsTr("Vendor")
     }
@@ -89,7 +97,9 @@ CFormView {
         Layout.fillWidth: true
         Layout.columnSpan: 2
         model: SheinOrderManifestModel {
+            id: sheinModel
         }
+
     }
 }
 

@@ -268,6 +268,7 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
 QJsonObject Shein::extractJsonFromHtml(const QUrl &path)
 {
     QFile file(path.toLocalFile());
+
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning("Could not open file");
         return QJsonObject();
@@ -298,11 +299,11 @@ QJsonObject Shein::extractJsonFromHtml(const QUrl &path)
     jsonString.remove("var gbRawData = ");
     // Parse the JSON object
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonString.toUtf8());
-    if (jsonDoc.isNull() || !jsonDoc.isObject()) {
+    if (jsonDoc.isNull() || (!jsonDoc.isObject())) {
         qWarning("Failed to parse JSON");
-        return jsonDoc.object();
+
     }
 
 
-    return QJsonObject();
+    return jsonDoc.object();
 }
