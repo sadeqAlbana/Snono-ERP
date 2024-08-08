@@ -993,7 +993,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku, const int copies)
 {
 
-    QImage barcodeImg(330,110,QImage::Format_RGB32);
+    QImage barcodeImg(330,75,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
