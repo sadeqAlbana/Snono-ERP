@@ -22,9 +22,10 @@ CFormView {
     required property var orderManifest;
 
     Component.onCompleted: {
-        NetworkManager.post("/shein/preview",{"data": orderManifest}).subscribe(
+        NetworkManager.post("/shein/preview",{"data": orderManifest['order']}).subscribe(
                     function(res){
                     sheinModel.records=res.json('data');
+
                     })
     }
 
@@ -95,7 +96,11 @@ CFormView {
         // objectName: "items"
         Layout.fillHeight: true
         Layout.fillWidth: true
+        Layout.minimumHeight: 400
+        Layout.minimumWidth: 400
         Layout.columnSpan: 2
+        delegate: AppDelegateChooser {}
+
         model: SheinOrderManifestModel {
             id: sheinModel
         }
