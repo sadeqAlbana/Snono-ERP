@@ -534,7 +534,7 @@ NetworkResponse *Api::nextVersion()
 
 }
 
-NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
+NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl, const bool buy)
 {
 
     qDebug()<<fileUrl.toLocalFile();
@@ -573,7 +573,7 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl)
     }
 
     file.close();
-    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()}});
+    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()},{"buy",buy}});
 
 //    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }

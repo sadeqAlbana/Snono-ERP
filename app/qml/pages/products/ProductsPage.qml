@@ -254,6 +254,13 @@ AppPage {
                     onTriggered: importProductsFileDialog.open()
                     permission: "prm_add_products"
                 },
+                CAction {
+                    text: qsTr("Import from Shein Order")
+                    icon.name: "cil-cart"
+                    onTriggered: sheinDialog.open()
+                    permission: "prm_adjust_stock"
+                },
+
 
                 CAction {
                     text: qsTr("Print Label")
@@ -307,6 +314,22 @@ AppPage {
                 var productId = model.data(tableView.currentRow, "id")
                 model.removeProduct(productId)
             }
+        }
+    }
+
+    FileDialog {
+        id: sheinDialog
+        currentFolder: StandardPaths.writableLocation(
+                           StandardPaths.DocumentsLocation)
+        nameFilters: ["Shein order files (*.json *.html)", "All files (*)"]
+        onAccepted: {
+
+
+            let orderManifestJson=App.extractSheinJsonFromHtml(selectedFile);
+
+            Api.addSheinOrder(selectedFile,false).subscribe(function(response){
+                console.log(JSON.stringify(response.json()));
+            });
         }
     }
 }

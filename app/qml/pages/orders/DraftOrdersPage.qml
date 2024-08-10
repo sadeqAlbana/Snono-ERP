@@ -38,17 +38,6 @@ AppPage{
         }
 
 
-        FileDialog {
-            id: sheinDialog
-            currentFolder: StandardPaths.writableLocation(
-                               StandardPaths.DocumentsLocation)
-            nameFilters: ["Json files (*.json)", "All files (*)"]
-            onAccepted: {
-                Api.addSheinOrder(selectedFile).subscribe(function(response){
-                    console.log(JSON.stringify(response.json()));
-                });
-            }
-        }
 
         CTableView{
             id: tableView
