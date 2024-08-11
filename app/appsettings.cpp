@@ -343,6 +343,20 @@ void AppSettings::setTestEnv(bool newTestEnv)
     emit testEnvChanged();
 }
 
+QString AppSettings::posReceiptBottomNote() const
+{
+    return value("receipt/receipt_pos_bottom_note",1).toString();
+}
+
+void AppSettings::setPosReceiptBottomNote(const QString &newPosReceiptBottomNote)
+{
+    if (posReceiptBottomNote() == newPosReceiptBottomNote)
+        return;
+
+    setValue("receipt/receipt_pos_bottom_note",newPosReceiptBottomNote);
+    emit posReceiptBottomNoteChanged();
+}
+
 float AppSettings::labelPrinterLabelWidth() const
 {
     return value("label_printer_label_width",1).toFloat();

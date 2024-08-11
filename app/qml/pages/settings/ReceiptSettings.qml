@@ -62,6 +62,17 @@ AppPage{
         }
 
 
+        CLabel {
+            text: qsTr("POS Receipt Bottom Note")
+        }
+
+
+        CIconTextField {
+            objectName: "receipt_pos_bottom_note"
+            leftIcon.name: "cil-list"
+            Layout.fillWidth: true
+        }
+
 
         Component.onCompleted: NetworkManager.get(form.fetchUrl).subscribe(function(res){
             form.initialValues=res.json("data");

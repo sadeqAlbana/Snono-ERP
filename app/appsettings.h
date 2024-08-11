@@ -109,6 +109,9 @@ public:
     bool testEnv() const;
     void setTestEnv(bool newTestEnv);
 
+    QString posReceiptBottomNote() const;
+    void setPosReceiptBottomNote(const QString &newPosReceiptBottomNote);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -141,7 +144,10 @@ signals:
 
     void testEnvChanged();
 
+    void posReceiptBottomNoteChanged();
+
 private:
+    QString m_posReceiptBottomNote;
     bool m_testEnv=false;
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
@@ -156,6 +162,7 @@ private:
     Q_PROPERTY(float labelPrinterLabelHeight READ labelPrinterLabelHeight WRITE setLabelPrinterLabelHeight NOTIFY labelPrinterLabelHeightChanged FINAL)
     Q_PROPERTY(int labelPrinterLabelSizeUnit READ labelPrinterLabelSizeUnit WRITE setLabelPrinterLabelSizeUnit NOTIFY labelPrinterLabelSizeUnitChanged FINAL)
     Q_PROPERTY(bool testEnv READ testEnv WRITE setTestEnv NOTIFY testEnvChanged FINAL)
+    Q_PROPERTY(QString posReceiptBottomNote READ posReceiptBottomNote WRITE setPosReceiptBottomNote NOTIFY posReceiptBottomNoteChanged FINAL)
 };
 
 #endif // APPSETTINGS_H
