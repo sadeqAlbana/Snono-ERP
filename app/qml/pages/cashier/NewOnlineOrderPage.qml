@@ -259,10 +259,6 @@ AppPage {
                     // currentIndex: 0
                     editable: true
 
-                    onPressedChanged:{
-                        console.log("pressed")
-                    }
-
                     function addProduct(){
                         if (currentValue !== undefined ){
                             cashierModel.addProduct(currentValue)
