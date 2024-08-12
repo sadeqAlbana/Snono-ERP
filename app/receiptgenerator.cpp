@@ -912,7 +912,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     stream.writeStartElement("p");
     stream.writeAttribute("class","receipt");
-    stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
+    stream.writeCharacters(AppSettings::instance()->posReceiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
