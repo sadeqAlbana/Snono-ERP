@@ -357,6 +357,33 @@ void AppSettings::setPosReceiptBottomNote(const QString &newPosReceiptBottomNote
     emit posReceiptBottomNoteChanged();
 }
 
+QString AppSettings::linePrinter() const
+{
+    return value("line_printer","Default Printer").toString();
+}
+
+void AppSettings::setLinePrinter(const QString &newLinePrinter)
+{
+    if (linePrinter() == newLinePrinter)
+        return;
+    setValue("line_printer",newLinePrinter);
+    emit linePrinterChanged();
+}
+
+QString AppSettings::linePrinterPaperSize() const
+{
+    return value("line_printer_paper_size","80mm").toString();
+}
+
+void AppSettings::setLinePrinterPaperSize(const QString &newLinePrinterPaperSize)
+{
+    if (linePrinterPaperSize() == newLinePrinterPaperSize)
+        return;
+    setValue("line_printer_paper_size",newLinePrinterPaperSize);
+    emit linePrinterPaperSizeChanged();
+}
+
+
 float AppSettings::labelPrinterLabelWidth() const
 {
     return value("label_printer_label_width",1).toFloat();

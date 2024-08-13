@@ -33,24 +33,45 @@ AppPage {
             text: qsTr("Paper Size")
         }
 
-        RowLayout{
         IconComboBox {
             id: receiptPaperSizeCB
 
-            model: receiptLinePrinterCheck.checked? ['57mm','80mm'] :['A4', 'A5', 'A6']
+            model: ['A4', 'A5', 'A6']
             leftIcon.name: "cil-page"
 
             Component.onCompleted: currentIndex = indexOfValue(
                                        Settings.receiptPaperSize)
         }
-        CCheckBox{
-            id: receiptLinePrinterCheck
-            text: "Line Printer"
-            checked: Settings.receiptLinePrinter
-            onCheckedChanged: Settings.receiptLinePrinter=checked
 
+        Label {
+            text: qsTr("Line Printer")
         }
+        IconComboBox {
+            id: linePrinterCB
+            leftIcon.name: "cil-printer"
+            model: App.availablePrinters()
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.linePrinter)
         }
+
+        Label {
+            text: qsTr("Paper Size")
+        }
+
+        IconComboBox {
+            id: linePrinterPaperSizeCB
+
+            model: ['57mm','80mm']
+            leftIcon.name: "cil-page"
+
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.linePrinterPaperSize)
+        }
+
+
+
+
 
         Label {
             text: qsTr("Reports Printer")
@@ -185,11 +206,15 @@ AppPage {
             Settings.receiptCopies = receiptCopies.currentValue
             Settings.receiptCopiesWithExternalDelivery = receiptCopiesWithExternalDelivery.currentValue
             Settings.receiptPrinter=receiptPrinterCB.currentValue
+            Settings.linePrinter=linePrinterCB.currentValue
+
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
             Settings.reportsPrinter=reportsPrinterCB.currentValue
             Settings.labelPrinter=labelPrinterCB.currentValue
 
             Settings.receiptPaperSize=receiptPaperSizeCB.currentValue
+            Settings.linePrinterPaperSize=linePrinterPaperSizeCB.currentValue
+
             Settings.reportsPaperSize=reportsPaperSizeCB.currentValue
 
             Settings.labelPrinterLabelWidth=labelPrinterLabelWidth.text

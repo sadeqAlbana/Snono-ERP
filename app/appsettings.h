@@ -112,6 +112,14 @@ public:
     QString posReceiptBottomNote() const;
     void setPosReceiptBottomNote(const QString &newPosReceiptBottomNote);
 
+
+    QString linePrinter() const;
+    void setLinePrinter(const QString &newLinePrinter);
+
+
+    QString linePrinterPaperSize() const;
+    void setLinePrinterPaperSize(const QString &newLinePrinterPaperSize);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -146,6 +154,10 @@ signals:
 
     void posReceiptBottomNoteChanged();
 
+    void linePrinterChanged();
+
+    void linePrinterPaperSizeChanged();
+
 private:
     QString m_posReceiptBottomNote;
     bool m_testEnv=false;
@@ -163,6 +175,8 @@ private:
     Q_PROPERTY(int labelPrinterLabelSizeUnit READ labelPrinterLabelSizeUnit WRITE setLabelPrinterLabelSizeUnit NOTIFY labelPrinterLabelSizeUnitChanged FINAL)
     Q_PROPERTY(bool testEnv READ testEnv WRITE setTestEnv NOTIFY testEnvChanged FINAL)
     Q_PROPERTY(QString posReceiptBottomNote READ posReceiptBottomNote WRITE setPosReceiptBottomNote NOTIFY posReceiptBottomNoteChanged FINAL)
+    Q_PROPERTY(QString linePrinter READ linePrinter WRITE setLinePrinter NOTIFY linePrinterChanged FINAL)
+    Q_PROPERTY(QString linePrinterPaperSize READ linePrinterPaperSize WRITE setLinePrinterPaperSize NOTIFY linePrinterPaperSizeChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

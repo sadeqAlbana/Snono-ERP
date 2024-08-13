@@ -938,7 +938,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 #ifndef Q_OS_IOS
 
     QPrinter printer(QPrinter::PrinterResolution);
-    printer.setPrinterName(AppSettings::instance()->receiptPrinter());    \
+    printer.setPrinterName(AppSettings::instance()->linePrinter());
     printer.setResolution(96);
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
@@ -953,7 +953,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
-    pdfPrinter.setPrinterName(AppSettings::instance()->receiptPrinter());    \
+    pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());    \
     pdfPrinter.setResolution(96);
     pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
@@ -969,18 +969,11 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     doc.print(&pdfPrinter);
 
     if(print){
-
-
-
-        int copyCount = AppSettings::instance()->receiptCopies();
-        printer.setCopyCount(copyCount);
         doc.documentLayout()->setPaintDevice(&printer);
         doc.setPageSize(printer.pageRect(QPrinter::Point).size());
         doc.print(&printer);
         // painter.end();
     }
-
-
 
     return pdfPrinter.outputFileName();
 
