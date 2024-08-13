@@ -52,15 +52,7 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     int orderId=receiptData["id"].toInt();
     QString reference=QString("No. %1").arg(orderId);
 
-    QJsonArray orderAttributes=receiptData["attributes"].toArray();
-    QString externalDeliveryId;
-    for(auto value : orderAttributes){
-        QJsonObject orderAttribute=value.toObject();
-        if(orderAttribute["id"].toString()=="external_delivery_id"){
-            externalDeliveryId=orderAttribute["value"].toString();
-        }
-    }
-    qDebug()<<receiptData["attributes"];
+
     double taxAmount=receiptData["tax_amount"].toDouble();
 
     QString customer;
@@ -69,10 +61,15 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
 
     bool useLocalCustomerInfo=receiptData["order_type"]=="pos";
     qDebug()<<"receipt data:" << receiptData;
-    QJsonObject shipment;
+    QJsonObject shipment=receiptData["shipment"].toObject();
+    QJsonObject carrier=shipment["carrier"].toObject();
+    QString shipmentId=QString::number(shipment["id"].toInt());
+    QString thirdPartyShipmentId=shipment["third_party_carrier_shipment_id"].toString();
+    QString carrierName= carrier["name"].toString();
+    if(carrier["id"].toInt()!=1){
+        carrierName.append(QString(" - %1").arg(thirdPartyShipmentId));
+    }
     if(!useLocalCustomerInfo){
-
-        shipment=receiptData["shipment"].toObject();
         QJsonObject addressObject=shipment["dst_address"].toObject();
         customer=addressObject["first_name"].toString();
         phone=addressObject["phone"].toString();
@@ -254,9 +251,14 @@ END:VCARD)").arg(customer).arg(phone);
         {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
+    QList<QJsonObject> hCarrier{
+        {{"label",translator.translate("receipt","Carrier")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",carrierName},{"width","75%",},{"class","boxed"},{"tag","td"}}
+    };
+
     QList<QJsonObject> hDeliveryId{
-        {{"label",translator.translate("receipt","Delivery No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",externalDeliveryId},{"width","75%",},{"class","boxed"},{"tag","td"}}
+        {{"label",translator.translate("receipt","Shipment ID")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",shipmentId},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
     QList<QJsonObject> hDate{
@@ -289,6 +291,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     if(rtl){
         std::reverse(hNo.begin(),hNo.end());
+        std::reverse(hCarrier.begin(),hCarrier.end());
         std::reverse(hDeliveryId.begin(),hDeliveryId.end());
         std::reverse(hDate.begin(),hDate.end());
         std::reverse(hName.begin(),hName.end());
@@ -298,7 +301,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     }
 
-    QList<QList<QJsonObject>> header{hNo,hDeliveryId,hDate,hName,hAddress,hPhone,hNotes};
+    QList<QList<QJsonObject>> header{hNo,hCarrier,hDeliveryId,hDate,hName,hAddress,hPhone,hNotes};
     stream.writeStartElement("table");
     stream.writeAttribute("class","boxed center");
 
@@ -520,7 +523,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     stream.writeStartElement("p");
     stream.writeAttribute("class","receipt");
-    // stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
+     stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
@@ -567,7 +570,7 @@ END:VCARD)").arg(customer).arg(phone);
 
         printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
 
-        int copyCount = externalDeliveryId.isEmpty()? AppSettings::instance()->receiptCopies() : AppSettings::instance()->receiptCopiesWithExternalDelivery();
+        int copyCount = thirdPartyShipmentId.isEmpty()? AppSettings::instance()->receiptCopies() : AppSettings::instance()->receiptCopiesWithExternalDelivery();
         printer.setCopyCount(copyCount);
         printer.setPageSize(pageSize);
         doc.print(&printer);
