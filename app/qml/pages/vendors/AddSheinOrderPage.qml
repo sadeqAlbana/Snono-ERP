@@ -21,10 +21,15 @@ CFormView {
     columns: 2
     required property var orderManifest;
 
+
+    // Api.addSheinOrder(selectedFile,true).subscribe(function(response){
+    //     console.log(JSON.stringify(response.json()));
+    // });
     Component.onCompleted: {
         NetworkManager.post("/shein/preview",{"data": orderManifest['order']}).subscribe(
                     function(res){
                     sheinModel.records=res.json('data');
+                    externalReference.text=res.json("external_reference")
 
                     })
     }
@@ -42,55 +47,17 @@ CFormView {
         dataUrl: "/vendors"
     }
 
-    CLabel {
-        text: qsTr("Bill Name")
-    }
-    CTextField {
-        objectName: "name"
-        Layout.fillWidth: true
-    }
 
     CLabel {
         text: qsTr("External Reference")
     }
     CTextField {
+        id: externalReference
         objectName: "external_reference"
         Layout.fillWidth: true
     }
 
 
-    CLabel {
-        text: qsTr("payment type")
-    }
-
-    CComboBox{
-        objectName: "payment_type"
-        id: paymentTypeCB
-        Layout.fillWidth: true
-        textRole: "name";
-        valueRole: "value"
-        model:ListModel{
-            ListElement{name: qsTr("Buy on Credit"); value: "credit"}
-            ListElement{name: qsTr("Initial Inventory Purchase"); value: "capital"}
-            ListElement{name: qsTr("Pay with a Liquidity Account"); value: "liquidity"}
-        }
-    }
-
-    CLabel {
-        text: qsTr("select account")
-        visible: paymentTypeCB.currentValue==="liquidity"
-    }
-
-    CFilterComboBox{
-        objectName: "account_id";
-        Layout.fillWidth: true
-        dataUrl: "/accounts"
-        filter:{"type":"liquidity"}
-        textRole: "name";
-        valueRole: "id"
-        visible: paymentTypeCB.currentValue==="liquidity"
-
-    }
 
     CTableView {
         // objectName: "items"
