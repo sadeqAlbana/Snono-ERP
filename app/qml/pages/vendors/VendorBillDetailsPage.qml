@@ -48,34 +48,9 @@ AppDataPage {
             }
             delegate: AppDelegateChooser{}
 
-            model: JsonModel {
+            model: VendorBillDetailsModel {
                 records: page.dataRecord?.items?? []
-                columnList: [
-                    JsonModelColumn {
-                        displayName: qsTr("Product")
-                        key: "name"
-                        parentKey: "product"
-                        type: "link"
-                        metadata: {
-                        "link": "qrc:/PosFe/qml/pages/products/ProductForm.qml",
-                        "linkKey": "product_id"
-                        }
-                    },
-                    JsonModelColumn {
-                        displayName: qsTr("Quantity")
-                        key: "qty"
-                    },
-                    JsonModelColumn {
-                        displayName: qsTr("Unit Price")
-                        key: "unit_price"
-                        type: "currency"
-                    },
-                    JsonModelColumn {
-                        displayName: qsTr("Total")
-                        key: "total"
-                        type: "currency"
-                    }
-                ]
+
             }
         }//TableView
     }//ColumnLayout

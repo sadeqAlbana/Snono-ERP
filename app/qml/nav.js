@@ -179,7 +179,7 @@ function navBar(){
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
                     "path":"",
-                    "permission": "prm_view_vendors",
+                    "permission": "",
                     "childItems":[
                         {
                             "title":qsTr("Vendors List"),
@@ -189,7 +189,7 @@ function navBar(){
                         {
                             "title":qsTr("Bills"),
                             "path":"qrc:/PosFe/qml/pages/vendors/VendorsBillsPage.qml",
-                            "permission": "prm_view_vendor_bills"
+                            "permission": "prm_view_vendors_bills"
                         }
                     ]
                 },

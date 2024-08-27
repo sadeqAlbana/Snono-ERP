@@ -117,6 +117,7 @@ set(TARGET_SOURCES
     models/posordersmodel.h models/posordersmodel.cpp
     models/posmachinesmodel.h models/posmachinesmodel.cpp
     models/sheinordermanifestmodel.h models/sheinordermanifestmodel.cpp
+    models/vendorbilldetailsmodel.h models/vendorbilldetailsmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )

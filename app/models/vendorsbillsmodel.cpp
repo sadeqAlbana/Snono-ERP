@@ -2,28 +2,34 @@
 #include "../posnetworkmanager.h"
 #include <QJsonObject>
 #include "networkresponse.h"
-
-VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendorBills",{
-                                                                                             {"id",tr("ID")} ,
-                                                                                             {"name",tr("Name")} ,
-                                             {"reference",tr("Reference")},
-
-                                                                                             {"name",tr("Vendor"),"vendor",false,
-
-                                                 "link",
-                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/vendors/VendorForm.qml"},
-                                                             {"linkKey","vendor_id"}}
-                                                                                       } ,
-                                                                                             {"external_reference",tr("External Reference")} ,
-                                                                                             {"date",tr("Date"),QString(),false,"datetime"} ,
-                                                                                             {"due_date",tr("Due Date"),QString(),false,"datetime"} ,
-                                                                                             {"total",tr("Total"),QString(),false,"currency"} ,
-                                             {"payment_type",tr("Payment Method")} ,
-
-                                                                                             {"status",tr("Status"),QString(),false,"status"}}
-                                                                                                               ,parent)
+#include "authmanager.h"
+VendorsBillsModel::VendorsBillsModel(QObject *parent) : AppNetworkedJsonModel("/vendorBills",JsonModelColumnList(),
+                                                                                                               parent)
 {
 
+    JsonModelColumnList list{
+        {"id",tr("ID")} ,
+            {"name",tr("Name")} ,
+            {"reference",tr("Reference")},
+            {"name",tr("Vendor"),"vendor",false,
+                "link",
+                QVariantMap{{"link","qrc:/PosFe/qml/pages/vendors/VendorForm.qml"},
+                            {"linkKey","vendor_id"}}
+            } ,
+            {"external_reference",tr("External Reference")} ,
+            {"date",tr("Date"),QString(),false,"datetime"} ,
+            {"due_date",tr("Due Date"),QString(),false,"datetime"} ,
+            {"total",tr("Total"),QString(),false,"currency"} ,
+            {"payment_type",tr("Payment Method")} ,
+
+        {"status",tr("Status"),QString(),false,"status"}};
+
+
+
+    if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
+        list.removeAt(7);
+    }
+    m_columns=list;
 }
 
 
