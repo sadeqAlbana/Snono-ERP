@@ -61,12 +61,12 @@ AppPage{
 
                 let orderManifestJson=App.extractSheinJsonFromHtml(selectedFile);
 
-                Router.navigate("qrc:/PosFe/qml/pages/vendors/AddSheinOrderPage.qml",{
-                                                 "orderManifest": orderManifestJson
-                                             })
-                // Api.addSheinOrder(selectedFile,true).subscribe(function(response){
-                //     console.log(JSON.stringify(response.json()));
-                // });
+                // Router.navigate("qrc:/PosFe/qml/pages/vendors/AddSheinOrderPage.qml",{
+                //                                  "orderManifest": orderManifestJson
+                //                              })
+                Api.addSheinOrder(selectedFile,true).subscribe(function(response){
+                    console.log(JSON.stringify(response.json()));
+                });
             }
         }
 
