@@ -351,7 +351,7 @@ list(APPEND QML_DIRS  "${CMAKE_CURRENT_BINARY_DIR}/qml")
 target_compile_definitions(appposfe
     PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 
-
+set_target_properties(appposfe PROPERTIES OUTPUT_NAME "SnonoErpClient")
 install(TARGETS appposfe
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
