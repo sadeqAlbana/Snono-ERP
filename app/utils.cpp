@@ -307,3 +307,14 @@ QJsonObject Shein::extractJsonFromHtml(const QUrl &path)
 
     return jsonDoc.object();
 }
+
+QStringList Json::stringListFromVariantList(const QVariantList &list)
+{
+    QStringList stringList;
+
+    for(auto item : list){
+        stringList << item.toString();
+    }
+
+    return stringList;
+}

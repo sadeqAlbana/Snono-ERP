@@ -17,7 +17,6 @@
 #include "code128item.h"
 #include <QRandomGenerator64>
 #include "qrcodegen.hpp"
-#include <vector>
 #include <string>
 #include <QSvgRenderer>
 #include <QGraphicsScene>
@@ -984,6 +983,55 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     return QString();
 
 #endif
+}
+
+QString ReceiptGenerator::generateSheinOrderManifestLabel(const QString &orderNo, const QVariantList &trackingsNumbers)
+{
+    return generateOrderReferenceAndTrackings(orderNo,Json::stringListFromVariantList(trackingsNumbers));
+}
+
+QString ReceiptGenerator::generateOrderReferenceAndTrackings(const QString &orderNo, const QStringList &trackingNumbers)
+{
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setCopyCount(1);
+    printer.setPrinterName(AppSettings::instance()->labelPrinter());
+    float labelWidth=AppSettings::instance()->labelPrinterLabelWidth();
+    float labelHeight=AppSettings::instance()->labelPrinterLabelHeight();
+    QPageSize::Unit unit=static_cast<QPageSize::Unit>(AppSettings::instance()->labelPrinterLabelSizeUnit());
+
+    printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));
+
+    printer.setFullPage(true);
+
+    QPainter painter(&printer);
+
+    // Set font size and style
+    QFont font;
+    font.setPointSize(7);
+    painter.setFont(font);
+    font.setWeight(QFont::DemiBold);
+    // Draw text on the label
+    painter.setFont(font);
+
+
+
+    painter.drawText(50,45,orderNo);
+    font.setWeight(QFont::Normal);
+    font.setPointSize(7);
+    painter.setFont(font);
+
+    int y=100;
+    for(const  QString &str : trackingNumbers){
+        painter.drawText(50,y,str);
+        y+=55;
+
+    }
+    // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
+
+    painter.end();
+
+    return QString();
+
 }
 
 QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku, const int copies)

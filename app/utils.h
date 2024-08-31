@@ -38,6 +38,8 @@ void rebootDevice();
 
 namespace Json{
 bool printJson(const QString &title, const QJsonArray &data, QList<QPair<QString, QString> > headers={});
+
+QStringList stringListFromVariantList(const QVariantList &list);
 }
 
 namespace Shein{
