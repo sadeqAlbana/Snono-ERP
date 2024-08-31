@@ -1015,15 +1015,15 @@ QString ReceiptGenerator::generateOrderReferenceAndTrackings(const QString &orde
 
 
 
-    painter.drawText(50,45,orderNo);
+    painter.drawText(25,30,orderNo);
     font.setWeight(QFont::Normal);
     font.setPointSize(7);
     painter.setFont(font);
 
-    int y=100;
+    int y=70;
     for(const  QString &str : trackingNumbers){
-        painter.drawText(50,y,str);
-        y+=55;
+        painter.drawText(25,y,str);
+        y+=40;
 
     }
     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
@@ -1037,7 +1037,7 @@ QString ReceiptGenerator::generateOrderReferenceAndTrackings(const QString &orde
 QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku, const int copies)
 {
 
-    QImage barcodeImg(330,75,QImage::Format_RGB32);
+    QImage barcodeImg(205,75,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
@@ -1082,16 +1082,16 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 
 
 
-    painter.drawText(50,30,name);
-    painter.drawImage(50,40,barcodeImg);
+    painter.drawText(25,30,name);
+    painter.drawImage(25,40,barcodeImg);
     font.setWeight(QFont::DemiBold);
     font.setPointSize(7);
     painter.setFont(font);
     if(!sku.isEmpty()){
-        painter.drawText(50,170,tr("SKU: ")+ sku);
+        painter.drawText(25,170,tr("SKU: ")+ sku);
 
     }
-    painter.drawText(50,195,tr("Price: ")+ price);
+    painter.drawText(25,195,tr("Price: ")+ price);
 
 
     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");

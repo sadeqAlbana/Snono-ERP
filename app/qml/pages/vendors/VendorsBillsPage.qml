@@ -166,6 +166,45 @@ AppPage{
 
 
                     }
+                },
+                CAction {
+                    text: qsTr("Print Manifest")
+                    icon.name: "cil-cart"
+                    enabled: tableView.currentRow >= 0
+
+                    onTriggered: {
+
+                        let recordId=model.jsonObject(tableView.currentRow).id;
+
+                        NetworkManager.get("/vendorBill?id="+recordId).subscribe(function(response){
+                            let record=response.json("data");
+
+
+                            // console.log(JSON.stringify(response.json()))
+                            let billNo=record.external_reference;
+                            let attributes=record.attributes;
+
+                            attributes.forEach(attr => {
+                                                if(attr.id==="tracking_numbers"){
+                                                        let trackingStr=attr.value;
+                                                        let trackings=trackingStr.split(',');
+
+                                                        ReceiptGenerator.generateSheinOrderManifestLabel(
+                                                            billNo,trackings
+                                                            );
+
+                                                        return;
+                                                    }
+                                                });
+
+                        });
+
+
+
+
+
+
+                    }
                 }
 
             ]
