@@ -41,7 +41,11 @@ Page{
                     DashboardWidgetTable{
                         modelRows: [
                             {label: qsTr("Today"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
+                            {label: qsTr("Today (POS)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day_pos"]) : ""},
+
                             {label: qsTr("Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month"]) : ""},
+                            {label: qsTr("Month (POS)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month_pos"]) : ""},
+
                             {label: qsTr("Returns (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
                             {label: qsTr("Returns (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
                             {label: qsTr("Profits (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
@@ -71,7 +75,11 @@ Page{
                     DashboardWidgetTable{
                         modelRows: [
                             {label: qsTr("Orders (Today)"), value: page.dashboard? page.dashboard["orders_day"] : ""},
+                            {label: qsTr("Orders (POS Today)"), value: page.dashboard? page.dashboard["orders_day_pos"] : ""},
+
                             {label: qsTr("Orders (Month)"), value: page.dashboard? page.dashboard["orders_month"] : ""},
+                            {label: qsTr("Orders (POS Month)"), value: page.dashboard? page.dashboard["orders_month_pos"] : ""},
+
                             {label: qsTr("Returns (Today)"), value: page.dashboard? page.dashboard["returns_day"] : ""},
                             {label: qsTr("Returns (Month)"), value: page.dashboard? page.dashboard["returns_month"] : ""},
                             {label: qsTr("Orders (Total)"), value: page.dashboard? page.dashboard["orders_total"] : ""},

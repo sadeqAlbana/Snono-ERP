@@ -10,7 +10,7 @@ LocationsModel::LocationsModel(QObject *parent) : AppNetworkedJsonModel ("/locat
                                            {"province",tr("Province")} ,
                                            {"city",tr("City")} ,
                                            {"district",tr("District")} ,
-                                           {"postcode",tr("PostCode")} ,
+                                           {"postcode",tr("Post Code")} ,
                                            {"building",tr("Building")} ,
                                            {"floor",tr("Floor")} ,
                                            {"apartment",tr("Apartment")} ,
