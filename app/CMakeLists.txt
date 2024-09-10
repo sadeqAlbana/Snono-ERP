@@ -270,6 +270,7 @@ set(TARGET_QML_SOURCES
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
+    qml/pages/reports/MonthlyFinanceReportPage.qml
     qml/screens/utils.js
     qml/nav.js
 )
@@ -296,6 +297,7 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+
 
 
 )

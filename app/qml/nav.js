@@ -252,6 +252,11 @@ function navBar(){
                             "title":qsTr("Orders Sales"),
                             "path":"qrc:/PosFe/qml/pages/reports/OrdersSalesReportPage.qml",
                             "permission": "prm_view_product_sales"
+                        },
+                        {
+                            "title":qsTr("Monthly Finance"),
+                            "path":"qrc:/PosFe/qml/pages/reports/MonthlyFinanceReportPage.qml",
+                            "permission": "prm_view_product_sales"
                         }
                     ]
                 },
