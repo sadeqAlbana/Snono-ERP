@@ -53,42 +53,8 @@ AppPage{
 
             delegate: AppDelegateChooser{}
 
-            model: AppNetworkedJsonModel{
-                url: "reports/monthlyFinance"
-                columnList: [
+            model: MonthlyFinanceModel{
 
-                    JsonModelColumn{
-                        key: "month"
-                        displayName: qsTr("Month")
-                        type: "date"
-                    },
-                    JsonModelColumn{
-                        key: "sales"
-                        displayName: qsTr("Sales")
-                        type: "currency"
-                    },
-                    JsonModelColumn{
-                        key: "sales_returns"
-                        displayName: qsTr("Sales Returns")
-                        type: "currency"
-                    },
-                    JsonModelColumn{
-                        key: "cost_of_goods_sold"
-                        displayName: qsTr("Cogs")
-                        type: "currency"
-                    },
-                    JsonModelColumn{
-                        key: "expenses"
-                        displayName: qsTr("Expenses")
-                        type: "currency"
-                    },
-                    JsonModelColumn{
-                        key: "gross_profit"
-                        displayName: qsTr("Gross Profits")
-                        type: "currency"
-                    }
-
-                ]
 
             }//model
 
