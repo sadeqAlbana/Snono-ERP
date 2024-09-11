@@ -257,6 +257,11 @@ function navBar(){
                             "title":qsTr("Monthly Finance"),
                             "path":"qrc:/PosFe/qml/pages/reports/MonthlyFinanceReportPage.qml",
                             "permission": "prm_view_product_sales"
+                        },
+                        {
+                            "title":qsTr("Expenses"),
+                            "path":"qrc:/PosFe/qml/pages/reports/ExpensesReportPage.qml",
+                            "permission": "prm_view_product_sales"
                         }
                     ]
                 },

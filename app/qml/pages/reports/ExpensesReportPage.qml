@@ -15,7 +15,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 import JsonModels
 AppPage{
-    title: qsTr("Monthly Finance")
+    title: qsTr("Expeses Report")
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -51,9 +51,9 @@ AppPage{
                 CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
 
-            delegate: AppDelegateChooser{}
+            // delegate: AppDelegateChooser{}
 
-            model: MonthlyFinanceModel{
+            model: ExpensesReportModel{
 
 
             }//model

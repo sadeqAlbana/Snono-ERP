@@ -119,6 +119,7 @@ set(TARGET_SOURCES
     models/sheinordermanifestmodel.h models/sheinordermanifestmodel.cpp
     models/vendorbilldetailsmodel.h models/vendorbilldetailsmodel.cpp
     models/monthlyfinancemodel.h models/monthlyfinancemodel.cpp
+    models/expensesreportmodel.h models/expensesreportmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -166,6 +167,8 @@ set(TARGET_QML_SOURCES
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
     qml/pages/reports/OrdersSalesReportPage.qml
+    qml/pages/reports/ExpensesReportPage.qml
+
     qml/pages/products/ProductsPage.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
