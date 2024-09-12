@@ -120,6 +120,7 @@ set(TARGET_SOURCES
     models/vendorbilldetailsmodel.h models/vendorbilldetailsmodel.cpp
     models/monthlyfinancemodel.h models/monthlyfinancemodel.cpp
     models/expensesreportmodel.h models/expensesreportmodel.cpp
+    models/newjournalentrymodel.h models/newjournalentrymodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -149,6 +150,8 @@ set(TARGET_QML_SOURCES
     qml/pages/Accounting/AccountForm.qml
     qml/pages/Accounting/JournalEntryDetailsPage.qml
     qml/pages/Accounting/NewJournalEntryPage.qml
+    qml/pages/Accounting/NewJournalEntrtyForm.qml
+
     qml/pages/orders/OrderReturnDialog.qml
     qml/pages/orders/OrderReturnListView.qml
     qml/pages/orders/OrdersPage.qml

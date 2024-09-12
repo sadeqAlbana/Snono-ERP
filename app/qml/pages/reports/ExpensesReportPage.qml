@@ -45,13 +45,12 @@ AppPage{
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-//            delegate: AppDelegateChooser{}
 
             actions: [
                 CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
             ]
 
-            // delegate: AppDelegateChooser{}
+             delegate: AppDelegateChooser{}
 
             model: ExpensesReportModel{
 

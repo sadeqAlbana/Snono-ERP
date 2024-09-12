@@ -15,7 +15,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 import  PosFe
 AppPage{
-    title: qsTr("Journal Entries")
+    title: qsTr("New Journal Entry")
     ColumnLayout{
         id: page
         anchors.fill: parent;
@@ -37,6 +37,14 @@ AppPage{
             Layout.fillWidth: true
             actions: [
                 CAction {
+                    text: qsTr("New")
+                    icon.name: "cil-plus"
+                    onTriggered: {
+                        Router.navigate(
+                                    "qrc:/PosFe/qml/pages/Accounting/NewJournalEntryPage.qml")
+                    }
+                },
+                CAction {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Details")
                     icon.name: "cil-notes"
@@ -48,7 +56,8 @@ AppPage{
                                                         tableView.currentRow).id
                                     })
                     }
-                }]
+                }
+            ]
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
                 DelegateChoice{ roleValue: "type"; TypeDeleagate{}}
