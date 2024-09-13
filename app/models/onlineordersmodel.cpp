@@ -130,7 +130,7 @@ QVariant OnlineOrdersModel::data(const QModelIndex &index, int role) const
     auto key = m_columns.value(index.column());
     if(key.m_key=="district" && role==Qt::DisplayRole){
         QJsonObject record=jsonObject(index.row()).value("shipment").toObject().value("dst_address").toObject();
-        return QString("%1 - %2").arg(record.value("province").toString()).arg(record.value("district").toString());
+        return QString("%1 - %2 - %3").arg(record.value("province").toString()).arg(record.value("district").toString()).arg(record.value("details").toString());
     }
 
     return AppNetworkedJsonModel::data(index,role);
