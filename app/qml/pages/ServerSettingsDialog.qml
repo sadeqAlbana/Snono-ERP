@@ -32,15 +32,18 @@ AppDialog {
 
                 // text: Settings.serverUrl;
                 model: Settings.servers()
-                currentIndex: indexOfValue(Settings.serverUrl)
+                Component.onCompleted: {currentIndex= indexOfValue(Settings.serverUrl)}
                 function removeElement(index) {
+
+                    let servers=serverCB.model
                     if(index===0){
-                        serverCB.model=[]
+                        servers.shift();
                     }else{
-                        serverCB.model = serverCB.model.splice(index,1)
+                         servers.splice(index,1)
                     }
 
-                    Settings.setServers(serverCB.model)
+                    Settings.setServers(servers)
+                    serverCB.model=Settings.servers();
                 }
 
                 delegate: CItemDelegate {
