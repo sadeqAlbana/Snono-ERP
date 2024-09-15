@@ -32,7 +32,7 @@ AppDialog {
 
                 // text: Settings.serverUrl;
                 model: Settings.servers()
-                Component.onCompleted: {currentIndex= indexOfValue(Settings.serverUrl)}
+                Component.onCompleted: {currentIndex= indexOfValue(Settings.serverUrlString())}
                 function removeElement(index) {
 
                     let servers=serverCB.model

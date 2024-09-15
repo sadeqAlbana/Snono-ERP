@@ -22,6 +22,9 @@ class AppSettings : public QSettings
 public:
     Q_INVOKABLE  QString about();
 
+    Q_INVOKABLE QString serverUrlString();
+
+
     Q_INVOKABLE QUrl serverUrl();
     Q_INVOKABLE void setServerUrl(const QUrl &url);
     Q_INVOKABLE QStringList servers();

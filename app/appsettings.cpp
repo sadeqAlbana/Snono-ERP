@@ -434,6 +434,11 @@ QString AppSettings::about()
     return text;
 }
 
+QString AppSettings::serverUrlString()
+{
+    return serverUrl().toString();
+}
+
 
 
 QUrl AppSettings::serverUrl()
