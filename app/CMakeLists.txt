@@ -121,6 +121,7 @@ set(TARGET_SOURCES
     models/monthlyfinancemodel.h models/monthlyfinancemodel.cpp
     models/expensesreportmodel.h models/expensesreportmodel.cpp
     models/newjournalentrymodel.h models/newjournalentrymodel.cpp
+    models/orderscountreportmodel.h models/orderscountreportmodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -235,7 +236,7 @@ set(TARGET_QML_SOURCES
     qml/common/AppPage.qml
     qml/common/SuffixDelegate.qml
     qml/common/AppDelegateChooser.qml
-    qml/common/TableFilter.qml
+
     qml/common/DateTimeDelegate.qml
     qml/common/ImageDelegate.qml
     qml/common/CFilterComboBox.qml
@@ -292,6 +293,7 @@ else()
     list(APPEND TARGET_QML_SOURCES
     qml/common/NewReceiptDialog.qml
     qml/common/CashierReceiptDialog.qml
+    qml/pages/reports/OrdersCountReportPage.qml
 
 )
 

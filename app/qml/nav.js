@@ -259,6 +259,11 @@ function navBar(){
                             "permission": "prm_view_product_sales"
                         },
                         {
+                            "title":qsTr("Orders count"),
+                            "path":"qrc:/PosFe/qml/pages/reports/OrdersCountReportPage.qml",
+                            "permission": "prm_view_product_sales"
+                        },
+                        {
                             "title":qsTr("Expenses"),
                             "path":"qrc:/PosFe/qml/pages/reports/ExpensesReportPage.qml",
                             "permission": "prm_view_product_sales"
