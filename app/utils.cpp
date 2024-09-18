@@ -176,6 +176,8 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
 
 
         stream.writeStartElement("table");
+        stream.writeAttribute("width","100%");
+
         stream.writeAttribute("style", "width:100%; font-size:8px;");
         stream.writeStartElement("tr");
 
@@ -241,7 +243,7 @@ bool Json::printJson(const QString &title, const QJsonArray &data, QList<QPair<Q
 
 
 //        printer.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
-        printer.setPageMargins(QMarginsF(0,0,0,0)); // is it right?
+        printer.setPageMargins(QMarginsF(10,5,10,5)); // is it right?
 
         QString random=QString::number(QRandomGenerator::global()->generate());
         qDebug()<<"printer: " << printer.printerName();
