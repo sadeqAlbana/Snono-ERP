@@ -578,6 +578,40 @@ NetworkResponse *Api::addSheinOrder(const QUrl &fileUrl, const bool buy)
 //    return PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc["_allOrderGoodsList"].toArray()}});
 }
 
+bool Api::addSheinOrders(const QUrl &folderUrl, const bool buy)
+{
+    QDir dir(folderUrl.toLocalFile());
+
+    if (!dir.exists()) {
+        qDebug() << "Directory does not exist!";
+        return false;
+    }
+
+
+    for(const QFileInfo &fileInfo : dir.entryInfoList({"*.json"},QDir::Files | QDir::NoDotAndDotDot,QDir::Time)){
+
+
+        QFile file(fileInfo.absoluteFilePath());
+        file.open(QIODevice::ReadOnly);
+        QJsonDocument doc=QJsonDocument::fromJson(file.readAll());
+        QJsonObject order=doc.object()["order"].toObject();
+        doc=QJsonDocument(order);
+
+        file.close();
+
+        NetworkResponse *res=PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()},{"buy",buy}});
+        res->waitForFinished();
+
+        qDebug()<<res->json();
+
+
+    }
+
+    return true;
+}
+
+
+
 NetworkResponse *Api::get(const QUrl &url)
 {
     return PosNetworkManager::instance()->get(url);

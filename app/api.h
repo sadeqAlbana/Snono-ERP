@@ -62,6 +62,7 @@ public:
 
     Q_INVOKABLE NetworkResponse * nextVersion();
     Q_INVOKABLE NetworkResponse * addSheinOrder(const QUrl &fileUrl, const bool buy=false);
+    Q_INVOKABLE bool addSheinOrders(const QUrl &folderUrl, const bool buy=false);
 
 
     Q_INVOKABLE NetworkResponse * get(const QUrl &url);

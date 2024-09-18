@@ -70,6 +70,24 @@ AppPage{
             }
         }
 
+        FolderDialog  {
+            id: sheinBulckDialog
+            currentFolder: StandardPaths.writableLocation(
+                               StandardPaths.DocumentsLocation)
+
+            acceptLabel: qsTr("Select")
+            onAccepted: {
+
+                let folder=sheinBulckDialog.selectedFolder
+
+
+                let success=Api.addSheinOrders(folder,true)
+
+                console.log("add success: " + success);
+
+            }
+        }
+
         CTableView{
             id: tableView
             Layout.fillHeight: true
@@ -100,6 +118,12 @@ AppPage{
                     text: qsTr("Add Shein Order")
                     icon.name: "cil-cart"
                     onTriggered: sheinDialog.open()
+                    permission: "prm_adjust_stock"
+                },
+                CAction {
+                    text: qsTr("Add Shein Orders (Folder)")
+                    icon.name: "cil-cart"
+                    onTriggered: sheinBulckDialog.open()
                     permission: "prm_adjust_stock"
                 },
 
