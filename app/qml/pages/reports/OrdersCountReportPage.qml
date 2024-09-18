@@ -57,7 +57,7 @@ AppPage{
                 }, {
                     "type": "checkableCombo",
                     "label": qsTr("type"),
-                    "key": "order_type",
+                    "key": "order_types",
                     "options": {
                         "checkable": true,
                         "editable": false,
