@@ -215,7 +215,7 @@ void Api::generateImages(const QJsonObject &data)
     QDir().mkpath(savePath+"/products/single");
     PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),data)->subscribe(
                 [this,savePath](NetworkResponse *res){
-        NetworkAccessManager mgr;
+        NetworkAccessManager *mgr= new NetworkAccessManager(); //allocating it on the stack causes a crash
         QList<QImage> images;
         //QString desktop=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
         QJsonArray products=res->json("data").toArray();
@@ -232,7 +232,7 @@ void Api::generateImages(const QJsonObject &data)
                     thumb+=".jpg";
 
 
-                    NetworkResponse *res=mgr.get(thumb);
+                    NetworkResponse *res=mgr->get(thumb);
                     res->waitForFinished();
 
                     QImage image = QImage::fromData(res->binaryData());
@@ -277,6 +277,7 @@ void Api::generateImages(const QJsonObject &data)
                     qDebug()<<image.save(QString("%1/products/single/%2.jpg").arg(savePath).arg(productName));
                     //return;
 
+                    res->deleteLater();
 
         }
 
@@ -295,6 +296,8 @@ void Api::generateImages(const QJsonObject &data)
             painter.end();
             qDebug()<<image.save(QString("%1/products/%2.jpg").arg(savePath).arg(i));
         }
+
+        mgr->deleteLater();
     });
 }
 
