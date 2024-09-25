@@ -8,6 +8,7 @@ import QtQuick.Layouts
 import CoreUI
 import CoreUI.Buttons
 import CoreUI.Palettes
+ import Qt.labs.platform
 CFormView {
     id: control
     padding: 10
@@ -18,7 +19,7 @@ CFormView {
     CLabel{text: qsTr("Start ID");}
     CNumberInput{objectName: "start_id"; text: "0";}
     CLabel{text: qsTr("Save Path");}
-    FolderInput{objectName:"save_path"}
+    FolderInput{objectName:"save_path"; dialog.currentFolder: StandardPaths.standardLocations(StandardPaths.DesktopLocation)[0]}
     CLabel{
         text: qsTr("Category")
     }
