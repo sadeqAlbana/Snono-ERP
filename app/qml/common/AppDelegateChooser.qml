@@ -14,5 +14,6 @@ DelegateChooser{
     DelegateChoice{ roleValue: "datetime"; DateTimeDelegate{}}
     DelegateChoice{ roleValue: "link"; LinkDelegate{}}
     DelegateChoice{ roleValue: "product_stock"; ProductStockDelegate{}}
+    DelegateChoice{ roleValue: "checkbox"; CCheckDelegate{}}
 
 }

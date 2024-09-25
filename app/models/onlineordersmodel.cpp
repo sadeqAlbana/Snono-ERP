@@ -4,7 +4,7 @@
 #include <networkresponse.h>
 #include "utils.h"
 OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders/online",{
-                                                                  {"id",tr("ID")} ,
+                                                  {"id",tr("ID"),QString(),false,"checkbox"} ,
                                                                   {"name",tr("Customer"),"customers",false,"link",
                                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                                   {"linkKey","customer_id"}}},
