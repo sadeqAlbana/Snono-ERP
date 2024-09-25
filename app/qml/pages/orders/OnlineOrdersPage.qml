@@ -172,6 +172,7 @@ AppPage {
             Layout.fillWidth: true
             model: OnlineOrdersModel {
                 id: model
+                checkable: true
                 useNestedParentKeys: true
                 onUpdateDeliveryStatusResponse: reply => {
                                                     if (reply.status === 200) {
