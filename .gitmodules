@@ -4,3 +4,6 @@
 [submodule "app/CoreUI-QML"]
 	path = libs/CoreUI-QML
 	url = http://git.lan:9080/sadeq/CoreUI-QML.git
+[submodule "libs/QGumboParser"]
+	path = libs/QGumboParser
+	url = https://github.com/sadeqAlbana/QGumboParser.git

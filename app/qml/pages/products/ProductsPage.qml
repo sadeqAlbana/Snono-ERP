@@ -269,6 +269,13 @@ AppPage {
                     enabled: tableView.currentRow >= 0
 
                     permission: "prm_print_labels"
+                },
+                CAction {
+                    text: qsTr("Scrape Images")
+                    icon.name: "cil-plus"
+                    onTriggered: Api.scrapeImages();
+
+                    permission: "prm_print_labels"
                 }
             ]
 

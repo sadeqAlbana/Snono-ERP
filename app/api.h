@@ -79,6 +79,7 @@ public:
     Q_INVOKABLE NetworkResponse * removeDraftOrder(const int id);
     Q_INVOKABLE NetworkResponse * newPosSession();
     Q_INVOKABLE NetworkResponse * requestNewCart();
+    Q_INVOKABLE void scrapeImages();
 
 
 signals:

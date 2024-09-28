@@ -350,6 +350,7 @@ target_link_libraries(appposfe PRIVATE Qt6::Quick
     SNetworkManager
     jsonmodel
     coreuiplugin
+    QGumboParser
 )
 
 if((NOT ANDROID) AND (NOT IOS) AND (NOT EMSCRIPTEN))

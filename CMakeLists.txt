@@ -33,6 +33,7 @@ set(ENABLE_QML ON)
 
 add_subdirectory(libs/network-manager)
 add_subdirectory(libs/CoreUI-QML)
+add_subdirectory(libs/QGumboParser)
 add_subdirectory(app)
 
 

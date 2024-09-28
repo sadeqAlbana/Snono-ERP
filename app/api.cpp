@@ -21,6 +21,11 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QDir>
+
+#include <qgumbonode.h>
+#include <qgumbodocument.h>
+
+#include <QThread>
 Api *Api::m_api;
 Api::Api(QObject *parent) : QObject(parent)
 {
@@ -705,4 +710,115 @@ NetworkResponse *Api::requestNewCart()
     return PosNetworkManager::instance()->get(QUrl("/pos/cart/request"));
 }
 
+
+void Api::scrapeImages()
+{
+    NetworkAccessManager mgr;
+
+    QJsonObject params;
+    params["filter"]=QJsonObject{{"parent_id",0}};
+    if(true){
+        params["page"]=1;
+        params["count"]=100;
+    }
+    params["sortBy"]="id";
+    params["direction"]="desc";
+
+    NetworkResponse *r=this->post(QUrl("/products"),params);
+    r->waitForFinished();
+    QJsonArray masters=r->json("data").toArray();
+    // qDebug()<<r->json();
+    mgr.setRedirectPolicy(QNetworkRequest::RedirectPolicy::SameOriginRedirectPolicy);
+    for(const QJsonValue &value: masters){
+        QJsonObject master = value.toObject();
+
+        QString sku;
+
+        QJsonArray attributes=master["attributes"].toArray();
+
+        for(int j=0; j<attributes.size(); j++){
+            QJsonObject attribute=attributes.at(j).toObject();
+            QString attributeId=attribute["attribute_id"].toString();
+
+            if(attributeId=="external_sku"){
+                sku=attribute["value"].toString();
+                break;
+            }
+
+        }
+
+        qDebug()<<"sku: " << sku;
+
+
+        NetworkResponse *res=mgr.get(QString("https://ar.shein.com/pdsearch/%1").arg(sku));
+        res->waitForFinished();
+        qDebug()<<"Res status: " <<res->status();
+        QGumboDocument doc=QGumboDocument::parse(res->binaryData());
+        QGumboNode root=doc.rootNode();
+        QGumboNodes nodes=root.getElementsByClassName("S-product-card__img-container j-expose__product-item-img S-product-card__img-container_mask");
+
+
+
+        QFile f("/tmp/test.html");
+        f.open(QIODevice::WriteOnly);
+        f.write(res->binaryData());
+        f.close();
+        qDebug()<<"nodes size: "<<root.childNodes().size();
+        if(!nodes.size()){
+            qDebug()<<"skipping...";
+            return;
+            continue;
+        }
+
+        QGumboNode link=nodes.front();
+
+        QString href=link.getAttribute("href");
+
+        href.prepend("https://ar.shein.com");
+
+        NetworkResponse *res2=mgr.get(href);
+        res2->waitForFinished();
+        QByteArray html=res2->binaryData();
+
+        QByteArray script=html.mid(html.indexOf("productIntroData: "));
+
+        script=script.mid(script.indexOf('{'));
+        script=script.left(script.lastIndexOf("var GB_S_SHIPPING_COST"));
+        script=script.left(script.lastIndexOf("\n        abt: ")-1);
+        script=script.trimmed();
+
+        //qDebug()<<script;
+
+        QJsonParseError error;
+
+        QJsonDocument jsonDoc=QJsonDocument::fromJson(script,&error);
+
+
+        QStringList images;
+        QJsonObject goodsImgs=jsonDoc.object()["goods_imgs"].toObject();
+        QJsonObject mainImg=goodsImgs["main_image"].toObject();
+        images << mainImg["origin_image"].toString().prepend("https:");
+        QJsonArray detailImages=goodsImgs["detail_image"].toArray();
+
+        for(auto img: detailImages){
+            images << img.toObject()["origin_image"].toString().prepend("https:");
+        }
+
+
+        QDir().mkpath(QString("/tmp/shein/%1").arg(sku));
+        for(int i=0; i<images.count(); i++){
+
+            QString img=images.at(i);
+            NetworkResponse *imgRes=mgr.get(img);
+            imgRes->waitForFinished();
+            QImage image=QImage::fromData(imgRes->binaryData());
+            qDebug()<<"save: "<<image.save(QString("/tmp/shein/%1/%2.jpg").arg(sku).arg(i));
+            QThread::currentThread()->sleep(1);
+        }
+
+
+        QThread::currentThread()->sleep(1);
+        break;
+    }
+}
 
