@@ -32,5 +32,16 @@ CFormView {
         dataUrl: "/categories"
         defaultEntry: {"id":-1,"name": qsTr("All")}
     } //
+
+
+    CLabel{
+        text: qsTr("Include Price")
+    }
+
+    CCheckBox{
+        objectName: "include_price";
+        checked: true
+    }
+
     applyHandler: Api.generateImages
 }

@@ -210,11 +210,13 @@ void Api::generateImages(const QJsonObject &data)
 {
 //    return;
     QString savePath=data["save_path"].toString();
+    bool includePrice=data["include_price"].toBool();
+
     QUrl url=savePath;
     savePath=url.toLocalFile();
     QDir().mkpath(savePath+"/products/single");
     PosNetworkManager::instance()->post(QUrl("/reports/catalogue"),data)->subscribe(
-                [this,savePath](NetworkResponse *res){
+                [this,savePath,includePrice](NetworkResponse *res){
         NetworkAccessManager *mgr= new NetworkAccessManager(); //allocating it on the stack causes a crash
         QList<QImage> images;
         //QString desktop=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
@@ -237,12 +239,12 @@ void Api::generateImages(const QJsonObject &data)
 
                     QImage image = QImage::fromData(res->binaryData());
                     QPainter painter(&image);
-                    painter.setRenderHint(QPainter::SmoothPixmapTransform);
+                    painter.setRenderHints(QPainter::SmoothPixmapTransform | QPainter::Antialiasing | QPainter::TextAntialiasing);
                     painter.setBrush(Qt::white);
                     painter.setPen(Qt::white);
 
                     QFont font;
-                    font.setPixelSize(140);
+                    font.setPixelSize(80);
                     font.setBold(true);
                     painter.setFont(font);
 
@@ -250,28 +252,36 @@ void Api::generateImages(const QJsonObject &data)
 
 
                     QFontMetrics metrics(font);
-                    QRect rect=QRect(QPoint(0,0),metrics.size(0,productName)).marginsAdded(QMargins(20,20,20,20));
+                    QRect rect=QRect(QPoint(0,0),metrics.size(0,productName)).marginsAdded(QMargins(15,15,15,15));
 
 
 
 //                    rect.moveTo(QPoint((image.width()-rect.width())/2,image.height()-rect.height()));
-                    rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.05);
-                    painter.setBrush(Qt::black);
-                    painter.drawRoundedRect(rect,40,40);
+
+                    float offset=includePrice? 0.85 : 0.95;
+                    rect.moveTo(image.width()*0.95-rect.width(),image.height()*offset-rect.height());
+
+                    painter.setBrush(QColor(0,0,0,125));
+                    painter.drawRoundedRect(rect,30,30);
                     painter.setBrush(Qt::white);
                     painter.drawText(rect,productName,QTextOption(Qt::AlignCenter));
 
 
-                    font.setFamily("STV");
-                    painter.setFont(font);
-                    QTextOption textOption(Qt::AlignCenter);
-                    textOption.setWrapMode(QTextOption::WordWrap);
-                    rect=QRect(QPoint(0,0),metrics.size(0,productPrice)).marginsAdded(QMargins(20,20,20,20));
-                    rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.95-rect.height());
-                    painter.setBrush(Qt::black);
-                    painter.drawRoundedRect(rect,20,20);
-                    painter.setBrush(Qt::white);
-                    painter.drawText(rect,productPrice,textOption);
+                    if(includePrice){
+                        font.setFamily("STV");
+                        font.setPixelSize(60);
+                        painter.setFont(font);
+                        QTextOption textOption(Qt::AlignCenter);
+                        textOption.setWrapMode(QTextOption::WordWrap);
+                        metrics=QFontMetrics(font);
+                        rect=QRect(QPoint(0,0),metrics.size(0,productPrice)).marginsAdded(QMargins(15,15,15,15));
+                        rect.moveTo(image.width()*0.95-rect.width(),image.height()*0.95-rect.height());
+                        painter.setBrush(QColor(0,0,0,125));
+                        painter.drawRoundedRect(rect,30,30);
+                        painter.setBrush(Qt::white);
+                        painter.drawText(rect,productPrice,textOption);
+                    }
+
                     painter.end();
                     images << image;
                     qDebug()<<image.save(QString("%1/products/single/%2.jpg").arg(savePath).arg(productName));
