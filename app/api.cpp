@@ -750,7 +750,7 @@ void Api::scrapeImages()
         qDebug()<<"sku: " << sku;
 
 
-        NetworkResponse *res=mgr.get(QString("https://ar.shein.com/pdsearch/%1").arg(sku));
+        NetworkResponse *res=mgr.get(QString("https://shein.com/pdsearch/%1").arg(sku));
         res->waitForFinished();
         qDebug()<<"Res status: " <<res->status();
         QGumboDocument doc=QGumboDocument::parse(res->binaryData());
@@ -759,7 +759,9 @@ void Api::scrapeImages()
 
 
 
-        QFile f("/tmp/test.html");
+        QString tmp=QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).value(0);
+
+        QFile f(tmp+"/tmp/test.html");
         f.open(QIODevice::WriteOnly);
         f.write(res->binaryData());
         f.close();
@@ -805,7 +807,7 @@ void Api::scrapeImages()
         }
 
 
-        QDir().mkpath(QString("/tmp/shein/%1").arg(sku));
+        QDir().mkpath(tmp+QString("/tmp/shein/%1").arg(sku));
         for(int i=0; i<images.count(); i++){
 
             QString img=images.at(i);
