@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(appposfe VERSION 20 LANGUAGES CXX)
+project(appposfe VERSION 21 LANGUAGES CXX)
 
 set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)

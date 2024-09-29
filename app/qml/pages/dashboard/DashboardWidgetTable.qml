@@ -20,7 +20,7 @@ TableView{
         TableModelColumn{display: "value"}
         rows: modelRows
     }
-    implicitHeight: 200
+    implicitHeight: 250
     implicitWidth: 200
     rowHeightProvider: function(row){return 35}
     columnWidthProvider: function(row){return parseInt(width/2)}
