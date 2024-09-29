@@ -122,6 +122,7 @@ set(TARGET_SOURCES
     models/expensesreportmodel.h models/expensesreportmodel.cpp
     models/newjournalentrymodel.h models/newjournalentrymodel.cpp
     models/orderscountreportmodel.h models/orderscountreportmodel.cpp
+    models/vendorbillattributemodel.h models/vendorbillattributemodel.cpp
 
     keyemitter.h keyemitter.cpp
 )
@@ -214,6 +215,7 @@ set(TARGET_QML_SOURCES
     qml/pages/vendors/AddVendorBillPage.qml
     qml/pages/vendors/AddCustomVendorBillPage.qml
     qml/pages/vendors/AddSheinOrderPage.qml
+    qml/pages/vendors/VendorBillsAttributesPage.qml
     qml/pages/warehouses/WarehousesPage.qml
     qml/pages/warehouses/StockMovesPage.qml
     qml/pages/warehouses/StockValuationPage.qml

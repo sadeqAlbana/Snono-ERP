@@ -190,6 +190,11 @@ function navBar(){
                             "title":qsTr("Bills"),
                             "path":"qrc:/PosFe/qml/pages/vendors/VendorsBillsPage.qml",
                             "permission": "prm_view_vendors_bills"
+                        },
+                        {
+                            "title":qsTr("Bills Attributes"),
+                            "path":"qrc:/PosFe/qml/pages/vendors/VendorBillsAttributesPage.qml",
+                            "permission": "prm_view_vendors_bills"
                         }
                     ]
                 },
