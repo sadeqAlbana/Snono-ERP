@@ -74,6 +74,45 @@ AppPage{
         }
 
 
+        CLabel {
+            text: qsTr("Address Line")
+        }
+
+
+        CIconTextField {
+            objectName: "receipt_address_line"
+            leftIcon.name: "cil-list"
+            Layout.fillWidth: true
+        }
+
+        CLabel {
+            text: qsTr("Include Address line in: ")
+        }
+
+
+        RowLayout{
+            CCheckBox{
+                objectName: "receipt_address_line_pos_receipt"
+                text: qsTr("POS Receipt")
+            }
+
+            CCheckBox{
+                objectName: "receipt_address_line_online_receipt"
+                text: qsTr("Delivery Receipt")
+            }
+        }
+
+        CLabel {
+            text: qsTr("Address QR Data")
+        }
+
+
+        CIconTextField {
+            objectName: "receipt_address_qr_data"
+            leftIcon.name: "cil-list"
+            Layout.fillWidth: true
+        }
+
         Component.onCompleted: NetworkManager.get(form.fetchUrl).subscribe(function(res){
             form.initialValues=res.json("data");
         })
