@@ -40,7 +40,8 @@ ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 
 QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const bool print)
 {
-    bool linePrinter=AppSettings::instance()->receiptLinePrinter();
+    // bool linePrinter=AppSettings::instance()->receiptLinePrinter();
+    bool linePrinter=false;
 
     QJsonArray items=receiptData["order_items"].toArray();
 
@@ -152,6 +153,21 @@ END:VCARD)").arg(customer).arg(phone);
     qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(qrText.toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
     std::string svgString = QrCode::toSvgString(qr0, 0);  // See QrCodeGeneratorDemo
 
+
+
+    // QString addressQrData=AppSettings::instance()->addressQr();
+
+    // if(!addressStr.isEmpty()){
+    //     qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(addressQrData.toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
+    //     std::string svgString = QrCode::toSvgString(qr0, 0);  // See QrCodeGeneratorDemo
+    //     QSvgRenderer svg(QByteArray::fromStdString(svgString));
+    //     QPixmap qrPixmap(1500,1500);
+    //     QPainter qrPainter(&qrPixmap);
+    //     svg.render(&qrPainter);
+    //     qrPainter.end();
+    //     doc.addResource(QTextDocument::ImageResource,QUrl("address_qr"),qrPixmap);
+
+    // }
 
     QSvgRenderer svg(QByteArray::fromStdString(svgString));
     QPixmap qrPixmap(1500,1500);
@@ -522,7 +538,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     stream.writeStartElement("p");
     stream.writeAttribute("class","receipt");
-     stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
+    stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
@@ -530,6 +546,23 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeAttribute("class","receipt");
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
+
+
+    // stream.writeStartElement("table");
+    // stream.writeAttribute("width","100%");
+    // stream.writeStartElement("tr");
+    // stream.writeStartElement("th");
+    // stream.writeAttribute("width","100%");
+    // stream.writeAttribute("style","vertical-align: middle;");
+    // stream.writeStartElement("img");
+    // stream.writeAttribute("width","80");
+    // stream.writeAttribute("height","80");
+    // stream.writeAttribute("src", "address_qr");
+    // stream.writeEndElement(); //img
+    // stream.writeEndElement(); //th
+    // stream.writeEndElement(); //tr
+    // stream.writeEndElement(); //table
+
 
     stream.writeEndElement(); //footer
 
@@ -930,8 +963,8 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     stream.writeEndDocument(); //doc
 
 
-//QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
-//    pageSize=pageSize*2;
+    //QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
+    //    pageSize=pageSize*2;
 
 
     QString random=QString::number(QRandomGenerator::global()->generate());
@@ -956,7 +989,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
     pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());    \
-    pdfPrinter.setResolution(96);
+        pdfPrinter.setResolution(96);
     pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     pdfPrinter.setFullPage(true);  // Use full page for printing

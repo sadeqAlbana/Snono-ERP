@@ -123,6 +123,9 @@ public:
     QString linePrinterPaperSize() const;
     void setLinePrinterPaperSize(const QString &newLinePrinterPaperSize);
 
+    QString addressQr() const;
+    void setAddressQr(const QString &newAddressQr);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -161,7 +164,10 @@ signals:
 
     void linePrinterPaperSizeChanged();
 
+    void addressQrChanged();
+
 private:
+
     QString m_posReceiptBottomNote;
     bool m_testEnv=false;
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
@@ -180,6 +186,7 @@ private:
     Q_PROPERTY(QString posReceiptBottomNote READ posReceiptBottomNote WRITE setPosReceiptBottomNote NOTIFY posReceiptBottomNoteChanged FINAL)
     Q_PROPERTY(QString linePrinter READ linePrinter WRITE setLinePrinter NOTIFY linePrinterChanged FINAL)
     Q_PROPERTY(QString linePrinterPaperSize READ linePrinterPaperSize WRITE setLinePrinterPaperSize NOTIFY linePrinterPaperSizeChanged FINAL)
+    Q_PROPERTY(QString addressQr READ addressQr WRITE setAddressQr NOTIFY addressQrChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

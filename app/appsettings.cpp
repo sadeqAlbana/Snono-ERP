@@ -383,6 +383,19 @@ void AppSettings::setLinePrinterPaperSize(const QString &newLinePrinterPaperSize
     emit linePrinterPaperSizeChanged();
 }
 
+QString AppSettings::addressQr() const
+{
+    return value("receipt/receipt_address_qr_data").toString();
+}
+
+void AppSettings::setAddressQr(const QString &newAddressQr)
+{
+    if (addressQr() == newAddressQr)
+        return;
+    setValue("receipt/receipt_address_qr_data",newAddressQr);
+    emit addressQrChanged();
+}
+
 
 float AppSettings::labelPrinterLabelWidth() const
 {
