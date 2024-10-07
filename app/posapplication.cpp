@@ -75,6 +75,8 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
                 AppSettings::instance()->setReceiptPhoneNumber(data["receipt_phone"].toString());
                 AppSettings::instance()->setReceiptBottomNote(data["receipt_bottom_note"].toString());
                 AppSettings::instance()->setPosReceiptBottomNote(data["receipt_pos_bottom_note"].toString());
+                AppSettings::instance()->setAddressQr(data["receipt_address_qr_data"].toString());
+                AppSettings::instance()->setReceiptAddressLine(data["receipt_address_line"].toString());
 
 
             }

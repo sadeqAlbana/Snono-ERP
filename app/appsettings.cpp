@@ -396,6 +396,19 @@ void AppSettings::setAddressQr(const QString &newAddressQr)
     emit addressQrChanged();
 }
 
+QString AppSettings::receiptAddressLine() const
+{
+    return value("receipt/receipt_address_line").toString();
+}
+
+void AppSettings::setReceiptAddressLine(const QString &newReceiptAddressLine)
+{
+    if (receiptAddressLine() == newReceiptAddressLine)
+        return;
+    setValue("receipt/receipt_address_line",newReceiptAddressLine);
+    emit addressQrChanged();
+}
+
 
 float AppSettings::labelPrinterLabelWidth() const
 {

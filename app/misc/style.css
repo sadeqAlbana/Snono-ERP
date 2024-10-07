@@ -6,6 +6,13 @@
             font-size: {{body_font_size}};
         }
 
+    p {
+        padding: 1px;
+        margin: 0;
+        font-size: {{footer_font_size}};
+
+    }
+
 /*@page {
      size: 2.8in 11in;
      margin-top: 0cm;
@@ -37,9 +44,9 @@
 
 
 
-/*        .receipt {
-            font-size: large;
-        }*/
+        .receipt {
+        font-size: {{body_font_size}};
+        }
 
         .items .heading {
             text-transform: uppercase;
@@ -52,7 +59,7 @@
 
         .collapse{
         border-collapse: collapse;
-}
+        }
 
         .items td {
             text-align: left;
@@ -98,15 +105,15 @@
 .center-align {
     text-align: center;
 }
-        .left{
-            text-align: left;
-        }
+.left{
+    text-align: left;
+}
 
-        p {
-            padding: 1px;
-            margin: 0;
-        }
-
+.bottom-note{
+    font-size: {{footer_font_size}};
+    text-align: center;
+    font-weight: bold;
+}
 
 
 

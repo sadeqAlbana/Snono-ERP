@@ -126,6 +126,9 @@ public:
     QString addressQr() const;
     void setAddressQr(const QString &newAddressQr);
 
+    QString receiptAddressLine() const;
+    void setReceiptAddressLine(const QString &newReceiptAddressLine);
+
 signals:
     void serverUrlChanged(QUrl url);
 
@@ -166,9 +169,12 @@ signals:
 
     void addressQrChanged();
 
+    void receiptAddressLineChanged();
+
 private:
 
     QString m_posReceiptBottomNote;
+    QString m_receiptAddressLine;
     bool m_testEnv=false;
     Q_PROPERTY(QByteArray jwt READ jwt WRITE setJwt NOTIFY jwtChanged)
     Q_PROPERTY(int receiptCopies READ receiptCopies WRITE setReceiptCopies NOTIFY receiptCopiesChanged)
@@ -187,6 +193,7 @@ private:
     Q_PROPERTY(QString linePrinter READ linePrinter WRITE setLinePrinter NOTIFY linePrinterChanged FINAL)
     Q_PROPERTY(QString linePrinterPaperSize READ linePrinterPaperSize WRITE setLinePrinterPaperSize NOTIFY linePrinterPaperSizeChanged FINAL)
     Q_PROPERTY(QString addressQr READ addressQr WRITE setAddressQr NOTIFY addressQrChanged FINAL)
+    Q_PROPERTY(QString receiptAddressLine READ receiptAddressLine WRITE setReceiptAddressLine NOTIFY receiptAddressLineChanged FINAL)
 };
 
 #endif // APPSETTINGS_H

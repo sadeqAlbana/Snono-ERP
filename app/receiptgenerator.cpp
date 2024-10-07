@@ -135,9 +135,13 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
     QString css=file.readAll();
     file.close();
-    QString bodyFontSize=linePrinter? "6px" : "12px";
+    QString bodyFontSize=linePrinter? "6px" : "8px";
+    QString footerFontSize=linePrinter? "8px" : "11px";
+
     QString bodyMargin = linePrinter? "10" : 0;
     css.replace("{{body_font_size}}",bodyFontSize);
+    css.replace("{{footer_font_size}}",footerFontSize);
+
     css.replace("{{body_margin}}",bodyMargin);
 
     //doc.setDefaultStyleSheet(css);
@@ -155,29 +159,29 @@ END:VCARD)").arg(customer).arg(phone);
 
 
 
-    // QString addressQrData=AppSettings::instance()->addressQr();
+    QString addressQrData=AppSettings::instance()->addressQr();
 
-    // if(!addressStr.isEmpty()){
-    //     qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(addressQrData.toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
-    //     std::string svgString = QrCode::toSvgString(qr0, 0);  // See QrCodeGeneratorDemo
-    //     QSvgRenderer svg(QByteArray::fromStdString(svgString));
-    //     QPixmap qrPixmap(1500,1500);
-    //     QPainter qrPainter(&qrPixmap);
-    //     svg.render(&qrPainter);
-    //     qrPainter.end();
-    //     doc.addResource(QTextDocument::ImageResource,QUrl("address_qr"),qrPixmap);
+    if(!addressStr.isEmpty()){
+        qrcodegen::QrCode qr0 = qrcodegen::QrCode::encodeText(addressQrData.toStdString().c_str(), qrcodegen::QrCode::Ecc::MEDIUM);
+        std::string svgString = QrCode::toSvgString(qr0, 0);  // See QrCodeGeneratorDemo
+        QSvgRenderer svg(QByteArray::fromStdString(svgString));
+        QPixmap qrPixmap(1000,1000);
+        QPainter qrPainter(&qrPixmap);
+        svg.render(&qrPainter);
+        qrPainter.end();
+        doc.addResource(QTextDocument::ImageResource,QUrl("address_qr"),qrPixmap);
 
-    // }
+    }
 
     QSvgRenderer svg(QByteArray::fromStdString(svgString));
-    QPixmap qrPixmap(1500,1500);
+    QPixmap qrPixmap(1000,1000);
     QPainter qrPainter(&qrPixmap);
     svg.render(&qrPainter);
     qrPainter.end();
 
     doc.addResource(QTextDocument::ImageResource,QUrl("qr_code"),qrPixmap);
 
-    QImage barcodeImg(400,160,QImage::Format_RGB32);
+    QImage barcodeImg(200,100,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
@@ -225,8 +229,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","80");
-        stream.writeAttribute("height","80");
+        stream.writeAttribute("width","60");
+        stream.writeAttribute("height","60");
         stream.writeAttribute("src", "qr_code");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th
@@ -237,7 +241,7 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeAttribute("width",QString::number(logoWidth)+"%");
 
     stream.writeStartElement("img");
-    int logoSize=linePrinter? 50 : 100;
+    int logoSize=linePrinter? 50 : 60;
     stream.writeAttribute("width",QString::number(logoSize));
     stream.writeAttribute("height",QString::number(logoSize));
     stream.writeAttribute("src", "logo_image");
@@ -249,8 +253,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","120");
-        stream.writeAttribute("height","48");
+        stream.writeAttribute("width","100");
+        stream.writeAttribute("height","50");
         stream.writeAttribute("src", "barcode_img");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th
@@ -526,42 +530,53 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //section
 
     stream.writeStartElement("footer");
-    if(linePrinter){
-        stream.writeAttribute("style","text-align:center; font-size: small; font-weight: bold;");
+    // if(linePrinter){
+    //     stream.writeAttribute("style","text-align:center; font-weight: bold;");
 
-    }else{
-        stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
+    // }else{
+    //     stream.writeAttribute("style","text-align:center;font-weight: bold;");
 
-    }
+    // }
     // stream.writeAttribute("style","text-align:center; font-size: large; font-weight: bold;");
 
 
     stream.writeStartElement("p");
-    stream.writeAttribute("class","receipt");
+    stream.writeAttribute("class","receipt bottom-note");
     stream.writeCharacters(AppSettings::instance()->receiptBottomNote());
     stream.writeEndElement(); //p
     stream.writeStartElement("p");
     stream.writeAttribute("dir","ltr");
 
-    stream.writeAttribute("class","receipt");
+    stream.writeAttribute("class","receipt bottom-note");
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 
 
-    // stream.writeStartElement("table");
-    // stream.writeAttribute("width","100%");
-    // stream.writeStartElement("tr");
-    // stream.writeStartElement("th");
-    // stream.writeAttribute("width","100%");
-    // stream.writeAttribute("style","vertical-align: middle;");
-    // stream.writeStartElement("img");
-    // stream.writeAttribute("width","80");
-    // stream.writeAttribute("height","80");
-    // stream.writeAttribute("src", "address_qr");
-    // stream.writeEndElement(); //img
-    // stream.writeEndElement(); //th
-    // stream.writeEndElement(); //tr
-    // stream.writeEndElement(); //table
+    stream.writeStartElement("table");
+    stream.writeAttribute("width","100%");
+    stream.writeStartElement("tr");
+    stream.writeStartElement("th");
+    stream.writeAttribute("width","100%");
+    stream.writeAttribute("style","vertical-align: middle;");
+    stream.writeStartElement("img");
+    stream.writeAttribute("width","60");
+    stream.writeAttribute("height","60");
+    stream.writeAttribute("src", "address_qr");
+    stream.writeEndElement(); //img
+    stream.writeEndElement(); //th
+    stream.writeEndElement(); //tr
+
+    stream.writeStartElement("tr");
+    stream.writeStartElement("th");
+    stream.writeAttribute("width","100%");
+    stream.writeAttribute("class","receipt bottom-note");
+
+    stream.writeCharacters(AppSettings::instance()->receiptAddressLine());
+    stream.writeEndElement(); //th
+    stream.writeEndElement(); //tr
+
+    stream.writeEndElement(); //table
+
 
 
     stream.writeEndElement(); //footer
