@@ -99,46 +99,6 @@ AppPage {
 
 
 
-
-
-        Label {
-            text: qsTr("Receipt copies")
-        }
-        IconComboBox {
-            id: receiptCopies
-            leftIcon.name: "cil-page"
-            model: [1, 2, 3, 4, 5]
-            Component.onCompleted: currentIndex = indexOfValue(
-                                       Settings.receiptCopies)
-        }
-
-        Label {
-            text: qsTr("External Receipt copies")
-        }
-        IconComboBox {
-            id: externalReceiptCopies
-            leftIcon.name: "cil-page"
-            model: [1, 2, 3, 4, 5]
-            Component.onCompleted: currentIndex = indexOfValue(
-                                       Settings.externalReceiptCopies)
-        }
-
-        Label {
-            text: qsTr("Receipt copies with External Delivery")
-        }
-        IconComboBox {
-            id: receiptCopiesWithExternalDelivery
-            leftIcon.name: "cil-page"
-            model: [1, 2, 3, 4, 5]
-            Component.onCompleted: currentIndex = indexOfValue(
-                                       Settings.receiptCopiesWithExternalDelivery)
-        }
-
-        HorizontalSpacer{
-            Layout.columnSpan: 2
-        }
-
-
         Label {
             text: qsTr("Label Printer")
         }
@@ -193,6 +153,44 @@ AppPage {
             validator: RegularExpressionValidator {
                  regularExpression: /^-?\d+(\.\d{1,2})?$/
              }
+        }
+
+
+        Label {
+            text: qsTr("Receipt copies")
+        }
+        IconComboBox {
+            id: receiptCopies
+            leftIcon.name: "cil-page"
+            model: [1, 2, 3, 4, 5]
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.receiptCopies)
+        }
+
+        Label {
+            text: qsTr("External Receipt copies")
+        }
+        IconComboBox {
+            id: externalReceiptCopies
+            leftIcon.name: "cil-page"
+            model: [1, 2, 3, 4, 5]
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.externalReceiptCopies)
+        }
+
+        Label {
+            text: qsTr("Receipt copies with External Delivery")
+        }
+        IconComboBox {
+            id: receiptCopiesWithExternalDelivery
+            leftIcon.name: "cil-page"
+            model: [1, 2, 3, 4, 5]
+            Component.onCompleted: currentIndex = indexOfValue(
+                                       Settings.receiptCopiesWithExternalDelivery)
+        }
+
+        HorizontalSpacer{
+            Layout.columnSpan: 2
         }
 
 
