@@ -18,7 +18,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 AppPage {
     title: qsTr("Products")
-    
+
     ColumnLayout {
         id: page
         anchors.fill: parent
@@ -43,44 +43,56 @@ AppPage {
             ProductsAttributesAttributesModel {
 
                 onDataRecevied: {
-                    let advancedFilter=[{
-                                            "type": "text",
-                                            "label": qsTr("Barcode"),
-                                            "key": "barcode",
-                                            "dynamic": false,
-                                            "category": null,
-                                            "options": {
-                                                "placeholderText": "All..."
-                                            }
-                                        },
-                                        {
-                                            "type": "checkableCombo",
-                                            "label": qsTr("Category"),
-                                            "key": "category_id",
-                                            "dynamic": false,
-                                            "category": null,
-                                            "options": {
-                                                "editable": true,
-                                                "textRole": "name",
-                                                "valueRole": "id",
-                                                "dataUrl": "/categories"
-                                            }
-                                        },
-                                        {
-                                            "type": "check",
-                                            "label": "",
-                                            "inner_label": qsTr("Only Variants"),
-                                            "key": "only_variants",
-                                            "dynamic": false,
-                                            "category": null
-                                        }, {
-                                            "type": "check",
-                                            "label": "",
-                                            "inner_label": qsTr("In stock"),
-                                            "key": "in_stock",
-                                            "dynamic": false,
-                                            "category": null
-                                        }];
+                    let advancedFilter = [{
+                                              "type": "text",
+                                              "label": qsTr("Barcode"),
+                                              "key": "barcode",
+                                              "dynamic": false,
+                                              "category": null,
+                                              "options": {
+                                                  "placeholderText": "All..."
+                                              }
+                                          }, {
+                                              "type": "checkableCombo",
+                                              "label": qsTr("Category"),
+                                              "key": "category_id",
+                                              "dynamic": false,
+                                              "category": null,
+                                              "options": {
+                                                  "editable": true,
+                                                  "textRole": "name",
+                                                  "valueRole": "id",
+                                                  "dataUrl": "/categories"
+                                              }
+                                          }, {
+                                              "type": "checkableCombo",
+                                              "label": qsTr(
+                                                           "Product Parentage"),
+                                              "key": "parentage",
+                                              "options": {
+                                                  "checkable": true,
+                                                  "editable": false,
+                                                  "textRole": "name",
+                                                  "valueRole": "value",
+                                                  "values": [{
+                                                          "name": qsTr("Have Variants"),
+                                                          "value": "have_variants"
+                                                      }, {
+                                                          "name": qsTr("Variant"),
+                                                          "value": "variant"
+                                                      }, {
+                                                          "name": qsTr("Variantless"),
+                                                          "value": "variantless"
+                                                      }]
+                                              }
+                                          }, {
+                                              "type": "check",
+                                              "label": "",
+                                              "inner_label": qsTr("In stock"),
+                                              "key": "in_stock",
+                                              "dynamic": false,
+                                              "category": null
+                                          }]
 
                     for (var i = 0; i < rowCount(); i++) {
                         //                        console.log(JSON.stringify(jsonObject(i)));
@@ -92,25 +104,23 @@ AppPage {
                         let name = attribute['name']
                         let values = attribute['values']
 
-
                         advancedFilter.push({
-                                                        "type": "checkableCombo",
-                                                        "label": name,
-                                                        "key": id,
-                                                        "dynamic": true,
-                                                        "category": "attributes",
-                                                        "options": {
-                                                            "checkable": true,
-                                                            "editable": true,
-                                                            "textRole": "value",
-                                                            "valueRole": "id",
-                                                            "values": values
-                                                        }
-                                                    })
+                                                "type": "checkableCombo",
+                                                "label": name,
+                                                "key": id,
+                                                "dynamic": true,
+                                                "category": "attributes",
+                                                "options": {
+                                                    "checkable": true,
+                                                    "editable": true,
+                                                    "textRole": "value",
+                                                    "valueRole": "id",
+                                                    "values": values
+                                                }
+                                            })
                     }
-                    toolBar.advancedFilter=advancedFilter;
-                    toolBar.advancedFilterChanged();
-
+                    toolBar.advancedFilter = advancedFilter
+                    toolBar.advancedFilterChanged()
                 }
             }
         }
@@ -142,7 +152,7 @@ AppPage {
                         }
         }
 
-        PrintProductLabelDialog{
+        PrintProductLabelDialog {
             id: labelPrintDialog
         }
 
@@ -170,8 +180,8 @@ AppPage {
             } //slot end
         }
 
-        function printLabel(){
-            labelPrintDialog.product=model.jsonObject(tableView.currentRow)
+        function printLabel() {
+            labelPrintDialog.product = model.jsonObject(tableView.currentRow)
             labelPrintDialog.open()
         }
 
@@ -192,7 +202,6 @@ AppPage {
                     onTriggered: Router.navigate(
                                      "qrc:/PosFe/qml/pages/products/ProductForm.qml",
                                      {
-
                                          "title": qsTr("Add")
                                      })
                     permission: "prm_add_products"
@@ -203,10 +212,9 @@ AppPage {
                     onTriggered: Router.navigate(
                                      "qrc:/PosFe/qml/pages/products/ProductForm.qml",
                                      {
-
                                          "title": qsTr("Edit"),
                                          "keyValue": model.jsonObject(
-                                                              tableView.currentRow).id
+                                                         tableView.currentRow).id
                                      })
                     enabled: tableView.currentRow >= 0
                     permission: "prm_edit_products"
@@ -218,7 +226,6 @@ AppPage {
                     onTriggered: Router.navigate(
                                      "qrc:/PosFe/qml/pages/products/ProductForm.qml",
                                      {
-
                                          "title": qsTr("Copy"),
                                          "initialValues": model.jsonObject(
                                                               tableView.currentRow)
@@ -228,7 +235,6 @@ AppPage {
                 },
 
                 //Action{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: tableView.removeProduct()}
-
                 CAction {
                     text: qsTr("Adjust Stock")
                     icon.name: "cil-cart"
@@ -261,11 +267,10 @@ AppPage {
                     permission: "prm_adjust_stock"
                 },
 
-
                 CAction {
                     text: qsTr("Print Label")
                     icon.name: "cil-plus"
-                    onTriggered: page.printLabel();
+                    onTriggered: page.printLabel()
                     enabled: tableView.currentRow >= 0
 
                     permission: "prm_print_labels"
@@ -279,9 +284,6 @@ AppPage {
                 // }
             ]
 
-
-
-
             function openAdjustStockDialog() {
                 adjustStockDlg.productId = model.data(tableView.currentRow,
                                                       "id")
@@ -290,8 +292,6 @@ AppPage {
                 adjustStockDlg.open()
             }
 
-
-
             model: ProductsModel {
                 id: model
 
@@ -299,18 +299,17 @@ AppPage {
                 //                filter: {"only_variants":true}
                 //                filter: {}
                 //onFilterChanged: console.log(JSON.stringify(filter))
-                onProductRemoveReply: (reply) => {
-                    if (reply.status === 200) {
-                        model.requestData()
-                    }
-                } //slot end
+                onProductRemoveReply: reply => {
+                                          if (reply.status === 200) {
+                                              model.requestData()
+                                          }
+                                      } //slot end
 
-                onStockPurchasedReply: (reply) => {
-                    if (reply.status === 200) {
-                        model.requestData()
-                    }
-                }
-
+                onStockPurchasedReply: reply => {
+                                           if (reply.status === 200) {
+                                               model.requestData()
+                                           }
+                                       }
 
                 //                onDataRecevied: {
                 //                    model.exportJson();
@@ -331,12 +330,12 @@ AppPage {
         nameFilters: ["Shein order files (*.json *.html)", "All files (*)"]
         onAccepted: {
 
+            let orderManifestJson = App.extractSheinJsonFromHtml(selectedFile)
 
-            let orderManifestJson=App.extractSheinJsonFromHtml(selectedFile);
-
-            Api.addSheinOrder(selectedFile,false).subscribe(function(response){
-                console.log(JSON.stringify(response.json()));
-            });
+            Api.addSheinOrder(selectedFile,
+                              false).subscribe(function (response) {
+                                  console.log(JSON.stringify(response.json()))
+                              })
         }
     }
 }
