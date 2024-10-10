@@ -5,97 +5,88 @@
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/settings/AboutPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/AboutPage.qml" line="+18"/>
+        <location/>
         <source>About</source>
         <translation>عن التطبيق</translation>
-    </message>
-</context>
-<context>
-    <name>AccordionDelegate</name>
-    <message>
-        <location filename="../../libs/CoreUI-QML/src/base/AccordionDelegate.qml" line="+78"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Base/AccordionDelegate.qml" line="+78"/>
-        <source>This is the first item&apos;s accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&apos;s also worth noting that just about any HTML can go within the.accordion-body, though the transition does limit overflow.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>AccountForm</name>
     <message>
         <location filename="../qml/pages/Accounting/AccountForm.qml" line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+16"/>
+        <location/>
         <source>Account</source>
         <translation>الحساب</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+2"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+13"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+7"/>
+        <location/>
         <source>Receivable</source>
         <translation>مدين</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Payable</source>
         <translation>دائن</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Liquidity</source>
         <translation>سيولة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Other</source>
         <translation>اخرى</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+8"/>
+        <location/>
         <source>Internal Type</source>
         <translation>النوع الداخلي</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+7"/>
+        <location/>
         <source>Asset</source>
         <translation>أصل</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Liability</source>
         <translation>إلتزام</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Income</source>
         <translation>وارد</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+1"/>
+        <location/>
         <source>Expense</source>
         <translation>مصاريف</translation>
     </message>
     <message>
         <location line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountForm.qml" line="+22"/>
+        <location/>
         <source>Code</source>
         <translation>الرقم</translation>
     </message>
@@ -137,37 +128,37 @@
     <name>AccountsPage</name>
     <message>
         <location filename="../qml/pages/Accounting/AccountsPage.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+20"/>
+        <location/>
         <source>Accounts</source>
         <translation>الحسابات</translation>
     </message>
     <message>
         <location line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+21"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+1"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
         <location line="+23"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+23"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+3"/>
+        <location/>
         <source>Add Account</source>
         <translation>إضافة حساب</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/AccountsPage.qml" line="+4"/>
+        <location/>
         <source>Deposit Money</source>
         <translation>إيداع نقود</translation>
     </message>
@@ -176,19 +167,19 @@
     <name>AclGroupForm</name>
     <message>
         <location filename="../qml/pages/users/AclGroupForm.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/AclGroupForm.qml" line="+19"/>
+        <location/>
         <source>Group Name</source>
         <translation>اسم المجموعة</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/AclGroupForm.qml" line="+11"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/AclGroupForm.qml" line="+9"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
@@ -279,55 +270,55 @@
     </message>
     <message>
         <location filename="../qml/pages/vendors/AddCustomVendorBillPage.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+20"/>
+        <location/>
         <source>Add custom Vendor Bill</source>
         <translation>إضافة فاتورة خاصة</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+4"/>
+        <location/>
         <source>Vendor</source>
         <translation>المورد</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+13"/>
+        <location/>
         <source>Bill Name</source>
         <translation>اسم الفاتورة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+8"/>
+        <location/>
         <source>External Reference</source>
         <translation>المرجع الخارجي</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+9"/>
+        <location/>
         <source>payment type</source>
         <translation>طريقة الدفع</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+10"/>
+        <location/>
         <source>Buy on Credit</source>
         <translation>الشراء بالدين</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+1"/>
+        <location/>
         <source>Initial Inventory Purchase</source>
         <translation>عملية شراء الخزينة الاولية</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+1"/>
+        <location/>
         <source>Pay with a Liquidity Account</source>
         <translation>الدفع بحساب سيولة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddCustomVendorBillPage.qml" line="+5"/>
+        <location/>
         <source>select account</source>
         <translation>إختر الحساب</translation>
     </message>
@@ -343,43 +334,43 @@
     <name>AddCustomerPage</name>
     <message>
         <location filename="../qml/pages/customers/AddCustomerPage.qml" line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+12"/>
+        <location/>
         <source>Add Customer</source>
         <translation>إضافة زبون</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+8"/>
+        <location/>
         <source>Name</source>
         <translation>الإسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+9"/>
+        <location/>
         <source>First Name</source>
         <translation>الإسم الاول</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+8"/>
+        <location/>
         <source>Last Name</source>
         <translation>الإسم الأخير</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+8"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/AddCustomerPage.qml" line="+9"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -388,13 +379,13 @@
     <name>AddSheinOrderPage</name>
     <message>
         <location filename="../qml/pages/vendors/AddSheinOrderPage.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddSheinOrderPage.qml" line="+20"/>
+        <location/>
         <source>Add Shein Order</source>
         <translation>إضافة طلبية شي إن</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddSheinOrderPage.qml" line="+18"/>
+        <location/>
         <source>Vendor</source>
         <translation>المورد</translation>
     </message>
@@ -404,7 +395,7 @@
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddSheinOrderPage.qml" line="+14"/>
+        <location/>
         <source>External Reference</source>
         <translation>المرجع الخارجي</translation>
     </message>
@@ -433,73 +424,73 @@
     <name>AddTaxPage</name>
     <message>
         <location filename="../qml/pages/taxes/AddTaxPage.qml" line="+40"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+40"/>
+        <location/>
         <source>Add Product</source>
         <translation>إضافة منتج</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+15"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>List Price</source>
         <translation>سعر العرض</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>Cost</source>
         <translation>الكلفة</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+7"/>
+        <location/>
         <source>Storable Product</source>
         <translation>مخزون</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>Consumable Product</source>
         <translation>استهلاكي</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+1"/>
+        <location/>
         <source>Service Product</source>
         <translation>خدمة</translation>
     </message>
     <message>
         <location line="+23"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+23"/>
+        <location/>
         <source>select Taxes...</source>
         <translation>الضرائب...</translation>
     </message>
     <message>
         <location line="+50"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+50"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/AddTaxPage.qml" line="+10"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
@@ -520,55 +511,55 @@
     </message>
     <message>
         <location filename="../qml/pages/vendors/AddVendorBillPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+19"/>
+        <location/>
         <source>Add Vendor Bill</source>
         <translation>إضافة فاتورة مورد</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+8"/>
+        <location/>
         <source>Vendor</source>
         <translation>المورد</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+13"/>
+        <location/>
         <source>Bill Name</source>
         <translation>اسم الفاتورة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+8"/>
+        <location/>
         <source>External Reference</source>
         <translation>المرجع الخارجي</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+9"/>
+        <location/>
         <source>payment type</source>
         <translation>طريقة الدفع</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+10"/>
+        <location/>
         <source>Buy on Credit</source>
         <translation>الشراء بالدين</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+1"/>
+        <location/>
         <source>Initial Inventory Purchase</source>
         <translation>عملية شراء الخزينة الاولية</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+1"/>
+        <location/>
         <source>Pay with a Liquidity Account</source>
         <translation>الدفع بحساب سيولة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/AddVendorBillPage.qml" line="+5"/>
+        <location/>
         <source>select account</source>
         <translation>إختر الحساب</translation>
     </message>
@@ -592,31 +583,31 @@
     <name>AdjustStockDialog</name>
     <message>
         <location filename="../qml/pages/products/AdjustStockDialog.qml" line="+45"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/AdjustStockDialog.qml" line="+45"/>
+        <location/>
         <source>Adjust Stock</source>
         <translation>تعديل المخزون</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/AdjustStockDialog.qml" line="+4"/>
+        <location/>
         <source>New Quantity</source>
         <translation>الكمية الجديدة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/AdjustStockDialog.qml" line="+1"/>
+        <location/>
         <source>Reason</source>
         <translation>سبب التعديل</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/AdjustStockDialog.qml" line="+15"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/AdjustStockDialog.qml" line="+10"/>
+        <location/>
         <source>Adjust</source>
         <translation>تعديل</translation>
     </message>
@@ -625,13 +616,13 @@
     <name>AppDialogFooter</name>
     <message>
         <location filename="../qml/common/AppDialogFooter.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppDialogFooter.qml" line="+17"/>
+        <location/>
         <source>Accept</source>
         <translation>قبول</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppDialogFooter.qml" line="+1"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
@@ -640,7 +631,7 @@
     <name>AppMainScreen</name>
     <message>
         <location filename="../qml/AppMainScreen.qml" line="+24"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/AppMainScreen.qml" line="+24"/>
+        <location/>
         <source>Logout</source>
         <translation>تسجيل الخروج</translation>
     </message>
@@ -686,7 +677,7 @@
     <name>AppToolBar</name>
     <message>
         <location filename="../qml/common/AppToolBar.qml" line="+49"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppToolBar.qml" line="+49"/>
+        <location/>
         <source>Actions</source>
         <translation>إجراءات</translation>
     </message>
@@ -696,19 +687,19 @@
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppToolBar.qml" line="+7"/>
+        <location/>
         <source>Columns</source>
         <translation>الحقول</translation>
     </message>
     <message>
         <location line="+23"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppToolBar.qml" line="+23"/>
+        <location/>
         <source>Filter</source>
         <translation>تفصيل</translation>
     </message>
     <message>
         <location line="+35"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/AppToolBar.qml" line="+35"/>
+        <location/>
         <source>Search...</source>
         <translation>بحث...</translation>
     </message>
@@ -717,31 +708,31 @@
     <name>BarqDeliverySettings</name>
     <message>
         <location filename="../qml/pages/settings/BarqDeliverySettings.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/BarqDeliverySettings.qml" line="+19"/>
+        <location/>
         <source>Barq Settings</source>
         <translation>إعدادات البرق</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/BarqDeliverySettings.qml" line="+6"/>
+        <location/>
         <source>Agent Phone</source>
         <translation>هاتف العميل</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/BarqDeliverySettings.qml" line="+6"/>
+        <location/>
         <source>Invalid Phone Number</source>
         <translation>رقم هاتف خاطئ</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/BarqDeliverySettings.qml" line="+7"/>
+        <location/>
         <source>Agent Password</source>
         <translation>كلمة مرور العميل</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/BarqDeliverySettings.qml" line="+13"/>
+        <location/>
         <source>Store</source>
         <translation>المتجر</translation>
     </message>
@@ -760,25 +751,12 @@
     </message>
 </context>
 <context>
-    <name>CApplicationWindow</name>
-    <message>
-        <location filename="../../libs/CoreUI-QML/src/base/CApplicationWindow.qml" line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Base/CApplicationWindow.qml" line="+11"/>
-        <source>CoreUI</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CDateInput</name>
     <message>
-        <location filename="../../libs/CoreUI-QML/src/forms/CDateInput.qml" line="+147"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/CDateInput.qml" line="+147"/>
         <source>Today</source>
         <translation>اليوم</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/CDateInput.qml" line="+10"/>
         <source>Clear</source>
         <translation>مسح</translation>
     </message>
@@ -787,13 +765,13 @@
     <name>CFilterMenu</name>
     <message>
         <location filename="../qml/common/CFilterMenu.qml" line="+147"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CFilterMenu.qml" line="+147"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CFilterMenu.qml" line="+10"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -802,19 +780,19 @@
     <name>CFormView</name>
     <message>
         <location filename="../qml/common/CFormView.qml" line="+76"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CFormView.qml" line="+76"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CFormView.qml" line="+8"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CFormView.qml" line="+7"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -823,19 +801,19 @@
     <name>CTabFormView</name>
     <message>
         <location filename="../qml/common/CTabFormView.qml" line="+82"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CTabFormView.qml" line="+82"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CTabFormView.qml" line="+8"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CTabFormView.qml" line="+7"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -882,7 +860,7 @@
     <name>CashierPage</name>
     <message>
         <location filename="../qml/pages/cashier/CashierPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+19"/>
+        <location/>
         <source>Cashier</source>
         <translation>الكاشير</translation>
     </message>
@@ -900,19 +878,19 @@
     </message>
     <message>
         <location line="+70"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+70"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
     <message>
         <location line="+96"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+96"/>
+        <location/>
         <source>Barcode...</source>
         <translation>الباركود...</translation>
     </message>
     <message>
         <location line="+71"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+71"/>
+        <location/>
         <source>Phone...</source>
         <translation>الهاتف...</translation>
     </message>
@@ -922,13 +900,13 @@
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+10"/>
+        <location/>
         <source>Note...</source>
         <translation>الملاحظات...</translation>
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/CashierPage.qml" line="+16"/>
+        <location/>
         <source>Pay</source>
         <translation>دفع</translation>
     </message>
@@ -941,19 +919,19 @@
     <name>CashierReceiptDialog</name>
     <message>
         <location filename="../qml/common/CashierReceiptDialog.qml" line="+41"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CashierReceiptDialog.qml" line="+41"/>
+        <location/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>
     <message>
         <location line="+47"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CashierReceiptDialog.qml" line="+47"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CashierReceiptDialog.qml" line="+13"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
@@ -980,37 +958,37 @@
     <name>CategoriesPage</name>
     <message>
         <location filename="../qml/pages/categories/CategoriesPage.qml" line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+16"/>
+        <location/>
         <source>Categories</source>
         <translation>الفئات</translation>
     </message>
     <message>
         <location line="+26"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+26"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+4"/>
+        <location/>
         <source>Add Category</source>
         <translation>اضافة فئة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+5"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+4"/>
+        <location/>
         <source>Edit Category</source>
         <translation>تعديل الفئة</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/CategoriesPage.qml" line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1020,22 +998,20 @@
     <message>
         <location filename="../qml/common/CrudViewPage.qml" line="+35"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CrudViewPage.qml" line="+35"/>
-        <location line="+4"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CrudViewPage.qml" line="+6"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/CrudViewPage.qml" line="+8"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1048,7 +1024,7 @@
     </message>
     <message>
         <location filename="../qml/pages/vendors/CustomVendorBillListView.qml" line="+73"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/CustomVendorBillListView.qml" line="+73"/>
+        <location/>
         <source>item...</source>
         <translation>العنصر...</translation>
     </message>
@@ -1080,55 +1056,55 @@
     <name>CustomerForm</name>
     <message>
         <location filename="../qml/pages/customers/CustomerForm.qml" line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+12"/>
+        <location/>
         <source>Customer</source>
         <translation>الزبون</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+10"/>
+        <location/>
         <source>Info</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+5"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+9"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+8"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+8"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+9"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomerForm.qml" line="+11"/>
+        <location/>
         <source>Adresses</source>
         <translation>العناوين</translation>
     </message>
@@ -1137,13 +1113,13 @@
     <name>CustomersBillsPage</name>
     <message>
         <location filename="../qml/pages/customers/CustomersBillsPage.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersBillsPage.qml" line="+17"/>
+        <location/>
         <source>Vendors Bills</source>
         <translation>فواتير الموردين</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersBillsPage.qml" line="+18"/>
+        <location/>
         <source>Pay</source>
         <translation>دفع</translation>
     </message>
@@ -1190,37 +1166,37 @@
     <name>CustomersPage</name>
     <message>
         <location filename="../qml/pages/customers/CustomersPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+15"/>
+        <location/>
         <source>Customers</source>
         <translation>الزبائن</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+25"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+3"/>
+        <location/>
         <source>Add Customer</source>
         <translation>إضافة زبون</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+5"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل المنتج</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+4"/>
+        <location/>
         <source>Edit Customer</source>
         <translation>تعديل الزبون</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/customers/CustomersPage.qml" line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1229,13 +1205,13 @@
     <name>DashboardPage</name>
     <message>
         <location filename="../qml/pages/dashboard/DashboardPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+19"/>
+        <location/>
         <source>Dashboard</source>
         <translation>الرئيسية</translation>
     </message>
     <message>
         <location line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+19"/>
+        <location/>
         <source>Sales &amp; Returns</source>
         <translation>المبيعات والرواجع</translation>
     </message>
@@ -1257,155 +1233,153 @@
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+5"/>
+        <location/>
         <source>Today</source>
         <translation>اليوم</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Today (POS)</source>
-        <translation type="unfinished"></translation>
+        <translation>اليوم (نقطة البيع)</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+2"/>
+        <location/>
         <source>Month</source>
         <translation>هذا الشهر</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Month (POS)</source>
-        <translation type="unfinished"></translation>
+        <translation>الشهر (نقطة البيع)</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+34"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+2"/>
-        <location line="+34"/>
+        <location/>
         <source>Returns (Today)</source>
         <translation>الرواجع (اليوم)</translation>
     </message>
     <message>
         <location line="-33"/>
         <location line="+34"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="-33"/>
-        <location line="+34"/>
+        <location/>
         <source>Returns (Month)</source>
         <translation>الرواجع (هذا الشهر)</translation>
     </message>
     <message>
         <location line="-33"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="-33"/>
+        <location/>
         <source>Profits (Today)</source>
         <translation>الارباح (اليوم)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Profits (Month)</source>
         <translation>الارباح (هذا الشهر)</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+6"/>
+        <location/>
         <source>Orders Status</source>
         <translation>حالة الطلبات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+5"/>
+        <location/>
         <source>Pending</source>
         <translation>في الانتظار</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Processing</source>
         <translation>تحت المعالجة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Returned</source>
         <translation>راجع</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Partial Return</source>
         <translation>راجع جزئي</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+6"/>
+        <location/>
         <source>Orders Statistics</source>
         <translation>احصائيات الطلبات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+5"/>
+        <location/>
         <source>Orders (Today)</source>
         <translation>الطلبات (اليوم)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Orders (POS Today)</source>
-        <translation type="unfinished"></translation>
+        <translation>الطلبات (نقطة البيع) اليوم</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+2"/>
+        <location/>
         <source>Orders (Month)</source>
         <translation>الطلبات (هذا الشهر)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Orders (POS Month)</source>
-        <translation type="unfinished"></translation>
+        <translation>الطلبات (نقطة البيع) الشهر</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+4"/>
+        <location/>
         <source>Orders (Total)</source>
         <translation>الطلبات (الكلية)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Returns (Total)</source>
         <translation>الرواجع (الكلية)</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+11"/>
+        <location/>
         <source>Sold  (Month)</source>
         <translation>المباع (الشهر)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>returned (Month)</source>
         <translation>الراجع (الشهر)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Net Sold (Month)</source>
         <translation>صافي المباع (الشهر)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+1"/>
+        <location/>
         <source>Returns %</source>
         <translation>نسبة الرواجع</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+2"/>
+        <location/>
         <source>Sold (Total)</source>
         <translation>المباع (الكلي)</translation>
     </message>
@@ -1427,7 +1401,7 @@
     </message>
     <message>
         <location line="-10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="-10"/>
+        <location/>
         <source>Statistics</source>
         <translation>احصائيات</translation>
     </message>
@@ -1441,7 +1415,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+9"/>
+        <location/>
         <source>Available Stock</source>
         <translation>المخزون المتوفر</translation>
     </message>
@@ -1487,43 +1461,22 @@
     </message>
     <message>
         <location line="+69"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+69"/>
+        <location/>
         <source>Sales</source>
         <translation>المبيعات</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/dashboard/DashboardPage.qml" line="+10"/>
+        <location/>
         <source>Sales Profits</source>
         <translation>ارباح المبيعات</translation>
-    </message>
-</context>
-<context>
-    <name>DashboardWidget</name>
-    <message>
-        <location filename="../../libs/CoreUI-QML/src/base/DashboardWidget.qml" line="+32"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Base/DashboardWidget.qml" line="+32"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Base/DashboardWidget.qml" line="+3"/>
-        <source>Another action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Base/DashboardWidget.qml" line="+3"/>
-        <source>Something else here</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DeliveryOrderForm</name>
     <message>
         <location filename="../qml/pages/orders/DeliveryOrderForm.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DeliveryOrderForm.qml" line="+19"/>
+        <location/>
         <source>Create Delivery Manifest</source>
         <translation>إنشاء وصل توصيل</translation>
     </message>
@@ -1532,13 +1485,13 @@
     <name>DepositMoneyDialog</name>
     <message>
         <location filename="../qml/pages/Accounting/DepositMoneyDialog.qml" line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/DepositMoneyDialog.qml" line="+22"/>
+        <location/>
         <source>Deposit Money</source>
         <translation>إيداع نقود</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/DepositMoneyDialog.qml" line="+7"/>
+        <location/>
         <source>Amount</source>
         <translation>المبلغ</translation>
     </message>
@@ -1547,25 +1500,25 @@
     <name>DraftOrderForm</name>
     <message>
         <location filename="../qml/pages/orders/DraftOrderForm.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrderForm.qml" line="+19"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrderForm.qml" line="+8"/>
+        <location/>
         <source>Customer</source>
         <translation>الزبون</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrderForm.qml" line="+14"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+74"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrderForm.qml" line="+74"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -1630,29 +1583,27 @@
     <name>DraftOrdersPage</name>
     <message>
         <location filename="../qml/pages/orders/DraftOrdersPage.qml" line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrdersPage.qml" line="+21"/>
+        <location/>
         <source>Draft Orders</source>
         <translation>المسودات</translation>
     </message>
     <message>
         <location line="+26"/>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrdersPage.qml" line="+26"/>
-        <location line="+2"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrdersPage.qml" line="+4"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/DraftOrdersPage.qml" line="+7"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1661,67 +1612,67 @@
     <name>DriverForm</name>
     <message>
         <location filename="../qml/pages/delivery/DriverForm.qml" line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+25"/>
+        <location/>
         <source>if you select an existing user ID for the driver, only a name and a phone number will be required, otherwise you will need to fill the whole form and a new user will be created for the driver</source>
         <translation>في حالة إختيار حساب موجود مسبقاً للسائق, ستحتاج ادخال اسم ورقم هاتف للسائق فقط, عدا ذلك ستحتاج لملئ كافة الحقل وسيتم اضافة حساب مستخدم جديد للسائق</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+8"/>
+        <location/>
         <source>use an existing user</source>
         <translation>استخدام حساب موجود مسبقاً</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+18"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+15"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+13"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الخير</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+13"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+8"/>
+        <location/>
         <source>Invalid Phone Number</source>
         <translation>رقم هاتف خاطئ</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+8"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+14"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+14"/>
+        <location/>
         <source>Password</source>
         <translation>كلمة المرور</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriverForm.qml" line="+18"/>
+        <location/>
         <source>Role</source>
         <translation>الدور</translation>
     </message>
@@ -1753,29 +1704,27 @@
     <name>DriversPage</name>
     <message>
         <location filename="../qml/pages/delivery/DriversPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriversPage.qml" line="+15"/>
+        <location/>
         <source>Drivers</source>
         <translation>السائقين</translation>
     </message>
     <message>
         <location line="+25"/>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriversPage.qml" line="+25"/>
-        <location line="+3"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriversPage.qml" line="+5"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/DriversPage.qml" line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -1785,138 +1734,101 @@
     <message>
         <location filename="../models/expensesreportmodel.cpp" line="+5"/>
         <source>account</source>
-        <translation type="unfinished"></translation>
+        <translation>الحساب</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>amount</source>
-        <translation type="unfinished"></translation>
+        <translation>المبلغ</translation>
     </message>
 </context>
 <context>
     <name>ExpensesReportPage</name>
     <message>
         <location filename="../qml/pages/reports/ExpensesReportPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ExpensesReportPage.qml" line="+18"/>
+        <location/>
         <source>Expeses Report</source>
-        <translation type="unfinished"></translation>
+        <translation>تقرير المصاريف</translation>
     </message>
     <message>
         <location line="+32"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ExpensesReportPage.qml" line="+32"/>
+        <location/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
-    </message>
-</context>
-<context>
-    <name>FileInput</name>
-    <message>
-        <location filename="../../libs/CoreUI-QML/src/forms/FileInput.qml" line="+42"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/FileInput.qml" line="+42"/>
-        <source>Browse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/FileInput.qml" line="+6"/>
-        <source>No Files Selected.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FolderInput</name>
-    <message>
-        <location filename="../../libs/CoreUI-QML/src/forms/FolderInput.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/FolderInput.qml" line="+20"/>
-        <source>Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/FolderInput.qml" line="+8"/>
-        <source>Browse...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/Forms/FolderInput.qml" line="+6"/>
-        <source>No Files Selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
     <name>GeneralSettings</name>
     <message>
         <location filename="../qml/pages/settings/GeneralSettings.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+20"/>
+        <location/>
         <source>General Settings</source>
         <translation>الاعدادات العامة</translation>
     </message>
     <message>
         <location line="+8"/>
         <location line="+53"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+8"/>
-        <location line="+53"/>
+        <location/>
         <source>Software Updates</source>
         <translation>تحديثات البرنامج</translation>
     </message>
     <message>
         <location line="-47"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="-47"/>
+        <location/>
         <source>Downloading Update...</source>
         <translation>جاري التحميل...</translation>
     </message>
     <message>
         <location line="+52"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+52"/>
+        <location/>
         <source>New version found, do you want to download it?</source>
         <translation>يوجد تحديث جديد, هل تغرب في تحميله؟</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+9"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+9"/>
+        <location/>
         <source>Download</source>
         <translation>تحميل</translation>
     </message>
     <message>
         <location line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+19"/>
+        <location/>
         <source>Version: </source>
         <translation>الإصدار</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+5"/>
+        <location/>
         <source>check for updates</source>
         <translation>التحقق من التحديثات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+5"/>
+        <location/>
         <source>Software Update</source>
         <translation>التحديثات</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+1"/>
+        <location/>
         <source>No updates found</source>
         <translation>لم يتم العثور على تحديثات جديدة</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+10"/>
+        <location/>
         <source>Language</source>
         <translation>اللغة</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+13"/>
+        <location/>
         <source>Receipt Language</source>
         <translation>لغة الوصل</translation>
     </message>
@@ -1926,13 +1838,13 @@
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+13"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/GeneralSettings.qml" line="+1"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -1941,58 +1853,58 @@
     <name>GenerateCataloguePage</name>
     <message>
         <location filename="../qml/pages/products/GenerateCataloguePage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/GenerateCataloguePage.qml" line="+19"/>
+        <location/>
         <source>Start ID</source>
         <translation>معرف البدء</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/GenerateCataloguePage.qml" line="+2"/>
+        <location/>
         <source>Save Path</source>
         <translation>مسار الحفظ</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/GenerateCataloguePage.qml" line="+3"/>
+        <location/>
         <source>Category</source>
         <translation>الفئة</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/GenerateCataloguePage.qml" line="+9"/>
+        <location/>
         <source>All</source>
         <translation>الكل</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/GenerateCataloguePage.qml" line="+5"/>
+        <location/>
         <source>Include Price</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة السعر</translation>
     </message>
 </context>
 <context>
     <name>IdentitySettings</name>
     <message>
         <location filename="../qml/pages/settings/IdentitySettings.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/IdentitySettings.qml" line="+19"/>
+        <location/>
         <source>Identity Settings</source>
         <translation>إعدادات الكيان</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/IdentitySettings.qml" line="+7"/>
+        <location/>
         <source>Entity Name</source>
         <translation>إسم الكيان</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/IdentitySettings.qml" line="+9"/>
+        <location/>
         <source>Logo</source>
         <translation>الشعار</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/IdentitySettings.qml" line="+7"/>
+        <location/>
         <source>Country</source>
         <translation>الدولة</translation>
     </message>
@@ -2001,31 +1913,31 @@
     <name>InternalTypeDelegate</name>
     <message>
         <location filename="../qml/pages/Accounting/InternalTypeDelegate.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/InternalTypeDelegate.qml" line="+18"/>
+        <location/>
         <source>Asset</source>
         <translation>أصل</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/InternalTypeDelegate.qml" line="+1"/>
+        <location/>
         <source>Liability</source>
         <translation>إلتزام</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/InternalTypeDelegate.qml" line="+1"/>
+        <location/>
         <source>Income</source>
         <translation>وارد</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/InternalTypeDelegate.qml" line="+1"/>
+        <location/>
         <source>Expense</source>
         <translation>مصاريف</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/InternalTypeDelegate.qml" line="+1"/>
+        <location/>
         <source>Equity</source>
         <translation>حقوق</translation>
     </message>
@@ -2072,7 +1984,7 @@
     <name>JournalEntriesItemsPage</name>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntriesItemsPage.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntriesItemsPage.qml" line="+20"/>
+        <location/>
         <source>Journal Entries Items</source>
         <translation></translation>
     </message>
@@ -2127,19 +2039,19 @@
     </message>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntriesPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntriesPage.qml" line="+18"/>
+        <location/>
         <source>New Journal Entry</source>
-        <translation type="unfinished"></translation>
+        <translation>قيد جديد</translation>
     </message>
     <message>
         <location line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntriesPage.qml" line="+22"/>
+        <location/>
         <source>New</source>
-        <translation type="unfinished">إضافة منتج</translation>
+        <translation>إضافة</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntriesPage.qml" line="+9"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
@@ -2148,37 +2060,37 @@
     <name>JournalEntryDetailsPage</name>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+19"/>
+        <location/>
         <source>Journal Entry Details</source>
         <translation>تفاصيل القيود</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+6"/>
+        <location/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+2"/>
+        <location/>
         <source>Reference</source>
         <translation>المرجع</translation>
     </message>
     <message>
         <location line="+29"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+29"/>
+        <location/>
         <source>Account</source>
         <translation>الحساب</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+11"/>
+        <location/>
         <source>Credit</source>
         <translation>الدائن</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml" line="+5"/>
+        <location/>
         <source>Debit</source>
         <translation>المدين</translation>
     </message>
@@ -2187,7 +2099,7 @@
     <name>JournalEntryForm</name>
     <message>
         <location filename="../qml/pages/Accounting/JournalEntryForm.qml" line="+23"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/JournalEntryForm.qml" line="+23"/>
+        <location/>
         <source>Items</source>
         <translation>القيود</translation>
     </message>
@@ -2196,7 +2108,7 @@
     <name>LicensePage</name>
     <message>
         <location filename="../qml/pages/settings/LicensePage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/LicensePage.qml" line="+18"/>
+        <location/>
         <source>License</source>
         <translation>الرخصة</translation>
     </message>
@@ -2205,97 +2117,97 @@
     <name>LocationForm</name>
     <message>
         <location filename="../qml/pages/locations/LocationForm.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+19"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+8"/>
+        <location/>
         <source>Name...</source>
         <translation>الاسم...</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+6"/>
+        <location/>
         <source>Country</source>
         <translation>الدولة</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+14"/>
+        <location/>
         <source>Province</source>
         <translation>المحافظة</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+15"/>
+        <location/>
         <source>City</source>
         <translation>المدينة</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+15"/>
+        <location/>
         <source>District</source>
         <translation>المحلة</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+15"/>
+        <location/>
         <source>Post Code</source>
         <translation>الرمز البريدي</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+14"/>
+        <location/>
         <source>Building</source>
         <translation>البناية</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+15"/>
+        <location/>
         <source>Floor</source>
         <translation>الطابق</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+15"/>
+        <location/>
         <source>Apartment</source>
         <translation>الشقة</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+14"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+14"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+8"/>
+        <location/>
         <source>First Name...</source>
         <translation>الاسم الاول...</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+6"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+8"/>
+        <location/>
         <source>Last Name...</source>
         <translation>الاسم الاخير...</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationForm.qml" line="+7"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
@@ -2340,7 +2252,7 @@
     <message>
         <location line="+1"/>
         <source>Post Code</source>
-        <translation type="unfinished">الرمز البريدي</translation>
+        <translation>الرمز البريدي</translation>
     </message>
     <message>
         <source>PostCode</source>
@@ -2376,7 +2288,7 @@
     <name>LocationsPage</name>
     <message>
         <location filename="../qml/pages/locations/LocationsPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/locations/LocationsPage.qml" line="+18"/>
+        <location/>
         <source>Locations</source>
         <translation>العناوين</translation>
     </message>
@@ -2385,39 +2297,38 @@
     <name>LoginPage</name>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="+32"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="+32"/>
+        <location/>
         <source>Invalid Credentials</source>
         <translation>صلاحيات خاطئة</translation>
     </message>
     <message>
         <location line="+43"/>
         <location line="+62"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="+43"/>
-        <location line="+62"/>
+        <location/>
         <source>Login</source>
         <translation>دخول</translation>
     </message>
     <message>
         <location line="-52"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="-52"/>
+        <location/>
         <source>Sign in to your account</source>
         <translation>سجل الدخول الى حستسجيل الدخول الى حسابك</translation>
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="+16"/>
+        <location/>
         <source>username...</source>
         <translation>اسم المستخدم...</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="+14"/>
+        <location/>
         <source>password...</source>
         <translation>كلمة المرور...</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/LoginPage.qml" line="+7"/>
+        <location/>
         <source>Remember Me</source>
         <translation>تذكرني</translation>
     </message>
@@ -2426,13 +2337,13 @@
     <name>LoginScreen</name>
     <message>
         <location filename="../qml/screens/LoginScreen.qml" line="+60"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/screens/LoginScreen.qml" line="+60"/>
+        <location/>
         <source>Login</source>
         <translation>الدخول</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/screens/LoginScreen.qml" line="+6"/>
+        <location/>
         <source>Quit</source>
         <translation>الخروج</translation>
     </message>
@@ -2442,47 +2353,47 @@
     <message>
         <location filename="../models/monthlyfinancemodel.cpp" line="+5"/>
         <source>Month</source>
-        <translation type="unfinished">هذا الشهر</translation>
+        <translation>هذا الشهر</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Sales</source>
-        <translation type="unfinished">المبيعات</translation>
+        <translation>المبيعات</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Sales Returns</source>
-        <translation type="unfinished"></translation>
+        <translation>رواجع المبيعات</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cost of Goods Sold</source>
-        <translation type="unfinished"></translation>
+        <translation>كلفة المواد البماعة</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Expenses</source>
-        <translation type="unfinished"></translation>
+        <translation>المصاريف</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Gross Profit</source>
-        <translation type="unfinished"></translation>
+        <translation>صافي الارباح</translation>
     </message>
 </context>
 <context>
     <name>MonthlyFinanceReportPage</name>
     <message>
         <location filename="../qml/pages/reports/MonthlyFinanceReportPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/MonthlyFinanceReportPage.qml" line="+18"/>
+        <location/>
         <source>Monthly Finance</source>
-        <translation type="unfinished"></translation>
+        <translation>المالية الشهرية</translation>
     </message>
     <message>
         <location line="+33"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/MonthlyFinanceReportPage.qml" line="+33"/>
+        <location/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
@@ -2608,28 +2519,28 @@
     <name>NewJournalEntryPage</name>
     <message>
         <location filename="../qml/pages/Accounting/NewJournalEntryPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/NewJournalEntryPage.qml" line="+15"/>
+        <location/>
         <source>Account</source>
-        <translation type="unfinished">الحساب</translation>
+        <translation>الحساب</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/NewJournalEntryPage.qml" line="+2"/>
+        <location/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم</translation>
     </message>
 </context>
 <context>
     <name>NewOnlineOrderPage</name>
     <message>
         <location filename="../qml/pages/cashier/NewOnlineOrderPage.qml" line="+54"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+54"/>
+        <location/>
         <source>Online Sales</source>
         <translation>مبييعات الاونلاين</translation>
     </message>
     <message>
         <location line="+235"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+235"/>
+        <location/>
         <source>Barcode...</source>
         <translation>الباركود...</translation>
     </message>
@@ -2639,195 +2550,194 @@
     </message>
     <message>
         <location line="-250"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="-250"/>
+        <location/>
         <source>Internal</source>
         <translation>توصيل داخلي</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+6"/>
+        <location/>
         <source>Barq</source>
         <translation>شركة البرق</translation>
     </message>
     <message>
         <location line="+147"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+147"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
     <message>
         <location line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+22"/>
+        <location/>
         <source>Confirm</source>
         <translation>تأكيد</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+1"/>
+        <location/>
         <source>Do you want to place order?</source>
         <translation>هل تريد تثبيت الطلب؟</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+25"/>
+        <location/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+1"/>
+        <location/>
         <source>This Carrier requires valid locations</source>
         <translation>الناقل يتطلب ادخال عنوان صالح</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+10"/>
+        <location/>
         <source>Product</source>
         <translation>المنتج</translation>
     </message>
     <message>
         <location line="+28"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+28"/>
+        <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+15"/>
+        <location/>
         <source>Delivery Carrier</source>
         <translation>الناقل</translation>
     </message>
     <message>
         <location line="+34"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+34"/>
+        <location/>
         <source>Driver</source>
         <translation>السائق</translation>
     </message>
     <message>
         <location line="+27"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+27"/>
+        <location/>
         <source>Payment Method</source>
         <translation>طريقة الدفع</translation>
     </message>
     <message>
         <location line="+27"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+27"/>
+        <location/>
         <source>Order Notes</source>
         <translation>ملاحظات الطلب</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+4"/>
+        <location/>
         <source>Order Notes...</source>
         <translation>ملاحظة...</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+9"/>
+        <location/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+13"/>
+        <location/>
         <source>Place Order</source>
         <translation>تثبيت الطلب</translation>
     </message>
     <message>
         <location line="+32"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+32"/>
+        <location/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
     <message>
         <location line="+59"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+59"/>
+        <location/>
         <source>select Address</source>
         <translation>اختر العنوان</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+10"/>
+        <location/>
         <source>New Address...</source>
         <translation>عنوان جديد...</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+185"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+7"/>
-        <location line="+185"/>
+        <location/>
         <source>Add New...</source>
         <translation>إضافة جديد...</translation>
     </message>
     <message>
         <location line="-161"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="-161"/>
+        <location/>
         <source>Address Name</source>
         <translation>اسم العنوان</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+10"/>
+        <location/>
         <source>Home, work, etc...</source>
         <translation>المنزل, العمل, الخ...</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+2"/>
+        <location/>
         <source>Default</source>
         <translation>الافتراضي</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+7"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+13"/>
+        <location/>
         <source>Phone...</source>
         <translation>الهاتف...</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+8"/>
+        <location/>
         <source>Province</source>
         <translation>المحافظة</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+10"/>
+        <location/>
         <source>Province...</source>
         <translation>المحافظة...</translation>
     </message>
     <message>
         <location line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+17"/>
+        <location/>
         <source>District</source>
         <translation>المحلة</translation>
     </message>
     <message>
         <location line="+33"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+33"/>
+        <location/>
         <source>Address Details</source>
         <translation>تفاصيل العنوان</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+9"/>
+        <location/>
         <source>Street, Nearest landmark, etc...</source>
         <translation>الشارع, اقرب نقط دالة, الخ...</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+7"/>
+        <location/>
         <source>Delivery Notes</source>
         <translation>ملاحظات التوصيل</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="+10"/>
+        <location/>
         <source>Delivery Note...</source>
         <translation>ملاحظات التوصيل...</translation>
     </message>
@@ -2841,7 +2751,7 @@
     </message>
     <message>
         <location line="-50"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/NewOnlineOrderPage.qml" line="-50"/>
+        <location/>
         <source>District...</source>
         <translation>المحلة...</translation>
     </message>
@@ -2850,19 +2760,19 @@
     <name>NewReceiptDialog</name>
     <message>
         <location filename="../qml/common/NewReceiptDialog.qml" line="+41"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/NewReceiptDialog.qml" line="+41"/>
+        <location/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>
     <message>
         <location line="+47"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/NewReceiptDialog.qml" line="+47"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/NewReceiptDialog.qml" line="+13"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
@@ -2939,37 +2849,37 @@
     <name>OnlineOrdersPage</name>
     <message>
         <location filename="../qml/pages/orders/OnlineOrdersPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+19"/>
+        <location/>
         <source>Online Orders</source>
         <translation>طلبات الاونلاين</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+18"/>
+        <location/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+5"/>
+        <location/>
         <source>Order already have delivery manifest, do you want to overrite it?</source>
         <translation>الطلبية تحوي على وصل توصيل بالفعل, هل تريد استبداله بآخر جديد؟</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+9"/>
+        <location/>
         <source>Cancel</source>
         <translation></translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+7"/>
+        <location/>
         <source>Ok</source>
         <translation>نعم</translation>
     </message>
     <message>
         <location line="+37"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+37"/>
+        <location/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
@@ -2977,93 +2887,91 @@
         <location line="+3"/>
         <location line="+7"/>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+3"/>
-        <location line="+7"/>
-        <location line="+7"/>
+        <location/>
         <source>All...</source>
         <translation>الجميع...</translation>
     </message>
     <message>
         <location line="-10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="-10"/>
+        <location/>
         <source>Customer Phone</source>
         <translation>هاتف الزبون</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+7"/>
+        <location/>
         <source>Customer Address</source>
         <translation>عنوان الزبون</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+8"/>
+        <location/>
         <source>product</source>
         <translation>المنتج</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+6"/>
+        <location/>
         <source>All Products</source>
         <translation>جميع المنتجات</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+12"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+4"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+4"/>
+        <location/>
         <source>status</source>
         <translation>الحالة</translation>
     </message>
     <message>
         <location line="+60"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+60"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+14"/>
+        <location/>
         <source>Update Status</source>
         <translation>تحديث الحالة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+8"/>
+        <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+14"/>
+        <location/>
         <source>Create Delivery Order</source>
         <translation>إنشاء وصل توصيل</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+15"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+6"/>
+        <location/>
         <source>Print Delivery Receipt</source>
         <translation>طباعة وصل التوصيل</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OnlineOrdersPage.qml" line="+8"/>
+        <location/>
         <source>Print Report</source>
         <translation>طباعة التقرير</translation>
     </message>
@@ -3079,75 +2987,74 @@
     <name>OrderDetailsPage</name>
     <message>
         <location filename="../qml/pages/orders/OrderDetailsPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+19"/>
+        <location/>
         <source>Orders Details</source>
         <translation>تفاصيل الطلب</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+6"/>
+        <location/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+2"/>
+        <location/>
         <source>Reference</source>
         <translation>المرجع</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+2"/>
+        <location/>
         <source>Customer</source>
         <translation>الزبون</translation>
     </message>
     <message>
         <location line="+3"/>
         <location line="+66"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+3"/>
-        <location line="+66"/>
+        <location/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
         <location line="-63"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="-63"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+3"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
         <location line="+33"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+33"/>
+        <location/>
         <source>Product</source>
         <translation>المنتج</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+5"/>
+        <location/>
         <source>Quantity</source>
         <translation>الكمية</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+6"/>
+        <location/>
         <source>Unit Price</source>
         <translation>سعر الوحدة</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+6"/>
+        <location/>
         <source>Discount</source>
         <translation>التخفيض</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderDetailsPage.qml" line="+5"/>
+        <location/>
         <source>Subtotal</source>
         <translation>الحاصل</translation>
     </message>
@@ -3179,19 +3086,19 @@
     <name>OrderReturnDialog</name>
     <message>
         <location filename="../qml/pages/orders/OrderReturnDialog.qml" line="+50"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderReturnDialog.qml" line="+50"/>
+        <location/>
         <source>Return Order</source>
         <translation>إرجاع الطلب</translation>
     </message>
     <message>
         <location line="+28"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderReturnDialog.qml" line="+28"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderReturnDialog.qml" line="+10"/>
+        <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
@@ -3200,37 +3107,37 @@
     <name>OrderStatusDelegate</name>
     <message>
         <location filename="../qml/pages/orders/OrderStatusDelegate.qml" line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+21"/>
+        <location/>
         <source>Pending</source>
         <translation>في الانتظار</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Processing</source>
         <translation>تحت المعالجة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Completed</source>
         <translation>كامل</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+2"/>
+        <location/>
         <source>Delivered</source>
         <translation>واصل</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>returned</source>
         <translation>راجع</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrderStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Partial</source>
         <translation>جزئي</translation>
     </message>
@@ -3240,93 +3147,93 @@
     <message>
         <location filename="../models/orderscountreportmodel.cpp" line="+5"/>
         <source>Date</source>
-        <translation type="unfinished">التاريخ</translation>
+        <translation>التاريخ</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Orders Count</source>
-        <translation type="unfinished">عدد الطلبات</translation>
+        <translation>عدد الطلبات</translation>
     </message>
 </context>
 <context>
     <name>OrdersCountReportPage</name>
     <message>
         <location filename="../qml/pages/reports/OrdersCountReportPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+18"/>
+        <location/>
         <source>Orders count</source>
-        <translation type="unfinished"></translation>
+        <translation>عدد الطلبات</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+15"/>
+        <location/>
         <source>product</source>
-        <translation type="unfinished">المنتج</translation>
+        <translation>المنتج</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+6"/>
+        <location/>
         <source>All Products</source>
-        <translation type="unfinished">جميع المنتجات</translation>
+        <translation>جميع المنتجات</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+12"/>
+        <location/>
         <source>from</source>
-        <translation type="unfinished">من</translation>
+        <translation>من</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+4"/>
+        <location/>
         <source>to</source>
-        <translation type="unfinished">الى</translation>
+        <translation>الى</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+4"/>
+        <location/>
         <source>type</source>
-        <translation type="unfinished"></translation>
+        <translation>النوع</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+7"/>
+        <location/>
         <source>POS</source>
-        <translation type="unfinished">نقطة البيع</translation>
+        <translation>نقطة البيع</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+0"/>
+        <location/>
         <source>Online</source>
-        <translation type="unfinished">الاونلاين</translation>
+        <translation>الاونلاين</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+4"/>
+        <location/>
         <source>Group By</source>
-        <translation type="unfinished"></translation>
+        <translation>جمع</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+8"/>
+        <location/>
         <source>Month</source>
-        <translation type="unfinished">هذا الشهر</translation>
+        <translation>هذا الشهر</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+0"/>
+        <location/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>السنة</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+0"/>
+        <location/>
         <source>Day</source>
-        <translation type="unfinished"></translation>
+        <translation>يوم</translation>
     </message>
     <message>
         <location line="+26"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersCountReportPage.qml" line="+26"/>
+        <location/>
         <source>Print</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
 </context>
 <context>
@@ -3385,37 +3292,37 @@
     <name>OrdersPage</name>
     <message>
         <location filename="../qml/pages/orders/OrdersPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+19"/>
+        <location/>
         <source>Orders</source>
         <translation>الطلبات</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+18"/>
+        <location/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+5"/>
+        <location/>
         <source>Order already have delivery manifest, do you want to overrite it?</source>
         <translation>الطلبية تحوي على وصل توصيل بالفعل, هل تريد استبداله بآخر جديد؟</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+9"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+7"/>
+        <location/>
         <source>Ok</source>
         <translation>نعم</translation>
     </message>
     <message>
         <location line="+46"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+46"/>
+        <location/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
@@ -3423,51 +3330,49 @@
         <location line="+3"/>
         <location line="+7"/>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+3"/>
-        <location line="+7"/>
-        <location line="+7"/>
+        <location/>
         <source>All...</source>
         <translation>الجميع...</translation>
     </message>
     <message>
         <location line="-10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="-10"/>
+        <location/>
         <source>Customer Phone</source>
         <translation>هاتف الزبون</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+7"/>
+        <location/>
         <source>Customer Address</source>
         <translation>عنوان الزبون</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+8"/>
+        <location/>
         <source>product</source>
         <translation>المنتج</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+6"/>
+        <location/>
         <source>All Products</source>
         <translation>جميع المنتجات</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+12"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+4"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+4"/>
+        <location/>
         <source>status</source>
         <translation>الحالة</translation>
     </message>
@@ -3477,43 +3382,43 @@
     </message>
     <message>
         <location line="+53"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+53"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+14"/>
+        <location/>
         <source>Update Status</source>
         <translation>تحديث الحالة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+8"/>
+        <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+14"/>
+        <location/>
         <source>Create Delivery Order</source>
         <translation>إنشاء وصل توصيل</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+15"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
         <location line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+17"/>
+        <location/>
         <source>Print Delivery Receipt</source>
         <translation>طباعة وصل التوصيل</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersPage.qml" line="+8"/>
+        <location/>
         <source>Print Report</source>
         <translation>طباعة التقرير</translation>
     </message>
@@ -3545,7 +3450,7 @@
     <name>OrdersReturnsPage</name>
     <message>
         <location filename="../qml/pages/orders/OrdersReturnsPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/OrdersReturnsPage.qml" line="+18"/>
+        <location/>
         <source>Orders Returns</source>
         <translation>رواجع الطلبات</translation>
     </message>
@@ -3554,25 +3459,25 @@
     <name>OrdersSalesReportPage</name>
     <message>
         <location filename="../qml/pages/reports/OrdersSalesReportPage.qml" line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersSalesReportPage.qml" line="+13"/>
+        <location/>
         <source>Orders Report</source>
         <translation>تقرير الطلبات</translation>
     </message>
     <message>
         <location line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersSalesReportPage.qml" line="+17"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersSalesReportPage.qml" line="+9"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/OrdersSalesReportPage.qml" line="+9"/>
+        <location/>
         <source>Status</source>
         <translation>الحالة</translation>
     </message>
@@ -3581,19 +3486,19 @@
     <name>PayBillDialog</name>
     <message>
         <location filename="../qml/pages/vendors/PayBillDialog.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/PayBillDialog.qml" line="+15"/>
+        <location/>
         <source>Pay Bill</source>
         <translation>دفع الفاتورة</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/PayBillDialog.qml" line="+12"/>
+        <location/>
         <source>Pay with</source>
         <translation>الدفع عن طريق</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/PayBillDialog.qml" line="+15"/>
+        <location/>
         <source>Amount</source>
         <translation>المبلغ</translation>
     </message>
@@ -3611,32 +3516,31 @@
     <message>
         <location filename="../qml/pages/cashier/PayDialog.qml" line="+28"/>
         <location line="+76"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/PayDialog.qml" line="+28"/>
-        <location line="+76"/>
+        <location/>
         <source>Pay</source>
         <translation>دفع</translation>
     </message>
     <message>
         <location line="-66"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/PayDialog.qml" line="-66"/>
+        <location/>
         <source>Amount</source>
         <translation>المبلغ</translation>
     </message>
     <message>
         <location line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/PayDialog.qml" line="+16"/>
+        <location/>
         <source>Paid</source>
         <translation>المدفوع</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/PayDialog.qml" line="+14"/>
+        <location/>
         <source>Tendered</source>
         <translation>المرجع</translation>
     </message>
     <message>
         <location line="+24"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/cashier/PayDialog.qml" line="+24"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
@@ -3645,55 +3549,55 @@
     <name>PermissionsPage</name>
     <message>
         <location filename="../qml/pages/users/PermissionsPage.qml" line="+27"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+27"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
     <message>
         <location line="+24"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+24"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+4"/>
+        <location/>
         <source>Add Group</source>
         <translation>إضافة مجموعة</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+4"/>
+        <location/>
         <source>Edit Group</source>
         <translation>تعديل المجموعة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+8"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
     <message>
         <location line="+57"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+57"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+6"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/PermissionsPage.qml" line="+7"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -3739,7 +3643,7 @@
     <name>PosMachinesPage</name>
     <message>
         <location filename="../qml/pages/settings/PosMachinesPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PosMachinesPage.qml" line="+18"/>
+        <location/>
         <source>Devices</source>
         <translation>الاجهزة</translation>
     </message>
@@ -3771,37 +3675,37 @@
     <name>PosOrdersPage</name>
     <message>
         <location filename="../qml/pages/orders/PosOrdersPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+19"/>
+        <location/>
         <source>Orders</source>
         <translation>الطلبات</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+18"/>
+        <location/>
         <source>Warning</source>
         <translation>تحذير</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+5"/>
+        <location/>
         <source>Order already have delivery manifest, do you want to overrite it?</source>
         <translation>الطلبية تحوي على وصل توصيل بالفعل, هل تريد استبداله بآخر جديد؟</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+9"/>
+        <location/>
         <source>Cancel</source>
         <translation>إلغاء</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+7"/>
+        <location/>
         <source>Ok</source>
         <translation>نعم</translation>
     </message>
     <message>
         <location line="+37"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+37"/>
+        <location/>
         <source>Customer Name</source>
         <translation>اسم الزبون</translation>
     </message>
@@ -3809,87 +3713,85 @@
         <location line="+3"/>
         <location line="+7"/>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+3"/>
-        <location line="+7"/>
-        <location line="+7"/>
+        <location/>
         <source>All...</source>
         <translation>الجميع...</translation>
     </message>
     <message>
         <location line="-10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="-10"/>
+        <location/>
         <source>Customer Phone</source>
         <translation>هاتف الزبون</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+7"/>
+        <location/>
         <source>Customer Address</source>
         <translation>عنوان الزبون</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+8"/>
+        <location/>
         <source>product</source>
         <translation>المنتج</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+6"/>
+        <location/>
         <source>All Products</source>
         <translation>جميع المنتجات</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+12"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+4"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+4"/>
+        <location/>
         <source>status</source>
         <translation>الحالة</translation>
     </message>
     <message>
         <location line="+49"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+49"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+14"/>
+        <location/>
         <source>Update Status</source>
         <translation>تحديث الحالة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+8"/>
+        <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+14"/>
+        <location/>
         <source>Create Delivery Order</source>
         <translation>إنشاء وصل توصيل</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+15"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/PosOrdersPage.qml" line="+5"/>
+        <location/>
         <source>Print Report</source>
         <translation>طباعة التقرير</translation>
     </message>
@@ -3898,13 +3800,13 @@
     <name>PosSessionStatusDelegate</name>
     <message>
         <location filename="../qml/common/PosSessionStatusDelegate.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PosSessionStatusDelegate.qml" line="+20"/>
+        <location/>
         <source>Opened</source>
         <translation>مفتوحة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PosSessionStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Closed</source>
         <translation>مغلقة</translation>
     </message>
@@ -3956,13 +3858,13 @@
     <name>PosSessionsPage</name>
     <message>
         <location filename="../qml/pages/pos/PosSessionsPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/PosSessionsPage.qml" line="+18"/>
+        <location/>
         <source>POS Sessions</source>
         <translation>جلسات نقاط البيع</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/PosSessionsPage.qml" line="+25"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -3971,37 +3873,37 @@
     <name>PrintProductLabelDialog</name>
     <message>
         <location filename="../qml/common/PrintProductLabelDialog.qml" line="+39"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+39"/>
+        <location/>
         <source>Print Product Label</source>
         <translation>طباعة ملصق</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+5"/>
+        <location/>
         <source>Name: </source>
         <translation>الاسم:</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+3"/>
+        <location/>
         <source>Price: </source>
         <translation>السعر:</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+3"/>
+        <location/>
         <source>Quantity</source>
         <translation>الكمية</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+14"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/PrintProductLabelDialog.qml" line="+10"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
@@ -4010,13 +3912,13 @@
     <name>PrinterSettings</name>
     <message>
         <location filename="../qml/pages/settings/PrinterSettings.qml" line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+13"/>
+        <location/>
         <source>General Settings</source>
         <translation>الاعدادات العامة</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+8"/>
+        <location/>
         <source>Receipt Printer</source>
         <translation></translation>
     </message>
@@ -4024,75 +3926,73 @@
         <location line="+12"/>
         <location line="+26"/>
         <location line="+30"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+12"/>
-        <location line="+26"/>
-        <location line="+30"/>
+        <location/>
         <source>Paper Size</source>
         <translation></translation>
     </message>
     <message>
         <location line="-42"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="-42"/>
+        <location/>
         <source>Line Printer</source>
         <translation>الطابعة الحرارية</translation>
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+30"/>
+        <location/>
         <source>Reports Printer</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+28"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+28"/>
+        <location line="+83"/>
+        <location/>
         <source>Receipt copies</source>
         <translation>نسخ الوصل</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+11"/>
+        <location/>
         <source>External Receipt copies</source>
         <translation>نسخ وصل التوصيل</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+11"/>
+        <location/>
         <source>Receipt copies with External Delivery</source>
         <translation>نسخ الوصولات في حالة وجود توصيل خارجي</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+16"/>
+        <location line="-79"/>
+        <location/>
         <source>Label Printer</source>
         <translation>طابعة الملصقات</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+13"/>
+        <location/>
         <source>Label Size Unit</source>
         <translation>وحدة ابعاد الملصق</translation>
     </message>
     <message>
         <location line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+18"/>
+        <location/>
         <source>Label Width</source>
         <translation>عرض الملصق</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+12"/>
+        <location/>
         <source>Label Height</source>
         <translation>طول الملصق</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+16"/>
+        <location line="+54"/>
+        <location/>
         <source>Apply</source>
         <translation>تطبيق</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/PrinterSettings.qml" line="+1"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -4152,43 +4052,43 @@
     <name>ProductAttributeForm</name>
     <message>
         <location filename="../qml/pages/products/ProductAttributeForm.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+17"/>
+        <location/>
         <source>ID</source>
         <translation>المعرف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+8"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+8"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+5"/>
+        <location/>
         <source>Text</source>
         <translation>نص</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+0"/>
+        <location/>
         <source>Image</source>
         <translation>صورة</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+6"/>
+        <location/>
         <source>Show In Filter</source>
         <translation>إضهار في فلتر المنتجات</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributeForm.qml" line="+7"/>
+        <location/>
         <source>Show In Products</source>
         <translation>إضهار في جدول المنتجات</translation>
     </message>
@@ -4197,33 +4097,32 @@
     <name>ProductAttributesPage</name>
     <message>
         <location filename="../qml/pages/products/ProductAttributesPage.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributesPage.qml" line="+17"/>
+        <location/>
         <source>Product Attributes</source>
         <translation>صفات المنتجات</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributesPage.qml" line="+25"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributesPage.qml" line="+2"/>
+        <location/>
         <source>Add Attribute</source>
         <translation>إضافة صفة</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributesPage.qml" line="+4"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductAttributesPage.qml" line="+7"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -4232,25 +4131,25 @@
     <name>ProductCategoryForm</name>
     <message>
         <location filename="../qml/pages/categories/ProductCategoryForm.qml" line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/ProductCategoryForm.qml" line="+13"/>
+        <location/>
         <source>Category</source>
         <translation>الفئة</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/ProductCategoryForm.qml" line="+6"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/ProductCategoryForm.qml" line="+9"/>
+        <location/>
         <source>Parent Category</source>
         <translation>الفئة العليا</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/categories/ProductCategoryForm.qml" line="+9"/>
+        <location/>
         <source>None</source>
         <translation>بلا</translation>
     </message>
@@ -4298,151 +4197,151 @@
     <name>ProductForm</name>
     <message>
         <location filename="../qml/pages/products/ProductForm.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+18"/>
+        <location/>
         <source>Product Form</source>
         <translation>حقل المنتج</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+8"/>
+        <location/>
         <source>General</source>
         <translation>عامة</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+7"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+9"/>
+        <location/>
         <source>Description</source>
         <translation>الوصف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+8"/>
+        <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+9"/>
+        <location/>
         <source>List Price</source>
         <translation>سعر العرض</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+11"/>
+        <location/>
         <source>Cost</source>
         <translation>الكلفة</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+12"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+11"/>
+        <location/>
         <source>Storable Product</source>
         <translation>مخزون</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+1"/>
+        <location/>
         <source>Consumable Product</source>
         <translation>استهلاكي</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+1"/>
+        <location/>
         <source>Service Product</source>
         <translation>خدمة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+5"/>
+        <location/>
         <source>Costing Method</source>
         <translation>طريقة التكلفة</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+13"/>
+        <location/>
         <source>FIFO</source>
         <translation>يصرف اولاً</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+1"/>
+        <location/>
         <source>AVCO</source>
         <translation>متوسط التكلفة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+5"/>
+        <location/>
         <source>Category</source>
         <translation>الفئة</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+13"/>
+        <location/>
         <source>Taxes</source>
         <translation>الضرائب</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+11"/>
+        <location/>
         <source>select Taxes...</source>
         <translation>الضرائب...</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+8"/>
+        <location/>
         <source>Have Variants</source>
         <translation>يحوي اصناف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+8"/>
+        <location/>
         <source>Parent Product</source>
         <translation>المنتج الرئيسي</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+12"/>
+        <location/>
         <source>None</source>
         <translation>لا يوجد</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+12"/>
+        <location/>
         <source>Attribute</source>
         <translation>الصفة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+1"/>
+        <location/>
         <source>Value</source>
         <translation>القيمة</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+9"/>
+        <location/>
         <source>Attributes</source>
         <translation>الصفات</translation>
     </message>
     <message>
         <location line="+76"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+76"/>
+        <location/>
         <source>Save</source>
         <translation>حفظ</translation>
     </message>
     <message>
         <location line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductForm.qml" line="+17"/>
+        <location/>
         <source>Reset</source>
         <translation>إعادة</translation>
     </message>
@@ -4451,31 +4350,31 @@
     <name>ProductPurchaseStockDialog</name>
     <message>
         <location filename="../qml/pages/products/ProductPurchaseStockDialog.qml" line="+46"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductPurchaseStockDialog.qml" line="+46"/>
+        <location/>
         <source>Purchase Stock</source>
         <translation>شراء مخزون</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductPurchaseStockDialog.qml" line="+4"/>
+        <location/>
         <source>Quantity</source>
         <translation>الكمية</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductPurchaseStockDialog.qml" line="+2"/>
+        <location/>
         <source>Total</source>
         <translation>المجموع</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductPurchaseStockDialog.qml" line="+25"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductPurchaseStockDialog.qml" line="+10"/>
+        <location/>
         <source>Purchase</source>
         <translation>شراء</translation>
     </message>
@@ -4484,19 +4383,19 @@
     <name>ProductSalesReport</name>
     <message>
         <location filename="../qml/pages/reports/ProductSalesReport.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ProductSalesReport.qml" line="+18"/>
+        <location/>
         <source>Products</source>
         <translation>المنتجات</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ProductSalesReport.qml" line="+12"/>
+        <location/>
         <source>from</source>
         <translation>من</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ProductSalesReport.qml" line="+1"/>
+        <location/>
         <source>to</source>
         <translation>الى</translation>
     </message>
@@ -4506,7 +4405,7 @@
     </message>
     <message>
         <location line="+27"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/ProductSalesReport.qml" line="+27"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
@@ -4573,19 +4472,19 @@
     <name>ProductsMobilePage</name>
     <message>
         <location filename="../qml/pages/products/ProductsMobilePage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsMobilePage.qml" line="+18"/>
+        <location/>
         <source>Products</source>
         <translation>المنتجات</translation>
     </message>
     <message>
         <location line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsMobilePage.qml" line="+17"/>
+        <location/>
         <source>Search...</source>
         <translation>بحث...</translation>
     </message>
     <message>
         <location line="+71"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsMobilePage.qml" line="+71"/>
+        <location/>
         <source>Stock: </source>
         <translation>المخزون</translation>
     </message>
@@ -4634,45 +4533,68 @@
     <name>ProductsPage</name>
     <message>
         <location filename="../qml/pages/products/ProductsPage.qml" line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+20"/>
+        <location/>
         <source>Products</source>
         <translation>المنتجات</translation>
     </message>
     <message>
         <location line="+28"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+28"/>
+        <location/>
         <source>Barcode</source>
         <translation>الباركود</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+10"/>
+        <location line="+9"/>
+        <location/>
         <source>Category</source>
         <translation>الفئة</translation>
     </message>
     <message>
-        <location line="+158"/>
-        <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+158"/>
-        <location line="+6"/>
+        <location line="+12"/>
+        <location/>
+        <source>Product Parentage</source>
+        <translation>صنفية المنتج</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location/>
+        <source>Have Variants</source>
+        <translation>يحوي اصناف</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location/>
+        <source>Variant</source>
+        <translation>صنف</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location/>
+        <source>Variantless</source>
+        <translation>بدون اصناف</translation>
+    </message>
+    <message>
+        <location line="+140"/>
+        <location line="+5"/>
+        <location/>
         <source>Copy</source>
         <translation>نسخ</translation>
     </message>
     <message>
-        <location line="+30"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+30"/>
+        <location line="+29"/>
+        <location/>
         <source>Import from CSV</source>
         <translation>إضافة من ملف CSV</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+6"/>
+        <location/>
         <source>Import from Shein Order</source>
         <translation>إضافة من طلبية شي ان</translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+8"/>
+        <location line="+7"/>
+        <location/>
         <source>Print Label</source>
         <translation>طباعة ملصق</translation>
     </message>
@@ -4681,22 +4603,19 @@
         <translation type="vanished">جميع الفئات</translation>
     </message>
     <message>
-        <location line="-194"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="-194"/>
         <source>Only Variants</source>
         <translation>الانواع فقط</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+7"/>
+        <location line="-180"/>
+        <location/>
         <source>In stock</source>
         <translation>متوفر</translation>
     </message>
     <message>
-        <location line="+111"/>
-        <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+111"/>
-        <location line="+6"/>
+        <location line="+109"/>
+        <location line="+5"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
@@ -4706,9 +4625,8 @@
     </message>
     <message>
         <location line="+5"/>
-        <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+5"/>
-        <location line="+6"/>
+        <location line="+5"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل المنتج</translation>
     </message>
@@ -4717,20 +4635,20 @@
         <translation type="vanished">شراء المنتج</translation>
     </message>
     <message>
-        <location line="+26"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+26"/>
+        <location line="+24"/>
+        <location/>
         <source>Adjust Stock</source>
         <translation>تعديل المخزون</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+7"/>
+        <location/>
         <source>Generate Catalogue</source>
         <translation>توليد الدليل</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/products/ProductsPage.qml" line="+6"/>
+        <location/>
         <source>Bulck Stock Adjustment</source>
         <translation>تعديل مخزون بالجملة</translation>
     </message>
@@ -4832,7 +4750,11 @@
         <translation type="vanished">شكراً لشرائكم من Shein IQ</translation>
     </message>
     <message>
-        <location filename="../receiptgenerator.cpp" line="+1091"/>
+        <source>Scan Me</source>
+        <translation>امسح الرمز</translation>
+    </message>
+    <message>
+        <location filename="../receiptgenerator.cpp" line="+1148"/>
         <source>SKU: </source>
         <translation>وحدة المخزن</translation>
     </message>
@@ -4874,7 +4796,7 @@
     <name>ReceiptPage</name>
     <message>
         <location filename="../qml/pages/ReceiptPage.qml" line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/ReceiptPage.qml" line="+21"/>
+        <location/>
         <source>Receipt</source>
         <translation>الوصل</translation>
     </message>
@@ -4883,69 +4805,69 @@
     <name>ReceiptSettings</name>
     <message>
         <location filename="../qml/pages/settings/ReceiptSettings.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+19"/>
+        <location/>
         <source>Receipt Settings</source>
         <translation>إعدادات الوصل</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+9"/>
+        <location/>
         <source>Company Name</source>
         <translation>اسم الشركة</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+9"/>
+        <location/>
         <source>Logo</source>
         <translation>الشعار</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+8"/>
+        <location/>
         <source>Phone Number</source>
         <translation>رقم الهاتف</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+9"/>
+        <location/>
         <source>Bottom Note</source>
         <translation>الملاحظة في الاسفل</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+12"/>
+        <location/>
         <source>POS Receipt Bottom Note</source>
         <translation>ملاحضة وصل نقطة البيع</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+12"/>
+        <location/>
         <source>Address Line</source>
-        <translation type="unfinished"></translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+11"/>
+        <location/>
         <source>Include Address line in: </source>
-        <translation type="unfinished"></translation>
+        <translation>اضافة العنوان ل:</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+7"/>
+        <location/>
         <source>POS Receipt</source>
-        <translation type="unfinished"></translation>
+        <translation>وصل نقطة البيع</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+5"/>
+        <location/>
         <source>Delivery Receipt</source>
-        <translation type="unfinished"></translation>
+        <translation>وصل التوصيل</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/ReceiptSettings.qml" line="+5"/>
+        <location/>
         <source>Address QR Data</source>
-        <translation type="unfinished"></translation>
+        <translation>معلومات QR العنوان</translation>
     </message>
 </context>
 <context>
@@ -4980,19 +4902,19 @@
     <name>ReturnOrderPage</name>
     <message>
         <location filename="../qml/pages/orders/ReturnOrderPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/ReturnOrderPage.qml" line="+19"/>
+        <location/>
         <source>Return Order</source>
         <translation>إرجاع الطلب</translation>
     </message>
     <message>
         <location line="+37"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/ReturnOrderPage.qml" line="+37"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/ReturnOrderPage.qml" line="+8"/>
+        <location/>
         <source>Return</source>
         <translation>إرجاع</translation>
     </message>
@@ -5001,7 +4923,7 @@
     <name>ServerSettingsDialog</name>
     <message>
         <location filename="../qml/pages/ServerSettingsDialog.qml" line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/ServerSettingsDialog.qml" line="+22"/>
+        <location/>
         <source>Server Settings</source>
         <translation>اعدادات الخادم</translation>
     </message>
@@ -5010,31 +4932,31 @@
     <name>SessionCard</name>
     <message>
         <location filename="../qml/pages/pos/session/SessionCard.qml" line="+24"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionCard.qml" line="+24"/>
+        <location/>
         <source>POS Session </source>
         <translation>الجلسة</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionCard.qml" line="+7"/>
+        <location/>
         <source>Total Orders</source>
         <translation>الطلبات الكلية</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionCard.qml" line="+10"/>
+        <location/>
         <source>Total Amount</source>
         <translation>المبلغ الكلي</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionCard.qml" line="+14"/>
+        <location/>
         <source>Resume</source>
         <translation>متابعة</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionCard.qml" line="+12"/>
+        <location/>
         <source>Close</source>
         <translation>غلق</translation>
     </message>
@@ -5043,7 +4965,7 @@
     <name>SessionsPage</name>
     <message>
         <location filename="../qml/pages/pos/session/SessionsPage.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/pos/session/SessionsPage.qml" line="+17"/>
+        <location/>
         <source>Pos Sessions</source>
         <translation>جلسات البيع</translation>
     </message>
@@ -5075,27 +4997,27 @@
     <name>ShipmentStatusDelegate</name>
     <message>
         <location filename="../qml/common/ShipmentStatusDelegate.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/ShipmentStatusDelegate.qml" line="+17"/>
+        <location/>
         <source>Manifest Created</source>
         <translation>تم الانشاء</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/ShipmentStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>In Transit</source>
         <translation>قيد المعالجة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/ShipmentStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Out for Delivery</source>
-        <translation type="unfinished"></translation>
+        <translation>خارج للتوصيل</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/common/ShipmentStatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Deliviered</source>
-        <translation type="unfinished"></translation>
+        <translation>تم التوصيل</translation>
     </message>
 </context>
 <context>
@@ -5145,29 +5067,27 @@
     <name>ShipmentsPage</name>
     <message>
         <location filename="../qml/pages/delivery/ShipmentsPage.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/ShipmentsPage.qml" line="+17"/>
+        <location/>
         <source>Shipments</source>
         <translation>الشحنات</translation>
     </message>
     <message>
         <location line="+25"/>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/ShipmentsPage.qml" line="+25"/>
-        <location line="+3"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/ShipmentsPage.qml" line="+5"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/delivery/ShipmentsPage.qml" line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -5176,13 +5096,13 @@
     <name>StatusDelegate</name>
     <message>
         <location filename="../qml/pages/vendors/StatusDelegate.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/StatusDelegate.qml" line="+17"/>
+        <location/>
         <source>Unpaid</source>
         <translation>غير مدفوع</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/StatusDelegate.qml" line="+1"/>
+        <location/>
         <source>Paid</source>
         <translation>مدفوع</translation>
     </message>
@@ -5237,7 +5157,7 @@
     <name>StockMovesPage</name>
     <message>
         <location filename="../qml/pages/warehouses/StockMovesPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/StockMovesPage.qml" line="+15"/>
+        <location/>
         <source>Stock Moves</source>
         <translation>الحركات المخزنية</translation>
     </message>
@@ -5250,13 +5170,13 @@
     </message>
     <message>
         <location filename="../qml/pages/reports/StockReport.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/StockReport.qml" line="+17"/>
+        <location/>
         <source>Stock Report</source>
         <translation>تقرير المخزون</translation>
     </message>
     <message>
         <location line="+33"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/reports/StockReport.qml" line="+33"/>
+        <location/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
@@ -5331,7 +5251,7 @@
     <name>StockValuationPage</name>
     <message>
         <location filename="../qml/pages/warehouses/StockValuationPage.qml" line="+16"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/StockValuationPage.qml" line="+16"/>
+        <location/>
         <source>Stock Valuation</source>
         <translation>تقدير المخزون</translation>
     </message>
@@ -5351,37 +5271,37 @@
     <name>TaxForm</name>
     <message>
         <location filename="../qml/pages/taxes/TaxForm.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+17"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+9"/>
+        <location/>
         <source>Type</source>
         <translation>النوع</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+6"/>
+        <location/>
         <source>Percentage</source>
         <translation>نسبة</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+0"/>
+        <location/>
         <source>Fixed</source>
         <translation>ثابتة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+5"/>
+        <location/>
         <source>Value</source>
         <translation>القيمة</translation>
     </message>
     <message>
         <location line="+12"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxForm.qml" line="+12"/>
+        <location/>
         <source>Account ID</source>
         <translation>معرف الحساب</translation>
     </message>
@@ -5390,13 +5310,13 @@
     <name>TaxTypeDelegate</name>
     <message>
         <location filename="../qml/pages/taxes/TaxTypeDelegate.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxTypeDelegate.qml" line="+18"/>
+        <location/>
         <source>Percentage</source>
         <translation>نسبة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxTypeDelegate.qml" line="+1"/>
+        <location/>
         <source>Fixed</source>
         <translation>ثابتة</translation>
     </message>
@@ -5433,7 +5353,7 @@
     <name>TaxesPage</name>
     <message>
         <location filename="../qml/pages/taxes/TaxesPage.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/taxes/TaxesPage.qml" line="+18"/>
+        <location/>
         <source>Taxes</source>
         <translation>الضرائب</translation>
     </message>
@@ -5462,25 +5382,25 @@
     <name>TypeDeleagate</name>
     <message>
         <location filename="../qml/pages/Accounting/TypeDeleagate.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/TypeDeleagate.qml" line="+18"/>
+        <location/>
         <source>Receivable</source>
         <translation>مدين</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/TypeDeleagate.qml" line="+1"/>
+        <location/>
         <source>Payable</source>
         <translation>دائن</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/TypeDeleagate.qml" line="+1"/>
+        <location/>
         <source>Liquidity</source>
         <translation>سيولة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/Accounting/TypeDeleagate.qml" line="+1"/>
+        <location/>
         <source>Other</source>
         <translation>اخرى</translation>
     </message>
@@ -5489,43 +5409,43 @@
     <name>UpdateDeliveryStatusDialog</name>
     <message>
         <location filename="../qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+42"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+42"/>
+        <location/>
         <source>Update Delivery Status</source>
         <translation>تحديث حالة التوصيل</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+8"/>
+        <location/>
         <source>Status</source>
         <translation>الحالة</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+4"/>
+        <location/>
         <source>Pending</source>
         <translation>في الانتظار</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+1"/>
+        <location/>
         <source>Processing</source>
         <translation>قيد المعالجة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+1"/>
+        <location/>
         <source>Delivered</source>
         <translation>واصل</translation>
     </message>
     <message>
         <location line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+15"/>
+        <location/>
         <source>Cancel</source>
         <translation>الغاء</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/orders/UpdateDeliveryStatusDialog.qml" line="+10"/>
+        <location/>
         <source>Update</source>
         <translation>تحديث</translation>
     </message>
@@ -5534,7 +5454,7 @@
     <name>UpdatesPage</name>
     <message>
         <location filename="../qml/pages/settings/UpdatesPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/settings/UpdatesPage.qml" line="+19"/>
+        <location/>
         <source>Updates Settings</source>
         <translation>إعدادات التحديث</translation>
     </message>
@@ -5543,55 +5463,55 @@
     <name>UsersForm</name>
     <message>
         <location filename="../qml/pages/users/UsersForm.qml" line="+22"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+22"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+11"/>
+        <location/>
         <source>First Name</source>
         <translation>الاسم الاول</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+9"/>
+        <location/>
         <source>Last Name</source>
         <translation>الاسم الاخير</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+6"/>
+        <location/>
         <source>Invalid Phone Number</source>
         <translation>رقم هاتف خاطئ</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+6"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+10"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+10"/>
+        <location/>
         <source>Password</source>
         <translation>كلمة المرور</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersForm.qml" line="+14"/>
+        <location/>
         <source>Role</source>
         <translation>الدور</translation>
     </message>
@@ -5634,37 +5554,37 @@
     <name>UsersPage</name>
     <message>
         <location filename="../qml/pages/users/UsersPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+15"/>
+        <location/>
         <source>Users</source>
         <translation>المستخدمين</translation>
     </message>
     <message>
         <location line="+25"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+25"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+3"/>
+        <location/>
         <source>Add User</source>
         <translation>إضافة مستخدم</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+4"/>
+        <location/>
         <source>Edit User</source>
         <translation>تعديل المستخدم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/users/UsersPage.qml" line="+9"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -5674,22 +5594,22 @@
     <message>
         <location filename="../models/vendorbillattributemodel.cpp" line="+5"/>
         <source>External Reference</source>
-        <translation type="unfinished">المرجع الخارجي</translation>
+        <translation>المرجع الخارجي</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Attribute</source>
-        <translation type="unfinished">الصفة</translation>
+        <translation>الصفة</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Value</source>
-        <translation type="unfinished">القيمة</translation>
+        <translation>القيمة</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Created At</source>
-        <translation type="unfinished">تاريخ الانشاء</translation>
+        <translation>تاريخ الانشاء</translation>
     </message>
 </context>
 <context>
@@ -5697,34 +5617,34 @@
     <message>
         <location filename="../models/vendorbilldetailsmodel.cpp" line="+9"/>
         <source>ID</source>
-        <translation type="unfinished">المعرف</translation>
+        <translation>المعرف</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Product</source>
-        <translation type="unfinished">المنتج</translation>
+        <translation>المنتج</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Unit Price</source>
-        <translation type="unfinished">سعر الوحدة</translation>
+        <translation>سعر الوحدة</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Quantity</source>
-        <translation type="unfinished">الكمية</translation>
+        <translation>الكمية</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Total</source>
-        <translation type="unfinished">المجموع</translation>
+        <translation>المجموع</translation>
     </message>
 </context>
 <context>
     <name>VendorBillDetailsPage</name>
     <message>
         <location filename="../qml/pages/vendors/VendorBillDetailsPage.qml" line="+19"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorBillDetailsPage.qml" line="+19"/>
+        <location/>
         <source>Bill Details</source>
         <translation>تفاصيل الفاتورة</translation>
     </message>
@@ -5749,9 +5669,9 @@
     <name>VendorBillsAttributesPage</name>
     <message>
         <location filename="../qml/pages/vendors/VendorBillsAttributesPage.qml" line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorBillsAttributesPage.qml" line="+21"/>
+        <location/>
         <source>Vendors Bills Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>صفات فواتير الموردين</translation>
     </message>
 </context>
 <context>
@@ -5798,31 +5718,31 @@
     </message>
     <message>
         <location filename="../qml/pages/vendors/VendorForm.qml" line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorForm.qml" line="+14"/>
+        <location/>
         <source>Vendor</source>
         <translation>المورد</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorForm.qml" line="+2"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorForm.qml" line="+9"/>
+        <location/>
         <source>Phone</source>
         <translation>الهاتف</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorForm.qml" line="+8"/>
+        <location/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorForm.qml" line="+9"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -5884,61 +5804,61 @@
     <name>VendorsBillsPage</name>
     <message>
         <location filename="../qml/pages/vendors/VendorsBillsPage.qml" line="+21"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+21"/>
+        <location/>
         <source>Vendors Bills</source>
         <translation>فواتير الموردين</translation>
     </message>
     <message>
         <location line="+57"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+57"/>
+        <location/>
         <source>Select</source>
         <translation>إختيار</translation>
     </message>
     <message>
         <location line="+20"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+20"/>
+        <location/>
         <source>Details</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+11"/>
+        <location/>
         <source>Pay</source>
         <translation>دفع</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+6"/>
+        <location/>
         <source>New Bill</source>
         <translation>فاتورة جديدة</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+1"/>
+        <location/>
         <source>New Custom Bill</source>
         <translation>فاتورة خاصة جديدة</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+2"/>
+        <location/>
         <source>Add Shein Order</source>
         <translation>إضافة طلبية شي إن</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+6"/>
+        <location/>
         <source>Add Shein Orders (Folder)</source>
         <translation>إضافة طلبات شي ان (مجلد)</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+7"/>
+        <location/>
         <source>Print Labels</source>
         <translation>طباعة الملصقات</translation>
     </message>
     <message>
         <location line="+64"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsBillsPage.qml" line="+64"/>
+        <location/>
         <source>Print Manifest</source>
         <translation>طباعة المنفيست</translation>
     </message>
@@ -5980,37 +5900,37 @@
     <name>VendorsPage</name>
     <message>
         <location filename="../qml/pages/vendors/VendorsPage.qml" line="+17"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+17"/>
+        <location/>
         <source>Vendors</source>
         <translation>الموردين</translation>
     </message>
     <message>
         <location line="+27"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+27"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+3"/>
+        <location/>
         <source>Add Vendor</source>
         <translation>إضافة مورد</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+5"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+4"/>
+        <location/>
         <source>Edit Vendor</source>
         <translation>تعديل المورد</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/vendors/VendorsPage.qml" line="+8"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -6019,19 +5939,19 @@
     <name>WareHouseForm</name>
     <message>
         <location filename="../qml/pages/warehouses/WareHouseForm.qml" line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WareHouseForm.qml" line="+14"/>
+        <location/>
         <source>Vendor</source>
         <translation>المورد</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WareHouseForm.qml" line="+2"/>
+        <location/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WareHouseForm.qml" line="+9"/>
+        <location/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -6040,29 +5960,27 @@
     <name>WarehousesPage</name>
     <message>
         <location filename="../qml/pages/warehouses/WarehousesPage.qml" line="+15"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WarehousesPage.qml" line="+15"/>
+        <location/>
         <source>Warehouses</source>
         <translation>المخازن</translation>
     </message>
     <message>
         <location line="+26"/>
         <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WarehousesPage.qml" line="+26"/>
-        <location line="+3"/>
+        <location/>
         <source>Add</source>
         <translation>إضافة</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+4"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WarehousesPage.qml" line="+5"/>
-        <location line="+4"/>
+        <location/>
         <source>Edit</source>
         <translation>تعديل</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/pages/warehouses/WarehousesPage.qml" line="+8"/>
+        <location/>
         <source>Delete</source>
         <translation>حذف</translation>
     </message>
@@ -6071,37 +5989,37 @@
     <name>main</name>
     <message>
         <location filename="../qml/main.qml" line="+18"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+18"/>
+        <location/>
         <source>POS</source>
         <translation>نقطة البيع</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+10"/>
+        <location/>
         <source>Test</source>
         <translation>تجريبي</translation>
     </message>
     <message>
         <location line="+102"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+102"/>
+        <location/>
         <source>Error</source>
         <translation>خطأ</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+5"/>
+        <location/>
         <source>Opps... an error occured, would you like to logout and try again?</source>
         <translation>عذراً...حصل خطأ ما, هل ترغب في تسجيل الخروج والمحاولة مجدداً؟</translation>
     </message>
     <message>
         <location line="+9"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+9"/>
+        <location/>
         <source>Logout</source>
         <translation>تسجيل الخروج</translation>
     </message>
     <message>
         <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/main.qml" line="+10"/>
+        <location/>
         <source>Retry</source>
         <translation>إعادة المحاولة</translation>
     </message>
@@ -6114,92 +6032,21 @@
 <context>
     <name>nav</name>
     <message>
-        <location filename="../../libs/CoreUI-QML/src/nav.js" line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+6"/>
         <location filename="../qml/nav.js" line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Dashboard</source>
         <translation>الرئيسية</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+10"/>
-        <source>Colors</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+7"/>
-        <source>Typography</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+8"/>
-        <source>Base</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+5"/>
-        <source>Accordion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+3"/>
-        <source>Breadcrumb</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+3"/>
-        <source>Cards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+8"/>
-        <location line="+5"/>
-        <source>Buttons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+7"/>
-        <source>Forms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+5"/>
-        <source>Form Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+3"/>
-        <source>Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/CoreUI/nav.js" line="+3"/>
-        <source>Multi Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/nav.js" line="+13"/>
+        <location line="+13"/>
         <location line="+88"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+13"/>
-        <location line="+88"/>
+        <location/>
         <source>POS</source>
         <translation>نقطة البيع</translation>
     </message>
     <message>
         <location line="-71"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="-71"/>
+        <location/>
         <source>Accounting</source>
         <translation>المحاسبة</translation>
     </message>
@@ -6218,92 +6065,79 @@
         <location line="+23"/>
         <location line="+7"/>
         <location line="+40"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="-22"/>
-        <location line="+23"/>
-        <location line="+26"/>
-        <location line="+31"/>
-        <location line="+43"/>
-        <location line="+8"/>
-        <location line="+7"/>
-        <location line="+7"/>
-        <location line="+20"/>
-        <location line="+24"/>
-        <location line="+7"/>
-        <location line="+23"/>
-        <location line="+7"/>
-        <location line="+40"/>
+        <location/>
         <source>MAIN</source>
         <translation>الرئيسية</translation>
     </message>
     <message>
         <location line="-267"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="-267"/>
+        <location/>
         <source>Sales</source>
         <translation>المبيعات</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+11"/>
+        <location/>
         <source>Online</source>
         <translation>الاونلاين</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>POS Sessions</source>
         <translation>جلسات نقاط البيع</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+13"/>
+        <location/>
         <source>Accounts</source>
         <translation>الحسابات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Journal Entries</source>
         <translation>القيود</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Journal Entries Items</source>
         <translation>تفاصيل القيود</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+8"/>
+        <location/>
         <source>Products</source>
         <translation>المنتجات</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Products List</source>
         <translation>قائمة المنتجات</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Mobile List</source>
         <translation>قائمة الهاتف</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Categories</source>
         <translation>الفئات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Attributes</source>
         <translation>الصفات</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Orders</source>
         <translation>الطلبات</translation>
     </message>
@@ -6313,217 +6147,217 @@
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>All Orders</source>
         <translation>جميع الطلبات</translation>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+14"/>
+        <location/>
         <source>Online Orders</source>
         <translation>طلبات الاونلاين</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Returns</source>
         <translation>الرواجع</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Drafts</source>
         <translation>المسودات</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+8"/>
+        <location/>
         <source>Taxes</source>
         <translation>الضرائب</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+8"/>
+        <location/>
         <source>Customers</source>
         <translation>الزبائن</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Locations</source>
         <translation>المواقع</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Delivery</source>
         <translation>التوصيل</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Drivers List</source>
         <translation>السائقين</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Shipments</source>
         <translation>الشحنات</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+8"/>
+        <location/>
         <source>Vendors</source>
         <translation>الموردين</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Vendors List</source>
         <translation>قائمة الموردين</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Bills</source>
         <translation>الفواتير</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Bills Attributes</source>
-        <translation type="unfinished"></translation>
+        <translation>صفات الفواتير</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Users</source>
         <translation>المستخدمين</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Warehouses</source>
         <translation>المخازن</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>List</source>
         <translation>عرض</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Stock Moves</source>
         <translation>الحركات المخزنية</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Stock Valuation</source>
         <translation>تقييم المخزون</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Permissions</source>
         <translation>الصلاحيات</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Reports</source>
         <translation>التقارير</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Stock</source>
         <translation>المخزون</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+6"/>
+        <location/>
         <source>Product Sales</source>
         <translation>مبيعات المنتجات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Orders Sales</source>
         <translation>مبيعات الطلبات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Monthly Finance</source>
-        <translation type="unfinished"></translation>
+        <translation>المالي الشهري</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Orders count</source>
-        <translation type="unfinished"></translation>
+        <translation>تعداد الطلبات</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Expenses</source>
-        <translation type="unfinished"></translation>
+        <translation>المصاريف</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+7"/>
+        <location/>
         <source>General Settings</source>
         <translation>الاعدادات العامة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Devices</source>
         <translation>الاجهزة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Identity Settings</source>
         <translation>إعدادات الكيان</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Receipt Settings</source>
         <translation>إعدادات الوصل</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Printer Settings</source>
         <translation>إعدادات الطابعة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>Barq Delivery</source>
         <translation>توصيل البرق</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>License</source>
         <translation>الرخصة</translation>
     </message>
     <message>
         <location line="+5"/>
-        <location filename="../../../build-pos-fe-base-Desktop_Qt_6_7_0-MinSizeRel/qml/PosFe/qml/nav.js" line="+5"/>
+        <location/>
         <source>About</source>
         <translation>عن التطبيق</translation>
     </message>
@@ -6539,8 +6373,8 @@
 <context>
     <name>receipt</name>
     <message>
-        <location filename="../receiptgenerator.cpp" line="-845"/>
-        <location line="+435"/>
+        <location filename="../receiptgenerator.cpp" line="-882"/>
+        <location line="+472"/>
         <source>No.</source>
         <translation>رقم الوصل</translation>
     </message>
@@ -6549,7 +6383,7 @@
         <translation type="vanished">رقم التوصيل</translation>
     </message>
     <message>
-        <location line="-430"/>
+        <location line="-467"/>
         <source>Carrier</source>
         <translation>الناقل</translation>
     </message>
@@ -6560,18 +6394,18 @@
     </message>
     <message>
         <location line="+5"/>
-        <location line="+427"/>
+        <location line="+464"/>
         <source>Date</source>
         <translation>التاريخ</translation>
     </message>
     <message>
-        <location line="-421"/>
-        <location line="+427"/>
+        <location line="-458"/>
+        <location line="+464"/>
         <source>Name</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location line="-422"/>
+        <location line="-459"/>
         <source>Address</source>
         <translation>العنوان</translation>
     </message>
@@ -6582,26 +6416,26 @@
     </message>
     <message>
         <location line="+6"/>
-        <location line="+421"/>
+        <location line="+458"/>
         <source>Notes</source>
         <translation>الملاحظات</translation>
     </message>
     <message>
-        <location line="-369"/>
-        <location line="+417"/>
+        <location line="-406"/>
+        <location line="+454"/>
         <source>Original Receipt</source>
         <translation>التفاصيل</translation>
     </message>
     <message>
-        <location line="-408"/>
+        <location line="-445"/>
         <location line="+10"/>
-        <location line="+408"/>
+        <location line="+445"/>
         <location line="+9"/>
         <source>Item</source>
         <translation>الاسم</translation>
     </message>
     <message>
-        <location line="-426"/>
+        <location line="-463"/>
         <location line="+10"/>
         <source>Price</source>
         <translation>السعر</translation>
@@ -6609,18 +6443,23 @@
     <message>
         <location line="-9"/>
         <location line="+10"/>
-        <location line="+405"/>
+        <location line="+442"/>
         <location line="+9"/>
         <source>Qty</source>
         <translation>العدد</translation>
+    </message>
+    <message>
+        <location line="-257"/>
+        <source>Scan Me</source>
+        <translation>امسح الرمز</translation>
     </message>
     <message>
         <source>opening the bag and measuring is not allowed</source>
         <translation type="vanished">يمنع الفتح والقياس</translation>
     </message>
     <message>
-        <location line="-422"/>
-        <location line="+416"/>
+        <location line="-202"/>
+        <location line="+453"/>
         <source>Disc.</source>
         <translation>التخفيض</translation>
     </message>
@@ -6629,10 +6468,10 @@
         <translation type="vanished">الحاصل</translation>
     </message>
     <message>
-        <location line="-414"/>
+        <location line="-451"/>
         <location line="+10"/>
         <location line="+96"/>
-        <location line="+310"/>
+        <location line="+347"/>
         <location line="+6"/>
         <location line="+93"/>
         <source>Total</source>
@@ -6647,7 +6486,7 @@
         <translation type="vanished">التوصيل</translation>
     </message>
     <message>
-        <location line="-404"/>
+        <location line="-441"/>
         <source>Total + Delivery</source>
         <translation>السعر مع التوصيل</translation>
     </message>

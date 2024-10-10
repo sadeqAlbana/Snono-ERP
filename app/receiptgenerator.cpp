@@ -571,7 +571,7 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeAttribute("width","100%");
     stream.writeAttribute("class","receipt bottom-note");
 
-    stream.writeCharacters(tr("Scan Me"));
+    stream.writeCharacters(translator.translate("receipt","Scan Me"));
     stream.writeEndElement(); //th
     stream.writeEndElement(); //tr
 
