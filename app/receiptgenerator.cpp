@@ -354,10 +354,10 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //table
 
 
-    stream.writeStartElement(linePrinter? "h6" : "h3");
-    stream.writeAttribute("align","center");
-    stream.writeCharacters(translator.translate("receipt","Original Receipt"));
-    stream.writeEndElement(); //h2
+    // stream.writeStartElement(linePrinter? "h6" : "h3");
+    // stream.writeAttribute("align","center");
+    // stream.writeCharacters(translator.translate("receipt","Original Receipt"));
+    // stream.writeEndElement(); //h2
 
 
 
