@@ -36,7 +36,7 @@ AppPage {
         IconComboBox {
             id: receiptPaperSizeCB
 
-            model: ['A4', 'A5', 'A6']
+            model: ['Default','A4', 'A5', 'A6','100x150mm']
             leftIcon.name: "cil-page"
 
             Component.onCompleted: currentIndex = indexOfValue(

@@ -242,6 +242,11 @@ QPageSize AppSettings::pageSizeFromString(const QString &pageSize)
 
     }
 
+    if(pageSize=="100x150mm"){
+        return QPageSize(QSizeF(100,150),QPageSize::Millimeter,"100x150mm");
+
+    }
+
     return QPageSize::Custom;
 }
 

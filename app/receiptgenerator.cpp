@@ -594,11 +594,21 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //html
     stream.writeEndDocument(); //doc
 
+    QPageSize pageSize;
+    QPrinter printer;
+    printer.setPrinterName(AppSettings::instance()->receiptPrinter());
+    QString ps=AppSettings::instance()->receiptPaperSize();
+    if(ps=="Default"){
+        pageSize=printer.pageLayout().pageSize();
+        qDebug()<<"page size: " <<pageSize;
 
-    QPageSize pageSize=QPageSize(AppSettings::pageSizeFromString(AppSettings::instance()->receiptPaperSize()));
-    //    pageSize=pageSize*2;
 
-    doc.setPageSize(pageSize.sizePoints());
+    }else{
+        pageSize=QPageSize(AppSettings::pageSizeFromString(ps));
+        doc.setPageSize(pageSize.sizePoints());
+    }
+
+
 
 
 
@@ -621,8 +631,7 @@ END:VCARD)").arg(customer).arg(phone);
     doc.print(&pdfPrinter);
 
     if(print){
-        QPrinter printer;
-        printer.setPrinterName(AppSettings::instance()->receiptPrinter());
+
 
         printer.setPageMargins(QMarginsF(5,5,5,5)); // is it right?
 
