@@ -135,7 +135,7 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
     QString css=file.readAll();
     file.close();
-    QString bodyFontSize=linePrinter? "6px" : "8px";
+    QString bodyFontSize=linePrinter? "6px" : "9px";
     QString footerFontSize=linePrinter? "8px" : "11px";
 
     QString bodyMargin = linePrinter? "10" : 0;
@@ -229,8 +229,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","60");
-        stream.writeAttribute("height","60");
+        stream.writeAttribute("width","45");
+        stream.writeAttribute("height","45");
         stream.writeAttribute("src", "qr_code");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th
@@ -241,7 +241,7 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeAttribute("width",QString::number(logoWidth)+"%");
 
     stream.writeStartElement("img");
-    int logoSize=linePrinter? 50 : 60;
+    int logoSize=linePrinter? 40 : 45;
     stream.writeAttribute("width",QString::number(logoSize));
     stream.writeAttribute("height",QString::number(logoSize));
     stream.writeAttribute("src", "logo_image");
@@ -253,8 +253,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","100");
-        stream.writeAttribute("height","50");
+        stream.writeAttribute("width","80");
+        stream.writeAttribute("height","40");
         stream.writeAttribute("src", "barcode_img");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th
@@ -473,8 +473,8 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //table
 
 
-    stream.writeEmptyElement("br");
-    stream.writeEmptyElement("br");
+    // stream.writeEmptyElement("br");
+    // stream.writeEmptyElement("br");
 
     QList<QJsonObject> totals{
         {{"label",translator.translate("receipt","Total")},{"width","75%"}},
@@ -525,9 +525,9 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //table
 
 
-    stream.writeStartElement("section");
-    stream.writeEmptyElement("br");
-    stream.writeEndElement(); //section
+    // stream.writeStartElement("section");
+    // stream.writeEmptyElement("br");
+    // stream.writeEndElement(); //section
 
     stream.writeStartElement("footer");
     // if(linePrinter){
@@ -551,40 +551,43 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeCharacters(AppSettings::instance()->receiptPhoneNumber());
     stream.writeEndElement(); //p
 
+    if(!addressQrData.isEmpty()){
+        stream.writeStartElement("table");
+        stream.writeAttribute("width","100%");
+        stream.writeStartElement("tr");
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","100%");
+        stream.writeAttribute("style","vertical-align: middle;");
+        stream.writeStartElement("img");
+        stream.writeAttribute("width","45");
+        stream.writeAttribute("height","45");
+        stream.writeAttribute("src", "address_qr");
+        stream.writeEndElement(); //img
+        stream.writeEndElement(); //th
+        stream.writeEndElement(); //tr
 
-    stream.writeStartElement("table");
-    stream.writeAttribute("width","100%");
-    stream.writeStartElement("tr");
-    stream.writeStartElement("th");
-    stream.writeAttribute("width","100%");
-    stream.writeAttribute("style","vertical-align: middle;");
-    stream.writeStartElement("img");
-    stream.writeAttribute("width","60");
-    stream.writeAttribute("height","60");
-    stream.writeAttribute("src", "address_qr");
-    stream.writeEndElement(); //img
-    stream.writeEndElement(); //th
-    stream.writeEndElement(); //tr
+        stream.writeStartElement("tr");
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","100%");
+        stream.writeAttribute("class","receipt bottom-note");
 
-    stream.writeStartElement("tr");
-    stream.writeStartElement("th");
-    stream.writeAttribute("width","100%");
-    stream.writeAttribute("class","receipt bottom-note");
+        stream.writeCharacters(translator.translate("receipt","Scan Me"));
+        stream.writeEndElement(); //th
+        stream.writeEndElement(); //tr
 
-    stream.writeCharacters(translator.translate("receipt","Scan Me"));
-    stream.writeEndElement(); //th
-    stream.writeEndElement(); //tr
+        stream.writeStartElement("tr");
+        stream.writeStartElement("th");
+        stream.writeAttribute("width","100%");
+        stream.writeAttribute("class","receipt bottom-note");
 
-    stream.writeStartElement("tr");
-    stream.writeStartElement("th");
-    stream.writeAttribute("width","100%");
-    stream.writeAttribute("class","receipt bottom-note");
+        stream.writeCharacters(AppSettings::instance()->receiptAddressLine());
+        stream.writeEndElement(); //th
+        stream.writeEndElement(); //tr
 
-    stream.writeCharacters(AppSettings::instance()->receiptAddressLine());
-    stream.writeEndElement(); //th
-    stream.writeEndElement(); //tr
+        stream.writeEndElement(); //table
+    }
 
-    stream.writeEndElement(); //table
+
 
 
 
@@ -600,7 +603,6 @@ END:VCARD)").arg(customer).arg(phone);
     QString ps=AppSettings::instance()->receiptPaperSize();
     if(ps=="Default"){
         pageSize=printer.pageLayout().pageSize();
-        qDebug()<<"page size: " <<pageSize;
 
 
     }else{
@@ -608,6 +610,7 @@ END:VCARD)").arg(customer).arg(phone);
         doc.setPageSize(pageSize.sizePoints());
     }
 
+    qDebug()<<"page size: " <<pageSize;
 
 
 
