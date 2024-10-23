@@ -365,25 +365,25 @@ END:VCARD)").arg(customer).arg(phone);
 
     if(haveDiscount){
         rtable= {
-                  QJsonObject{{"key","row"},{"label",""},{"width","5%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","35%"}},
-                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+                  QJsonObject{{"key","row"},{"label",""},{"width","8%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
+                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
 
-                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","10%"}},
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }else{
         rtable=  {
-                  QJsonObject{{"key","row"},{"label",""},{"width","5%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
-                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+                  QJsonObject{{"key","row"},{"label",""},{"width","8%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
+                  QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
 
                   //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }
 
@@ -404,7 +404,10 @@ END:VCARD)").arg(customer).arg(phone);
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
         stream.writeAttribute("class","items_content");
-        // stream.writeAttribute("width",column["width"].toString());
+
+        if(column.contains("width")){
+            stream.writeAttribute("width",column["width"].toString());
+        }
         stream.writeCharacters(column["label"].toString());
         stream.writeEndElement(); //th
     }
