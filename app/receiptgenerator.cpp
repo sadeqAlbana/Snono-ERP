@@ -265,20 +265,20 @@ END:VCARD)").arg(customer).arg(phone);
     stream.writeEndElement(); //table
 
 
-    QList<QJsonObject> hNo{
-        {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
-    };
+    // QList<QJsonObject> hNo{
+    //     {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+    //     {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
+    // };
 
     QList<QJsonObject> hCarrier{
         {{"label",translator.translate("receipt","Carrier")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",carrierName},{"width","75%",},{"class","boxed"},{"tag","td"}}
+        {{"label",QString("%1 - %2").arg(carrierName,shipmentId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
-    QList<QJsonObject> hDeliveryId{
-        {{"label",translator.translate("receipt","Shipment ID")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
-        {{"label",shipmentId},{"width","75%",},{"class","boxed"},{"tag","td"}}
-    };
+    // QList<QJsonObject> hDeliveryId{
+    //     {{"label",translator.translate("receipt","Shipment ID")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+    //     {{"label",shipmentId},{"width","75%",},{"class","boxed"},{"tag","td"}}
+    // };
 
     QList<QJsonObject> hDate{
         {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
@@ -309,9 +309,9 @@ END:VCARD)").arg(customer).arg(phone);
     };
 
     if(rtl){
-        std::reverse(hNo.begin(),hNo.end());
+        // std::reverse(hNo.begin(),hNo.end());
         std::reverse(hCarrier.begin(),hCarrier.end());
-        std::reverse(hDeliveryId.begin(),hDeliveryId.end());
+        // std::reverse(hDeliveryId.begin(),hDeliveryId.end());
         std::reverse(hDate.begin(),hDate.end());
         std::reverse(hName.begin(),hName.end());
         std::reverse(hAddress.begin(),hAddress.end());
@@ -320,7 +320,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     }
 
-    QList<QList<QJsonObject>> header{hNo,hCarrier,hDeliveryId,hDate,hName,hAddress,hPhone,hNotes};
+    QList<QList<QJsonObject>> header{hCarrier,hDate,hName,hAddress,hPhone,hNotes};
     stream.writeStartElement("table");
     stream.writeAttribute("class","boxed center");
 
@@ -391,7 +391,7 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     stream.writeStartElement("table");
-    stream.writeAttribute("style", "width: 100%;");
+    stream.writeAttribute("style", "width: 100%; text-align: center;");
     stream.writeAttribute("class", "newItems");
 
     stream.writeStartElement("thead");
@@ -413,6 +413,8 @@ END:VCARD)").arg(customer).arg(phone);
 
     for(int i=0; i<items.size(); i++){
         stream.writeStartElement("tr");
+        stream.writeAttribute("style","align: center;");
+
         QJsonObject item=items.at(i).toObject();
         QString description=item["products"].toObject()["name"].toString();
         QString unitPrice=Currency::formatString(item["unit_price"].toDouble());

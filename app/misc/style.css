@@ -28,17 +28,12 @@
 
         header {
             width: 100%;
-            text-align: center;
-            align-content: center;
-            vertical-align: middle;
+            align: center;
         }
 
-
-
-
-
-        .items th {
-            text-align: left;
+        .items th tr{
+            align: center;
+            valign: middle;
 
         }
 
@@ -57,27 +52,13 @@
 
         }
 
-        .collapse{
-        border-collapse: collapse;
-        }
 
         .items td {
             text-align: left;
             vertical-align: bottom;
         }
 
-        .dashed {
-            border-top: 1px dashed black !important;
-            border-bottom: 1px dashed black !important;
-        }
 
-        .dashed-bottom {
-            border-bottom: 1px dashed black !important;
-        }
-
-        .line {
-            border-top: 1px solid black !important;
-        }
 
 .boxed  {
     border: 1px solid black;
