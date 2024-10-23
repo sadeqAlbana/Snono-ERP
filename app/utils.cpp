@@ -36,6 +36,18 @@ QString Currency::formatString(const QVariant &value)
     return QString();
 }
 
+QString Currency::formatNumber(const QVariant &value)
+{
+    QString text;
+    if(value.userType()==QMetaType::Float || value.userType()==QVariant::Double || value.userType()==QVariant::Int)
+    {
+        text= QLocale(QLocale::English,QLocale::ArabicScript,QLocale::Iraq).toString(value.toReal(),'f',0);
+        //text= QLocale(QLocale::Arabic,QLocale::Script::ArabicScript,QLocale::Iraq).toCurrencyString(value.toDouble());
+
+        return text;
+    }
+    return QString();
+}
 std::string QrCode::toSvgString(const qrcodegen::QrCode &qr, int border) {
     if (border < 0)
         throw std::domain_error("Border must be non-negative");
@@ -320,3 +332,4 @@ QStringList Json::stringListFromVariantList(const QVariantList &list)
 
     return stringList;
 }
+

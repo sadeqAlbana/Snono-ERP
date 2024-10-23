@@ -22,40 +22,15 @@
 
 
 
-        table {
-            width: 100%;
-        }
+
 
         header {
             width: 100%;
             align: center;
         }
 
-        .items th tr{
-            align: center;
-            valign: middle;
-
-        }
-
-
-
         .receipt {
         font-size: {{body_font_size}};
-        }
-
-        .items .heading {
-            text-transform: uppercase;
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-            vertical-align: middle;
-            border-collapse: collapse;
-
-        }
-
-
-        .items td {
-            text-align: left;
-            vertical-align: bottom;
         }
 
 
@@ -63,30 +38,29 @@
 .boxed  {
     border: 1px solid black;
     border-collapse: collapse;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
 
-    padding-top: 1px;
-    padding-bottom: 1px;
     text-align: left;
 }
 
-.newItems  {
-    border-top: 1px solid black !important;
-    border-bottom: 1px solid black !important;
+
+
+.items_content{
+    border: 1px solid black;
     border-collapse: collapse;
     padding-left: 5px;
     padding-right: 5px;
 
-    padding-top: 1px;
-    padding-bottom: 1px;
-    text-align: left;
+    text-align: center;
+
+}
+.align_center{
+text-align: center;
+
 }
 
-.center-align {
-    text-align: center;
-}
-.left{
+.left_align{ /*used for totals*/
     text-align: left;
 }
 

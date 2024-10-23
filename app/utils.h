@@ -7,6 +7,8 @@
 namespace Currency
 {
     QString formatString(const QVariant &value);
+    QString formatNumber(const QVariant &value);
+
 };
 
 namespace QrCode{

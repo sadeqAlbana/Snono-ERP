@@ -266,45 +266,45 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     // QList<QJsonObject> hNo{
-    //     {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+    //     {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed"},{"tag","th"}},
     //     {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     // };
 
     QList<QJsonObject> hCarrier{
-        {{"label",translator.translate("receipt","Carrier")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Carrier")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",QString("%1 - %2").arg(carrierName,shipmentId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
     // QList<QJsonObject> hDeliveryId{
-    //     {{"label",translator.translate("receipt","Shipment ID")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+    //     {{"label",translator.translate("receipt","Shipment ID")},{"width","25%"},{"class","boxed"},{"tag","th"}},
     //     {{"label",shipmentId},{"width","75%",},{"class","boxed"},{"tag","td"}}
     // };
 
     QList<QJsonObject> hDate{
-        {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",dt.date().toString(Qt::ISODate)},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
     QList<QJsonObject> hName{
-        {{"label",translator.translate("receipt","Name")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Name")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",customer},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
     QList<QJsonObject> hAddress{
-        {{"label",translator.translate("receipt","Address")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Address")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",addressStr},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
     QList<QJsonObject> hPhone{
-        {{"label",translator.translate("receipt","Phone")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Phone")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",phone},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
     QList<QJsonObject> hNotes{
-        {{"label",translator.translate("receipt","Notes")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Notes")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",note},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
@@ -322,7 +322,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     QList<QList<QJsonObject>> header{hCarrier,hDate,hName,hAddress,hPhone,hNotes};
     stream.writeStartElement("table");
-    stream.writeAttribute("class","boxed center");
+    stream.writeAttribute("class","boxed");
 
     stream.writeAttribute("style", "width: 100%;");
     stream.writeStartElement("tbody");
@@ -365,19 +365,21 @@ END:VCARD)").arg(customer).arg(phone);
 
     if(haveDiscount){
         rtable= {
+                  QJsonObject{{"key","row"},{"label",""},{"width","5%"}},
                   QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","35%"}},
                   QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
                   QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
 
-                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","10%"}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
                   QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","20%"}},
                   };
     }else{
         rtable=  {
+                  QJsonObject{{"key","row"},{"label",""},{"width","5%"}},
                   QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","40%"}},
                   QJsonObject{{"key","unitPrice"},{"label",translator.translate("receipt","Price")},{"width","20%"}},
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
 
                   //                QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
@@ -391,16 +393,18 @@ END:VCARD)").arg(customer).arg(phone);
 
 
     stream.writeStartElement("table");
+    stream.writeAttribute("width","100%");
     stream.writeAttribute("style", "width: 100%; text-align: center;");
-    stream.writeAttribute("class", "newItems");
+    stream.writeAttribute("class", "items_content");
 
     stream.writeStartElement("thead");
     stream.writeStartElement("tr");
+
     for(int i=0; i<rtable.count(); i++){
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","newItems");
-        stream.writeAttribute("width",column["width"].toString());
+        stream.writeAttribute("class","items_content");
+        // stream.writeAttribute("width",column["width"].toString());
         stream.writeCharacters(column["label"].toString());
         stream.writeEndElement(); //th
     }
@@ -413,20 +417,20 @@ END:VCARD)").arg(customer).arg(phone);
 
     for(int i=0; i<items.size(); i++){
         stream.writeStartElement("tr");
-        stream.writeAttribute("style","align: center;");
 
         QJsonObject item=items.at(i).toObject();
         QString description=item["products"].toObject()["name"].toString();
-        QString unitPrice=Currency::formatString(item["unit_price"].toDouble());
+        QString unitPrice=Currency::formatNumber(item["unit_price"].toDouble());
         QString qty=QString::number(item["qty"].toDouble());
         QString discount=QString::number(item["discount"].toDouble())+"%";
-        QString subtotal=Currency::formatString(item["subtotal"].toDouble());
-        QString total=Currency::formatString(item["total"].toDouble());
+        // QString subtotal=Currency::formatNumber(item["subtotal"].toDouble());
+        QString total=Currency::formatNumber(item["total"].toDouble());
 
         QJsonObject tableRow;
 
         if(haveDiscount){
-            tableRow={{"description",description},
+            tableRow={{"row",QString::number(i+1)},
+                        {"description",description},
                         {"unitPrice",unitPrice},
                         {"qty",qty},
                         {"discount",discount},
@@ -434,7 +438,8 @@ END:VCARD)").arg(customer).arg(phone);
                         {"total",total}};
 
         }else{
-            tableRow={{"description",description},
+            tableRow={{"row",QString::number(i+1)},
+                        {"description",description},
                         {"unitPrice",unitPrice},
                         {"qty",qty},
                         //{"discount",discount},
@@ -444,12 +449,13 @@ END:VCARD)").arg(customer).arg(phone);
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
             stream.writeStartElement("td");
+            stream.writeAttribute("class","items_content");
+
             if(column["key"].toString()=="qty"){
-                if(tableRow[column["key"].toString()].toString().toInt()>1){
+                if(tableRow[column["key"].toString()].toString().toInt()>1){// bold if larger than 1
                     stream.writeStartElement("b");
                     stream.writeCharacters(tableRow[column["key"].toString()].toString());
                     stream.writeEndElement();
-
                 }
                 else{
                     stream.writeCharacters(tableRow[column["key"].toString()].toString());
@@ -500,7 +506,7 @@ END:VCARD)").arg(customer).arg(phone);
     for(int i=0;i<totals.count(); i++){
         QJsonObject item=totals.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","left receipt");
+        stream.writeAttribute("class","left_align receipt");
         if(item.contains("width")){
             stream.writeAttribute("width",item["width"].toString());
         }
@@ -514,7 +520,7 @@ END:VCARD)").arg(customer).arg(phone);
     for(int i=0;i<totalsWidthDelivery.count(); i++){
         QJsonObject item=totalsWidthDelivery.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","left receipt");
+        stream.writeAttribute("class","left_align receipt");
         if(item.contains("width")){
             stream.writeAttribute("width",item["width"].toString());
         }
@@ -752,20 +758,20 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
 
     QList<QJsonObject> hNo{
-        {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","No.")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",QString::number(orderId)},{"width","75%",},{"class","boxed"},{"tag","td"}}
     };
 
 
 
     QList<QJsonObject> hDate{
-        {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Date")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",dt.toString("hh:mm yyyy-MM-dd")},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
 
     QList<QJsonObject> hName{
-        {{"label",translator.translate("receipt","Name")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Name")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",customer},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
@@ -776,7 +782,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
 
     QList<QJsonObject> hNotes{
-        {{"label",translator.translate("receipt","Notes")},{"width","25%"},{"class","boxed center-align"},{"tag","th"}},
+        {{"label",translator.translate("receipt","Notes")},{"width","25%"},{"class","boxed"},{"tag","th"}},
         {{"label",note},{"width","75%"},{"class","boxed"},{"tag","td"}}
     };
 
