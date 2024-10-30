@@ -135,7 +135,7 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
     qDebug()<<"file open: " <<file.open(QIODevice::ReadOnly);
     QString css=file.readAll();
     file.close();
-    QString bodyFontSize=linePrinter? "6px" : "9px";
+    QString bodyFontSize=linePrinter? "6px" : "10px";
     QString footerFontSize=linePrinter? "8px" : "11px";
 
     QString bodyMargin = linePrinter? "10" : 0;
