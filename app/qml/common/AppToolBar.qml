@@ -113,7 +113,7 @@ CToolBar {
             font.pixelSize: 18
             placeholderText: qsTr("Search...")
             rightIcon.name: "cil-search"
-            onEntered: control.search(_search.text)
+            onEntered: () => {control.search(_search.text)}
             Layout.fillWidth: window.mobileLayout
         }//search
     }// layout end
