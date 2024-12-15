@@ -12,23 +12,20 @@ import CoreUI.Views
 import Qt.labs.qmlmodels
 import JsonModels
 
-Card {
-    id: page
-    property alias initialValues: general.initialValues
+CTabbedFormView {
+    id: formView
     title: qsTr("Product Form")
-    property var keyValue: null
-    property bool readOnly: false //useless for now, used to avoid syntax error
-    CTabView {
-        id: tabView
-        anchors.fill: parent
-        CFormView {
+    padding: 10
+    header.visible: false
+    url: "/product"
+    CPage {
+        title: qsTr("General")
+        GridLayout {
+            anchors.fill: parent
             id: general
-            title: qsTr("General")
-            padding: 10
+            columns: 2
             rowSpacing: 30
-            header.visible: false
-            keyValue: page.keyValue
-            url: "/product"
+
             CLabel {
                 text: qsTr("Name")
             }
@@ -64,7 +61,6 @@ Card {
                 Layout.fillWidth: true
                 editable: true
                 to: 100000000
-
             }
             CLabel {
                 text: qsTr("Cost")
@@ -75,51 +71,65 @@ Card {
                 Layout.fillWidth: true
                 editable: true
                 to: 100000000
-
             }
 
-            CLabel{
+            CLabel {
                 text: qsTr("Type")
             }
 
-            IconComboBox{
+            IconComboBox {
                 id: typeCB
                 objectName: "type"
                 enabled: !keyValue
                 Layout.fillWidth: true
                 textRole: "text"
                 valueRole: "value"
-                model:ListModel {
-                    ListElement { text: qsTr("Storable Product");   value: 1;}
-                    ListElement { text: qsTr("Consumable Product"); value: 2;}
-                    ListElement { text: qsTr("Service Product");    value: 3;}
+                model: ListModel {
+                    ListElement {
+                        text: qsTr("Storable Product")
+                        value: 1
+                    }
+                    ListElement {
+                        text: qsTr("Consumable Product")
+                        value: 2
+                    }
+                    ListElement {
+                        text: qsTr("Service Product")
+                        value: 3
+                    }
                 }
             }
 
-            CLabel{
+            CLabel {
                 text: qsTr("Costing Method")
-                visible: typeCB.currentValue===1
+                visible: typeCB.currentValue === 1
             }
 
-            IconComboBox{
+            IconComboBox {
                 objectName: "costing_method"
                 enabled: !keyValue
                 Layout.fillWidth: true
                 textRole: "text"
                 valueRole: "value"
-                visible: typeCB.currentValue===1
+                visible: typeCB.currentValue === 1
 
-                model:ListModel {
-                    ListElement { text: qsTr("FIFO");    value: "FIFO";}
-                    ListElement { text: qsTr("AVCO");    value: "AVCO";}
+                model: ListModel {
+                    ListElement {
+                        text: qsTr("FIFO")
+                        value: "FIFO"
+                    }
+                    ListElement {
+                        text: qsTr("AVCO")
+                        value: "AVCO"
+                    }
                 }
             }
 
-            CLabel{
+            CLabel {
                 text: qsTr("Category")
             }
 
-            CFilterComboBox{
+            CFilterComboBox {
                 Layout.fillWidth: true
                 objectName: "category_id"
                 textRole: "name"
@@ -127,171 +137,153 @@ Card {
                 dataUrl: "/categories"
             } //end categoryCB
 
-
-            CLabel{
+            CLabel {
                 text: qsTr("Taxes")
             }
 
-            CCheckableComboBox{
+            CCheckableComboBox {
                 Layout.fillWidth: true
                 //           Layout.maximumWidth: parent.width/2
-                model: TaxesCheckableModel{
-                    id: taxesModel;
+                model: TaxesCheckableModel {
+                    id: taxesModel
                 }
-                textRole: "name";
+                textRole: "name"
                 valueRole: "id"
-                displayText: taxesModel.selectedItems==="" ? qsTr("select Taxes...") : taxesModel.selectedItems;
-
+                displayText: taxesModel.selectedItems
+                             === "" ? qsTr("select Taxes...") : taxesModel.selectedItems
             }
 
-
-
-            CCheckBox{
+            CCheckBox {
                 id: haveVariants
                 text: qsTr("Have Variants")
                 Layout.columnSpan: 2
                 objectName: "have_variants"
-                checked: initialValues?.parent_id===0
+                checked: initialValues?.parent_id === 0
             }
 
-
-            CLabel{
+            CLabel {
                 text: qsTr("Parent Product")
             }
 
-            CFilterComboBox{
+            CFilterComboBox {
                 id: cb
                 enabled: !haveVariants.checked
                 Layout.fillWidth: true
                 objectName: "parent_id"
-                filter: {"parent_id":null}
+                filter: {
+                    "parent_id": null
+                }
                 dataUrl: "/products/list"
-                valueRole: "id";
-                textRole: "name";
-                defaultEntry: {"id": -1, "name": qsTr("None")}
+                valueRole: "id"
+                textRole: "name"
+                defaultEntry: {
+                    "id": -1,
+                    "name": qsTr("None")
+                }
             }
+        } //grid
+    } //general
 
-        } //General
+    CPage {
+        title: qsTr("Attributes")
 
-        JsonModel {
-            id: attributesModel
-            records: general.initialValues?.attributes?? []
+        ColumnLayout {
+            anchors.fill: parent
+            CTableView {
+                id: tableView
+                objectName: "attributes"
 
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.alignment: Qt.AlignTop
 
-            columnList: [
+                selectionBehavior: TableView.SelectCells
 
-                JsonModelColumn{ displayName: qsTr("Attribute");key: "attribute_id";},
-                JsonModelColumn{ displayName: qsTr("Value");key: "value";}
-//                JsonModelColumn{ displayName: qsTr("Type");key: "type";parentKey: "attributes_attribute";}
-//                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
+                model: ProductAttributesProxyModel {
 
-
-            ]
-        }
-
-        Card {
-            title: qsTr("Attributes")
-
-            header.visible: false
-
-            ColumnLayout {
-                anchors.fill: parent
-                CTableView {
-                    id: tableView
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.alignment: Qt.AlignTop
-
-                    selectionBehavior: TableView.SelectCells
-
-                    model: ProductAttributesProxyModel {
-
-                        sourceModel: attributesModel
-                    }
-
-                    reuseItems: false
-
-                    selectionModel: ItemSelectionModel {}
-
-                    alternatingRows: true
-                    animate: true
-
-                    delegate: DelegateChooser {
-                        role: "delegateType"
-                        DelegateChoice {
-                            roleValue: "text"
-
-                            delegate: CTableViewDelegate {}
-                        }
-                        DelegateChoice {
-                            roleValue: "action"
-                            delegate: ActionsDelegate {
-
-                                CButton {
-                                    text: "x"
-                                    palette: BrandDanger {}
-
-                                    Layout.alignment: Qt.AlignCenter
-                                    onClicked: attributesModel.removeRecord(row)
-                                }
-                            }
-                        }
-
-                        DelegateChoice {
-                            roleValue: "combo"
-                            delegate: CTableViewDelegate {
-                                id: del
-                                TableView.editDelegate: CComboBox{
-                                    width: parent.width
-                                    height: parent.height
-                                    TableView.onCommit: {
-                                        edit = currentText
-                                    }
-                                    model:["text","image"]
-                                    Component.onCompleted: {
-                                        console.log("iov:  " + indexOfValue(edit))
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                }//TableView
-
-                RowLayout{
-                    CButton{
-                        text: "+"
-                        palette: BrandInfo{}
-                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                        onClicked: attributesModel.appendRecord(attributesModel.record)
-                    }
-                    CButton{
-                        text: qsTr("Save")
-                        palette: BrandSuccess{}
-                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-
-                        onClicked: Api.
-                        setProductAttributes(general.initialValues.id,
-                                                            attributesModel.toJsonArray()).subscribe(function(res){
-                            console.log(JSON.stringify(res.json()))
-                            if(res.json('status')===200){
-                                Router.back();
-                            }
-                        })
-
-
-                    }
-
-                    CButton{
-                        text: qsTr("Reset")
-                        palette: BrandDanger{}
-                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                    }
-
+                    sourceModel: attributesModel
                 }
 
-//                VerticalSpacer{}
-            }
+                JsonModel {
+                    id: attributesModel
+                    columnList: [
+
+                        JsonModelColumn {
+                            displayName: qsTr("Attribute")
+                            key: "attribute_id"
+                        },
+                        JsonModelColumn {
+                            displayName: qsTr("Value")
+                            key: "value"
+                        }
+                        //                JsonModelColumn{ displayName: qsTr("Type");key: "type";parentKey: "attributes_attribute";}
+                        //                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
+                    ]
+                }
+
+                reuseItems: false
+
+                selectionModel: ItemSelectionModel {}
+
+                alternatingRows: true
+                animate: true
+
+                delegate: DelegateChooser {
+                    role: "delegateType"
+                    DelegateChoice {
+                        roleValue: "text"
+
+                        delegate: CTableViewDelegate {}
+                    }
+                    DelegateChoice {
+                        roleValue: "action"
+                        delegate: ActionsDelegate {
+
+                            CButton {
+                                text: "x"
+                                palette: BrandDanger {}
+
+                                Layout.alignment: Qt.AlignCenter
+                                onClicked: attributesModel.removeRecord(row)
+                            }
+                        }
+                    }
+
+                    DelegateChoice {
+                        roleValue: "combo"
+                        delegate: CTableViewDelegate {
+                            id: del
+                            TableView.editDelegate: CComboBox {
+                                width: parent.width
+                                height: parent.height
+                                TableView.onCommit: {
+                                    edit = currentText
+                                }
+                                model: ["text", "image"]
+                                Component.onCompleted: {
+                                    console.log("iov:  " + indexOfValue(edit))
+                                }
+                            }
+                        }
+                    }
+                }
+            } //TableView
+            RowLayout{
+                               CButton{
+                                   text: "+"
+                                   palette: BrandInfo{}
+                                   Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                                   onClicked: attributesModel.appendRecord(attributesModel.record)
+                               }
+
+                               CButton{
+                                   text: qsTr("Reset")
+                                   palette: BrandDanger{}
+                                   Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                               }
+
+                           }
+
         }
-    } //tabview
-}
+    }
+} //tabview

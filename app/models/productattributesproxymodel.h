@@ -4,7 +4,8 @@
 
 #include <QAbstractProxyModel>
 #include <QQmlEngine>
-
+#include <jsonmodel.h>
+#include <qmljsonmodel.h>
 //https://stackoverflow.com/questions/17562181/qt-signal-forwarding-inheriting-qabstractproxymodel
 
 class ProductAttributesProxyModel : public QAbstractProxyModel
@@ -37,6 +38,7 @@ public:
                  int role = Qt::EditRole) override;
 
     Qt::ItemFlags flags(const QModelIndex& index) const override;
+    Q_INVOKABLE QJsonArray toJsonArray() const ;
 
 private:
 

@@ -253,6 +253,7 @@ set(TARGET_QML_SOURCES
     qml/common/Form.qml
     qml/common/GridContainer.qml
     qml/common/CFormView.qml
+    qml/common/CTabbedFormView.qml
     qml/common/AppFormView.qml
     qml/common/AppFormDialog.qml
     qml/common/CTabFormView.qml

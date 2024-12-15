@@ -1,6 +1,6 @@
 
 #include "productattributesproxymodel.h"
-
+#include <QJsonArray>
 
 ProductAttributesProxyModel::ProductAttributesProxyModel(QObject *parent)
     : QAbstractProxyModel(parent)
@@ -70,7 +70,7 @@ QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) c
         return QVariant();
 
 
-    if(role==Qt::UserRole){
+    if(role==Qt::UserRole){ //delegate type
         switch (index.column()) {
         case 0:
         case 1: return QStringLiteral("text");
@@ -101,6 +101,11 @@ Qt::ItemFlags ProductAttributesProxyModel::flags(const QModelIndex &index) const
         return Qt::NoItemFlags;
 
     return QAbstractProxyModel::flags(index) | Qt::ItemIsEditable; // FIXME: Implement me!
+}
+
+QJsonArray ProductAttributesProxyModel::toJsonArray() const
+{
+    return qobject_cast<QmlJsonModel *>(sourceModel())->toJsonArray();
 }
 
 
