@@ -201,28 +201,25 @@ CTabbedFormView {
 
                 model: ProductAttributesProxyModel {
 
-                    sourceModel: attributesModel
-                }
+                    sourceModel: JsonModel {
+                        columnList: [
 
-                JsonModel {
-                    id: attributesModel
-                    columnList: [
-
-                        JsonModelColumn {
-                            displayName: qsTr("Attribute")
-                            key: "attribute_id"
-                        },
-                        JsonModelColumn {
-                            displayName: qsTr("Value")
-                            key: "value"
-                        },
-                        JsonModelColumn{
-                            displayName: qsTr("Type");
-                            key: "type";
-                            parentKey: "attributes_attribute";
-                        }
-                        //                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
-                    ]
+                            JsonModelColumn {
+                                displayName: qsTr("Attribute")
+                                key: "attribute_id"
+                            },
+                            JsonModelColumn {
+                                displayName: qsTr("Value")
+                                key: "value"
+                            },
+                            JsonModelColumn {
+                                displayName: qsTr("Type")
+                                key: "type"
+                                parentKey: "attributes_attribute"
+                            }
+                            //                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
+                        ]
+                    }
                 }
 
                 reuseItems: false
@@ -272,22 +269,21 @@ CTabbedFormView {
                     }
                 }
             } //TableView
-            RowLayout{
-                               CButton{
-                                   text: "+"
-                                   palette: BrandInfo{}
-                                   Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                                   onClicked: attributesModel.appendRecord(attributesModel.record)
-                               }
+            RowLayout {
+                CButton {
+                    text: "+"
+                    palette: BrandInfo {}
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    onClicked: attributesModel.appendRecord(
+                                   attributesModel.record)
+                }
 
-                               CButton{
-                                   text: qsTr("Reset")
-                                   palette: BrandDanger{}
-                                   Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                               }
-
-                           }
-
+                CButton {
+                    text: qsTr("Reset")
+                    palette: BrandDanger {}
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                }
+            }
         }
     }
 } //tabview
