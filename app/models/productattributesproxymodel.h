@@ -52,6 +52,8 @@ public:
     // QAbstractProxyModel interface
     int m_keyColumn=0;
     int m_valueColumn=1;
+    int m_typeColumn=2;
+
 public:
     void setSourceModel(QAbstractItemModel *sourceModel) override;
 

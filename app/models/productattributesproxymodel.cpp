@@ -18,8 +18,7 @@ QVariant ProductAttributesProxyModel::headerData(int section, Qt::Orientation or
     switch(section){
         case 0: return QStringLiteral("Attribute");
         case 1: return QStringLiteral("Value");
-//        case 2: return QStringLiteral("Type");
-
+        case 2: return QStringLiteral("Type");
         case 3: return QStringLiteral("Action");
 
         default: return QVariant();
@@ -53,16 +52,13 @@ int ProductAttributesProxyModel::columnCount(const QModelIndex &parent) const
     if (parent.isValid() || !sourceModel())
         return 0;
 
-    return 3;
+    return sourceModel()->columnCount()+1;
 }
 
 bool ProductAttributesProxyModel::hasChildren(const QModelIndex &parent) const
 {
     return false;
 }
-
-
-
 
 QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) const
 {
@@ -74,8 +70,8 @@ QVariant ProductAttributesProxyModel::data(const QModelIndex &index, int role) c
         switch (index.column()) {
         case 0:
         case 1: return QStringLiteral("text");
-//        case 2: return QStringLiteral("combo");
-        case 2: return QStringLiteral("action");
+        case 2: return QStringLiteral("combo");
+        case 3: return QStringLiteral("action");
         default:
             break;
         }
@@ -115,7 +111,8 @@ QModelIndex ProductAttributesProxyModel::mapToSource(const QModelIndex &proxyInd
     switch(proxyIndex.column()){
         case 0: return sourceModel()->index(proxyIndex.row(),m_keyColumn);
         case 1: return sourceModel()->index(proxyIndex.row(),m_valueColumn);
-        case 2: return sourceModel()->index(proxyIndex.row(),2);
+        case 2: return sourceModel()->index(proxyIndex.row(),m_typeColumn);
+        case 3: return sourceModel()->index(proxyIndex.row(),3);
 
         default: return QModelIndex();
 
@@ -126,15 +123,18 @@ QModelIndex ProductAttributesProxyModel::mapFromSource(const QModelIndex &source
 {
 
     if(sourceIndex.column()==m_keyColumn){
-         return index(sourceIndex.row(),0);
+         return index(sourceIndex.row(),m_keyColumn);
     }
 
     if(sourceIndex.column()==m_valueColumn){
-         return index(sourceIndex.row(),1);
+         return index(sourceIndex.row(),m_valueColumn);
+    }
+    if(sourceIndex.column()==m_typeColumn){
+        return index(sourceIndex.row(),m_typeColumn);
     }
 
-    if(sourceIndex.column()==2){
-         return index(sourceIndex.row(),2);
+    if(sourceIndex.column()==3){
+         return index(sourceIndex.row(),3);
     }
 
     return QModelIndex();
