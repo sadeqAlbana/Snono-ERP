@@ -62,6 +62,18 @@ public:
     // QAbstractItemModel interface
 public:
     QHash<int, QByteArray> roleNames() const override;
+
+
+    QJsonArray records() const;
+    void setRecords(const QJsonArray &newRecords);
+    void resetRecords();
+
+signals:
+    void recordsChanged();
+
+private:
+    QJsonArray m_records;
+    Q_PROPERTY(QJsonArray records READ records WRITE setRecords RESET resetRecords NOTIFY recordsChanged FINAL)
 };
 
 #endif // PRODUCTATTRIBUTESPROXYMODEL_H

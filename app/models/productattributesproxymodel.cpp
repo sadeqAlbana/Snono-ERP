@@ -175,4 +175,21 @@ QHash<int, QByteArray> ProductAttributesProxyModel::roleNames() const
     return roles;
 }
 
+QJsonArray ProductAttributesProxyModel::records() const
+{
+    return static_cast<JsonModel *>(sourceModel())->records();
+}
+
+void ProductAttributesProxyModel::setRecords(const QJsonArray &newRecords)
+{
+
+    static_cast<JsonModel *>(sourceModel())->setRecords(newRecords);
+}
+
+void ProductAttributesProxyModel::resetRecords()
+{
+    static_cast<JsonModel *>(sourceModel())->setRecords({});
+
+}
+
 
