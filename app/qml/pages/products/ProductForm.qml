@@ -217,7 +217,6 @@ CTabbedFormView {
                                 key: "type"
                                 parentKey: "attributes_attribute"
                             }
-                            //                JsonModelColumn{ displayName: qsTr("created_at");key: "created_at";}
                         ]
                     }
                 }
