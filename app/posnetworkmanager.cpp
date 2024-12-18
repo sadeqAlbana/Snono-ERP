@@ -20,7 +20,7 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     //setTransferTimeout(10*1000);
 
     if(!jwt().isNull())
-        setRawHeader("Authorization",_jwt);
+        setRawHeader("authorization",_jwt);
 //    ignoreSslErrors(true);
 
     QNetworkDiskCache* cache = new QNetworkDiskCache(this);
@@ -28,7 +28,10 @@ PosNetworkManager::PosNetworkManager(QObject *parent) : NetworkAccessManager(par
     cache->setCacheDirectory(cachePath);
     setCache(cache);
     setRequestAttribute(static_cast<QNetworkRequest::Attribute>(RequstAttribute::NotifyActivity),true);
-
+#if QT_VERSION >= QT_VERSION_CHECK(6,8,0)
+    setRequestAttribute(static_cast<QNetworkRequest::Attribute>(RequstAttribute::Http2AllowedAttribute),false);
+    setRequestAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::ManualRedirectPolicy);
+#endif
 //    connect(this,&NetworkAccessManager::networkError,this,[this](NetworkResponse *response){
 //        emit internalNetworkError("Netowork Error",
 //                          response->networkReply()->errorString());
@@ -75,7 +78,7 @@ void PosNetworkManager::reloadBaseUrl()
 void PosNetworkManager::setJWT(const QByteArray jwt)
 {
     _jwt="Bearer "+ jwt;
-    setRawHeader("Authorization",_jwt);
+    setRawHeader("authorization",_jwt);
 }
 
 QByteArray PosNetworkManager::jwt() const
