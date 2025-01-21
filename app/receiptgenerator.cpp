@@ -30,6 +30,32 @@
 #include <algorithm>
 #include "appsettings.h"
 #include <QAbstractTextDocumentLayout>
+#include "api.h"
+
+/*
+
+A note about QPrinter,
+there are three printing modes on the constructor, they all work to set the printerResulotion property
+
+1- QPrinter::ScreenResolution:  as it says, This is the default value. ScreenResolution will produce a lower quality output than HighResolution and should only be used for drafts.
+2- QPrinter::PrinterResolution: This value is deprecated. It is equivalent to ScreenResolution on Unix and HighResolution on Windows and Mac
+3- QPrinter::HighResolution: On Windows, sets the printer resolution to that defined for the printer in use. For PDF printing, sets the resolution of the PDF driver to 1200 dpi.
+
+here is the behaviour on a 1920x1080 linux machine
+QPrinter; => 96
+QPrinter(QPrinter::ScreenResolution); => 96
+QPrinter(QPrinter::PrinterResolution); => 72 (actual is 203)
+QPrinter(QPrinter::HighResolution); => 1200
+
+so as it says, one should avoid using screen and printer resolution parameters,
+however, this method was tested and proved to be broken on linux as it sets it to 1200dpi even for real printers.
+all these parameters work on QPrinter::setResolution() so you can set it manually with the below method and get it over with.
+I have found a solution which is to use QPrinterInfo and get the supportedResolutions list and use one of the supported resolutions.supportedResolutions
+
+
+ */
+
+
 ReceiptGenerator::ReceiptGenerator(QObject *parent) : QObject(parent)
 {
 
@@ -1114,7 +1140,7 @@ QString ReceiptGenerator::generateOrderReferenceAndTrackings(const QString &orde
 
 }
 
-QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku, const int copies)
+QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku, const QUrl &imageUrl, const int copies)
 {
 
     QImage barcodeImg(205,75,QImage::Format_RGB32);
@@ -1136,15 +1162,16 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     imgPainter.end();
 
 
-    // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
+     // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
     QPrinter printer(QPrinter::HighResolution);
     printer.setCopyCount(copies);
     printer.setPrinterName(AppSettings::instance()->labelPrinter());
+    printer.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer
+
     float labelWidth=AppSettings::instance()->labelPrinterLabelWidth();
     float labelHeight=AppSettings::instance()->labelPrinterLabelHeight();
     QPageSize::Unit unit=static_cast<QPageSize::Unit>(AppSettings::instance()->labelPrinterLabelSizeUnit());
-
     printer.setPageSize(QPageSize(QSizeF(labelWidth, labelHeight), unit));
 
     printer.setFullPage(true);
@@ -1164,6 +1191,8 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
 
     painter.drawText(25,30,name);
     painter.drawImage(25,40,barcodeImg);
+
+
     font.setWeight(QFont::DemiBold);
     font.setPointSize(7);
     painter.setFont(font);
@@ -1174,7 +1203,16 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     painter.drawText(25,195,tr("Price: ")+ price);
 
 
-    // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
+     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
+
+
+
+    if(imageUrl.isValid()){
+        QImage img=Api::instance()->cachedImage(imageUrl);
+        qDebug()<<"got image: " << img.isNull();
+        painter.drawImage(printer.width()-100,30,img.scaledToWidth(120));
+
+    }
 
     painter.end();
 

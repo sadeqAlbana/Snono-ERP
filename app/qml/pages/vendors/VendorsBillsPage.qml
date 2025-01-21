@@ -178,7 +178,7 @@ AppPage{
                                                            });
 
                                         ReceiptGenerator.generateLabel(product.barcode, product.name,
-                                                                       Utils.formatCurrency(product.list_price),sku,
+                                                                       Utils.formatCurrency(product.list_price),sku,"",
                                                                        parseInt(item.qty));
 
                                                  });

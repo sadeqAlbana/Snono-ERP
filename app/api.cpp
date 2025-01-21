@@ -26,10 +26,17 @@
 #include <qgumbodocument.h>
 
 #include <QThread>
+#include <QNetworkDiskCache>
+#include <QImage>
 Api *Api::m_api;
+
 Api::Api(QObject *parent) : QObject(parent)
 {
-
+    m_cachedManager = new NetworkAccessManager(this);
+    QNetworkDiskCache* cache = new QNetworkDiskCache(m_cachedManager);
+    QString cachePath = QStandardPaths::displayName(QStandardPaths::CacheLocation);
+    cache->setCacheDirectory(cachePath);
+    m_cachedManager->setCache(cache);
 }
 
 void Api::depositCash(const double &amount)
@@ -822,5 +829,12 @@ void Api::scrapeImages()
         QThread::currentThread()->sleep(1);
         break;
     }
+}
+
+QImage Api::cachedImage(const QUrl &url)
+{
+    NetworkResponse  *res=m_cachedManager->get(url);
+    res->waitForFinished();
+    return QImage::fromData(res->binaryData());
 }
 

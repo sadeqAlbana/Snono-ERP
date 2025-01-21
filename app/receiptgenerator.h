@@ -22,7 +22,7 @@ public:
     Q_INVOKABLE static QString generateOrderReferenceAndTrackings(const QString &orderNo, const QStringList &trackingNumbers);
 
 
-    Q_INVOKABLE static QString generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku=QString(), const int copies=1);
+    Q_INVOKABLE static QString generateLabel(const QString &barcode, const QString &name, const QString &price, const QString &sku=QString(), const QUrl &imageUrl=QUrl(), const int copies=1);
 
 
     Q_INVOKABLE static QImage renderToImage(QTextDocument &doc, const int scaleFactor=1);

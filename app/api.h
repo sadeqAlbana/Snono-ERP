@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QImage>
+class NetworkAccessManager;
 //this class will be used to make all  api calls in the future !
 class Api : public QObject
 {
@@ -80,6 +82,7 @@ public:
     Q_INVOKABLE NetworkResponse * newPosSession();
     Q_INVOKABLE NetworkResponse * requestNewCart();
     Q_INVOKABLE void scrapeImages();
+    Q_INVOKABLE QImage cachedImage(const QUrl &url);
 
 
 signals:
@@ -103,6 +106,7 @@ signals:
 
 private:
     static Api *m_api;
+    NetworkAccessManager *m_cachedManager;
 
 };
 
