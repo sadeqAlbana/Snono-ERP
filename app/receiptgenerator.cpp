@@ -868,18 +868,18 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     if(haveDiscount){
         rtable= {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","50%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
 
-                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }else{
         rtable=  {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","60%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }
 
@@ -898,7 +898,9 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
         stream.writeAttribute("class","newItems");
-        stream.writeAttribute("width",column["width"].toString());
+        if(column.contains("width")){
+            stream.writeAttribute("width",column["width"].toString());
+        }
         stream.writeCharacters(column["label"].toString());
         stream.writeEndElement(); //th
     }
@@ -1047,7 +1049,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     QPrinter printer(QPrinter::PrinterResolution);
     printer.setPrinterName(AppSettings::instance()->linePrinter());
-    printer.setResolution(96);
+    printer.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     printer.setFullPage(true);  // Use full page for printing
@@ -1062,7 +1064,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     QPrinter pdfPrinter(QPrinter::HighResolution);
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
     pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());    \
-        pdfPrinter.setResolution(96);
+    printer.setResolution(QPrinterInfo(pdfPrinter).supportedResolutions().first()); //this is the game changer
     pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     pdfPrinter.setFullPage(true);  // Use full page for printing
