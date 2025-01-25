@@ -868,18 +868,18 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     if(haveDiscount){
         rtable= {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","50%"}},
 
-                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")}},
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
                   };
     }else{
         rtable=  {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","60%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
                   };
     }
 
@@ -888,21 +888,17 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     }
 
 
-
     stream.writeStartElement("table");
-    stream.writeAttribute("width","100%");
-    stream.writeAttribute("style", "width: 100%; text-align: center;");
-    stream.writeAttribute("class", "items_content");
+    stream.writeAttribute("style", "width: 100%;");
+    stream.writeAttribute("class", "newItems");
 
     stream.writeStartElement("thead");
     stream.writeStartElement("tr");
     for(int i=0; i<rtable.count(); i++){
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","items_content");
-        if(column.contains("width")){
-            stream.writeAttribute("width",column["width"].toString());
-        }
+        stream.writeAttribute("class","newItems");
+        stream.writeAttribute("width",column["width"].toString());
         stream.writeCharacters(column["label"].toString());
         stream.writeEndElement(); //th
     }
@@ -940,9 +936,7 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
         }
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
-            stream.writeStartElement("td");            
-            stream.writeAttribute("class","items_content");
-
+            stream.writeStartElement("td");
             if(column["key"].toString()=="qty"){
                 if(tableRow[column["key"].toString()].toString().toInt()>1){
                     stream.writeStartElement("b");
@@ -974,8 +968,8 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     stream.writeEndElement(); //table
 
 
-    // stream.writeEmptyElement("br");
-    // stream.writeEmptyElement("br");
+    stream.writeEmptyElement("br");
+    stream.writeEmptyElement("br");
 
     QList<QJsonObject> totals{
         {{"label",translator.translate("receipt","Total")},{"width","75%"}},
@@ -1051,12 +1045,12 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
 #ifndef Q_OS_IOS
 
-    QPrinter printer(QPrinter::PrinterResolution);
+    QPrinter printer;
     printer.setPrinterName(AppSettings::instance()->linePrinter());
     printer.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
-    printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
-    printer.setFullPage(true);  // Use full page for printing
+    // printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
+    // printer.setFullPage(true);  // Use full page for printing
 
     doc.setPageSize(printer.pageLayout().pageSize().sizePoints());
 
@@ -1065,13 +1059,14 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     doc.setHtml(text);
     //POS-80-Series
 
-    QPrinter pdfPrinter(QPrinter::HighResolution);
+    QPrinter pdfPrinter;
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
-    pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());    \
-    printer.setResolution(QPrinterInfo(pdfPrinter).supportedResolutions().first()); //this is the game changer
+    pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());
+
+    pdfPrinter.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer    printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
-    pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
-    pdfPrinter.setFullPage(true);  // Use full page for printing
+    // pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
+    // pdfPrinter.setFullPage(true);  // Use full page for printing
 
     // auto layout=printer.pageLayout();
     // layout.setOrientation(QPageLayout::Portrait);
@@ -1083,8 +1078,6 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     doc.print(&pdfPrinter);
 
     if(print){
-        doc.documentLayout()->setPaintDevice(&printer);
-        doc.setPageSize(printer.pageRect(QPrinter::Point).size());
         doc.print(&printer);
         // painter.end();
     }
@@ -1168,7 +1161,7 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     imgPainter.end();
 
 
-     // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
+    // doc.addResource(QTextDocument::ImageResource,QUrl("barcode_img"),barcodeImg);
 
     QPrinter printer(QPrinter::HighResolution);
     printer.setCopyCount(copies);
@@ -1209,7 +1202,7 @@ QString ReceiptGenerator::generateLabel(const QString &barcode, const QString &n
     painter.drawText(25,195,tr("Price: ")+ price);
 
 
-     // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
+    // painter.drawText(rect, Qt::AlignCenter, "Sample Label Text");
 
 
 

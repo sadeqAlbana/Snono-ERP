@@ -2,34 +2,112 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Arial', sans-serif;
     font-size: {{body_font_size}};
+}
+
+/*@page {
+size: 2.8in 11in;
+margin-top: 0cm;
+margin-left: 0cm;
+margin-right: 0cm;
+}*/
+
+
+
+table {
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+    vertical-align: middle;
+}
+
+
+
+
+
+.items th {
+    text-align: left;
+
+}
+
+
+
+/*        .receipt {
+    font-size: large;
+}*/
+
+.items .heading {
+    text-transform: uppercase;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    vertical-align: middle;
+    border-collapse: collapse;
+
+}
+
+.collapse{
+border-collapse: collapse;
+}
+
+.items td {
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.dashed {
+    border-top: 1px dashed black !important;
+    border-bottom: 1px dashed black !important;
+}
+
+.dashed-bottom {
+    border-bottom: 1px dashed black !important;
+}
+
+.line {
+    border-top: 1px solid black !important;
+}
+
+.boxed  {
+border: 1px solid black;
+border-collapse: collapse;
+padding-left: 5px;
+padding-right: 5px;
+
+padding-top: 1px;
+padding-bottom: 1px;
+text-align: left;
+}
+
+.newItems  {
+border-top: 1px solid black !important;
+border-bottom: 1px solid black !important;
+border-collapse: collapse;
+padding-left: 5px;
+padding-right: 5px;
+
+padding-top: 1px;
+padding-bottom: 1px;
+text-align: left;
+}
+
+.center-align {
+text-align: center;
+}
+.left{
+    text-align: left;
 }
 
 p {
     padding: 1px;
     margin: 0;
-    font-size: {{footer_font_size}};
-
 }
 
-header {
-    width: 100%;
-    align: center;
-}
 
-.receipt {
-font-size: {{body_font_size}};
-}
-
-.boxed  {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding-left: 3px;
-    padding-right: 3px;
-
-    text-align: left;
-}
 
 
 .items_content{
@@ -41,20 +119,3 @@ font-size: {{body_font_size}};
     text-align: center;
 
 }
-.align_center{
-text-align: center;
-
-}
-
-.left_align{ /*used for totals*/
-    text-align: left;
-}
-
-.bottom-note{
-    font-size: {{footer_font_size}};
-    text-align: center;
-    font-weight: bold;
-}
-
-
-
