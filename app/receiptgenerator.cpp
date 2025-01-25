@@ -888,16 +888,18 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     }
 
 
+
     stream.writeStartElement("table");
-    stream.writeAttribute("style", "width: 100%;");
-    stream.writeAttribute("class", "newItems");
+    stream.writeAttribute("width","100%");
+    stream.writeAttribute("style", "width: 100%; text-align: center;");
+    stream.writeAttribute("class", "items_content");
 
     stream.writeStartElement("thead");
     stream.writeStartElement("tr");
     for(int i=0; i<rtable.count(); i++){
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","newItems");
+        stream.writeAttribute("class","items_content");
         if(column.contains("width")){
             stream.writeAttribute("width",column["width"].toString());
         }
@@ -938,7 +940,9 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
         }
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
-            stream.writeStartElement("td");
+            stream.writeStartElement("td");            
+            stream.writeAttribute("class","items_content");
+
             if(column["key"].toString()=="qty"){
                 if(tableRow[column["key"].toString()].toString().toInt()>1){
                     stream.writeStartElement("b");
@@ -970,8 +974,8 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     stream.writeEndElement(); //table
 
 
-    stream.writeEmptyElement("br");
-    stream.writeEmptyElement("br");
+    // stream.writeEmptyElement("br");
+    // stream.writeEmptyElement("br");
 
     QList<QJsonObject> totals{
         {{"label",translator.translate("receipt","Total")},{"width","75%"}},

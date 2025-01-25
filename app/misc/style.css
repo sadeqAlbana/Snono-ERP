@@ -1,39 +1,26 @@
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', monospace;
-            font-size: {{body_font_size}};
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    font-size: {{body_font_size}};
+}
 
-    p {
-        padding: 1px;
-        margin: 0;
-        font-size: {{footer_font_size}};
+p {
+    padding: 1px;
+    margin: 0;
+    font-size: {{footer_font_size}};
 
-    }
+}
 
-/*@page {
-     size: 2.8in 11in;
-     margin-top: 0cm;
-     margin-left: 0cm;
-     margin-right: 0cm;
- }*/
+header {
+    width: 100%;
+    align: center;
+}
 
-
-
-
-
-        header {
-            width: 100%;
-            align: center;
-        }
-
-        .receipt {
-        font-size: {{body_font_size}};
-        }
-
-
+.receipt {
+font-size: {{body_font_size}};
+}
 
 .boxed  {
     border: 1px solid black;
@@ -43,7 +30,6 @@
 
     text-align: left;
 }
-
 
 
 .items_content{
