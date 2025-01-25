@@ -45,7 +45,10 @@ AppPage {
                         // paymentMethodCB.model = response.json(
                         //             "payment_methods").data;
                         customerCB.model = response.json("customers").data;
-                    })
+                    });
+
+        barcodeInput.forceActiveFocus();
+
     }
 
 
@@ -174,7 +177,7 @@ AppPage {
             }
 
             CTextField {
-                id: numpadInput
+                id: barcodeInput
                 Layout.fillWidth: true
                 Layout.maximumWidth: window.mobileLayout ? -1 : numpad.width
 
@@ -185,6 +188,7 @@ AppPage {
                 placeholderText: qsTr("Barcode...")
                 implicitHeight: 50
             }
+
         }
 
 
