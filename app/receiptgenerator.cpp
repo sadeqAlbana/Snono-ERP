@@ -868,18 +868,18 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     if(haveDiscount){
         rtable= {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","10%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","50%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
 
-                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")},{"width","15%"}},
+                  QJsonObject{{"key","discount"},{"label",translator.translate("receipt","Disc.")}},
                   //                QJsonObject{{"key","subtotal"},{"label",translator.translate("receipt","Subtotal")},{"width","20%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }else{
         rtable=  {
-                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")},{"width","15%"}},
-                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")},{"width","60%"}},
-                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")},{"width","25%"}},
+                  QJsonObject{{"key","qty"},{"label",translator.translate("receipt","Qty")}},
+                  QJsonObject{{"key","description"},{"label",translator.translate("receipt","Item")}},
+                  QJsonObject{{"key","total"},{"label",translator.translate("receipt","Total")}},
                   };
     }
 
@@ -889,15 +889,16 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
 
     stream.writeStartElement("table");
+    stream.writeAttribute("width","100%");
     stream.writeAttribute("style", "width: 100%;");
-    stream.writeAttribute("class", "newItems");
+    stream.writeAttribute("class", "items_content");
 
     stream.writeStartElement("thead");
     stream.writeStartElement("tr");
     for(int i=0; i<rtable.count(); i++){
         QJsonObject column=rtable.at(i);
         stream.writeStartElement("th");
-        stream.writeAttribute("class","newItems");
+        stream.writeAttribute("class","items_content");
         stream.writeAttribute("width",column["width"].toString());
         stream.writeCharacters(column["label"].toString());
         stream.writeEndElement(); //th
@@ -937,6 +938,8 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
         for(int i=0;i<rtable.count(); i++){
             QJsonObject column=rtable.at(i);
             stream.writeStartElement("td");
+            stream.writeAttribute("class","items_content");
+
             if(column["key"].toString()=="qty"){
                 if(tableRow[column["key"].toString()].toString().toInt()>1){
                     stream.writeStartElement("b");
