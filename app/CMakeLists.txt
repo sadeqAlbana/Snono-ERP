@@ -226,6 +226,8 @@ set(TARGET_QML_SOURCES
     qml/pages/settings/AboutPage.qml
     qml/pages/locations/LocationsPage.qml
     qml/pages/locations/LocationForm.qml
+    qml/pages/invoices/InvoicesPage.qml
+    qml/pages/payments/PaymentsPage.qml
     qml/common/CCheckableFilterComboBox.qml
 
     qml/AppMainScreen.qml
@@ -309,6 +311,9 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+        SOURCES models/paymentsmodel.h models/paymentsmodel.cpp
+        SOURCES models/invoicesmodel.h models/invoicesmodel.cpp
+
 
 
 

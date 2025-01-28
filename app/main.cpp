@@ -85,15 +85,15 @@ int main(int argc, char *argv[])
 #endif
 
 
-    QPrinter printer(QPrinter::ScreenResolution);
-    printer.setPrinterName("HPRT N41BT");
+    // QPrinter printer(QPrinter::ScreenResolution);
+    // printer.setPrinterName("HPRT N41BT");
 
-    qDebug()<<"resolution: " <<printer.resolution();
-    qDebug()<<"color count: " << printer.colorCount();
+    // qDebug()<<"resolution: " <<printer.resolution();
+    // qDebug()<<"color count: " << printer.colorCount();
 
-    QPrinterInfo info(printer);
+    // QPrinterInfo info(printer);
 
-    qDebug()<<"supported Resolutions: " << info.supportedResolutions();
+    // qDebug()<<"supported Resolutions: " << info.supportedResolutions();
 
 
     return a.exec();

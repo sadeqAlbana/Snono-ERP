@@ -41,7 +41,7 @@ AppPage{
                     icon.name: "cil-plus"
                     onTriggered: {
                         Router.navigate(
-                                    "qrc:/PosFe/qml/pages/Accounting/NewJournalEntryPage.qml")
+                                    "qrc:/PosFe/qml/pages/invoices/NewInvoicePage.qml")
                     }
                 },
                 CAction {
@@ -50,7 +50,7 @@ AppPage{
                     icon.name: "cil-notes"
                     onTriggered: {
                         Router.navigate(
-                                    "qrc:/PosFe/qml/pages/Accounting/JournalEntryDetailsPage.qml",
+                                    "qrc:/PosFe/qml/pages/Accounting/InvoiceDetailsPage.qml",
                                     {
                                         "keyValue": model.jsonObject(
                                                         tableView.currentRow).id
@@ -58,7 +58,8 @@ AppPage{
                     }
                 }
             ]
-            model: JournalEntriesModel{
+
+            model: InvoicesModel{
                 id: model;
             } //model end
         }
