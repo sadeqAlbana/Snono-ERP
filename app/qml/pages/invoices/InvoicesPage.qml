@@ -15,7 +15,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 import  PosFe
 AppPage{
-    title: qsTr("New Journal Entry")
+    title: qsTr("Invoices")
     ColumnLayout{
         id: page
         anchors.fill: parent;

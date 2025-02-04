@@ -7,6 +7,7 @@
 
 class PaymentsModel : public AppNetworkedJsonModel
 {
+    Q_OBJECT
     QML_ELEMENT
 public:
     explicit PaymentsModel(QObject *parent = nullptr);

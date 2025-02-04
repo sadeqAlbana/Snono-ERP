@@ -54,6 +54,16 @@ function navBar(){
                             "title":qsTr("Journal Entries Items"),
                             "path":"qrc:/PosFe/qml/pages/Accounting/JournalEntriesItemsPage.qml",
                             "permission": "prm_view_journal_entries"
+                        },
+                        {
+                            "title":qsTr("Invoices"),
+                            "path":"qrc:/PosFe/qml/pages/invoices/InvoicesPage.qml",
+                            "permission": "prm_view_invoices"
+                        },
+                        {
+                            "title":qsTr("Payments"),
+                            "path":"qrc:/PosFe/qml/pages/payments/PaymentsPage.qml",
+                            "permission": "prm_view_payments"
                         }
                     ]
                 },
