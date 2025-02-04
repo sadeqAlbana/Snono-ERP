@@ -313,6 +313,7 @@ qt_add_qml_module(appposfe
         ${TARGET_QML_SOURCES}
         SOURCES models/paymentsmodel.h models/paymentsmodel.cpp
         SOURCES models/invoicesmodel.h models/invoicesmodel.cpp
+        QML_FILES qml/pages/orders/OrdersFulfillmentPage.qml
 
 
 
