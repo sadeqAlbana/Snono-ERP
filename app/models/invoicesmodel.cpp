@@ -2,7 +2,7 @@
 
 
 
-InvoicesModel::InvoicesModel(QObject *parent) : AppNetworkedJsonModel("/payments",{
+InvoicesModel::InvoicesModel(QObject *parent) : AppNetworkedJsonModel("/invoices",{
                                              {"id",tr("ID")} ,
                                              {"name",tr("Name")} ,
                                              {"status",tr("Status")} ,
