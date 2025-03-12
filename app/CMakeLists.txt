@@ -123,7 +123,9 @@ set(TARGET_SOURCES
     models/newjournalentrymodel.h models/newjournalentrymodel.cpp
     models/orderscountreportmodel.h models/orderscountreportmodel.cpp
     models/vendorbillattributemodel.h models/vendorbillattributemodel.cpp
-
+    models/stockreservationsmodel.h models/stockreservationsmodel.cpp
+    models/paymentsmodel.h models/paymentsmodel.cpp
+    models/invoicesmodel.h models/invoicesmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
@@ -228,6 +230,8 @@ set(TARGET_QML_SOURCES
     qml/pages/locations/LocationForm.qml
     qml/pages/invoices/InvoicesPage.qml
     qml/pages/payments/PaymentsPage.qml
+    qml/pages/orders/OrdersFulfillmentPage.qml
+    qml/pages/warehouses/StockReservationsPage.qml
     qml/common/CCheckableFilterComboBox.qml
 
     qml/AppMainScreen.qml
@@ -272,6 +276,7 @@ set(TARGET_QML_SOURCES
     qml/common/AppConfirmationDialog.qml
     qml/common/PosSessionStatusDelegate.qml
     qml/common/PrintProductLabelDialog.qml
+    qml/common/StockReservationStatusDelegate.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -311,13 +316,6 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-        SOURCES models/paymentsmodel.h models/paymentsmodel.cpp
-        SOURCES models/invoicesmodel.h models/invoicesmodel.cpp
-        QML_FILES qml/pages/orders/OrdersFulfillmentPage.qml
-
-
-
-
 )
 set(INCLUDE_DIR
     models

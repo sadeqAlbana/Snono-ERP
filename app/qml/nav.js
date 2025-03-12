@@ -216,12 +216,12 @@ function navBar(){
                     "permission": "prm_view_users"
                 },
                 {
-                   "title":qsTr("Warehouses"),
+                   "title":qsTr("Inventory"),
                    "category":qsTr("MAIN"),
                    "image":"cil-home",
                     "childItems":[
                         {
-                            "title":qsTr("List"),
+                            "title":qsTr("Warehouses"),
                             "path":"qrc:/PosFe/qml/pages/warehouses/WarehousesPage.qml",
                             "permission": "prm_view_warehouse"
 
@@ -235,6 +235,11 @@ function navBar(){
                             "title":qsTr("Stock Valuation"),
                             "path":"qrc:/PosFe/qml/pages/warehouses/StockValuationPage.qml",
                             "permission": "prm_view_stock_valuation"
+                        },
+                        {
+                            "title":qsTr("Stock Reservations"),
+                            "path":"qrc:/PosFe/qml/pages/warehouses/StockReservationsPage.qml",
+                            "permission": "prm_view_stock_reservation"
                         }
                     ]
                 },

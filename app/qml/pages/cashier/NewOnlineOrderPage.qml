@@ -141,7 +141,7 @@ AppPage {
 
         }
 
-        NetworkManager.post('/onlinesales/purchase',
+        NetworkManager.post('/onlinesales/placeOrder',
                             payload).subscribe(function (response) {
 
                                 if (response.json('status') === 200) {
@@ -234,7 +234,7 @@ AppPage {
                 anchors.fill: parent
                 columns: 1
 
-                function confirmPayment() {
+                function confirmOrder() {
 
                     if(!page.validateLocations()){
                         toastrService.push(qsTr("Warning"),
@@ -410,7 +410,7 @@ AppPage {
                     palette.buttonText: "#ffffff"
                     Layout.fillWidth: true
                     implicitHeight: 50
-                    onClicked: parent.confirmPayment()
+                    onClicked: parent.confirmOrder()
 
                     enabled: tableView.rows
 
