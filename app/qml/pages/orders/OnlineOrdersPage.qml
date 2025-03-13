@@ -257,6 +257,12 @@ AppPage {
                 },
                 CAction {
                     enabled: tableView.currentRow >= 0
+                    text: qsTr("Confirm")
+                    icon.name: "cil-check"
+                    onTriggered: {}
+                },
+                CAction {
+                    enabled: tableView.currentRow >= 0
                     text: qsTr("Print Delivery Receipt")
                     icon.name: "cil-print"
                     onTriggered: {
