@@ -125,6 +125,7 @@ set(TARGET_SOURCES
     models/vendorbillattributemodel.h models/vendorbillattributemodel.cpp
     models/stockreservationsmodel.h models/stockreservationsmodel.cpp
     models/paymentsmodel.h models/paymentsmodel.cpp
+    models/paymentrefundsmodel.h models/paymentrefundsmodel.cpp
     models/invoicesmodel.h models/invoicesmodel.cpp
     keyemitter.h keyemitter.cpp
 )
@@ -230,6 +231,7 @@ set(TARGET_QML_SOURCES
     qml/pages/locations/LocationForm.qml
     qml/pages/invoices/InvoicesPage.qml
     qml/pages/payments/PaymentsPage.qml
+    qml/pages/payments/PaymentRefundsPage.qml
     qml/pages/orders/OrdersFulfillmentPage.qml
     qml/pages/warehouses/StockReservationsPage.qml
     qml/common/CCheckableFilterComboBox.qml

@@ -64,6 +64,11 @@ function navBar(){
                             "title":qsTr("Payments"),
                             "path":"qrc:/PosFe/qml/pages/payments/PaymentsPage.qml",
                             "permission": "prm_view_payments"
+                        },
+                        {
+                            "title":qsTr("Payment Refunds"),
+                            "path":"qrc:/PosFe/qml/pages/payments/PaymentRefundsPage.qml",
+                            "permission": "prm_view_payment_refunds"
                         }
                     ]
                 },
