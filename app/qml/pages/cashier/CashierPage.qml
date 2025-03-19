@@ -42,8 +42,8 @@ AppPage {
     Component.onCompleted: {
         NetworkManager.get("/pos/dashboard").subscribe(
                     function (response) {
-                        // paymentMethodCB.model = response.json(
-                        //             "payment_methods").data;
+                        paymentMethodCB.model = response.json(
+                                    "payment_methods").data;
                         customerCB.model = response.json("customers").data;
                     });
 
@@ -53,7 +53,9 @@ AppPage {
 
 
     function processCart() {
-        cashierModel.processCart(cashierModel.total, 0, notesLE.text)
+
+        let paymentMethodId=paymentMethodCB.currentValue
+        cashierModel.processCart(cashierModel.total, 0, paymentMethodId, notesLE.text)
     }
 
     PayDialog {
@@ -187,6 +189,28 @@ AppPage {
                 }
                 placeholderText: qsTr("Barcode...")
                 implicitHeight: 50
+            }
+
+            CComboBox {
+                id: paymentMethodCB
+
+                valueRole: "id"
+                textRole: "name"
+                Layout.fillWidth: true
+                Layout.maximumWidth: window.mobileLayout ? -1 : numpad.width
+                onModelChanged: {
+                    initialized = true
+                    currentIndex = indexOfValue(
+                                Settings.get(
+                                    "CashierPage/paymentMethodCBValue",
+                                    2)) //2 is COD
+                }
+                onCurrentValueChanged: {
+                    if (initialized) {
+                        Settings.set("CashierPage/paymentMethodCBValue",
+                                     currentValue)
+                    }
+                }
             }
 
         }

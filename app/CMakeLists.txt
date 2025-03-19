@@ -305,6 +305,7 @@ else()
     list(APPEND TARGET_QML_SOURCES
     qml/common/NewReceiptDialog.qml
     qml/common/CashierReceiptDialog.qml
+    qml/common/InvoicePaymentStatusDelegate.qml
     qml/pages/reports/OrdersCountReportPage.qml
 
 )

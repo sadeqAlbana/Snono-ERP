@@ -5,12 +5,12 @@
 InvoicesModel::InvoicesModel(QObject *parent) : AppNetworkedJsonModel("/invoices",{
                                              {"id",tr("ID")} ,
                                              {"name",tr("Name")} ,
-                                             {"status",tr("Status")} ,
-                                             {"date",tr("Date"),QString(),false},
-                                             {"due_date",tr("Due Date"),QString(),false},
+                                             {"status",tr("Status"),QString(),false,"InvoiceStatus"} ,
+                                             {"date",tr("Date"),QString(),false,"datetime"},
+                                             {"due_date",tr("Due Date"),QString(),false,"datetime"},
                                              {"balance_due",tr("Balance Due"),QString(),false},
-                                             {"Total",tr("Total"),QString(),false},
-                                             {"created_at",tr("Created At"),QString(),false}
+                                             {"total",tr("Total"),QString(),false},
+                                             {"created_at",tr("Created At"),QString(),false,"datetime"}
 
                                          },
                             parent)

@@ -35,6 +35,13 @@ AppPage{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            delegate: AppDelegateChooser {
+
+                DelegateChoice{ roleValue: "InvoiceStatus"; InvoicePaymentStatusDelegate{}}
+
+            }
+
             actions: [
                 CAction {
                     text: qsTr("New")

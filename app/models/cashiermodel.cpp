@@ -171,9 +171,10 @@ void CashierModel::onRemoveProductReply(NetworkResponse *res)
     }
 }
 
-void CashierModel::processCart(const double paid, const double change, const QString &note)
+void CashierModel::processCart(const double paid, const double change, const int paymentMethodId, const QString &note)
 {
     QJsonObject data{{"paid",paid},
+                     {"payment_method_id",paymentMethodId},
                      {"returned",change},
                      {"note",note},
                      {"cart",cartData()}
