@@ -279,6 +279,7 @@ set(TARGET_QML_SOURCES
     qml/common/PosSessionStatusDelegate.qml
     qml/common/PrintProductLabelDialog.qml
     qml/common/StockReservationStatusDelegate.qml
+    qml/common/PaymentStatusDelegate.qml
     qml/pages/settings/UpdatesPage.qml
     qml/common/CLinkDelegate.qml
     qml/common/CrudViewPage.qml
@@ -319,6 +320,7 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+
 )
 set(INCLUDE_DIR
     models

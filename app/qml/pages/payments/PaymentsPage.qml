@@ -37,6 +37,15 @@ AppPage{
             Layout.fillWidth: true
             actions: []
 
+
+            delegate: AppDelegateChooser {
+                DelegateChoice {
+                    roleValue: "PaymentStatusDelegate"
+                    PaymentStatusDelegate {}
+                }
+            }
+
+
             model: PaymentsModel{
                 id: model;
             } //model end

@@ -5,9 +5,9 @@ PaymentsModel::PaymentsModel(QObject *parent) : AppNetworkedJsonModel("/payments
                                                  {"id",tr("ID")} ,
                                                  {"name",tr("Payment Method"),"payment_method"} ,
                                                  {"journal_entry_id",tr("Journal Entry")} ,
-                                                 {"status",tr("Status")},
-                                                 {"date",tr("Date"),QString(),false},
-                                                 {"created_at",tr("Created At"),QString(),false}
+                                          {"status",tr("Status"),QString(),false,"PaymentStatusDelegate"},
+                                                 {"date",tr("Date"),QString(),false,"datetime"},
+                                                 {"created_at",tr("Created At"),QString(),false,"datetime"}
 
                                              },
                             parent)
