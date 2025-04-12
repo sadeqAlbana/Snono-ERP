@@ -1,7 +1,5 @@
 #include "authmanager.h"
-#include <QApplication>
-#include <QMessageBox>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QJsonObject>
 #include "appsettings.h"
 #include <QJsonArray>
@@ -55,7 +53,7 @@ void AuthManager::logout()
 AuthManager *AuthManager::instance()
 {
     if(!_instance)
-        _instance=new AuthManager(QApplication::instance());
+        _instance=new AuthManager(QCoreApplication::instance());
 
     return _instance;
 }

@@ -3,7 +3,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>
-#include <QApplication>
+#include <QCoreApplication>>
 #include <QNetworkDiskCache>
 #include <QStandardPaths>
 QByteArray PosNetworkManager::_jwt;
@@ -63,7 +63,7 @@ void PosNetworkManager::routeReply(NetworkResponse *response)
 PosNetworkManager *PosNetworkManager::instance()
 {
     if(!_instance)
-        _instance=new PosNetworkManager(QApplication::instance());
+        _instance=new PosNetworkManager(QCoreApplication::instance());
 
     return _instance;
 }
