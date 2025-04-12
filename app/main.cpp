@@ -14,7 +14,6 @@
 #include <QFileSelector>
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <iostream>
 #include <QSysInfo>
 #include "appsettings.h"
 Q_IMPORT_QML_PLUGIN(CoreUIPlugin)

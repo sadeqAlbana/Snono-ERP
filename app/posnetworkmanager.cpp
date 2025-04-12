@@ -3,7 +3,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>
-#include <QCoreApplication>>
+#include <QCoreApplication>
 #include <QNetworkDiskCache>
 #include <QStandardPaths>
 QByteArray PosNetworkManager::_jwt;
