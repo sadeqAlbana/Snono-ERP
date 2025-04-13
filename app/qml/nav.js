@@ -296,6 +296,12 @@ function navBar(){
                     ]
                 },
                 {
+                    "title": qsTr("Demo"),
+                    "category":qsTr("MAIN"),
+                    "path":"qrc:/PosFe/qml/pages/ProductsDemo/ProductsDemoPage.qml",
+                    "permission": ""
+                },
+                {
                     "title":qsTr("Settings"),
                     "category":qsTr("MAIN"),
                     "image":"cil-settings",

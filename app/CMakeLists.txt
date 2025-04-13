@@ -320,6 +320,7 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+        QML_FILES qml/pages/ProductsDemo/ProductsDemoPage.qml
 
 )
 set(INCLUDE_DIR
