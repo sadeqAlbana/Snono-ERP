@@ -82,13 +82,11 @@ AppPage {
                 //     Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
                 //     icon.name: "cil-cart-plus"
                 // }
-                // Text {
-
-                //     Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-
-                //     horizontalAlignment: Text.AlignHCenter
-                //     text: model.price
-                // }
+                Text {
+                    Layout.alignment: Qt.AlignCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    text: Utils.formatCurrency(model.list_price)
+                }
             }
         }
     }
