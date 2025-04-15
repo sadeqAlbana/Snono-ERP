@@ -37,10 +37,9 @@ AppPage {
 
         delegate: Card{
             GridLayout {
-                columns: 2
+                columns: 1
                 anchors.fill: parent
                 Image {
-                    Layout.columnSpan: 2
                     Layout.alignment: Qt.AlignCenter
                     Layout.maximumWidth: 300
                     fillMode: Image.PreserveAspectFit
@@ -49,11 +48,24 @@ AppPage {
                 }
 
                 Text {
-                    Layout.columnSpan: 2
 
                     Layout.alignment: Qt.AlignCenter
                     horizontalAlignment: Text.AlignHCenter
                     text: model.name
+
+                    // Component.onCompleted: console.log(JSON.stringify(model))
+                }
+
+                GridLayout{
+
+                    Repeater{
+                        model: ['XS','M','L','XL']
+                        ToolButton{
+                            text: modelData
+                        }
+                    }
+
+
                 }
 
                 // RowLayout {

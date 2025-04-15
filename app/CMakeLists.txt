@@ -321,6 +321,7 @@ qt_add_qml_module(appposfe
     QML_FILES
         ${TARGET_QML_SOURCES}
         QML_FILES qml/pages/ProductsDemo/ProductsDemoPage.qml
+        SOURCES models/productsdemomodel.h models/productsdemomodel.cpp
 
 )
 set(INCLUDE_DIR
