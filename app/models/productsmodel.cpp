@@ -204,6 +204,5 @@ void ProductsModel::onTableRecieved(NetworkResponse *reply)
             m_columns.append(JsonModelColumn{value["id"].toString(),value["name"].toString(),QString(),false,value["type"].toString()});
         }
     }
-//    endResetModel();
     AppNetworkedJsonModel::onTableRecieved(reply);
 }
