@@ -26,7 +26,7 @@ AppPage {
 
 
 
-        model: ProductsModel{
+        model: ProductsDemoModel{
              filter: {"parentage":["have_variants","variantless"]}
 
         }
@@ -39,29 +39,30 @@ AppPage {
             GridLayout {
                 columns: 1
                 anchors.fill: parent
-                Image {
-                    Layout.alignment: Qt.AlignCenter
-                    Layout.maximumWidth: 300
-                    fillMode: Image.PreserveAspectFit
-                    // Layout.preferredWidth: 100
-                    source: model.thumb
-                }
+                // Image {
+                //     Layout.alignment: Qt.AlignCenter
+                //     Layout.maximumWidth: 300
+                //     fillMode: Image.PreserveAspectFit
+                //     // Layout.preferredWidth: 100
+                //     source: model.thumb
+                // }
 
-                Text {
+                // Text {
 
-                    Layout.alignment: Qt.AlignCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    text: model.name
+                //     Layout.alignment: Qt.AlignCenter
+                //     horizontalAlignment: Text.AlignHCenter
+                //     text: model.name
 
-                    // Component.onCompleted: console.log(JSON.stringify(model))
-                }
+                //     // Component.onCompleted: console.log(JSON.stringify(model))
+                // }
 
                 GridLayout{
 
                     Repeater{
-                        model: ['XS','M','L','XL']
+                        model: model.sizes_stocks
                         ToolButton{
-                            text: modelData
+                            text: modelData.size
+                            palette.button: modelData.qty? "green" : "red"
                         }
                     }
 
@@ -94,11 +95,11 @@ AppPage {
                 //     Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
                 //     icon.name: "cil-cart-plus"
                 // }
-                Text {
-                    Layout.alignment: Qt.AlignCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    text: Utils.formatCurrency(model.list_price)
-                }
+                // Text {
+                //     Layout.alignment: Qt.AlignCenter
+                //     horizontalAlignment: Text.AlignHCenter
+                //     text: Utils.formatCurrency(model.list_price)
+                // }
             }
         }
     }

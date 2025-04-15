@@ -4,7 +4,15 @@
 ProductsDemoModel::ProductsDemoModel(QObject *parent) : AppNetworkedJsonModel ("/products/demo",
                             JsonModelColumnList(),parent)
 {
+    //requestData();
 
+    JsonModelColumnList list{
+                             {"id",tr("ID")} ,
+                             {"name",tr("Name")} ,
+                             {"sizes_stocks","sizes stocks"},
+                             {"list_price",tr("List Price"),QString(),false,"currency"}};
+
+    m_columns=list;
 }
 
 QJsonArray ProductsDemoModel::filterData(QJsonArray data)
@@ -17,6 +25,22 @@ QJsonArray ProductsDemoModel::filterData(QJsonArray data)
     for(int i=0; i<data.size(); i++){
         QJsonObject product=data.at(i).toObject();
         QJsonArray attributes=product["attributes"].toArray();
+        QJsonArray sizesMap;
+        QJsonArray children=product["children"].toArray();
+        for(QJsonValue childValue: children){
+            QJsonObject child=childValue.toObject();
+
+            QJsonArray childAttributes=child["attributes"].toArray();
+
+            for(int j=0; j<childAttributes.size(); j++){
+                QJsonObject attribute=childAttributes.at(j).toObject();
+                QString attributeId=attribute["attribute_id"].toString();
+                if(attributeId=="size"){
+                    sizesMap.append(QJsonObject{{"size",attribute["value"].toString()},{"qty",
+                                                 child["products_stocks"].toObject()["qty"].toInt()}});
+                }
+            }
+        }
 
         for(int j=0; j<attributes.size(); j++){
             QJsonObject attribute=attributes.at(j).toObject();
@@ -29,6 +53,8 @@ QJsonArray ProductsDemoModel::filterData(QJsonArray data)
             }
         }
         product["attributes"]=attributes;
+        product["sizes_stocks"]=sizesMap;
+
 
         data.replace(i,product);
     }
@@ -37,6 +63,7 @@ QJsonArray ProductsDemoModel::filterData(QJsonArray data)
 
 void ProductsDemoModel::onTableRecieved(NetworkResponse *reply)
 {
+    qDebug()<<"Table received";
     if(m_wantedColumns.isEmpty()){
         this->m_wantedColumns=reply->json("attributes").toArray();
         for(const QJsonValue &value: m_wantedColumns){
