@@ -37,36 +37,37 @@ AppPage {
 
         delegate: Card{
             GridLayout {
+                id: grid
                 columns: 1
                 anchors.fill: parent
-                // Image {
-                //     Layout.alignment: Qt.AlignCenter
-                //     Layout.maximumWidth: 300
-                //     fillMode: Image.PreserveAspectFit
-                //     // Layout.preferredWidth: 100
-                //     source: model.thumb
-                // }
 
-                // Text {
+                property var sizes: model.sizes_stocks
+                Image {
+                    Layout.alignment: Qt.AlignCenter
+                    Layout.maximumWidth: 300
+                    fillMode: Image.PreserveAspectFit
+                    // Layout.preferredWidth: 100
+                    source: model.thumb
+                }
 
-                //     Layout.alignment: Qt.AlignCenter
-                //     horizontalAlignment: Text.AlignHCenter
-                //     text: model.name
+                Text {
 
-                //     // Component.onCompleted: console.log(JSON.stringify(model))
-                // }
+                    Layout.alignment: Qt.AlignCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    text: model.name
+
+                    // Component.onCompleted: console.log(JSON.stringify(model))
+                }
 
                 GridLayout{
 
                     Repeater{
-                        model: model.sizes_stocks
+                        model: grid.sizes
                         ToolButton{
                             text: modelData.size
                             palette.button: modelData.qty? "green" : "red"
                         }
                     }
-
-
                 }
 
                 // RowLayout {
@@ -95,11 +96,11 @@ AppPage {
                 //     Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
                 //     icon.name: "cil-cart-plus"
                 // }
-                // Text {
-                //     Layout.alignment: Qt.AlignCenter
-                //     horizontalAlignment: Text.AlignHCenter
-                //     text: Utils.formatCurrency(model.list_price)
-                // }
+                Text {
+                    Layout.alignment: Qt.AlignCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    text: Utils.formatCurrency(model.list_price)
+                }
             }
         }
     }
