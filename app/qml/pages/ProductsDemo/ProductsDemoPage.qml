@@ -21,21 +21,28 @@ AppPage {
 
 
     GridView{
-
-        anchors.fill: parent;
-
+        id: view
 
 
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: {
+            if (count === 0)
+                return cellWidth; // fallback to prevent zero width
+
+            let columns = Math.min(count, Math.floor(parent.width / cellWidth));
+            return columns * cellWidth;
+        }
+        height: parent.height
         model: ProductsDemoModel{
              filter: {"parentage":["have_variants","variantless"]}
 
         }
 
-        cellWidth: 400
+        cellWidth: 300
         cellHeight: 500
 
-
         delegate: Card{
+
             GridLayout {
                 id: grid
                 columns: 1
@@ -60,10 +67,11 @@ AppPage {
                 }
 
                 GridLayout{
-
+                    Layout.alignment: Qt.AlignCenter
                     Repeater{
                         model: grid.sizes
-                        ToolButton{
+                        CButton{
+                            radius: height
                             text: modelData.size
                             palette.button: modelData.qty? "green" : "red"
                         }
@@ -99,6 +107,7 @@ AppPage {
                 Text {
                     Layout.alignment: Qt.AlignCenter
                     horizontalAlignment: Text.AlignHCenter
+                    font.weight: Font.DemiBold
                     text: Utils.formatCurrency(model.list_price)
                 }
             }
