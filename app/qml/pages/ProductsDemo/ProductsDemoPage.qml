@@ -41,6 +41,19 @@ AppPage {
         cellWidth: 300
         cellHeight: 500
 
+        Popup{
+            id: popup
+            width: parent.width
+            closePolicy: Popup.CloseOnPressOutside
+            anchors.centerIn: parent
+
+            contentItem: Image{
+                id: popupImage;
+                fillMode: Image.PreserveAspectFit
+                width: sourceSize.width
+            }
+        }
+
         delegate: Card{
 
             GridLayout {
@@ -54,7 +67,15 @@ AppPage {
                     Layout.maximumWidth: 300
                     fillMode: Image.PreserveAspectFit
                     // Layout.preferredWidth: 100
-                    source: model.thumb
+                    source: model.thumb?? ""
+
+                    MouseArea{
+                        anchors.fill: parent;
+                        onClicked: {
+                            popupImage.source=model.thumb
+                            popup.open();
+                        }
+                    }
                 }
 
                 Text {
@@ -73,7 +94,7 @@ AppPage {
                         CButton{
                             radius: height
                             text: modelData.size
-                            palette.button: modelData.qty? "green" : "red"
+                            palette.button: modelData.qty? CoreUI.success : CoreUI.danger
                         }
                     }
                 }
