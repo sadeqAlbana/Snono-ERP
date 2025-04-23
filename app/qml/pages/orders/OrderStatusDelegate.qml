@@ -19,7 +19,7 @@ CTableViewDelegate {
 
         text: switch(model.display){
               case "pending": return qsTr("Pending");
-              case "processing": return qsTr("Processing");
+              case "picked": return qsTr("Picked");
               case "completed": return qsTr("Completed");
 
               case "delivered": return qsTr("Delivered");
@@ -30,7 +30,7 @@ CTableViewDelegate {
               }
         state: switch(model.display){
                case "pending": return "info";
-               case "processing": return "primary";
+               case "picked": return "primary";
                case "completed": return "success";
 
                case "delivered": return "success";

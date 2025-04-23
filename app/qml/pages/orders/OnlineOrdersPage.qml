@@ -257,9 +257,24 @@ AppPage {
                 },
                 CAction {
                     enabled: tableView.currentRow >= 0
-                    text: qsTr("Confirm")
+                    text: qsTr("Fufill")
                     icon.name: "cil-check"
-                    onTriggered: {}
+                    onTriggered: {
+                        let orderId=model.jsonObject(tableView.currentRow).id;
+
+                        NetworkManager.post('/order/fulfill',
+                                            {"order_id":orderId}).subscribe(function (response) {
+
+                                                if (response.json('status') === 200) {
+                                                    confirmDlg.close()
+                                                    receiptDialog.receiptData = response.json(
+                                                                'order')
+                                                    receiptDialog.open()
+                                                    cashierModel.requestCart()
+                                                    page.init();
+                                                }
+                                            });
+                    }
                 },
                 CAction {
                     enabled: tableView.currentRow >= 0
