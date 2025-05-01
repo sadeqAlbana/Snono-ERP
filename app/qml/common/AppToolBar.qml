@@ -41,53 +41,59 @@ CToolBar {
         anchors.fill: parent
 
 
-        CMenuBar{
-            spacing: 0
-//            Layout.preferredHeight: 40
+        RowLayout{
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            CActionsMenu{
-                title: qsTr("Actions");
-                icon.name:"cil-settings"
-                actions: view.actions
-                permissionProvider: view.permissionProvider
-            }//Menu
+            spacing: 5
+            CMenuBar{
+                spacing: 0
+    //            Layout.preferredHeight: 40
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
+                CActionsMenu{
+                    title: qsTr("Actions");
+                    icon.name:"cil-settings"
+                    actions: view.actions
+                    permissionProvider: view.permissionProvider
+                }//Menu
 
-            CMenu{
-                title: qsTr("Columns");
-                icon.name:"cil-list"
-                Repeater{
-                    model: view.columns
-                    CMenuItem{
-                        checkable: true
-                        text: view.model.headerData(modelData,Qt.Horizontal)
-//                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
-                        checked: true
-                        onCheckedChanged: {
-                            if(checked)
-                                view.showColumn(modelData);
-                            else{
-                                view.hideColumn(modelData)
+                CMenu{
+                    title: qsTr("Columns");
+                    icon.name:"cil-list"
+                    Repeater{
+                        model: view.columns
+                        CMenuItem{
+                            checkable: true
+                            text: view.model.headerData(modelData,Qt.Horizontal)
+    //                        palette.windowText: enabled? hovered? "#fff" : "#000" : "silver"
+                            checked: true
+                            onCheckedChanged: {
+                                if(checked)
+                                    view.showColumn(modelData);
+                                else{
+                                    view.hideColumn(modelData)
+                                }
                             }
                         }
                     }
+                }//Menu
+
+                CFilterMenu{
+                    padding: 20
+                    spacing: 1
+                    title: qsTr("Filter");
+                    icon.name: "cil-filter"
+                    onClicked: (filter)=> {
+                                   control.filterClicked(filter);
+                               }
+
+
+                    //it's better to implement a custom content item
+                    model: control.advancedFilter
                 }
-            }//Menu
-
-            CFilterMenu{
-                padding: 20
-                spacing: 1
-                title: qsTr("Filter");
-                icon.name: "cil-filter"
-                onClicked: (filter)=> {
-                               control.filterClicked(filter);
-                           }
-
-
-                //it's better to implement a custom content item
-                model: control.advancedFilter
-            }
+                //now delegate choice for filter
+            }//MenuBar
 
             CMenuBarItem{
+                id: btn
                 icon.name: "cil-sync"
                 display: AbstractButton.IconOnly
                 spacing: 0
@@ -95,12 +101,18 @@ CToolBar {
                 onClicked: view.model.refresh();
                 palette: BrandInfo{}
 
+                layer.enabled: true
+                layer.effect: RoundingMask{
+                    item: btn
+                    source: btn
+                    radius: CoreUI.borderRadius
+                }
             }
+        }
 
 
 
-            //now delegate choice for filter
-        }//MenuBar
+
 
 //        HorizontalSpacer{visible: !window.mobileLayout}
 
