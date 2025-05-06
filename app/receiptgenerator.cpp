@@ -1050,7 +1050,11 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
     QPrinter printer;
     printer.setPrinterName(AppSettings::instance()->linePrinter());
-    printer.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer
+
+    if(QPrinterInfo(printer).supportedResolutions().size()){ //avoids crash
+        printer.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer
+
+    }
     printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     // printer.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     // printer.setFullPage(true);  // Use full page for printing
@@ -1066,7 +1070,10 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     pdfPrinter.setOutputFormat(QPrinter::OutputFormat::PdfFormat);
     pdfPrinter.setPrinterName(AppSettings::instance()->linePrinter());
 
+
+    if(QPrinterInfo(printer).supportedResolutions().size()){ //avoids crash
     pdfPrinter.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer    printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
+    }
     pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     // pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     // pdfPrinter.setFullPage(true);  // Use full page for printing
