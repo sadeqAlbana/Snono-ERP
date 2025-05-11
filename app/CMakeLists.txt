@@ -322,6 +322,9 @@ qt_add_qml_module(appposfe
         ${TARGET_QML_SOURCES}
         QML_FILES qml/pages/ProductsDemo/ProductsDemoPage.qml
         SOURCES models/productsdemomodel.h models/productsdemomodel.cpp
+        SOURCES models/paymentmethodsmodel.h models/paymentmethodsmodel.cpp
+        QML_FILES qml/pages/PaymentMethod/PaymentMethodsPage.qml
+        SOURCES models/paymentmethodmodel.h models/paymentmethodmodel.cpp
 
 )
 set(INCLUDE_DIR
