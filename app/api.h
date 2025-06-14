@@ -81,6 +81,8 @@ public:
     Q_INVOKABLE NetworkResponse * removeDraftOrder(const int id);
     Q_INVOKABLE NetworkResponse * newPosSession();
     Q_INVOKABLE NetworkResponse * requestNewCart();
+    Q_INVOKABLE NetworkResponse * printOrders(const QJsonArray ids);
+
     Q_INVOKABLE void scrapeImages();
     Q_INVOKABLE QImage cachedImage(const QUrl &url);
 

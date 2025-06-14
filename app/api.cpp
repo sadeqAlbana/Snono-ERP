@@ -717,6 +717,12 @@ NetworkResponse *Api::requestNewCart()
     return PosNetworkManager::instance()->get(QUrl("/pos/cart/request"));
 }
 
+NetworkResponse *Api::printOrders(const QJsonArray ids)
+{
+    return PosNetworkManager::instance()->post(QUrl("/orders/print"),QJsonObject{{"ids",ids}});
+
+}
+
 
 void Api::scrapeImages()
 {
