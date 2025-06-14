@@ -199,9 +199,10 @@ AppPage {
 
             actions: [
                 CAction {
-                    enabled: tableView.currentRow >= 0
+                    enabled: tableView.currentRow >= 0 && !tableView.selectionModel.selectedIndexes>1
                     text: qsTr("Details")
                     icon.name: "cil-notes"
+
                     onTriggered: {
                         Router.navigate(
                                     "qrc:/PosFe/qml/pages/orders/OrderDetailsPage.qml",
