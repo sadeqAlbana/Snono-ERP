@@ -254,7 +254,18 @@ AppPage {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Print")
                     icon.name: "cil-print"
-                    onTriggered: receiptDialog.openDialog()
+                    onTriggered: {
+
+                        console.log(tableView.selectionModel.selectedIndexes.length)
+
+
+                        if(tableView.selectionModel.selectedIndexes.length===1){
+                            receiptDialog.openDialog();
+                        }else{
+
+
+                        }
+                    }
                 },
                 CAction {
                     enabled: tableView.currentRow >= 0

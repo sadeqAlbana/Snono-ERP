@@ -119,8 +119,13 @@ Popup {
                     Api.barqReceipt(orderId);
                 }
 
+                    Api.printOrders([orderId]).subscribe(function(response){
+                        if(response.json('status')===200){
+                            ReceiptGenerator.createDeliveryReceipt(receiptData,true);
 
-            ReceiptGenerator.createDeliveryReceipt(receiptData,true);
+                        }
+                    });
+
         }
 
     } //card end
