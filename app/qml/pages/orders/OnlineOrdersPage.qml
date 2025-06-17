@@ -19,13 +19,10 @@ AppPage {
     title: qsTr("Online Orders")
 
     //    background: Rectangle{color:"red";}
-    
-
     function createDeliveryManifest(orderId) {
         Router.navigate("qrc:/PosFe/qml/pages/orders/DeliveryOrderForm.qml", {
                             "keyValue": orderId
                         })
-
     }
 
     AppDialog {
@@ -58,9 +55,8 @@ AppPage {
                     text: qsTr("Ok")
                     Layout.margins: 15
                     onClicked: {
-                        createDeliveryManifest(
-                                                           newDeliveryManifestDlg.orderId);
-                        newDeliveryManifestDlg.close();
+                        createDeliveryManifest(newDeliveryManifestDlg.orderId)
+                        newDeliveryManifestDlg.close()
                     }
                 }
             }
@@ -111,8 +107,7 @@ AppPage {
                     "options": {
                         "placeholderText": qsTr("All...")
                     }
-                },
-                {
+                }, {
                     "type": "combo",
                     "label": qsTr("product"),
                     "key": "products",
@@ -180,6 +175,38 @@ AppPage {
                                                     }
                                                 }
             }
+            function printSelectedOrders() {
+
+                // console.log(tableView.selectionModel.selectedIndexes.length)
+                let indexes = tableView.selectionModel.selectedIndexes
+
+                // console.log(indexes);
+                let orders = []
+                let ids = []
+                for (var i = 0; i < indexes.length; i++) {
+                    let index = indexes[i]
+                    ids.push(model.jsonObject(index.row).id)
+                    orders.push(model.jsonObject(index.row))
+                }
+
+                Api.printOrders(ids).subscribe(function (response) {
+                    if (response.json('status') === 200) {
+                        for (var j = 0; j < orders.length; j++) {
+                            printReceipt(orders[j])
+                        }
+                    }
+                })
+            }
+
+            function printReceipt(receiptData) {
+                let orderId = receiptData.id
+                console.log("order id: " + orderId)
+
+                if (receiptData.shipment.carrier.name == "Barq") {
+                    Api.barqReceipt(orderId)
+                }
+                ReceiptGenerator.createDeliveryReceipt(receiptData, true)
+            }
 
             delegate: AppDelegateChooser {
                 DelegateChoice {
@@ -199,7 +226,8 @@ AppPage {
 
             actions: [
                 CAction {
-                    enabled: tableView.currentRow >= 0 && !tableView.selectionModel.selectedIndexes>1
+                    enabled: tableView.currentRow >= 0
+                             && !tableView.selectionModel.selectedIndexes > 1
                     text: qsTr("Details")
                     icon.name: "cil-notes"
 
@@ -241,7 +269,7 @@ AppPage {
                     icon.name: "cil-plus-circle"
                     onTriggered: {
                         let order = model.jsonObject(tableView.currentRow)
-                        if (order.external_delivery_id!==undefined) {
+                        if (order.external_delivery_id !== undefined) {
                             newDeliveryManifestDlg.orderId = order.id
                             newDeliveryManifestDlg.open()
                         } else {
@@ -255,15 +283,11 @@ AppPage {
                     text: qsTr("Print")
                     icon.name: "cil-print"
                     onTriggered: {
-
                         console.log(tableView.selectionModel.selectedIndexes.length)
-
-
-                        if(tableView.selectionModel.selectedIndexes.length===1){
-                            receiptDialog.openDialog();
-                        }else{
-
-
+                        if (tableView.selectionModel.selectedIndexes.length === 1) {
+                            receiptDialog.openDialog()
+                        } else {
+                            tableView.printSelectedOrders()
                         }
                     }
                 },
@@ -272,20 +296,22 @@ AppPage {
                     text: qsTr("Fufill")
                     icon.name: "cil-check"
                     onTriggered: {
-                        let orderId=model.jsonObject(tableView.currentRow).id;
+                        let orderId = model.jsonObject(tableView.currentRow).id
 
-                        NetworkManager.post('/order/fulfill',
-                                            {"order_id":orderId}).subscribe(function (response) {
+                        NetworkManager.post('/order/fulfill', {
+                                                "order_id": orderId
+                                            }).subscribe(function (response) {
 
-                                                if (response.json('status') === 200) {
+                                                if (response.json(
+                                                            'status') === 200) {
                                                     confirmDlg.close()
                                                     receiptDialog.receiptData = response.json(
                                                                 'order')
                                                     receiptDialog.open()
                                                     cashierModel.requestCart()
-                                                    page.init();
+                                                    page.init()
                                                 }
-                                            });
+                                            })
                     }
                 },
                 CAction {

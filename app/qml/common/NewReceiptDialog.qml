@@ -115,12 +115,13 @@ Popup {
         function printReceipt(){
                 let orderId=receiptData.id;
                 console.log("order id: " + orderId)
-                if(receiptData.shipment.carrier.name=="Barq"){
-                    Api.barqReceipt(orderId);
-                }
+
 
                     Api.printOrders([orderId]).subscribe(function(response){
                         if(response.json('status')===200){
+                            if(receiptData.shipment.carrier.name=="Barq"){
+                                Api.barqReceipt(orderId);
+                            }
                             ReceiptGenerator.createDeliveryReceipt(receiptData,true);
 
                         }
