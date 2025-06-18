@@ -208,7 +208,6 @@ AppPage {
 
             Settings.externalReceiptCopies = externalReceiptCopies.currentValue
             Settings.reportsPrinter=reportsPrinterCB.currentValue
-            Settings.labelPrinter=labelPrinterCB.currentValue
 
             Settings.receiptPaperSize=receiptPaperSizeCB.currentValue
             Settings.linePrinterPaperSize=linePrinterPaperSizeCB.currentValue

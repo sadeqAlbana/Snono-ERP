@@ -79,7 +79,7 @@ AppPage {
 
             function openDialog() {
                 receiptData = model.jsonObject(tableView.currentRow)
-                open()
+                open();
             }
         }
 
@@ -284,8 +284,10 @@ AppPage {
                     icon.name: "cil-print"
                     onTriggered: {
                         console.log(tableView.selectionModel.selectedIndexes.length)
+                        console.log("reached here");
                         if (tableView.selectionModel.selectedIndexes.length === 1) {
-                            receiptDialog.openDialog()
+                            console.log("reached here 22");
+                            receiptDialog.openDialog();
                         } else {
                             tableView.printSelectedOrders()
                         }
