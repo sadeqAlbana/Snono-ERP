@@ -26,11 +26,22 @@ CTableViewDelegate {
 
     }
 
-    contentItem: Text{
-        text: display
-        color: control.palette.inactive.link
-        font.pixelSize: 18
+
+    contentItem: Label {
+        clip: false
+        text: control.model.display ?? ""
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        color: control.palette.inactive.link
+        visible: !control.editing
     }
+
+
+
+    // contentItem: Text{
+    //     text: control.display
+    //     color: control.palette.inactive.link
+    //     font.pixelSize: 18
+
+    // }
 }

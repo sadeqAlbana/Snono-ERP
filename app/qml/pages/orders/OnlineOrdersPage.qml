@@ -224,7 +224,26 @@ AppPage {
                 }
             }
 
-            actions: [
+
+
+            actions: tableView.selectionModel.hasSelection? multiActions : singleActions
+            property list<CAction> multiActions: [
+                CAction {
+                    enabled: tableView.selectionModel.selectedIndexes.length
+                    text: qsTr("Print")
+                    icon.name: "cil-print"
+                    onTriggered: {
+                        if (tableView.selectionModel.selectedIndexes.length === 1) {
+                            receiptDialog.openDialog();
+                        } else {
+                            tableView.printSelectedOrders()
+                        }
+                    }
+                }
+
+            ]
+
+            property list<CAction> singleActions: [
                 CAction {
                     enabled: tableView.currentRow >= 0
                              && !tableView.selectionModel.selectedIndexes > 1
@@ -278,21 +297,16 @@ AppPage {
                     }
                 },
 
+
                 CAction {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Print")
                     icon.name: "cil-print"
-                    onTriggered: {
-                        console.log(tableView.selectionModel.selectedIndexes.length)
-                        console.log("reached here");
-                        if (tableView.selectionModel.selectedIndexes.length === 1) {
-                            console.log("reached here 22");
-                            receiptDialog.openDialog();
-                        } else {
-                            tableView.printSelectedOrders()
-                        }
-                    }
+                    onTriggered: receiptDialog.openDialog()
                 },
+
+
+
                 CAction {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Fufill")
