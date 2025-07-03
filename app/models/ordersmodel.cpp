@@ -9,15 +9,8 @@ OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   {"name",tr("Customer"),"customers",false,"link",
                                             QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                     {"linkKey","customer_id"}}},
-                                                                  {"phone",tr("Phone"),"customers"} ,
-                                                                  {"address",tr("Address"),"customers"} ,
                                                                   {"total",tr("Total"),QString(),false,"currency"} ,
                                                                   {"date",tr("Date"),QString(),false,"datetime"} ,
-                                                                  //{"tax_amount",tr("Tax Amount"),QString(),false,"currency"},
-                                                                  {"status",tr("Status"),QString(),false,"OrderStatus"} ,
-                                                                  {"external_delivery_id",tr("Delivery Id"),QString()} ,
-                                                                  {"external_delivery_status",tr("Delivery Status"),QString(),false,"externalDeliveryStatus"} ,
-
                                                                   },
                                                                   parent)
 {
