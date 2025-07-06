@@ -23,7 +23,8 @@ ProductsModel::ProductsModel(QObject *parent) : AppNetworkedJsonModel ("/product
     {"cost",tr("Cost"),QString(),false,"currency"} ,
 //    {"current_cost","Current Cost",QString(), "currency"} ,
         {"stock",tr("Stock"),QString(),false,"product_stock"} ,
-        {"reserved",tr("Reserved"),QString(),false,} ,
+        {"reserved",tr("Reserved"),QString(),false,"product_stock"} ,
+        {"net_stock",tr("Net Stock"),QString(),false,"product_stock"} ,
 
     {"list_price",tr("List Price"),QString(),false,"currency"}};
     if(!AuthManager::instance()->hasPermission("prm_view_product_cost")){
