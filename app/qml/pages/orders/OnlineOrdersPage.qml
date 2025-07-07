@@ -74,6 +74,23 @@ AppPage {
                                                tableView.currentRow).id, status)
             }
         }
+
+        CDialog{
+            id: cancelDialog
+
+            title: qsTr("Confirm")
+
+            Label{
+                anchors.fill: parent;
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Cancel Order?")
+            }
+
+
+
+        }
+
         NewReceiptDialog {
             id: receiptDialog
 
@@ -260,14 +277,26 @@ AppPage {
                     }
                 },
 
-                CAction {
+                // CAction {
+                //     enabled: tableView.currentRow >= 0
+                //     text: qsTr("Update Status")
+                //     icon.name: "cil-reload"
+                //     onTriggered: {
+                //         deliveryStatusDialog.open()
+                //     }
+                // },
+
+                CAction{
                     enabled: tableView.currentRow >= 0
-                    text: qsTr("Update Status")
-                    icon.name: "cil-reload"
+                    text: qsTr("Cancel")
+                    icon.name: "cil-action-undo"
                     onTriggered: {
-                        deliveryStatusDialog.open()
+                        let order = model.jsonObject(tableView.currentRow)
+
+
                     }
                 },
+
                 CAction {
                     enabled: tableView.currentRow >= 0
                     text: qsTr("Return")
