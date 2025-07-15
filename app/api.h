@@ -86,6 +86,7 @@ public:
     Q_INVOKABLE void scrapeImages();
     Q_INVOKABLE QImage cachedImage(const QUrl &url);
 
+    Q_INVOKABLE NetworkResponse * cancelOrder(const int id);
 
 signals:
     void processCustomBillResponse(QJsonObject reply);

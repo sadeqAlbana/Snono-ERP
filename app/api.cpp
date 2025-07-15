@@ -844,3 +844,11 @@ QImage Api::cachedImage(const QUrl &url)
     return QImage::fromData(res->binaryData());
 }
 
+NetworkResponse *Api::cancelOrder(const int id)
+{
+    QUrl url("/order/cancel");
+    url.setQuery(QUrlQuery{{"id",QString::number(id)}});
+
+    return PosNetworkManager::instance()->get(url);
+}
+

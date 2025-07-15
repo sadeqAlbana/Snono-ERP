@@ -87,6 +87,22 @@ AppPage {
                 text: qsTr("Cancel Order?")
             }
 
+            onAccepted: {
+                let order = tableView.model.jsonObject(tableView.currentRow);
+
+                Api.cancelOrder(order.id).subscribe(function(res){
+                    if (res.json('status') === 200) {
+                        tableView.model.refresh();
+                    } else {
+                        console.log("network error: " + res.status(
+                                        ) + " " + res.json("massage"))
+                    }
+
+                });
+
+
+            }
+
 
 
         }
@@ -292,8 +308,7 @@ AppPage {
                     icon.name: "cil-action-undo"
                     onTriggered: {
                         let order = model.jsonObject(tableView.currentRow)
-
-
+                        cancelDialog.open();
                     }
                 },
 
