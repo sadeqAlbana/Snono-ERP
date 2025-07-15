@@ -24,6 +24,8 @@ CTableViewDelegate {
 
               case "delivered": return qsTr("Delivered");
               case "returned": return qsTr("returned");
+              case "cancelled": return qsTr("Cancelled");
+
               case "partially_returned": return qsTr("Partial");
 
               default: return "Invalid";
@@ -35,6 +37,8 @@ CTableViewDelegate {
 
                case "delivered": return "success";
                case "returned": return "danger";
+               case "cancelled": return "danger";
+
                case "partially_returned": return "warning";
 
 
