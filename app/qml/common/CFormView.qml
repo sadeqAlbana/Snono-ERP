@@ -27,6 +27,7 @@ AppPage{
     property alias applyHandler: form.applyHandler
     property alias readOnly: form.readOnly
     property bool showReset: true;
+    function apply(){return form.apply();}
     function formData(){return form.data()}
     header.visible: false
     GridLayout {

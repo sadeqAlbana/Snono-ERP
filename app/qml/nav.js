@@ -149,6 +149,12 @@ function navBar(){
                             "image":"cil-notes",
                             "path":"qrc:/PosFe/qml/pages/orders/DraftOrdersPage.qml",
                             "permission": "prm_view_draft_orders",
+                        },
+                        {
+                            "title":qsTr("Fulfill"),
+                            "image":"cil-notes",
+                            "path":"qrc:/PosFe/qml/pages/orders/OrdersFulfillmentPage.qml",
+                            "permission": "",
                         }
                     ]
                 },

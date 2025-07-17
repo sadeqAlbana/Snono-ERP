@@ -1,21 +1,33 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Controls.Basic
-import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
-
-import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Notifications
-import CoreUI.Buttons
-import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
+import CoreUI.Forms
+import CoreUI.Base
+import QtQuick.Layouts
 import CoreUI
-import CoreUI.Palettes
+CFormView {
+    id: control
+    padding: 10
+    rowSpacing: 30
+    url: "/order/fulfill"
 
-AppPage {
-    id: page;
+    title: qsTr("Fulfil orders")
+    CLabel {
+        text: qsTr("Order ID")
+    }
+    CNumberInput {
+        id: barcodeInput
+        objectName: "order_id"
+        Layout.fillWidth: true
 
+        onAccepted: {
+            control.apply();
+            text = ""
+        }
+        placeholderText: qsTr("Barcode...")
+        implicitHeight: 50
+    }
+
+    Component.onCompleted: barcodeInput.forceActiveFocus();
 }
