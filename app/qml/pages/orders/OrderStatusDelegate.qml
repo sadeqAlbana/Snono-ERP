@@ -18,30 +18,25 @@ CTableViewDelegate {
     contentItem: Badge{
 
         text: switch(model.display){
+              case "cancelled": return qsTr("Cancelled");
+              case "completed": return qsTr("Completed");
               case "pending": return qsTr("Pending");
               case "picked": return qsTr("Picked");
-              case "completed": return qsTr("Completed");
-
               case "delivered": return qsTr("Delivered");
               case "returned": return qsTr("returned");
-              case "cancelled": return qsTr("Cancelled");
-
               case "partially_returned": return qsTr("Partial");
-
+              case "partially_fulfilled": return qsTr("Partial Return");
               default: return "Invalid";
               }
         state: switch(model.display){
+               case "cancelled": return "danger";
+               case "completed": return "success";
                case "pending": return "info";
                case "picked": return "primary";
-               case "completed": return "success";
-
                case "delivered": return "success";
                case "returned": return "danger";
-               case "cancelled": return "danger";
-
                case "partially_returned": return "warning";
-
-
+               case "partially_fulfilled": return "warning";
                default: return "Invalid";
                }
     }
