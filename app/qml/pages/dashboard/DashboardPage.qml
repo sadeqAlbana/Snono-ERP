@@ -46,8 +46,8 @@ Page{
                             {label: qsTr("Month"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month"]) : ""},
                             {label: qsTr("Month (POS)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_month_pos"]) : ""},
 
-                            {label: qsTr("Returns (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
-                            {label: qsTr("Returns (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_day"]) : ""},
+                            {label: qsTr("Returns (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_day"]) : ""},
+                            {label: qsTr("Returns (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["sales_returns_month"]) : ""},
                             {label: qsTr("Profits (Today)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["daily_sales_profits"]) : ""},
                             {label: qsTr("Profits (Month)"), value: page.dashboard? Utils.formatCurrency(page.dashboard["monthly_sales_profits"]) : ""}
                         ]
