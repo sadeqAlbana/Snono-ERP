@@ -104,13 +104,6 @@ AppPage {
                     "options": {
                         "placeholderText": qsTr("All...")
                     }
-                }, {
-                    "type": "text",
-                    "label": qsTr("Customer Address"),
-                    "key": "customer_address",
-                    "options": {
-                        "placeholderText": qsTr("All...")
-                    }
                 },
                 {
                     "type": "combo",

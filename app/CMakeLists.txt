@@ -325,6 +325,7 @@ qt_add_qml_module(appposfe
         SOURCES models/paymentmethodsmodel.h models/paymentmethodsmodel.cpp
         QML_FILES qml/pages/PaymentMethod/PaymentMethodsPage.qml
         SOURCES models/paymentmethodmodel.h models/paymentmethodmodel.cpp
+        QML_FILES qml/common/OrderTypeDelegate.qml
 
 )
 set(INCLUDE_DIR
