@@ -20,33 +20,21 @@ AppDataPage {
     link: "/order"
     ColumnLayout {
         anchors.fill: parent
-
-        Label{
-            Layout.leftMargin: 15
-            Layout.topMargin: 5
-            font.bold: true
-            font.pixelSize: 22
-            text: qsTr("Details:")
-        }
-
         GridLayout{
-            Layout.leftMargin: 15
-            Layout.bottomMargin: 15
-            columns: 2
-            columnSpacing: 45
-            CLabel{font.pixelSize: 18; text: qsTr("ID:");}
-            CLabel{font.pixelSize: 18; color: "#000"; text: page.dataRecord?.id?? ""}
-            CLabel{font.pixelSize: 18; text: qsTr("Reference:");}
-            CLabel{font.pixelSize: 18; color: "#000"; text: page.dataRecord?.reference?? ""}
-            CLabel{font.pixelSize: 18; text: qsTr("Customer:");}
-            CLabel{font.pixelSize: 18; color: "#000"; text: page.dataRecord?.customers?.name?? ""}
-            CLabel{font.pixelSize: 18; text: qsTr("Total:");}
-            CLabel{font.pixelSize: 18; color: "#000"; text: Utils.formatCurrency(page.dataRecord?.total?? "0")}
+            columns: 6
+            CLabel{text: qsTr("ID");}
+            CTextField{readOnly: true; text: page.dataRecord?.id?? ""}
+            CLabel{text: qsTr("Reference");}
+            CTextField{readOnly: true; text: page.dataRecord?.reference?? ""}
+            CLabel{text: qsTr("Customer");}
+            CTextField{readOnly: true; text: page.dataRecord?.customers?.name?? ""}
+
+            CLabel{text: qsTr("Total");}
+            CTextField{readOnly: true; text: page.dataRecord?.total?? ""}
+
 
         }//GridLayout
 
-
-        CHorizontalSeperator{}
         CTableView {
             Layout.fillWidth: true
             Layout.fillHeight: true
