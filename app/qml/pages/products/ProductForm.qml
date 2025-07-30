@@ -201,6 +201,7 @@ CTabbedFormView {
 
                 model: ProductAttributesProxyModel {
                     sourceModel: JsonModel {
+                        id: attributesModel
                         columnList: [
 
                             JsonModelColumn {
