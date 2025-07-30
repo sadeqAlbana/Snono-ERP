@@ -55,7 +55,7 @@ CTabbedFormView {
             CLabel {
                 text: qsTr("List Price")
             }
-            SpinBox {
+            CSpinBox {
                 //leftIcon.name: "cil-money"
                 objectName: "list_price"
                 Layout.fillWidth: true
@@ -65,7 +65,7 @@ CTabbedFormView {
             CLabel {
                 text: qsTr("Cost")
             }
-            SpinBox {
+            CSpinBox {
                 //leftIcon.name: "cil-money"
                 objectName: "cost"
                 Layout.fillWidth: true
@@ -200,7 +200,6 @@ CTabbedFormView {
                 selectionBehavior: TableView.SelectCells
 
                 model: ProductAttributesProxyModel {
-
                     sourceModel: JsonModel {
                         columnList: [
 
