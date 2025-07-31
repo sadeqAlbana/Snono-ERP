@@ -691,6 +691,11 @@ NetworkResponse *Api::receipt()
     return PosNetworkManager::instance()->get(QUrl("/receipt"));
 }
 
+NetworkResponse *Api::config()
+{
+    return PosNetworkManager::instance()->get(QUrl("/config"));
+}
+
 NetworkResponse *Api::removeAttribute(const QString &id)
 {
     QUrl url("/productAttribute");

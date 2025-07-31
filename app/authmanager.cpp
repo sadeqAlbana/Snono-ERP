@@ -7,10 +7,12 @@
 #include <QHttpMultiPart>
 #include <QJsonDocument>
 #include <QFile>
+#include "api.h"
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
     connect(this,&AuthManager::userChanged,this,&AuthManager::reloadPermissions);
+    connect(this,&AuthManager::userChanged,this,&AuthManager::reloadSettings);
 
 }
 
@@ -142,4 +144,15 @@ void AuthManager::reloadPermissions()
         permissions << item["permission"].toString();
     }
     setPermissions(permissions);
+}
+
+void AuthManager::reloadSettings()
+{
+
+    Api::instance()->config()->subscribe([](NetworkResponse *res){
+
+
+    });
+
+
 }

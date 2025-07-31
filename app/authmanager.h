@@ -43,6 +43,8 @@ private:
     Q_PROPERTY(QJsonObject user READ user WRITE setUser RESET resetUser NOTIFY userChanged)
     Q_PROPERTY(QStringList permissions READ permissions WRITE setPermissions RESET resetPermissions NOTIFY permissionsChanged)
     void reloadPermissions();
+    void reloadSettings();
+
 };
 
 #endif // AUTHMANAGER_H
