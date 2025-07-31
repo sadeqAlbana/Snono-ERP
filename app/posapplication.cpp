@@ -58,30 +58,7 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->rootContext()->setContextProperty("Api",Api::instance());
     m_engine->rootContext()->setContextProperty("Clipboard",QApplication::clipboard());
 
-    connect(AuthManager::instance(),&AuthManager::loggedIn,this,[this]{
 
-
-        Api::instance()->receipt()->subscribe([this](NetworkResponse *res){
-            if(res->status()==200){
-                QByteArray imageData=QByteArray::fromBase64(res->json("data")["receipt_logo"].toString().toUtf8());
-                if(imageData.size()){
-                    QDir().mkpath(AppSettings::storagePath()+"/assets");
-                    QImage image=QImage::fromData(imageData);
-                    image.save(AppSettings::storagePath()+"/assets/"+"receipt_logo.png");
-                }
-
-                QJsonObject data=res->json("data").toObject();
-                AppSettings::instance()->setReceiptCompanyName(data["receipt_company_name"].toString());
-                AppSettings::instance()->setReceiptPhoneNumber(data["receipt_phone"].toString());
-                AppSettings::instance()->setReceiptBottomNote(data["receipt_bottom_note"].toString());
-                AppSettings::instance()->setPosReceiptBottomNote(data["receipt_pos_bottom_note"].toString());
-                AppSettings::instance()->setAddressQr(data["receipt_address_qr_data"].toString());
-                AppSettings::instance()->setReceiptAddressLine(data["receipt_address_line"].toString());
-
-
-            }
-        });
-    });
 
 
 

@@ -8,11 +8,12 @@
 #include <QJsonDocument>
 #include <QFile>
 #include "api.h"
+#include <QDir>
 AuthManager *AuthManager::_instance;
 AuthManager::AuthManager(QObject *parent) : QObject(parent)
 {
     connect(this,&AuthManager::userChanged,this,&AuthManager::reloadPermissions);
-    connect(this,&AuthManager::userChanged,this,&AuthManager::reloadSettings);
+    connect(this,&AuthManager::loggedIn,this,&AuthManager::reloadSettings);
 
 }
 
@@ -151,6 +152,21 @@ void AuthManager::reloadSettings()
 
     Api::instance()->config()->subscribe([](NetworkResponse *res){
 
+        QJsonObject data=res->json("data").toObject();
+        qDebug()<<"data: " <<data;
+        QByteArray imageData=QByteArray::fromBase64(res->json("data")["receipt_logo"].toString().toUtf8());
+        if(imageData.size()){
+            QDir().mkpath(AppSettings::storagePath()+"/assets");
+            QImage image=QImage::fromData(imageData);
+            image.save(AppSettings::storagePath()+"/assets/"+"receipt_logo.png");
+        }
+
+        // AppSettings::instance()->setReceiptCompanyName(data["receipt_company_name"].toString());
+        // AppSettings::instance()->setReceiptPhoneNumber(data["receipt_phone"].toString());
+        // AppSettings::instance()->setReceiptBottomNote(data["receipt_bottom_note"].toString());
+        // AppSettings::instance()->setPosReceiptBottomNote(data["receipt_pos_bottom_note"].toString());
+        // AppSettings::instance()->setAddressQr(data["receipt_address_qr_data"].toString());
+        // AppSettings::instance()->setReceiptAddressLine(data["receipt_address_line"].toString());
 
     });
 
