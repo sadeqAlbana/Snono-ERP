@@ -152,21 +152,27 @@ void AuthManager::reloadSettings()
 
     Api::instance()->config()->subscribe([](NetworkResponse *res){
 
-        QJsonObject data=res->json("data").toObject();
-        qDebug()<<"data: " <<data;
-        QByteArray imageData=QByteArray::fromBase64(res->json("data")["receipt_logo"].toString().toUtf8());
+        QJsonArray data=res->json("data").toArray();
+        QJsonObject config;
+
+        for(auto item : data){
+            QJsonObject record=item.toObject();
+            config.insert(record["key"].toString(),record["value"]);
+        }
+
+        QByteArray imageData=QByteArray::fromBase64(config["receipt_logo"].toString().toUtf8());
         if(imageData.size()){
             QDir().mkpath(AppSettings::storagePath()+"/assets");
             QImage image=QImage::fromData(imageData);
             image.save(AppSettings::storagePath()+"/assets/"+"receipt_logo.png");
         }
 
-        // AppSettings::instance()->setReceiptCompanyName(data["receipt_company_name"].toString());
-        // AppSettings::instance()->setReceiptPhoneNumber(data["receipt_phone"].toString());
-        // AppSettings::instance()->setReceiptBottomNote(data["receipt_bottom_note"].toString());
-        // AppSettings::instance()->setPosReceiptBottomNote(data["receipt_pos_bottom_note"].toString());
-        // AppSettings::instance()->setAddressQr(data["receipt_address_qr_data"].toString());
-        // AppSettings::instance()->setReceiptAddressLine(data["receipt_address_line"].toString());
+         AppSettings::instance()->setReceiptCompanyName(config["receipt_company_name"].toString());
+         AppSettings::instance()->setReceiptPhoneNumber(config["receipt_phone"].toString());
+         AppSettings::instance()->setReceiptBottomNote(config["receipt_bottom_note"].toString());
+         AppSettings::instance()->setPosReceiptBottomNote(config["receipt_pos_bottom_note"].toString());
+         AppSettings::instance()->setAddressQr(config["receipt_address_qr_data"].toString());
+         AppSettings::instance()->setReceiptAddressLine(config["receipt_address_line"].toString());
 
     });
 
