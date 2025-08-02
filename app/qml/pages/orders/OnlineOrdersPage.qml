@@ -387,6 +387,7 @@ AppPage {
                     text: qsTr("Print Report")
                     icon.name: "cil-print"
                     onTriggered: model.print()
+                    enabled: tableView.rows>0
                 }
             ]
         }
