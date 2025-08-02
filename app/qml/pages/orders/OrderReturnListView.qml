@@ -79,7 +79,7 @@ ListView {
             enabled: model.checkState === Qt.Checked
         }
 
-        SpinBox {
+        CSpinBox {
             Layout.topMargin: 10
 
             id: qty

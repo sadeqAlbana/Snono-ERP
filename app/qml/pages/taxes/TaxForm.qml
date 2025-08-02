@@ -36,7 +36,7 @@ CFormView {
     CLabel {
         text: qsTr("Value")
     }
-    SpinBox {
+    CSpinBox {
         //leftIcon.name: "cil-diamond"
         objectName: "value"
         Layout.fillWidth: true
