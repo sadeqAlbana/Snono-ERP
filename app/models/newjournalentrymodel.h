@@ -10,6 +10,10 @@ class NewJournalEntryModel : public JsonModel
     QML_ELEMENT
 public:
     explicit NewJournalEntryModel(QObject *parent = nullptr);
+
+
+    Qt::ItemFlags flags(const QModelIndex& index) const override;
+
 };
 
 #endif // NEWJOURNALENTRYMODEL_H
