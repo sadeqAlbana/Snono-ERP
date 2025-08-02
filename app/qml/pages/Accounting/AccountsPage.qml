@@ -66,8 +66,8 @@ AppPage{
                                                      "title": qsTr("Add Account")
                                                  })
 
-                },
-                CAction{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}
+                }
+                // CAction{ text: qsTr("Deposit Money"); icon.name: "cil-dollar"; onTriggered: dialog.open();}
             ]
             delegate: AppDelegateChooser{
                 DelegateChoice{ roleValue: "internal_type"; InternalTypeDelegate{}}
