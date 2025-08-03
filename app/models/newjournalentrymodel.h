@@ -13,6 +13,7 @@ public:
 
 
     Qt::ItemFlags flags(const QModelIndex& index) const override;
+    Q_INVOKABLE void newEntry();
 
 };
 

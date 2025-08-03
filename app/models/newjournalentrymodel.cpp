@@ -27,3 +27,11 @@ Qt::ItemFlags NewJournalEntryModel::flags(const QModelIndex &index) const
     default: return JsonModel::flags(index);
     }
 }
+
+void NewJournalEntryModel::newEntry()
+{
+    QJsonObject record=this->record();
+
+    record["no"]=rowCount()+1;
+    appendRecord(record);
+}

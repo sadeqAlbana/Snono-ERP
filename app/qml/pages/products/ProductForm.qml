@@ -273,8 +273,9 @@ CTabbedFormView {
                     text: "+"
                     palette: BrandInfo {}
                     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                    onClicked: attributesModel.appendRecord(
-                                   attributesModel.record)
+                    onClicked: {
+                        attributesModel.appendEmptyRecord();
+                    }
                 }
 
                 CButton {
