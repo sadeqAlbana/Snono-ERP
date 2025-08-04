@@ -4,7 +4,7 @@ NewJournalEntryModel::NewJournalEntryModel(QObject *parent)
     : JsonModel(QJsonArray(),
                 JsonModelColumnList{
                                     {"no",tr("No")},
-                    {"account",tr("Account")},
+                    {"account",tr("Account"),QString(),false,"combo"},
                     {"description",tr("Description")},
                     {"debit",tr("Debit")},
                     {"credit",tr("Credit")}

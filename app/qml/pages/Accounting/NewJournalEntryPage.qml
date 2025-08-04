@@ -18,6 +18,17 @@ CFormView {
     title: qsTr("New Journal Entry")
     fillHeight: true
 
+    property var accounts;
+
+    Component.onCompleted: {
+        NetworkManager.get("/accounts/list").subscribe(
+                    function (response) {
+                        accounts = response.json("data");
+                    });
+
+    }
+
+
     NewJournalEntryModel {
         id: entriesModel
         records: [{
@@ -32,8 +43,7 @@ CFormView {
     CLabel {
         text: qsTr("Description")
     }
-    CIconTextField {
-        leftIcon.name: "cil-description"
+    CTextField {
         objectName: "description"
         Layout.fillWidth: true
     }
@@ -46,12 +56,26 @@ CFormView {
     }
 
     CTableView {
+        id: tableView
         Layout.columnSpan: 2
         Layout.fillWidth: true
         Layout.fillHeight: true
-        id: tableView
-
         selectionBehavior: TableView.SelectCells
+        delegate: AppDelegateChooser{
+            DelegateChoice{ roleValue: "combo";       CTableViewDelegate{
+
+                    TableView.editDelegate: CComboBox{
+                    width: parent.width
+                    height: parent.height
+                    model: accounts;
+                    valueRole: "id"
+                    textRole: "name"
+                    Component.onCompleted: console.log("created...");
+                    }
+
+                }}
+
+        }
 
         model: entriesModel
     } //TableView
