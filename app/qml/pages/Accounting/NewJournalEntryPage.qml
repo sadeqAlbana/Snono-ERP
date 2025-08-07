@@ -59,6 +59,13 @@ CFormView {
     }
 
     CLabel {
+        text: qsTr("Posted")
+    }
+    CheckBox {
+        objectName: "posted"
+    }
+
+    CLabel {
         id: label
         Layout.columnSpan: 2
 
