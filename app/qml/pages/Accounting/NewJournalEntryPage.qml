@@ -18,7 +18,9 @@ CFormView {
     title: qsTr("New Journal Entry")
     fillHeight: true
 
-    property var accounts;
+    property var accounts: undefined
+
+
 
     Component.onCompleted: {
         NetworkManager.get("/accounts/list").subscribe(
@@ -33,7 +35,7 @@ CFormView {
         id: entriesModel
         records: [{
                 "no": 1,
-                "account": 1,
+                "account_id": 3,
                 "description": "test",
                 "debit": 0,
                 "credit": 500
@@ -45,6 +47,14 @@ CFormView {
     }
     CTextField {
         objectName: "description"
+        Layout.fillWidth: true
+    }
+
+    CLabel {
+        text: qsTr("Date")
+    }
+    CDateInput {
+        objectName: "date"
         Layout.fillWidth: true
     }
 
@@ -62,15 +72,24 @@ CFormView {
         Layout.fillHeight: true
         selectionBehavior: TableView.SelectCells
         delegate: AppDelegateChooser{
-            DelegateChoice{ roleValue: "combo";       CTableViewDelegate{
-
+            DelegateChoice{ roleValue: "combo"; CTableViewDelegate{
+                    text: accounts? accounts.find(obj => obj.id === model.display).account : "N.A"
                     TableView.editDelegate: CComboBox{
                     width: parent.width
                     height: parent.height
                     model: accounts;
                     valueRole: "id"
-                    textRole: "name"
-                    Component.onCompleted: console.log("created...");
+                    textRole: "account"
+                    editable: true
+                    TableView.onCommit: display = currentValue
+
+                    onCurrentIndexChanged: {
+                        let result= accounts.find(obj => obj.id == model.display)
+                        console.log("display: "  + JSON.stringify(result))
+
+                    }
+
+                    Component.onCompleted: currentIndex=indexOfValue(display)
                     }
 
                 }}
