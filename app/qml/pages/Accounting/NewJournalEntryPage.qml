@@ -28,6 +28,11 @@ CFormView {
                         accounts = response.json("data");
                     });
 
+        NetworkManager.get("/journal/list").subscribe(
+                    function (response) {
+                        journalsCB.model = response.json("data");
+                    });
+
     }
 
 
@@ -40,6 +45,17 @@ CFormView {
                 "debit": 0,
                 "credit": 500
             }]
+    }
+
+    CLabel {
+        text: qsTr("Journal")
+    }
+    CComboBox {
+        id: journalsCB
+        objectName: "journal_id"
+        valueRole: "id"
+        textRole: "name"
+        Layout.fillWidth: true
     }
 
     CLabel {
@@ -88,12 +104,15 @@ CFormView {
                     valueRole: "id"
                     textRole: "account"
                     editable: true
-                    TableView.onCommit: display = currentValue
+                    TableView.onCommit: {
+                        display = currentValue
+                    }
 
-                    onCurrentIndexChanged: {
-                        let result= accounts.find(obj => obj.id == model.display)
-                        console.log("display: "  + JSON.stringify(result))
-
+                    onEditTextChanged: {
+                        let idx=find(editText);
+                        if (idx !== -1){
+                            currentIndex=idx;
+                        }
                     }
 
                     Component.onCompleted: currentIndex=indexOfValue(display)
