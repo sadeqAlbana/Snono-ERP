@@ -328,6 +328,8 @@ qt_add_qml_module(appposfe
         QML_FILES qml/common/OrderTypeDelegate.qml
         QML_FILES qml/pages/orders/OrderReturnDetailsPage.qml
         QML_FILES qml/common/JournalEntryStatusDelegate.qml
+        QML_FILES qml/pages/invoices/NewInvoicePage.qml
+        SOURCES models/newinvoicemodel.h models/newinvoicemodel.cpp
 
 )
 set(INCLUDE_DIR
