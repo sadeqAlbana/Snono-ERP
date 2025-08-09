@@ -17,6 +17,8 @@ CFormView {
     columns: 2
     title: qsTr("New Journal Entry")
     fillHeight: true
+    method: "POST"
+    url: "/journal/add"
 
     property var accounts: undefined
 
@@ -59,10 +61,10 @@ CFormView {
     }
 
     CLabel {
-        text: qsTr("Description")
+        text: qsTr("Name")
     }
     CTextField {
-        objectName: "description"
+        objectName: "name"
         Layout.fillWidth: true
     }
 
@@ -90,6 +92,7 @@ CFormView {
 
     CTableView {
         id: tableView
+        objectName: "items"
         Layout.columnSpan: 2
         Layout.fillWidth: true
         Layout.fillHeight: true

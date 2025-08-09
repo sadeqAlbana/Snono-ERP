@@ -6,8 +6,8 @@ NewJournalEntryModel::NewJournalEntryModel(QObject *parent)
                                     {"no",tr("No")},
                     {"account_id",tr("Account"),QString(),false,"combo"},
                     {"description",tr("Description")},
-                    {"debit",tr("Debit")},
-                    {"credit",tr("Credit")}
+                    {"debit",tr("Debit"),QString(),false,"number"},
+                    {"credit",tr("Credit"),QString(),false,"number"}
                 },
                 parent)
 {
@@ -33,5 +33,7 @@ void NewJournalEntryModel::newEntry()
     QJsonObject record=this->record();
 
     record["no"]=rowCount()+1;
+    record["account_id"]=3;
+
     appendRecord(record);
 }
