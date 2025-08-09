@@ -35,6 +35,11 @@ AppPage{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            delegate: AppDelegateChooser{
+                DelegateChoice{roleValue: "JournalEntryStatus"; JournalEntryStatusDelegate{}}
+            }
+
             actions: [
                 CAction {
                     text: qsTr("New")

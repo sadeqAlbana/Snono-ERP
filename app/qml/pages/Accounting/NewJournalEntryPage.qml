@@ -40,13 +40,13 @@ CFormView {
 
     NewJournalEntryModel {
         id: entriesModel
-        records: [{
-                "no": 1,
-                "account_id": 3,
-                "description": "test",
-                "debit": 0,
-                "credit": 500
-            }]
+        // records: [{
+        //         "no": 1,
+        //         "account_id": 3,
+        //         "description": "test",
+        //         "debit": 0,
+        //         "credit": 500
+        //     }]
     }
 
     CLabel {
