@@ -20,18 +20,18 @@ CFormView {
     method: "POST"
     url: "/invoice"
 
-    property var accounts: undefined
-
-
 
     Component.onCompleted: {
-
+        NetworkManager.get("/customer/list").subscribe(
+                    function (response) {
+                        journalsCB.model = response.json("data");
+                    });
 
     }
 
 
     NewInvoiceModel {
-        id: entriesModel
+        id: invoiceModel
         // records: [{
         //         "no": 1,
         //         "account_id": 3,
@@ -41,7 +41,17 @@ CFormView {
         //     }]
     }
 
-
+    CLabel {
+        text: qsTr("Customer")
+    }
+    CComboBox {
+        id: journalsCB
+        objectName: "customer_id"
+        valueRole: "id"
+        textRole: "name"
+        Layout.fillWidth: true
+        editable: true
+    }
 
 
     CLabel {
@@ -60,12 +70,7 @@ CFormView {
         Layout.fillWidth: true
     }
 
-    CLabel {
-        text: qsTr("Posted")
-    }
-    CheckBox {
-        objectName: "posted"
-    }
+
 
     CLabel {
         id: label
@@ -82,34 +87,10 @@ CFormView {
         Layout.fillHeight: true
         selectionBehavior: TableView.SelectCells
         delegate: AppDelegateChooser{
-            DelegateChoice{ roleValue: "combo"; CTableViewDelegate{
-                    text: accounts? accounts.find(obj => obj.id === model.display).account : "N.A"
-                    TableView.editDelegate: CComboBox{
-                    width: parent.width
-                    height: parent.height
-                    model: accounts;
-                    valueRole: "id"
-                    textRole: "account"
-                    editable: true
-                    TableView.onCommit: {
-                        display = currentValue
-                    }
-
-                    onEditTextChanged: {
-                        let idx=find(editText);
-                        if (idx !== -1){
-                            currentIndex=idx;
-                        }
-                    }
-
-                    Component.onCompleted: currentIndex=indexOfValue(display)
-                    }
-
-                }}
 
         }
 
-        model: entriesModel
+        model: invoiceModel
     } //TableView
 
 
@@ -119,7 +100,7 @@ CFormView {
             text: "+"
             palette: BrandInfo {}
             Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-            onClicked: entriesModel.newEntry();
+            onClicked: invoiceModel.newEntry();
         }
 
         CButton {

@@ -5,11 +5,11 @@ NewInvoiceModel::NewInvoiceModel(QObject *parent)
     : JsonModel(QJsonArray(),
                 JsonModelColumnList{
                     {"no",tr("No")},
-                    {"item",tr("Item"),QString(),false,"combo"},
+                    {"item",tr("Item")},
                     {"description",tr("Description")},
+                    {"amount",tr("Amount"),QString(),false,"currency"},
                     {"qty",tr("Qty"),QString(),false,"number"},
-                    {"amount",tr("Amount"),QString(),false,"number"},
-                    {"total",tr("Total"),QString(),false,"number"}
+                    {"total",tr("Total"),QString(),false,"currency"}
 
                 },
                 parent)
