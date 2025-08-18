@@ -279,7 +279,7 @@ AppPage {
             property list<CAction> singleActions: [
                 CAction {
                     enabled: tableView.currentRow >= 0
-                             && !tableView.selectionModel.selectedIndexes > 1
+                             && !(tableView.selectionModel.selectedIndexes > 1)
                     text: qsTr("Details")
                     icon.name: "cil-notes"
 

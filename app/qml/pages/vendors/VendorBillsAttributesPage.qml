@@ -42,8 +42,20 @@ AppPage{
             id: tableView
             Layout.fillHeight: true
             Layout.fillWidth: true
+            selectionBehavior: TableView.SelectCells
 
+            actions: [
+                CAction {
+                    enabled: tableView.currentRow >= 0
+                    text: qsTr("Copy to clipboard")
+                    icon.name: "cil-copy"
+                    onTriggered: {
+                        CoreUI.copyToClipBoard(tableView.selectionModel.currentIndex.data())
+                        toastrService.push("success","copied to clipboard","success",2000)
 
+                    }
+                }
+            ]
             delegate: AppDelegateChooser{
             }
 
