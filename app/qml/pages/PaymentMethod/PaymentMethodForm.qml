@@ -11,8 +11,8 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    url: "/vendor"
-    title: qsTr("Vendor")
+    url: "/paymentMethod"
+    title: qsTr("Payment Method")
     CLabel {
         text: qsTr("Name")
     }
@@ -27,6 +27,7 @@ CFormView {
     }
     CComboBox {
         objectName: "type"
+        enabled: !initialValues
         Layout.fillWidth: true
         model: [
             {"label":qsTr("Cash"), "value": "cash"},

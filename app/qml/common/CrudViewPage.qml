@@ -20,7 +20,7 @@ BasicViewPage {
     property string deletePath; //used in conjunction with deleteCB
     property var deleteCB: function(){
 
-            NetworkManager.deleteResource(page.deletePath,model.data(tableView.currentRow,"id"))
+            NetworkManager.deleteResource(page.deletePath+"?id="+model.data(view.currentRow,"id"))
             .subscribe(function(response){
                                     if(response.json("status")===200){
                                         model.refresh();

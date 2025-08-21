@@ -25,4 +25,5 @@ CrudViewPage {
     addPermission: "prm_add_payment_method"
     editPermission: "prm_edit_payment_method"
     deletePermission: "prm_remove_payment_method"
+    deletePath: "paymentMethod"
 }
