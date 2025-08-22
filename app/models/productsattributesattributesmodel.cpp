@@ -6,8 +6,8 @@ ProductsAttributesAttributesModel::ProductsAttributesAttributesModel(QObject *pa
                              {"name",tr("Name")},
                                                    {"type",tr("Type")},
 
-                                                   {"filter_visible","Show In Filter",QString(),false,"check"},
-                                                   {"products_visible","Show In Products",QString(),false,"check"}
+                                                   {"filter_visible","Show In Filter",QString(),false,"text"},
+                                                   {"products_visible","Show In Products",QString(),false,"text"}
                                                                     },parent)
 {
 
