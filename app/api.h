@@ -24,7 +24,6 @@ public:
     static Api *instance();
 
     Q_INVOKABLE void addCategory(const QString &name, const int &parentId);
-    Q_INVOKABLE void removeCategory(const int &categoryId);
     Q_INVOKABLE void barqReceipt(const int orderId);
     Q_INVOKABLE void adjustStock(const int productId, const int newQty, const QString &reason);
     Q_INVOKABLE bool bulckStockAdjustment(const QUrl &url);

@@ -93,13 +93,7 @@ void Api::addCategory(const QString &name, const int &parentId)
     });
 }
 
-void Api::removeCategory(const int &categoryId)
-{
-    PosNetworkManager::instance()->post(QUrl("/categories/remove"),QJsonObject{{"id",categoryId}})
-            ->subscribe([this](NetworkResponse *res){
-        emit categoryRemoveReply(res->json().toObject());
-    });
-}
+
 
 void Api::barqReceipt(const int orderId)
 {
