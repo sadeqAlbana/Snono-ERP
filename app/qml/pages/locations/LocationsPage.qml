@@ -25,4 +25,5 @@ CrudViewPage {
     addPermission: "prm_add_location"
     editPermission: "prm_edit_locations"
     deletePermission: "prm_remove_locations"
+    deletePath: "location"
 }
