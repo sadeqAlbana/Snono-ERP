@@ -30,6 +30,7 @@ CFormView {
     IconComboBox {
         id: typeCB
         objectName: "type"
+        enabled: !keyValue
         Layout.fillWidth: true
         textRole: "text"
         valueRole: "value"

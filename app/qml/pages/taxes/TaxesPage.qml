@@ -28,4 +28,5 @@ CrudViewPage {
     addPermission: "prm_add_taxes"
     editPermission: "prm_edit_taxes"
     deletePermission: "prm_remove_taxes"
+    deletePath: "tax"
 }
