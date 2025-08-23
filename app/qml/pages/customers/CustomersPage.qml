@@ -1,72 +1,26 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
+import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
-import CoreUI.Impl
 import Qt5Compat.GraphicalEffects
 import CoreUI
-import PosFe
+import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-AppPage{
+import Qt.labs.qmlmodels 1.0
+import PosFe
+
+CrudViewPage {
+    id: page
     title: qsTr("Customers")
-    ;
-
-    ColumnLayout{
-        id: page
-        anchors.fill: parent;
-        AppToolBar{
-            id: toolBar
-            view: tableView
-
-            onSearch:(searchString)=> {
-                var filter=model.filter;
-                filter['query']=searchString
-                model.filter=filter;
-                model.requestData();
-            }
-
-        }
-
-        CTableView{
-            id: tableView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            actions: [
-                CAction {
-                    text: qsTr("Add")
-                    icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",{
-                                                     "title": qsTr("Add Customer")
-                                                 })
-
-                },
-                CAction {
-                    text: qsTr("Edit")
-                    icon.name: "cil-pen"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/customers/CustomerForm.qml",
-                                                 {
-                                                     "title": qsTr("Edit Customer"),
-                                                "keyValue": model.jsonObject(tableView.currentRow).id
-
-                                                 })
-                    enabled:tableView.currentRow>=0; permission: "prm_edit_customers";
-
-                },
-
-
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
-            ]//actions
-
-            model: CustomersModel{
-                id: model
-
-
-            }//model
-        }//tableview
-    }//layout
-}//card
-
+    delegate: AppDelegateChooser {}
+    model: CustomersModel{}
+    basePath: "qrc:/PosFe/qml/pages/customers";
+    formFile: "CustomerForm.qml"
+    addPermission: "prm_add_customers"
+    editPermission: "prm_edit_customers"
+    deletePermission: "prm_remove_customers"
+}
