@@ -25,13 +25,24 @@ CFormView {
     CLabel {
         text: qsTr("Type")
     }
-    CComboBox {
+
+
+    IconComboBox {
         id: typeCB
         objectName: "type"
         Layout.fillWidth: true
-        model: [{"label":qsTr("Percentage"), "value": 1},{"label":qsTr("Fixed"), "value": 2}]
+        textRole: "text"
         valueRole: "value"
-        textRole: "label"
+        model: ListModel {
+            ListElement {
+                text: qsTr("Percentage")
+                value: 1
+            }
+            ListElement {
+                text: qsTr("Fixed")
+                value: 2
+            }
+        }
     }
     CLabel {
         text: qsTr("Value")

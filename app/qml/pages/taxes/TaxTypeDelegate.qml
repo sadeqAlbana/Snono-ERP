@@ -15,15 +15,15 @@ CTableViewDelegate {
     contentItem: Badge{
 
         text: switch(model.display){
-              case "1": return qsTr("Percentage");
-              case "2": return qsTr("Fixed");
+              case 1: return qsTr("Percentage");
+              case 2: return qsTr("Fixed");
 
 
               default: return "Invalid";
               }
         state: switch(model.display){
-               case "1": return "success";
-               case "2": return "info";
+               case 1: return "success";
+               case 2: return "info";
 
                default: return "Invalid";
                }
