@@ -23,4 +23,5 @@ CrudViewPage {
     addPermission: "prm_add_customers"
     editPermission: "prm_edit_customers"
     deletePermission: "prm_remove_customers"
+    deletePath: "customer"
 }
