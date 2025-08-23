@@ -137,7 +137,7 @@ set(TARGET_QML_SOURCES
     qml/pages/pos/PosSessionsPage.qml
     qml/pages/taxes/TaxTypeDelegate.qml
     qml/pages/taxes/TaxesPage.qml
-    qml/pages/taxes/AddTaxPage.qml
+
     qml/pages/taxes/TaxForm.qml
     qml/pages/users/UsersPage.qml
     qml/pages/users/UsersForm.qml
@@ -195,7 +195,7 @@ set(TARGET_QML_SOURCES
     qml/pages/dashboard/DashboardWidgetTable.qml
     qml/pages/customers/AddCustomerPage.qml
     qml/pages/customers/CustomersPage.qml
-    qml/pages/customers/CustomersBillsPage.qml
+
     qml/pages/customers/CustomerForm.qml
     qml/pages/categories/CategoriesPage.qml
     qml/pages/categories/ProductCategoryForm.qml
