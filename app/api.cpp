@@ -375,10 +375,7 @@ NetworkResponse * Api::updateCustomer(const QJsonObject &data)
     return PosNetworkManager::instance()->put(QUrl("/customer"),data);
 }
 
-NetworkResponse * Api::updateVendor(const QJsonObject &data)
-{
-    return PosNetworkManager::instance()->put(QUrl("/vendor"),data);
-}
+
 
 
 NetworkResponse * Api::payBill(const int &vendorBillId)

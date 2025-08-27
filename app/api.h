@@ -39,7 +39,6 @@ public:
     Q_INVOKABLE NetworkResponse * updateCustomer(const QJsonObject &data);
 
 
-    Q_INVOKABLE NetworkResponse * updateVendor(const QJsonObject &data);
 
     Q_INVOKABLE NetworkResponse * payBill(const int &vendorBillId);
     Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
