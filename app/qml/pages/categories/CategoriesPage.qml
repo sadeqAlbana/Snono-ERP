@@ -1,12 +1,6 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
-import QtQuick.Layouts
-import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Buttons
+import QtQuick
+import QtQuick.Controls.Basic
 import PosFe
-import CoreUI
 
 CrudViewPage {
     id: page
