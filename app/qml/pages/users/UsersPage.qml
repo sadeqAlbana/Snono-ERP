@@ -1,77 +1,27 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
+import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
-import CoreUI.Impl
 import Qt5Compat.GraphicalEffects
 import CoreUI
-import PosFe
+import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-AppPage{
+import Qt.labs.qmlmodels 1.0
+import PosFe
+
+CrudViewPage {
+    id: page
     title: qsTr("Users")
-    ;
-
-    ColumnLayout{
-        id: page
-        anchors.fill: parent;
-        AppToolBar{
-            id: toolBar
-            view: tableView
-
-            onSearch:(searchString)=> {
-                var filter=model.filter;
-                filter['query']=searchString
-                model.filter=filter;
-                model.requestData();
-            }
-
-        }
-
-        CTableView{
-            id: tableView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            actions: [
-                CAction {
-                    text: qsTr("Add")
-                    icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",{
-                                                     "title": qsTr("Add User")
-                                                 })
-                },
-                CAction {
-                    text: qsTr("Edit")
-                    icon.name: "cil-pen"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/users/UsersForm.qml",
-                                                 {
-                                                     "title": qsTr("Edit User"),
-
-                                                 "keyValue": model.jsonObject(tableView.currentRow).id
-                                                 })
-                    enabled:tableView.currentRow>=0; permission: "prm_edit_users";
-
-                },
-
-
-                CAction{ text: qsTr("Delete");
-                    icon.name: "cil-delete";
-                    onTriggered: Api.deleteUser(model.data(tableView.currentRow,"id"))
-                    .subscribe(function(response){
-                                            if(response.json("status")===200){
-                                                model.refresh();
-                                            }
-                                        })}
-            ]//actions
-
-            model: UsersModel{
-                id: model
-
-            }//model
-        }//tableview
-    }//layout
-}//card
-
+    delegate: AppDelegateChooser {}
+    model: UsersModel{}
+    basePath: "qrc:/PosFe/qml/pages/users";
+    formFile: "UsersForm.qml"
+    addPermission: "prm_add_users"
+    editPermission: "prm_edit_users"
+    deletePermission: "prm_remove_users"
+    deletePath: "user"
+}
