@@ -616,6 +616,8 @@ bool Api::addSheinOrders(const QUrl &folderUrl, const bool buy)
         QJsonObject order=doc.object()["order"].toObject();
         doc=QJsonDocument(order);
 
+
+        qDebug()<<"file: " << file.fileName();
         file.close();
 
         NetworkResponse *res=PosNetworkManager::instance()->post(QUrl("/shein/addOrder"),QJsonObject{{"data",doc.object()},{"buy",buy}});
