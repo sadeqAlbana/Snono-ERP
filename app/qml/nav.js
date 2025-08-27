@@ -263,7 +263,7 @@ function navBar(){
                     "title":qsTr("ACL Groups"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"qrc:/PosFe/qml/pages/users/AclGroupsPage.qml",
+                    "path":"qrc:/PosFe/qml/pages/aclGroups/AclGroupsPage.qml",
                     "permission": "prm_view_acl_groups"
                 },
                 {
