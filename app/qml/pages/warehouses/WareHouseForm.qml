@@ -11,12 +11,11 @@ CFormView {
     padding: 10
     rowSpacing: 30
     url: "/warehouse"
-    title: qsTr("Vendor")
     CLabel {
         text: qsTr("Name")
     }
     CIconTextField {
-        leftIcon.name: "cil-user"
+        leftIcon.name: "cil-home"
         objectName: "name"
         Layout.fillWidth: true
     }
