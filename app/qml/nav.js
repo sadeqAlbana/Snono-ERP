@@ -260,11 +260,11 @@ function navBar(){
                     ]
                 },
                 {
-                    "title":qsTr("Permissions"),
+                    "title":qsTr("ACL Groups"),
                     "category":qsTr("MAIN"),
                     "image":"cil-user",
-                    "path":"qrc:/PosFe/qml/pages/users/PermissionsPage.qml",
-                    "permission": "prm_view_users"
+                    "path":"qrc:/PosFe/qml/pages/users/AclGroupsPage.qml",
+                    "permission": "prm_view_acl_groups"
                 },
                 {
                     "title":qsTr("Reports"),
