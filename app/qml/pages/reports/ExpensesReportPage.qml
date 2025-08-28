@@ -1,63 +1,12 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
-import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
-
-import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Notifications
-import CoreUI.Buttons
-import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
+import QtQuick
+import QtQuick.Controls.Basic
 import PosFe
-import JsonModels
-AppPage{
+import CoreUI.Base
+
+BasicViewPage {
+    id: page
     title: qsTr("Expeses Report")
-    ColumnLayout{
-        id: page
-        anchors.fill: parent;
+    delegate: AppDelegateChooser {}
+    model: ExpensesReportModel{}
 
-        spacing: 10
-        AppToolBar{
-            id: toolBar
-            view: tableView
-            searchVisible: true
-
-            onFilterClicked: (filter) => {
-                                 model.filter=filter
-                                 model.requestData();
-                             }
-
-            onSearch: searchString => {
-                          var filter = model.filter
-                          filter['query'] = searchString
-                          model.filter = filter
-                          model.requestData()
-                      }
-
-        }
-
-        CTableView{
-            id: tableView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-
-            actions: [
-                CAction{ text: qsTr("Print"); icon.name: "cil-print"; onTriggered: model.print()}
-            ]
-
-             delegate: AppDelegateChooser{}
-
-            model: ExpensesReportModel{
-
-
-            }//model
-
-        }
-    }
 }
-

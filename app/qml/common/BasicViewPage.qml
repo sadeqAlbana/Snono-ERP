@@ -13,8 +13,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt.labs.qmlmodels 1.0
 import PosFe
 AppPage{
-    id: page
-    ;
+    id: page;
     property var model;
     property var delegate;
     property list<CAction> actions;
@@ -25,6 +24,7 @@ AppPage{
         page.model.requestData();
     };
 
+    property alias advancedFilter: toolBar.advancedFilter
     property var filterHandler: function(filter){
         page.model.filter = filter;
         page.model.requestData();
@@ -36,11 +36,8 @@ AppPage{
         AppToolBar{
             id: toolBar
             view: tableView
-            onSearch:page.searchHandler(searchString)
-
-            onFilterClicked: page.filterHandler(filter)
-
-
+            onSearch:(searchString)=>{page.searchHandler(searchString);}
+            onFilterClicked:(filter)=> {page.filterHandler(filter);}
         }
 
         CTableView{
