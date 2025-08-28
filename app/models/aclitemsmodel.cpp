@@ -2,7 +2,7 @@
 
 AclItemsModel::AclItemsModel(QObject *parent)
     : AppNetworkedJsonModel{"/aclItems",
-                            JsonModelColumnList(),
+                            JsonModelColumnList{{"permission",tr("Permission")},{"category",tr("Category")}},
                             parent}
 {
 }

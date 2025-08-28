@@ -54,9 +54,9 @@ CFormView {
             font.bold: true
         }
 
-        delegate: CheckableListView.CListViewCheckDelegate {
-            text: model.permission
-        }
+        // delegate: CheckableListView.CListViewCheckDelegate {
+        //     text: model.permission
+        // }
 
 
         model: AclItemsModel {
