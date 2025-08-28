@@ -1,55 +1,16 @@
-import QtQuick;
-import QtQuick.Controls.Basic;
-import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
+import QtQuick
+import QtQuick.Controls.Basic
+import PosFe
 import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Notifications
-import CoreUI.Buttons
-import CoreUI.Impl
-import CoreUI
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
-
-import  PosFe
-AppPage{
+BasicViewPage {
+    id: page
     title: qsTr("Payments")
-    ColumnLayout{
-        id: page
-        anchors.fill: parent;
-        AppToolBar{
-            id: toolBar
-            view: tableView
-
-            onSearch:(searchString)=> {
-                var filter=model.filter;
-                filter['query']=searchString
-                model.filter=filter;
-                model.requestData();
-            }
-
-        }
-        CTableView{
-            id: tableView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            actions: []
-
-
-            delegate: AppDelegateChooser {
-                DelegateChoice {
-                    roleValue: "PaymentStatusDelegate"
-                    PaymentStatusDelegate {}
-                }
-            }
-
-
-            model: PaymentsModel{
-                id: model;
-            } //model end
-        }
-    }
+    delegate: AppDelegateChooser {
+         DelegateChoice {
+             roleValue: "PaymentStatusDelegate"
+             PaymentStatusDelegate {}
+         }
+     }
+    model: PaymentsModel{}
 }
-
