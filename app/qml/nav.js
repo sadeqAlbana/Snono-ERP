@@ -313,6 +313,12 @@ function navBar(){
                     "permission": ""
                 },
                 {
+                    "title": qsTr("Clinic Reservations"),
+                    "category":qsTr("MAIN"),
+                    "path":"qrc:/PosFe/qml/pages/reservations/ClinicReservationsPage.qml",
+                    "permission": ""
+                },
+                {
                     "title":qsTr("Settings"),
                     "category":qsTr("MAIN"),
                     "image":"cil-settings",

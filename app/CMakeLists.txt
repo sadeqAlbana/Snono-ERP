@@ -331,6 +331,7 @@ qt_add_qml_module(appposfe
         QML_FILES qml/pages/invoices/NewInvoicePage.qml
         SOURCES models/newinvoicemodel.h models/newinvoicemodel.cpp
         QML_FILES qml/pages/PaymentMethod/PaymentMethodForm.qml
+        QML_FILES qml/pages/reservations/ClinicReservationsPage.qml
 
 )
 set(INCLUDE_DIR
