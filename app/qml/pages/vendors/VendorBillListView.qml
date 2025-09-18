@@ -111,12 +111,18 @@ ListView {
                 top: 1000000000
             }
 
-            Binding {
-                target: model
-                property: "qty"
-                value: parseInt(qty.text)
+            onTextChanged: {
+
+                if((text==="nan") || (parseFloat(text)<0) || text===""){
+                    model.qty=0;
+                    return
+                }
+
+                if(model.qty.toString()!==qty.text){
+                    model.qty=parseFloat(qty.text)
+                }
+
             }
-            //onTextChanged: model.qty=parseInt(qty.text);
         }
         CTextField {
             id: total
