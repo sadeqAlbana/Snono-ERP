@@ -53,6 +53,11 @@ AppDataPage {
             model: JsonModel {
                 columnList: [
                     JsonModelColumn {
+                        displayName: qsTr("Name")
+                        key: "name"
+                        type: "text"
+                    },
+                    JsonModelColumn {
                         displayName: qsTr("Account")
                         key: "name"
                         parentKey: "account"
