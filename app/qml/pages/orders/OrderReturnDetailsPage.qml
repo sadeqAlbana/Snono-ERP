@@ -16,24 +16,24 @@ import JsonModels
 
 AppDataPage {
     id: page
-    title: qsTr("Orders Details")
-    link: "/order"
+    title: qsTr("Orders Return Details")
+    link: "/orders/return/info"
     ColumnLayout {
         anchors.fill: parent
-        GridLayout{
-            columns: 6
-            CLabel{text: qsTr("ID");}
-            CTextField{readOnly: true; text: page.dataRecord?.id?? ""}
-            CLabel{text: qsTr("Reference");}
-            CTextField{readOnly: true; text: page.dataRecord?.reference?? ""}
-            CLabel{text: qsTr("Customer");}
-            CTextField{readOnly: true; text: page.dataRecord?.customers?.name?? ""}
+        // GridLayout{
+        //     columns: 6
+        //     CLabel{text: qsTr("ID");}
+        //     CTextField{readOnly: true; text: page.dataRecord?.id?? ""}
+        //     CLabel{text: qsTr("Reference");}
+        //     CTextField{readOnly: true; text: page.dataRecord?.reference?? ""}
+        //     CLabel{text: qsTr("Customer");}
+        //     CTextField{readOnly: true; text: page.dataRecord?.customers?.name?? ""}
 
-            CLabel{text: qsTr("Total");}
-            CTextField{readOnly: true; text: page.dataRecord?.total?? ""}
+        //     CLabel{text: qsTr("Total");}
+        //     CTextField{readOnly: true; text: page.dataRecord?.total?? ""}
 
 
-        }//GridLayout
+        // }//GridLayout
 
         CTableView {
             Layout.fillWidth: true
@@ -60,34 +60,22 @@ AppDataPage {
             }
 
             model: JsonModel {
-                records: page.dataRecord?.order_items?? []
+                records: page.dataRecord?.order_return_items?? []
                 columnList: [
                     JsonModelColumn {
                         displayName: qsTr("Product")
                         key: "name"
                         parentKey: "products"
                     },
-                    JsonModelColumn {
-                        displayName: qsTr("Quantity")
-                        key: "qty"
-                    },
-
 
                     JsonModelColumn {
                         displayName: qsTr("Unit Price")
                         key: "unit_price"
                         type: "currency"
                     },
-
                     JsonModelColumn {
-                        displayName: qsTr("Discount")
-                        key: "discount"
-                        type: "percentage"
-                    },
-                    JsonModelColumn {
-                        displayName: qsTr("Subtotal")
-                        key: "subtotal"
-                        type: "currency"
+                        displayName: qsTr("Quantity")
+                        key: "qty"
                     },
                     JsonModelColumn {
                         displayName: qsTr("Total")

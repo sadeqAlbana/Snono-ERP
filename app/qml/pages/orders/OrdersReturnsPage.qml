@@ -10,9 +10,8 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-
-
 import PosFe
+import CoreUI
 AppPage{
 
     title: qsTr("Orders Returns")
@@ -42,8 +41,19 @@ AppPage{
             }
 
             actions: [
-                //CAction{ text: qsTr("Add"); icon.name: "cil-plus"; onTriggered: {}},
-                //CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
+                CAction {
+                    enabled: tableView.currentRow >= 0
+                    text: qsTr("Details")
+                    icon.name: "cil-notes"
+                    onTriggered: {
+                        Router.navigate(
+                                    "qrc:/PosFe/qml/pages/orders/OrderReturnDetailsPage.qml",
+                                    {
+                                        "keyValue": model.jsonObject(
+                                                        tableView.currentRow).id
+                                    })
+                    }
+                }
             ]
 
             model: OrdersReturnsModel{
