@@ -118,11 +118,15 @@ ListView {
             //palette.buttonText: "#ffffff"
             Layout.preferredHeight: 40
             Layout.preferredWidth: 40
-            Binding {
-                target: model
-                property: "checkState"
-                value: checkBox.checkState
+            onToggled: {
+                model.checkState=checkState
+
             }
+            // Binding {
+            //     target: model
+            //     property: "checkState"
+            //     value: checkBox.checkState
+            // }
             //radius: height
             //text: "X";
 
