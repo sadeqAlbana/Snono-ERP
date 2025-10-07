@@ -188,6 +188,11 @@ function navBar(){
                     "permission": "prm_view_deliveries",
                     "childItems":[
                         {
+                            "title":qsTr("Carriers"),
+                            "path":"qrc:/PosFe/qml/pages/delivery/ShipmentCarriersPage.qml",
+                            "permission": "prm_view_shipment_carriers"
+                        },
+                        {
                             "title":qsTr("Drivers List"),
                             "path":"qrc:/PosFe/qml/pages/delivery/DriversPage.qml",
                             "permission": "prm_view_drivers"

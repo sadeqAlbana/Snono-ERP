@@ -127,6 +127,11 @@ set(TARGET_SOURCES
     models/paymentsmodel.h models/paymentsmodel.cpp
     models/paymentrefundsmodel.h models/paymentrefundsmodel.cpp
     models/invoicesmodel.h models/invoicesmodel.cpp
+    models/productsdemomodel.h models/productsdemomodel.cpp
+    models/paymentmethodsmodel.h models/paymentmethodsmodel.cpp
+    models/paymentmethodmodel.h models/paymentmethodmodel.cpp
+    models/newinvoicemodel.h models/newinvoicemodel.cpp
+    models/shipmentcarriersmodel.h models/shipmentcarriersmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
@@ -234,8 +239,16 @@ set(TARGET_QML_SOURCES
     qml/pages/payments/PaymentRefundsPage.qml
     qml/pages/orders/OrdersFulfillmentPage.qml
     qml/pages/warehouses/StockReservationsPage.qml
+    qml/common/OrderTypeDelegate.qml
+     qml/pages/orders/OrderReturnDetailsPage.qml
+     qml/common/JournalEntryStatusDelegate.qml
+     qml/pages/invoices/NewInvoicePage.qml
+     qml/pages/PaymentMethod/PaymentMethodForm.qml
+     qml/pages/reservations/ClinicReservationsPage.qml
+     qml/pages/delivery/ShipmentCarriersPage.qml
     qml/common/CCheckableFilterComboBox.qml
-
+    qml/pages/ProductsDemo/ProductsDemoPage.qml
+    qml/pages/PaymentMethod/PaymentMethodsPage.qml
     qml/AppMainScreen.qml
     qml/common/ButtonPopup.qml
     qml/common/BusySpinner.qml
@@ -288,6 +301,8 @@ set(TARGET_QML_SOURCES
     qml/pages/delivery/DriversPage.qml
     qml/pages/delivery/DriverForm.qml
     qml/pages/delivery/ShipmentsPage.qml
+    qml/pages/delivery/ShipmentCarrierForm.qml
+
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
@@ -320,18 +335,9 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-        QML_FILES qml/pages/ProductsDemo/ProductsDemoPage.qml
-        SOURCES models/productsdemomodel.h models/productsdemomodel.cpp
-        SOURCES models/paymentmethodsmodel.h models/paymentmethodsmodel.cpp
-        QML_FILES qml/pages/PaymentMethod/PaymentMethodsPage.qml
-        SOURCES models/paymentmethodmodel.h models/paymentmethodmodel.cpp
-        QML_FILES qml/common/OrderTypeDelegate.qml
-        QML_FILES qml/pages/orders/OrderReturnDetailsPage.qml
-        QML_FILES qml/common/JournalEntryStatusDelegate.qml
-        QML_FILES qml/pages/invoices/NewInvoicePage.qml
-        SOURCES models/newinvoicemodel.h models/newinvoicemodel.cpp
-        QML_FILES qml/pages/PaymentMethod/PaymentMethodForm.qml
-        QML_FILES qml/pages/reservations/ClinicReservationsPage.qml
+
+
+
 
 )
 set(INCLUDE_DIR

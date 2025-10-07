@@ -13,78 +13,30 @@ import Qt.labs.qmlmodels 1.0
 import CoreUI
 import PosFe
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-AppPage{
+
+CrudViewPage {
+    id: page
     title: qsTr("Shipments")
-    ;
+    delegate: AppDelegateChooser {
+                 DelegateChoice {
+                     roleValue: "OrderStatus"
+                     OrderStatusDelegate {}
+                 }
+                 DelegateChoice {
+                     roleValue: "ShipmentStatus"
+                     ShipmentStatusDelegate {}
+                 }
 
-    ColumnLayout{
-        id: page
-        anchors.fill: parent;
-        AppToolBar{
-            id: toolBar
-            view: tableView
-
-            onSearch:(searchString)=> {
-                var filter=model.filter;
-                filter['query']=searchString
-                model.filter=filter;
-                model.requestData();
-            }
-
-        }
-
-        CTableView{
-            id: tableView
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            actions: [
-                CAction {
-                    text: qsTr("Add")
-                    icon.name: "cil-plus"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/delivery/DriverForm.qml",{
-                                                     "title": qsTr("Add")
-                                                 })
-
-                },
-                CAction {
-                    text: qsTr("Edit")
-                    icon.name: "cil-pen"
-                    onTriggered: Router.navigate("qrc:/PosFe/qml/pages/delivery/DriverForm.qml",
-                                                 {
-                                                     "title": qsTr("Edit"),
-                                                "keyValue": model.jsonObject(tableView.currentRow).id
-
-                                                 })
-                    enabled:tableView.currentRow>=0; permission: "prm_edit_drivers";
-
-                },
-
-
-                CAction{ text: qsTr("Delete"); icon.name: "cil-delete"; onTriggered: {}}
-            ]//actions
-
-            model: ShipmentsModel{
-                id: model
-                useNestedParentKeys:true
-            }//model
-
-            delegate: AppDelegateChooser {
-                DelegateChoice {
-                    roleValue: "OrderStatus"
-                    OrderStatusDelegate {}
-                }
-                DelegateChoice {
-                    roleValue: "ShipmentStatus"
-                    ShipmentStatusDelegate {}
-                }
-
-                DelegateChoice {
-                    roleValue: "externalDeliveryStatus"
-                    ExternalDeliveryStatusDelegate {}
-                }
-            }
-
-        }//tableview
-    }//layout
-}//card
-
+                 DelegateChoice {
+                     roleValue: "externalDeliveryStatus"
+                     ExternalDeliveryStatusDelegate {}
+                 }
+             }
+    model: ShipmentsModel{useNestedParentKeys:true;}
+    basePath: "qrc:/PosFe/qml/pages/delivery";
+    formFile: "ShipmentForm.qml"
+    addPermission: "prm_add_shipment"
+    editPermission: "prm_edit_shipment"
+    deletePermission: "prm_remove_shipment"
+    deletePath: "shipment"
+}
