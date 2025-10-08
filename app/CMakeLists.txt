@@ -132,6 +132,8 @@ set(TARGET_SOURCES
     models/paymentmethodmodel.h models/paymentmethodmodel.cpp
     models/newinvoicemodel.h models/newinvoicemodel.cpp
     models/shipmentcarriersmodel.h models/shipmentcarriersmodel.cpp
+    models/carriersettlementsmodel.h models/carriersettlementsmodel.cpp
+
     keyemitter.h keyemitter.cpp
 )
 
@@ -302,7 +304,8 @@ set(TARGET_QML_SOURCES
     qml/pages/delivery/DriverForm.qml
     qml/pages/delivery/ShipmentsPage.qml
     qml/pages/delivery/ShipmentCarrierForm.qml
-
+    qml/pages/delivery/CarrierSettlementsPage.qml
+    qml/pages/delivery/CarrierSettlementForm.qml
     qml/main.qml
     qml/TestService.qml
     qml/screens/LoginScreen.qml
@@ -335,10 +338,6 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-
-
-
-
 )
 set(INCLUDE_DIR
     models

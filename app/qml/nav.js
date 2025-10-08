@@ -202,6 +202,11 @@ function navBar(){
                             "path":"qrc:/PosFe/qml/pages/delivery/ShipmentsPage.qml",
                             "permission": "prm_view_shipments"
                         },
+                        {
+                            "title":qsTr("Settlements"),
+                            "path":"qrc:/PosFe/qml/pages/delivery/CarrierSettlementsPage.qml",
+                            "permission": "prm_view_carrier_settlements"
+                        },
 
                     ]
                 },
