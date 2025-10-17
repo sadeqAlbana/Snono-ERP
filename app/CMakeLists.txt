@@ -338,6 +338,7 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+        QML_FILES qml/pages/delivery/OrderHandOverPage.qml
 )
 set(INCLUDE_DIR
     models
