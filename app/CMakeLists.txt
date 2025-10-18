@@ -242,12 +242,13 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrdersFulfillmentPage.qml
     qml/pages/warehouses/StockReservationsPage.qml
     qml/common/OrderTypeDelegate.qml
-     qml/pages/orders/OrderReturnDetailsPage.qml
-     qml/common/JournalEntryStatusDelegate.qml
-     qml/pages/invoices/NewInvoicePage.qml
-     qml/pages/PaymentMethod/PaymentMethodForm.qml
-     qml/pages/reservations/ClinicReservationsPage.qml
-     qml/pages/delivery/ShipmentCarriersPage.qml
+    qml/pages/orders/OrderReturnDetailsPage.qml
+    qml/common/JournalEntryStatusDelegate.qml
+    qml/pages/invoices/NewInvoicePage.qml
+    qml/pages/PaymentMethod/PaymentMethodForm.qml
+    qml/pages/reservations/ClinicReservationsPage.qml
+    qml/pages/delivery/ShipmentCarriersPage.qml
+    qml/pages/delivery/ShipmentHandOverPage.qml
     qml/common/CCheckableFilterComboBox.qml
     qml/pages/ProductsDemo/ProductsDemoPage.qml
     qml/pages/PaymentMethod/PaymentMethodsPage.qml
@@ -338,7 +339,6 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
-        QML_FILES qml/pages/delivery/OrderHandOverPage.qml
 )
 set(INCLUDE_DIR
     models

@@ -203,6 +203,11 @@ function navBar(){
                             "permission": "prm_view_shipments"
                         },
                         {
+                            "title":qsTr("Handover"),
+                            "path":"qrc:/PosFe/qml/pages/delivery/ShipmentHandOverPage.qml",
+                            "permission": "prm_view_carrier_settlements"
+                        },
+                        {
                             "title":qsTr("Settlements"),
                             "path":"qrc:/PosFe/qml/pages/delivery/CarrierSettlementsPage.qml",
                             "permission": "prm_view_carrier_settlements"
