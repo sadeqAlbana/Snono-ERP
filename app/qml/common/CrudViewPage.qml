@@ -30,7 +30,8 @@ BasicViewPage {
     property string addPermission: "";
     property string editPermission: "";
     property string deletePermission: "";
-    actions: [
+    actions: standardActions
+    property list<CAction> standardActions: [
         CAction {
             text: qsTr("Add")
             icon.name: "cil-plus"

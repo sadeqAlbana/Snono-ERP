@@ -33,6 +33,26 @@ CrudViewPage {
                  }
              }
     model: ShipmentsModel{useNestedParentKeys:true;}
+
+    actions: [
+    CAction{
+            text: qsTr("Settle")
+            icon.name: "cil-plus"
+            onTriggered: {
+
+                Api.post("shipments/carriers/settlement/create", {"shipments_ids":[model.data(
+                                     tableView.currentRow,
+                                     "id")],
+                             "status":"posted"}).subscribe(function (response) {
+                                 if (response.json("status") === 200) {
+                                     model.refresh()
+                                 }
+                             })
+
+            }
+        }
+
+    ]
     basePath: "qrc:/PosFe/qml/pages/delivery";
     formFile: "ShipmentForm.qml"
     addPermission: "prm_add_shipment"
