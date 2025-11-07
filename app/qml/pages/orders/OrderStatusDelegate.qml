@@ -23,6 +23,8 @@ CTableViewDelegate {
               case "returned": return qsTr("returned");
               case "partially_returned": return qsTr("Partial");
               case "partially_fulfilled": return qsTr("Partial Return");
+              case "processing": return qsTr("Processing");
+
               default: return "Invalid";
               }
         state: switch(model.display){
@@ -34,6 +36,7 @@ CTableViewDelegate {
                case "returned": return "danger";
                case "partially_returned": return "warning";
                case "partially_fulfilled": return "warning";
+               case "processing": return "primary";
                default: return "Invalid";
                }
     }
