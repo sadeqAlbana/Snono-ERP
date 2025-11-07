@@ -339,6 +339,8 @@ qt_add_qml_module(appposfe
         ${TARGET_SOURCES}
     QML_FILES
         ${TARGET_QML_SOURCES}
+        QML_FILES
+        QML_FILES qml/pages/NewAppMainScreen.qml
 )
 set(INCLUDE_DIR
     models

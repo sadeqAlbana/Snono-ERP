@@ -216,7 +216,7 @@ END:VCARD)").arg(customer).arg(phone);
 #endif
     item.setWidth( barcodeImg.width() );
     item.setHeight( barcodeImg.height() );
-    item.setText(QString::number(orderId));
+    item.setText(shipmentId);
 
 #ifndef Q_OS_IOS
     item.update();
