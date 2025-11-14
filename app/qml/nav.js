@@ -112,7 +112,7 @@ function navBar(){
                 {
                     "title":qsTr("Orders"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-pen",
+                    "image":"cil-list",
                     "path": "",
                     "permission": "prm_view_orders",
                     "childItems":[
@@ -152,7 +152,7 @@ function navBar(){
                         },
                         {
                             "title":qsTr("Fulfill"),
-                            "image":"cil-notes",
+                            "image":"cil-check-circle",
                             "path":"qrc:/PosFe/qml/pages/orders/OrdersFulfillmentPage.qml",
                             "permission": "",
                         }
@@ -161,7 +161,7 @@ function navBar(){
                 {
                     "title":qsTr("Taxes"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-money",
+                    "image":"cil-percent",
                     "path":"qrc:/PosFe/qml/pages/taxes/TaxesPage.qml",
                     "permission": "prm_view_taxes"
 
@@ -169,7 +169,7 @@ function navBar(){
                 {
                     "title":qsTr("Customers"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-user",
+                    "image":"cil-contact",
                     "path":"qrc:/PosFe/qml/pages/customers/CustomersPage.qml",
                     "permission": "prm_view_customers"
                 },
@@ -183,7 +183,7 @@ function navBar(){
                 {
                     "title":qsTr("Delivery"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-user",
+                    "image":"cil-truck",
                     "path":"",
                     "permission": "prm_view_deliveries",
                     "childItems":[
@@ -218,7 +218,7 @@ function navBar(){
                 {
                     "title":qsTr("Vendors"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-user",
+                    "image":"cil-factory",
                     "path":"",
                     "permission": "",
                     "childItems":[
@@ -249,7 +249,7 @@ function navBar(){
                 {
                    "title":qsTr("Inventory"),
                    "category":qsTr("MAIN"),
-                   "image":"cil-home",
+                   "image":"cil-storage",
                     "childItems":[
                         {
                             "title":qsTr("Warehouses"),
@@ -277,7 +277,7 @@ function navBar(){
                 {
                     "title":qsTr("ACL Groups"),
                     "category":qsTr("MAIN"),
-                    "image":"cil-user",
+                    "image":"cil-shield",
                     "path":"qrc:/PosFe/qml/pages/aclGroups/AclGroupsPage.qml",
                     "permission": "prm_view_acl_groups"
                 },
