@@ -8,6 +8,7 @@ ShipmentsModel::ShipmentsModel(QObject *parent)
                             {"username",tr("Driver"),"driver.user"},
                              {"phone",tr("Phone"),"dst_address"} ,
                              {"district",tr("Address"),"dst_address"} ,
+                             {"date",tr("Date"),QString(),false,"datetime"} ,
                              {"status",tr("Status"),QString(),false,"ShipmentStatus"},
                              {"third_party_carrier_shipment_status",tr("3rd Party Status"),QString(),
                               false,"externalDeliveryStatus"} ,
