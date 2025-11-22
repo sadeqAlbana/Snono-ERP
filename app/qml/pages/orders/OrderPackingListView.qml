@@ -15,8 +15,20 @@ ListView {
     id: listView
 
     clip: true
-    required property var order
+    required property var orderId
+    Component.onCompleted: Api.returnableItems(listView.orderId)
+    Connections {
+        target: Api
 
+        function onReturnableItemsResponse(reply) {
+                                       if (reply.status === 200) {
+                                           let order = reply.order
+                                           var items = order.returnable_items
+                                           returnModel.setRecords(items)
+                                           returnModel.refreshReturnTotal()
+                                       }
+                                   }
+    }
 
     model: ReturnOrderModel {
         id: returnModel
@@ -163,4 +175,8 @@ ListView {
     }
     headerPositioning: ListView.OverlayHeader
     footerPositioning: ListView.OverlayFooter
+
+    function returnedItems() {
+        return returnModel.returnedLines()
+    }
 }

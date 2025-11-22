@@ -133,7 +133,7 @@ set(TARGET_SOURCES
     models/newinvoicemodel.h models/newinvoicemodel.cpp
     models/shipmentcarriersmodel.h models/shipmentcarriersmodel.cpp
     models/carriersettlementsmodel.h models/carriersettlementsmodel.cpp
-
+    models/orderpackingmodel.h models/orderpackingmodel.cpp
     keyemitter.h keyemitter.cpp
 )
 
@@ -144,7 +144,6 @@ set(TARGET_QML_SOURCES
     qml/pages/pos/PosSessionsPage.qml
     qml/pages/taxes/TaxTypeDelegate.qml
     qml/pages/taxes/TaxesPage.qml
-
     qml/pages/taxes/TaxForm.qml
     qml/pages/users/UsersPage.qml
     qml/pages/users/UsersForm.qml
@@ -163,7 +162,6 @@ set(TARGET_QML_SOURCES
     qml/pages/Accounting/JournalEntryDetailsPage.qml
     qml/pages/Accounting/NewJournalEntryPage.qml
     qml/pages/Accounting/NewJournalEntrtyForm.qml
-
     qml/pages/orders/OrderReturnDialog.qml
     qml/pages/orders/OrderReturnListView.qml
     qml/pages/orders/OrdersPage.qml
@@ -177,13 +175,13 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/DraftOrderForm.qml
     qml/pages/orders/OnlineOrdersPage.qml
     qml/pages/orders/PosOrdersPage.qml
+    qml/pages/orders/OrderPackingListView.qml
     qml/common/ShipmentStatusDelegate.qml
     qml/pages/ServerSettingsDialog.qml
     qml/pages/reports/ProductSalesReport.qml
     qml/pages/reports/StockReport.qml
     qml/pages/reports/OrdersSalesReportPage.qml
     qml/pages/reports/ExpensesReportPage.qml
-
     qml/pages/products/ProductsPage.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
@@ -202,7 +200,6 @@ set(TARGET_QML_SOURCES
     qml/pages/dashboard/DashboardWidgetTable.qml
     qml/pages/customers/AddCustomerPage.qml
     qml/pages/customers/CustomersPage.qml
-
     qml/pages/customers/CustomerForm.qml
     qml/pages/categories/CategoriesPage.qml
     qml/pages/categories/ProductCategoryForm.qml
@@ -262,7 +259,6 @@ set(TARGET_QML_SOURCES
     qml/common/AppPage.qml
     qml/common/SuffixDelegate.qml
     qml/common/AppDelegateChooser.qml
-
     qml/common/DateTimeDelegate.qml
     qml/common/ImageDelegate.qml
     qml/common/CFilterComboBox.qml
