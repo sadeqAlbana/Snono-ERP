@@ -10,13 +10,18 @@ import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
 import PosFe
-
+import JsonModels
 ListView {
     id: listView
 
     clip: true
     required property var orderId
-    Component.onCompleted: Api.returnableItems(listView.orderId)
+    Component.onCompleted: {
+        //Api.returnableItems(listView.orderId)
+
+
+    }
+
     Connections {
         target: Api
 
@@ -30,7 +35,7 @@ ListView {
                                    }
     }
 
-    model: ReturnOrderModel {
+    model: JsonModel {
         id: returnModel
 
 
@@ -180,3 +185,4 @@ ListView {
         return returnModel.returnedLines()
     }
 }
+

@@ -356,26 +356,26 @@ AppPage {
                     text: qsTr("Pack")
                     icon.name: "cil-check"
                     onTriggered: {
-                        let order = model.jsonObject(tableView.currentRow)
+                        let orderId = model.jsonObject(tableView.currentRow).id
                         Router.navigate(
                                     "qrc:/PosFe/qml/pages/orders/OrderPackingPage.qml",
                                     {
-                                        "order": order
+                                        "orderId": orderId
                                     })
-                        // NetworkManager.post('/order/fulfill', {
-                        //                         "order_id": orderId
-                        //                     }).subscribe(function (response) {
+                        NetworkManager.post('/order/fulfill', {
+                                                "order_id": orderId
+                                            }).subscribe(function (response) {
 
-                        //                         if (response.json(
-                        //                                     'status') === 200) {
-                        //                             confirmDlg.close()
-                        //                             receiptDialog.receiptData = response.json(
-                        //                                         'order')
-                        //                             receiptDialog.open()
-                        //                             cashierModel.requestCart()
-                        //                             page.init()
-                        //                         }
-                        //                     })
+                                                if (response.json(
+                                                            'status') === 200) {
+                                                    confirmDlg.close()
+                                                    receiptDialog.receiptData = response.json(
+                                                                'order')
+                                                    receiptDialog.open()
+                                                    cashierModel.requestCart()
+                                                    page.init()
+                                                }
+                                            })
                     }
                 },
                 CAction {
