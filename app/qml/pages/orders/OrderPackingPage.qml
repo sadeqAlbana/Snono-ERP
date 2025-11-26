@@ -17,7 +17,7 @@ import CoreUI
 AppPage {
     id: page
     title: qsTr("Pack order")
-    required property var order;
+    required property int orderId;
 
     ColumnLayout {
         anchors.fill: parent
@@ -25,11 +25,11 @@ AppPage {
 
         spacing: 10
 
-        OrderReturnListView {
+        OrderPackingListView {
             id: returnListView
             Layout.fillHeight: true
             Layout.fillWidth: true
-            orderId: page.order.id
+            orderId: page.orderId
         }
     }
 

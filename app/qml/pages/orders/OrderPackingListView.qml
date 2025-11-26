@@ -15,30 +15,23 @@ ListView {
     id: listView
 
     clip: true
-    required property var orderId
+    required property int orderId
     Component.onCompleted: {
-        //Api.returnableItems(listView.orderId)
+        NetworkManager.post("/order/packableItems", {"order_id":orderId}).subscribe(function (res) {
+            if (res.json("status") === 200) {
+                let order = res.json("order")
+                var items = order.packable_items;
+                console.log(JSON.stringify(items));
+                packingModel.setRecords(items)
+                // packingModel.refreshReturnTotal()
+            }
+        });
 
-
-    }
-
-    Connections {
-        target: Api
-
-        function onReturnableItemsResponse(reply) {
-                                       if (reply.status === 200) {
-                                           let order = reply.order
-                                           var items = order.returnable_items
-                                           returnModel.setRecords(items)
-                                           returnModel.refreshReturnTotal()
-                                       }
-                                   }
     }
 
     model: JsonModel {
-        id: returnModel
-
-
+        id: packingModel
+        checkable: true
     }
 
     spacing: 5
@@ -49,19 +42,19 @@ ListView {
             checkState: Qt.Unchecked;
 
             Connections{
-                target: returnModel
+                target: packingModel
 
                 function onDataChanged(topLeft,bottomRight,roles){
-                    checkCB.checkState=returnModel.checkState();
+                    checkCB.checkState=packingModel.checkState();
                 }
             }
 
 
             onClicked: {
                 if(checkState==Qt.Unchecked){
-                    returnModel.uncheckAll()
+                    packingModel.uncheckAll()
                 }else if(checkState==Qt.Checked || checkState==Qt.PartiallyChecked){
-                    returnModel.checkAll()
+                    packingModel.checkAll()
                 }
             }
         }
@@ -163,26 +156,26 @@ ListView {
         }
     }
 
-    footer: Rectangle {
-        color: "white"
-        z: 2
-        width: listView.width
-        height: 80
-        //anchors.horizontalCenter: listView.horizontalCenter
-        CTextField {
-            width: 300
+    // footer: Rectangle {
+    //     color: "white"
+    //     z: 2
+    //     width: listView.width
+    //     height: 80
+    //     //anchors.horizontalCenter: listView.horizontalCenter
+    //     CTextField {
+    //         width: 300
 
-            //text: Utils.formatCurrency(cartModel.cartTotal)
-            text: Utils.formatCurrency(returnModel.returnTotal)
-            readOnly: true
-            //anchors.verticalCenter: listView.verticalCenter
-        }
-    }
+    //         //text: Utils.formatCurrency(cartModel.cartTotal)
+    //         text: Utils.formatCurrency(packingModel.returnTotal)
+    //         readOnly: true
+    //         //anchors.verticalCenter: listView.verticalCenter
+    //     }
+    // }
     headerPositioning: ListView.OverlayHeader
     footerPositioning: ListView.OverlayFooter
 
     function returnedItems() {
-        return returnModel.returnedLines()
+        return packingModel.returnedLines()
     }
 }
 
