@@ -29,51 +29,14 @@ ListView {
 
     }
 
-    model: JsonModel {
+    model: OrderPackingModel {
         id: packingModel
-        checkable: true
-        columnList: [
-            JsonModelColumn {
-                displayName: qsTr("Product")
-                key: "name"
-                type:"text"
-            },
-            JsonModelColumn {
-                displayName: qsTr("Barcode")
-                key: "barcode"
-                type:"text"
-            },
-
-            JsonModelColumn {
-                displayName: qsTr("Unit Price")
-                key: "unit_price"
-                type: "currency"
-            },
-            JsonModelColumn {
-                displayName: qsTr("Quantity")
-                key: "qty"
-            },
-            JsonModelColumn {
-                displayName: qsTr("Total")
-                key: "total"
-                type: "currency"
-            },
-            JsonModelColumn {
-                displayName: qsTr("SKU")
-                key: "sku"
-                type:"text"
-            },
-            JsonModelColumn {
-                displayName: qsTr("Thumb")
-                key: "thumb"
-                type: "image"
-            }
-        ]
     }
 
     spacing: 5
 
     header: RowLayout{
+
         CheckBox{
             id: checkCB;
             checkState: Qt.Unchecked;
@@ -95,6 +58,16 @@ ListView {
                 }
             }
         }
+
+        CTextField{
+            id: barcode
+            placeholderText: qsTr("barcode...");
+
+            onAccepted: {
+                packingModel.add(text);
+                text = ""
+            }
+        }
     }
 
     //clip: true
@@ -110,63 +83,76 @@ ListView {
             source: model.thumb
             fillMode: Image.PreserveAspectFit
             Layout.maximumHeight: 200
-            opacity: model.checkState === Qt.Checked? 1: 0.5
+            opacity: model.checkState !==Qt.Unchecked? 1 : 0
 
         }
 
-        CLabel {
-            id: label
-            text: model.name
-            wrapMode: Text.WordWrap
-            Layout.preferredWidth: 300
-            enabled: model.checkState === Qt.Checked
-        }
-        CLabel {
-            id: sku
-            text: model.sku
-            wrapMode: Text.WordWrap
-            Layout.preferredWidth: 300
-            enabled: model.checkState === Qt.Checked
+        ColumnLayout{
+            CLabel {
+                id: label
+                text: model.name
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: 300
+                enabled: model.checkState !==Qt.Unchecked
+            }
+            CLabel {
+                id: sku
+                text: model.sku
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: 300
+                enabled: model.checkState !==Qt.Unchecked
+            }
+            CLabel {
+                text: model.barcode
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: 300
+                enabled: model.checkState !==Qt.Unchecked
+            }
         }
 
+
+
+
+
         CLabel {
-            id: barcode
-            text: model.barcode
-            wrapMode: Text.WordWrap
-            Layout.preferredWidth: 300
-            enabled: model.checkState === Qt.Checked
+            Layout.topMargin: 10
+
+            id: qty
+            text: qsTr("required Quantity: ")+ model.qty
+            font.bold: true
+
         }
 
         CSpinBox {
             Layout.topMargin: 10
 
-            id: qty
+            id: packedQty
             //text: model.qty
-            value: model.qty
+            value: model.packed_qty??0
             //Layout.preferredWidth: 100
             //placeholderText: "Quanitity..."
-            from: 1
+            from: 0
             to: {
                 to = model.qty
             }
             enabled: model.checkState === Qt.Checked
 
-            Binding {
-                target: model
-                property: "qty"
-                value: qty.value
-            }
+            // Binding {
+            //     target: model
+            //     property: "packed_qty"
+            //     value: packedQty.value
+            // }
             //onTextChanged: model.qty=parseInt(qty.text);
         }
-        CTextField {
-            Layout.topMargin: 10
+        // CTextField {
+        //     Layout.topMargin: 10
 
-            id: total
-            Layout.preferredWidth: 150
-            text: Utils.formatCurrency(model.total)
-            readOnly: true
-            enabled: model.checkState === Qt.Checked
-        }
+        //     id: total
+        //     Layout.preferredWidth: 150
+        //     text: Utils.formatCurrency(model.total)
+        //     readOnly: true
+        //     enabled: model.checkState === Qt.Checked
+        // }
 
         CheckBox {
             id: checkBox

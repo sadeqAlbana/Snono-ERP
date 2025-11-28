@@ -11,6 +11,9 @@ class OrderPackingModel : public JsonModel
     QML_ELEMENT
 public:
     explicit OrderPackingModel(QObject *parent = nullptr);
+
+
+    Q_INVOKABLE bool add(const QString barcode);
 };
 
 #endif // ORDERPACKINGMODEL_H
