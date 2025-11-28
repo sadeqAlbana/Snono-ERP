@@ -21,7 +21,7 @@ ListView {
             if (res.json("status") === 200) {
                 let order = res.json("order")
                 var items = order.packable_items;
-                console.log(JSON.stringify(items));
+                // console.log(JSON.stringify(items));
                 packingModel.setRecords(items)
                 // packingModel.refreshReturnTotal()
             }
@@ -32,6 +32,43 @@ ListView {
     model: JsonModel {
         id: packingModel
         checkable: true
+        columnList: [
+            JsonModelColumn {
+                displayName: qsTr("Product")
+                key: "name"
+                type:"text"
+            },
+            JsonModelColumn {
+                displayName: qsTr("Barcode")
+                key: "barcode"
+                type:"text"
+            },
+
+            JsonModelColumn {
+                displayName: qsTr("Unit Price")
+                key: "unit_price"
+                type: "currency"
+            },
+            JsonModelColumn {
+                displayName: qsTr("Quantity")
+                key: "qty"
+            },
+            JsonModelColumn {
+                displayName: qsTr("Total")
+                key: "total"
+                type: "currency"
+            },
+            JsonModelColumn {
+                displayName: qsTr("SKU")
+                key: "sku"
+                type:"text"
+            },
+            JsonModelColumn {
+                displayName: qsTr("Thumb")
+                key: "thumb"
+                type: "image"
+            }
+        ]
     }
 
     spacing: 5
@@ -69,9 +106,32 @@ ListView {
 
         spacing: 15
 
+        Image{
+            source: model.thumb
+            fillMode: Image.PreserveAspectFit
+            Layout.maximumHeight: 200
+            opacity: model.checkState === Qt.Checked? 1: 0.5
+
+        }
+
         CLabel {
             id: label
-            text: model["products.name"]
+            text: model.name
+            wrapMode: Text.WordWrap
+            Layout.preferredWidth: 300
+            enabled: model.checkState === Qt.Checked
+        }
+        CLabel {
+            id: sku
+            text: model.sku
+            wrapMode: Text.WordWrap
+            Layout.preferredWidth: 300
+            enabled: model.checkState === Qt.Checked
+        }
+
+        CLabel {
+            id: barcode
+            text: model.barcode
             wrapMode: Text.WordWrap
             Layout.preferredWidth: 300
             enabled: model.checkState === Qt.Checked
