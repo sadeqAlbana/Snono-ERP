@@ -16,7 +16,7 @@ bool ReturnOrderModel::setData(const QModelIndex &index, const QVariant &value, 
     if(success){
         QString key=headerData(index.column(),Qt::Horizontal,Qt::EditRole).toString();
         if(key=="qty" || role==Qt::CheckStateRole){
-            double cost=data(index.row(),"unit_price").toDouble(); //use subtotal instead of unit_price to account for discount !
+            double cost=data(index.row(),"subtotal").toDouble(); //use subtotal instead of unit_price to account for discount !
             double qty=data(index.row(),"qty").toDouble();
             JsonModel::setData(index.row(),"total",cost*qty);
             emit returnTotalChanged(returnTotal());
