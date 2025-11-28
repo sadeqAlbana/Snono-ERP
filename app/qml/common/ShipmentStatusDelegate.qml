@@ -18,7 +18,7 @@ CTableViewDelegate {
               case "in_transit": return qsTr("In Transit");
               case "out_for_delivery": return qsTr("Out for Delivery");
               case "deliviered": return qsTr("Deliviered");
-              default: return model.display;
+              default: return "N.A";
               }
         state: switch(model.display){
                case "manifest_created": return "info";
