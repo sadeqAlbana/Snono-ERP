@@ -11,7 +11,8 @@ class OrderPackingModel : public JsonModel
     QML_ELEMENT
 public:
     explicit OrderPackingModel(QObject *parent = nullptr);
-
+    virtual bool setData(const QModelIndex &index, const QVariant &value,
+                         int role = Qt::EditRole) override;
 
     Q_INVOKABLE bool add(const QString barcode);
 };
