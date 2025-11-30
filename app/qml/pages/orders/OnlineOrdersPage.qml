@@ -362,20 +362,7 @@ AppPage {
                                     {
                                         "orderId": orderId
                                     })
-                        // NetworkManager.post('/order/fulfill', {
-                        //                         "order_id": orderId
-                        //                     }).subscribe(function (response) {
 
-                        //                         if (response.json(
-                        //                                     'status') === 200) {
-                        //                             confirmDlg.close()
-                        //                             receiptDialog.receiptData = response.json(
-                        //                                         'order')
-                        //                             receiptDialog.open()
-                        //                             cashierModel.requestCart()
-                        //                             page.init()
-                        //                         }
-                        //                     })
                     }
                 },
                 CAction {

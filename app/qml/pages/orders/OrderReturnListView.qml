@@ -88,9 +88,7 @@ ListView {
             //Layout.preferredWidth: 100
             //placeholderText: "Quanitity..."
             from: 1
-            to: {
-                to = model.qty
-            }
+            to: model.qty
             enabled: model.checkState === Qt.Checked
 
             Binding {

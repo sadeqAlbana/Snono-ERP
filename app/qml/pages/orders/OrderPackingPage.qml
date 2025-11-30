@@ -32,31 +32,4 @@ AppPage {
             orderId: page.orderId
         }
     }
-
-
-
-    footer: RowLayout {
-
-        Rectangle {
-            color: "transparent"
-            Layout.fillWidth: true
-        }
-
-        CButton {
-            text: qsTr("Close")
-            palette.button: "#e55353"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            onClicked: Router.back();
-        }
-        CButton {
-            text: qsTr("Return")
-            palette.button: "#2eb85c"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            onClicked: Api.returnOrder(order.id, returnListView.returnedItems())
-        }
-    } //footer end
 }

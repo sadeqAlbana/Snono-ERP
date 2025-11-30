@@ -11,6 +11,7 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import Qt5Compat.GraphicalEffects
 import PosFe
 import JsonModels
+import CoreUI
 ListView {
     id: listView
 
@@ -83,7 +84,7 @@ ListView {
             source: model.thumb
             fillMode: Image.PreserveAspectFit
             Layout.maximumHeight: 200
-            opacity: model.checkState !==Qt.Unchecked? 1 : 0
+            opacity: model.checkState !==Qt.Unchecked? 1 : 0.5
 
         }
 
@@ -125,59 +126,39 @@ ListView {
 
         CSpinBox {
             Layout.topMargin: 10
-
             id: packedQty
-            //text: model.qty
-            value: model.packed_qty??0
-            //Layout.preferredWidth: 100
-            //placeholderText: "Quanitity..."
+            value: model.packed_qty
             from: 0
-            to: {
-                to = model.qty
+            to: model.qty
+
+
+            onValueChanged: {
+                if(model.packed_qty!==value){
+                    model.packed_qty=value;
+
+                }
+
             }
-            enabled: model.checkState === Qt.Checked
 
             // Binding {
             //     target: model
             //     property: "packed_qty"
             //     value: packedQty.value
             // }
-            //onTextChanged: model.qty=parseInt(qty.text);
         }
-        // CTextField {
-        //     Layout.topMargin: 10
 
-        //     id: total
-        //     Layout.preferredWidth: 150
-        //     text: Utils.formatCurrency(model.total)
-        //     readOnly: true
-        //     enabled: model.checkState === Qt.Checked
-        // }
 
         CheckBox {
             id: checkBox
             Layout.topMargin: 10
             checkState: model.checkState
-            //color: "#e55353"
-            //palette.buttonText: "#ffffff"
             Layout.preferredHeight: 40
             Layout.preferredWidth: 40
             onToggled: {
                 model.checkState=checkState
 
             }
-            // Binding {
-            //     target: model
-            //     property: "checkState"
-            //     value: checkBox.checkState
-            // }
-            //radius: height
-            //text: "X";
 
-            //            onClicked: {
-            //                cartModel.removeRecord(index);
-            //                cartModel.refreshCartTotal();
-            //            }
         }
     } //listview delegate end
 
@@ -202,21 +183,52 @@ ListView {
         }
     }
 
-    // footer: Rectangle {
-    //     color: "white"
-    //     z: 2
-    //     width: listView.width
-    //     height: 80
-    //     //anchors.horizontalCenter: listView.horizontalCenter
-    //     CTextField {
-    //         width: 300
+    footer: RowLayout {
 
-    //         //text: Utils.formatCurrency(cartModel.cartTotal)
-    //         text: Utils.formatCurrency(packingModel.returnTotal)
-    //         readOnly: true
-    //         //anchors.verticalCenter: listView.verticalCenter
-    //     }
-    // }
+        Rectangle {
+            color: "transparent"
+            Layout.fillWidth: true
+        }
+
+        CButton {
+            text: qsTr("Back")
+            palette.button: "#e55353"
+            palette.buttonText: "#ffffff"
+            implicitHeight: 50
+            Layout.margins: 10
+            onClicked: Router.back();
+        }
+        CButton {
+            id: packButton
+            text: qsTr("Pack")
+            palette.button: "#2eb85c"
+            palette.buttonText: "#ffffff"
+            implicitHeight: 50
+            Layout.margins: 10
+            enabled: false
+
+            Connections{
+                target: packingModel
+
+                function onDataChanged(topLeft,bottomRight,roles){
+                    packButton.enabled=packingModel.checkState()===Qt.Checked
+                }
+            }
+
+            onClicked: {
+                NetworkManager.post('/order/fulfill', {
+                                        "order_id": orderId,
+                                        "packed_items": packingModel.records
+                                    }).subscribe(function (response) {
+
+                                        if (response.json(
+                                                    'status') === 200) {
+                                            Router.back();
+                                        }
+                                    })
+            }
+        }
+    } //footer end
     headerPositioning: ListView.OverlayHeader
     footerPositioning: ListView.OverlayFooter
 
