@@ -8,7 +8,6 @@ import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import Qt5Compat.GraphicalEffects
 
 import Qt.labs.qmlmodels 1.0
 import QtQuick.Layouts

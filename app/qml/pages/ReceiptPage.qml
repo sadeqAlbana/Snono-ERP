@@ -1,19 +1,6 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
-import QtQuick.Layouts
-import QtQuick.Controls
 import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Notifications
-import CoreUI.Buttons
-import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import Qt5Compat.GraphicalEffects
-
-import Qt.labs.qmlmodels 1.0
-
-import CoreUI.Palettes
 import QtQuick.Pdf
 //https://stackoverflow.com/questions/17146747/capture-qml-drawing-buffer-without-displaying
 

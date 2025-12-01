@@ -7,8 +7,6 @@ import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import CoreUI.Impl
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels 1.0
 
 import CoreUI
 import PosFe

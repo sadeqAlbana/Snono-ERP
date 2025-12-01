@@ -3,17 +3,8 @@ import QtQuick.Controls
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 import Qt.labs.qmlmodels
-import Qt5Compat.GraphicalEffects
 import CoreUI
 import CoreUI.Base
-import CoreUI.Forms
-import CoreUI.Views
-import CoreUI.Notifications
-import CoreUI.Buttons
-import CoreUI.Impl
-import "qrc:/PosFe/qml/screens/utils.js" as Utils
-import JsonModels
-import PosFe
 ListView {
     id: view
     property list<Action> actions
@@ -25,9 +16,6 @@ ListView {
         text: section
         font.bold: true
     }
-
-
-
 
 
     topMargin: CoreUI.borderRadius

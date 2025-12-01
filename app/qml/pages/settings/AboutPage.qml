@@ -1,8 +1,6 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
-import Qt.labs.qmlmodels
 import QtQuick.Dialogs
 import CoreUI.Base
 import CoreUI.Forms
