@@ -356,11 +356,17 @@ AppPage {
                     text: qsTr("Pack")
                     icon.name: "cil-check"
                     onTriggered: {
-                        let orderId = model.jsonObject(tableView.currentRow).id
+                        let order = model.jsonObject(tableView.currentRow)
+
+                        if(order.status!=="pending"){
+                            toastrService.push("Warning",qsTr("Only pending orders can be packed !"),"warning",2000)
+                            return;
+                        }
+
                         Router.navigate(
                                     "qrc:/PosFe/qml/pages/orders/OrderPackingPage.qml",
                                     {
-                                        "orderId": orderId
+                                        "orderId": order.id
                                     })
 
                     }

@@ -37,7 +37,7 @@ ListView {
     spacing: 5
 
     header: RowLayout{
-
+        Layout.bottomMargin: 20
         CheckBox{
             id: checkCB;
             checkState: Qt.Unchecked;
@@ -49,8 +49,6 @@ ListView {
                     checkCB.checkState=packingModel.checkState();
                 }
             }
-
-
             onClicked: {
                 if(checkState==Qt.Unchecked){
                     packingModel.uncheckAll()
