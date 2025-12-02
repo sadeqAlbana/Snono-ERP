@@ -1,14 +1,13 @@
 import QtQuick;
 import QtQuick.Controls.Basic;
 import QtQuick.Controls
-import Qt5Compat.GraphicalEffects
-
 import CoreUI.Base
 import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
+import QtQuick.Effects
 CTableViewDelegate {
     id: control
     implicitWidth: 100
@@ -33,15 +32,15 @@ CTableViewDelegate {
                 source: model.display? model.display : ""
                 antialiasing: true
 
-                layer.enabled: control.enabled
-                layer.effect:  DropShadow{
+                RectangularShadow {
+                    anchors.fill: parent;
+                    z: -1
                     radius: 3
-                    verticalOffset: 1
-                    spread: 0
-                    samples: 7
+                    offset.y: 3
+                    offset.x: 3
+                    spread: 2
                     color: "silver"
                     cached: true
-                    transparentBorder: true
                 }
             }
     }
