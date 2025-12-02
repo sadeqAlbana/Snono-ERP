@@ -27,6 +27,7 @@ ListView {
             }
         });
 
+
     }
 
     model: OrderPackingModel {
@@ -72,6 +73,8 @@ ListView {
                     packingModel.add(text);
                     text = ""
                 }
+
+                Component.onCompleted: forceActiveFocus();
             }
         }
     }
@@ -166,74 +169,63 @@ ListView {
 
         }
     } //listview delegate end
+    footer: Rectangle{
+        color: "white";
+        implicitHeight: 80
+        implicitWidth: listView.width
+        z: 3
 
-    remove: Transition {
-        ParallelAnimation {
-            NumberAnimation {
-                property: "opacity"
-                to: 0
-                duration: 500
+        RowLayout {
+
+            Rectangle {
+                color: "transparent"
+                Layout.fillWidth: true
             }
-            NumberAnimation {
-                properties: "y"
-                duration: 500
+
+            CButton {
+                text: qsTr("Back")
+                palette.button: "#e55353"
+                palette.buttonText: "#ffffff"
+                implicitHeight: 50
+                Layout.margins: 10
+                onClicked: Router.back();
             }
-        }
-    }
+            CButton {
+                id: packButton
+                text: qsTr("Pack")
+                palette.button: "#2eb85c"
+                palette.buttonText: "#ffffff"
+                implicitHeight: 50
+                Layout.margins: 10
+                enabled: false
 
-    removeDisplaced: Transition {
-        NumberAnimation {
-            properties: "y"
-            duration: 500
-        }
-    }
+                Connections{
+                    target: packingModel
 
-    footer: RowLayout {
+                    function onDataChanged(topLeft,bottomRight,roles){
+                        packButton.enabled=packingModel.checkState()===Qt.Checked
+                    }
+                }
 
-        Rectangle {
-            color: "transparent"
-            Layout.fillWidth: true
-        }
+                onClicked: {
+                    NetworkManager.post('/order/fulfill', {
+                                            "order_id": orderId,
+                                            "packed_items": packingModel.records
+                                        }).subscribe(function (response) {
 
-        CButton {
-            text: qsTr("Back")
-            palette.button: "#e55353"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            onClicked: Router.back();
-        }
-        CButton {
-            id: packButton
-            text: qsTr("Pack")
-            palette.button: "#2eb85c"
-            palette.buttonText: "#ffffff"
-            implicitHeight: 50
-            Layout.margins: 10
-            enabled: false
-
-            Connections{
-                target: packingModel
-
-                function onDataChanged(topLeft,bottomRight,roles){
-                    packButton.enabled=packingModel.checkState()===Qt.Checked
+                                            if (response.json(
+                                                        'status') === 200) {
+                                                Router.back();
+                                            }
+                                        })
                 }
             }
-
-            onClicked: {
-                NetworkManager.post('/order/fulfill', {
-                                        "order_id": orderId,
-                                        "packed_items": packingModel.records
-                                    }).subscribe(function (response) {
-
-                                        if (response.json(
-                                                    'status') === 200) {
-                                            Router.back();
-                                        }
-                                    })
-            }
         }
+
     } //footer end
+
+
+
     headerPositioning: ListView.OverlayHeader
     footerPositioning: ListView.OverlayFooter
 
