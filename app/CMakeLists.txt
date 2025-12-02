@@ -338,6 +338,7 @@ qt_add_qml_module(appposfe
         QML_FILES
         QML_FILES qml/pages/NewAppMainScreen.qml
         QML_FILES qml/pages/orders/OrderPackingPage.qml
+        QML_FILES qml/pages/delivery/DriverShipmentsMobilePage.qml
 )
 set(INCLUDE_DIR
     models

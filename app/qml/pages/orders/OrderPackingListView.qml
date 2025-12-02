@@ -34,36 +34,44 @@ ListView {
     }
 
     spacing: 5
+    header: Rectangle{
+        color: "white";
+        implicitHeight: 80
+        implicitWidth: listView.width
+        z: 3
+        RowLayout{
+            anchors.left: parent.left
+            height: parent.height
+            CheckBox{
+                id: checkCB;
+                checkState: Qt.Unchecked;
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                Connections{
+                    target: packingModel
 
-    header: RowLayout{
-        Layout.bottomMargin: 20
-        CheckBox{
-            id: checkCB;
-            checkState: Qt.Unchecked;
-
-            Connections{
-                target: packingModel
-
-                function onDataChanged(topLeft,bottomRight,roles){
-                    checkCB.checkState=packingModel.checkState();
+                    function onDataChanged(topLeft,bottomRight,roles){
+                        checkCB.checkState=packingModel.checkState();
+                    }
+                }
+                onClicked: {
+                    if(checkState==Qt.Unchecked){
+                        packingModel.uncheckAll()
+                    }else if(checkState==Qt.Checked || checkState==Qt.PartiallyChecked){
+                        packingModel.checkAll()
+                    }
                 }
             }
-            onClicked: {
-                if(checkState==Qt.Unchecked){
-                    packingModel.uncheckAll()
-                }else if(checkState==Qt.Checked || checkState==Qt.PartiallyChecked){
-                    packingModel.checkAll()
+
+            CTextField{
+                id: barcode
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+                placeholderText: qsTr("barcode...");
+
+                onAccepted: {
+                    packingModel.add(text);
+                    text = ""
                 }
-            }
-        }
-
-        CTextField{
-            id: barcode
-            placeholderText: qsTr("barcode...");
-
-            onAccepted: {
-                packingModel.add(text);
-                text = ""
             }
         }
     }
