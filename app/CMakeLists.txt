@@ -29,41 +29,41 @@ qt_add_executable(appposfe
     ${app_icon_resource_windows}
 )
 
-if(ANDROID)
-    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/android"
-        CACHE INTERNAL "")
+ if(ANDROID)
+#     set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/android"
+#         CACHE INTERNAL "")
 
-    set_target_properties(appposfe PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
-    set(android_package_dir "${CMAKE_CURRENT_LIST_DIR}/android/")
-    set_target_properties(appposfe PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
-        ${android_package_dir})
+#     set_target_properties(appposfe PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
+#     set(android_package_dir "${CMAKE_CURRENT_LIST_DIR}/android/")
+#     set_target_properties(appposfe PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR
+#         ${android_package_dir})
 
 
-    add_custom_target(appposfe_android_package
-    SOURCES
-    ${android_package_dir}/AndroidManifest.xml
-    ${android_package_dir}/build.gradle
-#    ${android_package_dir}/settings.gradle
-    ${android_package_dir}/gradle.properties
-#    ${android_package_dir}/google-services.json
-    ${android_package_dir}/res/values/libs.xml
-    ${android_package_dir}/res/values/ic_launcher_background.xml
-    ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher.png
-    ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher_round.png
-    ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher.png
-    ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher_round.png
-    ${android_package_dir}/res/mipmap-xhdpi/ic_launcher.png
-    ${android_package_dir}/res/mipmap-xhdpi/ic_launcher_round.png
-    ${android_package_dir}/res/mipmap-hdpi/ic_launcher.png
-    ${android_package_dir}/res/mipmap-hdpi/ic_launcher_round.png
-    ${android_package_dir}/res/mipmap-mdpi/ic_launcher.png
-    ${android_package_dir}/res/mipmap-mdpi/ic_launcher_round.png
-    ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher.xml
-    ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher_round.xml
-    ${android_package_dir}/res/drawable/ic_launcher_foreground.xml
-    ${android_package_dir}/res/drawable/ic_launcher_background.xml)
-    include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
-endif()
+#     add_custom_target(appposfe_android_package
+#     SOURCES
+#     ${android_package_dir}/AndroidManifest.xml
+#     ${android_package_dir}/build.gradle
+# #    ${android_package_dir}/settings.gradle
+#     ${android_package_dir}/gradle.properties
+# #    ${android_package_dir}/google-services.json
+#     ${android_package_dir}/res/values/libs.xml
+#     ${android_package_dir}/res/values/ic_launcher_background.xml
+#     ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher.png
+#     ${android_package_dir}/res/mipmap-xxxhdpi/ic_launcher_round.png
+#     ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher.png
+#     ${android_package_dir}/res/mipmap-xxhdpi/ic_launcher_round.png
+#     ${android_package_dir}/res/mipmap-xhdpi/ic_launcher.png
+#     ${android_package_dir}/res/mipmap-xhdpi/ic_launcher_round.png
+#     ${android_package_dir}/res/mipmap-hdpi/ic_launcher.png
+#     ${android_package_dir}/res/mipmap-hdpi/ic_launcher_round.png
+#     ${android_package_dir}/res/mipmap-mdpi/ic_launcher.png
+#     ${android_package_dir}/res/mipmap-mdpi/ic_launcher_round.png
+#     ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher.xml
+#     ${android_package_dir}/res/mipmap-anydpi-v26/ic_launcher_round.xml
+#     ${android_package_dir}/res/drawable/ic_launcher_foreground.xml
+#     ${android_package_dir}/res/drawable/ic_launcher_background.xml)
+     include(${ANDROID_SDK_ROOT}/android_openssl/CMakeLists.txt)
+ endif()
 
 
 set(TARGET_SOURCES
@@ -339,6 +339,7 @@ qt_add_qml_module(appposfe
         QML_FILES qml/pages/NewAppMainScreen.qml
         QML_FILES qml/pages/orders/OrderPackingPage.qml
         QML_FILES qml/pages/delivery/DriverShipmentsMobilePage.qml
+        RESOURCES android/AndroidManifest.xml android/build.gradle android/res/values/libs.xml android/res/xml/qtprovider_paths.xml android/gradle/wrapper/gradle-wrapper.jar android/gradle/wrapper/gradle-wrapper.properties android/gradle.properties android/gradlew android/gradlew.bat
 )
 set(INCLUDE_DIR
     models
