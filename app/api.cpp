@@ -669,12 +669,14 @@ NetworkResponse *Api::postReceipt(QJsonObject data)
     QUrl logoFile=data["receipt_logo"].toString();
     qDebug()<<"original data: " <<data;
     QFile file(logoFile.toLocalFile());
-    file.open(QIODevice::ReadOnly);
-
-    QByteArray fileData=file.readAll();
-    file.close();
-    data["receipt_logo"]=QString(fileData.toBase64());
-    qDebug()<<"data: " << data;
+    if(file.open(QIODevice::ReadOnly)){
+        QByteArray fileData=file.readAll();
+        file.close();
+        data["receipt_logo"]=QString(fileData.toBase64());
+        qDebug()<<"data: " << data;
+    }else{
+        qWarning()<<"could not open receipt logo file, file not sent";
+    }
     return PosNetworkManager::instance()->post(QUrl("/receipt"),data);
 
 }

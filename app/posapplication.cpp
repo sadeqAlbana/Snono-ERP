@@ -100,7 +100,7 @@ QJsonArray PosApplication::countries()
             continue;
         }
         codes << code;
-        countries << QJsonObject{{"native_name",locale.nativeCountryName()},
+        countries << QJsonObject{{"native_name",locale.nativeTerritoryName()},
                                  {"code",QLocale::territoryToCode(locale.territory())},
                                  {"name",QLocale::territoryToString(locale.territory())}};
     }
@@ -263,7 +263,11 @@ void PosApplication::downloadVersion(const int version)
         qDebug()<<"binary name: " << binaryName;
         QFile checksum(":/update/files/sha256sums.txt");
         qDebug()<<"Checksum file exists : " << checksum.exists();
-        checksum.open(QIODevice::ReadOnly | QFile::Text);
+        if(!checksum.open(QIODevice::ReadOnly | QFile::Text)){
+            qWarning()<<"Warning: could not open checksum file";
+            emit downloadVersionReply(false);
+            return;
+        }
         QTextStream in(&checksum);
         while(!in.atEnd()){
             QString line=in.readLine();
