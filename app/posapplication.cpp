@@ -32,6 +32,7 @@
 #include <QUrlQuery>
 #include <QProcess>
 #include <QRandomGenerator>
+#include <SBarcodeScanner.h>
 PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv),
     m_engine(new QQmlApplicationEngine(this))
 {
@@ -45,7 +46,7 @@ PosApplication::PosApplication(int &argc, char **argv) : QApplication(argc, argv
     m_engine->setNetworkAccessManagerFactory(new AppQmlNetworkAccessManagerFactory);
     NumberEditor *nb=new NumberEditor(this);
     ReceiptGenerator *gen=new ReceiptGenerator(this);
-
+        qmlRegisterType<SBarcodeScanner>("com.scythestudio.scodes", 1, 0, "SBarcodeScanner");
     m_engine->rootContext()->setContextProperty("App",this);
     m_engine->rootContext()->setContextProperty("Settings",AppSettings::instance()); //this is probably causing a problem
 

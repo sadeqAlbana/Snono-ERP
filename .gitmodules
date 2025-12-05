@@ -7,3 +7,6 @@
 [submodule "libs/QGumboParser"]
 	path = libs/QGumboParser
 	url = https://github.com/sadeqAlbana/QGumboParser.git
+[submodule "libs/SCodes"]
+	path = libs/SCodes
+	url = https://github.com/somcosoftware/SCodes.git

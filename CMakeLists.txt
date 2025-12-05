@@ -9,7 +9,7 @@ set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
 #set(ALLOW_DUPLICATE_CUSTOM_TARGETS true)
 add_compile_definitions(APP_VERSION=${PROJECT_VERSION})
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick  Multimedia Gui Network Charts Svg Core5Compat Widgets PrintSupport Location Positioning LinguistTools)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2  Multimedia Gui Network Charts Svg Core5Compat Widgets PrintSupport Location Positioning LinguistTools)
 
 if((NOT ANDROID) AND (NOT IOS) AND (NOT EMSCRIPTEN))
 find_package(Qt6  COMPONENTS Pdf REQUIRED)
@@ -22,6 +22,7 @@ set(ENABLE_QML ON)
 add_subdirectory(libs/network-manager)
 add_subdirectory(libs/CoreUI-QML)
 add_subdirectory(libs/QGumboParser)
+add_subdirectory(libs/SCodes/src)
 add_subdirectory(app)
 
 

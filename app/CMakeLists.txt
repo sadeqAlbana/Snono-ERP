@@ -340,6 +340,7 @@ qt_add_qml_module(appposfe
         QML_FILES qml/pages/orders/OrderPackingPage.qml
         QML_FILES qml/pages/delivery/DriverShipmentsMobilePage.qml
         RESOURCES android/AndroidManifest.xml android/build.gradle android/res/values/libs.xml android/res/xml/qtprovider_paths.xml android/gradle/wrapper/gradle-wrapper.jar android/gradle/wrapper/gradle-wrapper.properties android/gradle.properties android/gradlew android/gradlew.bat
+        QML_FILES qml/common/Qt6ScannerOverlay.qml
 )
 set(INCLUDE_DIR
     models
@@ -382,6 +383,7 @@ target_link_libraries(appposfe PRIVATE Qt6::Quick
     jsonmodel
     coreuiplugin
     QGumboParser
+    SCodes
 )
 
 if((NOT ANDROID) AND (NOT IOS) AND (NOT EMSCRIPTEN))
