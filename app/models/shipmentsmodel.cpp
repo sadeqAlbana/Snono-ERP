@@ -6,6 +6,7 @@ ShipmentsModel::ShipmentsModel(QObject *parent)
                             {{"id",tr("ID")},
                             {"name",tr("Carrier"),"carrier"},
                             {"username",tr("Driver"),"driver.user"},
+                             {"first_name",tr("Recipient"),"dst_address"} ,
                              {"phone",tr("Phone"),"dst_address"} ,
                              {"district",tr("Address"),"dst_address"} ,
                              {"date",tr("Date"),QString(),false,"datetime"} ,

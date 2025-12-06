@@ -61,8 +61,7 @@ CMenu {
                     //use different delegate for checkable combo?
                     if (item instanceof T.ComboBox) {
                         console.log("data is ComboBox")
-
-                        if (data.options.checkable) {
+                        if (data.options.checkable) { //here is the trick, checkable options need to be set even for CCheckableComboBox !
                             console.log("data is checkable")
                             console.log(item.model)
                             let selected = []
@@ -79,7 +78,6 @@ CMenu {
 
                             if(selected.length){
                                 value = selected
-
                             }
 
                             console.log("selected "  + JSON.stringify(selected))
