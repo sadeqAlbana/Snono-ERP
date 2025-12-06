@@ -27,4 +27,12 @@ MainScreen {
     ]
    // initialIndex: 7
 
+
+    Timer{
+        interval: 1000;
+        running: true;
+        onTriggered: Router.navigate("qrc:/PosFe/qml/pages/delivery/DriverShipmentsMobilePage.qml",{},null)
+
+    }
+
 }
