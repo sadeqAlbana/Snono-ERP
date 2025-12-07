@@ -103,14 +103,24 @@ AppPage{
                               model["dst_address.district"]
                     }
 
-
-
-                    CPillButton{
+                    RowLayout{
                         Layout.topMargin: 15
-                        text: qsTr("View Details")
-                        palette.button: "#e2eaed"
-                        palette.buttonText: "#1881dd"
-                        font.weight: Font.DemiBold
+                        CPillButton{
+                            text: qsTr("View Details")
+                            palette.button: "#e2eaed"
+                            palette.buttonText: "#1881dd"
+                            font.weight: Font.DemiBold
+                            Layout.alignment: Qt.AlignCenter
+                        }
+                        HorizontalSpacer{}
+                        CPillButton{
+                            text: qsTr("Update Status")
+                            palette.button: "#e2eaed"
+                            palette.buttonText: "#1881dd"
+                            font.weight: Font.DemiBold
+                            Layout.alignment: Qt.AlignCenter
+
+                        }
                     }
                 }
 
