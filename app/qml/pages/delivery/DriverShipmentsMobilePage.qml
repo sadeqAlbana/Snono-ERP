@@ -13,7 +13,7 @@ import CoreUI.Impl
 import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import PosFe
 import CoreUI
-
+import CoreUI.Palettes
 AppPage{
     title: qsTr("My Shipments")
     padding: 10
@@ -28,6 +28,13 @@ AppPage{
 
 
         RowLayout{
+            CButton{
+                icon.name: "cil-qr-code"
+                icon.color: "#fff"
+                palette: BrandInfo{}
+                display: Button.IconOnly
+                Layout.preferredHeight: 50
+            }
             CIconTextField{
                 id: search
                 Layout.preferredHeight: 50
@@ -45,10 +52,6 @@ AppPage{
                     model.requestData();
                 }
             }//search
-
-            CButton{
-
-            }
         }
 
 
@@ -61,7 +64,6 @@ AppPage{
             delegate: ItemDelegate{
 
             width: tableView.width
-            height: 200
                 contentItem: ColumnLayout{
                     Text{
                         text: "#"+model.id
@@ -99,6 +101,16 @@ AppPage{
                     Text{
                         text: qsTr("<b>Address: </b>") +
                               model["dst_address.district"]
+                    }
+
+
+
+                    CPillButton{
+                        Layout.topMargin: 15
+                        text: qsTr("View Details")
+                        palette.button: "#e2eaed"
+                        palette.buttonText: "#1881dd"
+                        font.weight: Font.DemiBold
                     }
                 }
 
