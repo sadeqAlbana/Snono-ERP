@@ -10,6 +10,8 @@ Item {
 
   property rect captureRect
 
+  readonly property color borderColor: "#218165"
+  readonly property color textColor: "#000000"
   Item {
     id: captureZoneCorners
 
@@ -30,7 +32,7 @@ Item {
       width: 20
       height: 5
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: height / 2
     }
 
@@ -45,7 +47,7 @@ Item {
       width: 5
       height: 20
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: width / 2
     }
 
@@ -61,7 +63,7 @@ Item {
       width: 20
       height: 5
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: height / 2
     }
 
@@ -76,7 +78,7 @@ Item {
       width: 5
       height: 20
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: width / 2
     }
 
@@ -92,7 +94,7 @@ Item {
       width: 20
       height: 5
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: height / 2
     }
 
@@ -107,7 +109,7 @@ Item {
       width: 5
       height: 20
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: width / 2
     }
 
@@ -123,7 +125,7 @@ Item {
       width: 20
       height: 5
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: height / 2
     }
 
@@ -138,7 +140,7 @@ Item {
       width: 5
       height: 20
 
-      color: Theme.borderColor
+      color: root.borderColor
       radius: width / 2
     }
 
@@ -152,7 +154,7 @@ Item {
       width: parent.width
       height: 1
 
-      color: Theme.borderColor
+      color: root.borderColor
 
       SequentialAnimation {
         id: scanIndicatorAnimation
@@ -188,7 +190,7 @@ Item {
 
       glowRadius: 50
       spread: 0.2
-      color: Theme.borderColor
+      color: root.borderColor
       cornerRadius: glowRadius
     }
   }
@@ -202,7 +204,7 @@ Item {
     }
 
     text: qsTr("Scan barcode")
-    color: Theme.borderColor
+    color: root.borderColor
   }
 
   onCaptureRectChanged: {

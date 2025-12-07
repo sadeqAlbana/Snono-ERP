@@ -34,6 +34,9 @@ AppPage{
                 palette: BrandInfo{}
                 display: Button.IconOnly
                 Layout.preferredHeight: 50
+                onClicked: {
+                    Router.navigate("qrc:/PosFe/qml/common/ScanQrPage.qml",{},null)
+                }
             }
             CIconTextField{
                 id: search
@@ -93,13 +96,20 @@ AppPage{
                         }
 
                     Text{
-                        text: qsTr("<b>Recipient: </b>") + model["dst_address.first_name"]
+                        font.pixelSize: 20
+                        text: "<b>"+qsTr("Recipient:")+"</b> " + model["dst_address.first_name"]
                     }
                     Text{
-                        text: qsTr("<b>Phone: </b>") + model["dst_address.phone"]
+                        textFormat: Text.RichText
+                        text: "<b>"+qsTr("Phone:")+"</b> " + "<a href=tel:"+model["dst_address.phone"]+">"+model["dst_address.phone"]+ "</a>"
+                        onLinkActivated: Qt.openUrlExternally("tel:"+model["dst_address.phone"])
+                        palette: BrandPrimary{}
+                        font.pixelSize: 20
+
                     }
                     Text{
-                        text: qsTr("<b>Address: </b>") +
+                        font.pixelSize: 20
+                        text: "<b>"+qsTr("Address:")+"</b> " +
                               model["dst_address.district"]
                     }
 
