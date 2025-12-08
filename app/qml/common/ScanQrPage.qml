@@ -15,6 +15,7 @@ AppPage {
     implicitHeight: Qt.platform.os === "android"
             || Qt.platform.os === "ios" ? Screen.height : Screen.height
     property bool fullScreen: true
+    signal captured(var text);
     SBarcodeScanner {
       id: barcodeScanner
 
@@ -25,7 +26,8 @@ AppPage {
 
       onCapturedChanged: function (captured) {
         scanResultText.text = captured
-        resultScreen.visible = true
+        resultScreen.visible = true;
+        page.captured(text)
       }
     }
 

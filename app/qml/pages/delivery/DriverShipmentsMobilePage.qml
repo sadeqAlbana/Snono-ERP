@@ -35,7 +35,16 @@ AppPage{
                 display: Button.IconOnly
                 Layout.preferredHeight: 50
                 onClicked: {
-                    Router.navigate("qrc:/PosFe/qml/common/ScanQrPage.qml",{},null)
+                    let qrPage=Router.navigate("qrc:/PosFe/qml/common/ScanQrPage.qml",{},null)
+
+                    qrPage.statusChanged.connect(function(){
+                    if(qrPage.status == Component.Ready){
+                        qrPage.captured.connect(function(text){
+                        search.text=text;
+                        Router.back();
+                        });
+                    }
+                    });
                 }
             }
             CIconTextField{
