@@ -27,7 +27,7 @@ AppPage {
       onCapturedChanged: function (captured) {
         scanResultText.text = captured
         resultScreen.visible = true;
-        page.captured(text)
+        page.captured(captured)
       }
     }
 
