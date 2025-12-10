@@ -11,6 +11,8 @@ public:
 
     Q_INVOKABLE virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
+
+    Q_INVOKABLE QJsonObject findShipment(const int id);
 };
 
 #endif // SHIPMENTSMODEL_H

@@ -207,7 +207,7 @@ END:VCARD)").arg(customer).arg(phone);
 
     doc.addResource(QTextDocument::ImageResource,QUrl("qr_code"),qrPixmap);
 
-    QImage barcodeImg(200,100,QImage::Format_RGB32);
+    QImage barcodeImg(240,120,QImage::Format_RGB32);
     barcodeImg.fill(Qt::white);
     QPainter imgPainter(&barcodeImg);
     Code128Item item;
@@ -255,8 +255,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","45");
-        stream.writeAttribute("height","45");
+        stream.writeAttribute("width","55");
+        stream.writeAttribute("height","55");
         stream.writeAttribute("src", "qr_code");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th
@@ -279,8 +279,8 @@ END:VCARD)").arg(customer).arg(phone);
         stream.writeAttribute("width","32%");
         stream.writeAttribute("style","vertical-align: middle;");
         stream.writeStartElement("img");
-        stream.writeAttribute("width","80");
-        stream.writeAttribute("height","40");
+        stream.writeAttribute("width","96");
+        stream.writeAttribute("height","48");
         stream.writeAttribute("src", "barcode_img");
         stream.writeEndElement(); //img
         stream.writeEndElement(); //th

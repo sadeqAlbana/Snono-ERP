@@ -343,6 +343,7 @@ qt_add_qml_module(appposfe
         QML_FILES qml/common/Qt6ScannerOverlay.qml
         QML_FILES
         QML_FILES qml/common/ScanQrPage.qml
+        QML_FILES qml/pages/delivery/UpdateShipmentStatusMobilePage.qml
 )
 set(INCLUDE_DIR
     models

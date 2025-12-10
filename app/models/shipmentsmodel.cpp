@@ -34,3 +34,14 @@ QVariant ShipmentsModel::data(const QModelIndex &index, int role) const
 
     return AppNetworkedJsonModel::data(index,role);
 }
+
+QJsonObject ShipmentsModel::findShipment(const int id)
+{
+    for(int i=0; i<rowCount(); i++){
+        int value=JsonModel::data(i,"id").toInt();
+        if(value==id){
+            return records().at(i).toObject();
+        }
+    }
+    return QJsonObject();
+}

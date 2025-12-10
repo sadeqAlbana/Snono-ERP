@@ -39,6 +39,20 @@ AppPage{
                         qrPage.captured.connect(function(text){
                         search.text=text;
                         Router.back();
+
+
+                            /*
+
+{
+                                 "title": qsTr("Edit"),
+                                 "keyValue": page.model.jsonObject(
+                                                 page.view.currentRow).id
+                             }
+*/
+                        let shipment=model.findShipment(parseInt(text))
+                        Router.navigate("qrc:/PosFe/qml/pages/delivery/UpdateShipmentStatusMobilePage.qml",{
+                                        "keyValue": shipment.id}
+                                            );
                         });
 
 
@@ -84,21 +98,29 @@ AppPage{
                         id: badge
                         width: 200
                         height: 30
-                            text: switch(model.status){
-                                  case "manifest_created": return qsTr("Manifest Created");
-                                  case "in_transit": return qsTr("In Transit");
-                                  case "out_for_delivery": return qsTr("Out for Delivery");
-                                  case "deliviered": return qsTr("Deliviered");
-                                  default: return "N.A";
-                                  }
-                            state: switch(model.status){
-                                   case "manifest_created": return "info";
-                                   case "in_transit": return "secondary";
-                                   case "out_for_delivery": return "primary";
-                                   case "deliviered": return "success";
+                        text: switch (model.status) {
+                            case "manifest_created":        return qsTr("Manifest Created");
+                            case "in_transit":              return qsTr("In Transit");
+                            case "at_local_delivery_center":return qsTr("At Local Delivery Center");
+                            case "out_for_delivery":        return qsTr("Out for Delivery");
+                            case "delivered":               return qsTr("Delivered");
+                            case "returned":                return qsTr("Returned");
+                            case "partially_returned":      return qsTr("Partially Returned");
+                            case "cancelled":               return qsTr("Cancelled");
+                            default: return "N.A";
+                        }
 
-                                   default: return "Invalid";
-                                   }
+                        state: switch (model.status) {
+                            case "manifest_created":        return "info";
+                            case "in_transit":              return "secondary";
+                            case "at_local_delivery_center":return "warning";
+                            case "out_for_delivery":        return "primary";
+                            case "delivered":               return "success";
+                            case "returned":                return "danger";
+                            case "partially_returned":      return "orange";
+                            case "cancelled":               return "danger";
+                            default: return "Invalid";
+                        }
                         }
 
                     Text{
