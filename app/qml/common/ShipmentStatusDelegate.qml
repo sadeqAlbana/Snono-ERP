@@ -31,7 +31,7 @@ CTableViewDelegate {
             case "out_for_delivery":        return "primary";
             case "delivered":               return "success";
             case "returned":                return "danger";
-            case "partially_returned":      return "orange";
+            case "partially_returned":      return "danger";
             case "cancelled":               return "danger";
             default: return "Invalid";
         }

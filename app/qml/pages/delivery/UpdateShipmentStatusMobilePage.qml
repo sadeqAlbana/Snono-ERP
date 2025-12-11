@@ -17,7 +17,7 @@ CFormView {
     rowSpacing: 30
     fetchUrl: "/shipment"
     url: "/shipment/status"
-
+    title: qsTr("Update Shipment Status")
     CLabel {
         text: qsTr("Shipment Number:")
     }

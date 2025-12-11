@@ -117,7 +117,7 @@ AppPage{
                             case "out_for_delivery":        return "primary";
                             case "delivered":               return "success";
                             case "returned":                return "danger";
-                            case "partially_returned":      return "orange";
+                            case "partially_returned":      return "danger";
                             case "cancelled":               return "danger";
                             default: return "Invalid";
                         }
@@ -157,6 +157,12 @@ AppPage{
                             palette.buttonText: "#1881dd"
                             font.weight: Font.DemiBold
                             Layout.alignment: Qt.AlignCenter
+                            enabled: !["manifest_created", "in_transit"].includes(model.status)
+                            onClicked: {
+                                Router.navigate("qrc:/PosFe/qml/pages/delivery/UpdateShipmentStatusMobilePage.qml",{
+                                                "keyValue": model.id}
+                                                    );
+                            }
 
                         }
                     }

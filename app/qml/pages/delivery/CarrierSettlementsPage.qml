@@ -30,7 +30,7 @@ CrudViewPage {
                      ExternalDeliveryStatusDelegate {}
                  }
              }
-    model: ShipmentsModel{useNestedParentKeys:true;}
+    model: CarrierSettlementsModel{useNestedParentKeys:true;}
     basePath: "qrc:/PosFe/qml/pages/delivery";
     formFile: "CarrierSettlementForm.qml"
     addPermission: "prm_add_carrier_settlement"
