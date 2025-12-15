@@ -73,9 +73,7 @@ CrudViewPage {
             onTriggered: {
 
                 Api.post("shipments/carriers/settlement/create", {
-                             "shipments_ids": [model.data(tableView.currentRow,
-                                                          "id")],
-                             "status": "posted"
+                             "shipments_ids": [model.recordAt(page.view.currentRow).id],
                          }).subscribe(function (response) {
                              if (response.json("status") === 200) {
                                  model.refresh()
