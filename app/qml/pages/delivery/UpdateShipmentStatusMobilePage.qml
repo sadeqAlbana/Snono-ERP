@@ -78,6 +78,16 @@ CFormView {
 
     }
 
+    CTextField{
+        id: lo
+        objectName: "lo"
+        visible: false
+    }
+    CTextField{
+        id: la
+        objectName: "la"
+        visible: false
+    }
     MapView {
         id: view
         Layout.fillWidth: true
@@ -143,6 +153,8 @@ CFormView {
              updateInterval: 1000 // Update interval in milliseconds
 
              onPositionChanged: {
+                 lo.text=position.coordinate.longitude;
+                 la.text=position.coordinate.latitude;
                  console.log("Latitude:", position.coordinate.latitude, ", Longitude:", position.coordinate.longitude);
              }
          }
