@@ -10,5 +10,6 @@
         <file>icons/SS_Logo_Color.svg</file>
         <file>icons/barq_logo.png</file>
         <file>icons/SS_Logo_Color-cropped.svg</file>
+        <file>icons/location-pin.svg</file>
     </qresource>
 </RCC>

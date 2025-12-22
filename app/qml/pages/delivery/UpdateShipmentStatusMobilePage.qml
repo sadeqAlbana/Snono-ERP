@@ -13,6 +13,8 @@ import PosFe
 import QtPositioning
 import QtLocation
 import CoreUI.Palettes
+import Qt5Compat.GraphicalEffects
+
 CFormView {
     id: control
     padding: 10
@@ -144,7 +146,33 @@ CFormView {
                  console.log("Latitude:", position.coordinate.latitude, ", Longitude:", position.coordinate.longitude);
              }
          }
-    }
+
+        MapQuickItem {
+            id: userMarker
+            anchorPoint.x: icon.width / 2
+            anchorPoint.y: icon.height
+            coordinate: positionSource.position.coordinate
+
+            sourceItem: Image {
+                id: icon
+                source: "qrc:/images/icons/location-pin.svg"
+
+                width: 32
+                height: 32
+
+                ColorOverlay {
+                    anchors.fill: icon
+                    source: icon
+                    color: "#ff0000"  // make image like it lays under red glass
+                }
+
+            }
+
+            Component.onCompleted: view.map.addMapItem(userMarker)
+        }
+
+
+    }// end map
 
 
 }
