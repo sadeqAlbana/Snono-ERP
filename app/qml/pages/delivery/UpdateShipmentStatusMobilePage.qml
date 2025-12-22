@@ -86,17 +86,17 @@ CFormView {
         map.zoomLevel: (maximumZoomLevel - minimumZoomLevel)/2
         map.center {
             // The Qt Company in Oslo
-            latitude: 59.9485
-            longitude: 10.7686
+            latitude: 33.32708009560246
+            longitude: 44.40874504689229
         }
         map.plugin: Plugin {
             id: googleMaps
             name: "googlemaps" // "mapboxgl", "esri", ...
             // specify plugin parameters if necessary
-             // PluginParameter {
-             //     name:"googlemaps.maps.apikey"
-             //     value:"AIzaSyAl4e5Qaf5mYadK_BH3G7721yEcgt_Xcu0"
-             // }
+             PluginParameter {
+                 name:"googlemaps.maps.apikey"
+                 value:"AIzaSyA_k-Zq6hBO7hFMWpd5vdsZYT-mLgCvdmo"
+             }
 
              PluginParameter { name: "googlemaps.useragent"; value: "mygreatapp" }
 
