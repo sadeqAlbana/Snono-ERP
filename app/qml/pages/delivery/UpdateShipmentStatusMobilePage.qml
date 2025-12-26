@@ -36,7 +36,7 @@ CFormView {
     }
 
     CComboBox {
-        id: typeCB
+        id: statusCB
         objectName: "status"
         Layout.fillWidth: true
         textRole: "text"
@@ -76,6 +76,28 @@ CFormView {
             // }
         }
 
+    }
+
+    CLabel {
+        text: qsTr("Paid")
+        visible: paidCODTF.visible
+    }
+
+    CTextField{
+        id: paidCODTF
+        Layout.fillWidth: true
+        objectName: "paid_cod"
+        placeholderText: qsTr("Enter paid amount")
+        visible: statusCB.currentValue==="partially_returned"
+        inputMethodHints: Qt.ImhDigitsOnly
+        validator: IntValidator {
+            bottom: 0      // minimum allowed value
+            top: 2147483647   // maximum allowed value
+        }
+        onTextChanged: {
+            // Safety filter (blocks weird pasted characters)
+            text = text.replace(/[^0-9]/g, "")
+        }
     }
 
     CTextField{
