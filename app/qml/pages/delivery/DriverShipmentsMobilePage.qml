@@ -77,7 +77,22 @@ AppPage{
             }//search
         }
 
-
+        CCheckableComboBox{
+            Layout.fillWidth: true
+            objectName: "statuses"
+            valueRole: "key"
+            textRole:"label"
+            model: ListModel{
+                ListElement{key:"manifest_created"; label:"Manifest Created"; checkState: Qt.Unchecked;}
+                ListElement{key:"in_transit"; label:"In Transit"; checkState: Qt.Unchecked;}
+                ListElement{key:"at_local_delivery_center"; label:"At Local Delivery Center"; checkState: Qt.Unchecked;}
+                ListElement{key:"out_for_delivery"; label:"Out for Delivery"; checkState: Qt.Unchecked;}
+                ListElement{key:"delivered"; label:"Delivered"; checkState: Qt.Unchecked;}
+                ListElement{key:"returned"; label:"Returned"; checkState: Qt.Unchecked;}
+                ListElement{key:"partially_returned"; label:"Partially Returned"; checkState: Qt.Unchecked;}
+                ListElement{key:"cancelled"; label:"Cancelled"; checkState: Qt.Unchecked;}
+            }
+        }
 
         ListView{
             id: tableView
@@ -180,7 +195,9 @@ AppPage{
 
             model: ShipmentsModel{
                 id: model
-                filter: {"user_id":AuthManager.user.id}
+                filter: {"user_id":AuthManager.user.id,"statuses":['in_transit', 'at_local_delivery_center',
+                                                                   'out_for_delivery', 'delivered', 'returned',
+                                                                   'partially_returned', 'cancelled']}
             }//model
 
         }//listView

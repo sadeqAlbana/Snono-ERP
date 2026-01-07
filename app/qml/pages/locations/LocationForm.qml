@@ -8,6 +8,8 @@ import QtQuick.Layouts
 import CoreUI
 import QtPositioning
 import QtLocation
+import Qt5Compat.GraphicalEffects
+
 CFormView {
     id: control
     padding: 10
@@ -205,11 +207,13 @@ CFormView {
     }
 
     TextField{
+        id: lo
         objectName: "lo"
         visible: false
         text: view.map.center.longitude
     }
     TextField{
+        id: la
         objectName: "la"
         visible: false
         text: view.map.center.latitude
@@ -226,37 +230,17 @@ CFormView {
         map.zoomLevel: (maximumZoomLevel - minimumZoomLevel)/2
         map.center {
             // The Qt Company in Oslo
-            latitude: 59.9485
-            longitude: 10.7686
+            latitude: la.text
+            longitude: lo.text
         }
-
-        // map.activeMapType: map.supportedMapTypes[map.supportedMapTypes.length - 1]
-        // map.plugin: Plugin {
-        //     name: "osm"
-
-        //     PluginParameter {
-        //         name: "osm.mapping.custom.host"
-
-        //         // OSM plugin will auto-append if .png isn't suffix, and that screws up apikey which silently
-        //         // fails authentication (only Wireshark revealed it)
-        //         value: "http://tile.thunderforest.com/landscape/%z/%x/%y.png?apikey=2759c68bec6e42dc8317e23919289d24&fake=.png"
-        //     }
-        //     //specify plugin parameters if necessary
-        //     //PluginParameter {...}
-        //     //PluginParameter {...}
-        //     //...
-        // }
-
-
-
         map.plugin: Plugin {
             id: googleMaps
             name: "googlemaps" // "mapboxgl", "esri", ...
             // specify plugin parameters if necessary
-             // PluginParameter {
-             //     name:"googlemaps.maps.apikey"
-             //     value:"AIzaSyAl4e5Qaf5mYadK_BH3G7721yEcgt_Xcu0"
-             // }
+            PluginParameter {
+                name:"googlemaps.maps.apikey"
+                value:"AIzaSyA_k-Zq6hBO7hFMWpd5vdsZYT-mLgCvdmo"
+            }
 
              PluginParameter { name: "googlemaps.useragent"; value: "mygreatapp" }
 
@@ -273,32 +257,33 @@ CFormView {
 
         }
 
-        Button {
-             id: currentLocationButton
-             text: "Current Location"
-             anchors {
-                 bottom: parent.bottom
-                 right: parent.right
-                 margins: 20
-             }
-             onClicked: {
-                 if (view.map.visibleRegion.isValid) {
-                     //view.map.center = view.map.visibleRegion.center
-                     view.map.center=positionSource.position.coordinate
-                     view.map.zoomLevel = 15
-                 }
-             }
-         }
+        MapQuickItem {
+            id: userMarker
+            anchorPoint.x: icon.width / 2
+            anchorPoint.y: icon.height
+            coordinate {
+                    latitude: la.text
+                    longitude: lo.text
+                }
 
-        PositionSource {
-             id: positionSource
-             active: true
-             updateInterval: 1000 // Update interval in milliseconds
 
-             onPositionChanged: {
-                 console.log("Latitude:", position.coordinate.latitude, ", Longitude:", position.coordinate.longitude);
-             }
-         }
-    }
+            sourceItem: Image {
+                id: icon
+                source: "qrc:/images/icons/location-pin.svg"
+
+                width: 32
+                height: 32
+
+                ColorOverlay {
+                    anchors.fill: icon
+                    source: icon
+                    color: "#ff0000"  // make image like it lays under red glass
+                }
+
+            }
+
+            Component.onCompleted: view.map.addMapItem(userMarker)
+        }
+    }// end map
 
 }
