@@ -28,7 +28,7 @@ CFormView {
     }
 
     CComboBox {
-        objectName: "customer_id"
+        objectName: "party_id"
         Layout.fillWidth: true
         textRole: "name"
         valueRole: "id"

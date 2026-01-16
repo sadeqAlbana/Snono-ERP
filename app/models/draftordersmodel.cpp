@@ -9,7 +9,7 @@ DraftOrdersModel::DraftOrdersModel(QObject *parent)
 
                                                  "link",
                                                  QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
-                                                             {"linkKey","customer_id"}}
+                                                             {"linkKey","party_id"}}
                                              } ,
                                              {"created_at",tr("Date"),QString(),false,"datetime"} ,
                                              {"total",tr("Total"),QString(),false,"currency"} }

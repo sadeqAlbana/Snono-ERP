@@ -103,9 +103,9 @@ AppPage {
                                                     paymentDialog.close()
                                                     receiptDialog.receiptData = res.order
                                                     receiptDialog.open()
-                                                    if (customerCB.currentIndex < 0) {
-                                                        customersModel.refresh()
-                                                    }
+                                                    // if (customerCB.currentIndex < 0) {
+                                                    //     customersModel.refresh()
+                                                    // }
                                                     notesLE.text = ""
                                                     requestCart()
                                                 }

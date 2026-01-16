@@ -7,7 +7,7 @@ OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/
                                                   {"id",tr("ID"),QString(),false} ,
                                                                   {"name",tr("Customer"),"customers",false,"link",
                                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
-                                                                  {"linkKey","customer_id"}}},
+                                                                  {"linkKey","party_id"}}},
                                                                   {"phone",tr("Phone"),"shipment.dst_address"} ,
                                                                   {"district",tr("Address"),"shipment.dst_address"} ,
                                                                   {"total",tr("Total"),QString(),false,"currency"} ,

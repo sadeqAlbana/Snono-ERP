@@ -129,12 +129,12 @@ void CashierModel::updateCustomer(const int &customerId)
 {
     PosNetworkManager::instance()->post(QUrl("/pos/cart/updateCartCustomer"),
                                         QJsonObject{{"reference"  ,reference()},
-                                                    {"customer_id",customerId}})->subscribe(this,&CashierModel::onUpadteCustomerReply);
+                                                    {"party_id",customerId}})->subscribe(this,&CashierModel::onUpadteCustomerReply);
 }
 
 int CashierModel::customerId() const
 {
-    return cartData()["customer_id"].toInt();
+    return cartData()["party_id"].toInt();
 }
 
 void CashierModel::addProduct(const QJsonValue &id, bool findByBarcode)
