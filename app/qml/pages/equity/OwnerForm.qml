@@ -10,8 +10,8 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    url: "/vendor"
-    title: qsTr("Vendor")
+    url: "/owner"
+    title: qsTr("Owners")
     CLabel {
         text: qsTr("Name")
     }

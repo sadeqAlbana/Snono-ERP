@@ -346,6 +346,13 @@ qt_add_qml_module(appposfe
         QML_FILES qml/pages/delivery/UpdateShipmentStatusMobilePage.qml
         QML_FILES qml/pages/settings/BoxyDeliverySettings.qml
         QML_FILES qml/common/AppMapView.qml
+        QML_FILES
+        QML_FILES qml/pages/equity/OwnersPage.qml
+        QML_FILES qml/pages/equity/EquityMovesPage.qml
+        SOURCES models/equitymovesmodel.h models/equitymovesmodel.cpp
+        SOURCES models/ownersmodel.h models/ownersmodel.cpp
+        SOURCES models/employeesmodel.h models/employeesmodel.cpp
+        QML_FILES qml/pages/equity/OwnerForm.qml
 
 )
 set(INCLUDE_DIR

@@ -72,7 +72,7 @@ Card{
 
             CIconTextField {
                 leftIcon.name: "cil-location-pin"
-                objectName: "address"
+                objectName: "address_line"
                 Layout.fillWidth: true
             }
         }

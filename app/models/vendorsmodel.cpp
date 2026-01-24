@@ -6,10 +6,9 @@
 VendorsModel::VendorsModel(QObject *parent) : AppNetworkedJsonModel("/vendors",{
                                                                     {"id",tr("ID")} ,
                                                                     {"name",tr("Name")} ,
-                                                                    {"address",tr("Address")} ,
+                                                                    {"address_line",tr("Address")} ,
                                                                     {"email",tr("Email")} ,
-                                                                    {"phone",tr("Phone")} ,
-                                                                    {"account_id",tr("Account ID")}},parent)
+                                                                    {"phone",tr("Phone")}},parent)
 {
 
 }

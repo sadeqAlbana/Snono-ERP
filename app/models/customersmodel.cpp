@@ -8,7 +8,7 @@ CustomersModel::CustomersModel(QObject *parent) : AppNetworkedJsonModel ("/custo
                                                                          {"first_name",tr("First Name")} ,
                                                                          {"last_name",tr("Last Name")} ,
                                                                          {"phone",tr("Phone")} ,
-                                                                         {"address",tr("Address")} ,
+                                                                         {"address_line",tr("Address")} ,
                                                                          {"email",tr("Email")}} ,parent)
 {
 }
