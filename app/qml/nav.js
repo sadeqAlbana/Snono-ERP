@@ -279,6 +279,25 @@ function navBar(){
                         }
                     ]
                 },
+
+                {
+                   "title":qsTr("Equity"),
+                   "category":qsTr("MAIN"),
+                   "image":"cil-storage",
+                    "childItems":[
+                        {
+                            "title":qsTr("Owners"),
+                            "path":"qrc:/PosFe/qml/pages/equity/OwnersPage.qml",
+                            "permission": "prm_view_owners"
+
+                        },
+                        {
+                            "title":qsTr("Equity Moves"),
+                            "path":"qrc:/PosFe/qml/pages/equity/EquityMovesPage.qml",
+                            "permission": "prm_view_equity_moves"
+                        }
+                    ]
+                },
                 {
                     "title":qsTr("ACL Groups"),
                     "category":qsTr("MAIN"),

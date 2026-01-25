@@ -353,6 +353,7 @@ qt_add_qml_module(appposfe
         SOURCES models/ownersmodel.h models/ownersmodel.cpp
         SOURCES models/employeesmodel.h models/employeesmodel.cpp
         QML_FILES qml/pages/equity/OwnerForm.qml
+        QML_FILES qml/pages/equity/OwnerDepositForm.qml
 
 )
 set(INCLUDE_DIR
