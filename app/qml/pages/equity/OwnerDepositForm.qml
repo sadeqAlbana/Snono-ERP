@@ -10,7 +10,7 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    url: "/owner"
+    url: "/equity/move"
     title: qsTr("Owners")
     CLabel {
         text: qsTr("Owner")
@@ -21,8 +21,16 @@ CFormView {
         textRole: "name"
         valueRole: "id"
         dataUrl: "/owners/list"
+
     } //end categoryCB
 
+    CLabel {
+        text: qsTr("Date")
+    }
+    CDateInput {
+        objectName: "date"
+        Layout.fillWidth: true
+    }
 
     CLabel {
         text: qsTr("Amount")
@@ -40,7 +48,17 @@ CFormView {
         objectName: "dst_account_id"
         textRole: "name"
         valueRole: "id"
-        dataUrl: "/accounts/list?=type=liquidity"
+        dataUrl: "/accounts/list"
+        filter: {"type":"liquidity"}
     } //end categoryCB
 
+
+    CLabel{
+        text: qsTr("Note");
+    }
+    CIconTextField {
+        leftIcon.name: "cil-note"
+        objectName: "note"
+        Layout.fillWidth: true
+    }
 }
