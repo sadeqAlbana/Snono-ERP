@@ -466,7 +466,7 @@ bool Api::addProducts(const QUrl &url)
     //check headers here !
     QSet<QString> checkList{"name","list_price","cost","category","barcode","type","parent","description","costing_method"};
     QStringList types{"storable","service","consumable"};
-    QStringList costingMethods{"FIFO","LIFO","AVCO"};
+    QStringList costingMethods{"FIFO","LIFO","AVCO",""};
 
     if(!headersSet.contains(checkList)){
         qWarning()<<"invalid header set";
