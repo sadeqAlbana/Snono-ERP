@@ -142,6 +142,15 @@ AppPage {
                 Api.addProducts(selectedFile)
             }
         }
+        FileDialog {
+            id: importProductsWithStockFileDialog
+            currentFolder: StandardPaths.writableLocation(
+                               StandardPaths.DocumentsLocation)
+            nameFilters: ["CSV files (*.csv)", "All files (*)"]
+            onAccepted: {
+                Api.addProductsWithStock(selectedFile)
+            }
+        }
 
         AdjustStockDialog {
             id: adjustStockDlg
@@ -257,6 +266,12 @@ AppPage {
                     text: qsTr("Import from CSV")
                     icon.name: "cil-plus"
                     onTriggered: importProductsFileDialog.open()
+                    permission: "prm_add_products"
+                },
+                CAction {
+                    text: qsTr("Import from CSV (with stock)")
+                    icon.name: "cil-plus"
+                    onTriggered: importProductsWithStockFileDialog.open()
                     permission: "prm_add_products"
                 },
                 CAction {

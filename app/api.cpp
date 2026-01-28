@@ -534,6 +534,94 @@ bool Api::addProducts(const QUrl &url)
 
 }
 
+bool Api::addProductsWithStock(const QUrl &url)
+{
+    QFile file(url.toLocalFile());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        qWarning()<<"error in opening file";
+        return false;
+    }
+
+    QTextStream in(&file);
+    QString line=in.readLine();
+    QStringList headers=line.split(',');
+    QSet<QString> headersSet(headers.begin(),headers.end());
+    qDebug()<<"Headers: " << headersSet;
+
+    //check headers here !
+    QSet<QString> checkList{"name","list_price","category","barcode","type","parent","description","costing_method","external_reference","vendor","unit_cost","qty"};
+    QStringList types{"storable","service","consumable"};
+    QStringList costingMethods{"FIFO","LIFO","AVCO",""};
+
+    if(!headersSet.contains(checkList)){
+        qWarning()<<"invalid header set";
+
+        return false;
+    }
+    //anything else aside from the checklist will be treated as an attribute
+    //processing the file on the front end will reduce traffic on the backend, and waiting time too
+
+
+    QStringList attributes=headers;
+    for(const QString &str : checkList){
+        attributes.removeAll(str);
+    }
+    QJsonArray array;
+    line=in.readLine();
+
+    while(!line.isEmpty()){
+        QJsonObject product;
+        QStringList columns=line.split(',');
+        //qDebug()<<"columns size: "<<columns.size();
+        product["name"]=columns.value(headers.indexOf("name"));
+        product["list_price"]=columns.value(headers.indexOf("list_price")).toDouble();
+        product["unit_cost"]=columns.value(headers.indexOf("unit_cost")).toDouble();
+        product["category"]=columns.value(headers.indexOf("category"));
+        product["barcode"]=columns.value(headers.indexOf("barcode"));
+        product["type"]=columns.value(headers.indexOf("type"));
+        qDebug()<<"columns: " << columns;
+        if(!types.contains(product["type"].toString())){
+            qDebug()<<"product type: " << product["type"].toString();
+            qWarning()<<"invalid product type";
+            return false;
+        }
+        product["parent"]=columns.value(headers.indexOf("parent"));
+        product["description"]=columns.value(headers.indexOf("description"));
+        product["costing_method"]=columns.value(headers.indexOf("costing_method"));
+        product["vendor"]=columns.value(headers.indexOf("external_refernce"));
+        product["external_refernce"]=columns.value(headers.indexOf("external_refernce"));
+        product["qty"]=columns.value(headers.indexOf("qty"));
+
+        if(!costingMethods.contains(product["costing_method"].toString())){
+            qWarning()<<"invalid costing method";
+            return false;
+        }
+
+        QJsonArray attr;
+        for(auto str : attributes){
+
+            attr << QJsonObject{{"attribute_id",str},{"value",columns.value(headers.indexOf(str))},{"type","text"}};
+        }
+        product["attributes"]=attr;
+
+        array << product;
+
+        line=in.readLine();
+    }
+
+
+    QJsonObject payload{{"data",array},{"reason","bulck adjustment"}};
+
+    PosNetworkManager::instance()->post(QUrl("product/bulckAddWithStock"),payload)->subscribe(
+        [this](NetworkResponse *res){
+            qDebug()<<res->json();
+            emit bulckStockAdjustmentReply(res->json().toObject());
+
+        });
+
+    return true;
+}
+
 NetworkResponse *Api::nextVersion()
 {
     int version=AppSettings::version();

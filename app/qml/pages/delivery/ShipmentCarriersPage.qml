@@ -5,7 +5,7 @@ import PosFe
 
 CrudViewPage {
     id: page
-    title: qsTr("Drivers")
+    title: qsTr("Carriers")
     delegate: AppDelegateChooser {}
     model: ShipmentCarriersModel{}
     basePath: "qrc:/PosFe/qml/pages/delivery";
