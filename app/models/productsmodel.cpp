@@ -204,7 +204,7 @@ void ProductsModel::onTableRecieved(NetworkResponse *reply)
     if(m_wantedColumns.isEmpty()){
         this->m_wantedColumns=reply->json("attributes").toArray();
         for(const QJsonValue &value: m_wantedColumns){
-            m_columns.append(JsonModelColumn{value["id"].toString(),value["name"].toString(),QString(),false,value["type"].toString()});
+            m_columns.insert(2,JsonModelColumn{value["id"].toString(),value["name"].toString(),QString(),false,value["type"].toString()});
         }
     }
     AppNetworkedJsonModel::onTableRecieved(reply);

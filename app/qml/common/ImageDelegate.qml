@@ -28,6 +28,8 @@ CTableViewDelegate {
         background: Rectangle{color: "transparent"; border.color: "transparent"}
 
         Image{
+            width: 300
+            height:300
                 fillMode: Image.PreserveAspectFit
                 source: model.display? model.display : ""
                 antialiasing: true
