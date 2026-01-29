@@ -588,8 +588,8 @@ bool Api::addProductsWithStock(const QUrl &url)
         product["parent"]=columns.value(headers.indexOf("parent"));
         product["description"]=columns.value(headers.indexOf("description"));
         product["costing_method"]=columns.value(headers.indexOf("costing_method"));
-        product["vendor"]=columns.value(headers.indexOf("external_refernce"));
-        product["external_refernce"]=columns.value(headers.indexOf("external_refernce"));
+        product["vendor"]=columns.value(headers.indexOf("vendor"));
+        product["external_reference"]=columns.value(headers.indexOf("external_reference"));
         product["qty"]=columns.value(headers.indexOf("qty"));
 
         if(!costingMethods.contains(product["costing_method"].toString())){
