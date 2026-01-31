@@ -256,7 +256,7 @@ AppPage {
                         tableView.model.updateCustomer(currentCustomer.id)
                     } else {
                         phoneLE.text = ""
-                        addressLE.text = ""
+                        // addressLE.text = ""
                     }
                 } //onCurrentIndexChanged
 
