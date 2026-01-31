@@ -226,8 +226,8 @@ AppPage {
             IconComboBox {
                 property bool isValid: currentText === editText
                 id: customerCB
-                visible: false
-                enabled:false
+                visible: true
+                enabled:true
                 Layout.fillWidth: true
                 implicitHeight: 50
                 // model: CustomersModel {
