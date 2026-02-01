@@ -107,9 +107,9 @@ QString ReceiptGenerator::createDeliveryReceipt(QJsonObject receiptData, const b
             addressStr.append(QString(" - %1").arg(addressDetails));
         }
     }else{
-        QString customer=receiptData["customers"].toObject()["name"].toString();
-        phone=receiptData["customers"].toObject()["phone"].toString();
-        addressStr=receiptData["customers"].toObject()["address"].toString();
+        QString customer=receiptData["party"].toObject()["name"].toString();
+        phone=receiptData["party"].toObject()["phone"].toString();
+        addressStr=receiptData["party"].toObject()["address"].toString();
 
     }
 
@@ -704,8 +704,8 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
 
 
     double taxAmount=receiptData["tax_amount"].toDouble();
-    QString customer=receiptData["customers"].toObject()["name"].toString();
-    QString address=receiptData["customers"].toObject()["address"].toString();
+    QString customer=receiptData["party"].toObject()["name"].toString();
+    QString address=receiptData["party"].toObject()["address"].toString();
     double total=receiptData["total"].toDouble();
     QString phone=receiptData["customers"].toObject()["phone"].toString();
     QString date=receiptData["date"].toString();

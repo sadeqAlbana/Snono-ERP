@@ -57,19 +57,19 @@ QString ReceiptModel::reference()
 
 QString ReceiptModel::customer()
 {
-    return m_orderData["customers"].toObject()["first_name"].toString();
+    return m_orderData["party"].toObject()["name"].toString();
 
 }
 
 QString ReceiptModel::address()
 {
-    return m_orderData["customers"].toObject()["address"].toString();
+    return m_orderData["party"].toObject()["address"].toString();
 
 }
 
 QString ReceiptModel::phone()
 {
-    return m_orderData["customers"].toObject()["phone"].toString();
+    return m_orderData["party"].toObject()["phone"].toString();
 
 }
 

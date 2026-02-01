@@ -6,7 +6,7 @@
 OrdersModel::OrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders",{
                                                                   {"id",tr("ID")} ,
                                                                   // {"reference",tr("Reference")} ,
-                                                                  {"name",tr("Customer"),"customers",false,"link",
+                                                                  {"name",tr("Customer"),"party",false,"link",
                                             QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                     {"linkKey","party_id"}}},
                                            {"status",tr("Status"),QString(),false,"OrderStatus"} ,

@@ -5,7 +5,7 @@
 #include "utils.h"
 OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders/online",{
                                                   {"id",tr("ID"),QString(),false} ,
-                                                                  {"name",tr("Customer"),"customers",false,"link",
+                                                                  {"name",tr("Customer"),"party",false,"link",
                                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                                   {"linkKey","party_id"}}},
                                                                   {"phone",tr("Phone"),"shipment.dst_address"} ,
