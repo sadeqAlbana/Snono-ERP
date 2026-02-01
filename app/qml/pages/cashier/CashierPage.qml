@@ -113,7 +113,7 @@ AppPage {
                 onUpdateCustomerResponseReceived: res => {
                                                       if (res.status === 200) {
                                                           if (pay) {
-                                                              page.processCart()
+                                                              // page.processCart()
                                                               pay = false
                                                           }
                                                       }
