@@ -62,7 +62,7 @@ AppPage {
         IconComboBox {
             id: linePrinterPaperSizeCB
 
-            model: ['57mm','80mm']
+            model: ['57mm','80mm','A4','A5']
             leftIcon.name: "cil-page"
 
             Component.onCompleted: currentIndex = indexOfValue(
