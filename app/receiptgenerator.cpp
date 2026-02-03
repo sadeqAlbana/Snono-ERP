@@ -1074,7 +1074,21 @@ QString ReceiptGenerator::createCashierReceipt(QJsonObject receiptData, const bo
     if(QPrinterInfo(printer).supportedResolutions().size()){ //avoids crash
     pdfPrinter.setResolution(QPrinterInfo(printer).supportedResolutions().first()); //this is the game changer    printer.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     }
-    pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
+
+
+    QPageSize pageSize;
+    printer.setPrinterName(AppSettings::instance()->receiptPrinter());
+    QString ps=AppSettings::instance()->linePrinterPaperSize();
+    if(ps=="Default"){
+        pageSize=printer.pageLayout().pageSize();
+    }else{
+        pageSize=QPageSize(AppSettings::pageSizeFromString(ps));
+        doc.setPageSize(pageSize.sizePoints());
+    }
+
+    printer.setPageSize(pageSize);
+
+    //pdfPrinter.setPageSize(QPageSize(QSizeF(80, 297), QPageSize::Millimeter));
     // pdfPrinter.setPageMargins(QMarginsF(0,0,0,0),QPageLayout::Millimeter);
     // pdfPrinter.setFullPage(true);  // Use full page for printing
 
