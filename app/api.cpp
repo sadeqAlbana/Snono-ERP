@@ -622,6 +622,63 @@ bool Api::addProductsWithStock(const QUrl &url)
     return true;
 }
 
+bool Api::addCustomVendorBills(const QUrl &url)
+{
+    QFile file(url.toLocalFile());
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        qWarning()<<"error in opening file";
+        return false;
+    }
+
+    QTextStream in(&file);
+    QString line=in.readLine();
+    QStringList headers=line.split(',');
+    QSet<QString> headersSet(headers.begin(),headers.end());
+    qDebug()<<"Headers: " << headersSet;
+
+    //check headers here !
+    QSet<QString> checkList{"name","unit_price","qty","vendor","external_reference"};
+
+    if(!headersSet.contains(checkList)){
+        qWarning()<<"invalid header set";
+
+        return false;
+    }
+    //anything else aside from the checklist will be treated as an attribute
+    //processing the file on the front end will reduce traffic on the backend, and waiting time too
+
+
+
+    QJsonArray array;
+    line=in.readLine();
+
+    while(!line.isEmpty()){
+        QJsonObject itemLine;
+        QStringList columns=line.split(',');
+        //qDebug()<<"columns size: "<<columns.size();
+        itemLine["name"]=columns.value(headers.indexOf("name"));
+        itemLine["unit_price"]=columns.value(headers.indexOf("unit_price")).toDouble();
+        itemLine["qty"]=columns.value(headers.indexOf("qty"));
+        itemLine["vendor"]=columns.value(headers.indexOf("vendor"));
+        itemLine["external_reference"]=columns.value(headers.indexOf("external_reference"));
+        array << itemLine;
+
+        line=in.readLine();
+    }
+
+
+    QJsonObject payload{{"data",array}};
+
+    PosNetworkManager::instance()->post(QUrl("vendorBill/addBulck"),payload)->subscribe(
+        [this](NetworkResponse *res){
+            qDebug()<<res->json();
+            emit bulckStockAdjustmentReply(res->json().toObject());
+
+        });
+
+    return true;
+}
+
 NetworkResponse *Api::nextVersion()
 {
     int version=AppSettings::version();
