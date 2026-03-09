@@ -69,6 +69,17 @@ AppPage{
             }
         }
 
+
+        FileDialog {
+            id: customBillBulckDialog
+            currentFolder: StandardPaths.writableLocation(
+                               StandardPaths.DocumentsLocation)
+            nameFilters: ["CSV files (*.csv)", "All files (*)"]
+            onAccepted: {
+                Api.addCustomVendorBills(selectedFile)
+            }
+        }
+
         FolderDialog  {
             id: sheinBulckDialog
             currentFolder: StandardPaths.writableLocation(
@@ -125,7 +136,12 @@ AppPage{
                     onTriggered: sheinBulckDialog.open()
                     permission: "prm_adjust_stock"
                 },
-
+                CAction {
+                    text: qsTr("Import custom bills")
+                    icon.name: "cil-plus"
+                    onTriggered: customBillBulckDialog.open()
+                    permission: "prm_add_vendor_bill"
+                },
                 CAction {
                     text: qsTr("Print Labels")
                     icon.name: "cil-cart"
