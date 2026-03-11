@@ -40,6 +40,15 @@ CFormView {
         Layout.fillWidth: true
     }
 
+    // CLabel {
+    //     text: qsTr("Date")
+    // }
+    // CDateInput {
+    //     objectName: "date"
+    //     Layout.fillWidth: true
+    // }
+
+
     CLabel {
         text: qsTr("External Reference")
     }

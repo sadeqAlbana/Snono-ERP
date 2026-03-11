@@ -75,6 +75,11 @@ ListView {
             Layout.topMargin: 10
             Layout.leftMargin: 10
             Layout.fillWidth: true
+            Binding{
+                target: model;
+                property: "name"
+                value: itemName.text
+            }
         }
 
         CTextField{
@@ -94,6 +99,7 @@ ListView {
         }
 
         CTextField{
+
             Layout.topMargin: 10
 
             id: qty
@@ -102,15 +108,15 @@ ListView {
             placeholderText: "Quanitity..."
             validator: DoubleValidator{bottom: 0;top:1000000000}
 
+            onTextChanged: {
+                if(model.qty.toString()===text){
+                    return;
+                }
 
-            Binding{
-                target: model
-                property: "qty"
-                value: parseInt(qty.text)
+                if(acceptableInput && !text.endsWith(".")){
+                    model.qty=parseFloat(qty.text);
+                }
             }
-            //onTextChanged: model.qty=parseInt(qty.text);
-
-
         }
         CTextField{
             Layout.topMargin: 10
