@@ -3,6 +3,8 @@
 
 CustomVendorCartModel::CustomVendorCartModel(QObject *parent) : JsonModel(QJsonArray(),{
                                                               {"name",tr("Name")},
+                               {"category_id",tr("Category ID")},
+
                                                               {"cost",tr("Cost")},
                                                               {"qty",tr("Qty")},
                                                               {"total",tr("Total")}
@@ -13,7 +15,7 @@ CustomVendorCartModel::CustomVendorCartModel(QObject *parent) : JsonModel(QJsonA
     connect(this,&CustomVendorCartModel::dataChanged,this,&CustomVendorCartModel::refreshCartTotal);
     connect(this,&CustomVendorCartModel::rowsInserted,this,&CustomVendorCartModel::refreshCartTotal);
     connect(this,&CustomVendorCartModel::rowsRemoved,this,&CustomVendorCartModel::refreshCartTotal);
-    appendRecord(QJsonObject{{"name",""},{"cost",1000},{"qty",1},{"total",1000}});
+    appendRecord(QJsonObject{{"name",""},{"category_id",1},{"cost",1000},{"qty",1},{"total",1000}});
 
 }
 

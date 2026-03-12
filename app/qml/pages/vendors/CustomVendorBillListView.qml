@@ -12,12 +12,17 @@ import "qrc:/PosFe/qml/screens/utils.js" as Utils
 import QtQml 2.15
 import QtQuick.Controls.impl as Impl
 import CoreUI
+import PosFe
 ListView {
     id: listView
     clip: true
     implicitWidth: contentWidth;
     implicitHeight: contentHeight
-
+    AppNetworkedJsonModel{
+        id: categoriesModel
+        url: "/vendorBillItemCategory/list"
+        Component.onCompleted: requestData();
+    }
     Rectangle{
         parent: listView
         color: "transparent"
@@ -27,21 +32,14 @@ ListView {
     }
 
     function addItem(){
-        //var product=productsModel.jsonObject(0);
         var record={
-            //"id" : product.id,
-            //"name" :product.name,
             "name": "",
             "qty" : 1,
+            "category" : 1,
             "cost" : 1000,
-            //"sku" : product.sku,
-            //"thumb" : product.thumb,
             "total" : 1000
-
-
         };
         model.appendRecord(record);
-        //cartModel.refreshCartTotal();
     }
 
     header: RowLayout{
@@ -80,6 +78,19 @@ ListView {
                 property: "name"
                 value: itemName.text
             }
+        }
+        CComboBox {
+            id: categoryCB
+            Layout.preferredWidth: 500
+            implicitWidth: 500
+            Layout.topMargin: 10
+            Layout.leftMargin: 10
+            Layout.fillWidth: true
+            textRole: "name"
+            valueRole: "id"
+            currentIndex: 0
+            model: categoriesModel
+
         }
 
         CTextField{

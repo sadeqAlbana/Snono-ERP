@@ -354,6 +354,7 @@ qt_add_qml_module(appposfe
         SOURCES models/employeesmodel.h models/employeesmodel.cpp
         QML_FILES qml/pages/equity/OwnerForm.qml
         QML_FILES qml/pages/equity/OwnerDepositForm.qml
+        SOURCES models/vendorbillitemcategorymodel.h models/vendorbillitemcategorymodel.cpp
 
 )
 set(INCLUDE_DIR
