@@ -11,6 +11,7 @@ import CoreUI
 
 import QtQml 2.15
 import PosFe
+import "qrc:/PosFe/qml/screens/utils.js" as Utils
 
 ListView {
     id: listView

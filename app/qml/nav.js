@@ -367,12 +367,12 @@ function navBar(){
                         {
                             "title": qsTr("General Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/GeneralSettings.qml",
-                            "permission": ""
+                            "permission": "prm_admin"
                         },
                         {
                             "title": qsTr("Devices"),
                             "path":"qrc:/PosFe/qml/pages/settings/PosMachinesPage.qml",
-                            "permission": ""
+                            "permission": "prm_admin"
                         },
                         {
                             "title": qsTr("Identity Settings"),
@@ -387,7 +387,7 @@ function navBar(){
                         {
                             "title": qsTr("Printer Settings"),
                             "path":"qrc:/PosFe/qml/pages/settings/PrinterSettings.qml",
-                            "permission": ""
+                            "permission": "prm_admin"
                         },
                         {
                             "title": qsTr("Barq Delivery"),
@@ -407,19 +407,8 @@ function navBar(){
                         {
                             "title": qsTr("About"),
                             "path":"qrc:/PosFe/qml/pages/settings/AboutPage.qml",
-                            "permission": ""
+                            "permission": "prm_admin"
                         }
-//                        {
-//                            "title": qsTr("Server Settings"),
-//                            "path":"qrc:/PosFe/qml/pages/settings/ServerSettings.qml",
-//                            "permission": ""
-//                        },
-
-//                        {
-//                            "title":qsTr("Receipt"),
-//                            "path":"qrc:/PosFe/qml/pages/ReceiptPage.qml",
-//                            "permission": ""
-//                        }
                     ]
                 }
             ];
