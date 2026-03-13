@@ -11,7 +11,7 @@ CFormView {
     padding: 10
     rowSpacing: 30
     title: qsTr("Category")
-    url: "/category"
+    url: "/vendorBillItemCategory"
 
 
     columns: 2
@@ -30,10 +30,9 @@ CFormView {
 
     CFilterComboBox{
         Layout.fillWidth: true
-        objectName: "parent_id"
+        objectName: "account_id"
         textRole: "name"
         valueRole: "id"
-        dataUrl: "/categories"
-        defaultEntry: {"id":0,"name": qsTr("None")}
-    } //
+        dataUrl: "/accounts/list"
+    }
 }

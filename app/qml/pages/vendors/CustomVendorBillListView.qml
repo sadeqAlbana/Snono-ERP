@@ -90,6 +90,9 @@ ListView {
             valueRole: "id"
             currentIndex: 0
             model: categoriesModel
+            onCurrentIndexChanged: {
+                listView.model.setData(index,"category_id",valueAt(currentIndex))
+            }
 
         }
 

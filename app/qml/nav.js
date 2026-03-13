@@ -241,6 +241,11 @@ function navBar(){
                             "title":qsTr("Bills Attributes"),
                             "path":"qrc:/PosFe/qml/pages/vendors/VendorBillsAttributesPage.qml",
                             "permission": "prm_view_vendors_bills"
+                        },
+                        {
+                            "title":qsTr("Items Categories"),
+                            "path":"qrc:/PosFe/qml/pages/vendors/VendorBillItemCategoriesPage.qml",
+                            "permission": "prm_view_vendors_bills"
                         }
                     ]
                 },
