@@ -6,8 +6,6 @@ ShipmentCarriersModel::ShipmentCarriersModel(QObject *parent)
                             {{"id",tr("ID")},
                             {"name",tr("Name")}
                             },
-
-
                             parent}
 {
 }

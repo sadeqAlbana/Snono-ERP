@@ -3,7 +3,7 @@
 
 DriversModel::DriversModel(QObject *parent) : AppNetworkedJsonModel ("/drivers",{
                                            {"id",tr("ID")} ,
-                                           {"username",tr("Name"),"user"} ,
+                                           {"name",tr("Name")} ,
                                            {"user_id",tr("User ID")},
                                            {"unsettled_amount",tr("Unsettled Amount")}
 

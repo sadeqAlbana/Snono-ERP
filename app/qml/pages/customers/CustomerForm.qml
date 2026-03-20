@@ -32,22 +32,22 @@ Card{
                 Layout.fillWidth: true
             }
 
-            CLabel {
-                text: qsTr("First Name")
-            }
-            CIconTextField {
-                leftIcon.name: "cil-user"
-                objectName: "first_name"
-                Layout.fillWidth: true
-            }
-            CLabel {
-                text: qsTr("Last Name")
-            }
-            CIconTextField {
-                leftIcon.name: "cil-user"
-                objectName: "last_name"
-                Layout.fillWidth: true
-            }
+            // CLabel {
+            //     text: qsTr("First Name")
+            // }
+            // CIconTextField {
+            //     leftIcon.name: "cil-user"
+            //     objectName: "first_name"
+            //     Layout.fillWidth: true
+            // }
+            // CLabel {
+            //     text: qsTr("Last Name")
+            // }
+            // CIconTextField {
+            //     leftIcon.name: "cil-user"
+            //     objectName: "last_name"
+            //     Layout.fillWidth: true
+            // }
 
             CLabel {
                 text: qsTr("Phone")

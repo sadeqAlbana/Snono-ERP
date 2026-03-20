@@ -26,7 +26,7 @@ AppPage {
                                     "payment_methods").data;
                         productsCB.model = response.json("products").data;
                         customerCB.model = response.json("customers").data;
-                        driverCB.model = response.json("drivers")
+                        driverCB.model = response.json("drivers").data
                         page.barqLocations = response.json(
                                     "barq_locations").data
                         page.internalLocations = response.json(
@@ -331,7 +331,7 @@ AppPage {
                     id: driverCB
                     enabled: carrierCB.currentIndex === 0
                     valueRole: "id"
-                    textRole: "username"
+                    textRole: "name"
                     Layout.fillWidth: true
 
                     onModelChanged: {
