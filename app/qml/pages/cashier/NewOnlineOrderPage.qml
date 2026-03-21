@@ -31,22 +31,36 @@ AppPage {
                                     "barq_locations").data
                         page.internalLocations = response.json(
                                     "combo_locations").data;
-
+                        page.carriers = response.json(
+                                    "carriers").data;
 
                         //rework carriers to be dynamic
-                        carrierCB.model=[{
-                                             "id": 1,
-                                             "name": qsTr("Internal"),
-                                             "method": enableInternalDelivery,
-                                             "requiresValidData": false,
-                                             "dataMethod": function(){return page.internalLocations}
-                                         }, {
-                                             "id": 2,
-                                             "name": qsTr("Barq"),
-                                             "method": enableBarq,
-                                             "requiresValidData": true,
-                                             "dataMethod": function(){return page.barqLocations}
-                                         }]
+                        let carriersModel=[{
+                                               "id": null,
+                                               "name": "Internal Carrier",
+                                               "display_name": qsTr("Internal"),
+                                               "method": enableInternalDelivery,
+                                               "requiresValidData": false,
+                                               "dataMethod": function(){return page.internalLocations}
+                                           }, {
+                                               "id": null,
+                                               "name": "Barq",
+                                               "display_name": qsTr("Barq"),
+                                               "method": enableBarq,
+                                               "requiresValidData": true,
+                                               "dataMethod": function(){return page.barqLocations}
+                                           }]
+
+                        // Iterate through each item in the carriersModel
+                        carriersModel.forEach(modelItem => {
+                            // Find the corresponding carrier object in the 'carriers' property by name
+                            let matchingCarrier = carriers.find(carrier => carrier.name === modelItem.name);
+                            // If a match is found, update the id in the model
+                            if (matchingCarrier) {
+                                modelItem.id = matchingCarrier.id;
+                            }
+                        });
+                        carrierCB.model=carriersModel;
 
                     })
     }
@@ -60,6 +74,7 @@ AppPage {
     property bool pay: false
     property var barqLocations
     property var internalLocations
+    property var carriers
 
     NewReceiptDialog {
         id: receiptDialog
@@ -107,7 +122,7 @@ AppPage {
             "notes": deliveryNotesLE.text
         }
 
-        if (carrierCB.currentValue === 1) {
+        if (carrierCB.model[carrierCB.currentIndex].name === "Internal Carrier") {
             deliveryInfo["driver_id"] = driverCB.currentValue
         }
 
@@ -297,7 +312,7 @@ AppPage {
                 CComboBox {
                     id: carrierCB
                     valueRole: "id"
-                    textRole: "name"
+                    textRole: "display_name"
                     Layout.fillWidth: true
 
                     onModelChanged: {
