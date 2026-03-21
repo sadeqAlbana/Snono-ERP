@@ -33,6 +33,7 @@ AppPage {
                                     "combo_locations").data;
 
 
+                        //rework carriers to be dynamic
                         carrierCB.model=[{
                                              "id": 1,
                                              "name": qsTr("Internal"),
@@ -302,7 +303,7 @@ AppPage {
                     onModelChanged: {
                         currentIndex = indexOfValue(
                                     Settings.get(
-                                        "OnlineOrdersPage/CarrierCBValue", 1))
+                                        "OnlineOrdersPage/CarrierCBValue"))
                         initialized = true // we need to initalize here on static models
                     }
 
