@@ -32,6 +32,8 @@ CFormView {
         Layout.fillWidth: true
     }
 
+
+
     CLabel {
         text: qsTr("Amount")
     }
@@ -51,6 +53,21 @@ CFormView {
         dataUrl: "/accounts/list"
         filter: {"type":"liquidity"}
     } //end categoryCB
+
+    CLabel {
+        text: qsTr("Type")
+    }
+    CComboBox {
+        id: typeCB
+        objectName: "type"
+        Layout.fillWidth: true
+        model: [
+            {"label":qsTr("Deposit"), "value": "deposit"},
+            {"label":qsTr("Withdrawl"), "value": "withdrawl"},
+        ]
+        valueRole: "value"
+        textRole: "label"
+    }
 
 
     CLabel{
