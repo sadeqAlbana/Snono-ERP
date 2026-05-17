@@ -60,8 +60,30 @@ AppPage {
     PayDialog {
         id: paymentDialog
         onAccepted: {
-            page.processCart();
-            pay=true;
+            if (customerCB.currentIndex < 0 && customerCB.editText.length > 0) {
+                Api.addCustomer({
+                    "name": customerCB.editText,
+                    "phone": phoneLE.text,
+                    "address_line": addressLE.text
+                }).subscribe(function(res){
+                    var reply = res.json()
+                    if (reply.status !== 200) {
+                        toastrService.push(qsTr("Error"),
+                                           reply.message ?? qsTr("Failed to create customer"),
+                                           "danger", 4000)
+                        return
+                    }
+                    var c = reply.customer
+                    customerCB.model = customerCB.model.concat([c])
+                    var idx = customerCB.find(c.name)
+                    if (idx >= 0) {
+                        customerCB.currentIndex = idx
+                    }
+                    pay = true
+                })
+            } else {
+                page.processCart()
+            }
         } //accepted
     } //payDialog
 
@@ -118,8 +140,8 @@ AppPage {
                 onUpdateCustomerResponseReceived: res => {
                                                       if (res.status === 200) {
                                                           if (pay) {
-                                                              // page.processCart()
                                                               pay = false
+                                                              page.processCart()
                                                           }
                                                       }
                                                   } //onUpdateCustomerResponseReceived
@@ -246,19 +268,6 @@ AppPage {
                 enabled:true
                 Layout.fillWidth: true
                 implicitHeight: 50
-                // model: CustomersModel {
-                //     id: customersModel
-                //     usePagination: false
-                //     onAddCustomerReply: reply => {
-                //                             if (reply.status === 200) {
-                //                                 cashierModel.updateCustomer(
-                //                                     reply.customer.id)
-                //                             }
-                //                         }
-                //     Component.onCompleted: {
-                //         usePagination = false
-                //     }
-                // }
                 textRole: "name"
                 valueRole: "id"
                 currentIndex: 0
@@ -268,11 +277,12 @@ AppPage {
                 onCurrentIndexChanged: {
                     if (currentIndex >= 0) {
                         var currentCustomer = customerCB.model[customerCB.currentIndex];
-                        phoneLE.text = currentCustomer.phone
+                        phoneLE.text = currentCustomer.phone ?? ""
+                        addressLE.text = currentCustomer.address_line ?? ""
                         tableView.model.updateCustomer(currentCustomer.id)
                     } else {
                         phoneLE.text = ""
-                        // addressLE.text = ""
+                        addressLE.text = ""
                     }
                 } //onCurrentIndexChanged
 
@@ -287,17 +297,20 @@ AppPage {
 
             CIconTextField {
                 id: phoneLE
-                enabled: !customerCB.isValid
-                visible:false
-                validator: RegularExpressionValidator {
-                    regularExpression: /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/
-                }
-
                 Layout.alignment: Qt.AlignTop
                 Layout.fillWidth: true
                 implicitHeight: 50
                 placeholderText: qsTr("Phone...")
                 leftIcon.name: "cil-phone"
+            }
+
+            CIconTextField {
+                id: addressLE
+                Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                implicitHeight: 50
+                placeholderText: qsTr("Address...")
+                leftIcon.name: "cil-location-pin"
             }
 
             CIconTextField {
