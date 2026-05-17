@@ -193,6 +193,7 @@ set(TARGET_QML_SOURCES
     qml/pages/cashier/Numpad.qml
     qml/pages/cashier/NumpadButton.qml
     qml/pages/cashier/PayDialog.qml
+    qml/pages/cashier/ProductPickerDialog.qml
     qml/pages/dashboard/DashboardPage.qml
     qml/pages/dashboard/AppDashboardWidget.qml
     qml/pages/dashboard/NewDashboardWidget.qml

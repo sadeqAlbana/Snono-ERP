@@ -65,6 +65,11 @@ AppPage {
         } //accepted
     } //payDialog
 
+    ProductPickerDialog {
+        id: productPickerDialog
+        onProductPicked: productId => cashierModel.addProduct(productId)
+    }
+
     GridLayout {
         //main   grid
         anchors.fill: parent
@@ -175,6 +180,17 @@ AppPage {
                         productsCB.dataReceived = true
                     }
                 }
+            }
+
+            CButton {
+                text: qsTr("Browse Products")
+                icon.name: "cil-image"
+                palette.button: "#3399ff"
+                palette.buttonText: "#ffffff"
+                Layout.fillWidth: true
+                Layout.maximumWidth: window.mobileLayout ? -1 : numpad.width
+                implicitHeight: 40
+                onClicked: productPickerDialog.open()
             }
 
             CTextField {
