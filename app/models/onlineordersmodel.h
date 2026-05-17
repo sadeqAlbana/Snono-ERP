@@ -11,7 +11,7 @@ public:
     Q_INVOKABLE explicit OnlineOrdersModel(QObject *parent = nullptr);
 
     Q_INVOKABLE void updateDeliveryStatus(const int &orderId, const QString &status);
-    Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
+    Q_INVOKABLE void returnOrder(const int &orderId, const int &returnAccountId, const QJsonArray items);
     Q_INVOKABLE void returnableItems(const int &orderId);
     virtual QJsonArray filterData(QJsonArray data) override;
     Q_INVOKABLE void print();

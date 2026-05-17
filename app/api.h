@@ -33,7 +33,7 @@ public:
 
     Q_INVOKABLE NetworkResponse * addVendor(const QJsonObject &data);
     Q_INVOKABLE void returnableItems(const int &orderId);
-    Q_INVOKABLE void returnOrder(const int &orderId, const QJsonArray items);
+    Q_INVOKABLE void returnOrder(const int &orderId, const int &returnAccountId, const QJsonArray items);
      void addCustomer(const QString name, const QString firstName, const QString lastName, const QString email, const QString phone, const QString address);
     Q_INVOKABLE NetworkResponse *  addCustomer(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * updateCustomer(const QJsonObject &data);

@@ -31,6 +31,25 @@ AppPage {
 
         spacing: 10
 
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 10
+
+            CLabel {
+                text: qsTr("Return from")
+            }
+
+            CFilterComboBox {
+                id: returnAccountCB
+                Layout.preferredWidth: 400
+                Layout.fillWidth: true
+                dataUrl: "/accounts/list"
+                filter: {"type":"liquidity"}
+                textRole: "name"
+                valueRole: "id"
+            }
+        }
+
         OrderReturnListView {
             id: returnListView
             Layout.fillHeight: true
@@ -62,7 +81,8 @@ AppPage {
             palette.buttonText: "#ffffff"
             implicitHeight: 50
             Layout.margins: 10
-            onClicked: Api.returnOrder(order.id, returnListView.returnedItems())
+            enabled: returnAccountCB.currentValue !== undefined && returnAccountCB.currentValue !== null
+            onClicked: Api.returnOrder(order.id, returnAccountCB.currentValue, returnListView.returnedItems())
         }
     } //footer end
 }

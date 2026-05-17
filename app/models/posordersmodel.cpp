@@ -23,10 +23,11 @@ PosOrdersModel::PosOrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders
 
 
 
-void PosOrdersModel::returnOrder(const int &orderId, const QJsonArray items)
+void PosOrdersModel::returnOrder(const int &orderId, const int &returnAccountId, const QJsonArray items)
 {
     QJsonObject params;
     params["order_id"]=orderId;
+    params["return_account_id"]=returnAccountId;
     params["items"]=items;
     PosNetworkManager::instance()->post(QUrl("/orders/return"),params)->subscribe([this](NetworkResponse *res){
 
