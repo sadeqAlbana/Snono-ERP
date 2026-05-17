@@ -75,6 +75,21 @@ Card{
                 objectName: "address_line"
                 Layout.fillWidth: true
             }
+
+            CLabel {
+                text: qsTr("Roles")
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.columnSpan: 3
+                spacing: 12
+                CheckBox { objectName: "is_customer"; text: qsTr("Customer"); checked: true }
+                CheckBox { objectName: "is_vendor";   text: qsTr("Vendor") }
+                CheckBox { objectName: "is_owner";    text: qsTr("Owner");   enabled: AuthManager.hasPermission("prm_admin") }
+                CheckBox { objectName: "is_driver";   text: qsTr("Driver") }
+                CheckBox { objectName: "is_carrier";  text: qsTr("Carrier"); enabled: AuthManager.hasPermission("prm_admin") }
+                CheckBox { objectName: "is_employee"; text: qsTr("Employee") }
+            }
         }
 
         CPage{

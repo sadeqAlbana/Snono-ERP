@@ -174,6 +174,13 @@ function navBar(){
                     "permission": "prm_view_customers"
                 },
                 {
+                    "title":qsTr("Employees"),
+                    "category":qsTr("MAIN"),
+                    "image":"cil-people",
+                    "path":"qrc:/PosFe/qml/pages/employees/EmployeesPage.qml",
+                    "permission": "prm_view_employees"
+                },
+                {
                     "title":qsTr("Locations"),
                     "category":qsTr("MAIN"),
                     "image":"cil-location-pin",

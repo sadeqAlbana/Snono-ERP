@@ -353,6 +353,8 @@ qt_add_qml_module(appposfe
         SOURCES models/equitymovesmodel.h models/equitymovesmodel.cpp
         SOURCES models/ownersmodel.h models/ownersmodel.cpp
         SOURCES models/employeesmodel.h models/employeesmodel.cpp
+        QML_FILES qml/pages/employees/EmployeesPage.qml
+        QML_FILES qml/pages/employees/EmployeeForm.qml
         QML_FILES qml/pages/equity/OwnerForm.qml
         QML_FILES qml/pages/equity/OwnerDepositForm.qml
         SOURCES models/vendorbillitemcategorymodel.h models/vendorbillitemcategorymodel.cpp

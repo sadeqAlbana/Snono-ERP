@@ -10,8 +10,8 @@ CFormView {
     id: control
     padding: 10
     rowSpacing: 30
-    url: "/vendor"
-    title: qsTr("Vendor")
+    url: "/employee"
+    title: qsTr("Employee")
     CLabel {
         text: qsTr("Name")
     }
@@ -46,19 +46,5 @@ CFormView {
         leftIcon.name: "cil-location-pin"
         objectName: "address_line"
         Layout.fillWidth: true
-    }
-
-    CLabel {
-        text: qsTr("Roles")
-    }
-    RowLayout {
-        Layout.fillWidth: true
-        spacing: 12
-        CheckBox { objectName: "is_vendor";   text: qsTr("Vendor");   checked: true }
-        CheckBox { objectName: "is_customer"; text: qsTr("Customer") }
-        CheckBox { objectName: "is_owner";    text: qsTr("Owner");   enabled: AuthManager.hasPermission("prm_admin") }
-        CheckBox { objectName: "is_driver";   text: qsTr("Driver") }
-        CheckBox { objectName: "is_carrier";  text: qsTr("Carrier"); enabled: AuthManager.hasPermission("prm_admin") }
-        CheckBox { objectName: "is_employee"; text: qsTr("Employee") }
     }
 }
