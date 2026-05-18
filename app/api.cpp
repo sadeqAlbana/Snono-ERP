@@ -384,6 +384,55 @@ NetworkResponse * Api::payBill(const int &vendorBillId)
     return PosNetworkManager::instance()->post(QUrl("/vendors/bills/pay"),QJsonObject{{"billId",vendorBillId}});
 }
 
+NetworkResponse * Api::postPayrollRun(const int &runId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/payrollRun/post"),QJsonObject{{"id",runId}});
+}
+
+NetworkResponse * Api::payPayrollRun(const int &runId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/payrollRun/pay"),QJsonObject{{"id",runId}});
+}
+
+NetworkResponse * Api::payPayrollItem(const int &itemId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/payrollItem/pay"),QJsonObject{{"id",itemId}});
+}
+
+NetworkResponse * Api::addPayrollItem(const int &runId, const int &employeeId, const double &netAmount)
+{
+    return PosNetworkManager::instance()->post(QUrl("/payrollItem"),QJsonObject{
+        {"payroll_run_id",runId},
+        {"employee_id",employeeId},
+        {"net_amount",netAmount}});
+}
+
+NetworkResponse * Api::updatePayrollItem(const int &itemId, const double &netAmount)
+{
+    return PosNetworkManager::instance()->put(QUrl("/payrollItem"),QJsonObject{
+        {"id",itemId},
+        {"net_amount",netAmount}});
+}
+
+NetworkResponse * Api::removePayrollItem(const int &itemId)
+{
+    QUrl url("/payrollItem");
+    url.setQuery(QUrlQuery{{"id",QString::number(itemId)}});
+    return PosNetworkManager::instance()->deleteResource(url);
+}
+
+NetworkResponse * Api::fetchEmployees()
+{
+    return PosNetworkManager::instance()->post(QUrl("/employees/list"),QJsonObject{});
+}
+
+NetworkResponse * Api::fetchPayrollRun(const int &runId)
+{
+    QUrl url("/payrollRun");
+    url.setQuery(QUrlQuery{{"id",QString::number(runId)}});
+    return PosNetworkManager::instance()->get(url);
+}
+
 void Api::createBill(const int &vendorId, const QJsonArray &products)
 {
     QJsonObject params;

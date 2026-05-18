@@ -43,6 +43,15 @@ public:
     Q_INVOKABLE NetworkResponse * payBill(const int &vendorBillId);
     Q_INVOKABLE void createBill(const int &vendorId, const QJsonArray &products);
 
+    Q_INVOKABLE NetworkResponse * postPayrollRun(const int &runId);
+    Q_INVOKABLE NetworkResponse * payPayrollRun(const int &runId);
+    Q_INVOKABLE NetworkResponse * payPayrollItem(const int &itemId);
+    Q_INVOKABLE NetworkResponse * addPayrollItem(const int &runId, const int &employeeId, const double &netAmount);
+    Q_INVOKABLE NetworkResponse * updatePayrollItem(const int &itemId, const double &netAmount);
+    Q_INVOKABLE NetworkResponse * removePayrollItem(const int &itemId);
+    Q_INVOKABLE NetworkResponse * fetchEmployees();
+    Q_INVOKABLE NetworkResponse * fetchPayrollRun(const int &runId);
+
 
     Q_INVOKABLE NetworkResponse * addUser(const QJsonObject &data);
     Q_INVOKABLE NetworkResponse * updateUser(const QJsonObject &data);
