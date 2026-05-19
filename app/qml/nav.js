@@ -189,6 +189,11 @@ function navBar(){
                             "title":qsTr("Payroll"),
                             "path":"qrc:/PosFe/qml/pages/payrolls/PayrollRunsPage.qml",
                             "permission": "prm_view_payrolls"
+                        },
+                        {
+                            "title":qsTr("Job Titles"),
+                            "path":"qrc:/PosFe/qml/pages/jobtitles/JobTitlesPage.qml",
+                            "permission": "prm_view_job_titles"
                         }
                     ]
                 },

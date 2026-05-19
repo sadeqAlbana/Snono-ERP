@@ -51,6 +51,8 @@ public:
     Q_INVOKABLE NetworkResponse * removePayrollItem(const int &itemId);
     Q_INVOKABLE NetworkResponse * fetchEmployees();
     Q_INVOKABLE NetworkResponse * fetchPayrollRun(const int &runId);
+    Q_INVOKABLE NetworkResponse * fetchPartyJobTitles(const int &partyId);
+    Q_INVOKABLE NetworkResponse * addEmployeeToPayroll(const int &runId, const int &employeeId, const QJsonArray &items);
 
 
     Q_INVOKABLE NetworkResponse * addUser(const QJsonObject &data);

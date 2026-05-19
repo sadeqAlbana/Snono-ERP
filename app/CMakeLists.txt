@@ -359,6 +359,9 @@ qt_add_qml_module(appposfe
         QML_FILES qml/pages/payrolls/PayrollRunsPage.qml
         QML_FILES qml/pages/payrolls/PayrollRunForm.qml
         QML_FILES qml/pages/payrolls/PayrollRunDetailsPage.qml
+        SOURCES models/jobtitlesmodel.h models/jobtitlesmodel.cpp
+        QML_FILES qml/pages/jobtitles/JobTitlesPage.qml
+        QML_FILES qml/pages/jobtitles/JobTitleForm.qml
         QML_FILES qml/pages/equity/OwnerForm.qml
         QML_FILES qml/pages/equity/OwnerDepositForm.qml
         SOURCES models/vendorbillitemcategorymodel.h models/vendorbillitemcategorymodel.cpp

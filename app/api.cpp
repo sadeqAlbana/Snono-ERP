@@ -433,6 +433,21 @@ NetworkResponse * Api::fetchPayrollRun(const int &runId)
     return PosNetworkManager::instance()->get(url);
 }
 
+NetworkResponse * Api::fetchPartyJobTitles(const int &partyId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/party/jobTitles"),
+                                               QJsonObject{{"party_id",partyId}});
+}
+
+NetworkResponse * Api::addEmployeeToPayroll(const int &runId, const int &employeeId, const QJsonArray &items)
+{
+    return PosNetworkManager::instance()->post(QUrl("/payrollRun/addEmployee"),
+                                               QJsonObject{
+                                                   {"payroll_run_id",runId},
+                                                   {"employee_id",employeeId},
+                                                   {"items",items}});
+}
+
 void Api::createBill(const int &vendorId, const QJsonArray &products)
 {
     QJsonObject params;

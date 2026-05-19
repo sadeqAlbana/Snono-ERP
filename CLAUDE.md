@@ -67,3 +67,58 @@ New QML files go into `TARGET_QML_SOURCES` (or the trailing `QML_FILES` entries 
 - `import PosFe` exposes app-registered C++ types (models, `AppNetworkedJsonModel`, etc.).
 - `import CoreUI`, `import CoreUI.Base`, `import CoreUI.Buttons`, … come from the `CoreUI-QML` submodule.
 - RTL/Arabic: `PosApplication::updateAppLanguage()` flips `layoutDirection` based on locale and switches the font to `Hacen Liner Screen` for Arabic. `QML_DISABLE_DISTANCEFIELD=1` is set in `main.cpp` to fix Arabic font artifacts — do not remove.
+
+## Non-obvious conventions (read before you trip on them)
+
+These aren't derivable from any single file — they're cross-cutting tribal knowledge that has bitten previous sessions.
+
+### CoreUI widgets need explicit palettes (or they render as black blocks)
+- **`CButton`** with no `palette:` set renders as a dark/black block with invisible text. Always set one (`import CoreUI.Palettes`). Codebase conventions:
+  - Primary CTA (Add, Save, main confirm) → `BrandPrimary`
+  - Positive/finalize (Post, Pay, Submit) → `BrandSuccess`
+  - Edit / secondary info → `BrandInfo`
+  - Cancel / Remove / destructive → `BrandDanger`
+  - Subtle utility (Today, Clear, "+") → `BrandLight`
+- **Use `CComboBox` (from `CoreUI.Forms`), not stock `ComboBox`** — same default-palette problem. The API is identical (`model`, `textRole`, `valueRole`, `currentValue`, `currentIndex`, `onCurrentValueChanged`).
+
+### Consuming "list" endpoints — the `{data:[...]}` wrapper
+Backend "list"-type endpoints (`/customer/list`, `/employees/list`, `/jobTitles/list`, `/owners/list` — anything that returns `builder.get(...)` directly) reply with `{"data":[...], "current_page":N, ...}`, **not** a raw array (this is the SORM `Collection` JSON serialization). Extract via `response.json("data")` — assigning plain `response.json()` to a `ComboBox.model` silently fails (the dropdown shows empty because the model sees the wrapper object). Existing example: `qml/pages/invoices/NewInvoicePage.qml:27` (`response.json("data")`).
+
+### `CForm` serialization map (which widgets get auto-serialized)
+`CForm` (the base of `CFormView`) walks its children and serializes/deserializes by widget type:
+
+| Widget | Serializes as | JSON type |
+|---|---|---|
+| `TextInput` / `TextEdit` / `CIconTextField` | `.text` | **string** |
+| `CNumberInput` | `.value()` | **double** |
+| `T.ComboBox` (incl. `CComboBox`) | `currentValue` | depends on `valueRole` |
+| `T.SpinBox` / `T.Slider` / `T.Dial` | `.value` | double |
+| `T.Switch` / `T.SwitchDelegate` | `position === 1` | bool |
+| `T.CheckBox` | `.checked` | bool |
+| `FileInput` / `FolderInput` | selected URL | string |
+| `ListView` / `TableView` with `model.toJsonArray()` | that array | array |
+
+Field key is the widget's `objectName`. `CForm` also **recurses into `Layout` and `CPage` children**, so grouping checkboxes inside a `RowLayout` (or putting form fields inside `CTabView` tabs) still serializes correctly. `setInitialValues` mirrors this on load (reads `initialValues[objectName]`).
+
+### Use `CNumberInput` for numeric form fields, not `CIconTextField`
+`CIconTextField` serializes as a JSON **string** (it's a `TextInput`). If the backend route declares the param as `QJsonValue::Double` in `requireParams`, the strict-type check rejects the string and the request fails with `parameter 'x' type is Invalid`. For any numeric form field, use `CNumberInput` — `CForm` invokes `.value()` on it which returns a JS number, serializing as a JSON Double. Slapping a `DoubleValidator` on a `CIconTextField` only constrains input; it does **not** change the JSON type at submit time.
+
+### CFormView POST vs PUT
+`property string method: keyValue !== null ? "PUT" : "POST"`. So one form file handles both create (`keyValue: null`) and edit (`keyValue: id`); `CrudViewPage` passes `keyValue` automatically on the Edit action. The form posts to its `url` property.
+
+### `Router.navigate(path, params)` param contract
+Param keys passed in the second argument become QML properties on the destination page (declared as `property var keyValue`, `property int runId`, `property string title`, etc.). `CrudViewPage` standard actions use `keyValue` for forms; custom navigations pass whatever the target page expects.
+
+### `Api::*` (`api.{h,cpp}`) wrapping convention
+Every backend endpoint should have a matching `Q_INVOKABLE` here so QML doesn't hand-roll URL strings — even simple ones. The wrapper either returns `NetworkResponse *` (caller chains `.subscribe(function(res){ var j = res.json(); ... })` in QML) or emits a typed signal for fire-and-forget flows. `res.json()` returns the parsed top-level value; `res.json("key")` returns a specific top-level key.
+
+### `AppNetworkedJsonModel` contract
+Constructor signature: `(url, columnList, parent)` where `columnList` entries are either:
+- 2-arg short form `{"col", tr("Header")}` — defaults to plain `"text"` delegate.
+- 5-arg long form `{"col", tr("Header"), QString(), false, "<delegateType>"}` — picks a typed delegate.
+
+`<delegateType>` values are dispatched by `qml/common/AppDelegateChooser.qml` to: `"text"`, `"currency"` (formats via `Utils.formatCurrency` — **use this for any money column**, otherwise large numbers render in scientific notation like `5e+05`), `"number"`, `"percentage"`, `"image"`, `"date"`, `"datetime"`, `"link"`, `"product_stock"`, `"checkbox"`. Existing examples: `accountsmodel.cpp` (`balance` → currency), `vendorsbillsmodel.cpp` (`total` → currency), `carriersettlementsmodel.cpp`.
+
+For inline (non-column) displays of monetary values in custom pages, import `"qrc:/PosFe/qml/screens/utils.js" as Utils` and use `Utils.formatCurrency(value)` to match.
+
+The model POSTs `{filter, page, count, sortBy, direction}` to `url`; expects either a paginated `Collection` (`{data, current_page, last_page, total}`) or a bare array. Subclass in `app/models/<entity>model.{h,cpp}`, register the sources in the `qt_add_qml_module` block of `app/CMakeLists.txt`.
