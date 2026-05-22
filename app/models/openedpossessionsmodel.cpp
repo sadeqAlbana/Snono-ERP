@@ -14,19 +14,24 @@ OpenedPosSessionsModel::OpenedPosSessionsModel(QObject *parent) :  AppNetworkedJ
    
 }
 
-void OpenedPosSessionsModel::newSession()
+void OpenedPosSessionsModel::newSession(double openingBalance)
 {
-    PosNetworkManager::instance()->get(QUrl("/posssession/request"))->subscribe([this](NetworkResponse *res){
-        emit newSessionResponse(res->json().toObject());
-    });
+    PosNetworkManager::instance()->post(QUrl("/posssession/request"),
+                                        QJsonObject{{"opening_balance", openingBalance}})
+        ->subscribe([this](NetworkResponse *res){
+            emit newSessionResponse(res->json().toObject());
+        });
 }
 
-void OpenedPosSessionsModel::closeSession(const int &sessionId)
+void OpenedPosSessionsModel::closeSession(const int &sessionId, double closingBalance, double depositAmount)
 {
     PosNetworkManager::instance()->post(QUrl("/posssession/close"),
-                                        QJsonObject{{"id",sessionId}})->subscribe([this](NetworkResponse *res){
-        emit closeSessionResponse(res->json().toObject());
-    });
+                                        QJsonObject{{"id",              sessionId},
+                                                    {"closing_balance", closingBalance},
+                                                    {"deposit_amount",  depositAmount}})
+        ->subscribe([this](NetworkResponse *res){
+            emit closeSessionResponse(res->json().toObject());
+        });
 }
 
 void OpenedPosSessionsModel::currentSession()

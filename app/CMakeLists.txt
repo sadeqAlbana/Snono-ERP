@@ -141,6 +141,8 @@ set(TARGET_SOURCES
 set(TARGET_QML_SOURCES
     qml/pages/pos/session/SessionsPage.qml
     qml/pages/pos/session/SessionCard.qml
+    qml/pages/pos/session/OpenSessionDialog.qml
+    qml/pages/pos/session/CloseSessionDialog.qml
     qml/pages/pos/PosSessionsPage.qml
     qml/pages/taxes/TaxTypeDelegate.qml
     qml/pages/taxes/TaxesPage.qml

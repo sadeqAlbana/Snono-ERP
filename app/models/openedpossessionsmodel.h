@@ -9,8 +9,8 @@ class OpenedPosSessionsModel : public AppNetworkedJsonModel
     QML_ELEMENT
 public:
     explicit OpenedPosSessionsModel(QObject *parent = nullptr);
-    Q_INVOKABLE void newSession();
-    Q_INVOKABLE void closeSession(const int &sessionId);
+    Q_INVOKABLE void newSession(double openingBalance);
+    Q_INVOKABLE void closeSession(const int &sessionId, double closingBalance, double depositAmount);
     Q_INVOKABLE void currentSession();
 
 

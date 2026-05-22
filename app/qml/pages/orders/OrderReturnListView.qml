@@ -15,6 +15,9 @@ ListView {
 
     clip: true
     required property var orderId
+    // Live total of selected return lines — bindable from the parent page (e.g. for
+    // drawer-balance pre-flight on cash refunds). Stays in sync with model checkboxes / qty.
+    property real returnTotal: returnModel.returnTotal
     Component.onCompleted: Api.returnableItems(listView.orderId)
     Connections {
         target: Api

@@ -333,7 +333,9 @@ AppPage {
                         //Settings.externalDelivery = checked
 
                         //this is the catalyst
-                        model[currentIndex].method();
+                        if (currentIndex >= 0 && model && model[currentIndex] && typeof model[currentIndex].method === 'function') {
+                            model[currentIndex].method();
+                        }
                         page.refreshCustomerForm();
 
                     }

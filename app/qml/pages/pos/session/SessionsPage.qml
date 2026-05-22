@@ -26,8 +26,9 @@ AppPage{
             Component.onCompleted: currentSession();
 
             onNewSessionResponse:(reply)=> {
-                initSession(reply.pos_session.id);
-
+                if(reply.status===200){
+                    initSession(reply.pos_session.id);
+                }
             }
 
             onCurrentSessionResponse:(reply) => {
@@ -35,6 +36,7 @@ AppPage{
                     var session=reply.pos_session;
                     sessionCard.totalAmount=reply.pos_session.total;
                     sessionCard.ordersCount=reply.pos_session.orders_count;
+                    sessionCard.cashBalance=reply.pos_session.cash_balance ?? 0;
                     sessionCard.session=session;
                     sessionCard.visible=true
 
@@ -56,6 +58,20 @@ AppPage{
             }
         }
 
+        OpenSessionDialog{
+            id: openSessionDialog
+            onAccepted:(openingBalance)=> sessionsModel.newSession(openingBalance)
+        }
+
+        CloseSessionDialog{
+            id: closeSessionDialog
+            onAccepted:(sessionId, closingBalance, depositAmount)=> {
+                sessionsModel.closeSession(sessionId, closingBalance, depositAmount)
+                sessionCard.visible=false
+                newSessionButton.visible=true
+            }
+        }
+
         CButton{
             id: newSessionButton
             radius: width> height ? width : height
@@ -68,7 +84,7 @@ AppPage{
             implicitWidth: 200
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
-            onClicked: sessionsModel.newSession();
+            onClicked: openSessionDialog.open()
             visible: false
 
         }
@@ -79,9 +95,9 @@ AppPage{
             //ordersCount: sessionsModel.data(model.row,"pos_orders") ? sessionsModel.data(model.row,"pos_orders").length : 0
             //totalAmount: model.total? Utils.formatNumber(model.total) : Utils.formatNumber(0.0)
             onClose:()=> {
-                sessionsModel.closeSession(session.id)
-                sessionCard.visible=false
-                newSessionButton.visible=true
+                closeSessionDialog.sessionId       = session.id
+                closeSessionDialog.expectedBalance = cashBalance
+                closeSessionDialog.open()
             }
             onResume:()=> {
                 sessionsModel.initSession(session.id)

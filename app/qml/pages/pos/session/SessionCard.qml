@@ -20,6 +20,7 @@ Card{
 
     property int ordersCount
     property string totalAmount
+    property real cashBalance: 0
     property var session;
     title: qsTr("POS Session ")+ session?.id
 
@@ -45,6 +46,17 @@ Card{
 
         CLabel{
             text: Utils.formatCurrency(totalAmount)
+            font.bold: true
+        }
+
+        CLabel{
+            text: qsTr("Cash Drawer")
+            font.bold: true
+            Layout.leftMargin: 25
+        }
+
+        CLabel{
+            text: Utils.formatCurrency(cashBalance)
             font.bold: true
         }
 
