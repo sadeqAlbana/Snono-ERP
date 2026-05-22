@@ -38,11 +38,20 @@ AppPage {
                     }
 
 
+    // payment_method_id = -1 is the cashier sentinel for "on credit" — backend leaves the
+    // invoice unpaid and customer AR carries the balance. See ../../../pos-be-base/app/http/
+    // controllers/poscontroller.cpp purchaseProducts handler.
+    readonly property int creditMethodId: -1
+
     Component.onCompleted: {
         NetworkManager.get("/pos/dashboard").subscribe(
                     function (response) {
-                        paymentMethodCB.model = response.json(
-                                    "payment_methods").data;
+                        var methods = response.json("payment_methods").data;
+                        if (AuthManager.hasPermission("prm_pos_sell_on_credit")) {
+                            methods = methods.concat([{ id: page.creditMethodId,
+                                                        name: qsTr("On Credit") }]);
+                        }
+                        paymentMethodCB.model = methods;
                         customerCB.model = response.json("customers").data;
                     });
 
@@ -54,7 +63,11 @@ AppPage {
     function processCart() {
 
         let paymentMethodId=paymentMethodCB.currentValue
-        cashierModel.processCart(cashierModel.total, 0, paymentMethodId, notesLE.text)
+        let isCredit = (paymentMethodId === page.creditMethodId)
+        // Backend forces paid/returned to 0 for credit, but we send 0 explicitly so the
+        // FE-visible state and the persisted order row agree.
+        let paid = isCredit ? 0 : cashierModel.total
+        cashierModel.processCart(paid, 0, paymentMethodId, notesLE.text)
     }
 
     PayDialog {
@@ -90,6 +103,11 @@ AppPage {
     ProductPickerDialog {
         id: productPickerDialog
         onProductPicked: productId => cashierModel.addProduct(productId)
+    }
+
+    CreditConfirmDialog {
+        id: creditConfirmDialog
+        onAccepted: page.processCart()
     }
 
     GridLayout {
@@ -349,6 +367,29 @@ AppPage {
 
 
             function confirmPayment() {
+                let isCredit = (paymentMethodCB.currentValue === page.creditMethodId)
+                if (isCredit) {
+                    // Walk-in guard mirrors the backend's status=-6 reject — surfaced as a
+                    // toastr instead of round-tripping a server error. party_id=1 is the
+                    // seeded walk-in default; credit needs a real named customer so AR
+                    // attaches to someone.
+                    let customerId = customerCB.currentIndex >= 0
+                        ? (customerCB.model[customerCB.currentIndex]?.id ?? 0)
+                        : 0
+                    if (customerId <= 1) {
+                        toastrService.push(qsTr("Error"),
+                                           qsTr("Pick a customer before selling on credit."),
+                                           "error", 4000)
+                        return
+                    }
+                    // No cash counting needed — show a lightweight confirm step so the
+                    // operator gets a visible "you're booking this on credit" prompt
+                    // (PayDialog serves that role for cash; credit gets its own dialog).
+                    creditConfirmDialog.amount = cashierModel.total
+                    creditConfirmDialog.customerName = customerCB.model[customerCB.currentIndex]?.name ?? ""
+                    creditConfirmDialog.open()
+                    return
+                }
                 paymentDialog.amount = cashierModel.total
                 paymentDialog.paid = cashierModel.total
                 paymentDialog.open()

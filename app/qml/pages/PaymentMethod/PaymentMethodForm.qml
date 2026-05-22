@@ -32,7 +32,6 @@ CFormView {
         model: [
             {"label":qsTr("Cash"), "value": "cash"},
             {"label":qsTr("Cash on Delivery"), "value": "cod"},
-            {"label":qsTr("Credit"), "value": "credit"},
             {"label":qsTr("Bank"), "value": "bank"}
         ]
         valueRole: "value"

@@ -196,6 +196,7 @@ set(TARGET_QML_SOURCES
     qml/pages/cashier/NumpadButton.qml
     qml/pages/cashier/PayDialog.qml
     qml/pages/cashier/ProductPickerDialog.qml
+    qml/pages/cashier/CreditConfirmDialog.qml
     qml/pages/dashboard/DashboardPage.qml
     qml/pages/dashboard/AppDashboardWidget.qml
     qml/pages/dashboard/NewDashboardWidget.qml
@@ -237,6 +238,8 @@ set(TARGET_QML_SOURCES
     qml/pages/locations/LocationsPage.qml
     qml/pages/locations/LocationForm.qml
     qml/pages/invoices/InvoicesPage.qml
+    qml/pages/invoices/InvoiceDetailsPage.qml
+    qml/pages/invoices/PayInvoiceDialog.qml
     qml/pages/payments/PaymentsPage.qml
     qml/pages/payments/PaymentRefundsPage.qml
     qml/pages/orders/OrdersFulfillmentPage.qml
