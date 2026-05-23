@@ -6,9 +6,9 @@
 DraftOrderFormModel::DraftOrderFormModel(QObject *parent) : JsonModel (QJsonArray(),{
                                JsonModelColumn{"name",tr("Name"),QString(),true} ,
                                {"description",tr("Description"),QString(),true} ,
-                                                  {"unit_price",tr("Price"),QString(),true,"number"} ,
+                                                  {"unit_price",tr("Price"),QString(),true,"currency"} ,
                                                   {"qty",tr("Qty"),QString(),true,"number"} ,
-                               {"total",tr("Total"),QString(),false,"number"}},
+                               {"total",tr("Total"),QString(),false,"currency"}},
                 parent)
 
 

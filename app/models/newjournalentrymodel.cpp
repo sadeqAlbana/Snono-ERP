@@ -6,8 +6,8 @@ NewJournalEntryModel::NewJournalEntryModel(QObject *parent)
                                     {"no",tr("No")},
                     {"account_id",tr("Account"),QString(),false,"combo"},
                     {"description",tr("Description")},
-                    {"debit",tr("Debit"),QString(),false,"number"},
-                    {"credit",tr("Credit"),QString(),false,"number"}
+                    {"debit",tr("Debit"),QString(),false,"currency"},
+                    {"credit",tr("Credit"),QString(),false,"currency"}
                 },
                 parent)
 {

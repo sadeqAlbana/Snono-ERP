@@ -8,8 +8,8 @@ InvoicesModel::InvoicesModel(QObject *parent) : AppNetworkedJsonModel("/invoices
                                              {"status",tr("Status"),QString(),false,"InvoiceStatus"} ,
                                              {"date",tr("Date"),QString(),false,"datetime"},
                                              {"due_date",tr("Due Date"),QString(),false,"datetime"},
-                                             {"balance_due",tr("Balance Due"),QString(),false},
-                                             {"total",tr("Total"),QString(),false},
+                                             {"balance_due",tr("Balance Due"),QString(),false,"currency"},
+                                             {"total",tr("Total"),QString(),false,"currency"},
                                              {"created_at",tr("Created At"),QString(),false,"datetime"}
 
                                          },

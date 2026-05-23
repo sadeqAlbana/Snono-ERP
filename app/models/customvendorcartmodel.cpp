@@ -5,9 +5,9 @@ CustomVendorCartModel::CustomVendorCartModel(QObject *parent) : JsonModel(QJsonA
                                                               {"name",tr("Name")},
                                {"category_id",tr("Category ID")},
 
-                                                              {"cost",tr("Cost")},
+                                                              {"cost",tr("Cost"),QString(),false,"currency"},
                                                               {"qty",tr("Qty")},
-                                                              {"total",tr("Total")}
+                                                              {"total",tr("Total"),QString(),false,"currency"}
 
                                                               }
                                                               ,parent)
