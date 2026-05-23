@@ -86,13 +86,8 @@ AppPage {
                                            "danger", 4000)
                         return
                     }
-                    var c = reply.customer
-                    customerCB.model = customerCB.model.concat([c])
-                    var idx = customerCB.find(c.name)
-                    if (idx >= 0) {
-                        customerCB.currentIndex = idx
-                    }
                     pay = true
+                    tableView.model.updateCustomer(reply.customer.id)
                 })
             } else {
                 page.processCart()
