@@ -483,6 +483,19 @@ NetworkResponse *Api::addTax(const QJsonObject &data)
     return PosNetworkManager::instance()->post(QUrl("/tax"),data);
 }
 
+NetworkResponse *Api::catalogueSources()
+{
+    return PosNetworkManager::instance()->post(QUrl("/catalogue/sources"),QJsonObject{});
+}
+
+NetworkResponse *Api::syncCatalogues(const int &sourceId)
+{
+    QJsonObject params;
+    if(sourceId>0)
+        params["source_id"]=sourceId;
+    return PosNetworkManager::instance()->post(QUrl("/catalogue/sync"),params);
+}
+
 NetworkResponse *Api::updateTax(const QJsonObject &data)
 {
     return PosNetworkManager::instance()->put(QUrl("/tax"),data);

@@ -49,6 +49,8 @@ public:
     Q_INVOKABLE NetworkResponse * addPayrollItem(const int &runId, const int &employeeId, const double &netAmount);
     Q_INVOKABLE NetworkResponse * updatePayrollItem(const int &itemId, const double &netAmount);
     Q_INVOKABLE NetworkResponse * removePayrollItem(const int &itemId);
+    Q_INVOKABLE NetworkResponse * catalogueSources();
+    Q_INVOKABLE NetworkResponse * syncCatalogues(const int &sourceId=0);
     Q_INVOKABLE NetworkResponse * fetchEmployees();
     Q_INVOKABLE NetworkResponse * fetchPayrollRun(const int &runId);
     Q_INVOKABLE NetworkResponse * fetchPartyJobTitles(const int &partyId);

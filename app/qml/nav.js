@@ -79,6 +79,13 @@ function navBar(){
                 },
 
                 {
+                    "title":qsTr("External Catalogues"),
+                    "category":qsTr("MAIN"),
+                    "image":"cil-list",
+                    "path":"qrc:/PosFe/qml/pages/catalogues/CataloguesPage.qml",
+                    "permission": "prm_view_catalogues",
+                },
+                {
                     "title":qsTr("Products"),
                     "category":qsTr("MAIN"),
                     "image":"cil-inbox",
