@@ -12,20 +12,15 @@ PartEntriesModel::PartEntriesModel(QObject *parent)
         {"qty", tr("Qty")},
         {"start_year", tr("Year")},
         {"color", tr("Color")},
+        {"actions", tr("Sources"), QString(), false, "action"},
     };
     setSortKey("id");
     setDirection("asc");
 }
 
-// Flatten the nested official part onto each entry row.
+// The /partcatalogue/entries endpoint already returns part_number/description
+// flattened (and source_count), so no client-side reshaping is needed.
 QJsonArray PartEntriesModel::filterData(QJsonArray data)
 {
-    for (int i = 0; i < data.size(); i++) {
-        QJsonObject row = data.at(i).toObject();
-        const QJsonObject part = row.value("part").toObject();
-        row["part_number"] = part.value("part_number");
-        row["description"] = part.value("description");
-        data.replace(i, row);
-    }
     return data;
 }

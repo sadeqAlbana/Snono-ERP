@@ -507,6 +507,12 @@ NetworkResponse *Api::partCatalogueSections(const int &catalogueId)
                                                QJsonObject{{"catalogue_id",catalogueId}});
 }
 
+NetworkResponse *Api::partSources(const int &partId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/part/sources"),
+                                               QJsonObject{{"part_id",partId}});
+}
+
 NetworkResponse *Api::updateTax(const QJsonObject &data)
 {
     return PosNetworkManager::instance()->put(QUrl("/tax"),data);

@@ -189,6 +189,7 @@ set(TARGET_QML_SOURCES
     qml/pages/products/ProductsPage.qml
     qml/pages/catalogues/CataloguesPage.qml
     qml/pages/partcatalogues/PartCataloguesPage.qml
+    qml/pages/partcatalogues/PartSourcesDialog.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
     qml/pages/products/AdjustStockDialog.qml

@@ -7,6 +7,7 @@ import CoreUI.Forms
 import CoreUI.Views
 import CoreUI.Notifications
 import CoreUI.Buttons
+import CoreUI.Palettes
 import CoreUI.Impl
 import PosFe
 import CoreUI
@@ -255,7 +256,35 @@ AppPage {
                     id: entriesView
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    delegate: AppDelegateChooser {}
+
+                    // Text columns use the default delegate; the "actions" column
+                    // gets a per-row "Sources" button.
+                    delegate: DelegateChooser {
+                        role: "delegateType"
+                        DelegateChoice {
+                            roleValue: "action"
+                            delegate: ActionsDelegate {
+                                id: actCell
+                                property var rec: entriesModel.recordAt(row)
+                                property bool hasSources: rec && (rec.source_count > 0)
+                                CButton {
+                                    text: qsTr("Sources")
+                                    Layout.alignment: Qt.AlignCenter
+                                    // green when external sources exist, red when none
+                                    palette: actCell.hasSources ? okPal : noPal
+                                    onClicked: {
+                                        var r = entriesModel.recordAt(row)
+                                        sourcesDialog.openFor(r.part_id, r.part_number, r.description)
+                                    }
+                                    BrandSuccess { id: okPal }
+                                    BrandDanger { id: noPal }
+                                }
+                            }
+                        }
+                        DelegateChoice {
+                            delegate: CTableViewDelegate {}
+                        }
+                    }
 
                     model: PartEntriesModel {
                         id: entriesModel
@@ -263,5 +292,9 @@ AppPage {
                 }
             }
         }
+    }
+
+    PartSourcesDialog {
+        id: sourcesDialog
     }
 }

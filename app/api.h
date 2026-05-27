@@ -53,6 +53,7 @@ public:
     Q_INVOKABLE NetworkResponse * syncCatalogues(const int &sourceId=0);
     Q_INVOKABLE NetworkResponse * partCatalogues();
     Q_INVOKABLE NetworkResponse * partCatalogueSections(const int &catalogueId);
+    Q_INVOKABLE NetworkResponse * partSources(const int &partId);
     Q_INVOKABLE NetworkResponse * fetchEmployees();
     Q_INVOKABLE NetworkResponse * fetchPayrollRun(const int &runId);
     Q_INVOKABLE NetworkResponse * fetchPartyJobTitles(const int &partyId);
