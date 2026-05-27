@@ -9,6 +9,8 @@ CataloguesModel::CataloguesModel(QObject *parent)
         {"id", tr("ID")},
         {"part_number", tr("Part #")},
         {"name", tr("Name")},
+        {"official_part", tr("Official Part #")},
+        {"official_name", tr("Official Name")},
         {"price", tr("Price"), QString(), false, "currency"},
         {"availability", tr("Availability")},
         {"last_seen_at", tr("Last Seen"), QString(), false, "datetime"},
@@ -37,6 +39,12 @@ QJsonArray CataloguesModel::filterData(QJsonArray data)
                 item[attributeId] = attribute["value"];
         }
         item["attributes"] = attributes;
+
+        // Flatten the linked official part (part_id -> parts) onto the row.
+        const QJsonObject part = item.value("part").toObject();
+        item["official_part"] = part.value("part_number");
+        item["official_name"] = part.value("description");
+
         data.replace(i, item);
     }
     return data;

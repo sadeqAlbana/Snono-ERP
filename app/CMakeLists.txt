@@ -86,6 +86,7 @@ set(TARGET_SOURCES
     models/productsattributesattributesmodel.cpp models/productsattributesattributesmodel.h
     models/productsmodel.cpp models/productsmodel.h
     models/cataloguesmodel.cpp models/cataloguesmodel.h
+    models/partentriesmodel.cpp models/partentriesmodel.h
     models/receiptmodel.cpp models/receiptmodel.h
     models/returnordermodel.cpp models/returnordermodel.h
     models/stockreportmodel.cpp models/stockreportmodel.h
@@ -187,6 +188,7 @@ set(TARGET_QML_SOURCES
     qml/pages/reports/ExpensesReportPage.qml
     qml/pages/products/ProductsPage.qml
     qml/pages/catalogues/CataloguesPage.qml
+    qml/pages/partcatalogues/PartCataloguesPage.qml
     qml/pages/products/ProductPurchaseStockDialog.qml
     qml/pages/products/ProductsMobilePage.qml
     qml/pages/products/AdjustStockDialog.qml

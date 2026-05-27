@@ -496,6 +496,17 @@ NetworkResponse *Api::syncCatalogues(const int &sourceId)
     return PosNetworkManager::instance()->post(QUrl("/catalogue/sync"),params);
 }
 
+NetworkResponse *Api::partCatalogues()
+{
+    return PosNetworkManager::instance()->post(QUrl("/partcatalogues"),QJsonObject{});
+}
+
+NetworkResponse *Api::partCatalogueSections(const int &catalogueId)
+{
+    return PosNetworkManager::instance()->post(QUrl("/partcatalogue/sections"),
+                                               QJsonObject{{"catalogue_id",catalogueId}});
+}
+
 NetworkResponse *Api::updateTax(const QJsonObject &data)
 {
     return PosNetworkManager::instance()->put(QUrl("/tax"),data);

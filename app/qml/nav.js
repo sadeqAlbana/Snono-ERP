@@ -86,6 +86,13 @@ function navBar(){
                     "permission": "prm_view_catalogues",
                 },
                 {
+                    "title":qsTr("Parts Catalogues"),
+                    "category":qsTr("MAIN"),
+                    "image":"cil-list",
+                    "path":"qrc:/PosFe/qml/pages/partcatalogues/PartCataloguesPage.qml",
+                    "permission": "prm_view_parts",
+                },
+                {
                     "title":qsTr("Products"),
                     "category":qsTr("MAIN"),
                     "image":"cil-inbox",
