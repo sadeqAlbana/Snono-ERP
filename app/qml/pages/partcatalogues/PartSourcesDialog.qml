@@ -58,9 +58,10 @@ AppDialog {
         RowLayout {
             Layout.fillWidth: true
             spacing: 8
-            Label { text: qsTr("Source");       Layout.preferredWidth: 260; font.bold: true }
-            Label { text: qsTr("Price");        Layout.preferredWidth: 130; font.bold: true }
-            Label { text: qsTr("Availability"); Layout.preferredWidth: 110; font.bold: true }
+            Label { text: qsTr("Source");       Layout.preferredWidth: 240; font.bold: true }
+            Label { text: qsTr("Price");        Layout.preferredWidth: 120; font.bold: true }
+            Label { text: qsTr("Stock");        Layout.preferredWidth: 110; font.bold: true }
+            Label { text: qsTr("Availability"); Layout.preferredWidth: 100; font.bold: true }
             Item  { Layout.fillWidth: true }
         }
 
@@ -78,19 +79,35 @@ AppDialog {
                 width: ListView.view.width
                 spacing: 8
 
+                // tri-state stock from catalog_items.in_stock (1 / 0 / null)
+                readonly property int stockState: {
+                    var s = modelData.in_stock
+                    if (s === undefined || s === null || s === "")
+                        return -1
+                    return (s == 1) ? 1 : 0
+                }
+
                 Label {
                     text: modelData.source ? modelData.source : ""
-                    Layout.preferredWidth: 260
+                    Layout.preferredWidth: 240
                     elide: Text.ElideRight
                 }
                 Label {
                     text: Utils.formatNumber(modelData.price !== undefined ? modelData.price : 0)
                           + " " + (modelData.currency ? modelData.currency : "IQD")
-                    Layout.preferredWidth: 130
+                    Layout.preferredWidth: 120
+                }
+                Label {
+                    Layout.preferredWidth: 110
+                    text: stockState === 1 ? qsTr("In Stock")
+                                           : (stockState === 0 ? qsTr("Out of Stock") : "—")
+                    color: stockState === 1 ? "#2e7d32"
+                                            : (stockState === 0 ? "#c62828" : "#999999")
+                    font.bold: stockState >= 0
                 }
                 Label {
                     text: modelData.availability ? modelData.availability : ""
-                    Layout.preferredWidth: 110
+                    Layout.preferredWidth: 100
                 }
                 CButton {
                     text: qsTr("Open")

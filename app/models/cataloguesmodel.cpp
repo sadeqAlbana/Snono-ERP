@@ -13,6 +13,7 @@ CataloguesModel::CataloguesModel(QObject *parent)
         {"official_name", tr("Official Name")},
         {"price", tr("Price"), QString(), false, "currency"},
         {"availability", tr("Availability")},
+        {"stock_label", tr("In Stock")},
         {"last_seen_at", tr("Last Seen"), QString(), false, "datetime"},
         {"url", tr("Link"), QString(), false, "link"},
     };
@@ -44,6 +45,14 @@ QJsonArray CataloguesModel::filterData(QJsonArray data)
         const QJsonObject part = item.value("part").toObject();
         item["official_part"] = part.value("part_number");
         item["official_name"] = part.value("description");
+
+        // Tri-state stock (1/0/null) -> readable label.
+        const QJsonValue inStock = item.value("in_stock");
+        if (inStock.isNull() || inStock.isUndefined())
+            item["stock_label"] = QStringLiteral("—");
+        else
+            item["stock_label"] = inStock.toVariant().toInt() == 1 ? tr("In Stock")
+                                                                   : tr("Out of Stock");
 
         data.replace(i, item);
     }
