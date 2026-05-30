@@ -326,6 +326,20 @@ AppPage {
 
                 CAction {
                     enabled: tableView.currentRow >= 0
+                    text: qsTr("Exchange")
+                    icon.name: "cil-loop-circular"
+                    onTriggered: {
+                        let order = model.jsonObject(tableView.currentRow)
+                        Router.navigate(
+                                    "qrc:/PosFe/qml/pages/orders/ExchangeOrderPage.qml",
+                                    {
+                                        "order": order
+                                    })
+                    }
+                },
+
+                CAction {
+                    enabled: tableView.currentRow >= 0
                     text: qsTr("Create Delivery Order")
                     icon.name: "cil-plus-circle"
                     onTriggered: {

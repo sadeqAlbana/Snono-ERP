@@ -45,6 +45,18 @@ CFormView {
        Layout.columnSpan: 3
     }
 
+    // Per-driver default commission, applied to each shipment at fulfill time.
+    // A driver-level (party) field, so it shows in both existing-user and
+    // new-user modes.
+    CLabel {
+        text: qsTr("Default Fee")
+    }
+    CNumberInput {
+        objectName: "default_fee"
+        Layout.columnSpan: 3
+        Layout.fillWidth: true
+    }
+
     CLabel {
         visible: !useExistingUser.checked
 

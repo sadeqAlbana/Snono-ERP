@@ -174,6 +174,7 @@ set(TARGET_QML_SOURCES
     qml/pages/orders/OrderStatusDelegate.qml
     qml/pages/orders/OrderDetailsPage.qml
     qml/pages/orders/ReturnOrderPage.qml
+    qml/pages/orders/ExchangeOrderPage.qml
     qml/pages/orders/DeliveryOrderForm.qml
     qml/pages/orders/DraftOrdersPage.qml
     qml/pages/orders/DraftOrderForm.qml

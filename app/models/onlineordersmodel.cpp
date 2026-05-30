@@ -5,6 +5,8 @@
 #include "utils.h"
 OnlineOrdersModel::OnlineOrdersModel(QObject *parent) : AppNetworkedJsonModel("/orders/online",{
                                                   {"id",tr("ID"),QString(),false} ,
+                                                                  // computed in data() below: "⇄ of #<original>" for exchange orders, blank otherwise
+                                                                  {"is_exchange",tr("Exchange"),QString(),false} ,
                                                                   {"name",tr("Customer"),"party",false,"link",
                                                                 QVariantMap{{"link","qrc:/PosFe/qml/pages/customers/CustomerForm.qml"},
                                                                   {"linkKey","party_id"}}},
@@ -128,6 +130,18 @@ void OnlineOrdersModel::print()
 QVariant OnlineOrdersModel::data(const QModelIndex &index, int role) const
 {
     auto key = m_columns.value(index.column());
+    // Flag exchange orders in the list: show "⇄ of #<original order>" (or just
+    // "⇄ Exchange" if the link is missing), blank for normal orders. is_exchange
+    // and exchange_order_id come straight off the orders row.
+    if(key.m_key=="is_exchange" && role==Qt::DisplayRole){
+        QJsonObject record=jsonObject(index.row());
+        bool isEx = record.value("is_exchange").toInt()==1 || record.value("is_exchange").toBool();
+        if(isEx){
+            int original=record.value("exchange_order_id").toInt();
+            return original>0 ? QString("⇄ of #%1").arg(original) : QStringLiteral("⇄ Exchange");
+        }
+        return QString();
+    }
     if(key.m_key=="district" && role==Qt::DisplayRole){
         QJsonObject record=jsonObject(index.row()).value("shipment").toObject().value("dst_address").toObject();
         QString combo=QString("%1 - %2").arg(record.value("province").toString()).arg(record.value("district").toString());

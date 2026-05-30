@@ -13,6 +13,9 @@ AppDialog {
     title: qsTr("Pick a Product")
 
     signal productPicked(int productId)
+    // richer variant: carries the full picked product (id, name, list_price, …) so
+    // callers that need price/name don't have to re-fetch. Emitted alongside productPicked.
+    signal productPickedObject(var product)
 
     width: Math.min(1100, (parent ? parent.width : 1000) * 0.9)
     height: Math.min(780, (parent ? parent.height : 700) * 0.9)
@@ -112,6 +115,8 @@ AppDialog {
 
                 onClicked: {
                     dialog.productPicked(model.id)
+                    dialog.productPickedObject({"id": model.id, "name": model.name ?? "",
+                                                "list_price": model.list_price ?? 0})
                     dialog.close()
                 }
 
